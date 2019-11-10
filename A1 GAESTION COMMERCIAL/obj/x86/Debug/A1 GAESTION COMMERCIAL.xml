@@ -1,0 +1,576 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+A1GAESTIONCOMMERCIAL
+</name>
+</assembly>
+<members>
+<member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Add_32x32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.AddFile_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.arrow_down">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.arrow_down1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.arrow_down2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.bg_Blue">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.calendar_icon_34471">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.COR_32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Download_Product_Png_Image_66617_For_Designing_Projects">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.EDIT_22X22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.ERROR_15">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_02">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_03">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_04">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_05">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_07">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_08">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_09">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_10">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_13">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Cash_register_73439">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_new_23212__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_open_23214__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_preview_23216__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Document_write_icon_88543">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_edit_3218">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_add_61769">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_delete_61770">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Folder_Settings_Tools_icon_88583_X_24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Edit_Delete_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_kde_folder_saved_search_25195">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_kde_folder_saved_search_25195__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_131956">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Print_56266__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.INFO_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Print_22X22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.SEARCH_24X24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.WARNING_15">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ClientDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.companyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CompanyPaymentDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DepotDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.valueDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ClientRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.companyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CompanyPaymentRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DepotRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.valueRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ClientRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.companyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CompanyPaymentRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DepotRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.valueRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.adminTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ArticleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.BonTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CategoryTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ChargeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ClientTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.companyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CompanyPaymentTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DepotTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsBonTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsFactureTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsStockTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailstockTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.FactureTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Facture_ListeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.MachineTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.PaymentTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.StockTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Table_des_erreursTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.valueTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.UpdateAll(A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+</members>
+</doc>
