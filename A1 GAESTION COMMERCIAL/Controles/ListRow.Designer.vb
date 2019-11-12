@@ -22,6 +22,7 @@ Partial Class ListRow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.PlButtom = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plNm = New System.Windows.Forms.Panel()
         Me.lbName = New System.Windows.Forms.Label()
@@ -40,7 +41,6 @@ Partial Class ListRow
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
-        Me.PlButtom = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.plNm.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -51,8 +51,18 @@ Partial Class ListRow
         Me.plSet.SuspendLayout()
         Me.SuspendLayout()
         '
+        'PlButtom
+        '
+        Me.PlButtom.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.PlButtom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PlButtom.Location = New System.Drawing.Point(0, 40)
+        Me.PlButtom.Name = "PlButtom"
+        Me.PlButtom.Size = New System.Drawing.Size(904, 1)
+        Me.PlButtom.TabIndex = 6
+        '
         'Panel1
         '
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.Controls.Add(Me.plNm)
         Me.Panel1.Controls.Add(Me.plRef)
         Me.Panel1.Controls.Add(Me.plQ)
@@ -254,15 +264,6 @@ Partial Class ListRow
         Me.btAdd.Size = New System.Drawing.Size(48, 35)
         Me.btAdd.TabIndex = 7
         Me.btAdd.UseVisualStyleBackColor = True
-        '
-        'PlButtom
-        '
-        Me.PlButtom.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.PlButtom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PlButtom.Location = New System.Drawing.Point(0, 40)
-        Me.PlButtom.Name = "PlButtom"
-        Me.PlButtom.Size = New System.Drawing.Size(904, 1)
-        Me.PlButtom.TabIndex = 6
         '
         'ListRow
         '

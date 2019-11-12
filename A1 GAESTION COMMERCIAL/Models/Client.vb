@@ -8,6 +8,8 @@
     Public groupe As String
     Public ICE As String
     Public adresse As String
+    Public cp As String
+    Public ville As String
     Public tel As String
     Public gsm As String
     Public email As String
@@ -65,7 +67,7 @@
                     adresse &= vbNewLine
                     adresse &= "CP : " & dt.Rows(0).Item("cp")
                 End If
-                If Not IsDBNull(dt.Rows(0).Item("cp")) And dt.Rows(0).Item("cp") <> "" Then
+                If Not IsDBNull(dt.Rows(0).Item("ville")) And dt.Rows(0).Item("ville") <> "" Then
 
                     If x = False Then adresse &= vbNewLine
                     adresse &= "-  " & dt.Rows(0).Item("ville").ToString.ToUpper
@@ -75,6 +77,8 @@
                 gsm = dt.Rows(0).Item("gsm")
                 email = dt.Rows(0).Item("email")
                 info = dt.Rows(0).Item("info")
+                cp = dt.Rows(0).Item("cp")
+                ville = dt.Rows(0).Item("ville")
                 'delai = dt.Rows(0).Item("delai")
                 'remise = dt.Rows(0).Item("remise")
                 'max = dt.Rows(0).Item("max")

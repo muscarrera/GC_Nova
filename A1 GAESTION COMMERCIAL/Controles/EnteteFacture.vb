@@ -21,6 +21,24 @@
     Dim info As String
     Dim delai As Integer
 
+    Event SaveChanges(ByVal p1 As String)
+
+    Event Type_Transformer(ByVal p1 As String)
+
+    Event PayFacture(ByVal p1 As String)
+
+    Event DuplicateFacture(ByVal p1 As String)
+
+    Event DeleteFacture(ByVal p1 As String)
+
+    Event SavePdf()
+
+    Event PrintFacture()
+
+    Event CommandDelivry(ByVal p1 As String)
+
+    Event Facturer(ByVal p1 As String)
+
 
 
     Public Property Id() As String
@@ -56,7 +74,7 @@
                 ClientName = value.name
                 cid = value.cid
                 ICE = value.ICE
-
+                ClientAdresse = value.adresse
             End If
         End Set
     End Property
@@ -108,6 +126,28 @@
             _Type = value
             lbType.Text = value
             Id = 0
+
+            If value = "Devis" Then
+                btFacturer.Visible = False
+                btDelivry.Visible = False
+                btTranformer.Visible = True
+                btSolde.Visible = False
+            ElseIf value = "Commande" Or value = "BC" Then
+                btFacturer.Visible = True
+                btDelivry.Visible = True
+                btTranformer.Visible = False
+                btSolde.Visible = True
+            ElseIf value = "BL" Or value = "BA" Then
+                btFacturer.Visible = True
+                btDelivry.Visible = False
+                btTranformer.Visible = False
+                btSolde.Visible = True
+            ElseIf value = "Facture" Then
+                btFacturer.Visible = False
+                btDelivry.Visible = False
+                btTranformer.Visible = False
+                btSolde.Visible = True
+            End If
         End Set
     End Property
     Public Property FactureDate() As Date
@@ -198,5 +238,41 @@
 
     Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
         RaiseEvent SearchByDate()
+    End Sub
+
+    Private Sub btSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSave.Click
+        RaiseEvent SaveChanges(Id)
+    End Sub
+
+    Private Sub btTranformer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btTranformer.Click
+        RaiseEvent Type_Transformer(Id)
+    End Sub
+
+    Private Sub btSolde_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde.Click
+        RaiseEvent PayFacture(Id)
+    End Sub
+
+    Private Sub btDuplicate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDuplicate.Click
+        RaiseEvent DuplicateFacture(Id)
+    End Sub
+
+    Private Sub btDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
+        RaiseEvent DeleteFacture(Id)
+    End Sub
+
+    Private Sub btPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPdf.Click
+        RaiseEvent SavePdf()
+    End Sub
+
+    Private Sub btPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPrint.Click
+        RaiseEvent PrintFacture()
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelivry.Click
+        RaiseEvent CommandDelivry(Id)
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacturer.Click
+        RaiseEvent Facturer(Id)
     End Sub
 End Class

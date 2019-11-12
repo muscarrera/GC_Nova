@@ -11,6 +11,12 @@
 
     Public Event selected()
 
+    Event EditSelectedFacture(ByVal p1 As Integer)
+
+    Event DeleteItem(ByVal listLine As ListLine)
+
+    Event GetFactureInfos(ByVal p1 As Integer)
+
     Public Property Id As Integer
         Get
             Return _id
@@ -66,6 +72,8 @@
         End Get
         Set(ByVal value As Boolean)
             _isSelected = value
+            plSet.Visible = value
+
             If value Then
                 Me.BackColor = Color.AntiqueWhite
             Else
@@ -87,17 +95,29 @@
         End Get
         Set(ByVal value As Integer)
             _index = value
-            If value Mod 2 = 0 Then
-                myColor = Color.WhiteSmoke
-            Else
-                myColor = Color.Transparent
-            End If
-            Me.BackColor = myColor
+            'If value Mod 2 = 0 Then
+            '    myColor = Color.WhiteSmoke
+            'Else
+            '    myColor = Color.Transparent
+            'End If
+            'Me.BackColor = myColor
+            Panel1.BackgroundImage = Nothing
+            If (value Mod 2) = 0 Then Panel1.BackgroundImage = My.Resources.gui_13
         End Set
     End Property
 
     Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbName.Click, lbAvc.Click
         isSelected = Not isSelected
         RaiseEvent selected()
+    End Sub
+
+    Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
+        RaiseEvent EditSelectedFacture(Id)
+    End Sub
+    Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
+        RaiseEvent DeleteItem(Me)
+    End Sub
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        RaiseEvent GetFactureInfos(Id)
     End Sub
 End Class

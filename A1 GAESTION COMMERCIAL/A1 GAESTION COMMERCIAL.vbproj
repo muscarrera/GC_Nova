@@ -182,6 +182,12 @@
     <Compile Include="GUI\SearchArchive.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\TransformerDevis.Designer.vb">
+      <DependentUpon>TransformerDevis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TransformerDevis.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Models\Article.vb" />
     <Compile Include="Models\Client.vb" />
     <Compile Include="Models\Facture.vb" />
@@ -256,6 +262,9 @@
     <EmbeddedResource Include="GUI\SearchArchive.resx">
       <DependentUpon>SearchArchive.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TransformerDevis.resx">
+      <DependentUpon>TransformerDevis.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -300,6 +309,21 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\JOINDRE 20.png" />
+    <None Include="Resources\iconfinder_User_278871.png" />
+    <None Include="Resources\PRINT 18.png" />
+    <None Include="Resources\FACTURE 20.png" />
+    <None Include="Resources\iconfinder_Delivery_3387313.png" />
+    <None Include="Resources\iconfinder_agt_print_3826 %281%291.png" />
+    <None Include="Resources\iconfinder_Print_56266 %281%291.png" />
+    <None Include="Resources\iconfinder_pdf_3745 %281%29.png" />
+    <None Include="Resources\iconfinder_Money_221.png" />
+    <None Include="Resources\iconfinder_document-new_23212 %281%291.png" />
+    <None Include="Resources\iconfinder_document-export_23210 %281%29.png" />
+    <None Include="Resources\DELETE 20.png" />
+    <None Include="Resources\search_folder_18.png" />
+    <None Include="Resources\SEARCH 18.png" />
+    <None Include="Resources\gray row.jpg" />
     <None Include="Resources\WARNING 15.png" />
     <None Include="Resources\ERROR 15.png" />
     <None Include="Resources\CANCEL 22.png" />

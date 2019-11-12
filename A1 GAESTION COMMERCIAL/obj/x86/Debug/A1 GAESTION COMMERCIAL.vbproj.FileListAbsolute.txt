@@ -19,6 +19,7 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ModePayement.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.NouveauFacture.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.SearchArchive.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TransformerDevis.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.Resources.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TxtBox.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1 GAESTION COMMERCIAL.vbproj.GenerateResource.Cache

@@ -42,10 +42,6 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.plBody = New System.Windows.Forms.Panel()
         Me.plHead.SuspendLayout()
@@ -60,14 +56,10 @@ Partial Class Form1
         Me.plHead.BackColor = System.Drawing.Color.White
         Me.plHead.Controls.Add(Me.plHeaderButtons)
         Me.plHead.Controls.Add(Me.Panel4)
-        Me.plHead.Controls.Add(Me.Button9)
-        Me.plHead.Controls.Add(Me.Button8)
-        Me.plHead.Controls.Add(Me.Button7)
-        Me.plHead.Controls.Add(Me.Button1)
         Me.plHead.Dock = System.Windows.Forms.DockStyle.Top
         Me.plHead.Location = New System.Drawing.Point(0, 0)
         Me.plHead.Name = "plHead"
-        Me.plHead.Size = New System.Drawing.Size(1011, 83)
+        Me.plHead.Size = New System.Drawing.Size(1011, 94)
         Me.plHead.TabIndex = 1
         '
         'plHeaderButtons
@@ -285,46 +277,6 @@ Partial Class Form1
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button9
-        '
-        Me.Button9.Location = New System.Drawing.Point(590, 85)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(120, 35)
-        Me.Button9.TabIndex = 0
-        Me.Button9.Tag = "SELL"
-        Me.Button9.Text = "Facture"
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(429, 85)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(120, 35)
-        Me.Button8.TabIndex = 0
-        Me.Button8.Tag = "BL"
-        Me.Button8.Text = "BL"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(265, 85)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(120, 35)
-        Me.Button7.TabIndex = 0
-        Me.Button7.Tag = "Commande"
-        Me.Button7.Text = "Commande"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(107, 85)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 35)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Tag = "Devis"
-        Me.Button1.Text = "Devis"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Panel3
         '
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -336,10 +288,11 @@ Partial Class Form1
         'plBody
         '
         Me.plBody.AutoScroll = True
+        Me.plBody.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.plBody.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plBody.Location = New System.Drawing.Point(0, 83)
+        Me.plBody.Location = New System.Drawing.Point(0, 94)
         Me.plBody.Name = "plBody"
-        Me.plBody.Size = New System.Drawing.Size(1011, 413)
+        Me.plBody.Size = New System.Drawing.Size(1011, 402)
         Me.plBody.TabIndex = 1
         '
         'Form1
@@ -366,7 +319,6 @@ Partial Class Form1
     End Sub
     Friend WithEvents plHead As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents lbExr As System.Windows.Forms.Label
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
@@ -382,9 +334,6 @@ Partial Class Form1
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button9 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button10 As System.Windows.Forms.Button
     Friend WithEvents Button11 As System.Windows.Forms.Button
     Friend WithEvents Button12 As System.Windows.Forms.Button

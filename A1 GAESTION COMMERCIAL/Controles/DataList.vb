@@ -1,6 +1,8 @@
 ﻿Public Class DataList
 
 
+
+
     Public Event SearchById(ByVal id As Integer, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -8,9 +10,30 @@
     Public Event NewFacture(ByVal tb_F As String, ByVal tb_C As String, ByRef ds As DataList)
     Public Event ModeChanged(ByVal value As String, ByVal dataList As DataList)
     Public Event NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
-    Public Event EditModePayement(ByRef dataList As DataList)
 
+    'Entete Events
+    Public Event SavePdf(ByVal ds As DataList)
+    Public Event PrintFacture(ByVal ds As DataList)
+    Public Event SaveChanges(ByVal id As Integer, ByRef ds As DataList)
+    Public Event TypeTransformer(ByVal id As Integer, ByRef ds As DataList)
+    Public Event CommandeDelivry(ByVal id As Integer, ByRef ds As DataList)
+    Public Event Facturer(ByVal id As Integer, ByRef ds As DataList)
+    Public Event PayFacture(ByVal id As Integer, ByRef ds As DataList)
+    Public Event DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
+    Public Event DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
+    'Bloc Tolal Event
+    Public Event EditModePayement(ByRef dataList As DataList)
+    'ListLine events
+    Event EditSelectedFacture(ByVal id As Integer)
+    Event DeleteItem(ByVal ls As ListLine)
+    Event GetFactureInfos(ByVal id As Integer)
+    'ListRow articles
+    Event ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
+    Event ArticleItemDelete(ByVal lr As ListRow)
+
+    'Members
     Private _DataSource As DataTable
+    Private _dtList As DataTable
 
     Private _fntNormal As Font
     Private _fntTitle As Font
@@ -21,6 +44,11 @@
     Public payementTable As String = "Client_Payement"
     Public FactureTable As String = "Sell_Facture"
     Public DetailsTable As String = "Details_Sell_Facture"
+    Private _isSell As Boolean = True
+    Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
+
+
+
 
 
 
@@ -56,19 +84,22 @@
         End Get
         Set(ByVal value As String)
             operationType = value
-            If value = "SELL" Then
+
+            isSell = True
+            If value = "Sell_Facture" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Sell_Facture"
                 DetailsTable = "Details_Sell_Facture"
                 Entete.Type = "Facture "
                 '
-            ElseIf value = "BUY" Then
+            ElseIf value = "Buy_Facture" Then
                 clientTable = "Company"
                 payementTable = "Company_Payement"
                 FactureTable = "Buy_Facture"
                 DetailsTable = "Details_Buy_Facture"
                 Entete.Type = "Facture "
+                isSell = False
                 '
             ElseIf value = "Devis" Then
                 clientTable = "Client"
@@ -77,19 +108,35 @@
                 DetailsTable = "Details_Devis"
                 Entete.Type = "Devis "
                 '
-            ElseIf value = "BL" Then
+            ElseIf value = "Commande_Client" Then
+                clientTable = "Client"
+                payementTable = "Client_Payement"
+                FactureTable = "Commande_Client"
+                DetailsTable = "Details_Commande"
+                Entete.Type = "Commande"
+
+            ElseIf value = "Bon_Livraison" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Bon_Livraison"
                 DetailsTable = "Details_Bon_Livraison"
                 Entete.Type = "BL "
                 '
-            ElseIf value = "BC" Then
+            ElseIf value = "Bon_Commande" Then
                 clientTable = "Company"
                 payementTable = "Company_Payement"
                 FactureTable = "Bon_Commande"
                 DetailsTable = "Details_Bon_Commande"
                 Entete.Type = "BC "
+                isSell = False
+
+            ElseIf value = "Bon_Achat" Then
+                clientTable = "Company"
+                payementTable = "Company_Payement"
+                FactureTable = "Bon_Achat"
+                DetailsTable = "Details_Bon_Achat"
+                Entete.Type = "BA "
+                isSell = False
             End If
 
             RaiseEvent OperationTypeChanged()
@@ -107,10 +154,10 @@
             Entete.Bc = value.bc
             Entete.Bl = value.bl
             DataSource = value.DataSource
-            TotalBloc1.Writer = value.writer
-            TotalBloc1.ModePayement = value.modePayement
+            TB.Writer = value.writer
+            TB.ModePayement = value.modePayement
             'payement mode
-            TotalBloc1.ModePayement = value.modePayement
+            TB.ModePayement = value.modePayement
         End Set
     End Property
     Public Property Mode() As String
@@ -126,15 +173,18 @@
                 Entete.Height = 48
                 Entete.lbId.Visible = False
                 plListHeader.Visible = True
-                TotalBloc1.Visible = False
+                TB.Visible = False
+                PlFooter.Visible = True
             Else
-                plDetailsHeader.Visible = True
                 plNewElement.Visible = True
+                plDetailsHeader.Visible = True
+
                 PlAdd.Visible = True
                 Entete.Height = 280
                 Entete.lbId.Visible = True
                 plListHeader.Visible = False
-                TotalBloc1.Visible = True
+                TB.Visible = True
+                PlFooter.Visible = False
             End If
         End Set
     End Property
@@ -150,9 +200,33 @@
             Return t
         End Get
     End Property
+    Public ReadOnly Property isPayed As Boolean
+        Get
+            Return TB.TotalTTC >= TB.avance
+        End Get
+    End Property
     Public Property DataSource As DataTable
         Get
-            Return _DataSource
+            Dim table As New DataTable
+            ' Create four typed columns in the DataTable.
+            table.Columns.Add("arid", GetType(Integer))
+            table.Columns.Add("name", GetType(String))
+            table.Columns.Add("cid", GetType(Integer))
+            table.Columns.Add("qte", GetType(Double))
+            table.Columns.Add("price", GetType(Double))
+            table.Columns.Add("bprice", GetType(Double))
+            table.Columns.Add("tva", GetType(Double))
+            table.Columns.Add("ref", GetType(String))
+            table.Columns.Add("depot", GetType(Integer))
+            table.Columns.Add("remise", GetType(Integer))
+          
+            Dim a As ListRow
+            For Each a In Pl.Controls
+                ' Add  rows with those columns filled in the DataTable.
+                table.Rows.Add(a.arid, a.Name, a.cid, a.qte, a.sprice, a.bprice,
+                              a.TVA, a.ref, a.depot, a.remise)
+            Next
+            Return table
         End Get
         Set(ByVal value As DataTable)
 
@@ -187,12 +261,41 @@
             End If
         End Set
     End Property
+    Public Property DataList As DataTable
+        Get
+            Return _dtList
+        End Get
+        Set(ByVal value As DataTable)
+            _dtList = value
+            startIndex = 0
+            lastIndex = value.Rows.Count
+            numberOfItems = Form1.numberOfItems
+            numberOfPage = Math.Truncate(lastIndex / numberOfItems)
+            If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
+            currentPage = 1
+            btPage.Text = "1/" & numberOfPage
+
+
+        End Set
+    End Property
     Public Property ModePayement As String
         Get
-            Return TotalBloc1.ModePayement
+            Return TB.ModePayement
         End Get
         Set(ByVal value As String)
-            TotalBloc1.ModePayement = value
+            TB.ModePayement = value
+        End Set
+    End Property
+    Public Property isSell As Boolean
+        Get
+            Return _isSell
+        End Get
+        Set(ByVal value As Boolean)
+            _isSell = value
+
+            Operation = "Devis"
+            Mode = "LIST"
+
         End Set
     End Property
     Public Sub New()
@@ -207,6 +310,7 @@
         Pl.Controls.Clear()
         Entete.Clear()
     End Sub
+    
     Private Sub AddRow1_AddNewArticle(ByVal art As Article) Handles AddRow1.AddNewArticle
         If Id = 0 Then Exit Sub
         'DataSource.Add(art.arid, art)
@@ -216,6 +320,10 @@
         R.titleFont = _fntTitle
         R.Dock = DockStyle.Top
         R.BringToFront()
+        R.index = Pl.Controls.Count
+
+        AddHandler R.itemChanged, AddressOf Article_Item_Changed
+        AddHandler R.DeleteItem, AddressOf Article_Item_Delete
 
         RaiseEvent NewRowAdded(CInt(Id), DetailsTable, R, d_id)
 
@@ -262,10 +370,10 @@
             tva += C.TotaltVA
         Next
 
-        TotalBloc1.TotalHt = T
-        TotalBloc1.Remise = R
-        TotalBloc1.TVA = tva
-         
+        TB.TotalHt = T
+        TB.Remise = R
+        TB.TVA = tva
+
     End Sub
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         If Id = 0 Then Exit Sub
@@ -285,17 +393,123 @@
     Private Sub Entete_SearchByDate() Handles Entete.SearchByDate
         RaiseEvent SearchByDate(Me)
     End Sub
+    Private Sub Entete_CommandDelivry(ByVal p1 As System.String) Handles Entete.CommandDelivry
+        RaiseEvent CommandeDelivry(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_DeleteFacture(ByVal p1 As System.String) Handles Entete.DeleteFacture
+        RaiseEvent DeleteFacture(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_DuplicateFacture(ByVal p1 As System.String) Handles Entete.DuplicateFacture
+        RaiseEvent DuplicateFacture(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_Facturer(ByVal p1 As System.String) Handles Entete.Facturer
+        RaiseEvent Facturer(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_PayFacture(ByVal p1 As System.String) Handles Entete.PayFacture
+        RaiseEvent PayFacture(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_PrintFacture() Handles Entete.PrintFacture
+        RaiseEvent PrintFacture(Me)
+    End Sub
+    Private Sub Entete_SaveChanges(ByVal p1 As System.String) Handles Entete.SaveChanges
+        RaiseEvent SaveChanges(CInt(p1), Me)
+    End Sub
+    Private Sub Entete_SavePdf() Handles Entete.SavePdf
+        RaiseEvent SavePdf(Me)
+    End Sub
+    Private Sub Entete_Type_Transformer(ByVal p1 As System.String) Handles Entete.Type_Transformer
+        RaiseEvent TypeTransformer(CInt(p1), Me)
+    End Sub
 
     'Total Bloc Events
-    Private Sub TotalBloc1_ValueChanged() Handles TotalBloc1.ValueChanged
+    Private Sub TotalBloc1_ValueChanged() Handles TB.ValueChanged
         Dim h As Integer = 300
-        If TotalBloc1.Remise = 0 Then h -= 35
-        If TotalBloc1.DroitTimbre = 0 Then h -= 35
-        If TotalBloc1.avance = 0 Then h -= 35
+        If TB.Remise = 0 Then h -= 35
+        If TB.DroitTimbre = 0 Then h -= 35
+        If TB.avance = 0 Then h -= 35
 
         plTotal.Height = h
     End Sub
-    Private Sub TotalBloc1_EditModePayement() Handles TotalBloc1.EditModePayement
+    Private Sub TotalBloc1_EditModePayement() Handles TB.EditModePayement
         RaiseEvent EditModePayement(Me)
+    End Sub
+
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If currentPage = numberOfPage Then Exit Sub
+        currentPage += 1
+
+        FillRows()
+       
+        btPage.Text = currentPage & "/" & numberOfPage
+    End Sub
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        If currentPage = 1 Then Exit Sub
+        currentPage -= 1
+        startIndex -= numberOfItems
+        If startIndex < 0 Then startIndex = 0
+
+        FillRows()
+        btPage.Text = currentPage & "/" & numberOfPage
+    End Sub
+
+    'ListLine 
+    Private Sub Edit_SelectedFacture(ByVal p As Integer)
+        RaiseEvent EditSelectedFacture(p)
+    End Sub
+    Private Sub Delete_Item(ByVal listLine As ListLine)
+        RaiseEvent DeleteItem(listLine)
+    End Sub
+    Private Sub Get_FactureInfos(ByVal p1 As Integer)
+        RaiseEvent GetFactureInfos(p1)
+    End Sub
+    Private Sub FillRows()
+        pl.Controls.Clear()
+
+        If _dtList.Rows.Count > 0 Then
+            Dim n = numberOfItems
+            If (_dtList.Rows.Count - startIndex) < numberOfItems Then n = lastIndex - startIndex
+            Dim arr(n - 1) As ListLine
+            Dim i As Integer = 0
+            For i = startIndex To _dtList.Rows.Count - 1
+
+                Dim a As New ListLine
+                a.Id = _dtList.Rows(i).Item(0)
+                a.Libele = StrValue(_dtList, "name", i)
+                a.Total = DblValue(_dtList, "total", i)
+                a.Avance = DblValue(_dtList, "avance", i)
+                a.remise = DblValue(_dtList, "remise", i)
+
+                a.Index = i
+                a.Dock = DockStyle.Top
+                a.BringToFront()
+
+                AddHandler a.EditSelectedFacture, AddressOf Edit_SelectedFacture
+                AddHandler a.DeleteItem, AddressOf Delete_Item
+                AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos
+
+                arr(i - startIndex) = a
+
+                If i = startIndex + n - 1 Then Exit For
+            Next
+            Pl.Controls.AddRange(arr)
+            startIndex = i
+        End If
+
+
+    End Sub
+
+    Private Sub Article_Item_Changed(ByVal listRow As ListRow, ByVal art As Article)
+        RaiseEvent ArticleItemChanged(listRow, art)
+    End Sub
+
+    Private Sub Article_Item_Delete(ByVal listRow As ListRow)
+        RaiseEvent ArticleItemDelete(listRow)
+    End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click
+        Dim bt As Button = sender
+        Operation = bt.Tag
+
     End Sub
 End Class

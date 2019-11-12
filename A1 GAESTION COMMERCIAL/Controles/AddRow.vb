@@ -15,7 +15,7 @@
         Set(ByVal value As Integer)
 
             article.arid = value
-            If value = 0 Then
+            If value = 0 And txtN.text <> "" Then
                 plleft.BackgroundImage = My.Resources.WARNING_15
             Else
                 plleft.BackgroundImage = Nothing
@@ -27,7 +27,7 @@
             Return Nothing
         End Get
         Set(ByVal value As AutoCompleteStringCollection)
-            txtRef.AutoCompleteSource = value
+            txtRf.AutoCompleteSource = value
         End Set
     End Property
     Public Property AutoCompleteSourceName() As AutoCompleteStringCollection
@@ -35,7 +35,7 @@
             Return Nothing
         End Get
         Set(ByVal value As AutoCompleteStringCollection)
-            txtName.AutoCompleteSource = value
+            txtN.AutoCompleteSource = value
         End Set
     End Property
 
@@ -44,7 +44,7 @@
             Dim t As Double = 0
 
             Try
-                t = txtPrice.text
+                t = txtPr.text
             Catch ex As Exception
                 t = 0
             End Try
@@ -56,7 +56,7 @@
             Dim t As Double = 0
 
             Try
-                t = txtQte.text
+                t = txtQ.text
             Catch ex As Exception
                 t = 0
             End Try
@@ -67,7 +67,7 @@
         Get
             Dim t As Double = 0
             Try
-                t = txtRemise.text
+                t = txtRs.text
             Catch ex As Exception
                 t = 0
             End Try
@@ -90,70 +90,70 @@
     End Sub
     'init
     Private Sub InitForm()
-        txtRef.text = ""
-        txtName.text = ""
-        txtQte.text = ""
-        txtPrice.text = ""
-        txtRemise.text = ""
+        txtRf.text = ""
+        txtN.text = ""
+        txtQ.text = ""
+        txtPr.text = ""
+        txtRs.text = ""
         article = New Article(0, 0, "", "", 1, 0, 0, 0, 0, False, "")
-        txtRef.Focus()
+        txtRf.Focus()
     End Sub
     'validation
     Private Function ValidationForm() As Boolean
 
-        If txtName.text = "" Then Return False
-        If txtPrice.text = "" Then Return False
+        If txtN.text = "" Then Return False
+        If txtPr.text = "" Then Return False
 
         Return True
     End Function
     'fill
     Public Sub FillFields(ByVal art As Article)
         article = art
-        txtRef.text = article.ref
-        txtName.text = article.name
-        txtPrice.text = String.Format("{0:n}", CDec(article.sprice))
-        txtRemise.text = String.Format("{0:n}", CDec(article.remise))
-        txtTotal.text = String.Format("{0:n}", CDec(article.TotalTTC))
+        txtRf.text = article.ref
+        txtN.text = article.name
+        txtPr.text = String.Format("{0:n}", CDec(article.sprice))
+        txtRs.text = String.Format("{0:n}", CDec(article.remise))
+        txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Arid = art.arid
     End Sub
 
     'tub with home key
-    Private Sub TxtBox3_KeyDownOk() Handles txtRef.KeyDownOk
+    Private Sub TxtBox3_KeyDownOk() Handles txtRf.KeyDownOk
         'auto Complete
-        If txtRef.text.Length > 0 Then
+        If txtRf.text.Length > 0 Then
             Using art As AricleClass = New AricleClass
-                Dim a As Article = art.GetByfield("ref", txtRef.text)
+                Dim a As Article = art.GetByfield("ref", txtRf.text)
                 If Not IsNothing(a) Then FillFields(a)
-                txtQte.Focus()
+                txtQ.Focus()
             End Using
         End If
 
-        If txtName.text.Count = 0 Then txtName.Focus()
+        If txtN.text.Count = 0 Then txtN.Focus()
     End Sub
-    Private Sub txtName_KeyDownOk() Handles txtName.KeyDownOk
-        If txtName.text.Length > 0 Then
+    Private Sub txtName_KeyDownOk() Handles txtN.KeyDownOk
+        If txtN.text.Length > 0 Then
             Using art As AricleClass = New AricleClass
-                Dim a As Article = art.GetByfield("name", txtName.text)
+                Dim a As Article = art.GetByfield("name", txtN.text)
                 If Not IsNothing(a) Then FillFields(a)
             End Using
         End If
-        txtQte.Focus()
+        txtQ.Focus()
     End Sub
-    Private Sub txtQte_KeyDownOk() Handles txtQte.KeyDownOk
-        If txtQte.text = "" Then txtQte.text = 1
+    Private Sub txtQte_KeyDownOk() Handles txtQ.KeyDownOk
+        If txtQ.text = "" Then txtQ.text = 1
         article.qte = qte
-        If txtPrice.text.Count > 0 And price > 0 Then
-            txtRemise.Focus()
+        If txtPr.text.Count > 0 And price > 0 Then
+            txtRs.Focus()
         Else
-            txtPrice.Focus()
+            txtPr.Focus()
         End If
 
     End Sub
-    Private Sub txtPrice_KeyDownOk() Handles txtPrice.KeyDownOk
-        txtPrice.text = String.Format("{0:n}", CDec(article.sprice))
-        txtRemise.Focus()
+    Private Sub txtPrice_KeyDownOk() Handles txtPr.KeyDownOk
+        txtPr.text = String.Format("{0:n}", CDec(article.sprice))
+        txtRs.Focus()
     End Sub
-    Private Sub txtRemise_KeyDownOk() Handles txtRemise.KeyDownOk
+    Private Sub txtRemise_KeyDownOk() Handles txtRs.KeyDownOk
         article.remise = remise
         If ValidationForm() Then
             RaiseEvent AddNewArticle(article)
@@ -176,44 +176,44 @@
         RaiseEvent Cleared(Me, e)
     End Sub
     'txtChanged
-    Private Sub txtPrice_TxtChanged() Handles txtPrice.TxtChanged
+    Private Sub txtPrice_TxtChanged() Handles txtPr.TxtChanged
         Try
             article.sprice = price
-            txtTotal.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Catch ex As Exception
-            txtTotal.text = 0
+            txtttc.text = 0
         End Try
     End Sub
-    Private Sub txtQte_TxtChanged() Handles txtQte.TxtChanged
+    Private Sub txtQte_TxtChanged() Handles txtQ.TxtChanged
         Try
             article.qte = qte
-            txtTotal.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Catch ex As Exception
-            txtTotal.text = 0
+            txtttc.text = 0
         End Try
     End Sub
-    Private Sub txtRemise_TxtChanged() Handles txtRemise.TxtChanged
+    Private Sub txtRemise_TxtChanged() Handles txtRs.TxtChanged
         Try
             article.remise = remise
-            txtTotal.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Catch ex As Exception
-            txtTotal.text = 0
+            txtttc.text = 0
         End Try
     End Sub
-    Private Sub txtName_TxtChanged() Handles txtName.TxtChanged
+    Private Sub txtName_TxtChanged() Handles txtN.TxtChanged
         Arid = 0
-        article.name = txtName.text
+        article.name = txtN.text
     End Sub
-    Private Sub txtRef_TxtChanged() Handles txtRef.TxtChanged
-        article.ref = txtRef.text
+    Private Sub txtRef_TxtChanged() Handles txtRf.TxtChanged
+        article.ref = txtRf.text
     End Sub
     'Leave
-    Private Sub txtName_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtName.Leave
+    Private Sub txtName_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtN.Leave
         If Arid <> 0 Then Exit Sub
 
-        If txtName.text.Length > 0 Then
+        If txtN.text.Length > 0 Then
             Using art As AricleClass = New AricleClass
-                Dim a As Article = art.GetByfield("name", txtName.text)
+                Dim a As Article = art.GetByfield("name", txtN.text)
                 If Not IsNothing(a) Then FillFields(a)
             End Using
         End If

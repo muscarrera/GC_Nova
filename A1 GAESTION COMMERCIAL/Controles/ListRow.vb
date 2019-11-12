@@ -164,8 +164,8 @@
                 AddHandler addR.AddNewArticle, AddressOf SaveEditAricle
                 AddHandler addR.Cleared, AddressOf CancelChangement
                 PlButtom.Controls.Add(addR)
-                addR.txtName.txtReadOnly = True
-                addR.txtRef.txtReadOnly = True
+                addR.txtN.txtReadOnly = True
+                addR.txtRf.txtReadOnly = True
                 addR.FillFields(article)
             Else
                 PlButtom.Height = 1
@@ -204,9 +204,12 @@
 
             _index = value
 
-            Dim cr As Color = Color.Turquoise
-            If (value Mod 2) = 0 Then cr = Color.Magenta
-            PlButtom.BackColor = cr
+            'Dim cr As Color = Color.Turquoise
+            'If (value Mod 2) = 0 Then cr = Color.Magenta
+            'PlButtom.BackColor = cr
+
+            Panel1.BackgroundImage = Nothing
+            If (value Mod 2) = 0 Then Panel1.BackgroundImage = My.Resources.gui_13
         End Set
     End Property
     Public Property ColumnWidth() As Integer

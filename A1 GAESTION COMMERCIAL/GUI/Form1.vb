@@ -56,27 +56,24 @@
     End Sub
 
     'Buttons
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click, Button9.Click, Button8.Click, Button7.Click
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         Using c As New FactureClass
-            Dim bt As Button = sender
-            c.AddDataList(bt.Tag)
+            c.AddDataList(True)
         End Using
     End Sub
-
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+        Using c As New FactureClass
+            Dim bt As Button = sender
+            c.AddDataList(True)
+        End Using
+    End Sub
     Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
         Using c As New AricleClass
-            plHead.Height = 83
             c.AddDataList()
         End Using
     End Sub
-
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-        plHead.Height = 140
-    End Sub
-
     Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
         Using c As New ClientClass
-            plHead.Height = 83
             c.AddDataList()
         End Using
     End Sub

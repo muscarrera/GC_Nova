@@ -347,6 +347,7 @@ Partial Class AddEditClient
         Me.txtName.IsNumiric = False
         Me.txtName.Location = New System.Drawing.Point(116, 52)
         Me.txtName.Name = "txtName"
+        Me.txtName.PlaceHolder = ""
         Me.txtName.ShowClearIcon = False
         Me.txtName.ShowSaveIcon = False
         Me.txtName.Size = New System.Drawing.Size(239, 26)
@@ -365,6 +366,7 @@ Partial Class AddEditClient
         Me.txtRef.IsNumiric = False
         Me.txtRef.Location = New System.Drawing.Point(116, 23)
         Me.txtRef.Name = "txtRef"
+        Me.txtRef.PlaceHolder = ""
         Me.txtRef.ShowClearIcon = False
         Me.txtRef.ShowSaveIcon = False
         Me.txtRef.Size = New System.Drawing.Size(239, 26)
@@ -424,6 +426,7 @@ Partial Class AddEditClient
         Me.txtEmail.IsNumiric = False
         Me.txtEmail.Location = New System.Drawing.Point(78, 104)
         Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.PlaceHolder = ""
         Me.txtEmail.ShowClearIcon = False
         Me.txtEmail.ShowSaveIcon = False
         Me.txtEmail.Size = New System.Drawing.Size(185, 26)
@@ -442,6 +445,7 @@ Partial Class AddEditClient
         Me.txtGsm.IsNumiric = False
         Me.txtGsm.Location = New System.Drawing.Point(78, 72)
         Me.txtGsm.Name = "txtGsm"
+        Me.txtGsm.PlaceHolder = ""
         Me.txtGsm.ShowClearIcon = False
         Me.txtGsm.ShowSaveIcon = False
         Me.txtGsm.Size = New System.Drawing.Size(185, 26)
@@ -460,6 +464,7 @@ Partial Class AddEditClient
         Me.txtTel.IsNumiric = False
         Me.txtTel.Location = New System.Drawing.Point(78, 40)
         Me.txtTel.Name = "txtTel"
+        Me.txtTel.PlaceHolder = ""
         Me.txtTel.ShowClearIcon = False
         Me.txtTel.ShowSaveIcon = False
         Me.txtTel.Size = New System.Drawing.Size(185, 26)
@@ -522,6 +527,7 @@ Partial Class AddEditClient
         Me.txtInfo.IsNumiric = False
         Me.txtInfo.Location = New System.Drawing.Point(16, 178)
         Me.txtInfo.Name = "txtInfo"
+        Me.txtInfo.PlaceHolder = ""
         Me.txtInfo.ShowClearIcon = False
         Me.txtInfo.ShowSaveIcon = False
         Me.txtInfo.Size = New System.Drawing.Size(247, 26)
@@ -581,6 +587,7 @@ Partial Class AddEditClient
         Me.txtVille.IsNumiric = False
         Me.txtVille.Location = New System.Drawing.Point(155, 97)
         Me.txtVille.Name = "txtVille"
+        Me.txtVille.PlaceHolder = ""
         Me.txtVille.ShowClearIcon = False
         Me.txtVille.ShowSaveIcon = False
         Me.txtVille.Size = New System.Drawing.Size(105, 26)
@@ -599,6 +606,7 @@ Partial Class AddEditClient
         Me.txtCp.IsNumiric = False
         Me.txtCp.Location = New System.Drawing.Point(46, 97)
         Me.txtCp.Name = "txtCp"
+        Me.txtCp.PlaceHolder = ""
         Me.txtCp.ShowClearIcon = False
         Me.txtCp.ShowSaveIcon = False
         Me.txtCp.Size = New System.Drawing.Size(63, 26)
@@ -661,6 +669,7 @@ Partial Class AddEditClient
         Me.txtICE.IsNumiric = False
         Me.txtICE.Location = New System.Drawing.Point(19, 178)
         Me.txtICE.Name = "txtICE"
+        Me.txtICE.PlaceHolder = ""
         Me.txtICE.ShowClearIcon = False
         Me.txtICE.ShowSaveIcon = False
         Me.txtICE.Size = New System.Drawing.Size(241, 26)
@@ -679,6 +688,7 @@ Partial Class AddEditClient
         Me.txtAdresse.IsNumiric = False
         Me.txtAdresse.Location = New System.Drawing.Point(19, 60)
         Me.txtAdresse.Name = "txtAdresse"
+        Me.txtAdresse.PlaceHolder = ""
         Me.txtAdresse.ShowClearIcon = False
         Me.txtAdresse.ShowSaveIcon = False
         Me.txtAdresse.Size = New System.Drawing.Size(241, 26)
@@ -692,17 +702,18 @@ Partial Class AddEditClient
         '
         'PBImage
         '
-        Me.PBImage.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.Download_Product_Png_Image_66617_For_Designing_Projects
+        Me.PBImage.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
         Me.PBImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PBImage.Enabled = False
         Me.PBImage.Location = New System.Drawing.Point(13, 58)
         Me.PBImage.Name = "PBImage"
-        Me.PBImage.Size = New System.Drawing.Size(143, 81)
+        Me.PBImage.Size = New System.Drawing.Size(172, 81)
         Me.PBImage.TabIndex = 8
         Me.PBImage.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.Download_Product_Png_Image_66617_For_Designing_Projects
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
         Me.PictureBox1.Name = "PictureBox1"

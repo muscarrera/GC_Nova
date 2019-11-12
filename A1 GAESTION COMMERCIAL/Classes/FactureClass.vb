@@ -65,6 +65,73 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Public Sub NewFacture_Transforme(ByVal tb_F As String, ByVal tb_D As String, ByVal tb_P As String,
+                                      ByVal dte As String, ByVal Op As String, ByRef ds As DataList, ByVal isDuplicate As Boolean)
+        Dim data = ds.DataSource
+        Dim fid As Integer = 0
+
+        Dim avance = ds.TB.avance
+        If isDuplicate Then avance = 0
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("cid", ds.Entete.Client.cid)
+                params.Add("name", ds.Entete.ClientName)
+                params.Add("total", ds.TB.TotalTTC)
+                params.Add("avance", avance)
+                params.Add("remise", ds.TB.Remise)
+                params.Add("tva", ds.TB.TVA)
+                params.Add("date", dte)
+                params.Add("writer", CStr(Form1.adminName))
+                params.Add("isAdmin", "CREATION")
+                params.Add("isPayed", ds.isPayed)
+                params.Add("modePayement", ds.ModePayement)
+                'params.Add("bl", "-")
+                'params.Add("droitTimbre", ds.TB.DroitTimbre)
+                fid = c.InsertRecord(tb_F, params, True)
+                params.Clear()
+
+                If IsNothing(data) Then Exit Sub
+                If data.Rows.Count > 0 Then
+
+                    For i As Integer = 0 To data.Rows.Count - 1
+
+                        params.Add("fctid", fid)
+                        params.Add("name", data.Rows(i).Item("name"))
+                        params.Add("bprice", data.Rows(i).Item("bprice"))
+                        params.Add("price", data.Rows(i).Item("price"))
+                        params.Add("remise", data.Rows(i).Item("remise"))
+                        params.Add("qte", data.Rows(i).Item("qte"))
+                        params.Add("tva", data.Rows(i).Item("tva"))
+                        params.Add("arid", data.Rows(i).Item("arid"))
+                        params.Add("depot", data.Rows(i).Item("depot"))
+                        params.Add("ref", data.Rows(i).Item("ref"))
+                        params.Add("cid", data.Rows(i).Item("cid"))
+
+                        c.InsertRecord(tb_D, params)
+                        params.Clear()
+                    Next
+                End If
+
+                If avance > 0 Then
+                    Dim where As New Dictionary(Of String, Object)
+                    params.Add(tb_F, fid)
+                    where.Add(ds.Operation, CInt(ds.Id))
+                    c.UpdateRecord(tb_P, params, where)
+                End If
+
+            End Using
+
+            If fid > 0 Then
+                'ds.Clear()
+                ds.Mode = "DETAILS"
+                ds.Operation = Op
+                ds.Id = fid
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
     Public Sub NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
 
         Try
@@ -127,6 +194,10 @@
                 arr.Dock = DockStyle.Top
                 arr.BringToFront()
 
+                AddHandler arr.EditSelectedFacture, AddressOf EditSelectedFacture
+                AddHandler arr.DeleteItem, AddressOf DeleteItem
+                AddHandler arr.GetFactureInfos, AddressOf GetFactureInfos
+
                 ds.Pl.Controls.Add(arr)
             End If
         Catch ex As Exception
@@ -137,7 +208,6 @@
         Try
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
-
 
             Dim NF As New SearchArchive
             NF.txtName.AutoCompleteSource = AutoCompleteByName(ds.clientTable)
@@ -178,21 +248,7 @@
                     ds.Clear()
                     ds.Mode = "LIST"
 
-
-
-                    For i As Integer = 0 To dt.Rows.Count - 1
-                        Dim arr As New ListLine
-                        arr.Id = dt.Rows(i).Item(0)
-                        arr.Libele = StrValue(dt, "name", i)
-                        arr.Total = DblValue(dt, "total", i)
-                        arr.Avance = DblValue(dt, "avance", i)
-                        arr.remise = DblValue(dt, "remise", i)
-
-                        arr.Dock = DockStyle.Top
-                        arr.BringToFront()
-                        ds.Pl.Controls.Add(arr)
-                    Next
-
+                    ds.DataList = dt
                 End If
             End If
         Catch ex As Exception
@@ -214,8 +270,8 @@
         Form1.plBody.Controls.Clear()
 
         Dim ds As New DataList
-        ds.Operation = op
-        ds.Mode = "LIST"
+        ds.isSell = CBool(op)
+
         ds.Dock = DockStyle.Fill
         AddHandler ds.NewFacture, AddressOf NewFacture
         AddHandler ds.IdChanged, AddressOf GetFactureDetails
@@ -224,8 +280,146 @@
         AddHandler ds.SearchById, AddressOf SearchById
         AddHandler ds.EditModePayement, AddressOf EditModePayement
 
+        AddHandler ds.SavePdf, AddressOf SavePdf
+        AddHandler ds.PrintFacture, AddressOf PrintFacture
+        AddHandler ds.SaveChanges, AddressOf SaveChanges
+        AddHandler ds.TypeTransformer, AddressOf TypeTransformer
+        AddHandler ds.CommandeDelivry, AddressOf CommandeDelivry
+        AddHandler ds.Facturer, AddressOf Facturer
+        AddHandler ds.PayFacture, AddressOf PayFacture
+        AddHandler ds.DuplicateFacture, AddressOf DuplicateFacture
+        AddHandler ds.DeleteFacture, AddressOf DeleteFacture
+        AddHandler ds.GetFactureInfos, AddressOf GetFactureInfos
+        AddHandler ds.DeleteItem, AddressOf DeleteItem
+        AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
+        AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
+        AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
+
         Form1.plBody.Controls.Add(ds)
     End Sub
+    'Entete events
+    Private Sub SavePdf(ByVal dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+    Private Sub PrintFacture(ByVal dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+    Private Sub SaveChanges(ByVal id As Integer, ByRef ds As DataList)
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+            Dim isPayed As Boolean = ds.isPayed
+
+            Dim tableName = ds.FactureTable
+            Dim dte As Date = ds.Entete.FactureDate
+            Dim params As New Dictionary(Of String, Object)
+
+            'Facture
+            params.Clear()
+            params.Add("total", ds.TB.TotalTTC)
+            params.Add("avance", ds.TB.avance)
+            'params.Add("admin", admin)
+            params.Add("payed", isPayed)
+            params.Add("tva", ds.TB.TVA)
+            params.Add("remise", ds.TB.Remise)
+
+            Dim where As New Dictionary(Of String, Object)
+
+            where.Add("id", id)
+
+            c.UpdateRecord(tableName, params, where)
+            params.Clear()
+            where.Clear()
+
+            params = Nothing
+            where = Nothing
+        End Using
+    End Sub
+    Private Sub TypeTransformer(ByVal id As Integer, ByRef ds As DataList)
+        Dim td As New TransformerDevis
+        td.Mode = ds.Operation
+        td.Client = "[" & ds.Entete.Client.cid & "]" & vbNewLine & ds.Entete.ClientName
+        td.Ref = ds.Operation & " " & ds.Id
+        td.txtDate.text = Now.Date.ToString("dd-MM-yyyy")
+
+        If td.ShowDialog = DialogResult.OK Then
+
+            Dim tb_F = td.tb_F
+            Dim tb_D = td.tb_D
+            Dim tb_p = td.tb_P
+
+            NewFacture_Transforme(tb_F, tb_D, tb_p, td.txtDate.text, td.Operation, ds, False)
+        End If
+    End Sub
+    Private Sub CommandeDelivry(ByVal id As Integer, ByRef ds As DataList)
+        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+
+        Dim tb_D = "Details_Bon_Livraison"
+        Dim tb_F = "Bon_Livraison"
+        Dim tb_P = "Client_Payement"
+        Dim Operation = "Bon_Livraison"
+        If ds.isSell = False Then
+            tb_D = "Details_Bon_Achat"
+            tb_F = "Bon_Achat"
+            tb_P = "Company_Payement"
+            Operation = "Bon_Achat"
+        End If
+        NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+    End Sub
+    Private Sub Facturer(ByVal id As Integer, ByRef ds As DataList)
+        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+
+        Dim tb_D = "Details_Sell_Facture"
+        Dim tb_F = "Sell_Facture"
+        Dim tb_P = "Client_Payement"
+        Dim Operation = "Sell_Facture"
+
+        If ds.isSell = False Then
+            tb_D = "Details_Buy_Facture"
+            tb_F = "Buy_Facture"
+            tb_P = "Company_Payement"
+            Operation = "Buy_Facture"
+        End If
+
+        NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+    End Sub
+    Private Sub PayFacture(ByVal id As Integer, ByRef dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+    Private Sub DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
+        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+
+        Dim tb_D = ds.DetailsTable
+        Dim tb_F = ds.FactureTable
+        Dim tb_P = ds.payementTable
+        Dim Operation = ds.Operation
+
+        NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, True)
+    End Sub
+    Private Sub DeleteFacture(ByVal id As Integer, ByRef dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+
+    'ListLines Events
+    Private Sub EditSelectedFacture(ByVal id As Integer)
+        Dim ds As DataList = Form1.plBody.Controls(0)
+        ds.Mode = "DETAILS"
+        ds.Id = id
+    End Sub
+    Private Sub DeleteItem(ByVal listLine As ListLine)
+
+    End Sub
+    Private Sub GetFactureInfos(ByVal p1 As Integer)
+
+    End Sub
+    'List Row events
+    Private Sub ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
+        Throw New NotImplementedException
+    End Sub
+
+    Private Sub ArticleItemDelete(ByVal lr As ListRow)
+        Throw New NotImplementedException
+    End Sub
+
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
@@ -257,5 +451,7 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
+
 
 End Class
