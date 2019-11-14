@@ -27,17 +27,17 @@ Partial Class AddRow
         Me.btAdd = New System.Windows.Forms.Button()
         Me.plRef = New System.Windows.Forms.Panel()
         Me.plName = New System.Windows.Forms.Panel()
+        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plQte = New System.Windows.Forms.Panel()
+        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plPrice = New System.Windows.Forms.Panel()
+        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plRemise = New System.Windows.Forms.Panel()
+        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
-        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtttc = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PlRight.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -112,6 +112,26 @@ Partial Class AddRow
         Me.plName.Size = New System.Drawing.Size(291, 32)
         Me.plName.TabIndex = 12
         '
+        'txtN
+        '
+        Me.txtN.BackColor = System.Drawing.Color.White
+        Me.txtN.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtN.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtN.IsNumiric = False
+        Me.txtN.Location = New System.Drawing.Point(5, 0)
+        Me.txtN.Name = "txtN"
+        Me.txtN.PlaceHolder = "Designation"
+        Me.txtN.ShowClearIcon = False
+        Me.txtN.ShowSaveIcon = False
+        Me.txtN.Size = New System.Drawing.Size(281, 32)
+        Me.txtN.StartUp = 2
+        Me.txtN.TabIndex = 1
+        Me.txtN.TextSize = 8
+        Me.txtN.TxtBackColor = True
+        Me.txtN.TxtColor = System.Drawing.Color.White
+        Me.txtN.txtReadOnly = False
+        Me.txtN.TxtSelect = New Integer() {1, 0}
+        '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.txtRf)
@@ -121,6 +141,26 @@ Partial Class AddRow
         Me.Panel7.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel7.Size = New System.Drawing.Size(112, 32)
         Me.Panel7.TabIndex = 11
+        '
+        'txtRf
+        '
+        Me.txtRf.BackColor = System.Drawing.Color.White
+        Me.txtRf.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRf.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRf.IsNumiric = False
+        Me.txtRf.Location = New System.Drawing.Point(5, 0)
+        Me.txtRf.Name = "txtRf"
+        Me.txtRf.PlaceHolder = "Réf"
+        Me.txtRf.ShowClearIcon = False
+        Me.txtRf.ShowSaveIcon = False
+        Me.txtRf.Size = New System.Drawing.Size(102, 32)
+        Me.txtRf.StartUp = 2
+        Me.txtRf.TabIndex = 0
+        Me.txtRf.TextSize = 8
+        Me.txtRf.TxtBackColor = True
+        Me.txtRf.TxtColor = System.Drawing.Color.White
+        Me.txtRf.txtReadOnly = False
+        Me.txtRf.TxtSelect = New Integer() {1, 0}
         '
         'plQte
         '
@@ -132,6 +172,26 @@ Partial Class AddRow
         Me.plQte.Size = New System.Drawing.Size(88, 32)
         Me.plQte.TabIndex = 10
         '
+        'txtQ
+        '
+        Me.txtQ.BackColor = System.Drawing.Color.White
+        Me.txtQ.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtQ.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtQ.IsNumiric = True
+        Me.txtQ.Location = New System.Drawing.Point(10, 0)
+        Me.txtQ.Name = "txtQ"
+        Me.txtQ.PlaceHolder = "Qte"
+        Me.txtQ.ShowClearIcon = False
+        Me.txtQ.ShowSaveIcon = False
+        Me.txtQ.Size = New System.Drawing.Size(73, 32)
+        Me.txtQ.StartUp = 2
+        Me.txtQ.TabIndex = 1
+        Me.txtQ.TextSize = 8
+        Me.txtQ.TxtBackColor = True
+        Me.txtQ.TxtColor = System.Drawing.Color.White
+        Me.txtQ.txtReadOnly = False
+        Me.txtQ.TxtSelect = New Integer() {1, 0}
+        '
         'plPrice
         '
         Me.plPrice.Controls.Add(Me.txtPr)
@@ -142,6 +202,26 @@ Partial Class AddRow
         Me.plPrice.Size = New System.Drawing.Size(88, 32)
         Me.plPrice.TabIndex = 9
         '
+        'txtPr
+        '
+        Me.txtPr.BackColor = System.Drawing.Color.White
+        Me.txtPr.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtPr.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtPr.IsNumiric = True
+        Me.txtPr.Location = New System.Drawing.Point(10, 0)
+        Me.txtPr.Name = "txtPr"
+        Me.txtPr.PlaceHolder = "Prix"
+        Me.txtPr.ShowClearIcon = False
+        Me.txtPr.ShowSaveIcon = False
+        Me.txtPr.Size = New System.Drawing.Size(73, 32)
+        Me.txtPr.StartUp = 2
+        Me.txtPr.TabIndex = 1
+        Me.txtPr.TextSize = 8
+        Me.txtPr.TxtBackColor = True
+        Me.txtPr.TxtColor = System.Drawing.Color.White
+        Me.txtPr.txtReadOnly = False
+        Me.txtPr.TxtSelect = New Integer() {1, 0}
+        '
         'plRemise
         '
         Me.plRemise.Controls.Add(Me.txtRs)
@@ -151,6 +231,26 @@ Partial Class AddRow
         Me.plRemise.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plRemise.Size = New System.Drawing.Size(88, 32)
         Me.plRemise.TabIndex = 7
+        '
+        'txtRs
+        '
+        Me.txtRs.BackColor = System.Drawing.Color.White
+        Me.txtRs.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRs.IsNumiric = True
+        Me.txtRs.Location = New System.Drawing.Point(10, 0)
+        Me.txtRs.Name = "txtRs"
+        Me.txtRs.PlaceHolder = "Remise"
+        Me.txtRs.ShowClearIcon = False
+        Me.txtRs.ShowSaveIcon = False
+        Me.txtRs.Size = New System.Drawing.Size(73, 32)
+        Me.txtRs.StartUp = 2
+        Me.txtRs.TabIndex = 1
+        Me.txtRs.TextSize = 8
+        Me.txtRs.TxtBackColor = True
+        Me.txtRs.TxtColor = System.Drawing.Color.White
+        Me.txtRs.txtReadOnly = False
+        Me.txtRs.TxtSelect = New Integer() {1, 0}
         '
         'plleft
         '
@@ -173,112 +273,12 @@ Partial Class AddRow
         Me.plTotal.Size = New System.Drawing.Size(88, 32)
         Me.plTotal.TabIndex = 13
         '
-        'txtRf
-        '
-        Me.txtRf.BackColor = System.Drawing.Color.Transparent
-        Me.txtRf.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRf.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRf.IsNumiric = False
-        Me.txtRf.Location = New System.Drawing.Point(5, 0)
-        Me.txtRf.Name = "txtRf"
-        Me.txtRf.PlaceHolder = ""
-        Me.txtRf.ShowClearIcon = False
-        Me.txtRf.ShowSaveIcon = False
-        Me.txtRf.Size = New System.Drawing.Size(102, 32)
-        Me.txtRf.StartUp = 2
-        Me.txtRf.TabIndex = 0
-        Me.txtRf.TextSize = 8
-        Me.txtRf.TxtBackColor = True
-        Me.txtRf.TxtColor = System.Drawing.Color.White
-        Me.txtRf.txtReadOnly = False
-        Me.txtRf.TxtSelect = New Integer() {1, 0}
-        '
-        'txtN
-        '
-        Me.txtN.BackColor = System.Drawing.Color.Transparent
-        Me.txtN.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtN.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtN.IsNumiric = False
-        Me.txtN.Location = New System.Drawing.Point(5, 0)
-        Me.txtN.Name = "txtN"
-        Me.txtN.PlaceHolder = ""
-        Me.txtN.ShowClearIcon = False
-        Me.txtN.ShowSaveIcon = False
-        Me.txtN.Size = New System.Drawing.Size(281, 32)
-        Me.txtN.StartUp = 2
-        Me.txtN.TabIndex = 1
-        Me.txtN.TextSize = 8
-        Me.txtN.TxtBackColor = True
-        Me.txtN.TxtColor = System.Drawing.Color.White
-        Me.txtN.txtReadOnly = False
-        Me.txtN.TxtSelect = New Integer() {1, 0}
-        '
-        'txtQ
-        '
-        Me.txtQ.BackColor = System.Drawing.Color.Transparent
-        Me.txtQ.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtQ.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtQ.IsNumiric = True
-        Me.txtQ.Location = New System.Drawing.Point(10, 0)
-        Me.txtQ.Name = "txtQ"
-        Me.txtQ.PlaceHolder = ""
-        Me.txtQ.ShowClearIcon = False
-        Me.txtQ.ShowSaveIcon = False
-        Me.txtQ.Size = New System.Drawing.Size(73, 32)
-        Me.txtQ.StartUp = 2
-        Me.txtQ.TabIndex = 1
-        Me.txtQ.TextSize = 8
-        Me.txtQ.TxtBackColor = True
-        Me.txtQ.TxtColor = System.Drawing.Color.White
-        Me.txtQ.txtReadOnly = False
-        Me.txtQ.TxtSelect = New Integer() {1, 0}
-        '
-        'txtPr
-        '
-        Me.txtPr.BackColor = System.Drawing.Color.Transparent
-        Me.txtPr.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtPr.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtPr.IsNumiric = True
-        Me.txtPr.Location = New System.Drawing.Point(10, 0)
-        Me.txtPr.Name = "txtPr"
-        Me.txtPr.PlaceHolder = ""
-        Me.txtPr.ShowClearIcon = False
-        Me.txtPr.ShowSaveIcon = False
-        Me.txtPr.Size = New System.Drawing.Size(73, 32)
-        Me.txtPr.StartUp = 2
-        Me.txtPr.TabIndex = 1
-        Me.txtPr.TextSize = 8
-        Me.txtPr.TxtBackColor = True
-        Me.txtPr.TxtColor = System.Drawing.Color.White
-        Me.txtPr.txtReadOnly = False
-        Me.txtPr.TxtSelect = New Integer() {1, 0}
-        '
-        'txtRs
-        '
-        Me.txtRs.BackColor = System.Drawing.Color.Transparent
-        Me.txtRs.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRs.IsNumiric = True
-        Me.txtRs.Location = New System.Drawing.Point(10, 0)
-        Me.txtRs.Name = "txtRs"
-        Me.txtRs.PlaceHolder = ""
-        Me.txtRs.ShowClearIcon = False
-        Me.txtRs.ShowSaveIcon = False
-        Me.txtRs.Size = New System.Drawing.Size(73, 32)
-        Me.txtRs.StartUp = 2
-        Me.txtRs.TabIndex = 1
-        Me.txtRs.TextSize = 8
-        Me.txtRs.TxtBackColor = True
-        Me.txtRs.TxtColor = System.Drawing.Color.White
-        Me.txtRs.txtReadOnly = False
-        Me.txtRs.TxtSelect = New Integer() {1, 0}
-        '
         'txtttc
         '
-        Me.txtttc.BackColor = System.Drawing.Color.Transparent
+        Me.txtttc.BackColor = System.Drawing.Color.White
         Me.txtttc.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtttc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtttc.IsNumiric = False
+        Me.txtttc.IsNumiric = True
         Me.txtttc.Location = New System.Drawing.Point(10, 0)
         Me.txtttc.Name = "txtttc"
         Me.txtttc.PlaceHolder = ""

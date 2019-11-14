@@ -28,6 +28,7 @@
     Public pj As Integer = 0
 
     Public DataSource As DataTable = Nothing
+    Public PaymenetDataSource As DataTable = Nothing
 
 
     Public ReadOnly Property TotalTTC As Double
@@ -72,7 +73,7 @@
         dte = _date
         client = New Client(_cid, tb_C)
     End Sub
-    Public Sub New(ByVal _id As Integer, ByVal tb_F As String, ByVal tb_C As String, ByVal tb_D As String)
+    Public Sub New(ByVal _id As Integer, ByVal tb_F As String, ByVal tb_C As String, ByVal tb_D As String, ByVal tb_P As String)
         id = 0
         Dim cid = 0
         Dim params As New Dictionary(Of String, Object)
@@ -101,6 +102,10 @@
                 params.Clear()
                 params.Add("fctid", _id)
                 DataSource = a.SelectDataTable(tb_D, {"*"}, params)
+
+                params.Clear()
+                params.Add(tb_F, _id)
+                PaymenetDataSource = a.SelectDataTable(tb_P, {"*"}, params)
             End If
         End Using
         client = New Client(cid, tb_C)

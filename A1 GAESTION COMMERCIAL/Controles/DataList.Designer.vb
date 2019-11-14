@@ -22,6 +22,8 @@ Partial Class DataList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DataList))
+        Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.plNewElement = New System.Windows.Forms.Panel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.PlAdd = New System.Windows.Forms.Panel()
@@ -36,6 +38,16 @@ Partial Class DataList
         Me.plTotal = New System.Windows.Forms.Panel()
         Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
         Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.plHeaderSells = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.pbBar = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
         Me.plDetailsHeader = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -62,20 +74,21 @@ Partial Class DataList
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.plHeaderSells = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.PlPayement = New System.Windows.Forms.Panel()
+        Me.plPmBody = New System.Windows.Forms.Panel()
+        Me.plPmHeader = New System.Windows.Forms.Panel()
+        Me.AddPayementRow1 = New A1_GAESTION_COMMERCIAL.AddPayementRow()
         Me.Panel11 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.Entete = New A1_GAESTION_COMMERCIAL.EnteteFacture()
         Me.plNewElement.SuspendLayout()
         Me.PlAdd.SuspendLayout()
         Me.PlFooter.SuspendLayout()
         Me.plTotal.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.plHeaderSells.SuspendLayout()
+        Me.Panel10.SuspendLayout()
         Me.plDetailsHeader.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -90,9 +103,9 @@ Partial Class DataList
         Me.Panel15.SuspendLayout()
         Me.Panel16.SuspendLayout()
         Me.Panel17.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.plHeaderSells.SuspendLayout()
-        Me.Panel10.SuspendLayout()
+        Me.PlPayement.SuspendLayout()
+        Me.plPmHeader.SuspendLayout()
+        Me.Panel11.SuspendLayout()
         Me.SuspendLayout()
         '
         'plNewElement
@@ -235,7 +248,7 @@ Partial Class DataList
         Me.plTotal.Location = New System.Drawing.Point(105, 427)
         Me.plTotal.Name = "plTotal"
         Me.plTotal.Padding = New System.Windows.Forms.Padding(5)
-        Me.plTotal.Size = New System.Drawing.Size(710, 164)
+        Me.plTotal.Size = New System.Drawing.Size(710, 191)
         Me.plTotal.TabIndex = 7
         '
         'TB
@@ -246,7 +259,7 @@ Partial Class DataList
         Me.TB.ModePayement = Nothing
         Me.TB.Name = "TB"
         Me.TB.Remise = 0.0R
-        Me.TB.Size = New System.Drawing.Size(700, 154)
+        Me.TB.Size = New System.Drawing.Size(700, 181)
         Me.TB.TabIndex = 0
         Me.TB.TotalHt = 0.0R
         Me.TB.TVA = 0.0R
@@ -261,6 +274,155 @@ Partial Class DataList
         Me.Panel9.Padding = New System.Windows.Forms.Padding(5)
         Me.Panel9.Size = New System.Drawing.Size(710, 27)
         Me.Panel9.TabIndex = 15
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.plHeaderSells)
+        Me.Panel1.Controls.Add(Me.Panel10)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(105, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Padding = New System.Windows.Forms.Padding(5)
+        Me.Panel1.Size = New System.Drawing.Size(710, 79)
+        Me.Panel1.TabIndex = 17
+        '
+        'plHeaderSells
+        '
+        Me.plHeaderSells.BackColor = System.Drawing.Color.White
+        Me.plHeaderSells.Controls.Add(Me.Button1)
+        Me.plHeaderSells.Controls.Add(Me.Button7)
+        Me.plHeaderSells.Controls.Add(Me.Button3)
+        Me.plHeaderSells.Controls.Add(Me.Button9)
+        Me.plHeaderSells.Controls.Add(Me.Button8)
+        Me.plHeaderSells.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plHeaderSells.Location = New System.Drawing.Point(5, 23)
+        Me.plHeaderSells.Name = "plHeaderSells"
+        Me.plHeaderSells.Padding = New System.Windows.Forms.Padding(5)
+        Me.plHeaderSells.Size = New System.Drawing.Size(700, 48)
+        Me.plHeaderSells.TabIndex = 19
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(20, 6)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button1.Size = New System.Drawing.Size(120, 35)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Tag = "Devis"
+        Me.Button1.Text = "Devis"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.BackgroundImage = CType(resources.GetObject("Button7.BackgroundImage"), System.Drawing.Image)
+        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button7.FlatAppearance.BorderSize = 0
+        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Calendar_27835__2_
+        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button7.Location = New System.Drawing.Point(177, 6)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button7.Size = New System.Drawing.Size(120, 35)
+        Me.Button7.TabIndex = 1
+        Me.Button7.Tag = "Commande_Client"
+        Me.Button7.Text = "Commande"
+        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_delete_61770
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(610, 6)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button3.Size = New System.Drawing.Size(94, 35)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Tag = "Sell_Avoir"
+        Me.Button3.Text = "Avoir"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.BackgroundImage = CType(resources.GetObject("Button9.BackgroundImage"), System.Drawing.Image)
+        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button9.FlatAppearance.BorderSize = 0
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_application_vnd_ms_excel_24744__1_
+        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button9.Location = New System.Drawing.Point(471, 6)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button9.Size = New System.Drawing.Size(102, 35)
+        Me.Button9.TabIndex = 3
+        Me.Button9.Tag = "Sell_Facture"
+        Me.Button9.Text = "Facture"
+        Me.Button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.BackgroundImage = CType(resources.GetObject("Button8.BackgroundImage"), System.Drawing.Image)
+        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
+        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button8.Location = New System.Drawing.Point(334, 6)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button8.Size = New System.Drawing.Size(100, 35)
+        Me.Button8.TabIndex = 4
+        Me.Button8.Tag = "Bon_Livraison"
+        Me.Button8.Text = "BL"
+        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Panel10
+        '
+        Me.Panel10.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel10.Controls.Add(Me.pbBar)
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel10.Location = New System.Drawing.Point(5, 5)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Padding = New System.Windows.Forms.Padding(5)
+        Me.Panel10.Size = New System.Drawing.Size(700, 18)
+        Me.Panel10.TabIndex = 18
+        '
+        'pbBar
+        '
+        Me.pbBar.BackColor = System.Drawing.Color.Maroon
+        Me.pbBar.Dock = System.Windows.Forms.DockStyle.Left
+        Me.pbBar.Location = New System.Drawing.Point(5, 5)
+        Me.pbBar.Name = "pbBar"
+        Me.pbBar.Padding = New System.Windows.Forms.Padding(5)
+        Me.pbBar.Size = New System.Drawing.Size(170, 8)
+        Me.pbBar.TabIndex = 19
+        '
+        'Panel8
+        '
+        Me.Panel8.AutoScroll = True
+        Me.Panel8.BackColor = System.Drawing.Color.White
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel8.Location = New System.Drawing.Point(105, 392)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Padding = New System.Windows.Forms.Padding(5)
+        Me.Panel8.Size = New System.Drawing.Size(710, 35)
+        Me.Panel8.TabIndex = 18
         '
         'plDetailsHeader
         '
@@ -584,119 +746,94 @@ Partial Class DataList
         Me.Label11.Text = "Réf"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Panel1
+        'PlPayement
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.plHeaderSells)
-        Me.Panel1.Controls.Add(Me.Panel10)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(105, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel1.Size = New System.Drawing.Size(710, 79)
-        Me.Panel1.TabIndex = 17
+        Me.PlPayement.AutoScroll = True
+        Me.PlPayement.BackColor = System.Drawing.Color.White
+        Me.PlPayement.Controls.Add(Me.plPmBody)
+        Me.PlPayement.Controls.Add(Me.plPmHeader)
+        Me.PlPayement.Controls.Add(Me.Panel11)
+        Me.PlPayement.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PlPayement.Location = New System.Drawing.Point(105, 618)
+        Me.PlPayement.Name = "PlPayement"
+        Me.PlPayement.Padding = New System.Windows.Forms.Padding(5)
+        Me.PlPayement.Size = New System.Drawing.Size(710, 211)
+        Me.PlPayement.TabIndex = 19
+        Me.PlPayement.Visible = False
         '
-        'plHeaderSells
+        'plPmBody
         '
-        Me.plHeaderSells.BackColor = System.Drawing.Color.White
-        Me.plHeaderSells.Controls.Add(Me.Button1)
-        Me.plHeaderSells.Controls.Add(Me.Button7)
-        Me.plHeaderSells.Controls.Add(Me.Button9)
-        Me.plHeaderSells.Controls.Add(Me.Button8)
-        Me.plHeaderSells.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plHeaderSells.Location = New System.Drawing.Point(5, 25)
-        Me.plHeaderSells.Name = "plHeaderSells"
-        Me.plHeaderSells.Padding = New System.Windows.Forms.Padding(5)
-        Me.plHeaderSells.Size = New System.Drawing.Size(700, 48)
-        Me.plHeaderSells.TabIndex = 19
+        Me.plPmBody.BackColor = System.Drawing.Color.White
+        Me.plPmBody.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plPmBody.Location = New System.Drawing.Point(5, 76)
+        Me.plPmBody.Name = "plPmBody"
+        Me.plPmBody.Padding = New System.Windows.Forms.Padding(5)
+        Me.plPmBody.Size = New System.Drawing.Size(700, 118)
+        Me.plPmBody.TabIndex = 8
         '
-        'Button1
+        'plPmHeader
         '
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(55, 6)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Button1.Size = New System.Drawing.Size(120, 35)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Tag = "Devis"
-        Me.Button1.Text = "Devis"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.plPmHeader.BackColor = System.Drawing.Color.White
+        Me.plPmHeader.Controls.Add(Me.AddPayementRow1)
+        Me.plPmHeader.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plPmHeader.Location = New System.Drawing.Point(5, 36)
+        Me.plPmHeader.Name = "plPmHeader"
+        Me.plPmHeader.Padding = New System.Windows.Forms.Padding(5)
+        Me.plPmHeader.Size = New System.Drawing.Size(700, 40)
+        Me.plPmHeader.TabIndex = 7
         '
-        'Button7
+        'AddPayementRow1
         '
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Location = New System.Drawing.Point(213, 6)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Button7.Size = New System.Drawing.Size(120, 35)
-        Me.Button7.TabIndex = 1
-        Me.Button7.Tag = "Commande_Client"
-        Me.Button7.Text = "Commande"
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button9
-        '
-        Me.Button9.FlatAppearance.BorderSize = 0
-        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Location = New System.Drawing.Point(538, 6)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Button9.Size = New System.Drawing.Size(120, 35)
-        Me.Button9.TabIndex = 3
-        Me.Button9.Tag = "Sell_Facture"
-        Me.Button9.Text = "Facture"
-        Me.Button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Location = New System.Drawing.Point(377, 6)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Button8.Size = New System.Drawing.Size(120, 35)
-        Me.Button8.TabIndex = 4
-        Me.Button8.Tag = "Bon_Livraison"
-        Me.Button8.Text = "BL"
-        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Panel10
-        '
-        Me.Panel10.BackColor = System.Drawing.Color.White
-        Me.Panel10.Controls.Add(Me.Panel11)
-        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel10.Location = New System.Drawing.Point(5, 5)
-        Me.Panel10.Name = "Panel10"
-        Me.Panel10.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel10.Size = New System.Drawing.Size(700, 20)
-        Me.Panel10.TabIndex = 18
+        Me.AddPayementRow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AddPayementRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddPayementRow1.EditMode = False
+        Me.AddPayementRow1.Index = 0
+        Me.AddPayementRow1.Location = New System.Drawing.Point(5, 5)
+        Me.AddPayementRow1.Name = "AddPayementRow1"
+        Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
+        Me.AddPayementRow1.Payement = Payement1
+        Me.AddPayementRow1.Size = New System.Drawing.Size(690, 30)
+        Me.AddPayementRow1.TabIndex = 0
         '
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.White
-        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel11.Controls.Add(Me.Button5)
+        Me.Panel11.Controls.Add(Me.LinkLabel2)
+        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel11.Location = New System.Drawing.Point(5, 5)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel11.Size = New System.Drawing.Size(170, 10)
-        Me.Panel11.TabIndex = 19
+        Me.Panel11.Size = New System.Drawing.Size(700, 31)
+        Me.Panel11.TabIndex = 6
         '
-        'Panel8
+        'Button5
         '
-        Me.Panel8.AutoScroll = True
-        Me.Panel8.BackColor = System.Drawing.Color.White
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel8.Location = New System.Drawing.Point(105, 392)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel8.Size = New System.Drawing.Size(710, 35)
-        Me.Panel8.TabIndex = 18
+        Me.Button5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button5.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button5.Location = New System.Drawing.Point(637, 5)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.Button5.Size = New System.Drawing.Size(58, 21)
+        Me.Button5.TabIndex = 7
+        Me.Button5.Tag = "Sell_Avoir"
+        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel2.Location = New System.Drawing.Point(8, 7)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(116, 15)
+        Me.LinkLabel2.TabIndex = 3
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "Ajouter un element"
         '
         'Entete
         '
@@ -724,6 +861,7 @@ Partial Class DataList
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Transparent
+        Me.Controls.Add(Me.PlPayement)
         Me.Controls.Add(Me.plTotal)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.Pl)
@@ -744,6 +882,9 @@ Partial Class DataList
         Me.PlAdd.ResumeLayout(False)
         Me.PlFooter.ResumeLayout(False)
         Me.plTotal.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.plHeaderSells.ResumeLayout(False)
+        Me.Panel10.ResumeLayout(False)
         Me.plDetailsHeader.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
@@ -758,9 +899,10 @@ Partial Class DataList
         Me.Panel15.ResumeLayout(False)
         Me.Panel16.ResumeLayout(False)
         Me.Panel17.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.plHeaderSells.ResumeLayout(False)
-        Me.Panel10.ResumeLayout(False)
+        Me.PlPayement.ResumeLayout(False)
+        Me.plPmHeader.ResumeLayout(False)
+        Me.Panel11.ResumeLayout(False)
+        Me.Panel11.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -813,6 +955,14 @@ Partial Class DataList
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents plHeaderSells As System.Windows.Forms.Panel
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
+    Friend WithEvents pbBar As System.Windows.Forms.Panel
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents PlPayement As System.Windows.Forms.Panel
+    Friend WithEvents plPmBody As System.Windows.Forms.Panel
+    Friend WithEvents plPmHeader As System.Windows.Forms.Panel
+    Friend WithEvents AddPayementRow1 As A1_GAESTION_COMMERCIAL.AddPayementRow
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
 
 End Class

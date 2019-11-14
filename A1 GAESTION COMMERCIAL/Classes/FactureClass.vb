@@ -163,7 +163,7 @@
     End Sub
     Public Sub GetFactureDetails(ByVal id As Integer, ByRef ds As DataList)
         Try
-            ds.Facture = New Facture(id, ds.FactureTable, ds.clientTable, ds.DetailsTable)
+            ds.Facture = New Facture(id, ds.FactureTable, ds.clientTable, ds.DetailsTable, ds.payementTable)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -181,24 +181,26 @@
 
             If dt.Rows.Count > 0 Then
                 ds.Clear()
-                ds.Mode = "LIST"
-                Dim arr As New ListLine
+                ds.Mode = "DETAILS"
+                ds.Id = dt.Rows(0).Item(0)
+                'ds.Mode = "LIST"
+                'Dim arr As New ListLine
 
-                arr.Id = dt.Rows(0).Item(0)
-               
-                arr.Libele = StrValue(dt, "name", 0)
-                arr.Total = DblValue(dt, "total", 0)
-                arr.Avance = DblValue(dt, "avance", 0)
-                arr.remise = DblValue(dt, "remise", 0)
+                'arr.Id = dt.Rows(0).Item(0)
 
-                arr.Dock = DockStyle.Top
-                arr.BringToFront()
+                'arr.Libele = StrValue(dt, "name", 0)
+                'arr.Total = DblValue(dt, "total", 0)
+                'arr.Avance = DblValue(dt, "avance", 0)
+                'arr.remise = DblValue(dt, "remise", 0)
 
-                AddHandler arr.EditSelectedFacture, AddressOf EditSelectedFacture
-                AddHandler arr.DeleteItem, AddressOf DeleteItem
-                AddHandler arr.GetFactureInfos, AddressOf GetFactureInfos
+                'arr.Dock = DockStyle.Top
+                'arr.BringToFront()
 
-                ds.Pl.Controls.Add(arr)
+                'AddHandler arr.EditSelectedFacture, AddressOf EditSelectedFacture
+                'AddHandler arr.DeleteItem, AddressOf DeleteItem
+                'AddHandler arr.GetFactureInfos, AddressOf GetFactureInfos
+
+                'ds.Pl.Controls.Add(arr)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -294,6 +296,13 @@
         AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
         AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
         AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
+        'payement
+        AddHandler ds.AddPayement, AddressOf AddPayement
+        AddHandler ds.EditPayement, AddressOf EditPayement
+        AddHandler ds.DeletePayement, AddressOf DeletePayement
+
+
+
 
         Form1.plBody.Controls.Add(ds)
     End Sub
@@ -415,10 +424,41 @@
     Private Sub ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
         Throw New NotImplementedException
     End Sub
-
     Private Sub ArticleItemDelete(ByVal lr As ListRow)
         Throw New NotImplementedException
     End Sub
+
+    'Payement
+    Public Sub AddPayement(ByVal pm As Payement, ByVal ds As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
+
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("name", ds.Entete.ClientName)
+                params.Add("clid", ds.Entete.Client.cid)
+                params.Add("montant", pm.montant)
+                params.Add("way", pm.way)
+                params.Add("date", pm.dte)
+                params.Add("ech", pm.ech)
+                params.Add("ref", pm.ref)
+                params.Add("desig", pm.desig)
+                'params.Add("writer", Form1.adminName)
+                params.Add(ds.FactureTable, ds.Id)
+
+                d_Id = c.InsertRecord(ds.payementTable, params, True)
+            End Using
+        Catch ex As Exception
+        End Try
+
+    End Sub
+    Private Sub EditPayement(ByVal pm As Payement, ByVal dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+    Private Sub DeletePayement(ByVal pm As AddPayementRow, ByVal dataList As DataList)
+        Throw New NotImplementedException
+    End Sub
+
 
 
 #Region "IDisposable Support"

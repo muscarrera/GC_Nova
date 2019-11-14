@@ -146,9 +146,6 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent DeleteElement(Me, SelectedElement)
     End Sub
-    Private Sub RectangleShape1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RectangleShape1.Click
-        RaiseEvent GetElements(Me)
-    End Sub
     Private Sub txtSearchCtg_KeyDownOk() Handles txtSearchName.KeyDownOk, txtSearchCtg.KeyDownOk
         RaiseEvent GetElements(Me)
     End Sub
@@ -179,7 +176,7 @@
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         If currentPage = 1 Then Exit Sub
         currentPage -= 1
-        startIndex -= numberOfItems
+        startIndex -= numberOfItems * 2
         If startIndex < 0 Then startIndex = 0
 
         If TableName = "Article" Then
@@ -188,5 +185,9 @@
             FillRowsClient()
         End If
         btPage.Text = currentPage & "/" & numberOfPage
+    End Sub
+
+    Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
+        RaiseEvent GetElements(Me)
     End Sub
 End Class

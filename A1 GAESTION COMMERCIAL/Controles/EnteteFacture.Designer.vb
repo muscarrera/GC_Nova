@@ -54,15 +54,16 @@ Partial Class EnteteFacture
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.lbId = New System.Windows.Forms.Label()
         Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.LbNewFacture = New System.Windows.Forms.LinkLabel()
+        Me.lbType = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.LbNewFacture = New System.Windows.Forms.LinkLabel()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.lbType = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Panel19 = New System.Windows.Forms.Panel()
@@ -90,6 +91,7 @@ Partial Class EnteteFacture
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel14.SuspendLayout()
+        Me.Panel23.SuspendLayout()
         Me.Panel8.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel15.SuspendLayout()
@@ -108,9 +110,9 @@ Partial Class EnteteFacture
         Me.Panel1.Controls.Add(Me.plDv)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel1.Location = New System.Drawing.Point(2, 75)
+        Me.Panel1.Location = New System.Drawing.Point(2, 81)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(363, 201)
+        Me.Panel1.Size = New System.Drawing.Size(363, 195)
         Me.Panel1.TabIndex = 0
         '
         'Panel11
@@ -359,9 +361,9 @@ Partial Class EnteteFacture
         Me.Panel2.Controls.Add(Me.PictureBox6)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(365, 75)
+        Me.Panel2.Location = New System.Drawing.Point(365, 81)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(430, 201)
+        Me.Panel2.Size = New System.Drawing.Size(430, 195)
         Me.Panel2.TabIndex = 0
         '
         'Label1
@@ -438,11 +440,13 @@ Partial Class EnteteFacture
         '
         'lbId
         '
+        Me.lbId.AutoSize = True
         Me.lbId.Dock = System.Windows.Forms.DockStyle.Left
         Me.lbId.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbId.Location = New System.Drawing.Point(139, 10)
+        Me.lbId.Location = New System.Drawing.Point(69, 5)
         Me.lbId.Name = "lbId"
-        Me.lbId.Size = New System.Drawing.Size(45, 26)
+        Me.lbId.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
+        Me.lbId.Size = New System.Drawing.Size(56, 19)
         Me.lbId.TabIndex = 2
         Me.lbId.Text = "0001"
         Me.lbId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -450,13 +454,11 @@ Partial Class EnteteFacture
         'Panel14
         '
         Me.Panel14.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
+        Me.Panel14.Controls.Add(Me.Panel23)
         Me.Panel14.Controls.Add(Me.Panel8)
-        Me.Panel14.Controls.Add(Me.LbNewFacture)
         Me.Panel14.Controls.Add(Me.PictureBox7)
         Me.Panel14.Controls.Add(Me.Panel15)
         Me.Panel14.Controls.Add(Me.PictureBox8)
-        Me.Panel14.Controls.Add(Me.lbId)
-        Me.Panel14.Controls.Add(Me.lbType)
         Me.Panel14.Controls.Add(Me.PictureBox1)
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel14.Location = New System.Drawing.Point(0, 0)
@@ -464,6 +466,45 @@ Partial Class EnteteFacture
         Me.Panel14.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel14.Size = New System.Drawing.Size(797, 46)
         Me.Panel14.TabIndex = 2
+        '
+        'Panel23
+        '
+        Me.Panel23.BackColor = System.Drawing.Color.Transparent
+        Me.Panel23.Controls.Add(Me.LbNewFacture)
+        Me.Panel23.Controls.Add(Me.lbId)
+        Me.Panel23.Controls.Add(Me.lbType)
+        Me.Panel23.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel23.Location = New System.Drawing.Point(70, 10)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
+        Me.Panel23.Size = New System.Drawing.Size(412, 26)
+        Me.Panel23.TabIndex = 7
+        '
+        'LbNewFacture
+        '
+        Me.LbNewFacture.Dock = System.Windows.Forms.DockStyle.Left
+        Me.LbNewFacture.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbNewFacture.Location = New System.Drawing.Point(125, 5)
+        Me.LbNewFacture.Name = "LbNewFacture"
+        Me.LbNewFacture.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
+        Me.LbNewFacture.Size = New System.Drawing.Size(152, 21)
+        Me.LbNewFacture.TabIndex = 5
+        Me.LbNewFacture.TabStop = True
+        Me.LbNewFacture.Text = "Créer un Nouveau "
+        Me.LbNewFacture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbType
+        '
+        Me.lbType.AutoSize = True
+        Me.lbType.BackColor = System.Drawing.Color.Transparent
+        Me.lbType.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbType.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbType.Location = New System.Drawing.Point(0, 5)
+        Me.lbType.Name = "lbType"
+        Me.lbType.Size = New System.Drawing.Size(69, 19)
+        Me.lbType.TabIndex = 2
+        Me.lbType.Text = "Fature  :"
+        Me.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel8
         '
@@ -507,19 +548,6 @@ Partial Class EnteteFacture
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Fature à :"
         '
-        'LbNewFacture
-        '
-        Me.LbNewFacture.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LbNewFacture.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbNewFacture.Location = New System.Drawing.Point(184, 10)
-        Me.LbNewFacture.Name = "LbNewFacture"
-        Me.LbNewFacture.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
-        Me.LbNewFacture.Size = New System.Drawing.Size(152, 26)
-        Me.LbNewFacture.TabIndex = 5
-        Me.LbNewFacture.TabStop = True
-        Me.LbNewFacture.Text = "Créer un Nouveau "
-        Me.LbNewFacture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'PictureBox7
         '
         Me.PictureBox7.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SEARCH_18
@@ -562,18 +590,6 @@ Partial Class EnteteFacture
         Me.PictureBox8.TabIndex = 3
         Me.PictureBox8.TabStop = False
         '
-        'lbType
-        '
-        Me.lbType.BackColor = System.Drawing.Color.Transparent
-        Me.lbType.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbType.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbType.Location = New System.Drawing.Point(70, 10)
-        Me.lbType.Name = "lbType"
-        Me.lbType.Size = New System.Drawing.Size(69, 26)
-        Me.lbType.TabIndex = 2
-        Me.lbType.Text = "Fature  :"
-        Me.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Document_write_icon_88543
@@ -598,24 +614,25 @@ Partial Class EnteteFacture
         '
         Me.Panel19.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel19.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel19.Location = New System.Drawing.Point(0, 75)
+        Me.Panel19.Location = New System.Drawing.Point(0, 81)
         Me.Panel19.Name = "Panel19"
-        Me.Panel19.Size = New System.Drawing.Size(2, 203)
+        Me.Panel19.Size = New System.Drawing.Size(2, 197)
         Me.Panel19.TabIndex = 4
         '
         'Panel20
         '
         Me.Panel20.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(795, 75)
+        Me.Panel20.Location = New System.Drawing.Point(795, 81)
         Me.Panel20.Name = "Panel20"
-        Me.Panel20.Size = New System.Drawing.Size(2, 201)
+        Me.Panel20.Size = New System.Drawing.Size(2, 195)
         Me.Panel20.TabIndex = 5
         '
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_13
+        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel6.Controls.Add(Me.btDelete)
         Me.Panel6.Controls.Add(Me.Panel22)
         Me.Panel6.Controls.Add(Me.btDuplicate)
@@ -629,7 +646,7 @@ Partial Class EnteteFacture
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 46)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(797, 29)
+        Me.Panel6.Size = New System.Drawing.Size(797, 35)
         Me.Panel6.TabIndex = 1
         '
         'btDelete
@@ -643,7 +660,7 @@ Partial Class EnteteFacture
         Me.btDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDelete.Location = New System.Drawing.Point(582, 0)
         Me.btDelete.Name = "btDelete"
-        Me.btDelete.Size = New System.Drawing.Size(100, 29)
+        Me.btDelete.Size = New System.Drawing.Size(100, 35)
         Me.btDelete.TabIndex = 4
         Me.btDelete.Text = "Supprimer"
         Me.btDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -655,7 +672,7 @@ Partial Class EnteteFacture
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel22.Location = New System.Drawing.Point(552, 0)
         Me.Panel22.Name = "Panel22"
-        Me.Panel22.Size = New System.Drawing.Size(30, 29)
+        Me.Panel22.Size = New System.Drawing.Size(30, 35)
         Me.Panel22.TabIndex = 6
         '
         'btDuplicate
@@ -669,7 +686,7 @@ Partial Class EnteteFacture
         Me.btDuplicate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDuplicate.Location = New System.Drawing.Point(456, 0)
         Me.btDuplicate.Name = "btDuplicate"
-        Me.btDuplicate.Size = New System.Drawing.Size(96, 29)
+        Me.btDuplicate.Size = New System.Drawing.Size(96, 35)
         Me.btDuplicate.TabIndex = 4
         Me.btDuplicate.Text = "Dupliquer"
         Me.btDuplicate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -686,7 +703,7 @@ Partial Class EnteteFacture
         Me.btSolde.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSolde.Location = New System.Drawing.Point(372, 0)
         Me.btSolde.Name = "btSolde"
-        Me.btSolde.Size = New System.Drawing.Size(84, 29)
+        Me.btSolde.Size = New System.Drawing.Size(84, 35)
         Me.btSolde.TabIndex = 4
         Me.btSolde.Text = "Solder"
         Me.btSolde.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -703,7 +720,7 @@ Partial Class EnteteFacture
         Me.btTranformer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btTranformer.Location = New System.Drawing.Point(268, 0)
         Me.btTranformer.Name = "btTranformer"
-        Me.btTranformer.Size = New System.Drawing.Size(104, 29)
+        Me.btTranformer.Size = New System.Drawing.Size(104, 35)
         Me.btTranformer.TabIndex = 4
         Me.btTranformer.Text = "Transformer"
         Me.btTranformer.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -718,7 +735,7 @@ Partial Class EnteteFacture
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel7.Location = New System.Drawing.Point(571, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(226, 29)
+        Me.Panel7.Size = New System.Drawing.Size(226, 35)
         Me.Panel7.TabIndex = 3
         '
         'btPrint
@@ -729,9 +746,9 @@ Partial Class EnteteFacture
         Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
         Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btPrint.Location = New System.Drawing.Point(117, 4)
+        Me.btPrint.Location = New System.Drawing.Point(117, 1)
         Me.btPrint.Name = "btPrint"
-        Me.btPrint.Size = New System.Drawing.Size(99, 23)
+        Me.btPrint.Size = New System.Drawing.Size(99, 32)
         Me.btPrint.TabIndex = 4
         Me.btPrint.Text = "Imprimer"
         Me.btPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -775,7 +792,7 @@ Partial Class EnteteFacture
         Me.btFacturer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btFacturer.Location = New System.Drawing.Point(184, 0)
         Me.btFacturer.Name = "btFacturer"
-        Me.btFacturer.Size = New System.Drawing.Size(84, 29)
+        Me.btFacturer.Size = New System.Drawing.Size(84, 35)
         Me.btFacturer.TabIndex = 8
         Me.btFacturer.Text = "Facturer"
         Me.btFacturer.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -793,7 +810,7 @@ Partial Class EnteteFacture
         Me.btDelivry.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDelivry.Location = New System.Drawing.Point(114, 0)
         Me.btDelivry.Name = "btDelivry"
-        Me.btDelivry.Size = New System.Drawing.Size(70, 29)
+        Me.btDelivry.Size = New System.Drawing.Size(70, 35)
         Me.btDelivry.TabIndex = 7
         Me.btDelivry.Text = "Livrer"
         Me.btDelivry.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -811,7 +828,7 @@ Partial Class EnteteFacture
         Me.btSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSave.Location = New System.Drawing.Point(19, 0)
         Me.btSave.Name = "btSave"
-        Me.btSave.Size = New System.Drawing.Size(95, 29)
+        Me.btSave.Size = New System.Drawing.Size(95, 35)
         Me.btSave.TabIndex = 4
         Me.btSave.Text = "Enregistrer"
         Me.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -823,7 +840,7 @@ Partial Class EnteteFacture
         Me.Panel21.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel21.Location = New System.Drawing.Point(0, 0)
         Me.Panel21.Name = "Panel21"
-        Me.Panel21.Size = New System.Drawing.Size(19, 29)
+        Me.Panel21.Size = New System.Drawing.Size(19, 35)
         Me.Panel21.TabIndex = 5
         '
         'EnteteFacture
@@ -853,6 +870,8 @@ Partial Class EnteteFacture
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel14.ResumeLayout(False)
+        Me.Panel23.ResumeLayout(False)
+        Me.Panel23.PerformLayout()
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -925,5 +944,6 @@ Partial Class EnteteFacture
     Friend WithEvents Panel21 As System.Windows.Forms.Panel
     Friend WithEvents btDelivry As System.Windows.Forms.Button
     Friend WithEvents btFacturer As System.Windows.Forms.Button
+    Friend WithEvents Panel23 As System.Windows.Forms.Panel
 
 End Class

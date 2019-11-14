@@ -59,4 +59,12 @@
     End Function
 
 
+    Public Function RandomColor() As Color
+
+        Dim rnd As New Random
+        Dim c As Color = Color.FromArgb(255, rnd.Next(255), rnd.Next(255), rnd.Next(255))
+
+        Return c
+    End Function
+
 End Module

@@ -26,6 +26,8 @@ Partial Class ProductList
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.pl = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -34,31 +36,29 @@ Partial Class ProductList
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.PB = New System.Windows.Forms.PictureBox()
         Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.plModeClient = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Panel29 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.PB = New System.Windows.Forms.PictureBox()
-        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.btFournisseur = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
+        Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Panel29 = New System.Windows.Forms.Panel()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Panel2.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plModeClient.SuspendLayout()
         Me.Panel24.SuspendLayout()
-        Me.Panel6.SuspendLayout()
-        CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'plL
@@ -105,6 +105,27 @@ Partial Class ProductList
         Me.pl.Padding = New System.Windows.Forms.Padding(5)
         Me.pl.Size = New System.Drawing.Size(700, 655)
         Me.pl.TabIndex = 12
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
+        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel6.Controls.Add(Me.Panel7)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel6.Location = New System.Drawing.Point(5, 160)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(700, 43)
+        Me.Panel6.TabIndex = 14
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel7.Location = New System.Drawing.Point(0, 0)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(700, 2)
+        Me.Panel7.TabIndex = 1
         '
         'Panel4
         '
@@ -184,11 +205,11 @@ Partial Class ProductList
         'Panel10
         '
         Me.Panel10.BackColor = System.Drawing.Color.Transparent
+        Me.Panel10.Controls.Add(Me.PictureBox8)
         Me.Panel10.Controls.Add(Me.Panel11)
         Me.Panel10.Controls.Add(Me.PB)
         Me.Panel10.Controls.Add(Me.txtSearchCtg)
         Me.Panel10.Controls.Add(Me.txtSearchName)
-        Me.Panel10.Controls.Add(Me.ShapeContainer1)
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel10.Location = New System.Drawing.Point(5, 42)
         Me.Panel10.Name = "Panel10"
@@ -203,6 +224,16 @@ Partial Class ProductList
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(690, 2)
         Me.Panel11.TabIndex = 1
+        '
+        'PB
+        '
+        Me.PB.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_kde_folder_saved_search_25195
+        Me.PB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PB.Location = New System.Drawing.Point(8, 7)
+        Me.PB.Name = "PB"
+        Me.PB.Size = New System.Drawing.Size(72, 45)
+        Me.PB.TabIndex = 9
+        Me.PB.TabStop = False
         '
         'txtSearchCtg
         '
@@ -242,16 +273,6 @@ Partial Class ProductList
         Me.txtSearchName.txtReadOnly = False
         Me.txtSearchName.TxtSelect = New Integer() {1, 0}
         '
-        'ShapeContainer1
-        '
-        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
-        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(690, 60)
-        Me.ShapeContainer1.TabIndex = 10
-        Me.ShapeContainer1.TabStop = False
-        '
         'plModeClient
         '
         Me.plModeClient.BackColor = System.Drawing.Color.WhiteSmoke
@@ -272,70 +293,6 @@ Partial Class ProductList
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(690, 2)
         Me.Panel9.TabIndex = 1
-        '
-        'Panel24
-        '
-        Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel24.Controls.Add(Me.Button5)
-        Me.Panel24.Controls.Add(Me.Button1)
-        Me.Panel24.Controls.Add(Me.Button7)
-        Me.Panel24.Controls.Add(Me.Button6)
-        Me.Panel24.Controls.Add(Me.Panel29)
-        Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel24.Location = New System.Drawing.Point(5, 102)
-        Me.Panel24.Name = "Panel24"
-        Me.Panel24.Size = New System.Drawing.Size(690, 38)
-        Me.Panel24.TabIndex = 4
-        '
-        'Panel29
-        '
-        Me.Panel29.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel29.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel29.Location = New System.Drawing.Point(0, 0)
-        Me.Panel29.Name = "Panel29"
-        Me.Panel29.Size = New System.Drawing.Size(690, 2)
-        Me.Panel29.TabIndex = 1
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
-        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel6.Controls.Add(Me.Panel7)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(5, 160)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(700, 43)
-        Me.Panel6.TabIndex = 14
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel7.Location = New System.Drawing.Point(0, 0)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(700, 2)
-        Me.Panel7.TabIndex = 1
-        '
-        'PB
-        '
-        Me.PB.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_kde_folder_saved_search_25195
-        Me.PB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PB.Location = New System.Drawing.Point(8, 7)
-        Me.PB.Name = "PB"
-        Me.PB.Size = New System.Drawing.Size(72, 45)
-        Me.PB.TabIndex = 9
-        Me.PB.TabStop = False
-        '
-        'RectangleShape1
-        '
-        Me.RectangleShape1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_preview_23216__1_
-        Me.RectangleShape1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.RectangleShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.RectangleShape1.CornerRadius = 12
-        Me.RectangleShape1.Location = New System.Drawing.Point(465, 17)
-        Me.RectangleShape1.Name = "RectangleShape1"
-        Me.RectangleShape1.Size = New System.Drawing.Size(60, 24)
         '
         'btFournisseur
         '
@@ -372,6 +329,20 @@ Partial Class ProductList
         Me.btClient.Text = "Client"
         Me.btClient.UseVisualStyleBackColor = True
         '
+        'Panel24
+        '
+        Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel24.Controls.Add(Me.Button5)
+        Me.Panel24.Controls.Add(Me.Button1)
+        Me.Panel24.Controls.Add(Me.Button7)
+        Me.Panel24.Controls.Add(Me.Button6)
+        Me.Panel24.Controls.Add(Me.Panel29)
+        Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel24.Location = New System.Drawing.Point(5, 102)
+        Me.Panel24.Name = "Panel24"
+        Me.Panel24.Size = New System.Drawing.Size(690, 38)
+        Me.Panel24.TabIndex = 4
+        '
         'Button5
         '
         Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -379,10 +350,10 @@ Partial Class ProductList
         Me.Button5.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button5.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(589, 4)
+        Me.Button5.Location = New System.Drawing.Point(589, 2)
         Me.Button5.Name = "Button5"
         Me.Button5.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button5.Size = New System.Drawing.Size(93, 28)
+        Me.Button5.Size = New System.Drawing.Size(93, 34)
         Me.Button5.TabIndex = 3
         Me.Button5.Text = "Imprimer"
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -428,6 +399,25 @@ Partial Class ProductList
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = True
         '
+        'Panel29
+        '
+        Me.Panel29.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel29.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel29.Location = New System.Drawing.Point(0, 0)
+        Me.Panel29.Name = "Panel29"
+        Me.Panel29.Size = New System.Drawing.Size(690, 2)
+        Me.Panel29.TabIndex = 1
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.search_folder_18
+        Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox8.Location = New System.Drawing.Point(461, 17)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(68, 26)
+        Me.PictureBox8.TabIndex = 10
+        Me.PictureBox8.TabStop = False
+        '
         'ProductList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -439,13 +429,14 @@ Partial Class ProductList
         Me.Name = "ProductList"
         Me.Size = New System.Drawing.Size(920, 900)
         Me.Panel2.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel10.ResumeLayout(False)
+        CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.plModeClient.ResumeLayout(False)
         Me.Panel24.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
-        CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -465,18 +456,17 @@ Partial Class ProductList
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents txtSearchCtg As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtSearchName As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents PB As System.Windows.Forms.PictureBox
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
-    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents plModeClient As System.Windows.Forms.Panel
     Friend WithEvents Panel9 As System.Windows.Forms.Panel
     Friend WithEvents btFournisseur As System.Windows.Forms.Button
     Friend WithEvents btClient As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
 
 End Class

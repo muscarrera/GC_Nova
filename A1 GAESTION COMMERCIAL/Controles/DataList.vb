@@ -24,12 +24,18 @@
     'Bloc Tolal Event
     Public Event EditModePayement(ByRef dataList As DataList)
     'ListLine events
-    Event EditSelectedFacture(ByVal id As Integer)
-    Event DeleteItem(ByVal ls As ListLine)
-    Event GetFactureInfos(ByVal id As Integer)
+    Public Event EditSelectedFacture(ByVal id As Integer)
+    Public Event DeleteItem(ByVal ls As ListLine)
+    Public Event GetFactureInfos(ByVal id As Integer)
     'ListRow articles
-    Event ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
-    Event ArticleItemDelete(ByVal lr As ListRow)
+    Public Event ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
+    Public Event ArticleItemDelete(ByVal lr As ListRow)
+    'payement Events
+    Public Event AddPayement(ByVal pm As Payement, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
+    Public Event EditPayement(ByVal pm As Payement, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event DeletePayement(ByVal pm As AddPayementRow, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
+
 
     'Members
     Private _DataSource As DataTable
@@ -46,6 +52,7 @@
     Public DetailsTable As String = "Details_Sell_Facture"
     Private _isSell As Boolean = True
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
+
 
 
 
@@ -85,7 +92,6 @@
         Set(ByVal value As String)
             operationType = value
 
-            isSell = True
             If value = "Sell_Facture" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -103,7 +109,7 @@
                 '
             ElseIf value = "Devis" Then
                 clientTable = "Client"
-                payementTable = "-"
+                payementTable = "Client_Payement"
                 FactureTable = "Devis"
                 DetailsTable = "Details_Devis"
                 Entete.Type = "Devis "
@@ -128,7 +134,6 @@
                 FactureTable = "Bon_Commande"
                 DetailsTable = "Details_Bon_Commande"
                 Entete.Type = "BC "
-                isSell = False
 
             ElseIf value = "Bon_Achat" Then
                 clientTable = "Company"
@@ -136,7 +141,6 @@
                 FactureTable = "Bon_Achat"
                 DetailsTable = "Details_Bon_Achat"
                 Entete.Type = "BA "
-                isSell = False
             End If
 
             RaiseEvent OperationTypeChanged()
@@ -155,9 +159,10 @@
             Entete.Bl = value.bl
             DataSource = value.DataSource
             TB.Writer = value.writer
-            TB.ModePayement = value.modePayement
             'payement mode
             TB.ModePayement = value.modePayement
+            PayementDataSource = value.PaymenetDataSource
+
         End Set
     End Property
     Public Property Mode() As String
@@ -261,6 +266,58 @@
             End If
         End Set
     End Property
+    Public Property PayementDataSource As DataTable
+        Get
+            'Dim table As New DataTable
+            '' Create four typed columns in the DataTable.
+            'table.Columns.Add("Pid", GetType(Integer))
+            'table.Columns.Add("name", GetType(String))
+            'table.Columns.Add("cid", GetType(Integer))
+            'table.Columns.Add("montant", GetType(Double))
+            'table.Columns.Add("way", GetType(Double))
+            'table.Columns.Add("ech", GetType(Double))
+            'table.Columns.Add("ref", GetType(Double))
+            'table.Columns.Add("desgnation", GetType(String))
+            'table.Columns.Add("depot", GetType(Integer))
+            'table.Columns.Add("remise", GetType(Integer))
+
+            'Dim a As ListRow
+            'For Each a In Pl.Controls
+            '    ' Add  rows with those columns filled in the DataTable.
+            '    table.Rows.Add(a.arid, a.Name, a.cid, a.qte, a.sprice, a.bprice,
+            '                  a.TVA, a.ref, a.depot, a.remise)
+            'Next
+            Return Nothing
+        End Get
+        Set(ByVal value As DataTable)
+
+            If Operation = "Devis" Then Exit Property
+
+            '_DataSource = value
+            plPmBody.Controls.Clear()
+            If IsNothing(value) Then Exit Property
+
+            If value.Rows.Count > 0 Then
+                Dim arr(value.Rows.Count - 1) As AddPayementRow
+
+                For i As Integer = 0 To value.Rows.Count - 1
+                    Dim a As New Payement(value.Rows(i).Item(0), StrValue(value, "date", ""),
+                                           StrValue(value, "way", ""), StrValue(value, "montant", 0),
+                                           StrValue(value, "ech", ""), StrValue(value, "ref", ""),
+                                           StrValue(value, "desig", ""))
+                   
+
+                    Dim R As New AddPayementRow
+                    R.Payement = a
+                    R.Index = i
+                    R.Dock = DockStyle.Top
+                    R.BringToFront()
+                    arr(i) = R
+                Next
+                plPmBody.Controls.AddRange(arr)
+            End If
+        End Set
+    End Property
     Public Property DataList As DataTable
         Get
             Return _dtList
@@ -275,7 +332,7 @@
             currentPage = 1
             btPage.Text = "1/" & numberOfPage
 
-
+            FillRows()
         End Set
     End Property
     Public Property ModePayement As String
@@ -329,7 +386,6 @@
 
         R.id = d_id
         If d_id > 0 Then Pl.Controls.Add(R)
-
     End Sub
     Private Sub DataList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'auto Complete
@@ -446,7 +502,7 @@
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         If currentPage = 1 Then Exit Sub
         currentPage -= 1
-        startIndex -= numberOfItems
+        startIndex -= (numberOfItems * 2)
         If startIndex < 0 Then startIndex = 0
 
         FillRows()
@@ -493,7 +549,7 @@
                 If i = startIndex + n - 1 Then Exit For
             Next
             Pl.Controls.AddRange(arr)
-            startIndex = i
+            startIndex = i + 1
         End If
 
 
@@ -507,9 +563,61 @@
         RaiseEvent ArticleItemDelete(listRow)
     End Sub
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click, Button3.Click
         Dim bt As Button = sender
         Operation = bt.Tag
+        pbBar.Width = bt.Right
+        pbBar.BackColor = RandomColor()
+        bt.BackgroundImage = My.Resources.gui_16
+
+        For Each b As Button In plHeaderSells.Controls
+            If b.Text = bt.Text Then Continue For
+            b.BackgroundImage = My.Resources.gray_row
+        Next
+    End Sub
+
+    Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement) Handles AddPayementRow1.AddNewArticle
+
+        If Id = 0 Then Exit Sub
+
+        'DataSource.Add(art.arid, art)
+        Dim d_id As Integer = 0
+        Dim R As New AddPayementRow
+
+        R.Dock = DockStyle.Top
+        R.BringToFront()
+        R.Index = plPmBody.Controls.Count
+
+        AddHandler R.AddNewArticle, AddressOf Edit_Payement
+        AddHandler R.Cleared, AddressOf Delete_Payement
+
+        RaiseEvent AddPayement(pm, Me, d_id)
+
+        pm.id = d_id
+        R.Payement = pm
+        If d_id > 0 Then Pl.Controls.Add(R)
+
 
     End Sub
+    Public Sub FillPayement(ByVal dt As DataTable)
+        PlPayement.Visible = True
+        PlPayement.Height = 200
+
+    End Sub
+    Private Sub Edit_Payement(ByVal pm As A1_GAESTION_COMMERCIAL.Payement)
+        RaiseEvent EditPayement(pm, Me)
+    End Sub
+    Private Sub Delete_Payement(ByVal pm As AddPayementRow)
+        RaiseEvent DeletePayement(pm, Me)
+    End Sub
+    Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        plPmHeader.Visible = True
+    End Sub
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        PlPayement.Height = 0
+    End Sub
+    Private Sub TB_AddEditPayement() Handles TB.AddEditPayement
+        FillPayement(Nothing)
+    End Sub
+
 End Class

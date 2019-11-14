@@ -14,6 +14,7 @@
         If str = "" Then Exit Sub
         Dim m As String() = str.Split("|")
         For i As Integer = 0 To m.Length - 1
+            If m(i) = "" Then Continue For
             AddButton(m(i), Nothing)
         Next
 
@@ -22,7 +23,7 @@
         Dim bt As New Button
         bt.Text = txt
         bt.Width = 300
-        bt.Height = 33
+        bt.Height = 44
 
         If Not IsNothing(img) Then
             bt.Image = img

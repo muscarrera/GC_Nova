@@ -61,20 +61,26 @@ Partial Class TotalBloc
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.lbMode = New System.Windows.Forms.Label()
         Me.Panel14 = New System.Windows.Forms.Panel()
-        Me.plMP = New System.Windows.Forms.Panel()
-        Me.lbModePayement = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Panel15 = New System.Windows.Forms.Panel()
-        Me.Panel16 = New System.Windows.Forms.Panel()
         Me.plWriter = New System.Windows.Forms.Panel()
         Me.lbwriter = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel18 = New System.Windows.Forms.Panel()
         Me.Panel19 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.plAddPayement = New System.Windows.Forms.Panel()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.Panel21 = New System.Windows.Forms.Panel()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.plMP = New System.Windows.Forms.Panel()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.lbModePayement = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Panel16 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.plLeft.SuspendLayout()
         Me.plAvc.SuspendLayout()
@@ -90,9 +96,12 @@ Partial Class TotalBloc
         Me.plHt.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel14.SuspendLayout()
-        Me.plMP.SuspendLayout()
         Me.plWriter.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plAddPayement.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plMP.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -535,88 +544,16 @@ Partial Class TotalBloc
         Me.Panel9.Size = New System.Drawing.Size(358, 1)
         Me.Panel9.TabIndex = 4
         '
-        'lbMode
-        '
-        Me.lbMode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbMode.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMode.Location = New System.Drawing.Point(25, 191)
-        Me.lbMode.Name = "lbMode"
-        Me.lbMode.Padding = New System.Windows.Forms.Padding(5)
-        Me.lbMode.Size = New System.Drawing.Size(373, 78)
-        Me.lbMode.TabIndex = 1
-        Me.lbMode.Text = "* NB :"
-        '
         'Panel14
         '
         Me.Panel14.Controls.Add(Me.plWriter)
+        Me.Panel14.Controls.Add(Me.plAddPayement)
         Me.Panel14.Controls.Add(Me.plMP)
-        Me.Panel14.Controls.Add(Me.lbMode)
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel14.Location = New System.Drawing.Point(0, 0)
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Size = New System.Drawing.Size(404, 281)
         Me.Panel14.TabIndex = 8
-        '
-        'plMP
-        '
-        Me.plMP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.plMP.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
-        Me.plMP.Controls.Add(Me.PictureBox3)
-        Me.plMP.Controls.Add(Me.lbModePayement)
-        Me.plMP.Controls.Add(Me.Label7)
-        Me.plMP.Controls.Add(Me.Panel15)
-        Me.plMP.Controls.Add(Me.Panel16)
-        Me.plMP.Controls.Add(Me.PictureBox1)
-        Me.plMP.Location = New System.Drawing.Point(18, 19)
-        Me.plMP.MaximumSize = New System.Drawing.Size(500, 44)
-        Me.plMP.Name = "plMP"
-        Me.plMP.Size = New System.Drawing.Size(348, 38)
-        Me.plMP.TabIndex = 2
-        '
-        'lbModePayement
-        '
-        Me.lbModePayement.BackColor = System.Drawing.Color.Transparent
-        Me.lbModePayement.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbModePayement.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbModePayement.Location = New System.Drawing.Point(156, 0)
-        Me.lbModePayement.Name = "lbModePayement"
-        Me.lbModePayement.Size = New System.Drawing.Size(191, 36)
-        Me.lbModePayement.TabIndex = 3
-        Me.lbModePayement.Text = "-"
-        Me.lbModePayement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label7
-        '
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label7.Location = New System.Drawing.Point(31, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(125, 36)
-        Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Mode de Payement"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel15
-        '
-        Me.Panel15.BackColor = System.Drawing.Color.LightGray
-        Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel15.Location = New System.Drawing.Point(347, 0)
-        Me.Panel15.Name = "Panel15"
-        Me.Panel15.Size = New System.Drawing.Size(1, 36)
-        Me.Panel15.TabIndex = 2
-        '
-        'Panel16
-        '
-        Me.Panel16.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel16.Location = New System.Drawing.Point(31, 36)
-        Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(317, 2)
-        Me.Panel16.TabIndex = 2
         '
         'plWriter
         '
@@ -628,7 +565,7 @@ Partial Class TotalBloc
         Me.plWriter.Controls.Add(Me.Panel18)
         Me.plWriter.Controls.Add(Me.Panel19)
         Me.plWriter.Controls.Add(Me.PictureBox2)
-        Me.plWriter.Location = New System.Drawing.Point(18, 72)
+        Me.plWriter.Location = New System.Drawing.Point(18, 15)
         Me.plWriter.MaximumSize = New System.Drawing.Size(500, 44)
         Me.plWriter.Name = "plWriter"
         Me.plWriter.Size = New System.Drawing.Size(348, 38)
@@ -688,6 +625,105 @@ Partial Class TotalBloc
         Me.PictureBox2.TabIndex = 4
         Me.PictureBox2.TabStop = False
         '
+        'plAddPayement
+        '
+        Me.plAddPayement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.plAddPayement.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
+        Me.plAddPayement.Controls.Add(Me.PictureBox4)
+        Me.plAddPayement.Controls.Add(Me.Label8)
+        Me.plAddPayement.Controls.Add(Me.Label12)
+        Me.plAddPayement.Controls.Add(Me.Panel20)
+        Me.plAddPayement.Controls.Add(Me.Panel21)
+        Me.plAddPayement.Controls.Add(Me.PictureBox5)
+        Me.plAddPayement.Location = New System.Drawing.Point(18, 125)
+        Me.plAddPayement.MaximumSize = New System.Drawing.Size(500, 44)
+        Me.plAddPayement.Name = "plAddPayement"
+        Me.plAddPayement.Size = New System.Drawing.Size(348, 38)
+        Me.plAddPayement.TabIndex = 2
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PictureBox4.Location = New System.Drawing.Point(316, 0)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(31, 36)
+        Me.PictureBox4.TabIndex = 5
+        Me.PictureBox4.TabStop = False
+        '
+        'Label8
+        '
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(156, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(191, 36)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "-"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label12
+        '
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label12.Location = New System.Drawing.Point(31, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(125, 36)
+        Me.Label12.TabIndex = 2
+        Me.Label12.Text = "Solder"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Panel20
+        '
+        Me.Panel20.BackColor = System.Drawing.Color.LightGray
+        Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel20.Location = New System.Drawing.Point(347, 0)
+        Me.Panel20.Name = "Panel20"
+        Me.Panel20.Size = New System.Drawing.Size(1, 36)
+        Me.Panel20.TabIndex = 2
+        '
+        'Panel21
+        '
+        Me.Panel21.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel21.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel21.Location = New System.Drawing.Point(31, 36)
+        Me.Panel21.Name = "Panel21"
+        Me.Panel21.Size = New System.Drawing.Size(317, 2)
+        Me.Panel21.TabIndex = 2
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_22
+        Me.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox5.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(31, 38)
+        Me.PictureBox5.TabIndex = 4
+        Me.PictureBox5.TabStop = False
+        '
+        'plMP
+        '
+        Me.plMP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.plMP.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
+        Me.plMP.Controls.Add(Me.PictureBox3)
+        Me.plMP.Controls.Add(Me.lbModePayement)
+        Me.plMP.Controls.Add(Me.Label7)
+        Me.plMP.Controls.Add(Me.Panel15)
+        Me.plMP.Controls.Add(Me.Panel16)
+        Me.plMP.Controls.Add(Me.PictureBox1)
+        Me.plMP.Location = New System.Drawing.Point(18, 68)
+        Me.plMP.MaximumSize = New System.Drawing.Size(500, 44)
+        Me.plMP.Name = "plMP"
+        Me.plMP.Size = New System.Drawing.Size(348, 38)
+        Me.plMP.TabIndex = 2
+        '
         'PictureBox3
         '
         Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_
@@ -698,6 +734,49 @@ Partial Class TotalBloc
         Me.PictureBox3.Size = New System.Drawing.Size(31, 36)
         Me.PictureBox3.TabIndex = 5
         Me.PictureBox3.TabStop = False
+        '
+        'lbModePayement
+        '
+        Me.lbModePayement.BackColor = System.Drawing.Color.Transparent
+        Me.lbModePayement.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbModePayement.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbModePayement.Location = New System.Drawing.Point(156, 0)
+        Me.lbModePayement.Name = "lbModePayement"
+        Me.lbModePayement.Size = New System.Drawing.Size(191, 36)
+        Me.lbModePayement.TabIndex = 3
+        Me.lbModePayement.Text = "-"
+        Me.lbModePayement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label7
+        '
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label7.Location = New System.Drawing.Point(31, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(125, 36)
+        Me.Label7.TabIndex = 2
+        Me.Label7.Text = "Mode de Payement"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel15
+        '
+        Me.Panel15.BackColor = System.Drawing.Color.LightGray
+        Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel15.Location = New System.Drawing.Point(347, 0)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(1, 36)
+        Me.Panel15.TabIndex = 2
+        '
+        'Panel16
+        '
+        Me.Panel16.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel16.Location = New System.Drawing.Point(31, 36)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(317, 2)
+        Me.Panel16.TabIndex = 2
         '
         'PictureBox1
         '
@@ -732,16 +811,18 @@ Partial Class TotalBloc
         Me.plHt.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel14.ResumeLayout(False)
-        Me.plMP.ResumeLayout(False)
         Me.plWriter.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plAddPayement.ResumeLayout(False)
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plMP.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents plLeft As System.Windows.Forms.Panel
-    Friend WithEvents lbMode As System.Windows.Forms.Label
     Friend WithEvents lbNB As System.Windows.Forms.Label
     Friend WithEvents plAvc As System.Windows.Forms.Panel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
@@ -794,5 +875,12 @@ Partial Class TotalBloc
     Friend WithEvents Panel19 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents plAddPayement As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Panel20 As System.Windows.Forms.Panel
+    Friend WithEvents Panel21 As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
 
 End Class

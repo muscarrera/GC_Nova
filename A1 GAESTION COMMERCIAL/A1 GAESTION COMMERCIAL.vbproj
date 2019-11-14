@@ -85,6 +85,12 @@
     <Compile Include="Classes\FactureClass.vb" />
     <Compile Include="Classes\RegistryModule.vb" />
     <Compile Include="Classes\SubClass.vb" />
+    <Compile Include="Controles\AddPayementRow.Designer.vb">
+      <DependentUpon>AddPayementRow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\AddPayementRow.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\AddRow.Designer.vb">
       <DependentUpon>AddRow.vb</DependentUpon>
     </Compile>
@@ -191,6 +197,7 @@
     <Compile Include="Models\Article.vb" />
     <Compile Include="Models\Client.vb" />
     <Compile Include="Models\Facture.vb" />
+    <Compile Include="Models\Payement.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -214,6 +221,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controles\AddPayementRow.resx">
+      <DependentUpon>AddPayementRow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\AddRow.resx">
       <DependentUpon>AddRow.vb</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +319,8 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\iconfinder_application-vnd.ms-excel_24744 %281%29.png" />
+    <None Include="Resources\iconfinder_Calendar_27835 %282%29.png" />
     <None Include="Resources\JOINDRE 20.png" />
     <None Include="Resources\iconfinder_User_278871.png" />
     <None Include="Resources\PRINT 18.png" />

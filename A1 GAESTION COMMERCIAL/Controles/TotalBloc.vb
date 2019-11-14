@@ -2,6 +2,7 @@
 
     Public Event EditModePayement()
     Public Event ValueChanged()
+    Public Event AddEditPayement()
 
     Private _ModePayement As String
     Private _avc As Double = 0
@@ -9,6 +10,8 @@
     Private _tva As Double = 0
     Private _rs As Double = 0
     Private _ht As Double = 0
+
+
 
 
 
@@ -111,5 +114,9 @@
 
     Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox3.Click
         RaiseEvent EditModePayement()
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        RaiseEvent AddEditPayement()
     End Sub
 End Class
