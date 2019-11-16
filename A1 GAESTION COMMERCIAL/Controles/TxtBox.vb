@@ -237,6 +237,7 @@
         End If
     End Sub
     Private Sub TXT_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TXT.TextChanged
+        lbPlaceHolder.Visible = False
         Dim s As Boolean = _ShowClearIcon
         If TXT.Text.Length = 0 Then s = False
         PD.Visible = s

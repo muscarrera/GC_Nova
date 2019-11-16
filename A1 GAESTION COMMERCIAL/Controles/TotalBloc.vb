@@ -11,6 +11,8 @@
     Private _rs As Double = 0
     Private _ht As Double = 0
 
+    Event AddFiles()
+
 
 
 
@@ -118,5 +120,9 @@
 
     Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
         RaiseEvent AddEditPayement()
+    End Sub
+
+    Private Sub PictureBox6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox6.Click
+        RaiseEvent AddFiles()
     End Sub
 End Class

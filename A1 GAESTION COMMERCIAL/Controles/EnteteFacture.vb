@@ -165,8 +165,8 @@
         End Get
         Set(ByVal value As String)
             lbdv.Text = value
-            plDv.Visible = True
-            If value = "" Then plDv.Visible = False
+            plDv.Width = 300
+            If value = "" Then plDv.Width = 75
         End Set
     End Property
     Public Property Bl As String
@@ -176,9 +176,9 @@
         Set(ByVal value As String)
             _bL = value
 
-            plBL.Visible = True
+            plBL.Width = 300
             If value = "" Then
-                plBL.Visible = False
+                plBL.Width = 75
                 Exit Property
             End If
 
@@ -197,8 +197,8 @@
         End Get
         Set(ByVal value As String)
             lbBc.Text = value
-            plBc.Visible = True
-            If value = "" Then plBc.Visible = False
+            plBc.Width = 300
+            If value = "" Then plBc.Width = 75
         End Set
     End Property
     Public Property Statut As String
@@ -235,43 +235,33 @@
         Dim fctid As Integer = CInt(txtSearch.text)
         RaiseEvent SearchById(fctid)
     End Sub
-
     Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
         RaiseEvent SearchByDate()
     End Sub
-
     Private Sub btSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSave.Click
         RaiseEvent SaveChanges(Id)
     End Sub
-
     Private Sub btTranformer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btTranformer.Click
         RaiseEvent Type_Transformer(Id)
     End Sub
-
     Private Sub btSolde_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde.Click
         RaiseEvent PayFacture(Id)
     End Sub
-
     Private Sub btDuplicate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDuplicate.Click
         RaiseEvent DuplicateFacture(Id)
     End Sub
-
     Private Sub btDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
         RaiseEvent DeleteFacture(Id)
     End Sub
-
     Private Sub btPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPdf.Click
         RaiseEvent SavePdf()
     End Sub
-
     Private Sub btPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPrint.Click
         RaiseEvent PrintFacture()
     End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelivry.Click
         RaiseEvent CommandDelivry(Id)
     End Sub
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacturer.Click
         RaiseEvent Facturer(Id)
     End Sub

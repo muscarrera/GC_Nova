@@ -108,7 +108,8 @@
     End Function
     'fill
     Public Sub FillFields(ByVal art As Article)
-        article = art
+        article = New Article(art.arid, art.cid, art.name, art.desc, art.qte,
+                              art.sprice, art.bprice, art.remise, art.depot, art.isStocked, art.ref)
         txtRf.text = article.ref
         txtN.text = article.name
         txtPr.text = String.Format("{0:n}", CDec(article.sprice))

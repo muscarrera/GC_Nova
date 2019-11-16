@@ -1,32 +1,33 @@
 ﻿Public Class AddPayementRow
 
-    Private _id As Integer
 
-    Public dte As Date = Now.Date
-    Public way As String = ""
-    Public montant As Double = 0
-    Public ech As Date = Now.Date
-    Public ref As String = ""
-    Public desig As String = ""
+    Public _Id As Integer
+    'Public dte As Date = Now.Date
+    'Public way As String = ""
+    'Public montant As Double = 0
+    'Public ech As Date = Now.Date
+    'Public ref As String = ""
+    'Public desig As String = ""
+
     Private _PM As New Payement
+    Public _PM_Edit As Payement
+
     Private _EditMode As Boolean
     Private _index As Integer
 
 
     Public Event AddNewArticle(ByVal pm As Payement)
     Public Event Cleared(ByVal addPayementRow As AddPayementRow)
+    Public Event EditPayement(ByVal PR As AddPayementRow)
 
     Public Property Payement As Payement
         Get
             Return _PM
         End Get
         Set(ByVal value As Payement)
+
             _PM = value
-
-            initForm()
             If IsNothing(value) Then Exit Property
-
-            If value.id > 0 Then plleft.BackgroundImage = My.Resources.WARNING_15
 
             txtWay.text = value.way
             txtMontant.text = value.montant
@@ -43,6 +44,8 @@
         End Get
         Set(ByVal value As Boolean)
             _EditMode = value
+            _PM_Edit = New Payement(_PM.id, _PM.dte, _PM.way, _PM.montant, _PM.ech, _PM.ref, _PM.desig)
+
             If value Then
                 btAdd.BackgroundImage = My.Resources.iconfinder_advancedsettings_3283__1_
                 btClear.BackgroundImage = My.Resources.DELETE_20
@@ -51,6 +54,8 @@
                 txtEch.txtReadOnly = True
                 txtRef.txtReadOnly = True
                 txtDesig.txtReadOnly = True
+                Me.BackColor = Color.Transparent
+                plleft.BackgroundImage = Nothing
             Else
                 btAdd.BackgroundImage = My.Resources.iconfinder_Gnome_Emblem_Default222
                 btClear.BackgroundImage = My.Resources.CANCEL_22
@@ -59,6 +64,8 @@
                 txtEch.txtReadOnly = False
                 txtRef.txtReadOnly = False
                 txtDesig.txtReadOnly = False
+                Me.BackColor = Color.YellowGreen
+                If id > 0 Then plleft.BackgroundImage = My.Resources.WARNING_15
             End If
         End Set
     End Property
@@ -68,8 +75,17 @@
         End Get
         Set(ByVal value As Integer)
             _index = value
-            Me.BackgroundImage = Nothing
-            If (value Mod 2) = 0 Then Me.BackgroundImage = My.Resources.gui_13
+            Me.BackColor = Color.Transparent
+
+            If (value Mod 2) = 0 Then Me.BackColor = Color.WhiteSmoke
+        End Set
+    End Property
+    Public Property id As Integer
+        Get
+            Return _Id
+        End Get
+        Set(ByVal value As Integer)
+            _Id = value
         End Set
     End Property
 
@@ -87,7 +103,7 @@
         Dim MySource As New AutoCompleteStringCollection()
 
         Dim str = getRegistryinfo("ModePayement", "")
-        If str = "" Then Return Nothing
+        'If str = "" Then Return Nothing
         Dim m As String() = str.Split("|")
         For i As Integer = 0 To m.Length - 1
             If m(i) = "" Then Continue For
@@ -107,9 +123,8 @@
 
     End Sub
 
-
     Private Sub initForm()
-        _PM.id = 0
+        '_PM.id = 0
         txtWay.text = ""
         txtMontant.text = ""
         txtEch.text = ""
@@ -137,7 +152,6 @@
         End Try
     End Function
 
-
     Private Sub txtWay_KeyDownOk() Handles txtWay.KeyDownOk
         txtMontant.Focus()
     End Sub
@@ -155,25 +169,41 @@
         txtRef.Focus()
     End Sub
     Private Sub txtRef_KeyDownOk() Handles txtRef.KeyDownOk
-        If ValidationForm() Then
+        If ValidationForm() And id = 0 And EditMode = False Then
             RaiseEvent AddNewArticle(Payement)
             initForm()
         End If
     End Sub
     Private Sub txtDesig_KeyDownOk() Handles txtDesig.KeyDownOk
-        If ValidationForm() Then
+        If ValidationForm() And id = 0 And EditMode = False Then
             RaiseEvent AddNewArticle(Payement)
             initForm()
         End If
     End Sub
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
         If ValidationForm() Then
-            RaiseEvent AddNewArticle(Payement)
-            initForm()
+            If EditMode Then
+                EditMode = False
+            Else
+                If id = 0 Then
+                    RaiseEvent AddNewArticle(Payement)
+                    initForm()
+                Else
+                    RaiseEvent EditPayement(Me)
+                End If
+            End If
         End If
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
-        initForm()
-        RaiseEvent Cleared(Me)
+        If EditMode Then
+            RaiseEvent Cleared(Me)
+        Else
+            If id = 0 Then
+                initForm()
+            Else
+                Payement = _PM_Edit
+                EditMode = True
+            End If
+        End If
     End Sub
 End Class

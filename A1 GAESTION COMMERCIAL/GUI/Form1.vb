@@ -11,6 +11,7 @@
     Public imgLarge As Integer = 100
     Public imgLonger As Integer = 200
     Public ImgPah As String = "C:"
+    Public SvgdPah As String = "C:"
     Public numberOfItems As Integer = 2
 
 

@@ -135,6 +135,10 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Aqua_Stripped_Folder_Documents_50968">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Calendar_27835__2_">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -219,6 +223,14 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Plus__Orange_34237__1_">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Plus__Orange_34237__1_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Print_56266__1_">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -268,6 +280,10 @@ A1GAESTIONCOMMERCIAL
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.search_folder_18">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

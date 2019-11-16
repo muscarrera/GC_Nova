@@ -70,7 +70,7 @@ Partial Class AddRow
         Me.btClear.Location = New System.Drawing.Point(44, 0)
         Me.btClear.Name = "btClear"
         Me.btClear.Size = New System.Drawing.Size(43, 36)
-        Me.btClear.TabIndex = 4
+        Me.btClear.TabIndex = 7
         Me.btClear.UseVisualStyleBackColor = True
         '
         'btAdd
@@ -83,7 +83,7 @@ Partial Class AddRow
         Me.btAdd.Location = New System.Drawing.Point(0, 0)
         Me.btAdd.Name = "btAdd"
         Me.btAdd.Size = New System.Drawing.Size(44, 36)
-        Me.btAdd.TabIndex = 5
+        Me.btAdd.TabIndex = 6
         Me.btAdd.UseVisualStyleBackColor = True
         '
         'plRef
@@ -125,7 +125,7 @@ Partial Class AddRow
         Me.txtN.ShowSaveIcon = False
         Me.txtN.Size = New System.Drawing.Size(281, 32)
         Me.txtN.StartUp = 2
-        Me.txtN.TabIndex = 1
+        Me.txtN.TabIndex = 2
         Me.txtN.TextSize = 8
         Me.txtN.TxtBackColor = True
         Me.txtN.TxtColor = System.Drawing.Color.White
@@ -155,7 +155,7 @@ Partial Class AddRow
         Me.txtRf.ShowSaveIcon = False
         Me.txtRf.Size = New System.Drawing.Size(102, 32)
         Me.txtRf.StartUp = 2
-        Me.txtRf.TabIndex = 0
+        Me.txtRf.TabIndex = 1
         Me.txtRf.TextSize = 8
         Me.txtRf.TxtBackColor = True
         Me.txtRf.TxtColor = System.Drawing.Color.White
@@ -185,7 +185,7 @@ Partial Class AddRow
         Me.txtQ.ShowSaveIcon = False
         Me.txtQ.Size = New System.Drawing.Size(73, 32)
         Me.txtQ.StartUp = 2
-        Me.txtQ.TabIndex = 1
+        Me.txtQ.TabIndex = 3
         Me.txtQ.TextSize = 8
         Me.txtQ.TxtBackColor = True
         Me.txtQ.TxtColor = System.Drawing.Color.White
@@ -215,7 +215,7 @@ Partial Class AddRow
         Me.txtPr.ShowSaveIcon = False
         Me.txtPr.Size = New System.Drawing.Size(73, 32)
         Me.txtPr.StartUp = 2
-        Me.txtPr.TabIndex = 1
+        Me.txtPr.TabIndex = 4
         Me.txtPr.TextSize = 8
         Me.txtPr.TxtBackColor = True
         Me.txtPr.TxtColor = System.Drawing.Color.White
@@ -245,7 +245,7 @@ Partial Class AddRow
         Me.txtRs.ShowSaveIcon = False
         Me.txtRs.Size = New System.Drawing.Size(73, 32)
         Me.txtRs.StartUp = 2
-        Me.txtRs.TabIndex = 1
+        Me.txtRs.TabIndex = 5
         Me.txtRs.TextSize = 8
         Me.txtRs.TxtBackColor = True
         Me.txtRs.TxtColor = System.Drawing.Color.White
@@ -286,7 +286,7 @@ Partial Class AddRow
         Me.txtttc.ShowSaveIcon = False
         Me.txtttc.Size = New System.Drawing.Size(73, 32)
         Me.txtttc.StartUp = 2
-        Me.txtttc.TabIndex = 1
+        Me.txtttc.TabIndex = 58
         Me.txtttc.TextSize = 8
         Me.txtttc.TxtBackColor = True
         Me.txtttc.TxtColor = System.Drawing.Color.White

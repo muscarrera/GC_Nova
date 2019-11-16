@@ -132,35 +132,6 @@
 
         End Try
     End Sub
-    Public Sub NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
-
-        Try
-
-            'Dim dpt As Integer = Form1.RPl.CP.Depot
-            'If Form1.CbDepotOrigine.Checked Then dpt = R.depot
-
-            Dim arid As Integer = 0
-
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                Dim params As New Dictionary(Of String, Object)
-                params.Add("fctid", id)
-                params.Add("name", R.ArticleName)
-                params.Add("bprice", R.bprice)
-                params.Add("price", R.sprice)
-                params.Add("remise", R.remise)
-                params.Add("qte", R.qte)
-                params.Add("tva", R.TVA)
-                params.Add("arid", R.arid)
-                params.Add("depot", R.depot)
-                params.Add("ref", R.ref)
-                params.Add("cid", R.cid)
-
-                d_Id = c.InsertRecord(tb_D, params, True)
-            End Using
-        Catch ex As Exception
-        End Try
-
-    End Sub
     Public Sub GetFactureDetails(ByVal id As Integer, ByRef ds As DataList)
         Try
             ds.Facture = New Facture(id, ds.FactureTable, ds.clientTable, ds.DetailsTable, ds.payementTable)
@@ -300,18 +271,24 @@
         AddHandler ds.AddPayement, AddressOf AddPayement
         AddHandler ds.EditPayement, AddressOf EditPayement
         AddHandler ds.DeletePayement, AddressOf DeletePayement
-
+        'Joindre fichiers
+        AddHandler ds.AddFiles, AddressOf AddFiles
 
 
 
         Form1.plBody.Controls.Add(ds)
     End Sub
     'Entete events
-    Private Sub SavePdf(ByVal dataList As DataList)
-        Throw New NotImplementedException
+    Private Sub SavePdf(ByVal ds As DataList)
+
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Enregistrer")
+
+
     End Sub
-    Private Sub PrintFacture(ByVal dataList As DataList)
-        Throw New NotImplementedException
+    Private Sub PrintFacture(ByVal ds As DataList)
+
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+
     End Sub
     Private Sub SaveChanges(ByVal id As Integer, ByRef ds As DataList)
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -343,6 +320,29 @@
             where = Nothing
         End Using
     End Sub
+    Private Sub StatusChanged(ByVal status As String, ByVal id As Integer, ByRef Tb_F As String, ByVal opr As String)
+
+        If status <> "CREATION" Then
+            If opr = "Imprimé" Or opr = "Enregistrer" Then Exit Sub
+        Else
+            status = opr
+        End If
+    
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("isAdmin", status)
+
+            Dim where As New Dictionary(Of String, Object)
+            where.Add("id", id)
+
+            c.UpdateRecord(Tb_F, params, where)
+
+            params.Clear()
+            where.Clear()
+            params = Nothing
+            where = Nothing
+        End Using
+    End Sub
     Private Sub TypeTransformer(ByVal id As Integer, ByRef ds As DataList)
         Dim td As New TransformerDevis
         td.Mode = ds.Operation
@@ -356,6 +356,23 @@
             Dim tb_D = td.tb_D
             Dim tb_p = td.tb_P
 
+            Dim status As String = "Valider"
+
+            If tb_F = "Devis" Then
+                If td.Operation = "Sell_Facture" Then status = "Facturé"
+            ElseIf tb_F = "Commande_Client" Then
+                status = "Livré"
+            ElseIf tb_F = "Bon_Livraison" Then
+                status = "Livré"
+            ElseIf tb_F = "Bon_Commande" Then
+                status = "Réception"
+            ElseIf tb_F = "Bon_Achat" Then
+                status = "Réception"
+            End If
+
+
+
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
             NewFacture_Transforme(tb_F, tb_D, tb_p, td.txtDate.text, td.Operation, ds, False)
         End If
     End Sub
@@ -392,7 +409,7 @@
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
     End Sub
     Private Sub PayFacture(ByVal id As Integer, ByRef dataList As DataList)
-        Throw New NotImplementedException
+        'Throw New NotImplementedException
     End Sub
     Private Sub DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
         Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
@@ -421,18 +438,81 @@
 
     End Sub
     'List Row events
-    Private Sub ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
-        Throw New NotImplementedException
+    Public Sub NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
+
+        Try
+
+            'Dim dpt As Integer = Form1.RPl.CP.Depot
+            'If Form1.CbDepotOrigine.Checked Then dpt = R.depot
+
+            Dim arid As Integer = 0
+
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("fctid", id)
+                params.Add("name", R.ArticleName)
+                params.Add("bprice", R.bprice)
+                params.Add("price", R.sprice)
+                params.Add("remise", R.remise)
+                params.Add("qte", R.qte)
+                params.Add("tva", R.TVA)
+                params.Add("arid", R.arid)
+                params.Add("depot", R.depot)
+                params.Add("ref", R.ref)
+                params.Add("cid", R.cid)
+
+                d_Id = c.InsertRecord(tb_D, params, True)
+            End Using
+        Catch ex As Exception
+        End Try
+
+    End Sub
+    Private Sub ArticleItemChanged(ByVal lr As ListRow, ByVal R As Article)
+        Try
+            Dim ds As DataList = Form1.plBody.Controls(0)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+
+
+                params.Add("name", R.name)
+                params.Add("bprice", R.bprice)
+                params.Add("price", R.sprice)
+                params.Add("remise", R.remise)
+                params.Add("qte", R.qte)
+                params.Add("arid", R.arid)
+                params.Add("depot", R.depot)
+                params.Add("ref", R.ref)
+                params.Add("cid", R.cid)
+
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", lr.id)
+                If c.UpdateRecord(ds.DetailsTable, params, where) Then
+                    lr.article = R
+                    lr.EditMode = False
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
     End Sub
     Private Sub ArticleItemDelete(ByVal lr As ListRow)
-        Throw New NotImplementedException
+        Try
+            Dim ds As DataList = Form1.plBody.Controls(0)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", lr.id)
+                If c.DeleteRecords(ds.DetailsTable, where) Then
+                    ds.Pl.Controls.Remove(lr)
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
     End Sub
 
     'Payement
     Public Sub AddPayement(ByVal pm As Payement, ByVal ds As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
 
         Try
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
 
                 params.Add("name", ds.Entete.ClientName)
@@ -443,22 +523,101 @@
                 params.Add("ech", pm.ech)
                 params.Add("ref", pm.ref)
                 params.Add("desig", pm.desig)
-                'params.Add("writer", Form1.adminName)
+                params.Add("writer", Form1.adminName)
                 params.Add(ds.FactureTable, ds.Id)
 
                 d_Id = c.InsertRecord(ds.payementTable, params, True)
+
+                If d_Id > 0 Then
+
+                    Dim where As New Dictionary(Of String, Object)
+
+                    Dim avc As Double = ds.TB.avance
+                    avc += pm.montant
+
+                    where.Clear()
+                    params.Clear()
+
+                    where.Add("id", ds.Id)
+                    params.Add("avance", avc)
+
+                    If c.UpdateRecord(ds.FactureTable, params, where) Then
+                        ds.TB.avance = avc
+                    End If
+                End If
             End Using
         Catch ex As Exception
         End Try
 
     End Sub
-    Private Sub EditPayement(ByVal pm As Payement, ByVal dataList As DataList)
-        Throw New NotImplementedException
+    Private Sub EditPayement(ByVal pm As AddPayementRow, ByVal DS As DataList)
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("montant", pm.Payement.montant)
+                params.Add("way", pm.Payement.way)
+                params.Add("ech", pm.Payement.ech)
+                params.Add("ref", pm.Payement.ref)
+                params.Add("desig", pm.Payement.desig)
+                params.Add("writer", Form1.adminName)
+
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("Pid", pm.id)
+                If c.UpdateRecord(DS.payementTable, params, where) Then
+
+                    where.Clear()
+                    params.Clear()
+                    Dim avc As Double = DS.TB.avance
+                    avc += pm.Payement.montant
+                    avc -= pm._pm_edit.montant
+
+                    params.Add("avance", avc)
+                    where.Add("id", DS.Id)
+                    If c.UpdateRecord(DS.FactureTable, params, where) Then
+                        DS.TB.avance = avc
+                        pm.EditMode = True
+                    End If
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
     End Sub
     Private Sub DeletePayement(ByVal pm As AddPayementRow, ByVal dataList As DataList)
-        Throw New NotImplementedException
-    End Sub
 
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                Dim where As New Dictionary(Of String, Object)
+
+                where.Add("Pid", pm.id)
+
+                params.Add(dataList.FactureTable, 0)
+
+                If c.UpdateRecord(dataList.payementTable, params, where) Then
+
+                    Dim avc As Double = dataList.TB.avance
+                    avc -= pm.Payement.montant
+
+                    where.Clear()
+                    params.Clear()
+
+                    where.Add("id", dataList.Id)
+                    params.Add("avance", avc)
+
+                    If c.UpdateRecord(dataList.FactureTable, params, where) Then
+                        dataList.TB.avance = avc
+                        dataList.plPmBody.Controls.Remove(pm)
+                    End If
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
+    End Sub
+    'Total Bloc
+    Private Sub AddFiles(ByVal dataList As DataList)
+
+    End Sub
 
 
 #Region "IDisposable Support"

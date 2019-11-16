@@ -166,6 +166,7 @@
                 PlButtom.Controls.Add(addR)
                 addR.txtN.txtReadOnly = True
                 addR.txtRf.txtReadOnly = True
+                addR.txtQ.text = article.qte
                 addR.FillFields(article)
             Else
                 PlButtom.Height = 1
@@ -263,11 +264,9 @@
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
         RaiseEvent DeleteItem(Me)
     End Sub
-
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
         EditMode = True
     End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetArticleInfos(arid)
     End Sub
