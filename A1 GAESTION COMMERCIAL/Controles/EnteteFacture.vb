@@ -3,8 +3,18 @@
     Dim _bL As String
 
     Public Event NewFacture()
-    Public Event SearchById(ByVal id As Integer)
+    Public Event SearchById(ByVal id As String)
     Public Event SearchByDate()
+    Public Event SaveChanges(ByVal id As Integer)
+    Public Event Type_Transformer(ByVal id As Integer)
+    Public Event PayFacture(ByVal id As Integer)
+    Public Event DuplicateFacture(ByVal id As Integer)
+    Public Event DeleteFacture(ByVal id As Integer)
+    Public Event SavePdf()
+    Public Event PrintFacture()
+    Public Event CommandDelivry(ByVal id As Integer)
+    Public Event Facturer(ByVal id As Integer)
+    Public Event AvoirFacture(ByVal id As Integer)
 
     Private fid As Integer
     Private cid As Integer
@@ -21,34 +31,19 @@
     Dim info As String
     Dim delai As Integer
 
-    Event SaveChanges(ByVal p1 As String)
-
-    Event Type_Transformer(ByVal p1 As String)
-
-    Event PayFacture(ByVal p1 As String)
-
-    Event DuplicateFacture(ByVal p1 As String)
-
-    Event DeleteFacture(ByVal p1 As String)
-
-    Event SavePdf()
-
-    Event PrintFacture()
-
-    Event CommandDelivry(ByVal p1 As String)
-
-    Event Facturer(ByVal p1 As String)
 
 
+    
 
-    Public Property Id() As String
+    Public Property Id() As Integer
         Get
             Return fid
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             fid = value
             Clear()
-            lbId.Text = value
+
+            lbId.Text = Form1.prefix & value
 
             ''''''
             If value = 0 Then
@@ -126,6 +121,7 @@
             _Type = value
             lbType.Text = value
             Id = 0
+            btAvoir.Visible = False
 
             If value = "Devis" Then
                 btFacturer.Visible = False
@@ -147,6 +143,12 @@
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
+                If Statut <> "CREATION" Then btAvoir.Visible = True
+            ElseIf value = "Avoir" Then
+                btFacturer.Visible = False
+                btDelivry.Visible = False
+                btTranformer.Visible = False
+                btSolde.Visible = False
             End If
         End Set
     End Property
@@ -207,6 +209,16 @@
         End Get
         Set(ByVal value As String)
             txtStatus.text = value
+
+            If value <> "CREATION" And Type = "Facture" Then btAvoir.Visible = True
+        End Set
+    End Property
+    Public Property HasJoinFiles As Boolean
+        Get
+            Return False
+        End Get
+        Set(ByVal value As Boolean)
+            pbJoindre.Visible = value
         End Set
     End Property
 
@@ -231,9 +243,9 @@
     End Sub
 
     Private Sub PictureBox7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox7.Click
-        If Not IsNumeric(txtSearch.text) Then Exit Sub
-        Dim fctid As Integer = CInt(txtSearch.text)
-        RaiseEvent SearchById(fctid)
+        'If Not IsNumeric(txtSearch.text) Then Exit Sub
+        'Dim fctid As Integer = CInt(txtSearch.text)
+        RaiseEvent SearchById(txtSearch.text)
     End Sub
     Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
         RaiseEvent SearchByDate()
@@ -264,5 +276,12 @@
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacturer.Click
         RaiseEvent Facturer(Id)
+    End Sub
+    Private Sub txtSearch_KeyDownOk() Handles txtSearch.KeyDownOk
+        RaiseEvent SearchById(txtSearch.text)
+    End Sub
+
+    Private Sub btAvoir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAvoir.Click
+        RaiseEvent AvoirFacture(Id)
     End Sub
 End Class

@@ -67,6 +67,10 @@ Partial Class TotalBloc
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel18 = New System.Windows.Forms.Panel()
         Me.Panel19 = New System.Windows.Forms.Panel()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.lbpj = New System.Windows.Forms.Label()
+        Me.Panel22 = New System.Windows.Forms.Panel()
+        Me.Panel23 = New System.Windows.Forms.Panel()
         Me.plAddPayement = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel20 = New System.Windows.Forms.Panel()
@@ -76,10 +80,6 @@ Partial Class TotalBloc
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.Panel16 = New System.Windows.Forms.Panel()
-        Me.Panel17 = New System.Windows.Forms.Panel()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Panel22 = New System.Windows.Forms.Panel()
-        Me.Panel23 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
@@ -102,9 +102,9 @@ Partial Class TotalBloc
         Me.Panel1.SuspendLayout()
         Me.Panel14.SuspendLayout()
         Me.plWriter.SuspendLayout()
+        Me.Panel17.SuspendLayout()
         Me.plAddPayement.SuspendLayout()
         Me.plMP.SuspendLayout()
-        Me.Panel17.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -623,10 +623,53 @@ Partial Class TotalBloc
         Me.Panel19.Size = New System.Drawing.Size(348, 2)
         Me.Panel19.TabIndex = 2
         '
+        'Panel17
+        '
+        Me.Panel17.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
+        Me.Panel17.Controls.Add(Me.PictureBox6)
+        Me.Panel17.Controls.Add(Me.lbpj)
+        Me.Panel17.Controls.Add(Me.Panel22)
+        Me.Panel17.Controls.Add(Me.PictureBox7)
+        Me.Panel17.Controls.Add(Me.Panel23)
+        Me.Panel17.Location = New System.Drawing.Point(177, 125)
+        Me.Panel17.MaximumSize = New System.Drawing.Size(500, 44)
+        Me.Panel17.Name = "Panel17"
+        Me.Panel17.Size = New System.Drawing.Size(189, 38)
+        Me.Panel17.TabIndex = 2
+        '
+        'lbpj
+        '
+        Me.lbpj.BackColor = System.Drawing.Color.Transparent
+        Me.lbpj.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbpj.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbpj.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lbpj.Location = New System.Drawing.Point(31, 0)
+        Me.lbpj.Name = "lbpj"
+        Me.lbpj.Size = New System.Drawing.Size(125, 36)
+        Me.lbpj.TabIndex = 2
+        Me.lbpj.Text = "Joindre des fichiers"
+        Me.lbpj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Panel22
+        '
+        Me.Panel22.BackColor = System.Drawing.Color.LightGray
+        Me.Panel22.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel22.Location = New System.Drawing.Point(188, 0)
+        Me.Panel22.Name = "Panel22"
+        Me.Panel22.Size = New System.Drawing.Size(1, 36)
+        Me.Panel22.TabIndex = 2
+        '
+        'Panel23
+        '
+        Me.Panel23.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel23.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel23.Location = New System.Drawing.Point(0, 36)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Size = New System.Drawing.Size(189, 2)
+        Me.Panel23.TabIndex = 2
+        '
         'plAddPayement
         '
-        Me.plAddPayement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.plAddPayement.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
         Me.plAddPayement.Controls.Add(Me.PictureBox4)
         Me.plAddPayement.Controls.Add(Me.Label12)
@@ -730,53 +773,6 @@ Partial Class TotalBloc
         Me.Panel16.Size = New System.Drawing.Size(348, 2)
         Me.Panel16.TabIndex = 2
         '
-        'Panel17
-        '
-        Me.Panel17.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel17.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
-        Me.Panel17.Controls.Add(Me.PictureBox6)
-        Me.Panel17.Controls.Add(Me.Label8)
-        Me.Panel17.Controls.Add(Me.Panel22)
-        Me.Panel17.Controls.Add(Me.PictureBox7)
-        Me.Panel17.Controls.Add(Me.Panel23)
-        Me.Panel17.Location = New System.Drawing.Point(180, 125)
-        Me.Panel17.MaximumSize = New System.Drawing.Size(500, 44)
-        Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(186, 38)
-        Me.Panel17.TabIndex = 2
-        '
-        'Label8
-        '
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label8.Location = New System.Drawing.Point(31, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(125, 36)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Joindre des fichiers"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel22
-        '
-        Me.Panel22.BackColor = System.Drawing.Color.LightGray
-        Me.Panel22.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel22.Location = New System.Drawing.Point(185, 0)
-        Me.Panel22.Name = "Panel22"
-        Me.Panel22.Size = New System.Drawing.Size(1, 36)
-        Me.Panel22.TabIndex = 2
-        '
-        'Panel23
-        '
-        Me.Panel23.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel23.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel23.Location = New System.Drawing.Point(0, 36)
-        Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(186, 2)
-        Me.Panel23.TabIndex = 2
-        '
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.WhiteSmoke
@@ -794,7 +790,7 @@ Partial Class TotalBloc
         Me.PictureBox6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
         Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox6.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox6.Location = New System.Drawing.Point(154, 0)
+        Me.PictureBox6.Location = New System.Drawing.Point(157, 0)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(31, 36)
         Me.PictureBox6.TabIndex = 5
@@ -881,9 +877,9 @@ Partial Class TotalBloc
         Me.Panel1.ResumeLayout(False)
         Me.Panel14.ResumeLayout(False)
         Me.plWriter.ResumeLayout(False)
+        Me.Panel17.ResumeLayout(False)
         Me.plAddPayement.ResumeLayout(False)
         Me.plMP.ResumeLayout(False)
-        Me.Panel17.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -955,7 +951,7 @@ Partial Class TotalBloc
     Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel17 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lbpj As System.Windows.Forms.Label
     Friend WithEvents Panel22 As System.Windows.Forms.Panel
     Friend WithEvents Panel23 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox

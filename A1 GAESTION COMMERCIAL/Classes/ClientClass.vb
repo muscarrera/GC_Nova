@@ -30,10 +30,19 @@
     End Function
 
     Public Sub AddDataList()
-        Form1.plBody.Controls.Clear()
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
             Dim dt As DataTable = a.SelectDataTable("Client", {"*"})
+            'If Form1.plBody.Controls.Count > 0 Then
+            '    If TypeOf Form1.plBody.Controls(0) Is ProductList Then
 
+            '        Dim dls As ProductList = Form1.plBody.Controls(0)
+            '        dls.Mode = "Client"
+            '        dls.DataSource = dt
+            '        Exit Sub
+            '    End If
+            'End If
+
+            Form1.plBody.Controls.Clear()
             Dim ds As New ProductList
             ds.Mode = "Client"
             ds.DataSource = dt
@@ -41,8 +50,8 @@
             ds.Dock = DockStyle.Fill
             AddHandler ds.GetElements, AddressOf GetElements
             AddHandler ds.NewElement, AddressOf NewElement
-            AddHandler ds.EditElement, AddressOf EditElement
-            AddHandler ds.DeleteElement, AddressOf DeleteElement
+            AddHandler ds.EditArticle, AddressOf EditElement
+            AddHandler ds.DeleteArticle, AddressOf DeleteElement
             AddHandler ds.ModeChanged, AddressOf ModeChanged
 
             Form1.plBody.Controls.Add(ds)
@@ -86,7 +95,7 @@
             GetElements(ds)
         End If
     End Sub
-    Private Sub EditElement(ByRef ls As ListLine)
+    Private Sub EditElement(ByRef ls As ClientRow)
         Dim pr As New AddEditClient
         pr.Id = ls.Id
         If pr.ShowDialog = DialogResult.OK Then
@@ -96,7 +105,7 @@
             ls.isEdited = True
         End If
     End Sub
-    Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ListLine)
+    Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ClientRow)
         If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
         End If

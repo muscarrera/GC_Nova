@@ -9,12 +9,14 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ClientRow.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.DataList.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.EnteteFacture.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.FileLine.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ListLine.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ListRow.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ProductList.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TotalBloc.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddEditClient.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddEditProduct.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddFiles.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ChooseClient.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.Form1.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ModePayement.resources

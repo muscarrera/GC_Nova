@@ -24,13 +24,19 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.plHead = New System.Windows.Forms.Panel()
         Me.plHeader = New System.Windows.Forms.Panel()
+        Me.plHeaderButton = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -41,18 +47,13 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.plBody = New System.Windows.Forms.Panel()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.plHeaderButton = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
+        Me.plHeaderButton.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        Me.Panel6.SuspendLayout()
-        Me.plHeaderButton.SuspendLayout()
         Me.SuspendLayout()
         '
         'plHead
@@ -79,6 +80,31 @@ Partial Class Form1
         Me.plHeader.Size = New System.Drawing.Size(1011, 36)
         Me.plHeader.TabIndex = 3
         '
+        'plHeaderButton
+        '
+        Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
+        Me.plHeaderButton.Controls.Add(Me.Label5)
+        Me.plHeaderButton.Controls.Add(Me.Button10)
+        Me.plHeaderButton.Controls.Add(Me.Button1)
+        Me.plHeaderButton.Controls.Add(Me.Button11)
+        Me.plHeaderButton.Controls.Add(Me.Button12)
+        Me.plHeaderButton.Controls.Add(Me.Button6)
+        Me.plHeaderButton.Controls.Add(Me.Button13)
+        Me.plHeaderButton.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.plHeaderButton.Location = New System.Drawing.Point(117, 0)
+        Me.plHeaderButton.Name = "plHeaderButton"
+        Me.plHeaderButton.Size = New System.Drawing.Size(894, 36)
+        Me.plHeaderButton.TabIndex = 9
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(62, 72)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(39, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Label5"
+        '
         'Button10
         '
         Me.Button10.Dock = System.Windows.Forms.DockStyle.Left
@@ -91,6 +117,15 @@ Partial Class Form1
         Me.Button10.TabIndex = 5
         Me.Button10.Text = "Produit"
         Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(105, 92)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(120, 35)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Button11
         '
@@ -106,31 +141,46 @@ Partial Class Form1
         Me.Button11.Text = "Contact"
         Me.Button11.UseVisualStyleBackColor = False
         '
-        'Button12
-        '
-        Me.Button12.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button12.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.Button12.Location = New System.Drawing.Point(121, 0)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(118, 36)
-        Me.Button12.TabIndex = 7
-        Me.Button12.Text = "Achats"
-        Me.Button12.UseVisualStyleBackColor = True
-        '
         'Button6
         '
         Me.Button6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.Button6.Location = New System.Drawing.Point(239, 0)
+        Me.Button6.Location = New System.Drawing.Point(121, 0)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(118, 36)
         Me.Button6.TabIndex = 4
         Me.Button6.Text = "Ventes"
         Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button12.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button12.Location = New System.Drawing.Point(239, 0)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(118, 36)
+        Me.Button12.TabIndex = 7
+        Me.Button12.Text = "Achats"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.BackColor = System.Drawing.Color.SlateBlue
+        Me.Button13.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button13.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button13.Location = New System.Drawing.Point(0, 0)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(121, 36)
+        Me.Button13.TabIndex = 8
+        Me.Button13.Tag = "Accueil"
+        Me.Button13.Text = "Accueil"
+        Me.Button13.UseVisualStyleBackColor = False
         '
         'Label7
         '
@@ -150,20 +200,34 @@ Partial Class Form1
         Me.Button5.Text = "Button5"
         Me.Button5.UseVisualStyleBackColor = True
         '
-        'Button13
+        'Panel6
         '
-        Me.Button13.BackColor = System.Drawing.Color.SlateBlue
-        Me.Button13.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button13.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.Button13.Location = New System.Drawing.Point(0, 0)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(121, 36)
-        Me.Button13.TabIndex = 8
-        Me.Button13.Tag = "Accueil"
-        Me.Button13.Text = "Accueil"
-        Me.Button13.UseVisualStyleBackColor = False
+        Me.Panel6.BackColor = System.Drawing.Color.Transparent
+        Me.Panel6.Controls.Add(Me.Label4)
+        Me.Panel6.Controls.Add(Me.Button4)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel6.Location = New System.Drawing.Point(0, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(117, 36)
+        Me.Panel6.TabIndex = 3
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(62, 72)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(39, 13)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Label4"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(105, 92)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(120, 35)
+        Me.Button4.TabIndex = 0
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -266,68 +330,8 @@ Partial Class Form1
         Me.plBody.Size = New System.Drawing.Size(1011, 402)
         Me.plBody.TabIndex = 1
         '
-        'Button4
+        'PrintDoc
         '
-        Me.Button4.Location = New System.Drawing.Point(105, 92)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(120, 35)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(62, 72)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 13)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Label4"
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.Transparent
-        Me.Panel6.Controls.Add(Me.Label4)
-        Me.Panel6.Controls.Add(Me.Button4)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(117, 36)
-        Me.Panel6.TabIndex = 3
-        '
-        'plHeaderButton
-        '
-        Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
-        Me.plHeaderButton.Controls.Add(Me.Label5)
-        Me.plHeaderButton.Controls.Add(Me.Button10)
-        Me.plHeaderButton.Controls.Add(Me.Button1)
-        Me.plHeaderButton.Controls.Add(Me.Button11)
-        Me.plHeaderButton.Controls.Add(Me.Button6)
-        Me.plHeaderButton.Controls.Add(Me.Button12)
-        Me.plHeaderButton.Controls.Add(Me.Button13)
-        Me.plHeaderButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plHeaderButton.Location = New System.Drawing.Point(117, 0)
-        Me.plHeaderButton.Name = "plHeaderButton"
-        Me.plHeaderButton.Size = New System.Drawing.Size(894, 36)
-        Me.plHeaderButton.TabIndex = 9
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(62, 72)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Label5"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(105, 92)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 35)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -342,14 +346,14 @@ Partial Class Form1
         Me.plHead.ResumeLayout(False)
         Me.plHeader.ResumeLayout(False)
         Me.plHeader.PerformLayout()
+        Me.plHeaderButton.ResumeLayout(False)
+        Me.plHeaderButton.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
-        Me.plHeaderButton.ResumeLayout(False)
-        Me.plHeaderButton.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -378,5 +382,6 @@ Partial Class Form1
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
 
 End Class

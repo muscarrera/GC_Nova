@@ -3,7 +3,7 @@
 
 
 
-    Public Event SearchById(ByVal id As Integer, ByRef ds As DataList)
+    Public Event SearchById(ByVal id As string, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
     Public Event OperationTypeChanged()
@@ -21,8 +21,12 @@
     Public Event PayFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
+    Public Event AvoirFacture(ByVal p1 As Integer, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
     'Bloc Tolal Event
     Public Event EditModePayement(ByRef dataList As DataList)
+    Public Event AddFiles(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
     'ListLine events
     Public Event EditSelectedFacture(ByVal id As Integer)
     Public Event DeleteItem(ByVal ls As ListLine)
@@ -34,7 +38,6 @@
     Public Event AddPayement(ByVal pm As Payement, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
     Public Event EditPayement(ByVal pm As AddPayementRow, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
     Public Event DeletePayement(ByVal pm As AddPayementRow, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
 
 
     'Members
@@ -52,13 +55,6 @@
     Public DetailsTable As String = "Details_Sell_Facture"
     Private _isSell As Boolean = True
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
-
-    Event AddFiles(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-
-
-
-
 
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
@@ -101,50 +97,65 @@
                 payementTable = "Client_Payement"
                 FactureTable = "Sell_Facture"
                 DetailsTable = "Details_Sell_Facture"
-                Entete.Type = "Facture "
-                '
-            ElseIf value = "Buy_Facture" Then
-                clientTable = "Company"
-                payementTable = "Company_Payement"
-                FactureTable = "Buy_Facture"
-                DetailsTable = "Details_Buy_Facture"
-                Entete.Type = "Facture "
-                isSell = False
-                '
+                Entete.Type = "Facture"
+                'isSell = True
+                Form1.prefix = "Fc-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Devis" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Devis"
                 DetailsTable = "Details_Devis"
-                Entete.Type = "Devis "
-                '
+                Entete.Type = "Devis"
+                'isSell = True
+                Form1.prefix = "Dv-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Commande_Client" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Commande_Client"
                 DetailsTable = "Details_Commande"
                 Entete.Type = "Commande"
-
+                'isSell = True
+                Form1.prefix = "Cmd-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Bon_Livraison" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Bon_Livraison"
                 DetailsTable = "Details_Bon_Livraison"
-                Entete.Type = "BL "
-                '
+                Entete.Type = "BL"
+                'isSell = True
+                Form1.prefix = "BL-" & Entete.FactureDate.ToString("yy") & "/000"
+            ElseIf value = "Buy_Facture" Then
+                clientTable = "Company"
+                payementTable = "Company_Payement"
+                FactureTable = "Buy_Facture"
+                DetailsTable = "Details_Buy_Facture"
+                Entete.Type = "Facture"
+                'isSell = False
+                Form1.prefix = "Fc-Ent-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Bon_Commande" Then
                 clientTable = "Company"
                 payementTable = "Company_Payement"
                 FactureTable = "Bon_Commande"
                 DetailsTable = "Details_Bon_Commande"
-                Entete.Type = "BC "
-
+                Entete.Type = "BC"
+                'isSell = False
+                Form1.prefix = "BC-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Bon_Achat" Then
                 clientTable = "Company"
-                payementTable = "Company_Payement"
+                payementTable =  "Client_Payement"
                 FactureTable = "Bon_Achat"
                 DetailsTable = "Details_Bon_Achat"
-                Entete.Type = "BA "
+                Entete.Type = "BA"
+                'isSell = False
+                Form1.prefix = "BA-" & Entete.FactureDate.ToString("yy") & "/000"
+            ElseIf value = "Sell_Avoir" Then
+                clientTable = "client"
+                payementTable = "Client_Payement"
+                FactureTable = "Sell_Avoir"
+                DetailsTable = "Details_Sell_Avoir"
+                Entete.Type = "Avoir"
+                'isSell = False
+                Form1.prefix = "Av-" & Entete.FactureDate.ToString("yy") & "/000"
             End If
 
             RaiseEvent OperationTypeChanged()
@@ -163,8 +174,11 @@
             Entete.Bl = value.bl
             DataSource = value.DataSource
             TB.Writer = value.writer
+
             'payement mode
             TB.ModePayement = value.modePayement
+            TB.pj = value.pj
+            TB.avance = value.Avance
             PayementDataSource = value.PaymenetDataSource
 
         End Set
@@ -175,6 +189,9 @@
         End Get
         Set(ByVal value As String)
             _Mode = value
+            PlPayement.Visible = False
+            'Pl.Controls.Clear()
+
             If value = "LIST" Then
                 plDetailsHeader.Visible = False
                 plNewElement.Height = 1
@@ -212,7 +229,7 @@
     End Property
     Public ReadOnly Property isPayed As Boolean
         Get
-            Return TB.TotalTTC >= TB.avance
+            Return TB.TotalTTC <= TB.avance
         End Get
     End Property
     Public Property DataSource As DataTable
@@ -273,33 +290,15 @@
     End Property
     Public Property PayementDataSource As DataTable
         Get
-            'Dim table As New DataTable
-            '' Create four typed columns in the DataTable.
-            'table.Columns.Add("Pid", GetType(Integer))
-            'table.Columns.Add("name", GetType(String))
-            'table.Columns.Add("cid", GetType(Integer))
-            'table.Columns.Add("montant", GetType(Double))
-            'table.Columns.Add("way", GetType(Double))
-            'table.Columns.Add("ech", GetType(Double))
-            'table.Columns.Add("ref", GetType(Double))
-            'table.Columns.Add("desgnation", GetType(String))
-            'table.Columns.Add("depot", GetType(Integer))
-            'table.Columns.Add("remise", GetType(Integer))
-
-            'Dim a As ListRow
-            'For Each a In Pl.Controls
-            '    ' Add  rows with those columns filled in the DataTable.
-            '    table.Rows.Add(a.arid, a.Name, a.cid, a.qte, a.sprice, a.bprice,
-            '                  a.TVA, a.ref, a.depot, a.remise)
-            'Next
             Return Nothing
         End Get
         Set(ByVal value As DataTable)
 
+            plPmBody.Controls.Clear()
+            PlPayement.Visible = False
+
             If Operation = "Devis" Then Exit Property
 
-            '_DataSource = value
-            plPmBody.Controls.Clear()
             If IsNothing(value) Then Exit Property
 
             If value.Rows.Count > 0 Then
@@ -310,7 +309,6 @@
                                            StrValue(value, "way", i), DblValue(value, "montant", i),
                                            StrValue(value, "ech", i), StrValue(value, "ref", i),
                                            StrValue(value, "desig", i))
-                   
 
                     Dim R As New AddPayementRow
                     R.Payement = a
@@ -356,11 +354,44 @@
         Set(ByVal value As Boolean)
             _isSell = value
 
-            Operation = "Devis"
-            Mode = "LIST"
+            If value Then
+                Button3.Visible = True
+                Button1.Visible = True
+
+                Button9.Tag = "Sell_Facture"
+                Button8.Tag = "Bon_Livraison"
+                Button8.Text = "BL"
+                Button7.Text = "Commande"
+                Button7.Tag = "Commande_Client"
+
+                Button1_Click_1(Button1, Nothing)
+            Else
+                Button3.Visible = False
+                Button1.Visible = False
+
+                Button9.Tag = "Buy_Facture"
+                Button8.Tag = "Bon_Achat"
+                Button8.Text = "Achats"
+                Button7.Text = "BC"
+                Button7.Tag = "Bon_Commande"
+
+                Button1_Click_1(Button7, Nothing)
+            End If
+
+
 
         End Set
     End Property
+    Public Property pj As Integer
+        Get
+            Return TB.pj
+        End Get
+        Set(ByVal value As Integer)
+            TB.pj = value
+            Entete.HasJoinFiles = CBool(value)
+        End Set
+    End Property
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -465,41 +496,43 @@
     Private Sub EnteteFacture1_NewFacture() Handles Entete.NewFacture
         RaiseEvent NewFacture(FactureTable, clientTable, Me)
     End Sub
-    Private Sub Entete_SearchById(ByVal id As System.Int32) Handles Entete.SearchById
+    Private Sub Entete_SearchById(ByVal id As String) Handles Entete.SearchById
         RaiseEvent SearchById(id, Me)
     End Sub
     Private Sub Entete_SearchByDate() Handles Entete.SearchByDate
         RaiseEvent SearchByDate(Me)
     End Sub
-    Private Sub Entete_CommandDelivry(ByVal p1 As System.String) Handles Entete.CommandDelivry
+    Private Sub Entete_CommandDelivry(ByVal p1 As Integer) Handles Entete.CommandDelivry
         RaiseEvent CommandeDelivry(CInt(p1), Me)
     End Sub
-    Private Sub Entete_DeleteFacture(ByVal p1 As System.String) Handles Entete.DeleteFacture
+    Private Sub Entete_DeleteFacture(ByVal p1 As Integer) Handles Entete.DeleteFacture
         RaiseEvent DeleteFacture(CInt(p1), Me)
     End Sub
-    Private Sub Entete_DuplicateFacture(ByVal p1 As System.String) Handles Entete.DuplicateFacture
+    Private Sub Entete_DuplicateFacture(ByVal p1 As Integer) Handles Entete.DuplicateFacture
         RaiseEvent DuplicateFacture(CInt(p1), Me)
     End Sub
-    Private Sub Entete_Facturer(ByVal p1 As System.String) Handles Entete.Facturer
+    Private Sub Entete_Facturer(ByVal p1 As Integer) Handles Entete.Facturer
         RaiseEvent Facturer(CInt(p1), Me)
     End Sub
-    Private Sub Entete_PayFacture(ByVal p1 As System.String) Handles Entete.PayFacture
+    Private Sub Entete_PayFacture(ByVal p1 As Integer) Handles Entete.PayFacture
         RaiseEvent PayFacture(CInt(p1), Me)
         Me.ScrollControlIntoView(plPmHeader)
     End Sub
     Private Sub Entete_PrintFacture() Handles Entete.PrintFacture
         RaiseEvent PrintFacture(Me)
     End Sub
-    Private Sub Entete_SaveChanges(ByVal p1 As System.String) Handles Entete.SaveChanges
+    Private Sub Entete_SaveChanges(ByVal p1 As Integer) Handles Entete.SaveChanges
         RaiseEvent SaveChanges(CInt(p1), Me)
     End Sub
     Private Sub Entete_SavePdf() Handles Entete.SavePdf
         RaiseEvent SavePdf(Me)
     End Sub
-    Private Sub Entete_Type_Transformer(ByVal p1 As System.String) Handles Entete.Type_Transformer
+    Private Sub Entete_Type_Transformer(ByVal p1 As Integer) Handles Entete.Type_Transformer
         RaiseEvent TypeTransformer(CInt(p1), Me)
     End Sub
-
+    Private Sub Entete_Avoir(ByVal p1 As Integer) Handles Entete.AvoirFacture
+        RaiseEvent AvoirFacture(p1, Me)
+    End Sub
     'Total Bloc Events
     Private Sub TotalBloc1_ValueChanged() Handles TB.ValueChanged
         Dim h As Integer = 300
@@ -587,6 +620,9 @@
     End Sub
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click, Button3.Click
         Dim bt As Button = sender
+        Clear()
+        Entete.txtSearch.text = ""
+        Mode = "LIST"
         Operation = bt.Tag
         pbBar.Width = bt.Right
         pbBar.BackColor = RandomColor()
@@ -638,7 +674,9 @@
         RaiseEvent AddFiles(Me)
     End Sub
     Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        plPmHeader.Visible = True
+        'plPmHeader.Height = 38
+        'PlPayement.Height = 222
+        PlPayement.Visible = True
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         PlPayement.Height = 0
@@ -647,4 +685,6 @@
         FillPayement(Nothing)
     End Sub
 
+
+  
 End Class

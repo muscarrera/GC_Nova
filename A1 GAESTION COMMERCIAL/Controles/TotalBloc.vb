@@ -1,8 +1,11 @@
 ﻿Public Class TotalBloc
 
+    Dim _pj As Integer
+
     Public Event EditModePayement()
     Public Event ValueChanged()
     Public Event AddEditPayement()
+    Public Event AddFiles()
 
     Private _ModePayement As String
     Private _avc As Double = 0
@@ -10,11 +13,6 @@
     Private _tva As Double = 0
     Private _rs As Double = 0
     Private _ht As Double = 0
-
-    Event AddFiles()
-
-
-
 
 
     Public Property TotalHt As Double
@@ -55,6 +53,21 @@
             RaiseEvent ValueChanged()
         End Set
     End Property
+    Public Property pj As Integer
+        Get
+            Return _pj
+        End Get
+        Set(ByVal value As Integer)
+            _pj = value
+
+            If value = 0 Then
+                lbpj.Text = "Joindre des fichiers"
+            Else
+                lbpj.Text = "* " & value & " Fichies"
+            End If
+        End Set
+    End Property
+
     Public ReadOnly Property DroitTimbre As Double
         Get
             Dim T As Double = 0

@@ -23,20 +23,18 @@ Partial Class AddFiles
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.pl = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.lbPath = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -53,16 +51,6 @@ Partial Class AddFiles
         Me.Panel1.Padding = New System.Windows.Forms.Padding(5)
         Me.Panel1.Size = New System.Drawing.Size(742, 122)
         Me.Panel1.TabIndex = 2
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(44, 30)
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
         '
         'lbRef
         '
@@ -81,36 +69,20 @@ Partial Class AddFiles
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.Location = New System.Drawing.Point(62, 29)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(51, 18)
+        Me.Label22.Size = New System.Drawing.Size(44, 18)
         Me.Label22.TabIndex = 5
-        Me.Label22.Text = "Client"
+        Me.Label22.Text = "Liens"
         '
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel24.Controls.Add(Me.Button1)
-        Me.Panel24.Controls.Add(Me.Button6)
         Me.Panel24.Controls.Add(Me.Panel29)
-        Me.Panel24.Controls.Add(Me.lbPath)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel24.Location = New System.Drawing.Point(5, 80)
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(732, 37)
         Me.Panel24.TabIndex = 3
-        '
-        'Button6
-        '
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(603, 4)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(116, 28)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Enregistrer   "
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = True
         '
         'Panel29
         '
@@ -150,27 +122,27 @@ Partial Class AddFiles
         Me.Panel3.Size = New System.Drawing.Size(742, 23)
         Me.Panel3.TabIndex = 4
         '
-        'lbPath
+        'PictureBox1
         '
-        Me.lbPath.AutoSize = True
-        Me.lbPath.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbPath.Location = New System.Drawing.Point(8, 10)
-        Me.lbPath.Name = "lbPath"
-        Me.lbPath.Size = New System.Drawing.Size(39, 18)
-        Me.lbPath.TabIndex = 5
-        Me.lbPath.Text = "Path"
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Aqua_Stripped_Folder_Documents_50968
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(44, 30)
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
         '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ICON_22
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(482, 4)
+        Me.Button1.Location = New System.Drawing.Point(601, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.Button1.Size = New System.Drawing.Size(115, 28)
         Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Enregistrer   "
+        Me.Button1.Text = "UPLOAD"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -185,12 +157,11 @@ Partial Class AddFiles
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "AddFiles"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AddFiles"
+        Me.Text = "Liste"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel24.ResumeLayout(False)
-        Me.Panel24.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -199,11 +170,9 @@ Partial Class AddFiles
     Friend WithEvents lbRef As System.Windows.Forms.Label
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
-    Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Panel29 As System.Windows.Forms.Panel
     Friend WithEvents Panel23 As System.Windows.Forms.Panel
     Friend WithEvents pl As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents lbPath As System.Windows.Forms.Label
 End Class

@@ -51,8 +51,9 @@
                 params.Add("isAdmin", "CREATION")
                 params.Add("isPayed", False)
                 params.Add("modePayement", "-")
-                params.Add("bl", "-")
                 params.Add("droitTimbre", 0)
+                params.Add("pj", 0)
+
                 fid = c.InsertRecord(tb_F, params, True)
             End Using
 
@@ -139,39 +140,35 @@
             MsgBox(ex.Message)
         End Try
     End Sub
-    Public Sub SearchById(ByVal id As Integer, ByRef ds As DataList)
+    Public Sub SearchById(ByVal id As String, ByRef ds As DataList)
         Try
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
 
+            If IsNumeric(id) Then
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    params.Add("id Like ", "%" & id & "%")
+                    dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+                End Using
+            Else
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    params.Add("name Like ", "%" & id & "%")
+                    dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+                End Using
+            End If
 
-            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                params.Add("id Like ", "%" & id & "%")
-                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-            End Using
 
-            If dt.Rows.Count > 0 Then
+
+            If dt.Rows.Count = 1 Then
                 ds.Clear()
                 ds.Mode = "DETAILS"
                 ds.Id = dt.Rows(0).Item(0)
-                'ds.Mode = "LIST"
-                'Dim arr As New ListLine
 
-                'arr.Id = dt.Rows(0).Item(0)
+            ElseIf dt.Rows.Count > 1 Then
+                ds.Clear()
+                ds.Mode = "LIST"
 
-                'arr.Libele = StrValue(dt, "name", 0)
-                'arr.Total = DblValue(dt, "total", 0)
-                'arr.Avance = DblValue(dt, "avance", 0)
-                'arr.remise = DblValue(dt, "remise", 0)
-
-                'arr.Dock = DockStyle.Top
-                'arr.BringToFront()
-
-                'AddHandler arr.EditSelectedFacture, AddressOf EditSelectedFacture
-                'AddHandler arr.DeleteItem, AddressOf DeleteItem
-                'AddHandler arr.GetFactureInfos, AddressOf GetFactureInfos
-
-                'ds.Pl.Controls.Add(arr)
+                ds.DataList = dt
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -240,6 +237,17 @@
         End Try
     End Sub
     Public Sub AddDataList(ByVal op As String)
+
+        If Form1.plBody.Controls.Count > 0 Then
+            If TypeOf Form1.plBody.Controls(0) Is DataList Then
+
+                Dim dls As DataList = Form1.plBody.Controls(0)
+                dls.isSell = CBool(op)
+
+                Exit Sub
+            End If
+        End If
+
         Form1.plBody.Controls.Clear()
 
         Dim ds As New DataList
@@ -262,6 +270,7 @@
         AddHandler ds.PayFacture, AddressOf PayFacture
         AddHandler ds.DuplicateFacture, AddressOf DuplicateFacture
         AddHandler ds.DeleteFacture, AddressOf DeleteFacture
+        AddHandler ds.AvoirFacture, AddressOf AvoirFacture
         AddHandler ds.GetFactureInfos, AddressOf GetFactureInfos
         AddHandler ds.DeleteItem, AddressOf DeleteItem
         AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
@@ -274,21 +283,66 @@
         'Joindre fichiers
         AddHandler ds.AddFiles, AddressOf AddFiles
 
-
-
         Form1.plBody.Controls.Add(ds)
     End Sub
     'Entete events
     Private Sub SavePdf(ByVal ds As DataList)
+        If ds.Operation = "Devis" Then
+            Form1.Facture_Title = "Devis "
+        ElseIf ds.Operation = "Sell_Facture" Then
+            Form1.Facture_Title = "Facture "
+            ''''//
+        ElseIf ds.Operation = "Bon_Livraison" Then
+            Form1.Facture_Title = "Bon de Livraison "
+        ElseIf ds.Operation = "Bon_Commande" Then
+            Form1.Facture_Title = "Bon de Commande "
+        ElseIf ds.Operation = "Bon_Achat" Then
+            Form1.Facture_Title = "Bon de Achat "
+            ''''//
+        ElseIf ds.Operation = "Commande_Client" Then
+            Form1.Facture_Title = "Commande Client "
+        ElseIf ds.Operation = "Sell_Avoir" Then
+            Form1.Facture_Title = "Bon d'Avoir "
+        End If
+        Form1.printOnPaper = False
 
-        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Enregistrer")
-
-
-    End Sub
-    Private Sub PrintFacture(ByVal ds As DataList)
+        Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+        Form1.PrintDoc.Print()
 
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
 
+    End Sub
+    Private Sub PrintFacture(ByVal ds As DataList)
+        If ds.Operation = "Devis" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
+            Form1.Facture_Title = "Devis "
+        ElseIf ds.Operation = "Sell_Facture" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
+            Form1.Facture_Title = "Facture "
+            ''''//
+        ElseIf ds.Operation = "Bon_Livraison" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+            Form1.Facture_Title = "Bon de Livraison "
+        ElseIf ds.Operation = "Bon_Commande" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+            Form1.Facture_Title = "Bon de Commande "
+        ElseIf ds.Operation = "Bon_Achat" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+            Form1.Facture_Title = "Bon de Achat "
+            ''''//
+        ElseIf ds.Operation = "Commande_Client" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+            Form1.Facture_Title = "Commande Client "
+        ElseIf ds.Operation = "Sell_Avoir" Then
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
+            Form1.Facture_Title = "Bon d'Avoir "
+        Else
+            Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+        End If
+        Form1.printOnPaper = True
+        Form1.PrintDoc.Print()
+
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
     End Sub
     Private Sub SaveChanges(ByVal id As Integer, ByRef ds As DataList)
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -304,7 +358,7 @@
             params.Add("total", ds.TB.TotalTTC)
             params.Add("avance", ds.TB.avance)
             'params.Add("admin", admin)
-            params.Add("payed", isPayed)
+            params.Add("isPayed", isPayed)
             params.Add("tva", ds.TB.TVA)
             params.Add("remise", ds.TB.Remise)
 
@@ -372,7 +426,7 @@
 
 
 
-            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, status)
             NewFacture_Transforme(tb_F, tb_D, tb_p, td.txtDate.text, td.Operation, ds, False)
         End If
     End Sub
@@ -389,7 +443,15 @@
             tb_P = "Company_Payement"
             Operation = "Bon_Achat"
         End If
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Livré")
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+
+        For Each b As Button In ds.plHeaderSells.Controls
+            b.BackgroundImage = My.Resources.gray_row
+        Next
+        ds.pbBar.Width = ds.Button8.Right
+        ds.pbBar.BackColor = RandomColor()
+        ds.Button8.BackgroundImage = My.Resources.gui_16
     End Sub
     Private Sub Facturer(ByVal id As Integer, ByRef ds As DataList)
         Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
@@ -406,7 +468,16 @@
             Operation = "Buy_Facture"
         End If
 
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Facturé")
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+
+
+        For Each b As Button In ds.plHeaderSells.Controls
+            b.BackgroundImage = My.Resources.gray_row
+        Next
+        ds.pbBar.Width = ds.Button9.Right
+        ds.pbBar.BackColor = RandomColor()
+        ds.Button9.BackgroundImage = My.Resources.gui_16
     End Sub
     Private Sub PayFacture(ByVal id As Integer, ByRef dataList As DataList)
         'Throw New NotImplementedException
@@ -421,13 +492,45 @@
 
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, True)
     End Sub
-    Private Sub DeleteFacture(ByVal id As Integer, ByRef dataList As DataList)
-        Throw New NotImplementedException
-    End Sub
+    Private Sub DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
+            Dim isPayed As Boolean = False
+
+            Dim tableName = DS.FactureTable
+            Dim dte As Date = DS.Entete.FactureDate
+            Dim params As New Dictionary(Of String, Object)
+
+            'Facture
+            params.Clear()
+            params.Add("total", 0)
+            params.Add("avance", 0)
+            params.Add("admin", "ANNULER")
+            params.Add("isPayed", isPayed)
+            params.Add("tva", 0)
+            params.Add("remise", 0)
+
+            Dim where As New Dictionary(Of String, Object)
+
+            where.Add("id", id)
+
+            c.UpdateRecord(tableName, params, where)
+            params.Clear()
+            where.Clear()
+
+            params = Nothing
+            where = Nothing
+        End Using
+    End Sub
+    Private Sub AvoirFacture(ByVal p1 As Integer, ByVal ds As DataList)
+        ds.TB.avance = 0
+        NewFacture_Transforme("Sell_Avoir", "Details_Sell_Avoir", "Client_Payement", Now.Date, ds.Operation, ds, False)
+        DeleteFacture(p1, ds)
+    End Sub
     'ListLines Events
     Private Sub EditSelectedFacture(ByVal id As Integer)
         Dim ds As DataList = Form1.plBody.Controls(0)
+        ds.Clear()
         ds.Mode = "DETAILS"
         ds.Id = id
     End Sub
@@ -615,8 +718,26 @@
         End Try
     End Sub
     'Total Bloc
-    Private Sub AddFiles(ByVal dataList As DataList)
+    Private Sub AddFiles(ByVal ds As DataList)
+        Dim add As New AddFiles
+        add.id = ds.Id
+        add.tb_F = ds.FactureTable
+        If add.ShowDialog = DialogResult.Cancel Then
+            Try
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    Dim params As New Dictionary(Of String, Object)
 
+                    params.Add("pj", add.pl.Controls.Count)
+
+                    Dim where As New Dictionary(Of String, Object)
+                    where.Add("id", ds.Id)
+                    If c.UpdateRecord(ds.FactureTable, params, where) Then
+                        ds.pj = add.pl.Controls.Count
+                    End If
+                End Using
+            Catch ex As Exception
+            End Try
+        End If
     End Sub
 
 
@@ -650,6 +771,7 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
 
 
 

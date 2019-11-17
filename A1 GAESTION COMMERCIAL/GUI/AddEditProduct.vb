@@ -212,36 +212,37 @@ Public Class AddEditProduct
     Private Sub FillForm(ByVal _Pid As Integer)
 
         Dim cid = 0
+        EditMode = True
         Dim params As New Dictionary(Of String, Object)
-        params.Add("id", _Pid)
+        params.Add("arid", _Pid)
         ' added some items
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim dt As DataTable = a.SelectDataTable("Article", {"*"}, params)
             If dt.Rows.Count > 0 Then
 
-                txtRef.text = dt.Rows(0).Item("ref")
-                txtName.text = dt.Rows(0).Item("name")
-                txtDesc.text = dt.Rows(0).Item("desc")
-                cbctg.SelectedValue = dt.Rows(0).Item("cid")
+                txtRef.text = StrValue(dt, "ref", 0) ' dt.Rows(0).Item("ref")
+                txtName.text = StrValue(dt, "name", 0) 'dt.Rows(0).Item("")
+                txtDesc.text = StrValue(dt, "desc", 0) 'dt.Rows(0).Item("")
+                cbctg.SelectedValue = StrValue(dt, "cid", 0) 'dt.Rows(0).Item("")
 
-                txtPAch.text = dt.Rows(0).Item("bprice")
-                txtHt.text = dt.Rows(0).Item("sprice")
-                txtTva.text = dt.Rows(0).Item("tva")
-                txtPrixPromo.Text = dt.Rows(0).Item("prixPromo")
+                txtPAch.text = StrValue(dt, "bprice", 0) 'dt.Rows(0).Item("")
+                txtHt.text = StrValue(dt, "sprice", 0) ' dt.Rows(0).Item("")
+                txtTva.text = StrValue(dt, "tva", 0) ' dt.Rows(0).Item("")
+                txtPrixPromo.Text = StrValue(dt, "prixPromo", 0) ' dt.Rows(0).Item("")
 
-                txtRmax.text = dt.Rows(0).Item("remiseMax")
-                txtRGr.text = dt.Rows(0).Item("remiseGr")
-                txtRRev.text = dt.Rows(0).Item("remiseRev")
-                txtRCF.text = dt.Rows(0).Item("remiseCF")
+                txtRmax.text = StrValue(dt, "remiseMax", 0) ' dt.Rows(0).Item("")
+                txtRGr.text = StrValue(dt, "remiseGr", 0) 'dt.Rows(0).Item("")
+                txtRRev.text = StrValue(dt, "remiseRev", 0) 'dt.Rows(0).Item("")
+                txtRCF.text = StrValue(dt, "remiseCF", 0) 'dt.Rows(0).Item("")
 
-                txtStockType.text = dt.Rows(0).Item("stockType")
-                txtAlert.text = dt.Rows(0).Item("alertStock")
+                txtStockType.text = StrValue(dt, "stockType", 0) 'dt.Rows(0).Item("")
+                txtAlert.text = StrValue(dt, "alertStock", 0) 'dt.Rows(0).Item("")
 
-                isPromo.Checked = dt.Rows(0).Item("isPromo")
-                isStocked.Checked = dt.Rows(0).Item("isStocked")
+                isPromo.Checked = BoolValue(dt, "isPromo", 0) 'dt.Rows(0).Item("")
+                isStocked.Checked = BoolValue(dt, "isStocked", 0) ' dt.Rows(0).Item("")
 
-                lbPeriode = dt.Rows(0).Item("periode")
-                lbImage.Text = dt.Rows(0).Item("img")
+                lbPeriode.Text = StrValue(dt, "periode", 0) 'dt.Rows(0).Item("")
+                lbImage.Text = StrValue(dt, "img", 0) 'dt.Rows(0).Item("")
                 PBImage.BackgroundImage = Drawimg()
             End If
         End Using
@@ -270,7 +271,7 @@ Public Class AddEditProduct
         params.Add("alertStock", CDbl(txtAlert.text))
         params.Add("isPromo", isPromo.Checked)
         params.Add("isStocked", isStocked.Checked)
-        params.Add("periode", lbPeriode)
+        params.Add("periode", lbPeriode.Text)
         params.Add("img", lbImage.Text)
 
         Dim x As Integer = 0
@@ -278,7 +279,7 @@ Public Class AddEditProduct
 
             If EditMode Then
                 Dim where As New Dictionary(Of String, Object)
-                params.Add("arid", Id)
+                where.Add("arid", Id)
                 x = a.UpdateRecord("Article", params, where)
 
             Else

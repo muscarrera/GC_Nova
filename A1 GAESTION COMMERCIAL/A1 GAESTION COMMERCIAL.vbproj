@@ -82,7 +82,9 @@
     <Compile Include="Classes\AutoModule.vb" />
     <Compile Include="Classes\ClientClass.vb" />
     <Compile Include="Classes\DataAccess.vb" />
+    <Compile Include="Classes\DrawClass.vb" />
     <Compile Include="Classes\FactureClass.vb" />
+    <Compile Include="Classes\NumericStrings.vb" />
     <Compile Include="Classes\RegistryModule.vb" />
     <Compile Include="Classes\SubClass.vb" />
     <Compile Include="Controles\AddPayementRow.Designer.vb">
@@ -119,6 +121,12 @@
       <DependentUpon>EnteteFacture.vb</DependentUpon>
     </Compile>
     <Compile Include="Controles\EnteteFacture.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\FileLine.Designer.vb">
+      <DependentUpon>FileLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\FileLine.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\ListLine.Designer.vb">
@@ -245,6 +253,9 @@
     <EmbeddedResource Include="Controles\EnteteFacture.resx">
       <DependentUpon>EnteteFacture.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\FileLine.resx">
+      <DependentUpon>FileLine.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\ListLine.resx">
       <DependentUpon>ListLine.vb</DependentUpon>
     </EmbeddedResource>
@@ -328,6 +339,12 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\AVOIR 22.png" />
+    <None Include="Resources\ICON 22.png" />
+    <None Include="Resources\FILE 22.png" />
+    <None Include="Resources\PDF 22.png" />
+    <None Include="Resources\IMAGE 22.png" />
+    <None Include="Resources\WORD  22.png" />
     <None Include="Resources\iconfinder_Aqua Stripped Folder Documents_50968.png" />
     <None Include="Resources\téléchargement %281%29.png" />
     <None Include="Resources\iconfinder_Plus__Orange_34237 %281%291.png" />

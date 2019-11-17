@@ -64,18 +64,30 @@
     End Function
 
     Public Sub AddDataList()
-        Form1.plBody.Controls.Clear()
+
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
             Dim dt As DataTable = a.SelectDataTable("Article", {"*"})
 
+            'If Form1.plBody.Controls.Count > 0 Then
+            '    If TypeOf Form1.plBody.Controls(0) Is ProductList Then
+
+            '        Dim dls As ProductList = Form1.plBody.Controls(0)
+            '        dls.Mode = "Article"
+            '        dls.DataSource = dt
+            '        Exit Sub
+            '    End If
+            'End If
+
+            Form1.plBody.Controls.Clear()
             Dim ds As New ProductList
+            ds.Mode = "Article"
             ds.DataSource = dt
             ds.AutoCompleteSourceGroupe = AutoCompleteGroupes()
             ds.Dock = DockStyle.Fill
             AddHandler ds.GetElements, AddressOf GetElements
             AddHandler ds.NewElement, AddressOf NewElement
-            AddHandler ds.EditElement, AddressOf EditElement
-            AddHandler ds.DeleteElement, AddressOf DeleteElement
+            AddHandler ds.EditArticle, AddressOf EditElement
+            AddHandler ds.DeleteArticle, AddressOf DeleteElement
             'AddHandler ds.SearchById, AddressOf SearchById
 
             Form1.plBody.Controls.Add(ds)

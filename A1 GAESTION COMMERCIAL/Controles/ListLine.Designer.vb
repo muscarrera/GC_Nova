@@ -36,10 +36,10 @@ Partial Class ListLine
         Me.PlLeft = New System.Windows.Forms.Panel()
         Me.plT = New System.Windows.Forms.Panel()
         Me.plSet = New System.Windows.Forms.Panel()
-        Me.PlButtom = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
+        Me.PlButtom = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.plNm.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -70,10 +70,10 @@ Partial Class ListLine
         '
         Me.plNm.Controls.Add(Me.lbName)
         Me.plNm.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plNm.Location = New System.Drawing.Point(133, 3)
+        Me.plNm.Location = New System.Drawing.Point(102, 3)
         Me.plNm.Name = "plNm"
         Me.plNm.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.plNm.Size = New System.Drawing.Size(259, 26)
+        Me.plNm.Size = New System.Drawing.Size(290, 26)
         Me.plNm.TabIndex = 8
         '
         'lbName
@@ -83,7 +83,7 @@ Partial Class ListLine
         Me.lbName.ForeColor = System.Drawing.Color.DodgerBlue
         Me.lbName.Location = New System.Drawing.Point(10, 2)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(239, 22)
+        Me.lbName.Size = New System.Drawing.Size(270, 22)
         Me.lbName.TabIndex = 0
         Me.lbName.Text = "designation"
         Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -96,7 +96,7 @@ Partial Class ListLine
         Me.plRef.Location = New System.Drawing.Point(21, 3)
         Me.plRef.Name = "plRef"
         Me.plRef.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.plRef.Size = New System.Drawing.Size(112, 26)
+        Me.plRef.Size = New System.Drawing.Size(81, 26)
         Me.plRef.TabIndex = 7
         '
         'lbref
@@ -104,7 +104,7 @@ Partial Class ListLine
         Me.lbref.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbref.Location = New System.Drawing.Point(10, 2)
         Me.lbref.Name = "lbref"
-        Me.lbref.Size = New System.Drawing.Size(92, 22)
+        Me.lbref.Size = New System.Drawing.Size(61, 22)
         Me.lbref.TabIndex = 1
         Me.lbref.Text = "Label1"
         Me.lbref.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -197,15 +197,7 @@ Partial Class ListLine
         Me.plSet.Name = "plSet"
         Me.plSet.Size = New System.Drawing.Size(193, 26)
         Me.plSet.TabIndex = 10
-        '
-        'PlButtom
-        '
-        Me.PlButtom.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.PlButtom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PlButtom.Location = New System.Drawing.Point(0, 32)
-        Me.PlButtom.Name = "PlButtom"
-        Me.PlButtom.Size = New System.Drawing.Size(904, 1)
-        Me.PlButtom.TabIndex = 7
+        Me.plSet.Visible = False
         '
         'Button1
         '
@@ -245,6 +237,15 @@ Partial Class ListLine
         Me.btAdd.Size = New System.Drawing.Size(48, 26)
         Me.btAdd.TabIndex = 10
         Me.btAdd.UseVisualStyleBackColor = True
+        '
+        'PlButtom
+        '
+        Me.PlButtom.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.PlButtom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PlButtom.Location = New System.Drawing.Point(0, 32)
+        Me.PlButtom.Name = "PlButtom"
+        Me.PlButtom.Size = New System.Drawing.Size(904, 1)
+        Me.PlButtom.TabIndex = 7
         '
         'ListLine
         '

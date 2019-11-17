@@ -35,6 +35,10 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.AVOIR_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.bg_Blue">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -68,6 +72,10 @@ A1GAESTIONCOMMERCIAL
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.FILE_22">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -112,6 +120,10 @@ A1GAESTIONCOMMERCIAL
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.ICON_22">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -251,11 +263,19 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.IMAGE_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.INFO_22">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.JOINDRE_20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.PDF_22">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -295,10 +315,19 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.WORD__22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.NumericStrings">
+	<summary>
+ Converts Integer or Decimal numbers into their textual String representations (converts numbers to words).
+ </summary>
+	<remarks></remarks>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminDataTable">
 	<summary>
 Represents the strongly named DataTable class.

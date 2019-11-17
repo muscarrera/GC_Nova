@@ -7,6 +7,12 @@
 
     Public Event selected()
 
+    Event EditSelectedItem(ByVal clientRow As ClientRow)
+
+    Event DeleteItem(ByVal clientRow As ClientRow)
+
+    Event GetFactureInfos(ByVal p1 As Integer)
+
     Public Property Id As Integer
         Get
             Return _id
@@ -66,6 +72,8 @@
         End Get
         Set(ByVal value As Boolean)
             _isSelected = value
+            plSet.Visible = value
+
             If value Then
                 Me.BackColor = Color.AntiqueWhite
             Else
@@ -99,5 +107,15 @@
     Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbVille.Click,  lbType.Click, lbResponsable.Click, lbref.Click, lbName.Click, lbTel.Click
         isSelected = Not isSelected
         RaiseEvent selected()
+    End Sub
+
+    Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
+        RaiseEvent EditSelectedItem(Me)
+    End Sub
+    Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
+        RaiseEvent DeleteItem(Me)
+    End Sub
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        RaiseEvent GetFactureInfos(Id)
     End Sub
 End Class

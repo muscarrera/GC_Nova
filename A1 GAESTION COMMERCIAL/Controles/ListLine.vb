@@ -11,11 +11,10 @@
 
     Public Event selected()
 
-    Event EditSelectedFacture(ByVal p1 As Integer)
-
-    Event DeleteItem(ByVal listLine As ListLine)
-
-    Event GetFactureInfos(ByVal p1 As Integer)
+    Public Event EditSelectedItem(ByVal ls As ListLine)
+    Public Event EditSelectedFacture(ByVal p1 As Integer)
+    Public Event DeleteItem(ByVal ls As ListLine)
+    Public Event GetFactureInfos(ByVal p1 As Integer)
 
     Public Property Id As Integer
         Get
@@ -113,6 +112,7 @@
 
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
         RaiseEvent EditSelectedFacture(Id)
+        RaiseEvent EditSelectedItem(Me)
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
         RaiseEvent DeleteItem(Me)
