@@ -29,8 +29,8 @@ Partial Class Form1
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button13 = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -48,12 +48,17 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.plBody = New System.Windows.Forms.Panel()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'plHead
@@ -83,6 +88,8 @@ Partial Class Form1
         'plHeaderButton
         '
         Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
+        Me.plHeaderButton.Controls.Add(Me.Button8)
+        Me.plHeaderButton.Controls.Add(Me.Panel1)
         Me.plHeaderButton.Controls.Add(Me.Label5)
         Me.plHeaderButton.Controls.Add(Me.Button10)
         Me.plHeaderButton.Controls.Add(Me.Button1)
@@ -141,19 +148,6 @@ Partial Class Form1
         Me.Button11.Text = "Contact"
         Me.Button11.UseVisualStyleBackColor = False
         '
-        'Button6
-        '
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.Button6.Location = New System.Drawing.Point(121, 0)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(118, 36)
-        Me.Button6.TabIndex = 4
-        Me.Button6.Text = "Ventes"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
         'Button12
         '
         Me.Button12.Dock = System.Windows.Forms.DockStyle.Left
@@ -166,6 +160,19 @@ Partial Class Form1
         Me.Button12.TabIndex = 7
         Me.Button12.Text = "Achats"
         Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button6.Location = New System.Drawing.Point(121, 0)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(118, 36)
+        Me.Button6.TabIndex = 4
+        Me.Button6.Text = "Ventes"
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'Button13
         '
@@ -333,6 +340,50 @@ Partial Class Form1
         'PrintDoc
         '
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.Button7)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel1.Location = New System.Drawing.Point(816, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(78, 36)
+        Me.Panel1.TabIndex = 9
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(62, 72)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(39, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Label6"
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(105, 92)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(120, 35)
+        Me.Button7.TabIndex = 0
+        Me.Button7.Text = "Button7"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_System_48_55301
+        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button8.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button8.Location = New System.Drawing.Point(764, 0)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(52, 36)
+        Me.Button8.TabIndex = 10
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -354,6 +405,8 @@ Partial Class Form1
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -383,5 +436,9 @@ Partial Class Form1
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Button7 As System.Windows.Forms.Button
 
 End Class

@@ -147,6 +147,12 @@
     <Compile Include="Controles\ProductList.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controles\Setting.Designer.vb">
+      <DependentUpon>Setting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Setting.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\TotalBloc.Designer.vb">
       <DependentUpon>TotalBloc.vb</DependentUpon>
     </Compile>
@@ -265,6 +271,9 @@
     <EmbeddedResource Include="Controles\ProductList.resx">
       <DependentUpon>ProductList.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Setting.resx">
+      <DependentUpon>Setting.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\TotalBloc.resx">
       <DependentUpon>TotalBloc.vb</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +348,8 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\iconfinder_Printer_43348.png" />
+    <None Include="Resources\iconfinder_Gnome-Emblem-System-48_55301.png" />
     <None Include="Resources\AVOIR 22.png" />
     <None Include="Resources\ICON 22.png" />
     <None Include="Resources\FILE 22.png" />

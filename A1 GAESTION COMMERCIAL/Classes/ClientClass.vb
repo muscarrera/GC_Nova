@@ -50,8 +50,8 @@
             ds.Dock = DockStyle.Fill
             AddHandler ds.GetElements, AddressOf GetElements
             AddHandler ds.NewElement, AddressOf NewElement
-            AddHandler ds.EditArticle, AddressOf EditElement
-            AddHandler ds.DeleteArticle, AddressOf DeleteElement
+            AddHandler ds.EditClient, AddressOf EditElement
+            AddHandler ds.DeleteClient, AddressOf DeleteElement
             AddHandler ds.ModeChanged, AddressOf ModeChanged
 
             Form1.plBody.Controls.Add(ds)
@@ -100,12 +100,12 @@
         pr.Id = ls.Id
         If pr.ShowDialog = DialogResult.OK Then
             ls.Libele = pr.txtName.text
-            ls.Total = pr.txtVille.text
-            ls.Avance = pr.txtTel.text
-            ls.isEdited = True
+            ls.Ville = pr.txtVille.text
+            ls.Tel = pr.txtTel.text
+            ls.isEdited = pr.rbSte.Checked
         End If
     End Sub
-    Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ClientRow)
+    Private Sub DeleteElement(ByRef ds As ProductList, ByRef ls As ClientRow)
         If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
         End If

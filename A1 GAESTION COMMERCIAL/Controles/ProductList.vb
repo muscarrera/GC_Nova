@@ -8,7 +8,7 @@
     Public Event EditArticle(ByRef ls As ListLine)
     Public Event EditClient(ByRef ls As ClientRow)
     Public Event DeleteArticle(ByRef ds As ProductList, ByVal ls As ListLine)
-    Public Event DeleteClient(ByRef ds As ProductList, ByVal ls As ClientRow)
+    Public Event DeleteClient(ByRef ds As ProductList, ByRef ls As ClientRow)
     Public Event GetElements(ByRef ds As ProductList)
     Public Event ModeChanged(ByVal ds As ProductList)
 

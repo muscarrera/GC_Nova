@@ -7,10 +7,8 @@
 
     Public Event selected()
 
-    Event EditSelectedItem(ByVal clientRow As ClientRow)
-
-    Event DeleteItem(ByVal clientRow As ClientRow)
-
+    Event EditSelectedItem(ByRef clientRow As ClientRow)
+    Event DeleteItem(ByRef clientRow As ClientRow)
     Event GetFactureInfos(ByVal p1 As Integer)
 
     Public Property Id As Integer

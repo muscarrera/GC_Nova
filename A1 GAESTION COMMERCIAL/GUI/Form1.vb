@@ -36,7 +36,7 @@
     Public printEnteteOnPdf As Boolean
     Public printOnPaper As Boolean
     Public prefix As String
-
+  
     'Props
     Public Property Exercice As String
         Get
