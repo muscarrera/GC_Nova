@@ -128,28 +128,28 @@ Public Class AddEditClient
 
         Dim cid = 0
         Dim params As New Dictionary(Of String, Object)
-        params.Add("id", _Pid)
+        params.Add("Clid", _Pid)
         ' added some items
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim dt As DataTable = a.SelectDataTable(tb_C, {"*"}, params)
             If dt.Rows.Count > 0 Then
 
-                txtRef.text = dt.Rows(0).Item("ref")
-                txtName.text = dt.Rows(0).Item("name")
-                rbSte.Checked = dt.Rows(0).Item("isCompany")
-                cbctg.SelectedText = dt.Rows(0).Item("groupe")
+                txtRef.text = StrValue(dt, "ref", 0)
+                txtName.text = StrValue(dt, "name", 0)
+                rbSte.Checked = BoolValue(dt, "isCompany", 0)
+                cbctg.SelectedText = StrValue(dt, "groupe", 0)
 
-                txtAdresse.text = dt.Rows(0).Item("adresse")
-                txtCp.text = dt.Rows(0).Item("cp")
-                txtVille.text = dt.Rows(0).Item("ville")
-                txtICE.text = dt.Rows(0).Item("ice")
+                txtAdresse.text = StrValue(dt, "adresse", 0)
+                txtCp.text = StrValue(dt, "cp", 0)
+                txtVille.text = StrValue(dt, "ville", 0)
+                txtICE.text = StrValue(dt, "ice", 0)
 
-                txtTel.text = dt.Rows(0).Item("tel")
-                txtGsm.text = dt.Rows(0).Item("gsm")
-                txtEmail.text = dt.Rows(0).Item("email")
-                txtInfo.text = dt.Rows(0).Item("info")
+                txtTel.text = StrValue(dt, "tel", 0)
+                txtGsm.text = StrValue(dt, "gsm", 0)
+                txtEmail.text = StrValue(dt, "email", 0)
+                txtInfo.text = StrValue(dt, "info", 0)
 
-                lbImage.Text = dt.Rows(0).Item("img")
+                lbImage.Text = StrValue(dt, "img", 0)
                 PBImage.BackgroundImage = Drawimg()
             End If
         End Using
@@ -181,7 +181,7 @@ Public Class AddEditClient
 
             If EditMode Then
                 Dim where As New Dictionary(Of String, Object)
-                params.Add("Clid", Id)
+                where.Add("Clid", Id)
                 x = a.UpdateRecord(tb_C, params, where)
 
             Else

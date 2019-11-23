@@ -6,11 +6,12 @@
 
     Public Event NewElement(ByRef ds As ProductList)
     Public Event EditArticle(ByRef ls As ListLine)
-    Public Event EditClient(ByRef ls As ClientRow)
+    Public Event EditClient(ByRef ds As ProductList, ByRef ls As ClientRow)
     Public Event DeleteArticle(ByRef ds As ProductList, ByVal ls As ListLine)
     Public Event DeleteClient(ByRef ds As ProductList, ByRef ls As ClientRow)
     Public Event GetElements(ByRef ds As ProductList)
     Public Event ModeChanged(ByVal ds As ProductList)
+    Public Event GetClientDetails(ByVal ds As ProductList, ByVal _id As Integer)
 
     Public Sub New()
 
@@ -139,13 +140,17 @@
                 Dim a As New ClientRow
                 a.Id = _dt.Rows(i).Item(0)
                 a.Libele = _dt.Rows(i).Item("name")
-                a.Responsable = _dt.Rows(i).Item("responsable")
-                a.Ville = _dt.Rows(i).Item("ville")
-                a.Tel = _dt.Rows(i).Item("tel")
+                a.Responsable = StrValue(_dt, "responsable", i)
+                a.Ville = StrValue(_dt, "ville", i)
+                a.Tel = StrValue(_dt, "tel", i)
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()
                 arr(i - startIndex) = a
+
+                AddHandler a.EditSelectedItem, AddressOf EditSelectedClient
+                AddHandler a.DeleteItem, AddressOf DeleteSelectedClient
+                AddHandler a.GetFactureInfos, AddressOf GetClientInfos
 
                 If i = lastIndex Then Exit For
             Next
@@ -161,7 +166,7 @@
         If TableName = "Article" Then
             RaiseEvent EditArticle(SelectedArticle)
         Else
-            RaiseEvent EditClient(SelectedClient)
+            RaiseEvent EditClient(Me, SelectedClient)
         End If
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -227,6 +232,16 @@
 
     End Sub
     'Client row
+    Private Sub EditSelectedClient(ByRef cr As ClientRow)
+        RaiseEvent EditClient(Me, cr)
+    End Sub
+    Private Sub GetClientInfos(ByVal _id As Integer)
+        RaiseEvent GetClientDetails(Me, _id)
+    End Sub
+    Private Sub DeleteSelectedClient(ByRef cr As ClientRow)
+        RaiseEvent DeleteClient(Me, cr)
+    End Sub
+
 
 
 

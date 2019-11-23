@@ -23,98 +23,38 @@
         End Try
     End Sub
 
-    Private Sub HandleRegistryinfo()
-
-        'Dim msg As String
-        'Try
-        '    msg = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "txtNbrArt", Nothing)
-        '    If msg = Nothing Then
-        '        msg = "20"
-        '        My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "txtNbrArt", msg)
-        '        txtNbrArt.Text = msg
-        '        indexLastArticle = 20
-        '    Else
-        '        txtNbrArt.Text = msg
-        '        indexLastArticle = CInt(msg)
-        '    End If
-        'Catch ex As Exception
-        '    indexLastArticle = 20
-        'End Try
-        'msg = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "SouvPath", Nothing)
-        'If msg = Nothing Then
-        '    msg = "C:"
-        '    My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "SouvPath", msg)
-        '    btSvPath.Tag = msg
-        'Else
-        '    btSvPath.Tag = msg
-        'End If
-
-        'msg = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "ImgPath", Nothing)
-        'If msg = Nothing Then
-        '    msg = "C:\Al Mohassib"
-        '    My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "ImgPath", msg)
-        '    BtImgPah.Tag = msg
-        'Else
-        '    BtImgPah.Tag = msg
-        'End If
-
-        'msg = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "BtBoundDbPath", Nothing)
-        'If msg = Nothing Then
-        '    msg = "C:\Al Mohassib"
-        '    My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "BtBoundDbPath", msg)
-        '    BtBoundDbPath.Tag = msg
-        'Else
-        '    BtBoundDbPath.Tag = msg
-        'End If
-        'msg = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "btDbDv", Nothing)
-        'If msg = Nothing Then
-        '    msg = "C:\Al Mohassib"
-        '    My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "btDbDv", msg)
-        '    btDbDv.Tag = msg
-        'Else
-        '    btDbDv.Tag = msg
-        'End If
-
-        'getRegistryinfo(txttimp, "mainprinter", "no")
-        'getRegistryinfo(txtprt2, "prt2", "no")
-        'getRegistryinfo(txtreceipt, "receipt", "no")
-        'getRegistryinfo(txtScale, "txtScale", "1")
-        'getRegistryinfo(TextBox4, "LogoPath", "C:")
-        'getRegistryinfo(cbsearch, "SearchMethod", "الكود (الرمز)")
-
-        'getRegistryinfo(cbPaper, "cbPaper", "Normal&Receipt")
-        'getRegistryinfo(txtNbrCopie, "txtNbrCopie", "1")
+    Public Sub HandleRegistryinfo()
 
 
-        'getRegistryinfo(CbArticleRemise, "CbArticleRemise", False)
-        'getRegistryinfo(chbprint, "chbprint", False)
-        'getRegistryinfo(chbreceipt, "chbreceipt", False)
-        'getRegistryinfo(chbcb, "UseCodebarScanner", False)
-        'getRegistryinfo(CbBlocModArt, "CbBlocModArt", False)
-        'getRegistryinfo(CbBlocCalc, "CbBlocCalc", False)
-        'getRegistryinfo(cbProfit, "cbProfit", False)
-        'getRegistryinfo(CBTVA, "CBTVA", False)
-        'getRegistryinfo(chbsell, "chbsell", False)
-        'getRegistryinfo(cbImgPrice, "cbImgPrice", False)
-        'getRegistryinfo(cbQte, "cbQte", False)
-        'getRegistryinfo(cbBonToFact, "cbBonToFact", False)
-        'getRegistryinfo(CbDelaiFct, "CbDelaiFct", False)
-        'getRegistryinfo(chMasar, "chMasar", False)
-        'getRegistryinfo(cbMultiPayemnt, "cbMultiPayemnt", False)
-        'getRegistryinfo(cbheader, "cbheader", False)
-        'getRegistryinfo(cbMergeArt, "cbMergeArt", True)
-        'getRegistryinfo(cbUnite, "cbUnite", False)
-        'getRegistryinfo(CbDisArch, "CbDisArch", False)
-        'getRegistryinfo(CbQteStk, "CbDisNew", False)
-        'getRegistryinfo(cbPrintDepot, "cbPrintDepot", True)
-        'getRegistryinfo(CbDepotOrigine, "CbDepotOrigine", True)
-        'getRegistryinfo(cbDual, "cbDual", False)
-        'getRegistryinfo(cbTiroir, "cbTiroir", False)
-        'getRegistryinfo(cbCaisse, "cbCaisse", False)
-        'getRegistryinfo(cbTsImg, "cbTsImg", False)
-        'getRegistryinfo(cbRTL, "cbRTL", False)
+        Try
+            Form1.ImgPah = getRegistryinfo("ImgPah", "C:\")
+            Form1.SvgdPah = getRegistryinfo("SvgdPah", "C:\")
+            Form1.numberOfItems = getRegistryinfo("numberOfItems", 22)
+            'font
+            Form1.fontName_Normal = getRegistryinfo("fontName_Normal", "Arial")
+            Form1.fontName_Title = getRegistryinfo("fontName_Title", "Arial")
+            Form1.fontName_Small = getRegistryinfo("fontName_Small", "Arial")
+            Form1.fontSize_Normal = getRegistryinfo("fontSize_Normal", 10)
+            Form1.fontSize_Title = getRegistryinfo("fontSize_Title", 14)
+            Form1.fontSize_Small = getRegistryinfo("fontSize_Small", 8)
 
-        'gbprint.Enabled = chbprint.Checked
+            Form1.printer_Devis = getRegistryinfo("printer_Devis", "")
+            Form1.printer_Bon = getRegistryinfo("printer_Bon", "")
+            Form1.printer_Commande_Client = getRegistryinfo("printer_Commande_Client", "")
+            Form1.printer_Facture = getRegistryinfo("printer_Facture", "")
+            Form1.printer_Avoir = getRegistryinfo("printer_Avoir", "")
+            Form1.printer_Pdf = getRegistryinfo("printer_Pdf", "")
+
+            Form1.Facture_Title = getRegistryinfo("Facture_Title", "")
+            Form1.imgEntetePath = getRegistryinfo("imgEntetePath", "")
+            Form1.imgFootherPath = getRegistryinfo("imgFootherPath", "")
+            Form1.printEnteteOnPaper = getRegistryinfo("printEnteteOnPaper", False)
+            Form1.printEnteteOnPdf = getRegistryinfo("printEnteteOnPdf", False)
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
 

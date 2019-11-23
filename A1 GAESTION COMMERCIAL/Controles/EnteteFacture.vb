@@ -1,6 +1,5 @@
 ﻿Public Class EnteteFacture
 
-    Dim _bL As String
 
     Public Event NewFacture()
     Public Event SearchById(ByVal id As String)
@@ -15,25 +14,34 @@
     Public Event CommandDelivry(ByVal id As Integer)
     Public Event Facturer(ByVal id As Integer)
     Public Event AvoirFacture(ByVal id As Integer)
+    Public Event PrintParamsFacture()
+    Public Event ChangingClient()
+
+    Public Event NewBlRef()
+    Public Event NewBcRef()
+    Public Event NewDevisRef()
 
     Private fid As Integer
     Private cid As Integer
     Private _adresse As String
     Private _ice As String
-    Private _clientType As String = "Physique"
+    Private _clientType_Company As Boolean = True
+    Dim _clientGroupe As String
     Private _date As Date
+    Private _bL As String
     Private _client As Client = Nothing
-
     Private _Type As String
+
+
     Dim dte As Date
     Dim isPayed As Boolean
     Dim isAdmin As Boolean
     Dim info As String
     Dim delai As Integer
 
+    Event GetClientDetails()
 
 
-    
 
     Public Property Id() As Integer
         Get
@@ -65,7 +73,8 @@
             _client = value
             If Not IsNothing(value) Then
 
-                _clientType = value.groupe
+                _clientGroupe = value.groupe
+                _clientType_Company = value.isCompany
                 ClientName = value.name
                 cid = value.cid
                 ICE = value.ICE
@@ -87,7 +96,7 @@
         End Get
         Set(ByVal value As String)
             _adresse = value
-            If _clientType = "MORAL" Then
+            If _clientType_Company Then
                 Dim str As String = "[" & cid & "]"
                 str &= vbNewLine
                 str &= ClientAdresse
@@ -103,7 +112,7 @@
         End Get
         Set(ByVal value As String)
             _ice = value
-            If _clientType = "MORAL" Then
+            If _clientType_Company Then
                 Dim str As String = "[" & cid & "]"
                 str &= vbNewLine
                 str &= ClientAdresse
@@ -122,33 +131,49 @@
             lbType.Text = value
             Id = 0
             btAvoir.Visible = False
+            btPrint.Visible = True
 
             If value = "Devis" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
                 btTranformer.Visible = True
                 btSolde.Visible = False
+                btParamsImp.Visible = True
             ElseIf value = "Commande" Or value = "BC" Then
                 btFacturer.Visible = True
                 btDelivry.Visible = True
                 btTranformer.Visible = False
                 btSolde.Visible = True
+                btParamsImp.Visible = True
             ElseIf value = "BL" Or value = "BA" Then
                 btFacturer.Visible = True
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
+                btParamsImp.Visible = False
             ElseIf value = "Facture" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
+                btParamsImp.Visible = True
                 If Statut <> "CREATION" Then btAvoir.Visible = True
+
+            ElseIf value = "Buy_Facture" Then
+                btFacturer.Visible = False
+                btDelivry.Visible = False
+                btTranformer.Visible = False
+                btSolde.Visible = True
+                btParamsImp.Visible = False
+                btAvoir.Visible = False
+                btPrint.Visible = False
+
             ElseIf value = "Avoir" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = False
+                btParamsImp.Visible = False
             End If
         End Set
     End Property
@@ -209,7 +234,7 @@
         End Get
         Set(ByVal value As String)
             txtStatus.text = value
-
+            btAvoir.Visible = False
             If value <> "CREATION" And Type = "Facture" Then btAvoir.Visible = True
         End Set
     End Property
@@ -283,5 +308,28 @@
 
     Private Sub btAvoir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAvoir.Click
         RaiseEvent AvoirFacture(Id)
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btParamsImp.Click
+        RaiseEvent PrintParamsFacture()
+    End Sub
+    'Devis Bc BL
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        RaiseEvent NewDevisRef()
+    End Sub
+    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        RaiseEvent NewBcRef()
+    End Sub
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        RaiseEvent NewBlRef()
+    End Sub
+    'Client
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        If Statut = "Livré" Then Exit Sub
+        If Statut <> "CREATION" And Type = "Facture" Then Exit Sub
+        RaiseEvent ChangingClient()
+    End Sub
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        RaiseEvent GetClientDetails()
     End Sub
 End Class

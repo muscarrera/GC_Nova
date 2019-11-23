@@ -23,27 +23,25 @@ Partial Class ChooseClient
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Panel29 = New System.Windows.Forms.Panel()
-        Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.Fpl = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.Fpl = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.btPage = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
         Me.Panel8.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -51,6 +49,7 @@ Partial Class ChooseClient
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.Button6)
         Me.Panel1.Controls.Add(Me.lbRef)
         Me.Panel1.Controls.Add(Me.Label22)
         Me.Panel1.Controls.Add(Me.Panel24)
@@ -61,6 +60,16 @@ Partial Class ChooseClient
         Me.Panel1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 5)
         Me.Panel1.Size = New System.Drawing.Size(600, 104)
         Me.Panel1.TabIndex = 3
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(14, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(49, 38)
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
         '
         'lbRef
         '
@@ -87,23 +96,67 @@ Partial Class ChooseClient
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel24.Controls.Add(Me.Panel8)
-        Me.Panel24.Controls.Add(Me.Button7)
-        Me.Panel24.Controls.Add(Me.Button6)
-        Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel24.Location = New System.Drawing.Point(3, 59)
         Me.Panel24.Name = "Panel24"
+        Me.Panel24.Padding = New System.Windows.Forms.Padding(5)
         Me.Panel24.Size = New System.Drawing.Size(594, 40)
         Me.Panel24.TabIndex = 3
         '
-        'Panel29
+        'Panel8
         '
-        Me.Panel29.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel29.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel29.Location = New System.Drawing.Point(0, 0)
-        Me.Panel29.Name = "Panel29"
-        Me.Panel29.Size = New System.Drawing.Size(594, 2)
-        Me.Panel29.TabIndex = 1
+        Me.Panel8.BackColor = System.Drawing.Color.Transparent
+        Me.Panel8.Controls.Add(Me.txtSearch)
+        Me.Panel8.Controls.Add(Me.Label6)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel8.Location = New System.Drawing.Point(5, 5)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(269, 30)
+        Me.Panel8.TabIndex = 7
+        '
+        'txtSearch
+        '
+        Me.txtSearch.BackColor = System.Drawing.Color.White
+        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ControlDark
+        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtSearch.IsNumiric = False
+        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.PlaceHolder = "Code/Nom"
+        Me.txtSearch.ShowClearIcon = False
+        Me.txtSearch.ShowSaveIcon = False
+        Me.txtSearch.Size = New System.Drawing.Size(269, 30)
+        Me.txtSearch.StartUp = 2
+        Me.txtSearch.TabIndex = 3
+        Me.txtSearch.TextSize = 8
+        Me.txtSearch.TxtBackColor = True
+        Me.txtSearch.TxtColor = System.Drawing.Color.White
+        Me.txtSearch.txtReadOnly = False
+        Me.txtSearch.TxtSelect = New Integer() {1, 0}
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(21, 62)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(63, 17)
+        Me.Label6.TabIndex = 2
+        Me.Label6.Text = "Fature à :"
+        '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.Location = New System.Drawing.Point(471, 22)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button6.Size = New System.Drawing.Size(116, 28)
+        Me.Button6.TabIndex = 2
+        Me.Button6.Text = "Enregistrer   "
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'Panel23
         '
@@ -124,84 +177,6 @@ Partial Class ChooseClient
         Me.Fpl.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Fpl.Size = New System.Drawing.Size(600, 409)
         Me.Fpl.TabIndex = 5
-        '
-        'Panel8
-        '
-        Me.Panel8.BackColor = System.Drawing.Color.Transparent
-        Me.Panel8.Controls.Add(Me.txtSearch)
-        Me.Panel8.Controls.Add(Me.Label6)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(325, 2)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(269, 38)
-        Me.Panel8.TabIndex = 7
-        '
-        'txtSearch
-        '
-        Me.txtSearch.BackColor = System.Drawing.Color.White
-        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ButtonFace
-        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtSearch.IsNumiric = False
-        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PlaceHolder = "Code/Nom"
-        Me.txtSearch.ShowClearIcon = False
-        Me.txtSearch.ShowSaveIcon = False
-        Me.txtSearch.Size = New System.Drawing.Size(269, 38)
-        Me.txtSearch.StartUp = 2
-        Me.txtSearch.TabIndex = 3
-        Me.txtSearch.TextSize = 8
-        Me.txtSearch.TxtBackColor = True
-        Me.txtSearch.TxtColor = System.Drawing.Color.White
-        Me.txtSearch.txtReadOnly = False
-        Me.txtSearch.TxtSelect = New Integer() {1, 0}
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(21, 62)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Fature à :"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(14, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(49, 38)
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
-        '
-        'Button7
-        '
-        Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(136, 6)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(90, 28)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "Annuler   "
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(13, 6)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(116, 28)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Enregistrer   "
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -279,10 +254,10 @@ Partial Class ChooseClient
         Me.Text = "ChooseClient"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel24.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -292,9 +267,7 @@ Partial Class ChooseClient
     Friend WithEvents lbRef As System.Windows.Forms.Label
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
-    Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Panel29 As System.Windows.Forms.Panel
     Friend WithEvents Panel23 As System.Windows.Forms.Panel
     Friend WithEvents Fpl As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents Panel8 As System.Windows.Forms.Panel

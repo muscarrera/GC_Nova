@@ -51,7 +51,7 @@
             tb_D = "Details_Commande"
             tb_F = "Commande_Client"
             tb_P = "Client_Payement"
-            Operation = "Details_Commande"
+            Operation = "Commande_Client"
 
         ElseIf cbType.Text = "Bon de Livraison" Then
             tb_D = "Details_Bon_Livraison"

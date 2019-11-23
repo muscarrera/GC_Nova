@@ -29,6 +29,7 @@
     Private Sub TextBox2_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtDate.Leave
         If Not IsDate(TxtDate.Text) Then
             dte = Now.Date
+            TxtDate.Text = Now.Date.ToString("dd-MM-yyyy")
         Else
             dte = CDate(TxtDate.Text)
         End If

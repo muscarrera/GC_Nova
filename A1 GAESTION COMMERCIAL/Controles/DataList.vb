@@ -1,14 +1,11 @@
 ﻿Public Class DataList
 
-
-
-
-    Public Event SearchById(ByVal id As string, ByRef ds As DataList)
+    Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
     Public Event OperationTypeChanged()
     Public Event NewFacture(ByVal tb_F As String, ByVal tb_C As String, ByRef ds As DataList)
-    Public Event ModeChanged(ByVal value As String, ByVal dataList As DataList)
+    Public Event ModeChanged(ByVal value As String, ByVal ds As DataList)
     Public Event NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
 
     'Entete Events
@@ -21,7 +18,13 @@
     Public Event PayFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
-    Public Event AvoirFacture(ByVal p1 As Integer, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event AvoirFacture(ByVal p1 As Integer, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event PrintParamsFacture(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event ChangingClient(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event NewBcRef(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event NewBlRef(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event NewDevisRef(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event GetClientDetails(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
 
     'Bloc Tolal Event
     Public Event EditModePayement(ByRef dataList As DataList)
@@ -35,9 +38,9 @@
     Public Event ArticleItemChanged(ByVal lr As ListRow, ByVal art As Article)
     Public Event ArticleItemDelete(ByVal lr As ListRow)
     'payement Events
-    Public Event AddPayement(ByVal pm As Payement, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
-    Public Event EditPayement(ByVal pm As AddPayementRow, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-    Public Event DeletePayement(ByVal pm As AddPayementRow, ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event AddPayement(ByVal pm As Payement, ByVal ds As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
+    Public Event EditPayement(ByVal pm As AddPayementRow, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event DeletePayement(ByVal pm As AddPayementRow, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
 
 
     'Members
@@ -129,7 +132,7 @@
                 payementTable = "Company_Payement"
                 FactureTable = "Buy_Facture"
                 DetailsTable = "Details_Buy_Facture"
-                Entete.Type = "Facture"
+                Entete.Type = "Buy_Facture"
                 'isSell = False
                 Form1.prefix = "Fc-Ent-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Bon_Commande" Then
@@ -180,7 +183,7 @@
             TB.pj = value.pj
             TB.avance = value.Avance
             PayementDataSource = value.PaymenetDataSource
-
+            If value.isAdmin <> "CREATION" Then PlAdd.Height = 1
         End Set
     End Property
     Public Property Mode() As String
@@ -521,6 +524,9 @@
     Private Sub Entete_PrintFacture() Handles Entete.PrintFacture
         RaiseEvent PrintFacture(Me)
     End Sub
+    Private Sub Entete_PrintParamsFacture() Handles Entete.PrintParamsFacture
+        RaiseEvent PrintParamsFacture(Me)
+    End Sub
     Private Sub Entete_SaveChanges(ByVal p1 As Integer) Handles Entete.SaveChanges
         RaiseEvent SaveChanges(CInt(p1), Me)
     End Sub
@@ -674,8 +680,6 @@
         RaiseEvent AddFiles(Me)
     End Sub
     Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        'plPmHeader.Height = 38
-        'PlPayement.Height = 222
         PlPayement.Visible = True
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
@@ -684,7 +688,24 @@
     Private Sub TB_AddEditPayement() Handles TB.AddEditPayement
         FillPayement(Nothing)
     End Sub
+   
+    Private Sub Entete_ChangingClient() Handles Entete.ChangingClient
+        RaiseEvent ChangingClient(Me)
+    End Sub
 
+    Private Sub Entete_NewBcRef() Handles Entete.NewBcRef
+        RaiseEvent NewBcRef(Me)
+    End Sub
 
-  
+    Private Sub Entete_NewBlRef() Handles Entete.NewBlRef
+        RaiseEvent NewBlRef(Me)
+    End Sub
+
+    Private Sub Entete_NewDevisRef() Handles Entete.NewDevisRef
+        RaiseEvent NewDevisRef(Me)
+    End Sub
+
+    Private Sub Entete_GetClientDetails() Handles Entete.GetClientDetails
+        RaiseEvent GetClientDetails(Me)
+    End Sub
 End Class

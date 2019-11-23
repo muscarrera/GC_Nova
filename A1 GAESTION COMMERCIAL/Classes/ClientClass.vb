@@ -53,6 +53,7 @@
             AddHandler ds.EditClient, AddressOf EditElement
             AddHandler ds.DeleteClient, AddressOf DeleteElement
             AddHandler ds.ModeChanged, AddressOf ModeChanged
+            AddHandler ds.GetClientDetails, AddressOf GetClientDetails
 
             Form1.plBody.Controls.Add(ds)
         End Using
@@ -95,8 +96,9 @@
             GetElements(ds)
         End If
     End Sub
-    Private Sub EditElement(ByRef ls As ClientRow)
+    Private Sub EditElement(ByRef ds As ProductList, ByRef ls As ClientRow)
         Dim pr As New AddEditClient
+        pr.EditMode = True
         pr.Id = ls.Id
         If pr.ShowDialog = DialogResult.OK Then
             ls.Libele = pr.txtName.text
@@ -106,7 +108,8 @@
         End If
     End Sub
     Private Sub DeleteElement(ByRef ds As ProductList, ByRef ls As ClientRow)
-        If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
+        If MsgBox("Etes-vous certain de vouloir supprimer ce Client" & vbNewLine & ls.Name,
+                  MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
         End If
 
@@ -115,11 +118,20 @@
             Dim dt As DataTable = Nothing
             Dim cid As Integer = 0
 
+
+            Dim tb_F As String = "Sell_Facture"
+            If ds.Mode = "Fournisseur " Then tb_F = "Buy_Facture"
+
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
                 params.Add("Clid", ls.Id)
 
-                If a.DeleteRecords(ds.TableName, params) > 0 Then
-                    ds.RemoveElement(ls)
+                dt = a.SelectDataTable(tb_F, {"id"}, params)
+
+                If dt.Rows.Count > 0 Then
+                    If a.DeleteRecords(ds.TableName, params) > 0 Then
+                        ds.RemoveElement(ls)
+                    End If
                 End If
             End Using
 
@@ -131,7 +143,16 @@
     Private Sub ModeChanged(ByVal ds As ProductList)
         GetElements(ds)
     End Sub
+    Private Sub GetClientDetails(ByVal ds As ProductList, ByVal id As Integer)
+        Dim fl As New ClientDetails
+        fl.Table = ds.Mode
+        fl.id = id
+        If fl.ShowDialog = DialogResult.OK Then
 
+        End If
+
+
+    End Sub
 
 
 
@@ -167,4 +188,7 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
+
+
 End Class

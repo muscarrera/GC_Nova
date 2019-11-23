@@ -255,6 +255,10 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Printer_43348">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

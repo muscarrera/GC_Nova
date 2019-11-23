@@ -15,7 +15,7 @@
     Friend tb_C As String
 
     Private Sub ChooseClient_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        searchForClient()
     End Sub
     Public Sub searchForClient()
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -75,6 +75,8 @@
 
         Dim cl As ClientBloc = sender
         cid = cl.Clid
+        clientName = cl.Name
+        lbRef.Text = clientName
         cl.isActive = True
 
     End Sub
@@ -87,5 +89,9 @@
 
     Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         searchForClient()
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
 End Class

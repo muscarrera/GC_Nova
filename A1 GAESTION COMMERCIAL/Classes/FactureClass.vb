@@ -263,6 +263,7 @@
 
         AddHandler ds.SavePdf, AddressOf SavePdf
         AddHandler ds.PrintFacture, AddressOf PrintFacture
+        AddHandler ds.PrintParamsFacture, AddressOf PrintParamsFacture
         AddHandler ds.SaveChanges, AddressOf SaveChanges
         AddHandler ds.TypeTransformer, AddressOf TypeTransformer
         AddHandler ds.CommandeDelivry, AddressOf CommandeDelivry
@@ -276,6 +277,12 @@
         AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
         AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
         AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
+        AddHandler ds.NewDevisRef, AddressOf NewDevisRef
+        AddHandler ds.NewBcRef, AddressOf NewBcRef
+        AddHandler ds.NewBlRef, AddressOf NewBlRef
+        AddHandler ds.ChangingClient, AddressOf ChangingClient
+        AddHandler ds.GetClientDetails, AddressOf GetClientDetails
+
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
         AddHandler ds.EditPayement, AddressOf EditPayement
@@ -287,6 +294,10 @@
     End Sub
     'Entete events
     Private Sub SavePdf(ByVal ds As DataList)
+        Form1.proformat_Id = 0
+        Form1.printWithDate = True
+        Form1.printWithPrice = True
+
         If ds.Operation = "Devis" Then
             Form1.Facture_Title = "Devis "
         ElseIf ds.Operation = "Sell_Facture" Then
@@ -313,6 +324,10 @@
 
     End Sub
     Private Sub PrintFacture(ByVal ds As DataList)
+        Form1.proformat_Id = 0
+        Form1.printWithDate = True
+        Form1.printWithPrice = True
+
         If ds.Operation = "Devis" Then
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
             Form1.Facture_Title = "Devis "
@@ -343,6 +358,55 @@
         Form1.PrintDoc.Print()
 
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+    End Sub
+    Private Sub PrintParamsFacture(ByVal ds As DataList)
+        Dim pr As New ImpressionParams
+        Form1.proformat_Id = 0
+        If ds.Operation = "Bon_Achat" Or ds.Operation = "Bon_Commande" Then
+            pr.btProformat.Visible = False
+        End If
+
+        If pr.ShowDialog = DialogResult.OK Then
+            Form1.printWithDate = Not pr.cbDate.Checked
+            Form1.printWithPrice = Not pr.cbPrix.Checked
+
+            If ds.Operation = "Devis" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
+                Form1.Facture_Title = "Devis "
+            ElseIf ds.Operation = "Sell_Facture" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
+                Form1.Facture_Title = "Facture "
+                ''''//
+            ElseIf ds.Operation = "Bon_Livraison" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Livraison "
+            ElseIf ds.Operation = "Bon_Commande" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Commande "
+            ElseIf ds.Operation = "Bon_Achat" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Achat "
+                ''''//
+            ElseIf ds.Operation = "Commande_Client" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+                Form1.Facture_Title = "Commande Client "
+            ElseIf ds.Operation = "Sell_Avoir" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
+                Form1.Facture_Title = "Bon d'Avoir "
+            Else
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+            End If
+
+            If pr.isProformat Then
+                Form1.Facture_Title = "Facture Proformat"
+                Form1.proformat_Id = getProformat(ds.Id, ds.FactureTable, ds)
+            End If
+
+            Form1.printOnPaper = True
+            Form1.PrintDoc.Print()
+
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+        End If
     End Sub
     Private Sub SaveChanges(ByVal id As Integer, ByRef ds As DataList)
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -415,7 +479,7 @@
             If tb_F = "Devis" Then
                 If td.Operation = "Sell_Facture" Then status = "Facturé"
             ElseIf tb_F = "Commande_Client" Then
-                status = "Livré"
+                status = "Traité"
             ElseIf tb_F = "Bon_Livraison" Then
                 status = "Livré"
             ElseIf tb_F = "Bon_Commande" Then
@@ -739,6 +803,164 @@
             End Try
         End If
     End Sub
+    'Facture Proformat
+    Private Function getProformat(ByVal id As Integer, ByVal tb_F As String, ByVal ds As DataList) As Integer
+        Dim P_id As Integer = 0
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("table", tb_F)
+                params.Add("fctId", id)
+                P_id = c.SelectByScalar("Sell_Fecture_Proformat", "id", params)
+
+                If P_id <= 0 Then
+                    params.Clear()
+
+                    params.Add("table", tb_F)
+                    params.Add("fctId", id)
+                    params.Add("total", ds.TB.TotalTTC)
+
+                    P_id = c.InsertRecord("Sell_Fecture_Proformat", params, True)
+                End If
+
+            End Using
+        Catch ex As Exception
+        End Try
+        Return P_id
+
+    End Function
+
+    Private Sub NewDevisRef(ByVal ds As DataList)
+        Dim rf As New ReferenceFacture
+        rf.Title = "Devis"
+        If rf.ShowDialog = DialogResult.OK Then
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim isPayed As Boolean = ds.isPayed
+
+                Dim tableName = ds.FactureTable
+                Dim dte As Date = ds.Entete.FactureDate
+                Dim params As New Dictionary(Of String, Object)
+
+                'Facture
+                params.Clear()
+                params.Add("devis", rf.Value)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", CInt(ds.Id))
+
+                If c.UpdateRecord(ds.FactureTable, params, where) Then
+                    ds.Entete.Devis = rf.Value
+                End If
+                params.Clear()
+                where.Clear()
+
+                params = Nothing
+                where = Nothing
+            End Using
+        End If
+    End Sub
+    Private Sub NewBcRef(ByVal ds As DataList)
+        Dim rf As New ReferenceFacture
+        rf.Title = "Bon de Commande"
+        If rf.ShowDialog = DialogResult.OK Then
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim isPayed As Boolean = ds.isPayed
+
+                Dim tableName = ds.FactureTable
+                Dim dte As Date = ds.Entete.FactureDate
+                Dim params As New Dictionary(Of String, Object)
+
+                'Facture
+                params.Clear()
+                params.Add("Bon_Commande", rf.Value)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", CInt(ds.Id))
+
+                If c.UpdateRecord(ds.FactureTable, params, where) Then
+                    ds.Entete.Bc = rf.Value
+                End If
+                params.Clear()
+                where.Clear()
+
+                params = Nothing
+                where = Nothing
+            End Using
+        End If
+    End Sub
+    Private Sub NewBlRef(ByVal ds As DataList)
+        Dim rf As New ReferenceFacture
+        rf.Title = "Bon de Livraison"
+        If rf.ShowDialog = DialogResult.OK Then
+
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim isPayed As Boolean = ds.isPayed
+
+                Dim tableName = ds.FactureTable
+                Dim dte As Date = ds.Entete.FactureDate
+                Dim params As New Dictionary(Of String, Object)
+
+                'Facture
+                params.Clear()
+                params.Add("Bon_Livraison", rf.Value)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", CInt(ds.Id))
+
+                If c.UpdateRecord(ds.FactureTable, params, where) Then
+                    ds.Entete.Bl = rf.Value
+                End If
+                params.Clear()
+                where.Clear()
+
+                params = Nothing
+                where = Nothing
+            End Using
+        End If
+    End Sub
+    Private Sub ChangingClient(ByVal ds As DataList)
+
+        Dim CC As New ChooseClient
+        CC.tb_C = ds.clientTable
+
+        If CC.ShowDialog = Windows.Forms.DialogResult.OK Then
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim isPayed As Boolean = ds.isPayed
+
+                Dim tableName = ds.FactureTable
+                Dim dte As Date = ds.Entete.FactureDate
+                Dim params As New Dictionary(Of String, Object)
+
+                'Facture
+                params.Clear()
+                params.Add("cid", CC.cid)
+                params.Add("name", CC.clientName)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", CInt(ds.Id))
+
+                If c.UpdateRecord(ds.FactureTable, params, where) Then
+                    Dim cl As New Client(CC.cid, ds.clientTable)
+                    ds.Entete.Client = cl
+                End If
+                params.Clear()
+                where.Clear()
+
+                params = Nothing
+                where = Nothing
+            End Using
+        End If
+
+    End Sub
+    Private Sub GetClientDetails(ByVal ds As DataList)
+        Dim fl As New ClientDetails
+        fl.Table = ds.clientTable
+        fl.id = ds.Id
+        If fl.ShowDialog = DialogResult.OK Then
+
+        End If
+    End Sub
 
 
 #Region "IDisposable Support"
@@ -771,8 +993,6 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
-
-
 
 
 End Class

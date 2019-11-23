@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     'Members
-    Private _Exercice As String
+    Private _Exercice As String = 19
     Private _Mode As String = "Accueil"
 
 
@@ -36,7 +36,11 @@
     Public printEnteteOnPdf As Boolean
     Public printOnPaper As Boolean
     Public prefix As String
-  
+    Public proformat_Id As Integer
+    Public printWithDate As Boolean = True
+    Public printWithPrice As Boolean = True
+    Public nbrPrOp_tr As Integer = 120
+
     'Props
     Public Property Exercice As String
         Get
@@ -50,10 +54,12 @@
 
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Exercice
-        'Using x As New Exercice
-        '    lbExr.Text = CStr(x.GetActiveExircice)
-        'End Using
+
+        'Regs info
+        HandleRegistryinfo()
+        'Trial
+        If getTrial() = False Then End
+       
     End Sub
 
     'Add DataList to pl Body
@@ -94,6 +100,18 @@
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
         HeaderColor(Button13.Text)
     End Sub
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+        If plBody.Controls.Count > 0 Then
+            If TypeOf plBody.Controls(0) Is Setting Then
+                Exit Sub
+            End If
+        End If
+
+        plBody.Controls.Clear()
+
+        Dim ds As New Setting
+        plBody.Controls.Add(ds)
+    End Sub
 
     Private Sub PrintDoc_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage
         Dim ds As DataList = plBody.Controls(0)
@@ -103,11 +121,13 @@
         Try
             Using a As DrawClass = New DrawClass
                 Dim dte As String = Format(Date.Now, "dd-MM-yyyy [hh:mm]")
-                a.DrawFacture(e, ds, Facture_Title, b, m)
+                a.DrawFacture(e, ds, Facture_Title, b, proformat_Id, printWithDate, printWithPrice, m)
 
             End Using
         Catch ex As Exception
             m = 0
         End Try
     End Sub
+
+
 End Class
