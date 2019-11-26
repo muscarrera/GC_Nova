@@ -8,6 +8,9 @@
     Private _isSelected As Boolean
     Private myColor As Color = Color.Transparent
     Dim _index As Integer
+    Dim _date As Date
+
+     Public isStocked As Boolean = True
 
     Public Event selected()
 
@@ -65,6 +68,15 @@
             End If
         End Set
     End Property
+    Public Property Dte As Date
+        Get
+            Return _date
+        End Get
+        Set(ByVal value As Date)
+            _date = value
+            lbDate.Text = value.ToString("dd MMM yyyy")
+        End Set
+    End Property
     Public Property isSelected() As Boolean
         Get
             Return _isSelected
@@ -105,7 +117,7 @@
         End Set
     End Property
 
-    Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbName.Click, lbAvc.Click
+    Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbName.Click, lbAvc.Click, plT.Click, plSet.Click, plRef.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, Panel1.Click, lbDate.Click
         isSelected = Not isSelected
         RaiseEvent selected()
     End Sub

@@ -132,6 +132,57 @@ Public Class DataAccess
         End Try
 
     End Function
+    Public Function SelectDataTableWithSyntaxe(ByVal table As String, ByVal syntaxExtra As String,
+                                               Optional ByVal field As String() = Nothing,
+                                    Optional ByVal params As Dictionary(Of String, Object) = Nothing,
+                                    Optional ByVal orderBy As Dictionary(Of String, String) = Nothing) As DataTable
+        Dim q As String = "SELECT " & syntaxExtra & " "
+
+        If field IsNot Nothing Then
+            For i As Integer = 0 To field.Length - 1
+                If i > 0 Then q &= ", "
+                q &= field(i)
+            Next
+        End If
+
+        q &= " FROM [" & table & "]"
+        Dim p As Integer = 1
+        If params IsNot Nothing Then
+            q &= " WHERE "
+            For Each kvp As KeyValuePair(Of String, Object) In params
+                If p > 1 Then q &= " AND "
+
+                q &= "[" & kvp.Key & "]" & " = :" & p
+                p += 1
+            Next
+        End If
+        p = 0
+        If orderBy IsNot Nothing Then
+            q &= " ORDER BY "
+            For Each kvp As KeyValuePair(Of String, String) In orderBy
+                If p > 0 Then q &= ", "
+                q &= "[" & kvp.Key & "]" & " " & kvp.Value
+                p += 1
+            Next
+        End If
+
+        Try
+            Using cmd As OleDbCommand = BuildCommand(q, params)
+                Using dr As OleDbDataReader = cmd.ExecuteReader()
+                    Dim dt As DataTable = New DataTable()
+                    dt.Load(dr)
+                    Return dt
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+            _hasError = True
+            Dispose()
+            Return Nothing
+        End Try
+
+    End Function
     Public Function SelectDataTableSymbols(ByVal table As String, ByVal field As String(),
                                     Optional ByVal params As Dictionary(Of String, Object) = Nothing,
                                     Optional ByVal orderBy As Dictionary(Of String, String) = Nothing,

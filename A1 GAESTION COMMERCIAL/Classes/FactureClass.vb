@@ -1,6 +1,64 @@
 ﻿Public Class FactureClass
     Implements IDisposable
+    Public Sub AddDataList(ByVal op As String)
 
+        If Form1.plBody.Controls.Count > 0 Then
+            If TypeOf Form1.plBody.Controls(0) Is DataList Then
+
+                Dim dls As DataList = Form1.plBody.Controls(0)
+                dls.isSell = CBool(op)
+
+                Exit Sub
+            End If
+        End If
+
+        Form1.plBody.Controls.Clear()
+
+        Dim ds As New DataList
+        ds.isSell = CBool(op)
+
+        ds.Dock = DockStyle.Fill
+        AddHandler ds.NewFacture, AddressOf NewFacture
+        AddHandler ds.IdChanged, AddressOf GetFactureDetails
+        AddHandler ds.NewRowAdded, AddressOf NewRowAdded
+        AddHandler ds.SearchByDate, AddressOf SearchByDate
+        AddHandler ds.SearchById, AddressOf SearchById
+        AddHandler ds.EditModePayement, AddressOf EditModePayement
+
+        AddHandler ds.SavePdf, AddressOf SavePdf
+        AddHandler ds.PrintFacture, AddressOf PrintFacture
+        AddHandler ds.PrintParamsFacture, AddressOf PrintParamsFacture
+        AddHandler ds.SaveChanges, AddressOf SaveChanges
+        AddHandler ds.TypeTransformer, AddressOf TypeTransformer
+        AddHandler ds.CommandeDelivry, AddressOf CommandeDelivry
+        AddHandler ds.Facturer, AddressOf Facturer
+        AddHandler ds.PayFacture, AddressOf PayFacture
+        AddHandler ds.DuplicateFacture, AddressOf DuplicateFacture
+        AddHandler ds.DeleteFacture, AddressOf DeleteFacture
+        AddHandler ds.AvoirFacture, AddressOf AvoirFacture
+        AddHandler ds.GetFactureInfos, AddressOf GetFactureInfos
+        AddHandler ds.DeleteItem, AddressOf DeleteItem
+        AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
+        AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
+        AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
+        AddHandler ds.NewDevisRef, AddressOf NewDevisRef
+        AddHandler ds.NewBcRef, AddressOf NewBcRef
+        AddHandler ds.NewBlRef, AddressOf NewBlRef
+        AddHandler ds.ChangingClient, AddressOf ChangingClient
+        AddHandler ds.GetClientDetails, AddressOf GetClientDetails
+        AddHandler ds.AddListofBl, AddressOf AddListofBl
+        AddHandler ds.GetListofCommande, AddressOf GetListofCommande
+        AddHandler ds.GetListofFacture, AddressOf GetListofFacture
+
+        'payement
+        AddHandler ds.AddPayement, AddressOf AddPayement
+        AddHandler ds.EditPayement, AddressOf EditPayement
+        AddHandler ds.DeletePayement, AddressOf DeletePayement
+        'Joindre fichiers
+        AddHandler ds.AddFiles, AddressOf AddFiles
+
+        Form1.plBody.Controls.Add(ds)
+    End Sub
     Public Sub NewFacture(ByVal tb_F As String, ByVal tb_C As String, ByRef ds As DataList)
         Try
 
@@ -87,7 +145,7 @@
                 params.Add("isAdmin", "CREATION")
                 params.Add("isPayed", ds.isPayed)
                 params.Add("modePayement", ds.ModePayement)
-                'params.Add("bl", "-")
+                params.Add(ds.FactureTable, ds.Id)
                 'params.Add("droitTimbre", ds.TB.DroitTimbre)
                 fid = c.InsertRecord(tb_F, params, True)
                 params.Clear()
@@ -108,19 +166,27 @@
                         params.Add("depot", data.Rows(i).Item("depot"))
                         params.Add("ref", data.Rows(i).Item("ref"))
                         params.Add("cid", data.Rows(i).Item("cid"))
+                        params.Add("cid", data.Rows(i).Item("cid"))
 
                         c.InsertRecord(tb_D, params)
                         params.Clear()
                     Next
                 End If
 
+                Dim where As New Dictionary(Of String, Object)
                 If avance > 0 Then
-                    Dim where As New Dictionary(Of String, Object)
                     params.Add(tb_F, fid)
                     where.Add(ds.Operation, CInt(ds.Id))
                     c.UpdateRecord(tb_P, params, where)
+                    params.Clear()
+                    where.Clear()
                 End If
 
+                If ds.FactureTable = "Bon_Livraison" And tb_F = "Sell_Facture" Then
+                    params.Add(tb_F, fid)
+                    where.Add("id", CInt(ds.Id))
+                    c.UpdateRecord(ds.FactureTable, params, where)
+                End If
             End Using
 
             If fid > 0 Then
@@ -128,6 +194,10 @@
                 ds.Mode = "DETAILS"
                 ds.Operation = Op
                 ds.Id = fid
+
+                For Each b As Button In ds.plHeaderSells.Controls
+                    b.BackgroundImage = My.Resources.gray_row
+                Next
             End If
         Catch ex As Exception
 
@@ -236,62 +306,7 @@
             MsgBox(ex.Message)
         End Try
     End Sub
-    Public Sub AddDataList(ByVal op As String)
 
-        If Form1.plBody.Controls.Count > 0 Then
-            If TypeOf Form1.plBody.Controls(0) Is DataList Then
-
-                Dim dls As DataList = Form1.plBody.Controls(0)
-                dls.isSell = CBool(op)
-
-                Exit Sub
-            End If
-        End If
-
-        Form1.plBody.Controls.Clear()
-
-        Dim ds As New DataList
-        ds.isSell = CBool(op)
-
-        ds.Dock = DockStyle.Fill
-        AddHandler ds.NewFacture, AddressOf NewFacture
-        AddHandler ds.IdChanged, AddressOf GetFactureDetails
-        AddHandler ds.NewRowAdded, AddressOf NewRowAdded
-        AddHandler ds.SearchByDate, AddressOf SearchByDate
-        AddHandler ds.SearchById, AddressOf SearchById
-        AddHandler ds.EditModePayement, AddressOf EditModePayement
-
-        AddHandler ds.SavePdf, AddressOf SavePdf
-        AddHandler ds.PrintFacture, AddressOf PrintFacture
-        AddHandler ds.PrintParamsFacture, AddressOf PrintParamsFacture
-        AddHandler ds.SaveChanges, AddressOf SaveChanges
-        AddHandler ds.TypeTransformer, AddressOf TypeTransformer
-        AddHandler ds.CommandeDelivry, AddressOf CommandeDelivry
-        AddHandler ds.Facturer, AddressOf Facturer
-        AddHandler ds.PayFacture, AddressOf PayFacture
-        AddHandler ds.DuplicateFacture, AddressOf DuplicateFacture
-        AddHandler ds.DeleteFacture, AddressOf DeleteFacture
-        AddHandler ds.AvoirFacture, AddressOf AvoirFacture
-        AddHandler ds.GetFactureInfos, AddressOf GetFactureInfos
-        AddHandler ds.DeleteItem, AddressOf DeleteItem
-        AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
-        AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
-        AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
-        AddHandler ds.NewDevisRef, AddressOf NewDevisRef
-        AddHandler ds.NewBcRef, AddressOf NewBcRef
-        AddHandler ds.NewBlRef, AddressOf NewBlRef
-        AddHandler ds.ChangingClient, AddressOf ChangingClient
-        AddHandler ds.GetClientDetails, AddressOf GetClientDetails
-
-        'payement
-        AddHandler ds.AddPayement, AddressOf AddPayement
-        AddHandler ds.EditPayement, AddressOf EditPayement
-        AddHandler ds.DeletePayement, AddressOf DeletePayement
-        'Joindre fichiers
-        AddHandler ds.AddFiles, AddressOf AddFiles
-
-        Form1.plBody.Controls.Add(ds)
-    End Sub
     'Entete events
     Private Sub SavePdf(ByVal ds As DataList)
         Form1.proformat_Id = 0
@@ -449,7 +464,6 @@
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim params As New Dictionary(Of String, Object)
             params.Add("isAdmin", status)
-
             Dim where As New Dictionary(Of String, Object)
             where.Add("id", id)
 
@@ -535,10 +549,10 @@
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Facturé")
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
 
-
         For Each b As Button In ds.plHeaderSells.Controls
             b.BackgroundImage = My.Resources.gray_row
         Next
+      
         ds.pbBar.Width = ds.Button9.Right
         ds.pbBar.BackColor = RandomColor()
         ds.Button9.BackgroundImage = My.Resources.gui_16
@@ -961,6 +975,123 @@
 
         End If
     End Sub
+    Private Sub AddListofBl(ByVal ds As DataList)
+        Dim bls As New ChooseBL
+
+        bls.table = ds.FactureTable
+        bls.cid = ds.Entete.Client.cid
+        bls.id = ds.Id
+        If bls.ShowDialog = DialogResult.OK Then
+
+
+            Dim data As DataTable
+          
+            Dim avance = ds.TB.avance
+
+            Try
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    Dim params As New Dictionary(Of String, Object)
+                    Dim where As New Dictionary(Of String, Object)
+
+                    params.Add("Bon_Livraison", bls.List)
+                    params.Add("total", CDbl(bls.LbSum.Text))
+                    params.Add("avance", CDbl(bls.Lbavc.Text))
+
+                    where.Add("id", CInt(ds.Id))
+                    c.UpdateRecord(ds.FactureTable, params, where)
+                    params.Clear()
+                    where.Clear()
+
+                    For Each a As ListLine In bls.plBody.Controls
+                        params.Add("Sell_Facture", CInt(ds.Id))
+                        params.Add("isAdmin", "Facturé")
+
+                        where.Add("id", CInt(ds.Id))
+                        c.UpdateRecord(bls.tb_D, params, where)
+                        params.Clear()
+                        where.Clear()
+
+                        where.Add("fctid", CInt(a.Id))
+                        data = c.SelectDataTable(bls.tb_D_D, {"*"}, where)
+                        where.Clear()
+
+                        If data.Rows.Count > 0 Then
+                            For i As Integer = 0 To data.Rows.Count - 1
+
+                                params.Add("fctid", CInt(ds.Id))
+                                params.Add("name", data.Rows(i).Item("name"))
+                                params.Add("bprice", data.Rows(i).Item("bprice"))
+                                params.Add("price", data.Rows(i).Item("price"))
+                                params.Add("remise", data.Rows(i).Item("remise"))
+                                params.Add("qte", data.Rows(i).Item("qte"))
+                                params.Add("tva", data.Rows(i).Item("tva"))
+                                params.Add("arid", data.Rows(i).Item("arid"))
+                                params.Add("depot", data.Rows(i).Item("depot"))
+                                params.Add("ref", data.Rows(i).Item("ref"))
+                                params.Add("cid", data.Rows(i).Item("cid"))
+                                params.Add("bl", data.Rows(i).Item(0))
+
+                                c.InsertRecord(ds.DetailsTable, params)
+                                params.Clear()
+                            Next
+                        End If
+                    Next
+
+                    ds.Id = ds.Id
+
+                End Using
+            Catch ex As Exception
+            End Try
+        End If
+    End Sub
+
+    Private Sub GetListofCommande(ByVal ds As DataList)
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            Dim dt As DataTable = Nothing
+
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                params.Add("isAdmin <> ", "Livré")
+                params.Add(" isAdmin  <> ", "Facturé")
+                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+            End Using
+
+
+            If dt.Rows.Count > 0 Then
+                'Dim arr As New ListLine(dt.Rows.Count - 1)
+                ds.Clear()
+                ds.Mode = "LIST"
+
+                ds.DataList = dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub GetListofFacture(ByVal ds As DataList)
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            Dim dt As DataTable = Nothing
+
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+
+                dt = a.SelectDataTableWithSyntaxe(ds.FactureTable, "TOP " & Form1.numberOfItems & " ", {"*"})
+            End Using
+
+
+            If dt.Rows.Count > 0 Then
+                'Dim arr As New ListLine(dt.Rows.Count - 1)
+                ds.Clear()
+                ds.Mode = "LIST"
+
+                ds.DataList = dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
 
 
 #Region "IDisposable Support"
@@ -993,6 +1124,4 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
-
-
 End Class

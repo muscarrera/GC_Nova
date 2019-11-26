@@ -1,5 +1,7 @@
 ﻿Public Class EnteteFacture
 
+    Dim _isDisibleEditing As Boolean
+
 
     Public Event NewFacture()
     Public Event SearchById(ByVal id As String)
@@ -40,6 +42,8 @@
     Dim delai As Integer
 
     Event GetClientDetails()
+
+    Event AddListofBl()
 
 
 
@@ -214,6 +218,7 @@
             For i As Integer = 0 To STR.Length - 1
                 Dim b As New Label
                 b.Text = STR(i)
+                b.AutoSize = True
                 FlowLayoutPanel1.Controls.Add(b)
             Next
         End Set
@@ -246,6 +251,22 @@
             pbJoindre.Visible = value
         End Set
     End Property
+    Public Property isDisibleEditing As Boolean
+        Get
+            Return _isDisibleEditing
+        End Get
+        Set(ByVal value As Boolean)
+            _isDisibleEditing = value
+            plBc.Enabled = Not value
+            plBL.Enabled = Not value
+            plDv.Enabled = Not value
+            btEditClient.Enabled = Not value
+            btSolde.Enabled = Not value
+        End Set
+    End Property
+
+
+
 
     Public Sub New()
 
@@ -321,10 +342,16 @@
         RaiseEvent NewBcRef()
     End Sub
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        RaiseEvent NewBlRef()
+        If Type = "Facture" Then
+            RaiseEvent AddListofBl()
+        Else
+            RaiseEvent NewBlRef()
+        End If
+
+
     End Sub
     'Client
-    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEditClient.Click
         If Statut = "Livré" Then Exit Sub
         If Statut <> "CREATION" And Type = "Facture" Then Exit Sub
         RaiseEvent ChangingClient()

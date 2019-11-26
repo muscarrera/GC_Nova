@@ -33,12 +33,13 @@ Partial Class ListLine
         Me.lbAvc = New System.Windows.Forms.Label()
         Me.plR = New System.Windows.Forms.Panel()
         Me.lbRemise = New System.Windows.Forms.Label()
-        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.plT = New System.Windows.Forms.Panel()
+        Me.lbDate = New System.Windows.Forms.Label()
         Me.plSet = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
+        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.PlButtom = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.plNm.SuspendLayout()
@@ -46,6 +47,7 @@ Partial Class ListLine
         Me.plQ.SuspendLayout()
         Me.plP.SuspendLayout()
         Me.plR.SuspendLayout()
+        Me.plT.SuspendLayout()
         Me.plSet.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -56,9 +58,9 @@ Partial Class ListLine
         Me.Panel1.Controls.Add(Me.plQ)
         Me.Panel1.Controls.Add(Me.plP)
         Me.Panel1.Controls.Add(Me.plR)
-        Me.Panel1.Controls.Add(Me.PlLeft)
         Me.Panel1.Controls.Add(Me.plT)
         Me.Panel1.Controls.Add(Me.plSet)
+        Me.Panel1.Controls.Add(Me.PlLeft)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -70,10 +72,10 @@ Partial Class ListLine
         '
         Me.plNm.Controls.Add(Me.lbName)
         Me.plNm.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plNm.Location = New System.Drawing.Point(102, 3)
+        Me.plNm.Location = New System.Drawing.Point(186, 3)
         Me.plNm.Name = "plNm"
         Me.plNm.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.plNm.Size = New System.Drawing.Size(290, 26)
+        Me.plNm.Size = New System.Drawing.Size(258, 26)
         Me.plNm.TabIndex = 8
         '
         'lbName
@@ -83,7 +85,7 @@ Partial Class ListLine
         Me.lbName.ForeColor = System.Drawing.Color.DodgerBlue
         Me.lbName.Location = New System.Drawing.Point(10, 2)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(270, 22)
+        Me.lbName.Size = New System.Drawing.Size(238, 22)
         Me.lbName.TabIndex = 0
         Me.lbName.Text = "designation"
         Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -93,7 +95,7 @@ Partial Class ListLine
         Me.plRef.BackColor = System.Drawing.Color.Transparent
         Me.plRef.Controls.Add(Me.lbref)
         Me.plRef.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plRef.Location = New System.Drawing.Point(21, 3)
+        Me.plRef.Location = New System.Drawing.Point(105, 3)
         Me.plRef.Name = "plRef"
         Me.plRef.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
         Me.plRef.Size = New System.Drawing.Size(81, 26)
@@ -106,14 +108,14 @@ Partial Class ListLine
         Me.lbref.Name = "lbref"
         Me.lbref.Size = New System.Drawing.Size(61, 22)
         Me.lbref.TabIndex = 1
-        Me.lbref.Text = "Label1"
+        Me.lbref.Text = "-"
         Me.lbref.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plQ
         '
         Me.plQ.Controls.Add(Me.lbTotal)
         Me.plQ.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plQ.Location = New System.Drawing.Point(392, 3)
+        Me.plQ.Location = New System.Drawing.Point(444, 3)
         Me.plQ.Name = "plQ"
         Me.plQ.Padding = New System.Windows.Forms.Padding(2)
         Me.plQ.Size = New System.Drawing.Size(88, 26)
@@ -133,7 +135,7 @@ Partial Class ListLine
         '
         Me.plP.Controls.Add(Me.lbAvc)
         Me.plP.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plP.Location = New System.Drawing.Point(480, 3)
+        Me.plP.Location = New System.Drawing.Point(532, 3)
         Me.plP.Name = "plP"
         Me.plP.Padding = New System.Windows.Forms.Padding(2)
         Me.plP.Size = New System.Drawing.Size(88, 26)
@@ -153,7 +155,7 @@ Partial Class ListLine
         '
         Me.plR.Controls.Add(Me.lbRemise)
         Me.plR.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plR.Location = New System.Drawing.Point(568, 3)
+        Me.plR.Location = New System.Drawing.Point(620, 3)
         Me.plR.Name = "plR"
         Me.plR.Padding = New System.Windows.Forms.Padding(2)
         Me.plR.Size = New System.Drawing.Size(88, 26)
@@ -169,23 +171,25 @@ Partial Class ListLine
         Me.lbRemise.Text = "-"
         Me.lbRemise.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'PlLeft
-        '
-        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
-        Me.PlLeft.Name = "PlLeft"
-        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.PlLeft.Size = New System.Drawing.Size(18, 26)
-        Me.PlLeft.TabIndex = 9
-        '
         'plT
         '
-        Me.plT.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plT.Location = New System.Drawing.Point(656, 3)
+        Me.plT.Controls.Add(Me.lbDate)
+        Me.plT.Dock = System.Windows.Forms.DockStyle.Left
+        Me.plT.Location = New System.Drawing.Point(21, 3)
         Me.plT.Name = "plT"
         Me.plT.Padding = New System.Windows.Forms.Padding(2)
-        Me.plT.Size = New System.Drawing.Size(52, 26)
+        Me.plT.Size = New System.Drawing.Size(84, 26)
         Me.plT.TabIndex = 11
+        '
+        'lbDate
+        '
+        Me.lbDate.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbDate.Location = New System.Drawing.Point(2, 2)
+        Me.lbDate.Name = "lbDate"
+        Me.lbDate.Size = New System.Drawing.Size(80, 22)
+        Me.lbDate.TabIndex = 2
+        Me.lbDate.Text = "-"
+        Me.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plSet
         '
@@ -238,6 +242,15 @@ Partial Class ListLine
         Me.btAdd.TabIndex = 10
         Me.btAdd.UseVisualStyleBackColor = True
         '
+        'PlLeft
+        '
+        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
+        Me.PlLeft.Name = "PlLeft"
+        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
+        Me.PlLeft.Size = New System.Drawing.Size(18, 26)
+        Me.PlLeft.TabIndex = 9
+        '
         'PlButtom
         '
         Me.PlButtom.BackColor = System.Drawing.SystemColors.ControlDarkDark
@@ -262,6 +275,7 @@ Partial Class ListLine
         Me.plQ.ResumeLayout(False)
         Me.plP.ResumeLayout(False)
         Me.plR.ResumeLayout(False)
+        Me.plT.ResumeLayout(False)
         Me.plSet.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -284,5 +298,6 @@ Partial Class ListLine
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents btClear As System.Windows.Forms.Button
     Friend WithEvents btAdd As System.Windows.Forms.Button
+    Friend WithEvents lbDate As System.Windows.Forms.Label
 
 End Class

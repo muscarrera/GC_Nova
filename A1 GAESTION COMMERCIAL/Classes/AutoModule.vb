@@ -57,8 +57,15 @@
         End Try
         Return str
     End Function
-
-
+    Public Function DteValue(ByVal dt As DataTable, ByVal field As String, ByVal i As Integer) As Date
+        Dim str As Date = Now.Date
+        Try
+            str = CDate(dt.Rows(i).Item(field))
+        Catch ex As Exception
+            str = Now.Date
+        End Try
+        Return str
+    End Function
     Public Function RandomColor() As Color
 
         Dim rnd As New Random

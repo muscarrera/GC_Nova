@@ -143,6 +143,8 @@
                 a.Responsable = StrValue(_dt, "responsable", i)
                 a.Ville = StrValue(_dt, "ville", i)
                 a.Tel = StrValue(_dt, "tel", i)
+                a.isCompany = BoolValue(_dt, "isCompany", i)
+
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()

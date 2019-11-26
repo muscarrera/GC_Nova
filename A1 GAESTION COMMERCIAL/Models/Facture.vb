@@ -92,9 +92,9 @@
                 dte = StrValue(dt, "Date", 0)
                 cid = IntValue(dt, "cid", 0)
 
-                bl = StrValue(dt, "bl", 0)
-                bc = StrValue(dt, "bc", 0)
-                devis = StrValue(dt, "devis", 0)
+                bl = StrValue(dt, "Bon_Livraison", 0)
+                bc = StrValue(dt, "Bon_Commande", 0)
+                devis = StrValue(dt, "Devis", 0)
 
                 writer = StrValue(dt, "writer", 0)
                 pj = IntValue(dt, "pj", 0)

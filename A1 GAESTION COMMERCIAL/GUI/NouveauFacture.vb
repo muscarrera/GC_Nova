@@ -1,7 +1,7 @@
 ﻿Public Class NouveauFacture
 
     Public cid As Integer
-    Public cName As Integer
+    Public cName As String
     Public dte As Date
     Public tb_C As String
 
@@ -19,6 +19,7 @@
 
                 cName = txtName.text.Split("|")(0)
                 cid = txtName.text.Split("|")(1)
+                Panel1.BackColor = Color.WhiteSmoke
             Else
                 cName = txtName.text
                 cid = 0
@@ -36,7 +37,53 @@
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If txtName.Text = "" Then Exit Sub
+        If txtName.text = "" Then Exit Sub
+
+        If txtName.text.Contains("|") Then
+            cName = txtName.text.Split("|")(0)
+            cid = txtName.text.Split("|")(1)
+            Dim params As New Dictionary(Of String, Object)
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                params.Add("Clid", cid)
+                Dim nm = a.SelectByScalar(tb_C, "name", params)
+                If cName.ToUpper <> nm.ToString.ToUpper Then
+                    Panel1.BackColor = Color.Bisque
+                    txtName.Focus()
+                    Exit Sub
+                End If
+            End Using
+        Else
+            If MsgBox("Cliquez sur le bouton <b> Oui </b> pour ajouter un nouveau Client",
+                      MsgBoxStyle.OkCancel, txtName.text) = MsgBoxResult.Ok Then
+
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("ref", txtName.text)
+                params.Add("name", txtName.text)
+                params.Add("isCompany", True)
+                params.Add("groupe", "Client Final")
+
+                params.Add("adresse", "-")
+                params.Add("cp", "-")
+                params.Add("ville", "-")
+                params.Add("ice", "-")
+
+                params.Add("tel", "-")
+                params.Add("gsm", "-")
+                params.Add("email", "-")
+                params.Add("info", "-")
+
+                params.Add("img", "-")
+
+
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    cid = a.InsertRecord(tb_C, params, True)
+                End Using
+            Else
+                Panel1.BackColor = Color.Bisque
+                txtName.Focus()
+                Exit Sub
+            End If
+        End If
         DialogResult = Windows.Forms.DialogResult.OK
     End Sub
 

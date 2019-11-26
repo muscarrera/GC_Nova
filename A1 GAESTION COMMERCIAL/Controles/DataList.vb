@@ -1,5 +1,7 @@
 ﻿Public Class DataList
 
+
+
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -25,6 +27,7 @@
     Public Event NewBlRef(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
     Public Event NewDevisRef(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
     Public Event GetClientDetails(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event AddListofBl(ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
 
     'Bloc Tolal Event
     Public Event EditModePayement(ByRef dataList As DataList)
@@ -58,6 +61,12 @@
     Public DetailsTable As String = "Details_Sell_Facture"
     Private _isSell As Boolean = True
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
+    Private _isDisibleEditing As Boolean = True
+
+    Event GetListofCommande(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
+    Event GetListofFacture(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
 
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
@@ -183,6 +192,7 @@
             TB.pj = value.pj
             TB.avance = value.Avance
             PayementDataSource = value.PaymenetDataSource
+            DisibleEditing(value.isAdmin)
             If value.isAdmin <> "CREATION" Then PlAdd.Height = 1
         End Set
     End Property
@@ -249,12 +259,13 @@
             table.Columns.Add("ref", GetType(String))
             table.Columns.Add("depot", GetType(Integer))
             table.Columns.Add("remise", GetType(Integer))
-          
+            table.Columns.Add("bl", GetType(Integer))
+
             Dim a As ListRow
             For Each a In Pl.Controls
                 ' Add  rows with those columns filled in the DataTable.
-                table.Rows.Add(a.arid, a.Name, a.cid, a.qte, a.sprice, a.bprice,
-                              a.TVA, a.ref, a.depot, a.remise)
+                table.Rows.Add(a.arid, a.ArticleName, a.cid, a.qte, a.sprice, a.bprice,
+                              a.TVA, a.ref, a.depot, a.remise, a.id)
             Next
             Return table
         End Get
@@ -284,7 +295,13 @@
                     R.normalFont = _fntNormal
                     R.titleFont = _fntTitle
                     R.Dock = DockStyle.Top
+                    R.id = value.Rows(i).Item(0)
+
+                    If FactureTable = "Sell_Facture" Then R.bl = value.Rows(i).Item("bl")
                     R.BringToFront()
+                    AddHandler R.itemChanged, AddressOf Article_Item_Changed
+                    AddHandler R.DeleteItem, AddressOf Article_Item_Delete
+
                     arr(i) = R
                 Next
                 Pl.Controls.AddRange(arr)
@@ -394,6 +411,18 @@
             Entete.HasJoinFiles = CBool(value)
         End Set
     End Property
+    Public Property isDisibleEditing As Boolean
+        Get
+            Return _isDisibleEditing
+        End Get
+        Set(ByVal value As Boolean)
+            _isDisibleEditing = value
+            plNewElement.Visible = Not value
+            Entete.isDisibleEditing = value
+            TB.isDisibleEditing = value
+        End Set
+    End Property
+
 
     Public Sub New()
 
@@ -408,7 +437,10 @@
         Pl.Controls.Clear()
         Entete.Clear()
     End Sub
-    
+    Public Sub DisibleEditing(ByVal str As String)
+        isDisibleEditing = False
+        If str = "Facturé" Then isDisibleEditing = True
+    End Sub
     Private Sub AddRow1_AddNewArticle(ByVal art As Article) Handles AddRow1.AddNewArticle
         If Id = 0 Then Exit Sub
         'DataSource.Add(art.arid, art)
@@ -597,7 +629,7 @@
                 a.Total = DblValue(_dtList, "total", i)
                 a.Avance = DblValue(_dtList, "avance", i)
                 a.remise = DblValue(_dtList, "remise", i)
-
+                a.Dte = DteValue(_dtList, "date", i)
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()
@@ -638,6 +670,13 @@
             If b.Text = bt.Text Then Continue For
             b.BackgroundImage = My.Resources.gray_row
         Next
+
+        If bt.Text = "Commande" Or bt.Text = "BC" Then
+            RaiseEvent GetListofCommande(Me)
+        Else
+            RaiseEvent GetListofFacture(Me)
+        End If
+
     End Sub
     Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement) Handles AddPayementRow1.AddNewArticle
 
@@ -707,5 +746,9 @@
 
     Private Sub Entete_GetClientDetails() Handles Entete.GetClientDetails
         RaiseEvent GetClientDetails(Me)
+    End Sub
+
+    Private Sub Entete_AddListofBl() Handles Entete.AddListofBl
+        RaiseEvent AddListofBl(Me)
     End Sub
 End Class

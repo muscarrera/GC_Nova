@@ -54,7 +54,7 @@ Partial Class EnteteFacture
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btEditClient = New System.Windows.Forms.Button()
         Me.lbInfo = New System.Windows.Forms.Label()
         Me.lbName = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -462,7 +462,7 @@ Partial Class EnteteFacture
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.Panel3.Controls.Add(Me.Button5)
-        Me.Panel3.Controls.Add(Me.Button4)
+        Me.Panel3.Controls.Add(Me.btEditClient)
         Me.Panel3.Controls.Add(Me.lbInfo)
         Me.Panel3.Controls.Add(Me.lbName)
         Me.Panel3.Controls.Add(Me.Panel5)
@@ -487,20 +487,20 @@ Partial Class EnteteFacture
         Me.Button5.TabIndex = 9
         Me.Button5.UseVisualStyleBackColor = False
         '
-        'Button4
+        'btEditClient
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.BackColor = System.Drawing.Color.Silver
-        Me.Button4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_preview_23216__1_
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button4.Location = New System.Drawing.Point(323, 116)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(15, 15)
-        Me.Button4.TabIndex = 9
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btEditClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btEditClient.BackColor = System.Drawing.Color.Silver
+        Me.btEditClient.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_preview_23216__1_
+        Me.btEditClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btEditClient.FlatAppearance.BorderSize = 0
+        Me.btEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btEditClient.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btEditClient.Location = New System.Drawing.Point(323, 116)
+        Me.btEditClient.Name = "btEditClient"
+        Me.btEditClient.Size = New System.Drawing.Size(15, 15)
+        Me.btEditClient.TabIndex = 9
+        Me.btEditClient.UseVisualStyleBackColor = False
         '
         'lbInfo
         '
@@ -1134,7 +1134,7 @@ Partial Class EnteteFacture
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents pbJoindre As System.Windows.Forms.PictureBox
     Friend WithEvents btParamsImp As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btEditClient As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
 
 End Class

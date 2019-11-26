@@ -33,10 +33,10 @@ Partial Class ClientRow
         Me.lbResponsable = New System.Windows.Forms.Label()
         Me.plR = New System.Windows.Forms.Panel()
         Me.lbTel = New System.Windows.Forms.Label()
-        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.plT = New System.Windows.Forms.Panel()
         Me.lbVille = New System.Windows.Forms.Label()
         Me.plSet = New System.Windows.Forms.Panel()
+        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
@@ -107,7 +107,7 @@ Partial Class ClientRow
         Me.lbref.Name = "lbref"
         Me.lbref.Size = New System.Drawing.Size(73, 23)
         Me.lbref.TabIndex = 1
-        Me.lbref.Text = "Label1"
+        Me.lbref.Text = "0"
         Me.lbref.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plQ
@@ -127,7 +127,7 @@ Partial Class ClientRow
         Me.lbType.Name = "lbType"
         Me.lbType.Size = New System.Drawing.Size(64, 23)
         Me.lbType.TabIndex = 0
-        Me.lbType.Text = "Label1"
+        Me.lbType.Text = "Ste"
         Me.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plP
@@ -147,7 +147,7 @@ Partial Class ClientRow
         Me.lbResponsable.Name = "lbResponsable"
         Me.lbResponsable.Size = New System.Drawing.Size(78, 23)
         Me.lbResponsable.TabIndex = 1
-        Me.lbResponsable.Text = "Label1"
+        Me.lbResponsable.Text = "-"
         Me.lbResponsable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plR
@@ -167,17 +167,8 @@ Partial Class ClientRow
         Me.lbTel.Name = "lbTel"
         Me.lbTel.Size = New System.Drawing.Size(122, 23)
         Me.lbTel.TabIndex = 1
-        Me.lbTel.Text = "Label1"
+        Me.lbTel.Text = "-"
         Me.lbTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'PlLeft
-        '
-        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
-        Me.PlLeft.Name = "PlLeft"
-        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.PlLeft.Size = New System.Drawing.Size(18, 27)
-        Me.PlLeft.TabIndex = 9
         '
         'plT
         '
@@ -196,7 +187,7 @@ Partial Class ClientRow
         Me.lbVille.Name = "lbVille"
         Me.lbVille.Size = New System.Drawing.Size(87, 23)
         Me.lbVille.TabIndex = 2
-        Me.lbVille.Text = "Label1"
+        Me.lbVille.Text = "-"
         Me.lbVille.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'plSet
@@ -210,6 +201,16 @@ Partial Class ClientRow
         Me.plSet.Size = New System.Drawing.Size(130, 27)
         Me.plSet.TabIndex = 10
         Me.plSet.Visible = False
+        '
+        'PlLeft
+        '
+        Me.PlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
+        Me.PlLeft.Name = "PlLeft"
+        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
+        Me.PlLeft.Size = New System.Drawing.Size(18, 27)
+        Me.PlLeft.TabIndex = 9
         '
         'Button1
         '

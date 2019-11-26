@@ -1,6 +1,7 @@
 ﻿Public Class TotalBloc
 
     Dim _pj As Integer
+    Dim _isDisibleEditing As Boolean
 
     Public Event EditModePayement()
     Public Event ValueChanged()
@@ -126,7 +127,16 @@
             lbwriter.Text = value
         End Set
     End Property
-
+    Public Property isDisibleEditing As Boolean
+        Get
+            Return _isDisibleEditing
+        End Get
+        Set(ByVal value As Boolean)
+            _isDisibleEditing = value
+            plAddPayement.Enabled = Not value
+            plMP.Enabled = Not value
+        End Set
+    End Property
     Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox3.Click
         RaiseEvent EditModePayement()
     End Sub

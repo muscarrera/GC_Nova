@@ -21,6 +21,7 @@
     Private _isSelected As Boolean = False
 
     Public id As Integer = 0
+    Private _bl As Integer = 0
     Public arid As Integer = 0
     Public cid As Integer
     Public alert As Double
@@ -67,6 +68,18 @@
                 lbRemise.Visible = True
             End If
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
+        End Set
+    End Property
+    Public Property bl As Integer
+        Get
+            Return _bl
+        End Get
+        Set(ByVal value As Integer)
+            _bl = value
+            If bl > 0 Then
+                btAdd.Visible = False
+                btClear.Visible = False
+            End If
         End Set
     End Property
     Public bprice As Double = 0
@@ -246,11 +259,10 @@
         ' Add any initialization after the InitializeComponent() call.
         article = art
     End Sub
-
     Private Sub lbName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbName.TextChanged
         Me.Height = lbName.Height + 32
     End Sub
-    Private Sub lbref_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plT.Click, plSet.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbQte.Click, lbPrice.Click, lbName.Click
+    Private Sub lbref_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plT.Click, plSet.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbQte.Click, lbPrice.Click, lbName.Click, Panel1.Click
         isSelected = Not isSelected
         RaiseEvent selected(Me)
     End Sub
@@ -262,9 +274,11 @@
         RaiseEvent itemChanged(Me, art)
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
+        If bl > 0 Then Exit Sub
         RaiseEvent DeleteItem(Me)
     End Sub
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
+        If bl > 0 Then Exit Sub
         EditMode = True
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

@@ -18,11 +18,14 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddEditClient.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddEditProduct.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.AddFiles.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ChooseBL.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ChooseClient.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ClientDetails.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.Form1.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ImpressionParams.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ModePayement.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.NouveauFacture.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ReferenceFacture.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.SearchArchive.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TransformerDevis.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.Resources.resources
@@ -31,5 +34,3 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1 GAESTION COMMERCIAL.exe
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1 GAESTION COMMERCIAL.xml
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1 GAESTION COMMERCIAL.pdb
-C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ReferenceFacture.resources
-C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ClientDetails.resources

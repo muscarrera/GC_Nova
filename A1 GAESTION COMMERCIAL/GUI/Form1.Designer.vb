@@ -52,6 +52,7 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.plBody = New System.Windows.Forms.Panel()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -88,6 +89,7 @@ Partial Class Form1
         'plHeaderButton
         '
         Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
+        Me.plHeaderButton.Controls.Add(Me.Button9)
         Me.plHeaderButton.Controls.Add(Me.Button8)
         Me.plHeaderButton.Controls.Add(Me.Panel1)
         Me.plHeaderButton.Controls.Add(Me.Label5)
@@ -384,6 +386,19 @@ Partial Class Form1
         'PrintDoc
         '
         '
+        'Button9
+        '
+        Me.Button9.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button9.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button9.Location = New System.Drawing.Point(593, 0)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(118, 36)
+        Me.Button9.TabIndex = 11
+        Me.Button9.Text = "Parc"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -440,5 +455,6 @@ Partial Class Form1
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Button9 As System.Windows.Forms.Button
 
 End Class
