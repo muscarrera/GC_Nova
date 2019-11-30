@@ -63,11 +63,11 @@
     End Sub
 
     'Add DataList to pl Body
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Public Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btVente.Click
         Using c As New FactureClass
             c.AddDataList(True)
         End Using
-        HeaderColor(Button6.Text)
+        HeaderColor(btVente.Text)
     End Sub
     Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
         Using c As New FactureClass
@@ -88,6 +88,13 @@
         End Using
         HeaderColor(Button11.Text)
     End Sub
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+        Using c As New ParcClass
+            c.AddDataList()
+        End Using
+        HeaderColor(Button9.Text)
+    End Sub
+
     Private Sub HeaderColor(ByVal value As String)
         For Each b As Control In plHeaderButton.Controls
             If b.Text = value Then
@@ -128,6 +135,7 @@
             m = 0
         End Try
     End Sub
+
 
 
 End Class

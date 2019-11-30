@@ -36,12 +36,12 @@ Partial Class AddEditDriver
         Me.txtTel = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtInfo = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtAdresse = New A1_GAESTION_COMMERCIAL.TxtBox()
@@ -59,11 +59,11 @@ Partial Class AddEditDriver
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtCIN = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.txtCIN = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
@@ -145,7 +145,7 @@ Partial Class AddEditDriver
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
         Me.Button7.Size = New System.Drawing.Size(90, 28)
-        Me.Button7.TabIndex = 2
+        Me.Button7.TabIndex = 10
         Me.Button7.Text = "Annuler   "
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button7.UseVisualStyleBackColor = True
@@ -159,7 +159,7 @@ Partial Class AddEditDriver
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.Button6.Size = New System.Drawing.Size(116, 28)
-        Me.Button6.TabIndex = 2
+        Me.Button6.TabIndex = 9
         Me.Button6.Text = "Enregistrer   "
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = True
@@ -194,7 +194,7 @@ Partial Class AddEditDriver
         Me.txtCnss.ShowSaveIcon = False
         Me.txtCnss.Size = New System.Drawing.Size(246, 26)
         Me.txtCnss.StartUp = 2
-        Me.txtCnss.TabIndex = 7
+        Me.txtCnss.TabIndex = 5
         Me.txtCnss.TextSize = 10
         Me.txtCnss.TxtBackColor = True
         Me.txtCnss.TxtColor = System.Drawing.Color.White
@@ -213,7 +213,7 @@ Partial Class AddEditDriver
         Me.txtDate.ShowSaveIcon = False
         Me.txtDate.Size = New System.Drawing.Size(243, 26)
         Me.txtDate.StartUp = 2
-        Me.txtDate.TabIndex = 33
+        Me.txtDate.TabIndex = 4
         Me.txtDate.TextSize = 10
         Me.txtDate.TxtBackColor = True
         Me.txtDate.TxtColor = System.Drawing.Color.White
@@ -267,16 +267,15 @@ Partial Class AddEditDriver
         Me.Panel11.Size = New System.Drawing.Size(278, 256)
         Me.Panel11.TabIndex = 1
         '
-        'Label10
+        'Label6
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label10.Location = New System.Drawing.Point(7, 149)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(35, 17)
-        Me.Label10.TabIndex = 5
-        Me.Label10.Text = "Infos"
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(14, 10)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(43, 16)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Infos *"
         '
         'Label14
         '
@@ -288,6 +287,17 @@ Partial Class AddEditDriver
         Me.Label14.Size = New System.Drawing.Size(114, 17)
         Me.Label14.TabIndex = 5
         Me.Label14.Text = "Date d'Embauche"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label10.Location = New System.Drawing.Point(7, 149)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(35, 17)
+        Me.Label10.TabIndex = 5
+        Me.Label10.Text = "Infos"
         '
         'Label5
         '
@@ -312,7 +322,7 @@ Partial Class AddEditDriver
         Me.txtInfo.ShowSaveIcon = False
         Me.txtInfo.Size = New System.Drawing.Size(247, 26)
         Me.txtInfo.StartUp = 2
-        Me.txtInfo.TabIndex = 5
+        Me.txtInfo.TabIndex = 8
         Me.txtInfo.TextSize = 10
         Me.txtInfo.TxtBackColor = True
         Me.txtInfo.TxtColor = System.Drawing.Color.White
@@ -328,16 +338,6 @@ Partial Class AddEditDriver
         Me.Label1.Size = New System.Drawing.Size(45, 17)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Nom *"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(14, 10)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(43, 16)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Infos *"
         '
         'Panel13
         '
@@ -380,7 +380,7 @@ Partial Class AddEditDriver
         Me.txtAdresse.ShowSaveIcon = False
         Me.txtAdresse.Size = New System.Drawing.Size(247, 26)
         Me.txtAdresse.StartUp = 2
-        Me.txtAdresse.TabIndex = 5
+        Me.txtAdresse.TabIndex = 7
         Me.txtAdresse.TextSize = 10
         Me.txtAdresse.TxtBackColor = True
         Me.txtAdresse.TxtColor = System.Drawing.Color.White
@@ -548,6 +548,16 @@ Partial Class AddEditDriver
         Me.Panel6.Size = New System.Drawing.Size(376, 160)
         Me.Panel6.TabIndex = 0
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(13, 107)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(35, 17)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "CIN :"
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -557,6 +567,25 @@ Partial Class AddEditDriver
         Me.Label9.Size = New System.Drawing.Size(33, 17)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Réf :"
+        '
+        'txtCIN
+        '
+        Me.txtCIN.BackColor = System.Drawing.Color.Transparent
+        Me.txtCIN.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtCIN.IsNumiric = False
+        Me.txtCIN.Location = New System.Drawing.Point(116, 103)
+        Me.txtCIN.Name = "txtCIN"
+        Me.txtCIN.PlaceHolder = ""
+        Me.txtCIN.ShowClearIcon = False
+        Me.txtCIN.ShowSaveIcon = False
+        Me.txtCIN.Size = New System.Drawing.Size(239, 26)
+        Me.txtCIN.StartUp = 2
+        Me.txtCIN.TabIndex = 3
+        Me.txtCIN.TextSize = 10
+        Me.txtCIN.TxtBackColor = True
+        Me.txtCIN.TxtColor = System.Drawing.Color.White
+        Me.txtCIN.txtReadOnly = False
+        Me.txtCIN.TxtSelect = New Integer() {1, 0}
         '
         'txtName
         '
@@ -587,35 +616,6 @@ Partial Class AddEditDriver
         Me.Panel2.Size = New System.Drawing.Size(594, 17)
         Me.Panel2.TabIndex = 7
         '
-        'txtCIN
-        '
-        Me.txtCIN.BackColor = System.Drawing.Color.Transparent
-        Me.txtCIN.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtCIN.IsNumiric = False
-        Me.txtCIN.Location = New System.Drawing.Point(116, 103)
-        Me.txtCIN.Name = "txtCIN"
-        Me.txtCIN.PlaceHolder = ""
-        Me.txtCIN.ShowClearIcon = False
-        Me.txtCIN.ShowSaveIcon = False
-        Me.txtCIN.Size = New System.Drawing.Size(239, 26)
-        Me.txtCIN.StartUp = 2
-        Me.txtCIN.TabIndex = 2
-        Me.txtCIN.TextSize = 10
-        Me.txtCIN.TxtBackColor = True
-        Me.txtCIN.TxtColor = System.Drawing.Color.White
-        Me.txtCIN.txtReadOnly = False
-        Me.txtCIN.TxtSelect = New Integer() {1, 0}
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 107)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 17)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "CIN :"
-        '
         'AddEditDriver
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -628,6 +628,7 @@ Partial Class AddEditDriver
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "AddEditDriver"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AddEditDriver"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

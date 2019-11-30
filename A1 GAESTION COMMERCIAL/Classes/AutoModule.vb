@@ -74,4 +74,13 @@
         Return c
     End Function
 
+
+
+    '''''''''''''''''''''''''
+    'Strings
+
+    Public MsgDelete As String = "Etes-vous certain de vouloir supprimer ce Client"
+
+
+
 End Module

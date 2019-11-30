@@ -89,6 +89,12 @@
     <Compile Include="Classes\RegistryModule.vb" />
     <Compile Include="Classes\SubClass.vb" />
     <Compile Include="Classes\Trial.vb" />
+    <Compile Include="Controles\AddElement.Designer.vb">
+      <DependentUpon>AddElement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\AddElement.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\AddPayementRow.Designer.vb">
       <DependentUpon>AddPayementRow.vb</DependentUpon>
     </Compile>
@@ -285,6 +291,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controles\AddElement.resx">
+      <DependentUpon>AddElement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\AddPayementRow.resx">
       <DependentUpon>AddPayementRow.vb</DependentUpon>
     </EmbeddedResource>
@@ -413,6 +422,10 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\SUB14.png" />
+    <None Include="Resources\ADD14.png" />
+    <None Include="Resources\ADD20.png" />
+    <None Include="Resources\SUB20.png" />
     <None Include="Resources\fav 16.png" />
     <None Include="Resources\iconfinder_Printer_43348.png" />
     <None Include="Resources\iconfinder_Gnome-Emblem-System-48_55301.png" />

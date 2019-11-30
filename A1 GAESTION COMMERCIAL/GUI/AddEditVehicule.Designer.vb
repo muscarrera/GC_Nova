@@ -33,18 +33,12 @@ Partial Class AddEditVehicule
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.PBImage = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lbImage = New System.Windows.Forms.Label()
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtYear = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtModel = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.txtMarque = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -64,13 +58,8 @@ Partial Class AddEditVehicule
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtYear = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
-        Me.Panel7.SuspendLayout()
-        Me.Panel8.SuspendLayout()
-        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
         Me.Panel11.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -132,7 +121,7 @@ Partial Class AddEditVehicule
         Me.txtCarb.ShowSaveIcon = False
         Me.txtCarb.Size = New System.Drawing.Size(247, 26)
         Me.txtCarb.StartUp = 2
-        Me.txtCarb.TabIndex = 6
+        Me.txtCarb.TabIndex = 7
         Me.txtCarb.TextSize = 10
         Me.txtCarb.TxtBackColor = True
         Me.txtCarb.TxtColor = System.Drawing.Color.White
@@ -151,7 +140,7 @@ Partial Class AddEditVehicule
         Me.txtEtat.ShowSaveIcon = False
         Me.txtEtat.Size = New System.Drawing.Size(247, 26)
         Me.txtEtat.StartUp = 2
-        Me.txtEtat.TabIndex = 5
+        Me.txtEtat.TabIndex = 8
         Me.txtEtat.TextSize = 10
         Me.txtEtat.TxtBackColor = True
         Me.txtEtat.TxtColor = System.Drawing.Color.White
@@ -192,7 +181,7 @@ Partial Class AddEditVehicule
         Me.txtInfo.ShowSaveIcon = False
         Me.txtInfo.Size = New System.Drawing.Size(247, 26)
         Me.txtInfo.StartUp = 2
-        Me.txtInfo.TabIndex = 5
+        Me.txtInfo.TabIndex = 9
         Me.txtInfo.TextSize = 10
         Me.txtInfo.TxtBackColor = True
         Me.txtInfo.TxtColor = System.Drawing.Color.White
@@ -208,7 +197,7 @@ Partial Class AddEditVehicule
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.Button6.Size = New System.Drawing.Size(116, 28)
-        Me.Button6.TabIndex = 2
+        Me.Button6.TabIndex = 10
         Me.Button6.Text = "Enregistrer   "
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = True
@@ -227,7 +216,7 @@ Partial Class AddEditVehicule
         Me.txtRef.BackColor = System.Drawing.Color.Transparent
         Me.txtRef.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtRef.IsNumiric = False
-        Me.txtRef.Location = New System.Drawing.Point(116, 23)
+        Me.txtRef.Location = New System.Drawing.Point(201, 19)
         Me.txtRef.Name = "txtRef"
         Me.txtRef.PlaceHolder = ""
         Me.txtRef.ShowClearIcon = False
@@ -240,93 +229,6 @@ Partial Class AddEditVehicule
         Me.txtRef.TxtColor = System.Drawing.Color.White
         Me.txtRef.txtReadOnly = False
         Me.txtRef.TxtSelect = New Integer() {1, 0}
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.Panel8)
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel7.Location = New System.Drawing.Point(381, 5)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel7.Size = New System.Drawing.Size(210, 160)
-        Me.Panel7.TabIndex = 0
-        '
-        'Panel8
-        '
-        Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Panel8.Controls.Add(Me.PBImage)
-        Me.Panel8.Controls.Add(Me.Button1)
-        Me.Panel8.Controls.Add(Me.Label3)
-        Me.Panel8.Controls.Add(Me.lbImage)
-        Me.Panel8.Controls.Add(Me.ShapeContainer1)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel8.Location = New System.Drawing.Point(10, 10)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel8.Size = New System.Drawing.Size(190, 140)
-        Me.Panel8.TabIndex = 0
-        '
-        'PBImage
-        '
-        Me.PBImage.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
-        Me.PBImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PBImage.Enabled = False
-        Me.PBImage.Location = New System.Drawing.Point(13, 58)
-        Me.PBImage.Name = "PBImage"
-        Me.PBImage.Size = New System.Drawing.Size(172, 81)
-        Me.PBImage.TabIndex = 8
-        Me.PBImage.TabStop = False
-        '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.DimGray
-        Me.Button1.Location = New System.Drawing.Point(108, 141)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(69, 30)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Load"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(13, 10)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(47, 16)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Image"
-        '
-        'lbImage
-        '
-        Me.lbImage.AutoSize = True
-        Me.lbImage.BackColor = System.Drawing.Color.Gainsboro
-        Me.lbImage.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbImage.Location = New System.Drawing.Point(13, 31)
-        Me.lbImage.Name = "lbImage"
-        Me.lbImage.Size = New System.Drawing.Size(29, 17)
-        Me.lbImage.TabIndex = 5
-        Me.lbImage.Text = "URL"
-        '
-        'ShapeContainer1
-        '
-        Me.ShapeContainer1.Location = New System.Drawing.Point(10, 10)
-        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(170, 120)
-        Me.ShapeContainer1.TabIndex = 7
-        Me.ShapeContainer1.TabStop = False
-        '
-        'LineShape1
-        '
-        Me.LineShape1.Name = "LineShape1"
-        Me.LineShape1.X1 = 8
-        Me.LineShape1.X2 = 306
-        Me.LineShape1.Y1 = 43
-        Me.LineShape1.Y2 = 43
         '
         'Panel10
         '
@@ -367,6 +269,25 @@ Partial Class AddEditVehicule
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Infos *"
         '
+        'txtYear
+        '
+        Me.txtYear.BackColor = System.Drawing.Color.Transparent
+        Me.txtYear.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtYear.IsNumiric = False
+        Me.txtYear.Location = New System.Drawing.Point(17, 197)
+        Me.txtYear.Name = "txtYear"
+        Me.txtYear.PlaceHolder = ""
+        Me.txtYear.ShowClearIcon = False
+        Me.txtYear.ShowSaveIcon = False
+        Me.txtYear.Size = New System.Drawing.Size(246, 26)
+        Me.txtYear.StartUp = 2
+        Me.txtYear.TabIndex = 6
+        Me.txtYear.TextSize = 10
+        Me.txtYear.TxtBackColor = True
+        Me.txtYear.TxtColor = System.Drawing.Color.White
+        Me.txtYear.txtReadOnly = False
+        Me.txtYear.TxtSelect = New Integer() {1, 0}
+        '
         'txtModel
         '
         Me.txtModel.BackColor = System.Drawing.Color.Transparent
@@ -379,12 +300,23 @@ Partial Class AddEditVehicule
         Me.txtModel.ShowSaveIcon = False
         Me.txtModel.Size = New System.Drawing.Size(246, 26)
         Me.txtModel.StartUp = 2
-        Me.txtModel.TabIndex = 7
+        Me.txtModel.TabIndex = 5
         Me.txtModel.TextSize = 10
         Me.txtModel.TxtBackColor = True
         Me.txtModel.TxtColor = System.Drawing.Color.White
         Me.txtModel.txtReadOnly = False
         Me.txtModel.TxtSelect = New Integer() {1, 0}
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label4.Location = New System.Drawing.Point(14, 177)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(47, 17)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Année"
         '
         'txtMarque
         '
@@ -398,7 +330,7 @@ Partial Class AddEditVehicule
         Me.txtMarque.ShowSaveIcon = False
         Me.txtMarque.Size = New System.Drawing.Size(243, 26)
         Me.txtMarque.StartUp = 2
-        Me.txtMarque.TabIndex = 33
+        Me.txtMarque.TabIndex = 4
         Me.txtMarque.TextSize = 10
         Me.txtMarque.TxtBackColor = True
         Me.txtMarque.TxtColor = System.Drawing.Color.White
@@ -429,7 +361,6 @@ Partial Class AddEditVehicule
         '
         'Panel4
         '
-        Me.Panel4.Controls.Add(Me.Panel7)
         Me.Panel4.Controls.Add(Me.Panel6)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(0, 101)
@@ -450,14 +381,14 @@ Partial Class AddEditVehicule
         Me.Panel6.Location = New System.Drawing.Point(5, 5)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel6.Size = New System.Drawing.Size(376, 160)
+        Me.Panel6.Size = New System.Drawing.Size(535, 160)
         Me.Panel6.TabIndex = 0
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 107)
+        Me.Label2.Location = New System.Drawing.Point(98, 103)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(31, 17)
         Me.Label2.TabIndex = 5
@@ -467,7 +398,7 @@ Partial Class AddEditVehicule
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 51)
+        Me.Label1.Location = New System.Drawing.Point(98, 47)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 17)
         Me.Label1.TabIndex = 5
@@ -477,7 +408,7 @@ Partial Class AddEditVehicule
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(13, 28)
+        Me.Label9.Location = New System.Drawing.Point(98, 24)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(33, 17)
         Me.Label9.TabIndex = 5
@@ -488,14 +419,14 @@ Partial Class AddEditVehicule
         Me.txtKm.BackColor = System.Drawing.Color.Transparent
         Me.txtKm.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtKm.IsNumiric = False
-        Me.txtKm.Location = New System.Drawing.Point(116, 103)
+        Me.txtKm.Location = New System.Drawing.Point(201, 99)
         Me.txtKm.Name = "txtKm"
         Me.txtKm.PlaceHolder = ""
         Me.txtKm.ShowClearIcon = False
         Me.txtKm.ShowSaveIcon = False
         Me.txtKm.Size = New System.Drawing.Size(239, 26)
         Me.txtKm.StartUp = 2
-        Me.txtKm.TabIndex = 2
+        Me.txtKm.TabIndex = 3
         Me.txtKm.TextSize = 10
         Me.txtKm.TxtBackColor = True
         Me.txtKm.TxtColor = System.Drawing.Color.White
@@ -507,7 +438,7 @@ Partial Class AddEditVehicule
         Me.txtName.BackColor = System.Drawing.Color.Transparent
         Me.txtName.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtName.IsNumiric = False
-        Me.txtName.Location = New System.Drawing.Point(116, 52)
+        Me.txtName.Location = New System.Drawing.Point(201, 48)
         Me.txtName.Name = "txtName"
         Me.txtName.PlaceHolder = ""
         Me.txtName.ShowClearIcon = False
@@ -597,7 +528,7 @@ Partial Class AddEditVehicule
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
         Me.Button7.Size = New System.Drawing.Size(90, 28)
-        Me.Button7.TabIndex = 2
+        Me.Button7.TabIndex = 11
         Me.Button7.Text = "Annuler   "
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button7.UseVisualStyleBackColor = True
@@ -620,36 +551,6 @@ Partial Class AddEditVehicule
         Me.Panel23.Size = New System.Drawing.Size(571, 2)
         Me.Panel23.TabIndex = 2
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label4.Location = New System.Drawing.Point(14, 177)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(47, 17)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Année"
-        '
-        'txtYear
-        '
-        Me.txtYear.BackColor = System.Drawing.Color.Transparent
-        Me.txtYear.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtYear.IsNumiric = False
-        Me.txtYear.Location = New System.Drawing.Point(17, 197)
-        Me.txtYear.Name = "txtYear"
-        Me.txtYear.PlaceHolder = ""
-        Me.txtYear.ShowClearIcon = False
-        Me.txtYear.ShowSaveIcon = False
-        Me.txtYear.Size = New System.Drawing.Size(246, 26)
-        Me.txtYear.StartUp = 2
-        Me.txtYear.TabIndex = 7
-        Me.txtYear.TextSize = 10
-        Me.txtYear.TxtBackColor = True
-        Me.txtYear.TxtColor = System.Drawing.Color.White
-        Me.txtYear.txtReadOnly = False
-        Me.txtYear.TxtSelect = New Integer() {1, 0}
-        '
         'AddEditVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -662,14 +563,11 @@ Partial Class AddEditVehicule
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "AddEditVehicule"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AddEditVehicule"
         Me.Panel12.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
-        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
@@ -695,14 +593,6 @@ Partial Class AddEditVehicule
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents txtRef As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents Panel7 As System.Windows.Forms.Panel
-    Friend WithEvents Panel8 As System.Windows.Forms.Panel
-    Friend WithEvents PBImage As System.Windows.Forms.PictureBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents lbImage As System.Windows.Forms.Label
-    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
     Friend WithEvents Label6 As System.Windows.Forms.Label
