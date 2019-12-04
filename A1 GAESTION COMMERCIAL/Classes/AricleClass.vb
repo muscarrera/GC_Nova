@@ -64,19 +64,8 @@
     End Function
 
     Public Sub AddDataList()
-
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            Dim dt As DataTable = a.SelectDataTable("Article", {"*"})
-
-            'If Form1.plBody.Controls.Count > 0 Then
-            '    If TypeOf Form1.plBody.Controls(0) Is ProductList Then
-
-            '        Dim dls As ProductList = Form1.plBody.Controls(0)
-            '        dls.Mode = "Article"
-            '        dls.DataSource = dt
-            '        Exit Sub
-            '    End If
-            'End If
+            Dim dt As DataTable = a.SelectDataTableWithSyntaxe("Article", "TOP " & Form1.numberOfItems, {"*"})
 
             Form1.plBody.Controls.Clear()
             Dim ds As New ProductList
@@ -92,7 +81,6 @@
 
             Form1.plBody.Controls.Add(ds)
         End Using
-
     End Sub
     Private Sub GetElements(ByRef ds As ProductList)
         Try
@@ -108,11 +96,7 @@
                 End Try
             End If
 
-            'If IsNumeric(ds.txtSearchName.text) Then
-            '    Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            '        dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
-            '    End Using
-            If ds.txtSearchName.text <> "" Then
+            If ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                     If cid > 0 Then params.Add("cid = ", cid)
                     params.Add("name Like ", "%" & ds.txtSearchName.text & "%")
@@ -125,13 +109,17 @@
                     Dim dt2 = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
                     dt.Merge(dt2, False)
                 End Using
+            ElseIf ds.txtSearchName.text = "*" Then
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    dt = a.SelectDataTable(ds.TableName, {"*"})
+                End Using
             ElseIf ds.txtSearchName.text = "" Then
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                     If cid > 0 Then
                         params.Add("cid = ", cid)
                         dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
                     Else
-                        dt = a.SelectDataTable(ds.TableName, {"*"})
+                        dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP " & Form1.numberOfItems, {"*"})
                     End If
                 End Using
             End If

@@ -246,6 +246,12 @@
     <Compile Include="GUI\NouveauFacture.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\PayementForm.Designer.vb">
+      <DependentUpon>PayementForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PayementForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\ReferenceFacture.Designer.vb">
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
     </Compile>
@@ -369,6 +375,9 @@
     <EmbeddedResource Include="GUI\NouveauFacture.resx">
       <DependentUpon>NouveauFacture.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PayementForm.resx">
+      <DependentUpon>PayementForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ReferenceFacture.resx">
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
     </EmbeddedResource>
@@ -422,6 +431,8 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bgLightForm.jpg" />
+    <None Include="Resources\bgForm.jpg" />
     <None Include="Resources\SUB14.png" />
     <None Include="Resources\ADD14.png" />
     <None Include="Resources\ADD20.png" />

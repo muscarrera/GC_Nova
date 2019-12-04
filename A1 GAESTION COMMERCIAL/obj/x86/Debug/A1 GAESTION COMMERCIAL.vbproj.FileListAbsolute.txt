@@ -29,6 +29,7 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ImpressionParams.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ModePayement.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.NouveauFacture.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.PayementForm.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ReferenceFacture.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.SearchArchive.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TransformerDevis.resources

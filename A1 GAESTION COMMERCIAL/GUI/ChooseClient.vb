@@ -55,7 +55,7 @@
                 Dim tp As String = 0
                 tp = dt.Rows(i).Item("Clid")
                 Dim tel As String = dt.Rows(i).Item("ice")
-                Dim Cl As New ClientBloc(id, nm, adr, tel, tp, Form1.admin)
+                Dim Cl As New ClientBloc(sid, nm, adr, tel, tp, Form1.admin)
                 AddHandler Cl.IsActivated, AddressOf IsActivated
                 AddHandler Cl.IsDisActivated, AddressOf IsdisActivated
                 'AddHandler Cl.IsChoosen, AddressOf Button1_Click
@@ -75,7 +75,7 @@
 
         Dim cl As ClientBloc = sender
         cid = cl.Clid
-        clientName = cl.Name
+        clientName = cl.clientName
         lbRef.Text = clientName
         cl.isActive = True
 

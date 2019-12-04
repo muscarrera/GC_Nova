@@ -94,6 +94,12 @@ Partial Class EnteteFacture
         Me.btDelivry = New System.Windows.Forms.Button()
         Me.btSave = New System.Windows.Forms.Button()
         Me.Panel21 = New System.Windows.Forms.Panel()
+        Me.pllist2 = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.pbListPdf = New System.Windows.Forms.PictureBox()
+        Me.pllist1 = New System.Windows.Forms.Panel()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.pbListPrint = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel11.SuspendLayout()
         Me.plBL.SuspendLayout()
@@ -115,6 +121,10 @@ Partial Class EnteteFacture
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.pllist2.SuspendLayout()
+        CType(Me.pbListPdf, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pllist1.SuspendLayout()
+        CType(Me.pbListPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -292,7 +302,7 @@ Partial Class EnteteFacture
         Me.lbBc.Name = "lbBc"
         Me.lbBc.Size = New System.Drawing.Size(224, 33)
         Me.lbBc.TabIndex = 3
-        Me.lbBc.Text = "Devis"
+        Me.lbBc.Text = "0"
         Me.lbBc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel25
@@ -371,7 +381,7 @@ Partial Class EnteteFacture
         Me.lbdv.Name = "lbdv"
         Me.lbdv.Size = New System.Drawing.Size(224, 33)
         Me.lbdv.TabIndex = 3
-        Me.lbdv.Text = "Devis"
+        Me.lbdv.Text = "0"
         Me.lbdv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel24
@@ -564,6 +574,10 @@ Partial Class EnteteFacture
         Me.Panel14.Controls.Add(Me.Panel15)
         Me.Panel14.Controls.Add(Me.PictureBox8)
         Me.Panel14.Controls.Add(Me.PictureBox1)
+        Me.Panel14.Controls.Add(Me.pllist2)
+        Me.Panel14.Controls.Add(Me.pbListPdf)
+        Me.Panel14.Controls.Add(Me.pllist1)
+        Me.Panel14.Controls.Add(Me.pbListPrint)
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel14.Location = New System.Drawing.Point(0, 0)
         Me.Panel14.Name = "Panel14"
@@ -650,10 +664,10 @@ Partial Class EnteteFacture
         Me.Panel8.Controls.Add(Me.txtSearch)
         Me.Panel8.Controls.Add(Me.Label6)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(488, 10)
+        Me.Panel8.Location = New System.Drawing.Point(449, 10)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
-        Me.Panel8.Size = New System.Drawing.Size(208, 26)
+        Me.Panel8.Size = New System.Drawing.Size(145, 26)
         Me.Panel8.TabIndex = 6
         '
         'txtSearch
@@ -667,7 +681,7 @@ Partial Class EnteteFacture
         Me.txtSearch.PlaceHolder = "Recherche"
         Me.txtSearch.ShowClearIcon = False
         Me.txtSearch.ShowSaveIcon = False
-        Me.txtSearch.Size = New System.Drawing.Size(200, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(137, 26)
         Me.txtSearch.StartUp = 2
         Me.txtSearch.TabIndex = 3
         Me.txtSearch.TextSize = 8
@@ -691,7 +705,7 @@ Partial Class EnteteFacture
         Me.PictureBox7.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SEARCH_18
         Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox7.Location = New System.Drawing.Point(696, 10)
+        Me.PictureBox7.Location = New System.Drawing.Point(594, 10)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(37, 26)
         Me.PictureBox7.TabIndex = 3
@@ -702,7 +716,7 @@ Partial Class EnteteFacture
         Me.Panel15.BackColor = System.Drawing.Color.Transparent
         Me.Panel15.Controls.Add(Me.Label3)
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel15.Location = New System.Drawing.Point(733, 10)
+        Me.Panel15.Location = New System.Drawing.Point(631, 10)
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(16, 26)
         Me.Panel15.TabIndex = 4
@@ -722,7 +736,7 @@ Partial Class EnteteFacture
         Me.PictureBox8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.search_folder_18
         Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox8.Location = New System.Drawing.Point(749, 10)
+        Me.PictureBox8.Location = New System.Drawing.Point(647, 10)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(38, 26)
         Me.PictureBox8.TabIndex = 3
@@ -1017,6 +1031,68 @@ Partial Class EnteteFacture
         Me.Panel21.Size = New System.Drawing.Size(19, 35)
         Me.Panel21.TabIndex = 5
         '
+        'pllist2
+        '
+        Me.pllist2.BackColor = System.Drawing.Color.Transparent
+        Me.pllist2.Controls.Add(Me.Label12)
+        Me.pllist2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pllist2.Location = New System.Drawing.Point(685, 10)
+        Me.pllist2.Name = "pllist2"
+        Me.pllist2.Size = New System.Drawing.Size(16, 26)
+        Me.pllist2.TabIndex = 9
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(21, 62)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(63, 17)
+        Me.Label12.TabIndex = 2
+        Me.Label12.Text = "Fature à :"
+        '
+        'pbListPdf
+        '
+        Me.pbListPdf.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PDF_22
+        Me.pbListPdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.pbListPdf.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pbListPdf.Location = New System.Drawing.Point(701, 10)
+        Me.pbListPdf.Name = "pbListPdf"
+        Me.pbListPdf.Size = New System.Drawing.Size(38, 26)
+        Me.pbListPdf.TabIndex = 8
+        Me.pbListPdf.TabStop = False
+        '
+        'pllist1
+        '
+        Me.pllist1.BackColor = System.Drawing.Color.Transparent
+        Me.pllist1.Controls.Add(Me.Label13)
+        Me.pllist1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pllist1.Location = New System.Drawing.Point(739, 10)
+        Me.pllist1.Name = "pllist1"
+        Me.pllist1.Size = New System.Drawing.Size(10, 26)
+        Me.pllist1.TabIndex = 11
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(21, 62)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(63, 17)
+        Me.Label13.TabIndex = 2
+        Me.Label13.Text = "Fature à :"
+        '
+        'pbListPrint
+        '
+        Me.pbListPrint.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
+        Me.pbListPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.pbListPrint.Dock = System.Windows.Forms.DockStyle.Right
+        Me.pbListPrint.Location = New System.Drawing.Point(749, 10)
+        Me.pbListPrint.Name = "pbListPrint"
+        Me.pbListPrint.Size = New System.Drawing.Size(38, 26)
+        Me.pbListPrint.TabIndex = 10
+        Me.pbListPrint.TabStop = False
+        '
         'EnteteFacture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1061,6 +1137,12 @@ Partial Class EnteteFacture
         Me.Panel6.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        Me.pllist2.ResumeLayout(False)
+        Me.pllist2.PerformLayout()
+        CType(Me.pbListPdf, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pllist1.ResumeLayout(False)
+        Me.pllist1.PerformLayout()
+        CType(Me.pbListPrint, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1136,5 +1218,11 @@ Partial Class EnteteFacture
     Friend WithEvents btParamsImp As System.Windows.Forms.Button
     Friend WithEvents btEditClient As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents pllist2 As System.Windows.Forms.Panel
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents pbListPdf As System.Windows.Forms.PictureBox
+    Friend WithEvents pllist1 As System.Windows.Forms.Panel
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents pbListPrint As System.Windows.Forms.PictureBox
 
 End Class

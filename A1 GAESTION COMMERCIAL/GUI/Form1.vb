@@ -40,6 +40,8 @@
     Public printWithDate As Boolean = True
     Public printWithPrice As Boolean = True
     Public nbrPrOp_tr As Integer = 120
+    Public ListToPrint As DataTable
+    Public factureToPrint As Facture
 
     'Props
     Public Property Exercice As String
@@ -59,7 +61,10 @@
         HandleRegistryinfo()
         'Trial
         If getTrial() = False Then End
-       
+        'Exercice
+        Exercice = Now.Date.ToString("yy")
+
+
     End Sub
 
     'Add DataList to pl Body
@@ -128,7 +133,11 @@
         Try
             Using a As DrawClass = New DrawClass
                 Dim dte As String = Format(Date.Now, "dd-MM-yyyy [hh:mm]")
-                a.DrawFacture(e, ds, Facture_Title, b, proformat_Id, printWithDate, printWithPrice, m)
+                If IsNothing(factureToPrint) Then
+                    a.DrawFacture(e, ds, Facture_Title, b, proformat_Id, printWithDate, printWithPrice, m)
+                Else
+
+                End If
 
             End Using
         Catch ex As Exception

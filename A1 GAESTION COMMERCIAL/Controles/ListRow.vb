@@ -40,6 +40,15 @@
         End Get
         Set(ByVal value As Double)
             _Qte = value
+
+            If value = 0 Then
+                lbQte.Visible = False
+                lbTotal.Visible = False
+            Else
+                lbQte.Visible = True
+                lbTotal.Visible = True
+            End If
+
             lbQte.Text = value
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
         End Set
@@ -50,6 +59,13 @@
         End Get
         Set(ByVal value As Double)
             _sPrice = value
+            If value = 0 Then
+                lbPrice.Visible = False
+                lbTotal.Visible = False
+            Else
+                lbPrice.Visible = True
+                lbTotal.Visible = True
+            End If
 
             lbPrice.Text = String.Format("{0:n}", CDec(value))
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))

@@ -368,6 +368,7 @@ Partial Class AddEditProduct
         Me.txtTTC.IsNumiric = True
         Me.txtTTC.Location = New System.Drawing.Point(85, 124)
         Me.txtTTC.Name = "txtTTC"
+        Me.txtTTC.PlaceHolder = ""
         Me.txtTTC.ShowClearIcon = False
         Me.txtTTC.ShowSaveIcon = False
         Me.txtTTC.Size = New System.Drawing.Size(149, 26)
@@ -386,6 +387,7 @@ Partial Class AddEditProduct
         Me.txtTva.IsNumiric = True
         Me.txtTva.Location = New System.Drawing.Point(85, 92)
         Me.txtTva.Name = "txtTva"
+        Me.txtTva.PlaceHolder = ""
         Me.txtTva.ShowClearIcon = False
         Me.txtTva.ShowSaveIcon = False
         Me.txtTva.Size = New System.Drawing.Size(149, 26)
@@ -404,6 +406,7 @@ Partial Class AddEditProduct
         Me.txtHt.IsNumiric = True
         Me.txtHt.Location = New System.Drawing.Point(85, 60)
         Me.txtHt.Name = "txtHt"
+        Me.txtHt.PlaceHolder = ""
         Me.txtHt.ShowClearIcon = False
         Me.txtHt.ShowSaveIcon = False
         Me.txtHt.Size = New System.Drawing.Size(149, 26)
@@ -492,6 +495,7 @@ Partial Class AddEditProduct
         Me.txtMarge.IsNumiric = True
         Me.txtMarge.Location = New System.Drawing.Point(59, 121)
         Me.txtMarge.Name = "txtMarge"
+        Me.txtMarge.PlaceHolder = ""
         Me.txtMarge.ShowClearIcon = False
         Me.txtMarge.ShowSaveIcon = False
         Me.txtMarge.Size = New System.Drawing.Size(170, 26)
@@ -532,6 +536,7 @@ Partial Class AddEditProduct
         Me.txtPAch.IsNumiric = True
         Me.txtPAch.Location = New System.Drawing.Point(59, 60)
         Me.txtPAch.Name = "txtPAch"
+        Me.txtPAch.PlaceHolder = ""
         Me.txtPAch.ShowClearIcon = False
         Me.txtPAch.ShowSaveIcon = False
         Me.txtPAch.Size = New System.Drawing.Size(170, 26)
@@ -620,6 +625,7 @@ Partial Class AddEditProduct
         Me.txtCUMP.IsNumiric = False
         Me.txtCUMP.Location = New System.Drawing.Point(119, 122)
         Me.txtCUMP.Name = "txtCUMP"
+        Me.txtCUMP.PlaceHolder = ""
         Me.txtCUMP.ShowClearIcon = False
         Me.txtCUMP.ShowSaveIcon = False
         Me.txtCUMP.Size = New System.Drawing.Size(121, 26)
@@ -638,6 +644,7 @@ Partial Class AddEditProduct
         Me.txtStock.IsNumiric = False
         Me.txtStock.Location = New System.Drawing.Point(119, 90)
         Me.txtStock.Name = "txtStock"
+        Me.txtStock.PlaceHolder = ""
         Me.txtStock.ShowClearIcon = False
         Me.txtStock.ShowSaveIcon = False
         Me.txtStock.Size = New System.Drawing.Size(121, 26)
@@ -728,6 +735,7 @@ Partial Class AddEditProduct
         Me.txtAlert.IsNumiric = False
         Me.txtAlert.Location = New System.Drawing.Point(20, 123)
         Me.txtAlert.Name = "txtAlert"
+        Me.txtAlert.PlaceHolder = ""
         Me.txtAlert.ShowClearIcon = False
         Me.txtAlert.ShowSaveIcon = False
         Me.txtAlert.Size = New System.Drawing.Size(195, 26)
@@ -782,11 +790,12 @@ Partial Class AddEditProduct
         Me.txtStockType.IsNumiric = False
         Me.txtStockType.Location = New System.Drawing.Point(77, 70)
         Me.txtStockType.Name = "txtStockType"
+        Me.txtStockType.PlaceHolder = ""
         Me.txtStockType.ShowClearIcon = False
         Me.txtStockType.ShowSaveIcon = False
         Me.txtStockType.Size = New System.Drawing.Size(138, 26)
         Me.txtStockType.StartUp = 2
-        Me.txtStockType.TabIndex = 4
+        Me.txtStockType.TabIndex = 12
         Me.txtStockType.TextSize = 10
         Me.txtStockType.TxtBackColor = True
         Me.txtStockType.TxtColor = System.Drawing.Color.White
@@ -895,6 +904,7 @@ Partial Class AddEditProduct
         Me.txtPeriode.IsNumiric = False
         Me.txtPeriode.Location = New System.Drawing.Point(30, 0)
         Me.txtPeriode.Name = "txtPeriode"
+        Me.txtPeriode.PlaceHolder = ""
         Me.txtPeriode.ShowClearIcon = False
         Me.txtPeriode.ShowSaveIcon = False
         Me.txtPeriode.Size = New System.Drawing.Size(196, 28)
@@ -990,6 +1000,7 @@ Partial Class AddEditProduct
         Me.txtRGr.IsNumiric = True
         Me.txtRGr.Location = New System.Drawing.Point(106, 138)
         Me.txtRGr.Name = "txtRGr"
+        Me.txtRGr.PlaceHolder = ""
         Me.txtRGr.ShowClearIcon = False
         Me.txtRGr.ShowSaveIcon = False
         Me.txtRGr.Size = New System.Drawing.Size(115, 26)
@@ -1019,6 +1030,7 @@ Partial Class AddEditProduct
         Me.txtRRev.IsNumiric = True
         Me.txtRRev.Location = New System.Drawing.Point(106, 106)
         Me.txtRRev.Name = "txtRRev"
+        Me.txtRRev.PlaceHolder = ""
         Me.txtRRev.ShowClearIcon = False
         Me.txtRRev.ShowSaveIcon = False
         Me.txtRRev.Size = New System.Drawing.Size(115, 26)
@@ -1059,6 +1071,7 @@ Partial Class AddEditProduct
         Me.txtRmax.IsNumiric = True
         Me.txtRmax.Location = New System.Drawing.Point(106, 42)
         Me.txtRmax.Name = "txtRmax"
+        Me.txtRmax.PlaceHolder = ""
         Me.txtRmax.ShowClearIcon = False
         Me.txtRmax.ShowSaveIcon = False
         Me.txtRmax.Size = New System.Drawing.Size(115, 26)
@@ -1077,6 +1090,7 @@ Partial Class AddEditProduct
         Me.txtRCF.IsNumiric = True
         Me.txtRCF.Location = New System.Drawing.Point(106, 74)
         Me.txtRCF.Name = "txtRCF"
+        Me.txtRCF.PlaceHolder = ""
         Me.txtRCF.ShowClearIcon = False
         Me.txtRCF.ShowSaveIcon = False
         Me.txtRCF.Size = New System.Drawing.Size(115, 26)
@@ -1282,6 +1296,7 @@ Partial Class AddEditProduct
         Me.txtDesc.IsNumiric = False
         Me.txtDesc.Location = New System.Drawing.Point(13, 98)
         Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.PlaceHolder = ""
         Me.txtDesc.ShowClearIcon = False
         Me.txtDesc.ShowSaveIcon = False
         Me.txtDesc.Size = New System.Drawing.Size(380, 26)
@@ -1300,6 +1315,7 @@ Partial Class AddEditProduct
         Me.txtName.IsNumiric = False
         Me.txtName.Location = New System.Drawing.Point(116, 52)
         Me.txtName.Name = "txtName"
+        Me.txtName.PlaceHolder = ""
         Me.txtName.ShowClearIcon = False
         Me.txtName.ShowSaveIcon = False
         Me.txtName.Size = New System.Drawing.Size(277, 26)
@@ -1318,6 +1334,7 @@ Partial Class AddEditProduct
         Me.txtRef.IsNumiric = False
         Me.txtRef.Location = New System.Drawing.Point(116, 23)
         Me.txtRef.Name = "txtRef"
+        Me.txtRef.PlaceHolder = ""
         Me.txtRef.ShowClearIcon = False
         Me.txtRef.ShowSaveIcon = False
         Me.txtRef.Size = New System.Drawing.Size(277, 26)

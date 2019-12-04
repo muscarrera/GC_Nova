@@ -47,7 +47,11 @@
             AddHandler ds.GetClientDetails, AddressOf GetClientDetails
             AddHandler ds.GetDeiverDetails, AddressOf GetDeiverDetails
             AddHandler ds.GetVehiculeDetails, AddressOf GetVehiculeDetails
+            AddHandler ds.AddNewChargeMission, AddressOf AddNewChargeMission
+            AddHandler ds.AddNewDetailsMission, AddressOf AddNewDetailsMission
 
+            ds.AutoCompleteSourceCharges = AutoCompleteByMission("Details_Charge")
+            ds.AutoCompleteSourceDetails = AutoCompleteByMission("Details_Mission")
 
             Form1.plBody.Controls.Add(ds)
         End Using
@@ -55,22 +59,88 @@
     End Sub
 
 
+    Private Sub AddNewMissin(ByVal ds As ParcList)
+        Try
 
+            Dim NF As New NouveauFacture
+            NF.TxtExr.Text = Form1.Exercice
+            NF.txtName.AutoCompleteSource = AutoCompleteByName("Client")
+            NF.tb_C = "Client"
+            NF.TxtDate.Text = Now.Date.ToString("dd/MM/yyyy")
+            If NF.ShowDialog = DialogResult.OK Then
+                Dim cn As String = NF.txtName.text
+                Dim cid As String = 0
+
+                Try
+                    cn = NF.txtName.text.Split("|")(0)
+                    cid = NF.txtName.text.Split("|")(1)
+                Catch ex As Exception
+                    cid = 0
+                End Try
+
+                Dim mid As Integer = 0
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim params As New Dictionary(Of String, Object)
+                    params.Add("cid", cid)
+                    params.Add("clientName", cn)
+                    params.Add("date", CDate(NF.TxtDate.Text))
+                    params.Add("depart", "")
+                    params.Add("arrive", "")
+                    params.Add("bc", "")
+                    params.Add("vid", 0)
+                    params.Add("drid", 0)
+                    params.Add("writer", CStr(Form1.adminName))
+                    params.Add("isAdmin", False)
+                    params.Add("isPayed", False)
+                    params.Add("isFactured", False)
+                    params.Add("total", 0)
+                    params.Add("avance", 0)
+                    params.Add("pj", 0)
+
+                    mid = c.InsertRecord("Mission", params, True)
+                End Using
+
+                If mid > 0 Then
+                    ds.Mode = "DETAILS"
+                    ds.id = mid
+                    ds.Client = New Client(cid, "Client")
+                End If
+
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Private Sub GetElements(ByRef ds As ParcList)
+        Try
+          
+            If ds.TableName = "Driver" Or ds.TableName = "Vehicule" Then
+                GetVehiculeOrDriver(ds)
+            ElseIf ds.TableName = "Mission" Then
+                GetMission(ds)
+            ElseIf ds.TableName = "Details_Charge" Then
+                GetCharges(ds)
+            End If
+          
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub GetVehiculeOrDriver(ByRef ds As ParcList)
         Try
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
-            Dim str As String = "Mid"
+            Dim str As String = "Vid"
             If ds.TableName = "Driver" Then str = "Drid"
-            If ds.TableName = "Vehicule" Then str = "Vid"
-
+          
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 If IsNumeric(ds.txtSearchName.text) Then
                     params.Add(str, CInt(ds.txtSearchName.text))
                     dt = a.SelectDataTable(ds.TableName, {"*"}, params)
 
-                ElseIf ds.txtSearchName.text <> "" Then
-                    params.Add("name Like ", "%" & ds.txtSearchName.text & "%")
+                ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
+
+                    params.Add("name Like ", ds.txtSearchName.text & "%")
 
                     dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
                     params.Clear()
@@ -79,17 +149,219 @@
                     Dim dt2 = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
                     dt.Merge(dt2, False)
 
+                ElseIf ds.txtSearchName.text = "*" Then
+                    dt = a.SelectDataTable(ds.TableName, {"*"})
                 ElseIf ds.txtSearchName.text = "" Then
-                    dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP 100", {"*"})
+                    dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP " & Form1.numberOfItems, {"*"})
                 End If
             End Using
             ds.DataSource = dt
+
+            params = Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub GetMission(ByRef ds As ParcList)
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            Dim where As New Dictionary(Of String, Object)
+
+            Dim dt As DataTable = Nothing
+            Dim str As String = "Mid"
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                If IsNumeric(ds.txtSearchName.text) Then
+                    params.Add(str, CInt(ds.txtSearchName.text))
+                    dt = a.SelectDataTable(ds.TableName, {"*"}, params)
+
+                ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
+                    Dim txt = ds.txtSearchName.text.Split(";")
+                    For i As Integer = 0 To txt.Length
+
+                        If txt(i).ToUpper.StartsWith("DP") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("depart Like ", V & "%")
+
+                        ElseIf txt(i).ToUpper.StartsWith("DS") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("arrive Like ", V & "%")
+
+                        ElseIf txt(i).ToUpper.StartsWith("CH") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+
+                            If IsNumeric(V) Then
+                                params.Add("drid = ", V)
+                            Else
+                                where.Clear()
+                                where.Add("name Like ", V & "%")
+
+                                dt = a.SelectDataTableSymbols("Driver", {"*"}, params)
+                                If dt.Rows.Count > 0 Then
+                                    params.Add("drid = ", CInt(dt.Rows(0).Item(0)))
+                                End If
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("VH") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+
+                            If IsNumeric(V) Then
+                                params.Add("vid = ", V)
+                            Else
+                                where.Clear()
+                                where.Add("name Like ", V & "%")
+
+                                dt = a.SelectDataTableSymbols("Vehicule", {"*"}, params)
+                                If dt.Rows.Count > 0 Then
+                                    params.Add("vid = ", CInt(dt.Rows(0).Item(0)))
+                                End If
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("CLN") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            If IsNumeric(V) Then
+                                params.Add("cid = ", V)
+                            Else
+                                params.Add("clientName Like ", "%" & V & "%")
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("EX") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("ex Like ", "%" & V & "%")
+                        ElseIf txt(i).ToUpper.StartsWith("EDT") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("writer Like ", "%" & V & "%")
+                        Else
+                            Try
+                                params.Add("clientName Like ", "%" & txt(i).Trim & "%")
+                            Catch ex As Exception
+                            End Try
+                        End If
+                    Next
+
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+                    params.Clear()
+
+                ElseIf ds.txtSearchName.text = "*" Then
+                    dt = a.SelectDataTable(ds.TableName, {"*"})
+                ElseIf ds.txtSearchName.text = "" Then
+
+                    dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP " & Form1.numberOfItems, {"*"})
+                End If
+            End Using
+            ds.DataSource = dt
+            where = Nothing
+            params = Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub GetCharges(ByRef ds As ParcList)
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            Dim where As New Dictionary(Of String, Object)
+
+            Dim dt As DataTable = Nothing
+            Dim str As String = "chid"
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                If IsNumeric(ds.txtSearchName.text) Then
+                    params.Add(str, CInt(ds.txtSearchName.text))
+                    dt = a.SelectDataTable(ds.TableName, {"*"}, params)
+
+                ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
+                    Dim txt = ds.txtSearchName.text.Split(";")
+                    For i As Integer = 0 To txt.Length
+
+                        If txt(i).ToUpper.StartsWith("MS") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+
+                            If IsNumeric(V) Then
+                                params.Add("mid = ", V)
+                            Else
+                                where.Clear()
+                                where.Add("name Like ", V & "%")
+
+                                dt = a.SelectDataTableSymbols("Mission", {"*"}, params)
+                                If dt.Rows.Count > 0 Then
+                                    params.Add("mid = ", CInt(dt.Rows(0).Item(0)))
+                                End If
+                            End If
+
+                        ElseIf txt(i).ToUpper.StartsWith("VH") Then
+                                 Dim V = txt(i).Remove(0, 2).Trim
+
+                            If IsNumeric(V) Then
+                                params.Add("vid = ", V)
+                            Else
+                                where.Clear()
+                                where.Add("name Like ", V & "%")
+
+                                dt = a.SelectDataTableSymbols("Vehicule", {"*"}, params)
+                                If dt.Rows.Count > 0 Then
+                                    params.Add("vid = ", CInt(dt.Rows(0).Item(0)))
+                                End If
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("CH") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+
+                            If IsNumeric(V) Then
+                                params.Add("drid = ", V)
+                            Else
+                                where.Clear()
+                                where.Add("name Like ", V & "%")
+
+                                dt = a.SelectDataTableSymbols("Driver", {"*"}, params)
+                                If dt.Rows.Count > 0 Then
+                                    params.Add("drid = ", CInt(dt.Rows(0).Item(0)))
+                                End If
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("CLN") Then
+                            Dim V = txt(i).Remove(0, 3).Trim
+                            If IsNumeric(V) Then
+                                params.Add("cid = ", V)
+                            Else
+                                params.Add("name Like ", "%" & V & "%")
+                            End If
+                        ElseIf txt(i).ToUpper.StartsWith("EX") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("ex Like ", "%" & V & "%")
+                        ElseIf txt(i).ToUpper.StartsWith("EDT") Then
+                            Dim V = txt(i).Remove(0, 2).Trim
+                            params.Add("writer Like ", "%" & V & "%")
+                        Else
+                            Try
+                                params.Add("name Like ", "%" & txt(i).Trim & "%")
+                            Catch ex As Exception
+                            End Try
+                        End If
+                    Next
+
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+                    params.Clear()
+
+                ElseIf ds.txtSearchName.text = "*" Then
+                    dt = a.SelectDataTable(ds.TableName, {"*"})
+                ElseIf ds.txtSearchName.text = "" Then
+                    dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP " & Form1.numberOfItems, {"*"})
+                End If
+            End Using
+            ds.DataSource = dt
+            where = Nothing
+            params = Nothing
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
     Private Sub GetElementsById(ByVal value As Integer, ByRef DS As ParcList)
         Try
+            DS.plDBody.Controls.Clear()
+            DS.plCBody.Controls.Clear()
+            DS.ClientName = ""
+            DS.cid = 0
+            DS.lbInfo.Text = ""
+            DS.vid = 0
+            DS.vehiculeName = ""
+            DS.vehiculeInfo = ""
+            DS.drid = 0
+            DS.DriverInfo = ""
+            DS.DriverName = ""
+
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
             Dim cid As Integer = 0
@@ -111,6 +383,7 @@
                 DS.pj = IntValue(dt, "pj", 0)
                 DS.km_D = IntValue(dt, "km_D", 0)
                 DS.km_A = IntValue(dt, "km_A", 0)
+                DS.Avance = DblValue(dt, "avance", 0)
 
                 DS.vid = vid
                 DS.drid = drid
@@ -121,8 +394,8 @@
                     Dim Vdt = a.SelectDataTable("Vehicule", {"*"}, params)
                     If Vdt.Rows.Count > 0 Then
 
-                        DS.vehiculeName = Vdt.Rows(0).Item("name")
-                        DS.vehiculeInfo = "[" & StrValue(Vdt, 0, 0) & "]" & vbNewLine & StrValue(Vdt, "ref", 0) & " - " & StrValue(Vdt, "year", 0)
+                        DS.vehiculeName = Vdt.Rows(0).Item("name") & "[" & StrValue(Vdt, 0, 0) & "]"
+                        DS.vehiculeInfo = StrValue(Vdt, "ref", 0) & " - " & StrValue(Vdt, "year", 0)
                     End If
 
                     Vdt = Nothing
@@ -135,7 +408,7 @@
                     If Vdt.Rows.Count > 0 Then
 
                         DS.DriverName = Vdt.Rows(0).Item("name")
-                        DS.DriverInfo = "[" & Vdt.Rows(0).Item(0) & "]" & vbNewLine & StrValue(Vdt, "tel", 0)
+                        DS.DriverInfo = "[" & Vdt.Rows(0).Item(0) & "]" & StrValue(Vdt, "tel", 0)
                     End If
                     Vdt = Nothing
                 End If
@@ -149,13 +422,17 @@
 
                         az.Key = StrValue(mdt, "name", i)
                         az.Value = StrValue(mdt, "value", i)
+                        az.id = IntValue(mdt, "id", i)
                         az.EditMode = True
+                        az.Dock = DockStyle.Top
+
+                        AddHandler az.Clear, AddressOf DeleteDetailsElement
                         DS.plDBody.Controls.Add(az)
                     Next
                 End If
 
                 params.Clear()
-                params.Add("id", value)
+                params.Add("mid", value)
                 Dim cdt = a.SelectDataTable("Details_Charge", {"*"}, params)
                 If cdt.Rows.Count > 0 Then
                     For i As Integer = 0 To cdt.Rows.Count - 1
@@ -163,8 +440,12 @@
 
                         az.Key = StrValue(cdt, "name", i)
                         az.Value = StrValue(cdt, "value", i)
+                        az.id = IntValue(mdt, "id", i)
+                        az.Dock = DockStyle.Top
                         az.EditMode = True
-                        DS.plC.Controls.Add(az)
+                        AddHandler az.Clear, AddressOf DeleteChargeMission
+
+                        DS.plCBody.Controls.Add(az)
                     Next
                 End If
 
@@ -393,7 +674,7 @@
 
                 Dim tableName = ds.TableName
                 Dim params As New Dictionary(Of String, Object)
-                params.Add("name", rf.Value)
+                params.Add("name", rf.Value.Split("|")(0))
                 Dim Vdt = c.SelectDataTable("Driver", {"*"}, params)
                 If Vdt.Rows.Count > 0 Then
                     drid = Vdt.Rows(0).Item(0)
@@ -437,7 +718,7 @@
 
                 Dim tableName = ds.TableName
                 Dim params As New Dictionary(Of String, Object)
-                params.Add("name", rf.Value)
+                params.Add("name", rf.Value.Split("|")(0))
                 Dim Vdt = c.SelectDataTable("Vehicule", {"*"}, params)
                 If Vdt.Rows.Count > 0 Then
                     vid = Vdt.Rows(0).Item(0)
@@ -464,59 +745,391 @@
             End Using
         End If
     End Sub
+    Private Sub SaveChanges(ByRef ds As ParcList)
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
-    Private Sub AddNewMissin(ByVal ds As ParcList)
+            Dim isPayed As Boolean = ds.isPayed
+
+            Dim tableName = ds.TableName
+            Dim dte As Date = ds.date
+            Dim params As New Dictionary(Of String, Object)
+
+            'Facture
+            params.Clear()
+
+            If ds.km_D < ds.km_A Then
+                params.Add("isAdmin", True)
+            Else
+                params.Add("isAdmin", False)
+            End If
+
+            If ds.Total < ds.Avance Then
+                params.Add("isPayed", True)
+            Else
+                params.Add("isPayed", False)
+            End If
+
+            params.Add("total", ds.Total)
+            params.Add("avance", ds.Avance)
+            params.Add("depart", ds.depart)
+            params.Add("km_D", ds.km_D)
+            params.Add("km_A", ds.km_A)
+            params.Add("arrive", ds.arrive)
+
+            Dim where As New Dictionary(Of String, Object)
+            where.Add("mid", ds.id)
+
+            c.UpdateRecord(tableName, params, where)
+            params.Clear()
+            where.Clear()
+
+            params.Add("Vid", ds.vid)
+            Dim old_km = c.SelectByScalar("Vehicule", "km", params)
+
+            Dim new_km = ds.km_D
+            If ds.km_D < ds.km_A Then new_km = ds.km_A
+            If new_km > old_km Then
+                params.Clear()
+                where.Clear()
+
+                params.Add("km", new_km)
+                where.Add("Vid", ds.vid)
+                c.UpdateRecord("Vehicule", params, where)
+            End If
+
+            params = Nothing
+            where = Nothing
+        End Using
+    End Sub
+    Private Sub MissionFactured(ByRef ds As ParcList)
+        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
         Try
+            Dim fid As Integer = 0
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                'params.Add("isAdmin", True)
+                params.Add("isFactured", True)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("Mid", ds.id)
 
-            Dim NF As New NouveauFacture
-            NF.TxtExr.Text = Form1.Exercice
-            NF.txtName.AutoCompleteSource = AutoCompleteByName("Client")
-            NF.tb_C = "Client"
-            NF.TxtDate.Text = Now.Date.ToString("dd/MM/yyyy")
-            If NF.ShowDialog = DialogResult.OK Then
-                Dim cn As String = NF.txtName.text
-                Dim cid As String = 0
+                c.UpdateRecord("Mission", params, where)
 
-                Try
-                    cn = NF.txtName.text.Split("|")(0)
-                    cid = NF.txtName.text.Split("|")(1)
-                Catch ex As Exception
-                    cid = 0
-                End Try
+                params.Clear()
+                where.Clear()
 
-                Dim mid As Integer = 0
-                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                    Dim params As New Dictionary(Of String, Object)
-                    params.Add("cid", cid)
-                    params.Add("clientName", cn)
-                    params.Add("date", CDate(NF.TxtDate.Text))
-                    params.Add("depart", "")
-                    params.Add("arrive", "")
-                    params.Add("bc", "")
-                    params.Add("vid", 0)
-                    params.Add("drid", 0)
-                    params.Add("writer", CStr(Form1.adminName))
-                    params.Add("isAdmin", False)
-                    params.Add("isPayed", False)
-                    params.Add("isFactured", False)
-                    params.Add("total", 0)
-                    params.Add("avance", 0)
-                    params.Add("pj", 0)
 
-                    mid = c.InsertRecord("Mission", params, True)
-                End Using
+                Dim cid As String = ds.cid
+                Dim clientname As String = ds.ClientName
 
-                If mid > 0 Then
-                    ds.Mode = "DETAILS"
-                    ds.id = mid
-                    ds.Client = New Client(cid, "Client")
+                params.Add("cid", cid)
+                params.Add("name", clientname)
+                params.Add("total", ds.Total)
+                params.Add("avance", ds.Avance)
+                params.Add("remise", 0)
+                params.Add("tva", 0)
+                params.Add("date", Format(Now.Date, "dd-MM-yyyy"))
+                params.Add("writer", (Form1.adminName))
+                params.Add("isAdmin", "CREATION")
+                params.Add("isPayed", False)
+                params.Add("modePayement", "-")
+                params.Add("droitTimbre", 0)
+                params.Add("pj", 0)
+
+                fid = c.InsertRecord("Sell_Facture", params, True)
+                params.Clear()
+                'Depart & Destination
+                Dim n As String = "Depart: " & ds.depart & " - Dest: " & ds.arrive
+                params.Add("fctid", fid)
+                params.Add("name", n)
+                params.Add("bprice", 0)
+                params.Add("price", 0)
+                params.Add("remise", 0)
+                params.Add("qte", 0)
+                params.Add("tva", 0)
+                params.Add("arid", 0)
+                params.Add("depot", 0)
+                params.Add("ref", " ")
+                params.Add("cid", 0)
+
+                c.InsertRecord("Details_Sell_Facture", params)
+                params.Clear()
+                'Vehicule
+                n = "Vehicule : " & ds.vehiculeName & " " & ds.vehiculeInfo
+                params.Add("fctid", fid)
+                params.Add("name", n)
+                params.Add("bprice", 0)
+                params.Add("price", 0)
+                params.Add("remise", 0)
+                params.Add("qte", 0)
+                params.Add("tva", 0)
+                params.Add("arid", 0)
+                params.Add("depot", 0)
+                params.Add("ref", " ")
+                params.Add("cid", 0)
+
+                c.InsertRecord("Details_Sell_Facture", params)
+                params.Clear()
+                For Each el As AddElement In ds.plDBody.Controls
+
+                    params.Add("fctid", fid)
+                    params.Add("name", el.Key)
+                    params.Add("bprice", el.Value)
+                    params.Add("price", el.Value)
+                    params.Add("remise", 0)
+                    params.Add("qte", 1)
+                    params.Add("tva", 0)
+                    params.Add("arid", 0)
+                    params.Add("depot", 0)
+                    params.Add("ref", el.Name)
+                    params.Add("cid", 0)
+
+                    c.InsertRecord("Details_Sell_Facture", params)
+                    params.Clear()
+                Next
+
+
+                where.Clear()
+                If ds.Avance > 0 Then
+                    params.Add("Sell_Facture", fid)
+                    where.Add("Mission", CInt(ds.id))
+                    c.UpdateRecord("Client_Payement", params, where)
+                    params.Clear()
+                    where.Clear()
                 End If
 
+            End Using
+
+            If fid > 0 Then
+                Dim str As String = "Opération terminé avec succès"
+                str &= vbNewLine & "Facture N° " & Form1.Exercice & "/000" & fid
+                str &= vbNewLine & "Total : " & ds.Total
+
+                MsgBox(str, MsgBoxStyle.Information, "Facturation")
+
+
+                'Form1.Button6_Click(Form1.btVente, Nothing)
+                'Dim datalist As DataList = Form1.plBody.Controls(0)
+                'datalist.Button1_Click_1(Nothing, Nothing)
+                ''ds.Clear()
+                'datalist.Mode = "DETAILS"
+                'datalist.Id = fid
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub MissionDuplicate(ByRef ds As ParcList)
+        Dim mid As Integer = 0
+
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("cid", ds.cid)
+            params.Add("clientName", ds.ClientName)
+            params.Add("date", Now.Date)
+            params.Add("depart", ds.depart)
+            params.Add("arrive", ds.arrive)
+            params.Add("bc", "")
+            params.Add("vid", ds.vid)
+            params.Add("drid", ds.drid)
+            params.Add("writer", CStr(Form1.adminName))
+            params.Add("isAdmin", False)
+            params.Add("isPayed", False)
+            params.Add("isFactured", False)
+            params.Add("total", 0)
+            params.Add("avance", 0)
+            params.Add("pj", 0)
+
+            mid = c.InsertRecord("Mission", params, True)
+
+            For Each el As AddElement In ds.plDBody.Controls
+
+                params.Add("name", el.Key)
+                params.Add("value", el.Value)
+                params.Add("mid", mid)
+                params.Add("writer", Form1.adminName)
+
+                c.InsertRecord("Details_Mission", params)
+                params.Clear()
+            Next
+
+            For Each el As AddElement In ds.plCBody.Controls
+
+                params.Add("name", el.Key)
+                params.Add("value", el.Value)
+                params.Add("mid", mid)
+                params.Add("writer", Form1.adminName)
+
+                c.InsertRecord("Details_Mission", params)
+                params.Clear()
+            Next
+
+            If mid > 0 Then
+                ds.Mode = "DETAILS"
+                ds.id = mid
+                ds.Client = New Client(ds.cid, "Client")
+            End If
+        End Using
+    End Sub
+    Private Sub DeleteMission(ByVal _id As Integer, ByRef ds As ParcList)
+        Dim mid As Integer = _id
+
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+
+            params.Add("Mid", mid)
+
+            If c.DeleteRecords("Mission", params) Then
+                c.DeleteRecords("Details_Mission", params)
+                c.DeleteRecords("Details_Charge", params)
+
+                ds.TableName = "Mission"
+                ds.Mode = "LIST"
+            End If
+
+        End Using
+    End Sub
+    Private Sub SavePdf(ByRef parcList As ParcList)
+
+
+        Form1.Facture_Title = "Bon de Transport"
+
+        Form1.printOnPaper = False
+
+        Form1.PrintDocMission.PrinterSettings.PrinterName = Form1.printer_Pdf
+        Form1.PrintDocMission.Print()
+
+    End Sub
+    Private Sub PramsPrint(ByVal parcList As ParcList)
+        Dim pr As New ImpressionParams
+        pr.btProformat.Visible = False
+
+        If pr.ShowDialog = DialogResult.OK Then
+
+        End If
+        Form1.printWithDate = Not pr.cbDate.Checked
+        Form1.printWithPrice = Not pr.cbPrix.Checked
+
+
+        Form1.PrintDocMission.PrinterSettings.PrinterName = Form1.printer_Bon
+
+        '''''''''''''' stel a lot of work
+        If pr.isProformat Then
+
+        End If
+
+        Form1.printOnPaper = True
+        Form1.PrintDocMission.Print()
+    End Sub
+    Private Sub PrintMission(ByVal parcList As ParcList)
+        Form1.Facture_Title = "Bon de Transport"
+
+        Form1.printOnPaper = True
+
+        Form1.PrintDocMission.PrinterSettings.PrinterName = Form1.printer_Bon
+        Form1.PrintDocMission.Print()
+    End Sub
+    Private Sub GetClientDetails(ByVal _cid As Integer)
+        Dim fl As New ClientDetails
+        fl.Table = "Client"
+        fl.id = _cid
+        If fl.ShowDialog = DialogResult.OK Then
+
+        End If
+    End Sub
+    Private Sub AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal ds As ParcList)
+        Try
+            Dim d_Id As Integer = 0
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("name", k)
+                params.Add("value", v)
+                params.Add("mid", ds.id)
+                params.Add("writer", Form1.adminName)
+
+                d_Id = c.InsertRecord("Details_Mission", params, True)
+                If d_Id > 0 Then
+                    Dim R As New AddElement
+
+                    R.Key = k
+                    R.Value = v
+                    R.id = d_Id
+                    R.EditMode = True
+                    R.Dock = DockStyle.Top
+
+                    AddHandler R.Clear, AddressOf DeleteDetailsElement
+                    ds.plDBody.Controls.Add(R)
+                    ds.txtDValue.text = ""
+                    ds.txtDKey.text = ""
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub AddNewChargeMission(ByVal k As String, ByVal v As Double, ByVal ds As ParcList)
+        Try
+            Dim d_Id As Integer = 0
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("name", k)
+                params.Add("value", v)
+                params.Add("mid", ds.id)
+                params.Add("vid", ds.vid)
+                params.Add("drid", ds.drid)
+                params.Add("writer", Form1.adminName)
+
+
+                d_Id = c.InsertRecord("Details_Charge", params, True)
+                If d_Id > 0 Then
+                    Dim R As New AddElement
+
+                    R.Key = k
+                    R.Value = v
+                    R.id = d_Id
+                    R.EditMode = True
+                    R.Dock = DockStyle.Top
+                    AddHandler R.Clear, AddressOf DeleteChargeMission
+                    ds.plCBody.Controls.Add(R)
+                    ds.txtCValue.text = ""
+                    ds.txtCKey.text = ""
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub DeleteDetailsElement(ByVal elm As AddElement)
+        Try
+
+            Dim ds As ParcList = Form1.plBody.Controls(0)
+
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("id", elm.id)
+                If c.DeleteRecords("Details_Mission", params) Then
+                    ds.plDBody.Controls.Remove(elm)
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub DeleteChargeMission(ByVal elm As AddElement)
+        Try
+            Dim ds As ParcList = Form1.plBody.Controls(0)
+
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+
+                params.Add("id", elm.id)
+                If c.DeleteRecords("Details_Charge", params) Then
+                    ds.plCBody.Controls.Remove(elm)
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
+    End Sub
+
 
 
 #Region "IDisposable Support"
@@ -554,149 +1167,24 @@
         'Throw New NotImplementedException
     End Sub
 
-    Private Sub SaveChanges(ByVal ds As ParcList)
-        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-
-            Dim isPayed As Boolean = ds.isPayed
-
-            Dim tableName = ds.TableName
-            Dim dte As Date = ds.date
-            Dim params As New Dictionary(Of String, Object)
-
-            'Facture
-            params.Clear()
-            params.Add("total", ds.Total)
-            params.Add("avance", ds.Avance)
-            params.Add("depart", ds.depart)
-            params.Add("km_D", ds.km_D)
-            params.Add("km_A", ds.km_A)
-            params.Add("arrive", ds.arrive)
-
-            Dim where As New Dictionary(Of String, Object)
-
-            where.Add("mid", ds.id)
-
-            c.UpdateRecord(tableName, params, where)
-            params.Clear()
-            where.Clear()
-
-            params = Nothing
-            where = Nothing
-        End Using
-    End Sub
-
-    Private Sub MissionFactured(ByRef ds As ParcList)
-        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
-        Try
-            Dim fid As Integer = 0
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-                Dim params As New Dictionary(Of String, Object)
-                params.Add("isAdmin", True)
-                params.Add("isFactured", True)
-                Dim where As New Dictionary(Of String, Object)
-                where.Add("Mid", ds.id)
-
-                c.UpdateRecord("Mission", params, where)
-
-                params.Clear()
-                where.Clear()
-
-
-                Dim cid As String = ds.cid
-                Dim clientname As String = ds.ClientName
-
-                params.Add("cid", cid)
-                params.Add("name", clientname)
-                params.Add("total", ds.Total)
-                params.Add("avance", ds.Avance)
-                params.Add("remise", 0)
-                params.Add("tva", 0)
-                params.Add("date", Format(Now.Date, "dd-MM-yyyy"))
-                params.Add("writer", (Form1.adminName))
-                params.Add("isAdmin", "CREATION")
-                params.Add("isPayed", False)
-                params.Add("modePayement", "-")
-                params.Add("droitTimbre", 0)
-                params.Add("pj", 0)
-
-                fid = c.InsertRecord("Sell_Facture", params, True)
-
-                Dim data = ds.DataSource
-
-                If IsNothing(Data) Then Exit Sub
-                If Data.Rows.Count > 0 Then
-
-                    For i As Integer = 0 To Data.Rows.Count - 1
-
-                        params.Add("fctid", fid)
-                        params.Add("name", Data.Rows(i).Item("name"))
-                        params.Add("bprice", data.Rows(i).Item("price"))
-                        params.Add("price", Data.Rows(i).Item("price"))
-                        params.Add("remise", 0)
-                        params.Add("qte", 1)
-                        params.Add("tva", 0)
-                        params.Add("arid", data.Rows(i).Item("id"))
-                        params.Add("depot", 0)
-                        params.Add("ref", data.Rows(i).Item("name"))
-                        params.Add("cid", 0)
-
-                        c.InsertRecord("Details_Sell_Facture", params)
-                        params.Clear()
-                    Next
-                End If
-
-                where.Clear()
-                If ds.Avance > 0 Then
-                    params.Add("Sell_Facture", fid)
-                    where.Add("Mission", CInt(ds.id))
-                    c.UpdateRecord("Client_Payement", params, where)
-                    params.Clear()
-                    where.Clear()
-                End If
-
-            End Using
-
-            If fid > 0 Then
-                Form1.Button6_Click(Form1.btVente, Nothing)
-                Dim datalist As DataList = Form1.plBody.Controls(0)
-
-                'ds.Clear()
-                datalist.Mode = "DETAILS"
-                datalist.Id = fid
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
+    
     Private Sub MissionSolde(ByRef parcList As ParcList)
-        Throw New NotImplementedException
-    End Sub
+        'Throw New NotImplementedException
+        Dim PP As New PayementForm
 
-    Private Sub MissionDuplicate(ByRef parcList As ParcList)
-        Throw New NotImplementedException
-    End Sub
+        PP.ClientName = parcList.ClientName
+        PP.FactureTable = parcList.TableName
+        PP.payementTable = "Client_Payement"
+        PP.Avance = parcList.Avance
+        PP.Total = parcList.Total
+        PP.Id = parcList.id
+        If PP.ShowDialog = DialogResult.OK Then
 
-    Private Sub DeleteMission(ByVal _id As Integer, ByRef parcList As ParcList)
-        Throw New NotImplementedException
-    End Sub
+        End If
+        parcList.Avance = PP.Avance
+        'fill rows
 
-    Private Sub SavePdf(ByRef parcList As ParcList)
-        Throw New NotImplementedException
     End Sub
-
-    Private Sub PramsPrint(ByVal parcList As ParcList)
-        Throw New NotImplementedException
-    End Sub
-
-    Private Sub PrintMission(ByVal parcList As ParcList)
-        Throw New NotImplementedException
-    End Sub
-
-    Private Sub GetClientDetails(ByVal _cid As Integer)
-        Throw New NotImplementedException
-    End Sub
-
     Private Sub GetDeiverDetails(ByVal _drid As Integer)
         Throw New NotImplementedException
     End Sub
@@ -704,6 +1192,10 @@
     Private Sub GetVehiculeDetails(ByVal _vid As Integer)
         Throw New NotImplementedException
     End Sub
+
+    
+
+  
 
 
 

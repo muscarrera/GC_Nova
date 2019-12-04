@@ -70,21 +70,26 @@
                          params.Add("clid", CInt(ds.txtSearchName.text))
                         dt = a.SelectDataTable(ds.TableName, {"*"}, params)
 
-                ElseIf ds.txtSearchName.text <> "" Then
-                          params.Add("name Like ", "%" & ds.txtSearchName.text & "%")
+                ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
+                    params.Add("name Like ", "%" & ds.txtSearchName.text & "%")
 
-                        dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
-                        params.Clear()
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+                    params.Clear()
 
-                        params.Add("ref Like ", "%" & ds.txtSearchName.text & "%")
-                        Dim dt2 = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
-                        dt.Merge(dt2, False)
+                    params.Add("ref Like ", "%" & ds.txtSearchName.text & "%")
+                    Dim dt2 = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+                    dt.Merge(dt2, False)
+
+                ElseIf ds.txtSearchName.text = "*" Then
+                    dt = a.SelectDataTable(ds.TableName, {"*"})
 
                 ElseIf ds.txtSearchName.text = "" Then
-                    dt = a.SelectDataTable(ds.TableName, {"*"})
+                    dt = a.SelectDataTableWithSyntaxe(ds.TableName, "TOP " & Form1.numberOfItems, {"*"})
                 End If
             End Using
+
             ds.DataSource = dt
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

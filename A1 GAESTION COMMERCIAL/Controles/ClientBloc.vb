@@ -114,7 +114,7 @@
         lbArid.ForeColor = Color.FromArgb(255, RND.Next(255), RND.Next(255), RND.Next(255))
 
     End Sub
-    Private Sub lbName_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbName.Click, Pb.Click, PL.Click
+    Private Sub lbName_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbName.Click, Pb.Click, PL.Click, Panel1.Click, lbType.Click, lbTel.Click, lbArid.Click, lbAdresse.Click
         isActive = Not isActive
 
         If isActive Then
@@ -123,7 +123,7 @@
             RaiseEvent IsDisActivated(Clid)
         End If
     End Sub
-    Private Sub PL_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PL.DoubleClick, lbName.DoubleClick, Pb.DoubleClick
+    Private Sub PL_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PL.DoubleClick, lbName.DoubleClick, Pb.DoubleClick, Panel1.DoubleClick, lbType.DoubleClick, lbTel.DoubleClick, lbArid.DoubleClick, lbAdresse.DoubleClick
         RaiseEvent IsChoosen(Me, Nothing)
     End Sub
 End Class

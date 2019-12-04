@@ -67,6 +67,10 @@
 
     Event GetListofFacture(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
 
+    Event PrintListofFactures(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
+    Event SaveListofFacturesasPdf(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
 
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
@@ -154,7 +158,7 @@
                 Form1.prefix = "BC-" & Entete.FactureDate.ToString("yy") & "/000"
             ElseIf value = "Bon_Achat" Then
                 clientTable = "Company"
-                payementTable =  "Client_Payement"
+                payementTable = "Client_Payement"
                 FactureTable = "Bon_Achat"
                 DetailsTable = "Details_Bon_Achat"
                 Entete.Type = "BA"
@@ -212,6 +216,11 @@
                 Entete.Height = 48
 
                 Entete.lbId.Visible = False
+                Entete.pbListPdf.Visible = True
+                Entete.pbListPrint.Visible = True
+                Entete.pllist1.Visible = True
+                Entete.pllist2.Visible = True
+
                 plListHeader.Visible = True
                 TB.Visible = False
                 PlFooter.Visible = True
@@ -222,6 +231,10 @@
 
                 plDetailsHeader.Visible = True
                 Entete.lbId.Visible = True
+                Entete.pbListPdf.Visible = False
+                Entete.pbListPrint.Visible = False
+                Entete.pllist1.Visible = False
+                Entete.pllist2.Visible = False
                 plListHeader.Visible = False
                 TB.Visible = True
                 PlFooter.Visible = False
@@ -297,7 +310,7 @@
                     R.Dock = DockStyle.Top
                     R.id = value.Rows(i).Item(0)
 
-                    If FactureTable = "Sell_Facture" Then R.bl = value.Rows(i).Item("bl")
+                    If FactureTable = "Sell_Facture" Then R.bl = IntValue(value, "bl", i)
                     R.BringToFront()
                     AddHandler R.itemChanged, AddressOf Article_Item_Changed
                     AddHandler R.DeleteItem, AddressOf Article_Item_Delete
@@ -493,6 +506,9 @@
         End If
 
         If Mode = "LIST" Then Exit Sub
+        If Pl.Controls.Count > 0 Then
+            If TypeOf (Pl.Controls(0)) Is ListLine Then Exit Sub
+        End If
 
         Dim T As Double = 0
         Dim R As Double = 0
@@ -550,8 +566,22 @@
         RaiseEvent Facturer(CInt(p1), Me)
     End Sub
     Private Sub Entete_PayFacture(ByVal p1 As Integer) Handles Entete.PayFacture
-        RaiseEvent PayFacture(CInt(p1), Me)
-        Me.ScrollControlIntoView(plPmHeader)
+        'RaiseEvent PayFacture(CInt(p1), Me)
+        'Me.ScrollControlIntoView(plPmHeader)
+        Dim pf As New PayementForm
+        pf.Id = Id
+        pf.ClientName = Entete.ClientName
+        pf.FactureTable = FactureTable
+        pf.payementTable = payementTable
+        pf.Avance = TB.avance
+        pf.Total = TB.TotalTTC
+
+        If pf.ShowDialog = DialogResult.OK Then
+
+        End If
+        TB.avance = pf.Avance
+
+
     End Sub
     Private Sub Entete_PrintFacture() Handles Entete.PrintFacture
         RaiseEvent PrintFacture(Me)
@@ -590,7 +620,7 @@
         currentPage += 1
 
         FillRows()
-       
+
         btPage.Text = currentPage & "/" & numberOfPage
     End Sub
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
@@ -656,7 +686,7 @@
         RaiseEvent ArticleItemDelete(listRow)
         Pl_ControlAdded(Nothing, Nothing)
     End Sub
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click, Button3.Click
+    Public Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click, Button3.Click
         Dim bt As Button = sender
         Clear()
         Entete.txtSearch.text = ""
@@ -731,24 +761,25 @@
     Private Sub Entete_ChangingClient() Handles Entete.ChangingClient
         RaiseEvent ChangingClient(Me)
     End Sub
-
     Private Sub Entete_NewBcRef() Handles Entete.NewBcRef
         RaiseEvent NewBcRef(Me)
     End Sub
-
     Private Sub Entete_NewBlRef() Handles Entete.NewBlRef
         RaiseEvent NewBlRef(Me)
     End Sub
-
     Private Sub Entete_NewDevisRef() Handles Entete.NewDevisRef
         RaiseEvent NewDevisRef(Me)
     End Sub
-
     Private Sub Entete_GetClientDetails() Handles Entete.GetClientDetails
         RaiseEvent GetClientDetails(Me)
     End Sub
-
     Private Sub Entete_AddListofBl() Handles Entete.AddListofBl
         RaiseEvent AddListofBl(Me)
+    End Sub
+    Private Sub Entete_PrintList() Handles Entete.PrintList
+        RaiseEvent PrintListofFactures(Me)
+    End Sub
+    Private Sub Entete_SavePdfList() Handles Entete.SavePdfList
+        RaiseEvent SaveListofFacturesasPdf(Me)
     End Sub
 End Class

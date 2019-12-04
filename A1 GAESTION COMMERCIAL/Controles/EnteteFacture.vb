@@ -45,6 +45,10 @@
 
     Event AddListofBl()
 
+    Event SavePdfList()
+
+    Event PrintList()
+
 
 
     Public Property Id() As Integer
@@ -206,14 +210,13 @@
         End Get
         Set(ByVal value As String)
             _bL = value
-
+            FlowLayoutPanel1.Controls.Clear()
             plBL.Width = 300
             If value = "" Then
                 plBL.Width = 75
                 Exit Property
             End If
 
-            FlowLayoutPanel1.Controls.Clear()
             Dim STR As String() = value.Split("|")
             For i As Integer = 0 To STR.Length - 1
                 Dim b As New Label
@@ -353,10 +356,18 @@
     'Client
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEditClient.Click
         If Statut = "Livré" Then Exit Sub
-        If Statut <> "CREATION" And Type = "Facture" Then Exit Sub
+        If Statut <> "CREATION" And Statut <> "ANNULER" And Statut <> "" And Type = "Facture" Then Exit Sub
         RaiseEvent ChangingClient()
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         RaiseEvent GetClientDetails()
+    End Sub
+
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbListPdf.Click
+        RaiseEvent SavePdfList()
+    End Sub
+
+    Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbListPrint.Click
+        RaiseEvent PrintList()
     End Sub
 End Class

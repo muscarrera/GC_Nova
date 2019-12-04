@@ -153,6 +153,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property bgForm() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bgForm", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property bgLightForm() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bgLightForm", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property calendar_icon_34471() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("calendar-icon_34471", resourceCulture)

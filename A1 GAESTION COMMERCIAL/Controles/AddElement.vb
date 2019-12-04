@@ -1,7 +1,9 @@
 ﻿Public Class AddElement
 
     Event AddNewKeyVal(ByVal k As String, ByVal v As Double)
-    Event Clear()
+    Event Clear(ByVal addElement As AddElement)
+
+    Public id As Integer = 0
 
     Public Property Key As String
         Get
@@ -19,7 +21,7 @@
         End Get
         Set(ByVal value As Double)
             txtQ.text = value
-
+           
         End Set
     End Property
     Public Property EditMode As Boolean
@@ -29,16 +31,18 @@
         Set(ByVal value As Boolean)
             If value Then
                 Me.BackColor = Color.White
+                Me.BackgroundImage = Nothing
                 txtN.BorderColor = Color.White
                 txtQ.BorderColor = Color.White
                 txtN.txtReadOnly = True
                 txtQ.txtReadOnly = True
+                btAdd.Visible = False
             Else
-                Me.BackColor = Color.DimGray
                 txtN.BorderColor = Color.Black
                 txtQ.BorderColor = Color.Black
                 txtN.txtReadOnly = False
                 txtQ.txtReadOnly = False
+                btAdd.Visible = True
             End If
         End Set
     End Property
@@ -47,12 +51,19 @@
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
         If Key <> "" And Value > 0 Then
             RaiseEvent AddNewKeyVal(Key, Value)
+            txtN.text = ""
+            txtQ.text = ""
         End If
     End Sub
 
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
-        txtN.text = ""
-        txtQ.text = ""
-        RaiseEvent Clear()
+        If EditMode = False Then
+            txtN.text = ""
+            txtQ.text = ""
+        Else
+            RaiseEvent Clear(Me)
+        End If
+
+
     End Sub
 End Class

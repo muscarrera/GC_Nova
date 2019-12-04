@@ -229,6 +229,7 @@ Partial Class ProductList
         Me.plrightA.Padding = New System.Windows.Forms.Padding(3)
         Me.plrightA.Size = New System.Drawing.Size(690, 37)
         Me.plrightA.TabIndex = 16
+        Me.plrightA.Visible = False
         '
         'Button9
         '
@@ -426,7 +427,7 @@ Partial Class ProductList
         Me.btFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btFournisseur.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFournisseur.ForeColor = System.Drawing.Color.DarkGray
-        Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btFournisseur.Location = New System.Drawing.Point(566, 5)
         Me.btFournisseur.Name = "btFournisseur"
@@ -444,7 +445,7 @@ Partial Class ProductList
         Me.btClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btClient.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btClient.ForeColor = System.Drawing.SystemColors.AppWorkspace
-        Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
         Me.btClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btClient.Location = New System.Drawing.Point(444, 5)
         Me.btClient.Name = "btClient"

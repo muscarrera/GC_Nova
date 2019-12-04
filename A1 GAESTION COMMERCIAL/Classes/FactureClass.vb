@@ -27,6 +27,8 @@
 
         AddHandler ds.SavePdf, AddressOf SavePdf
         AddHandler ds.PrintFacture, AddressOf PrintFacture
+        AddHandler ds.SaveListofFacturesasPdf, AddressOf SaveListofFacturesasPdf
+        AddHandler ds.PrintListofFactures, AddressOf PrintListofFactures
         AddHandler ds.PrintParamsFacture, AddressOf PrintParamsFacture
         AddHandler ds.SaveChanges, AddressOf SaveChanges
         AddHandler ds.TypeTransformer, AddressOf TypeTransformer
@@ -64,6 +66,7 @@
 
             Dim NF As New NouveauFacture
             NF.TxtExr.Text = Form1.Exercice
+            NF.txtName.Focus()
             NF.txtName.AutoCompleteSource = AutoCompleteByName(tb_C)
             NF.tb_C = tb_C
             NF.TxtDate.Text = Now.Date.ToString("dd/MM/yyyy")
@@ -312,6 +315,7 @@
         Form1.proformat_Id = 0
         Form1.printWithDate = True
         Form1.printWithPrice = True
+        Form1.factureToPrint = Nothing
 
         If ds.Operation = "Devis" Then
             Form1.Facture_Title = "Devis "
@@ -332,7 +336,7 @@
         End If
         Form1.printOnPaper = False
 
-        Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+        Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Pdf
         Form1.PrintDoc.Print()
 
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
@@ -342,6 +346,7 @@
         Form1.proformat_Id = 0
         Form1.printWithDate = True
         Form1.printWithPrice = True
+        Form1.factureToPrint = Nothing
 
         If ds.Operation = "Devis" Then
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
@@ -384,6 +389,7 @@
         If pr.ShowDialog = DialogResult.OK Then
             Form1.printWithDate = Not pr.cbDate.Checked
             Form1.printWithPrice = Not pr.cbPrix.Checked
+            Form1.factureToPrint = Nothing
 
             If ds.Operation = "Devis" Then
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
@@ -422,6 +428,71 @@
 
             StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
         End If
+    End Sub
+    Private Sub SaveListofFacturesasPdf(ByVal ds As DataList)
+        Form1.proformat_Id = 0
+        Form1.printWithDate = True
+        Form1.printWithPrice = True
+
+        Form1.ListToPrint = Nothing
+        Form1.ListToPrint = ds.DataList
+        Form1.Facture_Title = "Facture"
+
+        Form1.printOnPaper = False
+
+        Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Pdf
+        Form1.PrintDocList.Print()
+    End Sub
+    Private Sub PrintListofFactures(ByVal ds As DataList)
+        Form1.proformat_Id = 0
+        Form1.printWithDate = True
+        Form1.printWithPrice = True
+
+        If My.Computer.Keyboard.CtrlKeyDown Then
+            If ds.Operation = "Devis" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Devis
+                Form1.Facture_Title = "Devis "
+            ElseIf ds.Operation = "Sell_Facture" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
+                Form1.Facture_Title = "Facture "
+                ''''//
+            ElseIf ds.Operation = "Bon_Livraison" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Livraison "
+            ElseIf ds.Operation = "Bon_Commande" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Commande "
+            ElseIf ds.Operation = "Bon_Achat" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Achat "
+                ''''//
+            ElseIf ds.Operation = "Commande_Client" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+                Form1.Facture_Title = "Commande Client "
+            ElseIf ds.Operation = "Sell_Avoir" Then
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
+                Form1.Facture_Title = "Bon d'Avoir "
+            Else
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+            End If
+            Form1.printOnPaper = True
+
+            For i As Integer = 0 To ds.DataList.Rows.Count - 1
+                Form1.factureToPrint = New Facture(ds.Id, ds.FactureTable, ds.clientTable, ds.DetailsTable, ds.payementTable)
+                Form1.PrintDoc.Print()
+            Next
+
+            Exit Sub
+        End If
+
+        Form1.ListToPrint = Nothing
+        Form1.ListToPrint = ds.DataList
+        Form1.Facture_Title = "Facture"
+
+        Form1.printOnPaper = True
+
+        Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Facture
+        Form1.PrintDocList.Print()
     End Sub
     Private Sub SaveChanges(ByVal id As Integer, ByRef ds As DataList)
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -557,8 +628,21 @@
         ds.pbBar.BackColor = RandomColor()
         ds.Button9.BackgroundImage = My.Resources.gui_16
     End Sub
-    Private Sub PayFacture(ByVal id As Integer, ByRef dataList As DataList)
+    Private Sub PayFacture(ByVal id As Integer, ByRef ParcList As DataList)
         'Throw New NotImplementedException
+        Dim PP As New PayementForm
+
+        PP.ClientName = ParcList.Entete.Name
+        PP.FactureTable = ParcList.FactureTable
+        PP.payementTable = ParcList.payementTable
+        PP.Avance = ParcList.TB.avance
+        PP.Total = ParcList.TB.TotalTTC
+        PP.Id = ParcList.id
+        If PP.ShowDialog = DialogResult.OK Then
+
+        End If
+        ParcList.TB.avance = PP.Avance
+        'fill rows
     End Sub
     Private Sub DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
         Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
@@ -583,7 +667,7 @@
             params.Clear()
             params.Add("total", 0)
             params.Add("avance", 0)
-            params.Add("admin", "ANNULER")
+            params.Add("isAdmin", "ANNULER")
             params.Add("isPayed", isPayed)
             params.Add("tva", 0)
             params.Add("remise", 0)
@@ -592,12 +676,23 @@
 
             where.Add("id", id)
 
-            c.UpdateRecord(tableName, params, where)
+            If c.UpdateRecord(tableName, params, where) Then
+                where.Clear()
+                where.Add("fctid", id)
+                c.DeleteRecords(ds.DetailsTable, where)
+            End If
+
             params.Clear()
             where.Clear()
 
             params = Nothing
             where = Nothing
+            If ds.FactureTable = "Commande_Client" Or ds.FactureTable = "Bon_Commande" Then
+                GetListofCommande(ds)
+            Else
+                GetListofFacture(ds)
+            End If
+            ds.Mode = "LIST"
         End Using
     End Sub
     Private Sub AvoirFacture(ByVal p1 As Integer, ByVal ds As DataList)
@@ -968,9 +1063,11 @@
 
     End Sub
     Private Sub GetClientDetails(ByVal ds As DataList)
+        If IsNothing(ds.Entete.Client) Then Exit Sub
+        If ds.Entete.Client.cid = 0 Then Exit Sub
         Dim fl As New ClientDetails
         fl.Table = ds.clientTable
-        fl.id = ds.Id
+        fl.id = ds.Entete.Client.cid
         If fl.ShowDialog = DialogResult.OK Then
 
         End If
@@ -1006,7 +1103,7 @@
                         params.Add("Sell_Facture", CInt(ds.Id))
                         params.Add("isAdmin", "Facturé")
 
-                        where.Add("id", CInt(ds.Id))
+                        where.Add("id", CInt(a.Id))
                         c.UpdateRecord(bls.tb_D, params, where)
                         params.Clear()
                         where.Clear()
@@ -1124,4 +1221,5 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
 End Class

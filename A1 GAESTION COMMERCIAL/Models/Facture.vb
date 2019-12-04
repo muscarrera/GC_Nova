@@ -89,7 +89,7 @@
                 Avance = DblValue(dt, "Avance", 0)
                 isAdmin = StrValue(dt, "isAdmin", 0)
                 isPayed = BoolValue(dt, "isPayed", 0)
-                dte = StrValue(dt, "Date", 0)
+                dte = DteValue(dt, "Date", 0)
                 cid = IntValue(dt, "cid", 0)
 
                 bl = StrValue(dt, "Bon_Livraison", 0)

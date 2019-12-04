@@ -54,8 +54,15 @@
                 txtEch.txtReadOnly = True
                 txtRef.txtReadOnly = True
                 txtDesig.txtReadOnly = True
-                Me.BackColor = Color.Transparent
+                Me.BackColor = Color.White
                 plleft.BackgroundImage = Nothing
+
+                txtWay.BorderColor = Color.White
+                txtDesig.BorderColor = Color.White
+                txtMontant.BorderColor = Color.White
+                txtEch.BorderColor = Color.White
+                txtRef.BorderColor = Color.White
+
             Else
                 btAdd.BackgroundImage = My.Resources.iconfinder_Gnome_Emblem_Default222
                 btClear.BackgroundImage = My.Resources.CANCEL_22
@@ -66,6 +73,11 @@
                 txtDesig.txtReadOnly = False
                 Me.BackColor = Color.YellowGreen
                 If id > 0 Then plleft.BackgroundImage = My.Resources.WARNING_15
+                txtWay.BorderColor = Color.Black
+                txtDesig.BorderColor = Color.Black
+                txtMontant.BorderColor = Color.Black
+                txtEch.BorderColor = Color.Black
+                txtRef.BorderColor = Color.Black
             End If
         End Set
     End Property

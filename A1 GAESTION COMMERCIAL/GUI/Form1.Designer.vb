@@ -53,6 +53,8 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.plBody = New System.Windows.Forms.Panel()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -456,5 +458,7 @@ Partial Class Form1
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button9 As System.Windows.Forms.Button
+    Friend WithEvents PrintDocMission As System.Drawing.Printing.PrintDocument
+    Friend WithEvents PrintDocList As System.Drawing.Printing.PrintDocument
 
 End Class

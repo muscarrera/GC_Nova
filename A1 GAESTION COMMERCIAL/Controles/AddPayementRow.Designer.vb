@@ -23,18 +23,18 @@ Partial Class AddPayementRow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.plRef = New System.Windows.Forms.Panel()
+        Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
         Me.plEch = New System.Windows.Forms.Panel()
+        Me.txtEch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PlRight = New System.Windows.Forms.Panel()
         Me.btAdd = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.plMontant = New System.Windows.Forms.Panel()
-        Me.plName = New System.Windows.Forms.Panel()
-        Me.plWay = New System.Windows.Forms.Panel()
-        Me.txtDesig = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtEch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtMontant = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.plName = New System.Windows.Forms.Panel()
+        Me.txtDesig = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.plWay = New System.Windows.Forms.Panel()
         Me.txtWay = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plRef.SuspendLayout()
         Me.plEch.SuspendLayout()
@@ -54,6 +54,26 @@ Partial Class AddPayementRow
         Me.plRef.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plRef.Size = New System.Drawing.Size(214, 32)
         Me.plRef.TabIndex = 18
+        '
+        'txtRef
+        '
+        Me.txtRef.BackColor = System.Drawing.Color.White
+        Me.txtRef.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRef.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRef.IsNumiric = False
+        Me.txtRef.Location = New System.Drawing.Point(10, 0)
+        Me.txtRef.Name = "txtRef"
+        Me.txtRef.PlaceHolder = "N° / Réf"
+        Me.txtRef.ShowClearIcon = False
+        Me.txtRef.ShowSaveIcon = False
+        Me.txtRef.Size = New System.Drawing.Size(199, 32)
+        Me.txtRef.StartUp = 2
+        Me.txtRef.TabIndex = 4
+        Me.txtRef.TextSize = 8
+        Me.txtRef.TxtBackColor = True
+        Me.txtRef.TxtColor = System.Drawing.Color.White
+        Me.txtRef.txtReadOnly = False
+        Me.txtRef.TxtSelect = New Integer() {1, 0}
         '
         'plleft
         '
@@ -76,6 +96,26 @@ Partial Class AddPayementRow
         Me.plEch.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plEch.Size = New System.Drawing.Size(130, 32)
         Me.plEch.TabIndex = 20
+        '
+        'txtEch
+        '
+        Me.txtEch.BackColor = System.Drawing.Color.White
+        Me.txtEch.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtEch.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtEch.IsNumiric = False
+        Me.txtEch.Location = New System.Drawing.Point(10, 0)
+        Me.txtEch.Name = "txtEch"
+        Me.txtEch.PlaceHolder = "échéance"
+        Me.txtEch.ShowClearIcon = False
+        Me.txtEch.ShowSaveIcon = False
+        Me.txtEch.Size = New System.Drawing.Size(115, 32)
+        Me.txtEch.StartUp = 2
+        Me.txtEch.TabIndex = 3
+        Me.txtEch.TextSize = 8
+        Me.txtEch.TxtBackColor = True
+        Me.txtEch.TxtColor = System.Drawing.Color.White
+        Me.txtEch.txtReadOnly = True
+        Me.txtEch.TxtSelect = New Integer() {1, 0}
         '
         'PlRight
         '
@@ -125,6 +165,26 @@ Partial Class AddPayementRow
         Me.plMontant.Size = New System.Drawing.Size(125, 32)
         Me.plMontant.TabIndex = 17
         '
+        'txtMontant
+        '
+        Me.txtMontant.BackColor = System.Drawing.Color.White
+        Me.txtMontant.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtMontant.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtMontant.IsNumiric = True
+        Me.txtMontant.Location = New System.Drawing.Point(10, 0)
+        Me.txtMontant.Name = "txtMontant"
+        Me.txtMontant.PlaceHolder = "montant *"
+        Me.txtMontant.ShowClearIcon = False
+        Me.txtMontant.ShowSaveIcon = False
+        Me.txtMontant.Size = New System.Drawing.Size(110, 32)
+        Me.txtMontant.StartUp = 2
+        Me.txtMontant.TabIndex = 2
+        Me.txtMontant.TextSize = 8
+        Me.txtMontant.TxtBackColor = True
+        Me.txtMontant.TxtColor = System.Drawing.Color.White
+        Me.txtMontant.txtReadOnly = False
+        Me.txtMontant.TxtSelect = New Integer() {1, 0}
+        '
         'plName
         '
         Me.plName.BackColor = System.Drawing.Color.Transparent
@@ -135,17 +195,6 @@ Partial Class AddPayementRow
         Me.plName.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.plName.Size = New System.Drawing.Size(166, 32)
         Me.plName.TabIndex = 19
-        '
-        'plWay
-        '
-        Me.plWay.BackColor = System.Drawing.Color.Transparent
-        Me.plWay.Controls.Add(Me.txtWay)
-        Me.plWay.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plWay.Location = New System.Drawing.Point(33, 2)
-        Me.plWay.Name = "plWay"
-        Me.plWay.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
-        Me.plWay.Size = New System.Drawing.Size(132, 32)
-        Me.plWay.TabIndex = 16
         '
         'txtDesig
         '
@@ -167,65 +216,16 @@ Partial Class AddPayementRow
         Me.txtDesig.txtReadOnly = False
         Me.txtDesig.TxtSelect = New Integer() {1, 0}
         '
-        'txtRef
+        'plWay
         '
-        Me.txtRef.BackColor = System.Drawing.Color.White
-        Me.txtRef.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRef.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRef.IsNumiric = False
-        Me.txtRef.Location = New System.Drawing.Point(10, 0)
-        Me.txtRef.Name = "txtRef"
-        Me.txtRef.PlaceHolder = "N° / Réf"
-        Me.txtRef.ShowClearIcon = False
-        Me.txtRef.ShowSaveIcon = False
-        Me.txtRef.Size = New System.Drawing.Size(199, 32)
-        Me.txtRef.StartUp = 2
-        Me.txtRef.TabIndex = 4
-        Me.txtRef.TextSize = 8
-        Me.txtRef.TxtBackColor = True
-        Me.txtRef.TxtColor = System.Drawing.Color.White
-        Me.txtRef.txtReadOnly = False
-        Me.txtRef.TxtSelect = New Integer() {1, 0}
-        '
-        'txtEch
-        '
-        Me.txtEch.BackColor = System.Drawing.Color.White
-        Me.txtEch.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtEch.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtEch.IsNumiric = False
-        Me.txtEch.Location = New System.Drawing.Point(10, 0)
-        Me.txtEch.Name = "txtEch"
-        Me.txtEch.PlaceHolder = "échéance"
-        Me.txtEch.ShowClearIcon = False
-        Me.txtEch.ShowSaveIcon = False
-        Me.txtEch.Size = New System.Drawing.Size(115, 32)
-        Me.txtEch.StartUp = 2
-        Me.txtEch.TabIndex = 3
-        Me.txtEch.TextSize = 8
-        Me.txtEch.TxtBackColor = True
-        Me.txtEch.TxtColor = System.Drawing.Color.White
-        Me.txtEch.txtReadOnly = True
-        Me.txtEch.TxtSelect = New Integer() {1, 0}
-        '
-        'txtMontant
-        '
-        Me.txtMontant.BackColor = System.Drawing.Color.White
-        Me.txtMontant.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtMontant.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtMontant.IsNumiric = True
-        Me.txtMontant.Location = New System.Drawing.Point(10, 0)
-        Me.txtMontant.Name = "txtMontant"
-        Me.txtMontant.PlaceHolder = "montant *"
-        Me.txtMontant.ShowClearIcon = False
-        Me.txtMontant.ShowSaveIcon = False
-        Me.txtMontant.Size = New System.Drawing.Size(110, 32)
-        Me.txtMontant.StartUp = 2
-        Me.txtMontant.TabIndex = 2
-        Me.txtMontant.TextSize = 8
-        Me.txtMontant.TxtBackColor = True
-        Me.txtMontant.TxtColor = System.Drawing.Color.White
-        Me.txtMontant.txtReadOnly = False
-        Me.txtMontant.TxtSelect = New Integer() {1, 0}
+        Me.plWay.BackColor = System.Drawing.Color.Transparent
+        Me.plWay.Controls.Add(Me.txtWay)
+        Me.plWay.Dock = System.Windows.Forms.DockStyle.Left
+        Me.plWay.Location = New System.Drawing.Point(33, 2)
+        Me.plWay.Name = "plWay"
+        Me.plWay.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
+        Me.plWay.Size = New System.Drawing.Size(132, 32)
+        Me.plWay.TabIndex = 16
         '
         'txtWay
         '
@@ -251,7 +251,7 @@ Partial Class AddPayementRow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Transparent
+        Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Controls.Add(Me.plName)
         Me.Controls.Add(Me.plRef)

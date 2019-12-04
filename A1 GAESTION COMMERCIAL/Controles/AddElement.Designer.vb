@@ -25,8 +25,8 @@ Partial Class AddElement
         Me.plName = New System.Windows.Forms.Panel()
         Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PlRight = New System.Windows.Forms.Panel()
-        Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
+        Me.btClear = New System.Windows.Forms.Button()
         Me.plQte = New System.Windows.Forms.Panel()
         Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
@@ -77,19 +77,6 @@ Partial Class AddElement
         Me.PlRight.Size = New System.Drawing.Size(112, 31)
         Me.PlRight.TabIndex = 13
         '
-        'btClear
-        '
-        Me.btClear.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22
-        Me.btClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btClear.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btClear.FlatAppearance.BorderSize = 0
-        Me.btClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btClear.Location = New System.Drawing.Point(69, 0)
-        Me.btClear.Name = "btClear"
-        Me.btClear.Size = New System.Drawing.Size(43, 31)
-        Me.btClear.TabIndex = 7
-        Me.btClear.UseVisualStyleBackColor = True
-        '
         'btAdd
         '
         Me.btAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
@@ -102,6 +89,19 @@ Partial Class AddElement
         Me.btAdd.Size = New System.Drawing.Size(44, 31)
         Me.btAdd.TabIndex = 6
         Me.btAdd.UseVisualStyleBackColor = True
+        '
+        'btClear
+        '
+        Me.btClear.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22
+        Me.btClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btClear.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btClear.FlatAppearance.BorderSize = 0
+        Me.btClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btClear.Location = New System.Drawing.Point(69, 0)
+        Me.btClear.Name = "btClear"
+        Me.btClear.Size = New System.Drawing.Size(43, 31)
+        Me.btClear.TabIndex = 7
+        Me.btClear.UseVisualStyleBackColor = True
         '
         'plQte
         '
@@ -149,6 +149,8 @@ Partial Class AddElement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Transparent
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Controls.Add(Me.plName)
         Me.Controls.Add(Me.plQte)
         Me.Controls.Add(Me.PlRight)

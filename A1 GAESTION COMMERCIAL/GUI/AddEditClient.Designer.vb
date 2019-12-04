@@ -23,9 +23,12 @@ Partial Class AddEditClient
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel24 = New System.Windows.Forms.Panel()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -33,6 +36,7 @@ Partial Class AddEditClient
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.PBImage = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbImage = New System.Windows.Forms.Label()
@@ -68,23 +72,19 @@ Partial Class AddEditClient
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtICE = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtAdresse = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.PBImage = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel11.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
-        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -101,6 +101,16 @@ Partial Class AddEditClient
         Me.Panel1.Padding = New System.Windows.Forms.Padding(5, 5, 20, 5)
         Me.Panel1.Size = New System.Drawing.Size(610, 101)
         Me.Panel1.TabIndex = 1
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(44, 30)
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
         '
         'lbRef
         '
@@ -134,6 +144,33 @@ Partial Class AddEditClient
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(585, 37)
         Me.Panel24.TabIndex = 3
+        '
+        'Button7
+        '
+        Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
+        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button7.Location = New System.Drawing.Point(136, 5)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
+        Me.Button7.Size = New System.Drawing.Size(90, 28)
+        Me.Button7.TabIndex = 2
+        Me.Button7.Text = "Annuler   "
+        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.Location = New System.Drawing.Point(13, 5)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button6.Size = New System.Drawing.Size(116, 28)
+        Me.Button6.TabIndex = 2
+        Me.Button6.Text = "Enregistrer   "
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'Panel29
         '
@@ -207,6 +244,17 @@ Partial Class AddEditClient
         Me.Panel8.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel8.Size = New System.Drawing.Size(198, 177)
         Me.Panel8.TabIndex = 0
+        '
+        'PBImage
+        '
+        Me.PBImage.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
+        Me.PBImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PBImage.Enabled = False
+        Me.PBImage.Location = New System.Drawing.Point(13, 58)
+        Me.PBImage.Name = "PBImage"
+        Me.PBImage.Size = New System.Drawing.Size(172, 81)
+        Me.PBImage.TabIndex = 8
+        Me.PBImage.TabStop = False
         '
         'Button1
         '
@@ -421,7 +469,7 @@ Partial Class AddEditClient
         Me.txtEmail.ShowSaveIcon = False
         Me.txtEmail.Size = New System.Drawing.Size(185, 26)
         Me.txtEmail.StartUp = 2
-        Me.txtEmail.TabIndex = 7
+        Me.txtEmail.TabIndex = 9
         Me.txtEmail.TextSize = 10
         Me.txtEmail.TxtBackColor = True
         Me.txtEmail.TxtColor = System.Drawing.Color.White
@@ -440,7 +488,7 @@ Partial Class AddEditClient
         Me.txtGsm.ShowSaveIcon = False
         Me.txtGsm.Size = New System.Drawing.Size(185, 26)
         Me.txtGsm.StartUp = 2
-        Me.txtGsm.TabIndex = 33
+        Me.txtGsm.TabIndex = 8
         Me.txtGsm.TextSize = 10
         Me.txtGsm.TxtBackColor = True
         Me.txtGsm.TxtColor = System.Drawing.Color.White
@@ -459,7 +507,7 @@ Partial Class AddEditClient
         Me.txtTel.ShowSaveIcon = False
         Me.txtTel.Size = New System.Drawing.Size(185, 26)
         Me.txtTel.StartUp = 2
-        Me.txtTel.TabIndex = 6
+        Me.txtTel.TabIndex = 7
         Me.txtTel.TextSize = 10
         Me.txtTel.TxtBackColor = True
         Me.txtTel.TxtColor = System.Drawing.Color.White
@@ -522,7 +570,7 @@ Partial Class AddEditClient
         Me.txtInfo.ShowSaveIcon = False
         Me.txtInfo.Size = New System.Drawing.Size(247, 26)
         Me.txtInfo.StartUp = 2
-        Me.txtInfo.TabIndex = 5
+        Me.txtInfo.TabIndex = 10
         Me.txtInfo.TextSize = 10
         Me.txtInfo.TxtBackColor = True
         Me.txtInfo.TxtColor = System.Drawing.Color.White
@@ -582,7 +630,7 @@ Partial Class AddEditClient
         Me.txtVille.ShowSaveIcon = False
         Me.txtVille.Size = New System.Drawing.Size(105, 26)
         Me.txtVille.StartUp = 2
-        Me.txtVille.TabIndex = 34
+        Me.txtVille.TabIndex = 5
         Me.txtVille.TextSize = 10
         Me.txtVille.TxtBackColor = True
         Me.txtVille.TxtColor = System.Drawing.Color.White
@@ -601,7 +649,7 @@ Partial Class AddEditClient
         Me.txtCp.ShowSaveIcon = False
         Me.txtCp.Size = New System.Drawing.Size(63, 26)
         Me.txtCp.StartUp = 2
-        Me.txtCp.TabIndex = 34
+        Me.txtCp.TabIndex = 4
         Me.txtCp.TextSize = 10
         Me.txtCp.TxtBackColor = True
         Me.txtCp.TxtColor = System.Drawing.Color.White
@@ -664,7 +712,7 @@ Partial Class AddEditClient
         Me.txtICE.ShowSaveIcon = False
         Me.txtICE.Size = New System.Drawing.Size(241, 26)
         Me.txtICE.StartUp = 2
-        Me.txtICE.TabIndex = 5
+        Me.txtICE.TabIndex = 6
         Me.txtICE.TextSize = 10
         Me.txtICE.TxtBackColor = True
         Me.txtICE.TxtColor = System.Drawing.Color.White
@@ -683,60 +731,12 @@ Partial Class AddEditClient
         Me.txtAdresse.ShowSaveIcon = False
         Me.txtAdresse.Size = New System.Drawing.Size(241, 26)
         Me.txtAdresse.StartUp = 2
-        Me.txtAdresse.TabIndex = 5
+        Me.txtAdresse.TabIndex = 3
         Me.txtAdresse.TextSize = 10
         Me.txtAdresse.TxtBackColor = True
         Me.txtAdresse.TxtColor = System.Drawing.Color.White
         Me.txtAdresse.txtReadOnly = False
         Me.txtAdresse.TxtSelect = New Integer() {1, 0}
-        '
-        'PBImage
-        '
-        Me.PBImage.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887
-        Me.PBImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PBImage.Enabled = False
-        Me.PBImage.Location = New System.Drawing.Point(13, 58)
-        Me.PBImage.Name = "PBImage"
-        Me.PBImage.Size = New System.Drawing.Size(172, 81)
-        Me.PBImage.TabIndex = 8
-        Me.PBImage.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(44, 30)
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
-        '
-        'Button7
-        '
-        Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(136, 5)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(90, 28)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "Annuler   "
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(13, 5)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(116, 28)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Enregistrer   "
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = True
         '
         'AddEditClient
         '
@@ -751,15 +751,18 @@ Partial Class AddEditClient
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "AddEditClient"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AddEditClient"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel24.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
+        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         Me.Panel10.ResumeLayout(False)
@@ -768,8 +771,6 @@ Partial Class AddEditClient
         Me.Panel12.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
-        CType(Me.PBImage, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

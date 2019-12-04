@@ -23,7 +23,6 @@ Partial Class NouveauFacture
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.plExerces = New System.Windows.Forms.Panel()
@@ -33,49 +32,35 @@ Partial Class NouveauFacture
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TxtDate = New System.Windows.Forms.TextBox()
         Me.lbDate = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Panel64 = New System.Windows.Forms.Panel()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.plExerces.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.Panel64.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.txtName)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(45, 90)
+        Me.Panel1.Location = New System.Drawing.Point(64, 106)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(416, 40)
+        Me.Panel1.Size = New System.Drawing.Size(368, 40)
         Me.Panel1.TabIndex = 0
-        '
-        'txtName
-        '
-        Me.txtName.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtName.BorderColor = System.Drawing.Color.Transparent
-        Me.txtName.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtName.IsNumiric = False
-        Me.txtName.Location = New System.Drawing.Point(67, 0)
-        Me.txtName.Name = "txtName"
-        Me.txtName.ShowClearIcon = False
-        Me.txtName.ShowSaveIcon = False
-        Me.txtName.Size = New System.Drawing.Size(272, 38)
-        Me.txtName.StartUp = 2
-        Me.txtName.TabIndex = 4
-        Me.txtName.TextSize = 8
-        Me.txtName.TxtBackColor = True
-        Me.txtName.TxtColor = System.Drawing.Color.WhiteSmoke
-        Me.txtName.txtReadOnly = False
-        Me.txtName.TxtSelect = New Integer() {1, 0}
         '
         'Button1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(339, 0)
+        Me.Button1.Location = New System.Drawing.Point(291, 0)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 38)
         Me.Button1.TabIndex = 3
@@ -93,18 +78,18 @@ Partial Class NouveauFacture
         '
         'plExerces
         '
-        Me.plExerces.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.plExerces.BackColor = System.Drawing.Color.White
         Me.plExerces.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.plExerces.Controls.Add(Me.TxtExr)
         Me.plExerces.Controls.Add(Me.Label2)
-        Me.plExerces.Location = New System.Drawing.Point(45, 30)
+        Me.plExerces.Location = New System.Drawing.Point(64, 42)
         Me.plExerces.Name = "plExerces"
         Me.plExerces.Size = New System.Drawing.Size(250, 42)
         Me.plExerces.TabIndex = 0
         '
         'TxtExr
         '
-        Me.TxtExr.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TxtExr.BackColor = System.Drawing.Color.White
         Me.TxtExr.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtExr.Enabled = False
         Me.TxtExr.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -124,14 +109,14 @@ Partial Class NouveauFacture
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.TxtDate)
         Me.Panel3.Controls.Add(Me.lbDate)
-        Me.Panel3.Location = New System.Drawing.Point(45, 157)
+        Me.Panel3.Location = New System.Drawing.Point(64, 167)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(416, 40)
+        Me.Panel3.Size = New System.Drawing.Size(368, 40)
         Me.Panel3.TabIndex = 0
         '
         'Button2
@@ -139,7 +124,7 @@ Partial Class NouveauFacture
         Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
         Me.Button2.FlatAppearance.BorderSize = 0
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(339, 0)
+        Me.Button2.Location = New System.Drawing.Point(291, 0)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 38)
         Me.Button2.TabIndex = 3
@@ -148,7 +133,7 @@ Partial Class NouveauFacture
         '
         'TxtDate
         '
-        Me.TxtDate.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TxtDate.BackColor = System.Drawing.Color.White
         Me.TxtDate.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtDate.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtDate.Location = New System.Drawing.Point(85, 13)
@@ -165,29 +150,78 @@ Partial Class NouveauFacture
         Me.lbDate.TabIndex = 1
         Me.lbDate.Text = "Date"
         '
-        'Button3
+        'Panel64
         '
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(328, 222)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(133, 38)
-        Me.Button3.TabIndex = 4
-        Me.Button3.Text = "Valider"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Panel64.BackColor = System.Drawing.Color.Transparent
+        Me.Panel64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel64.Controls.Add(Me.Button16)
+        Me.Panel64.Location = New System.Drawing.Point(64, 228)
+        Me.Panel64.Name = "Panel64"
+        Me.Panel64.Size = New System.Drawing.Size(368, 37)
+        Me.Panel64.TabIndex = 5
+        '
+        'Button16
+        '
+        Me.Button16.BackColor = System.Drawing.Color.LimeGreen
+        Me.Button16.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button16.ForeColor = System.Drawing.Color.Ivory
+        Me.Button16.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
+        Me.Button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button16.Location = New System.Drawing.Point(0, 0)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Padding = New System.Windows.Forms.Padding(125, 0, 6, 0)
+        Me.Button16.Size = New System.Drawing.Size(366, 35)
+        Me.Button16.TabIndex = 2
+        Me.Button16.Text = "          Valider"
+        Me.Button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button16.UseVisualStyleBackColor = False
+        '
+        'txtName
+        '
+        Me.txtName.BackColor = System.Drawing.Color.White
+        Me.txtName.BorderColor = System.Drawing.Color.Transparent
+        Me.txtName.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtName.IsNumiric = False
+        Me.txtName.Location = New System.Drawing.Point(52, 0)
+        Me.txtName.Name = "txtName"
+        Me.txtName.PlaceHolder = ""
+        Me.txtName.ShowClearIcon = False
+        Me.txtName.ShowSaveIcon = False
+        Me.txtName.Size = New System.Drawing.Size(239, 38)
+        Me.txtName.StartUp = 2
+        Me.txtName.TabIndex = 1
+        Me.txtName.TextSize = 8
+        Me.txtName.TxtBackColor = True
+        Me.txtName.TxtColor = System.Drawing.Color.White
+        Me.txtName.txtReadOnly = False
+        Me.txtName.TxtSelect = New Integer() {1, 0}
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox1.Location = New System.Drawing.Point(424, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(29, 29)
+        Me.PictureBox1.TabIndex = 6
+        Me.PictureBox1.TabStop = False
         '
         'NouveauFacture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
+        Me.BackColor = System.Drawing.Color.White
+        Me.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(496, 272)
-        Me.Controls.Add(Me.Button3)
+        Me.ClientSize = New System.Drawing.Size(493, 314)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Panel64)
         Me.Controls.Add(Me.plExerces)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "NouveauFacture"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nouveau"
@@ -197,6 +231,8 @@ Partial Class NouveauFacture
         Me.plExerces.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.Panel64.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -210,6 +246,8 @@ Partial Class NouveauFacture
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents TxtDate As System.Windows.Forms.TextBox
     Friend WithEvents lbDate As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents txtName As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Panel64 As System.Windows.Forms.Panel
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class

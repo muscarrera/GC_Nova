@@ -47,6 +47,29 @@
     Event GetDeiverDetails(ByVal _drid As Integer)
     Event GetVehiculeDetails(ByVal _vid As Integer)
 
+    Event AddNewChargeMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
+
+    Event AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
+
+
+    Public Property AutoCompleteSourceDetails() As AutoCompleteStringCollection
+        Get
+            Return Nothing
+        End Get
+        Set(ByVal value As AutoCompleteStringCollection)
+            txtDKey.AutoCompleteSource = value
+        End Set
+    End Property
+    Public Property AutoCompleteSourceCharges() As AutoCompleteStringCollection
+        Get
+            Return Nothing
+        End Get
+        Set(ByVal value As AutoCompleteStringCollection)
+            txtCKey.AutoCompleteSource = value
+        End Set
+    End Property
+
+
     Public Property Mode() As String
         Get
             Return _mode
@@ -239,7 +262,11 @@
     End Property
     Property km_D As Integer
         Get
-            Return CInt(txtKmDepart.text)
+            If IsNumeric(txtKmDepart.text) Then
+                Return CInt(txtKmDepart.text)
+            Else
+                Return 0
+            End If
         End Get
         Set(ByVal value As Integer)
             txtKmDepart.text = value
@@ -247,7 +274,11 @@
     End Property
     Property km_A As Integer
         Get
-            Return CInt(txtKmArrive.text)
+            If IsNumeric(txtKmArrive.text) Then
+                Return CInt(txtKmArrive.text)
+            Else
+                Return 0
+            End If
         End Get
         Set(ByVal value As Integer)
             txtKmArrive.text = value
@@ -340,6 +371,16 @@
             Dim t As Double = 0
 
             For Each a As AddElement In plDBody.Controls
+                t += a.Value
+            Next
+            Return t
+        End Get
+    End Property
+    Public ReadOnly Property TotalCharge As Double
+        Get
+            Dim t As Double = 0
+
+            For Each a As AddElement In plCBody.Controls
                 t += a.Value
             Next
             Return t
@@ -524,7 +565,6 @@
         startIndex -= numberOfItems * 2
         If startIndex < 0 Then startIndex = 0
 
-
         FillRows()
 
         btPage.Text = currentPage & "/" & numberOfPage
@@ -557,24 +597,30 @@
         RaiseEvent VehiculeChanged(Me)
     End Sub
 
-
-
-    Private Sub plDBody_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plDBody.ControlAdded
-        If plD.Controls.Count > 3 Then
-            plD.Height = plD.Controls(0).Height * plD.Controls.Count + 15
+    Private Sub plDBody_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plDBody.ControlAdded, plDBody.ControlRemoved
+        If plDBody.Controls.Count > 3 Then
+            plD.Height = plDBody.Controls(0).Height * plDBody.Controls.Count + 150
         Else
-            plD.Height = 222
+            plD.Height = 330
         End If
 
         lbTotal.Text = String.Format("{0:n}", Total)
     End Sub
+    Private Sub plCBody_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plCBody.ControlAdded, plCBody.ControlRemoved
+        If plCBody.Controls.Count > 3 Then
+            plC.Height = plCBody.Controls(0).Height * plCBody.Controls.Count + 150
+        Else
+            plC.Height = 330
+        End If
 
+        lbTotalCharge.Text = String.Format("{0:n}", TotalCharge)
+    End Sub
     Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox3.Click
         If plD.Height > 60 Then
             plD.Height = 60
             PictureBox3.BackgroundImage = My.Resources.ADD14
         Else
-            plD.Height = 222
+            plD.Height = 330
             PictureBox3.BackgroundImage = My.Resources.SUB14
             plDBody_ControlAdded(Nothing, Nothing)
         End If
@@ -584,7 +630,7 @@
             plMissionHeader.Height = 105
             PictureBox1.BackgroundImage = My.Resources.ADD14
         Else
-            plMissionHeader.Height = 615
+            plMissionHeader.Height = 366
             PictureBox1.BackgroundImage = My.Resources.SUB14
         End If
     End Sub
@@ -593,7 +639,7 @@
             plC.Height = 60
             PictureBox4.BackgroundImage = My.Resources.ADD14
         Else
-            plC.Height = 222
+            plC.Height = 330
             PictureBox4.BackgroundImage = My.Resources.SUB14
         End If
     End Sub
@@ -644,5 +690,82 @@
 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
         RaiseEvent GetVehiculeDetails(vid)
+    End Sub
+
+    Private Sub AddElement1_AddNewKeyVal(ByVal k As System.String, ByVal v As System.Double)
+        RaiseEvent AddNewDetailsMission(k, v, Me)
+    End Sub
+
+    Private Sub AddElement2_AddNewKeyVal(ByVal k As System.String, ByVal v As System.Double)
+        RaiseEvent AddNewChargeMission(k, v, Me)
+    End Sub
+
+   
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+        If txtDKey.text = "" Or txtDValue.text = "" Then Exit Sub
+
+        Dim k As String = txtDKey.text
+        Dim v As Double = CDbl(txtDValue.text)
+
+        RaiseEvent AddNewDetailsMission(k, v, Me)
+    End Sub
+
+    Private Sub txtDValue_KeyDownOk() Handles txtDValue.KeyDownOk
+        If txtDKey.text = "" Or txtDValue.text = "" Then Exit Sub
+
+        Dim k As String = txtDKey.text
+        Dim v As Double = CDbl(txtDValue.text)
+
+        RaiseEvent AddNewDetailsMission(k, v, Me)
+    End Sub
+
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
+        If txtCKey.text = "" Or txtCValue.text = "" Then Exit Sub
+
+        Dim k As String = txtCKey.text
+        Dim v As Double = CDbl(txtCValue.text)
+
+        RaiseEvent AddNewChargeMission(k, v, Me)
+    End Sub
+
+    Private Sub txtCValue_KeyDownOk() Handles txtCValue.KeyDownOk
+        If txtCKey.text = "" Or txtCValue.text = "" Then Exit Sub
+
+        Dim k As String = txtCKey.text
+        Dim v As Double = CDbl(txtCValue.text)
+
+        RaiseEvent AddNewChargeMission(k, v, Me)
+    End Sub
+
+    Private Sub txtCKey_KeyDownOk() Handles txtCKey.KeyDownOk
+
+        If txtCKey.text.Contains("(") Then
+            txtCValue.Focus()
+        Else
+            txtCKey.text &= " ( )"
+            '' txtDKey.Cursor
+        End If
+    End Sub
+    Private Sub txtDKey_KeyDownOk() Handles txtDKey.KeyDownOk
+        If txtDKey.text.Contains("(") Then
+            txtDValue.Focus()
+        Else
+            txtDKey.text &= " ( )"
+            '' txtDKey.Cursor
+        End If
+    End Sub
+
+    Private Sub Label17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label17.Click, Panel21.Click
+        txtDKey.Focus()
+    End Sub
+    Private Sub Label21_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label21.Click, Panel57.Click
+        txtDValue.Focus()
+    End Sub
+
+    Private Sub Label25_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel62.Click, Label25.Click
+        txtCKey.Focus()
+    End Sub
+    Private Sub Label26_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel63.Click, Label26.Click
+        txtCValue.Focus()
     End Sub
 End Class

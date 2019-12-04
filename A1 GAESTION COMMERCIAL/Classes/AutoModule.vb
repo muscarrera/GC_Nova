@@ -21,6 +21,31 @@
         MySource.AddRange(lst.ToArray)
         Return MySource
     End Function
+
+    Public Function AutoCompleteByMission(ByVal tb As String) As AutoCompleteStringCollection
+        ' auto complitae
+        'Item is filled either manually or from database
+        Dim lst As New List(Of String)
+
+        'AutoComplete collection that will help to filter keep the records.
+        Dim MySource As New AutoCompleteStringCollection()
+
+        ' added some items
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Dim dt As DataTable = a.SelectDataTable(tb, {"*"})
+            If dt.Rows.Count > 0 Then
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    lst.Add(dt.Rows(i).Item("name").ToString.Split("(")(0))
+                Next
+            End If
+        End Using
+
+        'Records binded to the AutocompleteStringCollection.
+        MySource.AddRange(lst.ToArray)
+        Return MySource
+    End Function
+
+
     Public Function StrValue(ByVal dt As DataTable, ByVal field As String, ByVal i As Integer) As String
         Dim str As String = ""
         Try
