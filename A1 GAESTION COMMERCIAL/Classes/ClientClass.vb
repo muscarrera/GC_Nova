@@ -96,6 +96,7 @@
     End Sub
     Private Sub NewElement(ByRef ds As ProductList)
         Dim pr As New AddEditClient
+        pr.tb_C = ds.TableName
         If pr.ShowDialog = DialogResult.OK Then
             ds.txtSearchName.text = pr.txtName.text
             GetElements(ds)

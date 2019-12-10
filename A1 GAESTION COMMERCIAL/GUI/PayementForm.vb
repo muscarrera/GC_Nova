@@ -18,7 +18,8 @@
             'FillBloc'
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
-                params.Add("Mission", _Id)
+
+                params.Add(FactureTable, _Id)
                 Dim dt = a.SelectDataTable(payementTable, {"*"}, params)
                 If IsNothing(dt) Then Exit Property
 
@@ -35,9 +36,11 @@
                         R.Payement = pa
                         R.EditMode = True
                         R.id = dt.Rows(i).Item(0)
-                        R.Index = i
+                        R.Index = 1
                         R.Dock = DockStyle.Top
                         R.BringToFront()
+                        AddHandler R.EditPayement, AddressOf Edit_Payement
+                        AddHandler R.Cleared, AddressOf Delete_Payement
                         arr(i) = R
                     Next
                     plPmBody.Controls.AddRange(arr)
@@ -98,6 +101,8 @@
                 R.Index = i
                 R.Dock = DockStyle.Top
                 R.BringToFront()
+                AddHandler R.EditPayement, AddressOf Edit_Payement
+                AddHandler R.Cleared, AddressOf Delete_Payement
                 arr(i) = R
             Next
             plPmBody.Controls.AddRange(arr)
@@ -120,7 +125,7 @@
                 Dim params As New Dictionary(Of String, Object)
 
                 params.Add("name", ClientName)
-                'params.Add("clid", cid)
+                params.Add("clid", cid)
                 params.Add("montant", pm.montant)
                 params.Add("way", pm.way)
                 params.Add("date", pm.dte)
@@ -142,7 +147,12 @@
                     where.Clear()
                     params.Clear()
 
-                    where.Add("Mid", Id)
+                    If FactureTable = "Mission" Then
+                        where.Add("Mid", Id)
+                    Else
+                        where.Add("id", Id)
+                    End If
+
                     params.Add("avance", avc)
 
                     If c.UpdateRecord(FactureTable, params, where) Then
@@ -193,7 +203,12 @@
                     avc -= pm._PM_Edit.montant
 
                     params.Add("avance", avc)
-                    where.Add("id", Id)
+                    If FactureTable = "Mission" Then
+                        where.Add("Mid", Id)
+                    Else
+                        where.Add("id", Id)
+                    End If
+
                     If c.UpdateRecord(FactureTable, params, where) Then
                         Avance = avc
                         pm.EditMode = True
@@ -205,6 +220,7 @@
     End Sub
     Private Sub Delete_Payement(ByVal pm As AddPayementRow)
         Try
+
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
                 Dim where As New Dictionary(Of String, Object)
@@ -221,7 +237,11 @@
                     where.Clear()
                     params.Clear()
 
-                    where.Add("id", Id)
+                    If FactureTable = "Mission" Then
+                        where.Add("Mid", Id)
+                    Else
+                        where.Add("id", Id)
+                    End If
                     params.Add("avance", avc)
 
                     If c.UpdateRecord(FactureTable, params, where) Then

@@ -208,7 +208,10 @@
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
         If EditMode Then
-            RaiseEvent Cleared(Me)
+            If MsgBox(MsgDelete & vbNewLine & "Payement : " & txtMontant.text & " Dhs", MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+                RaiseEvent Cleared(Me)
+            End If
+
         Else
             If id = 0 Then
                 initForm()

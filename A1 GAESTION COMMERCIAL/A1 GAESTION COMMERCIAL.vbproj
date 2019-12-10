@@ -48,7 +48,13 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="A1 GAESTION COMMERCIAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ALMohassinDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Classes\AdminModule.vb" />
     <Compile Include="Classes\AricleClass.vb" />
     <Compile Include="Classes\AutoModule.vb" />
     <Compile Include="Classes\ClientClass.vb" />
@@ -173,6 +180,18 @@
     <Compile Include="Controles\TotalBloc.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GUI\AddAdmins.Designer.vb">
+      <DependentUpon>AddAdmins.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddAdmins.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AddEditCharge.Designer.vb">
+      <DependentUpon>AddEditCharge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddEditCharge.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\AddEditClient.Designer.vb">
       <DependentUpon>AddEditClient.vb</DependentUpon>
     </Compile>
@@ -252,6 +271,12 @@
     <Compile Include="GUI\PayementForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\PWDPicker.Designer.vb">
+      <DependentUpon>PWDPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PWDPicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\ReferenceFacture.Designer.vb">
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
     </Compile>
@@ -268,6 +293,12 @@
       <DependentUpon>TransformerDevis.vb</DependentUpon>
     </Compile>
     <Compile Include="GUI\TransformerDevis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TrialVersion.Designer.vb">
+      <DependentUpon>TrialVersion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TrialVersion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\Article.vb" />
@@ -339,6 +370,12 @@
     <EmbeddedResource Include="Controles\TotalBloc.resx">
       <DependentUpon>TotalBloc.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddAdmins.resx">
+      <DependentUpon>AddAdmins.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddEditCharge.resx">
+      <DependentUpon>AddEditCharge.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddEditClient.resx">
       <DependentUpon>AddEditClient.vb</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +415,9 @@
     <EmbeddedResource Include="GUI\PayementForm.resx">
       <DependentUpon>PayementForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PWDPicker.resx">
+      <DependentUpon>PWDPicker.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ReferenceFacture.resx">
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
     </EmbeddedResource>
@@ -386,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TransformerDevis.resx">
       <DependentUpon>TransformerDevis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TrialVersion.resx">
+      <DependentUpon>TrialVersion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -410,6 +453,7 @@
       <DependentUpon>ALMohassinDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -431,6 +475,7 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\trial 22.png" />
     <None Include="Resources\bgLightForm.jpg" />
     <None Include="Resources\bgForm.jpg" />
     <None Include="Resources\SUB14.png" />

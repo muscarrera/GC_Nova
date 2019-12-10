@@ -115,7 +115,7 @@
                 DetailsTable = "Details_Sell_Facture"
                 Entete.Type = "Facture"
                 'isSell = True
-                Form1.prefix = "Fc-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "Fc-"
             ElseIf value = "Devis" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -123,7 +123,7 @@
                 DetailsTable = "Details_Devis"
                 Entete.Type = "Devis"
                 'isSell = True
-                Form1.prefix = "Dv-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "Dv-"
             ElseIf value = "Commande_Client" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -131,7 +131,7 @@
                 DetailsTable = "Details_Commande"
                 Entete.Type = "Commande"
                 'isSell = True
-                Form1.prefix = "Cmd-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "Cmd-"
             ElseIf value = "Bon_Livraison" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -139,31 +139,31 @@
                 DetailsTable = "Details_Bon_Livraison"
                 Entete.Type = "BL"
                 'isSell = True
-                Form1.prefix = "BL-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "BL-"
             ElseIf value = "Buy_Facture" Then
-                clientTable = "Company"
+                clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
                 FactureTable = "Buy_Facture"
                 DetailsTable = "Details_Buy_Facture"
                 Entete.Type = "Buy_Facture"
                 'isSell = False
-                Form1.prefix = "Fc-Ent-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "Fc-Ent-"
             ElseIf value = "Bon_Commande" Then
-                clientTable = "Company"
+                clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
                 FactureTable = "Bon_Commande"
                 DetailsTable = "Details_Bon_Commande"
                 Entete.Type = "BC"
                 'isSell = False
-                Form1.prefix = "BC-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "BC-"
             ElseIf value = "Bon_Achat" Then
-                clientTable = "Company"
-                payementTable = "Client_Payement"
+                clientTable = "Fournisseur"
+                payementTable = "Company_Payement"
                 FactureTable = "Bon_Achat"
                 DetailsTable = "Details_Bon_Achat"
                 Entete.Type = "BA"
                 'isSell = False
-                Form1.prefix = "BA-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "BA-"
             ElseIf value = "Sell_Avoir" Then
                 clientTable = "client"
                 payementTable = "Client_Payement"
@@ -171,9 +171,9 @@
                 DetailsTable = "Details_Sell_Avoir"
                 Entete.Type = "Avoir"
                 'isSell = False
-                Form1.prefix = "Av-" & Entete.FactureDate.ToString("yy") & "/000"
+                Form1.prefix = "Av-"
             End If
-
+            Form1.prefix &= Form1.Exercice & "/000"
             RaiseEvent OperationTypeChanged()
         End Set
     End Property
@@ -386,6 +386,7 @@
         End Get
         Set(ByVal value As Boolean)
             _isSell = value
+            AddRow1.IsSell = value
 
             If value Then
                 Button3.Visible = True
@@ -569,13 +570,14 @@
         'RaiseEvent PayFacture(CInt(p1), Me)
         'Me.ScrollControlIntoView(plPmHeader)
         Dim pf As New PayementForm
-        pf.Id = Id
+
         pf.ClientName = Entete.ClientName
+        pf.cid = Entete.Client.cid
         pf.FactureTable = FactureTable
         pf.payementTable = payementTable
         pf.Avance = TB.avance
         pf.Total = TB.TotalTTC
-
+        pf.Id = Id
         If pf.ShowDialog = DialogResult.OK Then
 
         End If

@@ -169,7 +169,7 @@
                         params.Add("depot", data.Rows(i).Item("depot"))
                         params.Add("ref", data.Rows(i).Item("ref"))
                         params.Add("cid", data.Rows(i).Item("cid"))
-                        params.Add("cid", data.Rows(i).Item("cid"))
+                        If tb_D = "Details_Sell_Facture" Then params.Add("bl", data.Rows(i).Item("bl"))
 
                         c.InsertRecord(tb_D, params)
                         params.Clear()
@@ -467,7 +467,7 @@
                 Form1.Facture_Title = "Bon de Achat "
                 ''''//
             ElseIf ds.Operation = "Commande_Client" Then
-                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+                Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
                 Form1.Facture_Title = "Commande Client "
             ElseIf ds.Operation = "Sell_Avoir" Then
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
@@ -478,7 +478,8 @@
             Form1.printOnPaper = True
 
             For i As Integer = 0 To ds.DataList.Rows.Count - 1
-                Form1.factureToPrint = New Facture(ds.Id, ds.FactureTable, ds.clientTable, ds.DetailsTable, ds.payementTable)
+                Form1.factureToPrint = New Facture(ds.DataList.Rows(i).Item(0), ds.FactureTable, ds.clientTable,
+                                                   ds.DetailsTable, ds.payementTable)
                 Form1.PrintDoc.Print()
             Next
 
@@ -628,20 +629,22 @@
         ds.pbBar.BackColor = RandomColor()
         ds.Button9.BackgroundImage = My.Resources.gui_16
     End Sub
-    Private Sub PayFacture(ByVal id As Integer, ByRef ParcList As DataList)
+    Private Sub PayFacture(ByVal id As Integer, ByRef ds As DataList)
         'Throw New NotImplementedException
         Dim PP As New PayementForm
 
-        PP.ClientName = ParcList.Entete.Name
-        PP.FactureTable = ParcList.FactureTable
-        PP.payementTable = ParcList.payementTable
-        PP.Avance = ParcList.TB.avance
-        PP.Total = ParcList.TB.TotalTTC
-        PP.Id = ParcList.id
+        PP.ClientName = ds.Entete.Name
+        PP.cid = ds.Entete.Client.cid
+        PP.FactureTable = ds.FactureTable
+        PP.payementTable = ds.payementTable
+        PP.Avance = ds.TB.avance
+        PP.Total = ds.TB.TotalTTC
+
+        PP.Id = ds.id
         If PP.ShowDialog = DialogResult.OK Then
 
         End If
-        ParcList.TB.avance = PP.Avance
+        ds.TB.avance = PP.Avance
         'fill rows
     End Sub
     Private Sub DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)

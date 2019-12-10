@@ -76,9 +76,11 @@
             str &= vbNewLine
             str &= "ICE : " & ds.Entete.Client.ICE
 
-            e.Graphics.DrawString(str, fnt, Brushes.Black, 365, 200)
+            e.Graphics.DrawString(str, fnt, Brushes.Black, 400, 200)
 
             If m > 0 Then e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 60, 240)
+
+            l += 15
 
             Dim a As Integer = 0
             If remise > 0 Then
@@ -99,7 +101,7 @@
             e.Graphics.DrawLine(pen, 600 - a, l + 20, 670, l + 20)
             e.Graphics.DrawLine(pen, 680, l + 20, 770, l + 20)
 
-            l = 280
+            l += 25
 
             While m < data.Rows.Count
 
@@ -349,8 +351,139 @@
         l = 250
         m = 0
     End Sub
+    Public Sub DrawMission(ByRef e As System.Drawing.Printing.PrintPageEventArgs,
+                           ByVal ds As ParcList,
+                           ByVal title As String, ByVal entete As Boolean,
+                           ByVal Pr_Id As String, ByVal with_Date As Boolean,
+                           ByVal with_Price As Boolean, ByRef m As Integer)
+        Try
 
-    Public Sub DrawFactureFromList(ByRef e As System.Drawing.Printing.PrintPageEventArgs,
+            Dim fctid As Integer = ds.Id
+       
+            Dim clientName As String = ds.ClientName
+            Dim data As DataTable = ds.DetailsSource
+
+            Dim h = e.MarginBounds.Height
+            Dim w = e.MarginBounds.Width
+
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgEntetePath), 10, 10, 750, 120)
+            Catch ex As Exception
+            End Try
+
+            Dim myPoints() As Point = New Point() {New Point(60, 160), New Point(600, 160),
+                                                   New Point(612, 175), New Point(600, 190),
+                                                   New Point(60, 190)}
+            e.Graphics.FillPolygon(Brushes.WhiteSmoke, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            myPoints = {New Point(606, 160), New Point(770, 160),
+                       New Point(770, 190), New Point(606, 190),
+                       New Point(618, 175)}
+            e.Graphics.FillPolygon(Brushes.Gainsboro, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            'print date 
+            If with_Date Then e.Graphics.DrawString(ds.date.ToString("dd MMMM, yyyy"),
+                fnt, Brushes.Black, New RectangleF(620, 167, 144, 24), sf_R)
+            'print  num Facture 
+
+            e.Graphics.DrawString("Bon de Transport: N° : " & fctid, fntTitle, Brushes.Black, 65, 165)
+
+            'print Client 
+            e.Graphics.DrawString("Client  : ", fnt, Brushes.Black, 50, 200)
+            e.Graphics.DrawString("M : " & clientName, fnt, Brushes.Black, 50, 220)
+            Dim str As String = ds.lbInfo.Text
+            e.Graphics.DrawString(str, fnt, Brushes.Black, New RectangleF(50, 240, 220, 100), sf_L)
+
+
+            'print Vehicule 
+            e.Graphics.DrawString("Vehicule  : ", fnt, Brushes.Black, 300, 200)
+            e.Graphics.DrawString(ds.vehiculeName, fnt, Brushes.Black, 300, 220)
+            str = ds.vehiculeInfo
+            e.Graphics.DrawString(str, fnt, Brushes.Black, New RectangleF(300, 240, 220, 100), sf_L)
+
+
+            'print Client 
+            e.Graphics.DrawString("Chauffeur  : ", fnt, Brushes.Black, 550, 200)
+            e.Graphics.DrawString("M : " & ds.DriverName, fnt, Brushes.Black, 550, 220)
+            str = ds.DriverInfo
+            e.Graphics.DrawString(str, fnt, Brushes.Black, New RectangleF(550, 240, 220, 100), sf_L)
+
+
+            If m > 0 Then e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 60, 240)
+
+            l = 330
+
+         
+
+            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60, l + 5, 610, 25), sf_L)
+            e.Graphics.DrawString("Prix", fnt, Brushes.Black, New RectangleF(680, l + 5, 100, 25), sf_R)
+             
+            pn.DashCap = System.Drawing.Drawing2D.DashCap.Round
+
+            e.Graphics.DrawLine(pen, 60, l + 20, 675, l + 20)
+            e.Graphics.DrawLine(pen, 680, l + 20, 780, l + 20)
+             
+
+            l += 25
+
+            While m < data.Rows.Count
+
+                If l + 180 > h Then
+                    e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605, 870)
+                    l = 250
+                    e.HasMorePages = True
+                    Return
+                End If
+
+                If m = 0 Then
+                    e.Graphics.DrawString("Depart : " & ds.depart & " - Dest. : " & ds.arrive,
+                                          fnt, Brushes.Black, New RectangleF(60, l, 610, 22), sf_L)
+                   
+                    l = l + 40
+                End If
+                Dim prdName As String = data.Rows(m).Item("name")
+                Dim price As String = String.Format("{0:n}", CDec(data.Rows(m).Item("value")))
+             
+                ''''''
+                Dim size As SizeF = e.Graphics.MeasureString(prdName, fnt, 610)
+
+                e.Graphics.DrawString(prdName, fnt, Brushes.Black, New RectangleF(60, l, 610, size.Height), sf_L)
+                e.Graphics.DrawString(price, fnt, Brushes.Black, New RectangleF(680, l, 100, 25), sf_R)
+
+                l = l + size.Height + 5
+                m += 1
+            End While
+
+            If l < 720 Then l = 720
+
+            e.Graphics.DrawLine(pen, 60, l + 25, 770, l + 25)
+            e.Graphics.DrawString("Nombre  ", fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_L)
+            e.Graphics.DrawString(data.Rows.Count, fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_R)
+
+            Dim tt As String = String.Format("{0:n}", CDec(ds.Total))
+            e.Graphics.DrawLine(pn, 550, l + 45, 770, l + 45)
+            e.Graphics.DrawString("Total ", fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_L)
+            e.Graphics.DrawString(tt, fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_R)
+ 
+
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgFootherPath), 10, h - 20, 750, 120)
+            Catch ex As Exception
+            End Try
+
+        Catch ex As Exception
+            l = 250
+            m = 0
+        End Try
+
+        l = 250
+        m = 0
+    End Sub
+
+    'lists
+    Public Sub DrawListOfFacture(ByRef e As System.Drawing.Printing.PrintPageEventArgs,
                                    ByVal data As DataTable, ByVal entete As Boolean, ByVal Pr_Id As String,
                                    ByVal with_Date As Boolean, ByVal with_Price As Boolean, ByRef m As Integer)
         Try
@@ -380,7 +513,7 @@
             If with_Date Then e.Graphics.DrawString(Now.Date.ToString("dd MMMM, yyyy"), fnt, Brushes.Black, New RectangleF(620, 167, 144, 24), sf_R)
             'print  num Facture 
 
-            e.Graphics.DrawString("Factures", fntTitle, Brushes.Black, 65, 165)
+            e.Graphics.DrawString(Pr_Id, fntTitle, Brushes.Black, 65, 165)
 
             'print user 
             e.Graphics.DrawString("Imprimer par : " & Form1.adminName, fnt, Brushes.Black, 65, 200)
@@ -398,23 +531,23 @@
 
             Dim a As Integer = 0
 
-            e.Graphics.DrawString("Id/N°", fnt, Brushes.Black, New RectangleF(60, l + 5, 60, 25), sf_L)
-            e.Graphics.DrawString("Libelle", fnt, Brushes.Black, New RectangleF(122, l + 5, 400 - a, 25), sf_L)
-            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(525 - a, l + 5, 65, 25), sf_L)
-            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(592 - a, l + 5, 80, 25), sf_L)
-            e.Graphics.DrawString("Avance", fnt, Brushes.Black, New RectangleF(574, l + 5, 80, 25), sf_L)
-            e.Graphics.DrawString(" - ", fnt, Brushes.Black, New RectangleF(656, l + 5, 40, 25), sf_L)
+            e.Graphics.DrawString("Id/N°", fnt, Brushes.Black, New RectangleF(50, l + 5, 110, 25), sf_L)
+            e.Graphics.DrawString("Libelle", fnt, Brushes.Black, New RectangleF(162, l + 5, 260 - a, 25), sf_L)
+            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(425, l + 5, 100, 25), sf_L)
+            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(528, l + 5, 90, 25), sf_L)
+            e.Graphics.DrawString("Avance", fnt, Brushes.Black, New RectangleF(622, l + 5, 90, 25), sf_L)
+            e.Graphics.DrawString(" - ", fnt, Brushes.Black, New RectangleF(716, l + 5, 80, 25), sf_L)
 
-            e.Graphics.DrawLine(pen, 60, l + 20, 60, l + 20)
-            e.Graphics.DrawLine(pen, 122 - a, l + 20, 400, l + 20)
-            e.Graphics.DrawLine(pen, 525 - a, l + 20, 65, l + 20)
-            e.Graphics.DrawLine(pen, 592, l + 20, 80, l + 20)
-            e.Graphics.DrawLine(pen, 574, l + 20, 80, l + 20)
-            e.Graphics.DrawLine(pen, 656, l + 20, 40, l + 20)
+            e.Graphics.DrawLine(pen, 50, l + 20, 158, l + 20)
+            e.Graphics.DrawLine(pen, 162, l + 20, 421, l + 20)
+            e.Graphics.DrawLine(pen, 425, l + 20, 524, l + 20)
+            e.Graphics.DrawLine(pen, 528, l + 20, 618, l + 20)
+            e.Graphics.DrawLine(pen, 622, l + 20, 712, l + 20)
+            e.Graphics.DrawLine(pen, 716, l + 20, 785, l + 20)
 
             l = 280
 
-            While m < Data.Rows.Count
+            While m < data.Rows.Count
 
                 If l + 180 > h Then
                     e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605, 870)
@@ -433,12 +566,12 @@
                 ''''''
                 Dim size As SizeF = e.Graphics.MeasureString(libelle, fnt, 400)
 
-                e.Graphics.DrawString(ID, fnt, Brushes.Black, New RectangleF(60, l, 60, 25), sf_L)
-                e.Graphics.DrawString(libelle, fnt, Brushes.Black, New RectangleF(122, l, 400 - a, size.Height), sf_L)
-                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(525 - a, l, 65, 25), sf_L)
-                e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(592 - a, l, 80, 25), sf_L)
-                e.Graphics.DrawString(avance, fnt, Brushes.Black, New RectangleF(574, l, 80, 25), sf_L)
-                e.Graphics.DrawString(etat, fnt, Brushes.Black, New RectangleF(656, l, 40, 25), sf_L)
+                e.Graphics.DrawString(ID, fnt, Brushes.Black, New RectangleF(50, l, 110, 25), sf_L)
+                e.Graphics.DrawString(libelle, fnt, Brushes.Black, New RectangleF(162, l, 260, size.Height), sf_L)
+                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(425, l, 100, 25), sf_L)
+                e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(528, l, 90, 25), sf_L)
+                e.Graphics.DrawString(avance, fnt, Brushes.Black, New RectangleF(622, l, 90, 25), sf_L)
+                e.Graphics.DrawString(etat, fnt, Brushes.Black, New RectangleF(716, l, 80, 25), sf_L)
 
                 l = l + size.Height + 5
                 m += 1
@@ -447,31 +580,150 @@
             If l < 720 Then l = 720
 
             ''''''
-            Dim ttva As String = ""
-            Dim ht As String = ""
-            Dim ttc As String = ""
-            Dim remise As String = ""
-
+            Dim sum As Double = Convert.ToDouble(data.Compute("SUM(total)", String.Empty))
+            Dim avc As Double = Convert.ToDouble(data.Compute("SUM(avance)", String.Empty))
 
             e.Graphics.DrawLine(pen, 60, l + 25, 770, l + 25)
-            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_R)
+            e.Graphics.DrawString("Nombre", fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_L)
+            e.Graphics.DrawString(data.Rows.Count, fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_R)
 
             e.Graphics.DrawLine(pn, 550, l + 45, 770, l + 45)
-            e.Graphics.DrawString("TVA", fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(Ttva, fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_R)
-
-            If remise > 0 Then
-                e.Graphics.DrawLine(pn, 550, l + 65, 770, l + 65)
-                e.Graphics.DrawString("Remise", fnt, Brushes.Black, New RectangleF(550, l + 69, 220, 22), sf_L)
-                If with_Price Then e.Graphics.DrawString(String.Format("{0:n}", CDec(remise)), fnt, Brushes.Black, New RectangleF(550, l + 69, 220, 22), sf_R)
-                l += 20
-            End If
-
+            e.Graphics.DrawString("Total (Dhs) ", fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_L)
+            e.Graphics.DrawString(String.Format("{0:n}", CDec(sum)), fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_R)
             e.Graphics.DrawLine(pen, 550, l + 65, 770, l + 65)
-            e.Graphics.DrawString("Total TTC (Dhs) ", fnt, Brushes.Black, New RectangleF(550, l + 70, 266, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(ttc, fntTitle, Brushes.Black, New RectangleF(550, l + 67, 220, 22), sf_R)
-            e.Graphics.DrawLine(pn, 550, l + 90, 770, l + 90)
+            e.Graphics.DrawString("Avance (Dhs) ", fnt, Brushes.Black, New RectangleF(550, l + 70, 266, 22), sf_L)
+            e.Graphics.DrawString(String.Format("{0:n}", avc), fnt, Brushes.Black, New RectangleF(550, l + 67, 220, 22), sf_R)
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgFootherPath), 10, h - 20, 750, 120)
+            Catch ex As Exception
+            End Try
+
+        Catch ex As Exception
+            l = 250
+            m = 0
+        End Try
+
+        l = 250
+        m = 0
+    End Sub
+    Public Sub DrawListOfCharges(ByRef e As System.Drawing.Printing.PrintPageEventArgs,
+                                   ByVal data As DataTable, ByVal entete As Boolean, ByVal Pr_Id As String,
+                                   ByVal with_Date As Boolean, ByVal with_Price As Boolean, ByRef m As Integer)
+        Try
+
+            Dim h = e.MarginBounds.Height
+            Dim w = e.MarginBounds.Width
+
+
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgEntetePath), 10, 10, 750, 120)
+            Catch ex As Exception
+            End Try
+
+            Dim myPoints() As Point = New Point() {New Point(60, 160), New Point(600, 160),
+                                                   New Point(612, 175), New Point(600, 190),
+                                                   New Point(60, 190)}
+            e.Graphics.FillPolygon(Brushes.WhiteSmoke, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            myPoints = {New Point(606, 160), New Point(770, 160),
+                       New Point(770, 190), New Point(606, 190),
+                       New Point(618, 175)}
+            e.Graphics.FillPolygon(Brushes.Gainsboro, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            'print date 
+            If with_Date Then e.Graphics.DrawString(Now.Date.ToString("dd MMMM, yyyy"), fnt, Brushes.Black, New RectangleF(620, 167, 144, 24), sf_R)
+            'print  num Facture 
+
+            e.Graphics.DrawString(Form1.Facture_Title, fntTitle, Brushes.Black, 65, 165)
+
+            'print user 
+            e.Graphics.DrawString("Imprimer par : " & Form1.adminName, fnt, Brushes.Black, 65, 200)
+
+            'Search Details
+            'Dim str As String = "[" & ds.client.cid & "]"
+            'str &= vbNewLine
+            'str &= ds.client.adresse
+            'str &= vbNewLine
+            'str &= "ICE : " & ds.client.ICE
+
+            'e.Graphics.DrawString(str, fnt, Brushes.Black, 365, 200)
+
+            If m > 0 Then e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 60, 240)
+
+            Dim a As Integer = 0
+
+            e.Graphics.DrawString("Id/N°", fnt, Brushes.Black, New RectangleF(40, l + 5, 50, 25), sf_L)
+            e.Graphics.DrawString("Libelle", fnt, Brushes.Black, New RectangleF(94, l + 5, 400, 25), sf_L)
+            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(498, l + 5, 80, 25), sf_L)
+            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(582, l + 5, 80, 25), sf_L)
+            e.Graphics.DrawString("Veh N°", fnt, Brushes.Black, New RectangleF(666, l + 5, 50, 25), sf_L)
+            e.Graphics.DrawString("Chf N°", fnt, Brushes.Black, New RectangleF(718, l + 5, 50, 25), sf_L)
+
+            e.Graphics.DrawLine(pen, 40, l + 20, 90, l + 20)
+            e.Graphics.DrawLine(pen, 94, l + 20, 494, l + 20)
+            e.Graphics.DrawLine(pen, 498, l + 20, 578, l + 20)
+            e.Graphics.DrawLine(pen, 582, l + 20, 662, l + 20)
+            e.Graphics.DrawLine(pen, 666, l + 20, 714, l + 20)
+            e.Graphics.DrawLine(pen, 718, l + 20, 768, l + 20)
+
+            l = 280
+
+            While m < data.Rows.Count
+
+                If l + 180 > h Then
+                    e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605, 870)
+                    l = 250
+                    e.HasMorePages = True
+                    Return
+                End If
+
+                Dim ID As String = StrValue(data, "id", m)
+                Dim libelle As String = data.Rows(m).Item("name")
+                Dim dte As String = DteValue(data, "date", m).ToString("dd/MM/yyyy")
+                Dim total As String = String.Format("{0:n}", DblValue(data, "value", m))
+                Dim Vid As String = StrValue(data, "vid", m)
+                Dim Drid As String = StrValue(data, "drid", m)
+
+                ''''''
+                Dim size As SizeF = e.Graphics.MeasureString(libelle, fnt, 400)
+
+                If IntValue(data, "id", m) > 0 Then e.Graphics.DrawString(ID, fnt, Brushes.Black, New RectangleF(40, l, 50, 25), sf_L)
+                e.Graphics.DrawString(libelle, fnt, Brushes.Black, New RectangleF(94, l, 400, size.Height), sf_L)
+                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(498, l, 80, 25), sf_L)
+                e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(582, l, 80, 25), sf_L)
+                e.Graphics.DrawString(Vid, fnt, Brushes.Black, New RectangleF(666, l, 50, 25), sf_L)
+                e.Graphics.DrawString(Drid, fnt, Brushes.Black, New RectangleF(718, l, 50, 25), sf_L)
+
+                l = l + size.Height + 5
+                m += 1
+            End While
+
+            If l < 720 Then l = 720
+
+            ''''''
+
+            Dim ht As String = data.Rows.Count
+            Dim sum As Double = 0
+            Try
+                sum = Convert.ToDouble(data.Compute("SUM(value)", String.Empty))
+            Catch ex As Exception
+                sum = 0
+                sum = data.AsEnumerable.Sum(Function(item) item("value"))
+            End Try
+
+
+          
+
+            e.Graphics.DrawLine(pen, 60, l + 25, 770, l + 25)
+            e.Graphics.DrawString("Nombre", fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_L)
+            e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_R)
+
+            e.Graphics.DrawLine(pn, 550, l + 45, 770, l + 45)
+            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_L)
+            If with_Price Then e.Graphics.DrawString(String.Format("{0:n}", CDec(sum)), fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_R)
+
 
             Try
                 If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgFootherPath), 10, h - 20, 750, 120)
@@ -486,8 +738,130 @@
         l = 250
         m = 0
     End Sub
+    Public Sub DrawListOfMission(ByRef e As System.Drawing.Printing.PrintPageEventArgs,
+                                   ByVal data As DataTable, ByVal entete As Boolean, ByVal Pr_Id As String,
+                                   ByVal with_Date As Boolean, ByVal with_Price As Boolean, ByRef m As Integer)
+        Try
+
+            Dim h = e.MarginBounds.Height
+            Dim w = e.MarginBounds.Width
 
 
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgEntetePath), 10, 10, 750, 120)
+            Catch ex As Exception
+            End Try
+
+            Dim myPoints() As Point = New Point() {New Point(60, 160), New Point(600, 160),
+                                                   New Point(612, 175), New Point(600, 190),
+                                                   New Point(60, 190)}
+            e.Graphics.FillPolygon(Brushes.WhiteSmoke, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            myPoints = {New Point(606, 160), New Point(770, 160),
+                       New Point(770, 190), New Point(606, 190),
+                       New Point(618, 175)}
+            e.Graphics.FillPolygon(Brushes.Gainsboro, myPoints)
+            e.Graphics.DrawPolygon(New Pen(Brushes.Gainsboro, 0.5F), myPoints)
+
+            'print date 
+            If with_Date Then e.Graphics.DrawString(Now.Date.ToString("dd MMM, yyyy"), fnt, Brushes.Black, New RectangleF(620, 167, 144, 24), sf_R)
+            'print  num Facture 
+
+            e.Graphics.DrawString(Form1.Facture_Title, fntTitle, Brushes.Black, 65, 165)
+
+            'print user 
+            e.Graphics.DrawString("Imprimer par : " & Form1.adminName, fnt, Brushes.Black, 65, 200)
+
+
+            If m > 0 Then e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 60, 240)
+
+            Dim a As Integer = 0
+
+            e.Graphics.DrawString("Id/N°", fnt, Brushes.Black, New RectangleF(50, l + 5, 60, 25), sf_L)
+            e.Graphics.DrawString("Libelle", fnt, Brushes.Black, New RectangleF(112, l + 5, 260, 25), sf_L)
+            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(354, l + 5, 100, 25), sf_L)
+            e.Graphics.DrawString("Dep/Arr", fnt, Brushes.Black, New RectangleF(458, l + 5, 110, 25), sf_L)
+            e.Graphics.DrawString("Chauf N°", fnt, Brushes.Black, New RectangleF(572, l + 5, 80, 25), sf_L)
+            e.Graphics.DrawString("Veh N°", fnt, Brushes.Black, New RectangleF(656, l + 5, 80, 25), sf_L)
+            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(740, l + 5, 100, 25), sf_L)
+
+            e.Graphics.DrawLine(pen, 50, l + 20, 110, l + 20)
+            e.Graphics.DrawLine(pen, 112, l + 20, 350, l + 20)
+            e.Graphics.DrawLine(pen, 354, l + 20, 454, l + 20)
+            e.Graphics.DrawLine(pen, 458, l + 20, 568, l + 20)
+            e.Graphics.DrawLine(pen, 572, l + 20, 650, l + 20)
+            e.Graphics.DrawLine(pen, 656, l + 20, 736 + 6, l + 20)
+            e.Graphics.DrawLine(pen, 740, l + 20, 840, l + 20)
+
+            l = 280
+
+            While m < data.Rows.Count
+
+                If l + 180 > h Then
+                    e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605, 870)
+                    l = 250
+                    e.HasMorePages = True
+                    Return
+                End If
+
+                Dim ID As String = StrValue(data, "Mid", m)
+                Dim libelle As String = data.Rows(m).Item("clientName") & " [" & StrValue(data, "id", m) & "]"
+                Dim dte As String = DteValue(data, "date", m).ToString("dd MMM, yyyy")
+                Dim dep As String = StrValue(data, "depart", m) & " - " & StrValue(data, "arrive", m)
+                Dim Vid As String = StrValue(data, "vid", m)
+                Dim drid As String = StrValue(data, "drid", m)
+                Dim total As String = String.Format("{0:n}", DblValue(data, "total", m))
+
+                ''''''
+                Dim size As SizeF = e.Graphics.MeasureString(libelle, fnt, 260)
+                Dim size2 As SizeF = e.Graphics.MeasureString(dep, fnt, 110)
+                If size2.Height > size.Height Then size = size2
+
+
+                If IntValue(data, "Mid", m) > 0 Then e.Graphics.DrawString(ID, fnt, Brushes.Black, New RectangleF(50, l + 5, 60, 25), sf_L)
+                e.Graphics.DrawString(libelle, fnt, Brushes.Black, New RectangleF(112, l, 260, 25), sf_L)
+                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(354, l, 100, 25), sf_L)
+                e.Graphics.DrawString(dep, fnt, Brushes.Black, New RectangleF(458, l, 110, 25), sf_L)
+                e.Graphics.DrawString(drid, fnt, Brushes.Black, New RectangleF(572, l, 80, 25), sf_L)
+                e.Graphics.DrawString(Vid, fnt, Brushes.Black, New RectangleF(656, l, 80, 25), sf_L)
+                e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(740, l, 100, 25), sf_L)
+
+                l = l + size.Height + 5
+                m += 1
+            End While
+
+            If l < 720 Then l = 720
+
+            ''''''
+
+            Dim ht As String = data.Rows.Count
+            Dim sum As Double = Convert.ToDouble(data.Compute("SUM(total)", String.Empty))
+
+
+
+            e.Graphics.DrawLine(pen, 60, l + 25, 770, l + 25)
+            e.Graphics.DrawString("Nombre", fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_L)
+            e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550, l + 29, 220, 22), sf_R)
+
+            e.Graphics.DrawLine(pn, 550, l + 45, 770, l + 45)
+            e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_L)
+            If with_Price Then e.Graphics.DrawString(String.Format("{0:n}", CDec(sum)), fnt, Brushes.Black, New RectangleF(550, l + 49, 220, 22), sf_R)
+
+
+            Try
+                If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgFootherPath), 10, h - 20, 750, 120)
+            Catch ex As Exception
+            End Try
+
+        Catch ex As Exception
+            l = 250
+            m = 0
+        End Try
+
+        l = 250
+        m = 0
+    End Sub
 
 
 

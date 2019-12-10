@@ -87,11 +87,11 @@
         tp = 0
     End Sub
 
-    Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        searchForClient()
-    End Sub
-
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         Me.DialogResult = Windows.Forms.DialogResult.OK
+    End Sub
+
+    Private Sub txtSearch_TxtChanged() Handles txtSearch.TxtChanged
+        searchForClient()
     End Sub
 End Class

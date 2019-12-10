@@ -24,6 +24,7 @@ Partial Class ParcList
     Private Sub InitializeComponent()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.pbSearchDate = New System.Windows.Forms.PictureBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PB = New System.Windows.Forms.PictureBox()
@@ -187,7 +188,6 @@ Partial Class ParcList
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plL = New System.Windows.Forms.Panel()
-        Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel10.SuspendLayout()
         CType(Me.pbSearchDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -264,6 +264,19 @@ Partial Class ParcList
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(970, 107)
         Me.Panel10.TabIndex = 11
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label22.Location = New System.Drawing.Point(92, 50)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(620, 10)
+        Me.Label22.TabIndex = 11
+        Me.Label22.Text = "MS: Mission    -    CLN: Client     -     CH: Chauffeur    -    CHR: Charge    - " & _
+            "   VH: Vehicule      -   DP: Depart      -      DS: Destination     -    RG: Reg" & _
+            "le      -      ST: Status"
         '
         'pbSearchDate
         '
@@ -539,7 +552,6 @@ Partial Class ParcList
         '
         Me.plCBody.BackColor = System.Drawing.Color.White
         Me.plCBody.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plCBody.Enabled = False
         Me.plCBody.Location = New System.Drawing.Point(408, 31)
         Me.plCBody.Name = "plCBody"
         Me.plCBody.Padding = New System.Windows.Forms.Padding(5)
@@ -1474,12 +1486,12 @@ Partial Class ParcList
         Me.txtdepart.BorderColor = System.Drawing.Color.Transparent
         Me.txtdepart.Dock = System.Windows.Forms.DockStyle.Right
         Me.txtdepart.IsNumiric = False
-        Me.txtdepart.Location = New System.Drawing.Point(45, 0)
+        Me.txtdepart.Location = New System.Drawing.Point(54, 0)
         Me.txtdepart.Name = "txtdepart"
         Me.txtdepart.PlaceHolder = ""
         Me.txtdepart.ShowClearIcon = False
         Me.txtdepart.ShowSaveIcon = False
-        Me.txtdepart.Size = New System.Drawing.Size(145, 28)
+        Me.txtdepart.Size = New System.Drawing.Size(136, 28)
         Me.txtdepart.StartUp = 2
         Me.txtdepart.TabIndex = 1
         Me.txtdepart.TextSize = 8
@@ -1619,7 +1631,7 @@ Partial Class ParcList
         '
         Me.lbVehiculeName.AutoSize = True
         Me.lbVehiculeName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbVehiculeName.Location = New System.Drawing.Point(3, 13)
+        Me.lbVehiculeName.Location = New System.Drawing.Point(7, 13)
         Me.lbVehiculeName.Name = "lbVehiculeName"
         Me.lbVehiculeName.Size = New System.Drawing.Size(16, 19)
         Me.lbVehiculeName.TabIndex = 2
@@ -1712,7 +1724,7 @@ Partial Class ParcList
         '
         Me.lbDriverName.AutoSize = True
         Me.lbDriverName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbDriverName.Location = New System.Drawing.Point(6, 13)
+        Me.lbDriverName.Location = New System.Drawing.Point(9, 13)
         Me.lbDriverName.Name = "lbDriverName"
         Me.lbDriverName.Size = New System.Drawing.Size(16, 19)
         Me.lbDriverName.TabIndex = 2
@@ -1776,7 +1788,7 @@ Partial Class ParcList
         '
         Me.lbName.AutoSize = True
         Me.lbName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.Location = New System.Drawing.Point(13, 9)
+        Me.lbName.Location = New System.Drawing.Point(11, 9)
         Me.lbName.Name = "lbName"
         Me.lbName.Size = New System.Drawing.Size(16, 19)
         Me.lbName.TabIndex = 2
@@ -2369,16 +2381,6 @@ Partial Class ParcList
         Me.plL.Padding = New System.Windows.Forms.Padding(5)
         Me.plL.Size = New System.Drawing.Size(105, 920)
         Me.plL.TabIndex = 14
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(92, 49)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(619, 13)
-        Me.Label22.TabIndex = 11
-        Me.Label22.Text = "MS: Mission    -    CLN: Client     -     CH: Chauffeur    -    CHR: Charge    - " & _
-            "   VH: Vehicule      -   DP: Depart      -      DS: Destination"
         '
         'ParcList
         '

@@ -117,6 +117,18 @@
         End Set
     End Property
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        plP.Width = Form1.cellWidth
+        plQ.Width = Form1.cellWidth
+        plR.Width = Form1.cellWidth
+        plT.Width = Form1.cellWidth
+        plRef.Width = Form1.cellWidth
+    End Sub
     Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbName.Click, lbAvc.Click, plT.Click, plSet.Click, plRef.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, Panel1.Click, lbDate.Click
         isSelected = Not isSelected
         RaiseEvent selected()
@@ -127,7 +139,10 @@
         RaiseEvent EditSelectedItem(Me)
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
-        RaiseEvent DeleteItem(Me)
+        If MsgBox(MsgDelete & vbNewLine & lbName.Text & " : " & Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+            RaiseEvent DeleteItem(Me)
+        End If
+
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetFactureInfos(Id)

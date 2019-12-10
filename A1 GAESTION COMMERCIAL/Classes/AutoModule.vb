@@ -35,6 +35,7 @@
             Dim dt As DataTable = a.SelectDataTable(tb, {"*"})
             If dt.Rows.Count > 0 Then
                 For i As Integer = 0 To dt.Rows.Count - 1
+                    If lst.Contains(dt.Rows(i).Item("name").ToString.Split("(")(0)) Then Continue For
                     lst.Add(dt.Rows(i).Item("name").ToString.Split("(")(0))
                 Next
             End If
@@ -104,7 +105,7 @@
     '''''''''''''''''''''''''
     'Strings
 
-    Public MsgDelete As String = "Etes-vous certain de vouloir supprimer ce Client"
+    Public MsgDelete As String = "Etes-vous certain de vouloir supprimer cet element"
 
 
 

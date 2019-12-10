@@ -33,7 +33,13 @@ Partial Class Setting
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.plPref = New System.Windows.Forms.Panel()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtCellWidth = New System.Windows.Forms.TextBox()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.plImp = New System.Windows.Forms.Panel()
+        Me.Label35 = New System.Windows.Forms.Label()
         Me.cbPdf = New System.Windows.Forms.CheckBox()
         Me.cbImp = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -43,6 +49,7 @@ Partial Class Setting
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label53 = New System.Windows.Forms.Label()
+        Me.txtNbrCopie = New System.Windows.Forms.TextBox()
         Me.txtPied = New System.Windows.Forms.TextBox()
         Me.txtEntete = New System.Windows.Forms.TextBox()
         Me.txtImpPdf = New System.Windows.Forms.TextBox()
@@ -62,17 +69,28 @@ Partial Class Setting
         Me.plRole = New System.Windows.Forms.Panel()
         Me.plUser = New System.Windows.Forms.Panel()
         Me.plText = New System.Windows.Forms.Panel()
+        Me.txtss = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtst = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtsn = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtns = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtnt = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtnn = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Button14 = New System.Windows.Forms.Button()
         Me.plData = New System.Windows.Forms.Panel()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.txtNbrCopie = New System.Windows.Forms.TextBox()
-        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.plPref.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plImp.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plText.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -83,7 +101,7 @@ Partial Class Setting
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(5, 5, 5, 15)
-        Me.Panel3.Size = New System.Drawing.Size(776, 69)
+        Me.Panel3.Size = New System.Drawing.Size(955, 69)
         Me.Panel3.TabIndex = 12
         '
         'PB
@@ -109,7 +127,7 @@ Partial Class Setting
         Me.Panel1.Location = New System.Drawing.Point(0, 69)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(5, 5, 5, 15)
-        Me.Panel1.Size = New System.Drawing.Size(195, 502)
+        Me.Panel1.Size = New System.Drawing.Size(195, 708)
         Me.Panel1.TabIndex = 13
         '
         'Button6
@@ -191,26 +209,77 @@ Partial Class Setting
         Me.Panel2.Location = New System.Drawing.Point(195, 69)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 5, 5, 15)
-        Me.Panel2.Size = New System.Drawing.Size(581, 502)
+        Me.Panel2.Size = New System.Drawing.Size(760, 708)
         Me.Panel2.TabIndex = 14
         '
         'plPref
         '
         Me.plPref.AutoScroll = True
         Me.plPref.BackColor = System.Drawing.Color.Transparent
+        Me.plPref.Controls.Add(Me.Button11)
+        Me.plPref.Controls.Add(Me.Label7)
+        Me.plPref.Controls.Add(Me.txtCellWidth)
+        Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
         Me.plPref.Location = New System.Drawing.Point(5, 380)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(571, 39)
+        Me.plPref.Size = New System.Drawing.Size(750, 10)
         Me.plPref.TabIndex = 18
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(137, 231)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 23)
+        Me.Button11.TabIndex = 27
+        Me.Button11.Text = "Button11"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(18, 101)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(94, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "Lengeur de cellule"
+        '
+        'txtCellWidth
+        '
+        Me.txtCellWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCellWidth.Location = New System.Drawing.Point(137, 101)
+        Me.txtCellWidth.Name = "txtCellWidth"
+        Me.txtCellWidth.Size = New System.Drawing.Size(228, 20)
+        Me.txtCellWidth.TabIndex = 25
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.DarkMagenta
+        Me.Panel5.Controls.Add(Me.PictureBox2)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(10, 10)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Padding = New System.Windows.Forms.Padding(2)
+        Me.Panel5.Size = New System.Drawing.Size(713, 39)
+        Me.Panel5.TabIndex = 20
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Folder_Settings_Tools_icon_88583_X_24
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox2.Location = New System.Drawing.Point(2, 2)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(60, 35)
+        Me.PictureBox2.TabIndex = 11
+        Me.PictureBox2.TabStop = False
         '
         'plImp
         '
         Me.plImp.AutoScroll = True
         Me.plImp.BackColor = System.Drawing.Color.Transparent
         Me.plImp.Controls.Add(Me.Label35)
-        Me.plImp.Controls.Add(Me.Button11)
         Me.plImp.Controls.Add(Me.cbPdf)
         Me.plImp.Controls.Add(Me.cbImp)
         Me.plImp.Controls.Add(Me.Label6)
@@ -237,11 +306,20 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 45)
+        Me.plImp.Location = New System.Drawing.Point(5, 63)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(571, 335)
+        Me.plImp.Size = New System.Drawing.Size(750, 317)
         Me.plImp.TabIndex = 17
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(18, 540)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(98, 13)
+        Me.Label35.TabIndex = 24
+        Me.Label35.Text = "Nombre des copies"
         '
         'cbPdf
         '
@@ -325,6 +403,14 @@ Partial Class Setting
         Me.Label53.Size = New System.Drawing.Size(43, 13)
         Me.Label53.TabIndex = 21
         Me.Label53.Text = "Facture"
+        '
+        'txtNbrCopie
+        '
+        Me.txtNbrCopie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNbrCopie.Location = New System.Drawing.Point(154, 533)
+        Me.txtNbrCopie.Name = "txtNbrCopie"
+        Me.txtNbrCopie.Size = New System.Drawing.Size(228, 20)
+        Me.txtNbrCopie.TabIndex = 22
         '
         'txtPied
         '
@@ -467,7 +553,7 @@ Partial Class Setting
         Me.Panel4.Location = New System.Drawing.Point(10, 10)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel4.Size = New System.Drawing.Size(534, 39)
+        Me.Panel4.Size = New System.Drawing.Size(713, 39)
         Me.Panel4.TabIndex = 19
         '
         'PictureBox1
@@ -486,10 +572,10 @@ Partial Class Setting
         Me.plRole.AutoScroll = True
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 35)
+        Me.plRole.Location = New System.Drawing.Point(5, 53)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
-        Me.plRole.Size = New System.Drawing.Size(571, 10)
+        Me.plRole.Size = New System.Drawing.Size(750, 10)
         Me.plRole.TabIndex = 16
         '
         'plUser
@@ -497,22 +583,155 @@ Partial Class Setting
         Me.plUser.AutoScroll = True
         Me.plUser.BackColor = System.Drawing.Color.Transparent
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 25)
+        Me.plUser.Location = New System.Drawing.Point(5, 43)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
-        Me.plUser.Size = New System.Drawing.Size(571, 10)
+        Me.plUser.Size = New System.Drawing.Size(750, 10)
         Me.plUser.TabIndex = 15
         '
         'plText
         '
         Me.plText.AutoScroll = True
         Me.plText.BackColor = System.Drawing.Color.Transparent
+        Me.plText.Controls.Add(Me.Label10)
+        Me.plText.Controls.Add(Me.Label9)
+        Me.plText.Controls.Add(Me.Label8)
+        Me.plText.Controls.Add(Me.txtss)
+        Me.plText.Controls.Add(Me.txtst)
+        Me.plText.Controls.Add(Me.txtsn)
+        Me.plText.Controls.Add(Me.txtns)
+        Me.plText.Controls.Add(Me.txtnt)
+        Me.plText.Controls.Add(Me.txtnn)
+        Me.plText.Controls.Add(Me.Button14)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
         Me.plText.Location = New System.Drawing.Point(5, 15)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
-        Me.plText.Size = New System.Drawing.Size(571, 10)
+        Me.plText.Size = New System.Drawing.Size(750, 28)
         Me.plText.TabIndex = 14
+        '
+        'txtss
+        '
+        Me.txtss.BackColor = System.Drawing.Color.Transparent
+        Me.txtss.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtss.IsNumiric = False
+        Me.txtss.Location = New System.Drawing.Point(351, 189)
+        Me.txtss.Name = "txtss"
+        Me.txtss.PlaceHolder = ""
+        Me.txtss.ShowClearIcon = False
+        Me.txtss.ShowSaveIcon = False
+        Me.txtss.Size = New System.Drawing.Size(57, 24)
+        Me.txtss.StartUp = 2
+        Me.txtss.TabIndex = 1
+        Me.txtss.TextSize = 8
+        Me.txtss.TxtBackColor = True
+        Me.txtss.TxtColor = System.Drawing.Color.White
+        Me.txtss.txtReadOnly = False
+        Me.txtss.TxtSelect = New Integer() {1, 0}
+        '
+        'txtst
+        '
+        Me.txtst.BackColor = System.Drawing.Color.Transparent
+        Me.txtst.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtst.IsNumiric = False
+        Me.txtst.Location = New System.Drawing.Point(351, 116)
+        Me.txtst.Name = "txtst"
+        Me.txtst.PlaceHolder = ""
+        Me.txtst.ShowClearIcon = False
+        Me.txtst.ShowSaveIcon = False
+        Me.txtst.Size = New System.Drawing.Size(57, 24)
+        Me.txtst.StartUp = 2
+        Me.txtst.TabIndex = 1
+        Me.txtst.TextSize = 8
+        Me.txtst.TxtBackColor = True
+        Me.txtst.TxtColor = System.Drawing.Color.White
+        Me.txtst.txtReadOnly = False
+        Me.txtst.TxtSelect = New Integer() {1, 0}
+        '
+        'txtsn
+        '
+        Me.txtsn.BackColor = System.Drawing.Color.Transparent
+        Me.txtsn.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtsn.IsNumiric = False
+        Me.txtsn.Location = New System.Drawing.Point(351, 41)
+        Me.txtsn.Name = "txtsn"
+        Me.txtsn.PlaceHolder = ""
+        Me.txtsn.ShowClearIcon = False
+        Me.txtsn.ShowSaveIcon = False
+        Me.txtsn.Size = New System.Drawing.Size(57, 24)
+        Me.txtsn.StartUp = 2
+        Me.txtsn.TabIndex = 1
+        Me.txtsn.TextSize = 8
+        Me.txtsn.TxtBackColor = True
+        Me.txtsn.TxtColor = System.Drawing.Color.White
+        Me.txtsn.txtReadOnly = False
+        Me.txtsn.TxtSelect = New Integer() {1, 0}
+        '
+        'txtns
+        '
+        Me.txtns.BackColor = System.Drawing.Color.Transparent
+        Me.txtns.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtns.IsNumiric = False
+        Me.txtns.Location = New System.Drawing.Point(104, 189)
+        Me.txtns.Name = "txtns"
+        Me.txtns.PlaceHolder = ""
+        Me.txtns.ShowClearIcon = False
+        Me.txtns.ShowSaveIcon = False
+        Me.txtns.Size = New System.Drawing.Size(228, 24)
+        Me.txtns.StartUp = 2
+        Me.txtns.TabIndex = 1
+        Me.txtns.TextSize = 8
+        Me.txtns.TxtBackColor = True
+        Me.txtns.TxtColor = System.Drawing.Color.White
+        Me.txtns.txtReadOnly = False
+        Me.txtns.TxtSelect = New Integer() {1, 0}
+        '
+        'txtnt
+        '
+        Me.txtnt.BackColor = System.Drawing.Color.Transparent
+        Me.txtnt.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnt.IsNumiric = False
+        Me.txtnt.Location = New System.Drawing.Point(104, 116)
+        Me.txtnt.Name = "txtnt"
+        Me.txtnt.PlaceHolder = ""
+        Me.txtnt.ShowClearIcon = False
+        Me.txtnt.ShowSaveIcon = False
+        Me.txtnt.Size = New System.Drawing.Size(228, 24)
+        Me.txtnt.StartUp = 2
+        Me.txtnt.TabIndex = 1
+        Me.txtnt.TextSize = 8
+        Me.txtnt.TxtBackColor = True
+        Me.txtnt.TxtColor = System.Drawing.Color.White
+        Me.txtnt.txtReadOnly = False
+        Me.txtnt.TxtSelect = New Integer() {1, 0}
+        '
+        'txtnn
+        '
+        Me.txtnn.BackColor = System.Drawing.Color.Transparent
+        Me.txtnn.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnn.IsNumiric = False
+        Me.txtnn.Location = New System.Drawing.Point(104, 41)
+        Me.txtnn.Name = "txtnn"
+        Me.txtnn.PlaceHolder = ""
+        Me.txtnn.ShowClearIcon = False
+        Me.txtnn.ShowSaveIcon = False
+        Me.txtnn.Size = New System.Drawing.Size(228, 24)
+        Me.txtnn.StartUp = 2
+        Me.txtnn.TabIndex = 1
+        Me.txtnn.TextSize = 8
+        Me.txtnn.TxtBackColor = True
+        Me.txtnn.TxtColor = System.Drawing.Color.White
+        Me.txtnn.txtReadOnly = False
+        Me.txtnn.TxtSelect = New Integer() {1, 0}
+        '
+        'Button14
+        '
+        Me.Button14.Location = New System.Drawing.Point(259, 273)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(149, 39)
+        Me.Button14.TabIndex = 0
+        Me.Button14.Text = "Button14"
+        Me.Button14.UseVisualStyleBackColor = True
         '
         'plData
         '
@@ -522,35 +741,35 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(571, 10)
+        Me.plData.Size = New System.Drawing.Size(750, 10)
         Me.plData.TabIndex = 13
         '
-        'Button11
+        'Label8
         '
-        Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button11.Location = New System.Drawing.Point(432, 424)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(75, 254)
-        Me.Button11.TabIndex = 20
-        Me.Button11.Text = "اختر"
-        Me.Button11.UseVisualStyleBackColor = True
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(104, 28)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(94, 13)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "POLICE NORMAL"
         '
-        'txtNbrCopie
+        'Label9
         '
-        Me.txtNbrCopie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtNbrCopie.Location = New System.Drawing.Point(154, 533)
-        Me.txtNbrCopie.Name = "txtNbrCopie"
-        Me.txtNbrCopie.Size = New System.Drawing.Size(228, 20)
-        Me.txtNbrCopie.TabIndex = 22
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(104, 101)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(91, 13)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Text = "POLICE ENTETE"
         '
-        'Label35
+        'Label10
         '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(18, 540)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(98, 13)
-        Me.Label35.TabIndex = 24
-        Me.Label35.Text = "Nombre des copies"
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(107, 174)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(83, 13)
+        Me.Label10.TabIndex = 3
+        Me.Label10.Text = "POLICE SMALL"
         '
         'Setting
         '
@@ -562,15 +781,21 @@ Partial Class Setting
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Name = "Setting"
-        Me.Size = New System.Drawing.Size(776, 571)
+        Me.Size = New System.Drawing.Size(955, 777)
         Me.Panel3.ResumeLayout(False)
         CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.plPref.ResumeLayout(False)
+        Me.plPref.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.plImp.ResumeLayout(False)
         Me.plImp.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plText.ResumeLayout(False)
+        Me.plText.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -615,8 +840,22 @@ Partial Class Setting
     Friend WithEvents txtEntete As System.Windows.Forms.TextBox
     Friend WithEvents Button13 As System.Windows.Forms.Button
     Friend WithEvents Button12 As System.Windows.Forms.Button
-    Friend WithEvents Button11 As System.Windows.Forms.Button
     Friend WithEvents txtNbrCopie As System.Windows.Forms.TextBox
     Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtCellWidth As System.Windows.Forms.TextBox
+    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Button11 As System.Windows.Forms.Button
+    Friend WithEvents Button14 As System.Windows.Forms.Button
+    Friend WithEvents txtss As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtst As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtsn As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtns As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtnt As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtnn As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 
 End Class

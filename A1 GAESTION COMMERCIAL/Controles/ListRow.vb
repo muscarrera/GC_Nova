@@ -274,6 +274,12 @@
 
         ' Add any initialization after the InitializeComponent() call.
         article = art
+
+        'plP.Width = Form1.cellWidth
+        'plQ.Width = Form1.cellWidth
+        'plR.Width = Form1.cellWidth
+        'plT.Width = Form1.cellWidth
+        'plRef.Width = Form1.cellWidth
     End Sub
     Private Sub lbName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbName.TextChanged
         Me.Height = lbName.Height + 32

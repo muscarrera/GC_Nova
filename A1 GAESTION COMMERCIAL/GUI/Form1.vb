@@ -12,6 +12,7 @@
     Public imgLonger As Integer = 200
     Public ImgPah As String = "C:\"
     Public SvgdPah As String = "C:\"
+    Public BoundDbPath As String = "C:\"
     Public numberOfItems As Integer = 2
     'font
     Public fontName_Normal As String
@@ -39,9 +40,10 @@
     Public proformat_Id As Integer
     Public printWithDate As Boolean = True
     Public printWithPrice As Boolean = True
-    Public nbrPrOp_tr As Integer = 120
+    Public nbrPrOp_tr As Integer = 220
     Public ListToPrint As DataTable
     Public factureToPrint As Facture
+    Friend Shared cellWidth As Integer
 
     'Props
     Public Property Exercice As String
@@ -56,11 +58,38 @@
 
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         'Regs info
         HandleRegistryinfo()
+
+        'check Trial
+        If TrialVersion_Master = False Then
+            MsgBox("Vous devez Contacter l'administration pour plus d'infos")
+            End
+        End If
+
         'Trial
         If getTrial() = False Then End
+
+        'check Users
+        Dim pwdwin As New PWDPicker
+
+        If pwdwin.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+            If pwdwin.DGV1.SelectedRows(0).Cells(2).Value = "admin" Then
+
+            Else
+                btSetting.Enabled = False
+
+            End If
+        Else
+            End
+        End If
+
+
+
+
+
+
         'Exercice
         Exercice = Now.Date.ToString("yy")
 
@@ -112,7 +141,7 @@
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
         HeaderColor(Button13.Text)
     End Sub
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSetting.Click
         If plBody.Controls.Count > 0 Then
             If TypeOf plBody.Controls(0) Is Setting Then
                 Exit Sub
@@ -136,6 +165,7 @@
                 If IsNothing(factureToPrint) Then
                     a.DrawFacture(e, ds, Facture_Title, b, proformat_Id, printWithDate, printWithPrice, m)
                 Else
+                    a.DrawFactureFromList(e, factureToPrint, Facture_Title, b, proformat_Id, printWithDate, printWithPrice, m)
 
                 End If
 
@@ -147,4 +177,37 @@
 
 
 
+    Private Sub PrintDocMission_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocMission.PrintPage
+        Dim ds As ParcList = plBody.Controls(0)
+        Using a As DrawClass = New DrawClass
+            If Facture_Title = "Bons de Transport" Then
+                a.DrawListOfMission(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
+            ElseIf Facture_Title = "Listes des Charges" Then
+                a.DrawListOfCharges(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
+            ElseIf Facture_Title = "Chauffeurs" Then
+
+            ElseIf Facture_Title = "Listes Vehicule" Then
+
+            ElseIf Facture_Title = "Bon de Transport" Then
+                a.DrawMission(e, ds, "Mission", printEnteteOnPaper, "Bon de Transport", True, True, m)
+            End If
+        End Using
+    End Sub
+
+    Private Sub PrintDocList_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocList.PrintPage
+        Dim ds As DataList = plBody.Controls(0)
+        Using a As DrawClass = New DrawClass
+
+            a.DrawListOfFacture(e, ds.DataList, printEnteteOnPaper, ds.FactureTable, True, True, m)
+
+        End Using
+    End Sub
+
+    Private Sub btTrial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btTrial.Click
+        Dim trial As New TrialVersion
+        If trial.ShowDialog = Windows.Forms.DialogResult.OK Then
+            MsgBox("merci de votre compréhension , Code d'activation ' est correct")
+            btTrial.Enabled = False
+        End If
+    End Sub
 End Class

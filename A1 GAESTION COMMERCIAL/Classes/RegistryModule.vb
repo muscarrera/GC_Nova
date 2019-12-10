@@ -24,9 +24,8 @@
     End Sub
 
     Public Sub HandleRegistryinfo()
-
-
         Try
+            Form1.cellWidth = getRegistryinfo("cellWidth", 111)
             Form1.ImgPah = getRegistryinfo("ImgPah", "C:\")
             Form1.SvgdPah = getRegistryinfo("SvgdPah", "C:\")
             Form1.numberOfItems = getRegistryinfo("numberOfItems", 22)
@@ -50,6 +49,9 @@
             Form1.imgFootherPath = getRegistryinfo("imgFootherPath", "")
             Form1.printEnteteOnPaper = getRegistryinfo("printEnteteOnPaper", False)
             Form1.printEnteteOnPdf = getRegistryinfo("printEnteteOnPdf", False)
+
+
+
 
         Catch ex As Exception
 

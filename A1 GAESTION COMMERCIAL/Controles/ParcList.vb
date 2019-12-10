@@ -51,6 +51,12 @@
 
     Event AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
 
+    Event PrintListOfParc(ByVal parcList As ParcList)
+
+    Event addNewCharge(ByVal parcList As ParcList)
+
+    Event EditNewCharge(ByVal parcList As ParcList)
+
 
     Public Property AutoCompleteSourceDetails() As AutoCompleteStringCollection
         Get
@@ -78,7 +84,7 @@
             _mode = value
             plList.Controls.Clear()
 
-            If value = "List" Then
+            If value.ToUpper = "LIST" Then
                 plDetails.Dock = DockStyle.Left
                 plDetails.Width = 1
                 plList.Dock = DockStyle.Fill
@@ -163,15 +169,6 @@
         End Get
         Set(ByVal value As String)
             lbName.Text = value
-        End Set
-    End Property
-    Public Property MissionDate() As Date
-        Get
-            Return _date
-        End Get
-        Set(ByVal value As Date)
-            _date = value
-            lbDate.Text = value.ToString("dd MMM yyyy")
         End Set
     End Property
     Public Property Bc As String
@@ -340,9 +337,9 @@
                 lbLavc.Text = ""
 
                 Dim sum As Double = Convert.ToDouble(_dt.Compute("SUM(total)", String.Empty))
-                lbLtotal.Text = String.Format("{à,n}", sum)
+                lbLtotal.Text = String.Format("{0:n}", CDec(sum))
                 Dim avc As Double = Convert.ToDouble(_dt.Compute("SUM(avance)", String.Empty))
-                lbLavc.Text = String.Format("{à,n}", avc)
+                lbLavc.Text = String.Format("{0:n}", avc)
 
             Catch ex As Exception
             End Try
@@ -350,11 +347,26 @@
 
         End Set
     End Property
-    Private ReadOnly Property SelectedItem() As ClientRow
+    ReadOnly Property DetailsSource As DataTable
+        Get
+            Dim table As New DataTable
+            ' Create four typed columns in the DataTable.
+            table.Columns.Add("name", GetType(String))
+            table.Columns.Add("value", GetType(Integer))
+
+            Dim a As AddElement
+            For Each a In plDBody.Controls()
+                ' Add  rows with those columns filled in the DataTable.
+                table.Rows.Add(a.Key, a.Value)
+            Next
+            Return table
+        End Get
+    End Property
+    Public ReadOnly Property SelectedItem() As ClientRow
         Get
             Dim i As ClientRow = Nothing
             Try
-                For Each c As ClientRow In pl.Controls
+                For Each c As ClientRow In plList.Controls
                     If c.isSelected Then
                         i = c
                         Exit For
@@ -431,12 +443,24 @@
                     a.Id = _dt.Rows(i).Item(0)
                     a.Libele = _dt.Rows(i).Item("clientName")
                     a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
-                    a.Responsable = StrValue(_dt, "depart", i)
-                    a.Ville = StrValue(_dt, "arrive", i)
-                    a.Tel = DblValue(_dt, "total", i)
+                    a.Responsable = StrValue(_dt, "depart", i) & " - " & StrValue(_dt, "arrive", i)
+                    a.Tel = String.Format("{0:n}", DblValue(_dt, "total", i))
+                    a.Ville = String.Format("{0:n}", DblValue(_dt, "avance", i))
 
                     If BoolValue(_dt, "isPayed", i) Then a.lbTel.BackColor = Color.PaleGreen
                     If BoolValue(_dt, "isAdmin", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+
+                ElseIf TableName = "Details_Charge" Then
+                    a.Id = _dt.Rows(i).Item(0)
+                    a.Libele = _dt.Rows(i).Item("name")
+                    a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
+                    a.Responsable = StrValue(_dt, "value", i)
+                    a.Ville = StrValue(_dt, "drid", i)
+                    a.Tel = DblValue(_dt, "vid", i)
+
+
+                    If IntValue(_dt, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 ElseIf TableName = "Vehicule" Then
                     a.Id = _dt.Rows(i).Item(0)
@@ -516,7 +540,8 @@
         ElseIf TableName = "Vehicule" Then
             RaiseEvent EditSelectedVehicule(Me, elm)
         ElseIf TableName = "Mission" Then
-            RaiseEvent GetElementsById(elm.Id, Me)
+            id = elm.Id
+            'RaiseEvent GetElementsById(, Me)
         End If
     End Sub
     Private Sub DeleteSelectedClient(ByRef elm As ClientRow)
@@ -533,6 +558,8 @@
             RaiseEvent AddNewVehicule(Me, SelectedItem)
         ElseIf TableName = "Mission" Then
             RaiseEvent AddNewMission(Me)
+        ElseIf TableName = "Details_Charge" Then
+            RaiseEvent addNewCharge(Me)
         End If
     End Sub
 
@@ -543,11 +570,17 @@
             RaiseEvent EditSelectedVehicule(Me, SelectedItem)
         ElseIf TableName = "Mission" Then
 
+
+        ElseIf TableName = "Details_Charge" Then
+            RaiseEvent EditNewCharge(Me)
         End If
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
-        RaiseEvent DeleteSelectedElement(Me, SelectedItem)
+        If MsgBox(MsgDelete & vbNewLine & TableName & " : " & SelectedItem.Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+            RaiseEvent DeleteSelectedElement(Me, SelectedItem)
+        End If
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -661,7 +694,9 @@
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        RaiseEvent DeleteMission(id, Me)
+        If MsgBox(MsgDelete & vbNewLine & "Mission : " & id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+            RaiseEvent DeleteMission(id, Me)
+        End If
     End Sub
 
     Private Sub btPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPdf.Click
@@ -717,6 +752,7 @@
         Dim v As Double = CDbl(txtDValue.text)
 
         RaiseEvent AddNewDetailsMission(k, v, Me)
+        txtDKey.Focus()
     End Sub
 
     Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
@@ -726,6 +762,7 @@
         Dim v As Double = CDbl(txtCValue.text)
 
         RaiseEvent AddNewChargeMission(k, v, Me)
+        txtCKey.Focus()
     End Sub
 
     Private Sub txtCValue_KeyDownOk() Handles txtCValue.KeyDownOk
@@ -743,7 +780,7 @@
             txtCValue.Focus()
         Else
             txtCKey.text &= " ( )"
-            '' txtDKey.Cursor
+            txtCKey.Select(txtCKey.text.Length - 1, 0)
         End If
     End Sub
     Private Sub txtDKey_KeyDownOk() Handles txtDKey.KeyDownOk
@@ -751,7 +788,7 @@
             txtDValue.Focus()
         Else
             txtDKey.text &= " ( )"
-            '' txtDKey.Cursor
+            txtDKey.Select(txtDKey.text.Length - 1, 0)
         End If
     End Sub
 
@@ -767,5 +804,36 @@
     End Sub
     Private Sub Label26_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel63.Click, Label26.Click
         txtCValue.Focus()
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        If plList.Controls.Count = 0 Then Exit Sub
+        RaiseEvent PrintListOfParc(Me)
+    End Sub
+
+    Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel19.Click, Label9.Click
+        txtdepart.Focus()
+    End Sub
+    Private Sub txtdepart_KeyDownOk() Handles txtdepart.KeyDownOk
+        txtdest.Focus()
+    End Sub
+    Private Sub Label16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel31.Click, Label16.Click
+        txtdest.Focus()
+    End Sub
+    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel4.Click, Label4.Click
+        txtKmDepart.Focus()
+    End Sub
+    Private Sub Label18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel61.Click, Label18.Click
+        txtKmArrive.Focus()
+    End Sub
+
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
+        HeaderColor(Button15.Text)
+        TableName = Button15.Tag
+        Mode = "List"
+    End Sub
+
+    Private Sub txtSearchName_KeyDownOk() Handles txtSearchName.KeyDownOk
+        RaiseEvent GetElements(Me)
     End Sub
 End Class

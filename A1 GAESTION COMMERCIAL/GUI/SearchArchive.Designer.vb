@@ -22,7 +22,6 @@ Partial Class SearchArchive
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button29 = New System.Windows.Forms.Button()
         Me.dte2 = New System.Windows.Forms.DateTimePicker()
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -37,25 +36,15 @@ Partial Class SearchArchive
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel58 = New System.Windows.Forms.Panel()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel58.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Button29
-        '
-        Me.Button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button29.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button29.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Button29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button29.Location = New System.Drawing.Point(123, 300)
-        Me.Button29.Name = "Button29"
-        Me.Button29.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
-        Me.Button29.Size = New System.Drawing.Size(262, 45)
-        Me.Button29.TabIndex = 19
-        Me.Button29.Text = "  Recherche"
-        Me.Button29.UseVisualStyleBackColor = True
         '
         'dte2
         '
@@ -222,17 +211,58 @@ Partial Class SearchArchive
         Me.Label2.Text = "Recherche"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'Panel58
+        '
+        Me.Panel58.BackColor = System.Drawing.Color.Transparent
+        Me.Panel58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel58.Controls.Add(Me.Button8)
+        Me.Panel58.Location = New System.Drawing.Point(122, 289)
+        Me.Panel58.Name = "Panel58"
+        Me.Panel58.Size = New System.Drawing.Size(264, 42)
+        Me.Panel58.TabIndex = 22
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.LimeGreen
+        Me.Button8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.ForeColor = System.Drawing.Color.Ivory
+        Me.Button8.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
+        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button8.Location = New System.Drawing.Point(0, 0)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Padding = New System.Windows.Forms.Padding(86, 0, 6, 0)
+        Me.Button8.Size = New System.Drawing.Size(262, 40)
+        Me.Button8.TabIndex = 2
+        Me.Button8.Text = "          Valider"
+        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.White
+        Me.Panel5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_13
+        Me.Panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel5.Location = New System.Drawing.Point(0, 359)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Padding = New System.Windows.Forms.Padding(5)
+        Me.Panel5.Size = New System.Drawing.Size(490, 19)
+        Me.Panel5.TabIndex = 23
+        '
         'SearchArchive
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(490, 378)
+        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel58)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button29)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label31)
@@ -245,11 +275,11 @@ Partial Class SearchArchive
         Me.Panel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        Me.Panel58.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button29 As System.Windows.Forms.Button
     Friend WithEvents dte2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dte1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label28 As System.Windows.Forms.Label
@@ -264,4 +294,7 @@ Partial Class SearchArchive
     Friend WithEvents Panel23 As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Panel58 As System.Windows.Forms.Panel
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents Panel5 As System.Windows.Forms.Panel
 End Class

@@ -6,6 +6,8 @@
     Public Event Cleared(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     Public article As New Article
+    Public IsSell As Boolean = True
+
 
     'Properties
     Private Property Arid As Integer
@@ -108,8 +110,12 @@
     End Function
     'fill
     Public Sub FillFields(ByVal art As Article)
+        Dim sPrice As Double = art.sprice
+        If IsSell = False Then sPrice = art.bprice
+
         article = New Article(art.arid, art.cid, art.name, art.desc, art.qte,
-                              art.sprice, art.bprice, art.remise, art.depot, art.isStocked, art.ref)
+                              sPrice, art.bprice, art.remise, art.depot, art.isStocked, art.ref)
+
         txtRf.text = article.ref
         txtN.text = article.name
         txtPr.text = String.Format("{0:n}", CDec(article.sprice))
