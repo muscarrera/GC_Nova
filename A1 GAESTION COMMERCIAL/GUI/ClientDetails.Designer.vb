@@ -58,11 +58,12 @@ Partial Class ClientDetails
         Me.lbBlImp = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel12 = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.plBodyFct = New System.Windows.Forms.Panel()
+        Me.Panel32 = New System.Windows.Forms.Panel()
+        Me.Panel33 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Panel25 = New System.Windows.Forms.Panel()
         Me.Panel26 = New System.Windows.Forms.Panel()
@@ -92,8 +93,6 @@ Partial Class ClientDetails
         Me.lbFctIm = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.lbNbrF = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
@@ -109,16 +108,22 @@ Partial Class ClientDetails
         Me.plRemise = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.Panel33 = New System.Windows.Forms.Panel()
-        Me.Panel32 = New System.Windows.Forms.Panel()
-        Me.plBodyFct = New System.Windows.Forms.Panel()
         Me.txtRemise = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.Panel30 = New System.Windows.Forms.Panel()
+        Me.TxtBox1 = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -138,6 +143,7 @@ Partial Class ClientDetails
         Me.Panel51.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
+        Me.plBodyFct.SuspendLayout()
         Me.Panel24.SuspendLayout()
         Me.Panel26.SuspendLayout()
         Me.Panel27.SuspendLayout()
@@ -157,9 +163,11 @@ Partial Class ClientDetails
         Me.Panel7.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.plRemise.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.plBodyFct.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel30.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -177,7 +185,7 @@ Partial Class ClientDetails
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(22, 22)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(796, 514)
+        Me.Panel1.Size = New System.Drawing.Size(896, 514)
         Me.Panel1.TabIndex = 0
         '
         'Panel3
@@ -188,7 +196,7 @@ Partial Class ClientDetails
         Me.Panel3.Location = New System.Drawing.Point(0, 644)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel3.Size = New System.Drawing.Size(777, 228)
+        Me.Panel3.Size = New System.Drawing.Size(877, 228)
         Me.Panel3.TabIndex = 18
         '
         'Panel5
@@ -203,7 +211,7 @@ Partial Class ClientDetails
         Me.Panel5.Location = New System.Drawing.Point(10, 10)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel5.Size = New System.Drawing.Size(757, 208)
+        Me.Panel5.Size = New System.Drawing.Size(857, 208)
         Me.Panel5.TabIndex = 1
         '
         'plBodyBl
@@ -214,14 +222,14 @@ Partial Class ClientDetails
         Me.plBodyBl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.plBodyBl.Location = New System.Drawing.Point(5, 39)
         Me.plBodyBl.Name = "plBodyBl"
-        Me.plBodyBl.Size = New System.Drawing.Size(745, 128)
+        Me.plBodyBl.Size = New System.Drawing.Size(845, 128)
         Me.plBodyBl.TabIndex = 19
         '
         'Panel34
         '
         Me.Panel34.BackColor = System.Drawing.Color.LightGray
         Me.Panel34.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel34.Location = New System.Drawing.Point(744, 0)
+        Me.Panel34.Location = New System.Drawing.Point(844, 0)
         Me.Panel34.Name = "Panel34"
         Me.Panel34.Size = New System.Drawing.Size(1, 126)
         Me.Panel34.TabIndex = 2
@@ -232,7 +240,7 @@ Partial Class ClientDetails
         Me.Panel35.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel35.Location = New System.Drawing.Point(0, 126)
         Me.Panel35.Name = "Panel35"
-        Me.Panel35.Size = New System.Drawing.Size(745, 2)
+        Me.Panel35.Size = New System.Drawing.Size(845, 2)
         Me.Panel35.TabIndex = 2
         '
         'Panel36
@@ -250,7 +258,7 @@ Partial Class ClientDetails
         Me.Panel36.Location = New System.Drawing.Point(5, 167)
         Me.Panel36.Name = "Panel36"
         Me.Panel36.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
-        Me.Panel36.Size = New System.Drawing.Size(745, 34)
+        Me.Panel36.Size = New System.Drawing.Size(845, 34)
         Me.Panel36.TabIndex = 18
         '
         'Panel37
@@ -260,7 +268,7 @@ Partial Class ClientDetails
         Me.Panel37.Location = New System.Drawing.Point(139, 5)
         Me.Panel37.Name = "Panel37"
         Me.Panel37.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel37.Size = New System.Drawing.Size(134, 24)
+        Me.Panel37.Size = New System.Drawing.Size(234, 24)
         Me.Panel37.TabIndex = 17
         '
         'Panel38
@@ -268,7 +276,7 @@ Partial Class ClientDetails
         Me.Panel38.BackColor = System.Drawing.Color.Transparent
         Me.Panel38.Controls.Add(Me.lbBTtc)
         Me.Panel38.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel38.Location = New System.Drawing.Point(273, 5)
+        Me.Panel38.Location = New System.Drawing.Point(373, 5)
         Me.Panel38.Name = "Panel38"
         Me.Panel38.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel38.Size = New System.Drawing.Size(89, 24)
@@ -292,7 +300,7 @@ Partial Class ClientDetails
         Me.Panel39.BackColor = System.Drawing.Color.Transparent
         Me.Panel39.Controls.Add(Me.lbBAvc)
         Me.Panel39.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel39.Location = New System.Drawing.Point(362, 5)
+        Me.Panel39.Location = New System.Drawing.Point(462, 5)
         Me.Panel39.Name = "Panel39"
         Me.Panel39.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel39.Size = New System.Drawing.Size(90, 24)
@@ -316,7 +324,7 @@ Partial Class ClientDetails
         Me.Panel40.BackColor = System.Drawing.Color.Transparent
         Me.Panel40.Controls.Add(Me.lbBRs)
         Me.Panel40.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel40.Location = New System.Drawing.Point(452, 5)
+        Me.Panel40.Location = New System.Drawing.Point(552, 5)
         Me.Panel40.Name = "Panel40"
         Me.Panel40.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel40.Size = New System.Drawing.Size(84, 24)
@@ -338,7 +346,7 @@ Partial Class ClientDetails
         '
         Me.Panel41.BackColor = System.Drawing.Color.Transparent
         Me.Panel41.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel41.Location = New System.Drawing.Point(536, 5)
+        Me.Panel41.Location = New System.Drawing.Point(636, 5)
         Me.Panel41.Name = "Panel41"
         Me.Panel41.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel41.Size = New System.Drawing.Size(109, 24)
@@ -369,7 +377,7 @@ Partial Class ClientDetails
         Me.Panel43.Location = New System.Drawing.Point(5, 5)
         Me.Panel43.Name = "Panel43"
         Me.Panel43.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
-        Me.Panel43.Size = New System.Drawing.Size(745, 34)
+        Me.Panel43.Size = New System.Drawing.Size(845, 34)
         Me.Panel43.TabIndex = 17
         '
         'Panel44
@@ -380,7 +388,7 @@ Partial Class ClientDetails
         Me.Panel44.Location = New System.Drawing.Point(139, 5)
         Me.Panel44.Name = "Panel44"
         Me.Panel44.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel44.Size = New System.Drawing.Size(134, 24)
+        Me.Panel44.Size = New System.Drawing.Size(234, 24)
         Me.Panel44.TabIndex = 17
         '
         'Label26
@@ -391,7 +399,7 @@ Partial Class ClientDetails
         Me.Label26.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label26.Location = New System.Drawing.Point(5, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(124, 24)
+        Me.Label26.Size = New System.Drawing.Size(224, 24)
         Me.Label26.TabIndex = 2
         Me.Label26.Text = "Libellé"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -401,7 +409,7 @@ Partial Class ClientDetails
         Me.Panel45.BackColor = System.Drawing.Color.Transparent
         Me.Panel45.Controls.Add(Me.Label27)
         Me.Panel45.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel45.Location = New System.Drawing.Point(273, 5)
+        Me.Panel45.Location = New System.Drawing.Point(373, 5)
         Me.Panel45.Name = "Panel45"
         Me.Panel45.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel45.Size = New System.Drawing.Size(89, 24)
@@ -425,7 +433,7 @@ Partial Class ClientDetails
         Me.Panel46.BackColor = System.Drawing.Color.Transparent
         Me.Panel46.Controls.Add(Me.Label28)
         Me.Panel46.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel46.Location = New System.Drawing.Point(362, 5)
+        Me.Panel46.Location = New System.Drawing.Point(462, 5)
         Me.Panel46.Name = "Panel46"
         Me.Panel46.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel46.Size = New System.Drawing.Size(90, 24)
@@ -449,7 +457,7 @@ Partial Class ClientDetails
         Me.Panel47.BackColor = System.Drawing.Color.Transparent
         Me.Panel47.Controls.Add(Me.Label29)
         Me.Panel47.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel47.Location = New System.Drawing.Point(452, 5)
+        Me.Panel47.Location = New System.Drawing.Point(552, 5)
         Me.Panel47.Name = "Panel47"
         Me.Panel47.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel47.Size = New System.Drawing.Size(84, 24)
@@ -472,7 +480,7 @@ Partial Class ClientDetails
         Me.Panel48.BackColor = System.Drawing.Color.Transparent
         Me.Panel48.Controls.Add(Me.Label30)
         Me.Panel48.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel48.Location = New System.Drawing.Point(536, 5)
+        Me.Panel48.Location = New System.Drawing.Point(636, 5)
         Me.Panel48.Name = "Panel48"
         Me.Panel48.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel48.Size = New System.Drawing.Size(109, 24)
@@ -522,7 +530,7 @@ Partial Class ClientDetails
         Me.Panel50.Location = New System.Drawing.Point(0, 590)
         Me.Panel50.Name = "Panel50"
         Me.Panel50.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel50.Size = New System.Drawing.Size(777, 54)
+        Me.Panel50.Size = New System.Drawing.Size(877, 54)
         Me.Panel50.TabIndex = 19
         '
         'Panel51
@@ -534,14 +542,12 @@ Partial Class ClientDetails
         Me.Panel51.Controls.Add(Me.lbBlImp)
         Me.Panel51.Controls.Add(Me.Label35)
         Me.Panel51.Controls.Add(Me.Label36)
-        Me.Panel51.Controls.Add(Me.Label37)
-        Me.Panel51.Controls.Add(Me.Label38)
         Me.Panel51.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel51.ForeColor = System.Drawing.Color.Brown
         Me.Panel51.Location = New System.Drawing.Point(10, 10)
         Me.Panel51.Name = "Panel51"
         Me.Panel51.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel51.Size = New System.Drawing.Size(757, 34)
+        Me.Panel51.Size = New System.Drawing.Size(857, 34)
         Me.Panel51.TabIndex = 1
         '
         'Label32
@@ -560,9 +566,9 @@ Partial Class ClientDetails
         Me.lbBlRest.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbBlRest.Location = New System.Drawing.Point(640, 9)
         Me.lbBlRest.Name = "lbBlRest"
-        Me.lbBlRest.Size = New System.Drawing.Size(36, 16)
+        Me.lbBlRest.Size = New System.Drawing.Size(39, 16)
         Me.lbBlRest.TabIndex = 5
-        Me.lbBlRest.Text = "0000"
+        Me.lbBlRest.Text = "00.00"
         '
         'lbBlImp
         '
@@ -570,9 +576,9 @@ Partial Class ClientDetails
         Me.lbBlImp.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbBlImp.Location = New System.Drawing.Point(395, 9)
         Me.lbBlImp.Name = "lbBlImp"
-        Me.lbBlImp.Size = New System.Drawing.Size(50, 16)
+        Me.lbBlImp.Size = New System.Drawing.Size(22, 16)
         Me.lbBlImp.TabIndex = 5
-        Me.lbBlImp.Text = "000000"
+        Me.lbBlImp.Text = "00"
         '
         'Label35
         '
@@ -588,40 +594,21 @@ Partial Class ClientDetails
         '
         Me.Label36.AutoSize = True
         Me.Label36.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(299, 9)
+        Me.Label36.Location = New System.Drawing.Point(283, 9)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(80, 16)
+        Me.Label36.Size = New System.Drawing.Size(93, 16)
         Me.Label36.TabIndex = 5
-        Me.Label36.Text = "BL Impayée "
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(207, 9)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(36, 16)
-        Me.Label37.TabIndex = 5
-        Me.Label37.Text = "0000"
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.Location = New System.Drawing.Point(74, 9)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(127, 16)
-        Me.Label38.TabIndex = 5
-        Me.Label38.Text = "Nbr Bon de  livraison"
+        Me.Label36.Text = "Bon  Impayée "
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(655, 1102)
+        Me.Button3.Location = New System.Drawing.Point(654, 878)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 357)
+        Me.Button3.Size = New System.Drawing.Size(75, 91)
         Me.Button3.TabIndex = 17
         Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.Visible = False
         '
         'Panel12
         '
@@ -631,7 +618,7 @@ Partial Class ClientDetails
         Me.Panel12.Location = New System.Drawing.Point(0, 362)
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel12.Size = New System.Drawing.Size(777, 228)
+        Me.Panel12.Size = New System.Drawing.Size(877, 228)
         Me.Panel12.TabIndex = 14
         '
         'Panel13
@@ -646,8 +633,37 @@ Partial Class ClientDetails
         Me.Panel13.Location = New System.Drawing.Point(10, 10)
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel13.Size = New System.Drawing.Size(757, 208)
+        Me.Panel13.Size = New System.Drawing.Size(857, 208)
         Me.Panel13.TabIndex = 1
+        '
+        'plBodyFct
+        '
+        Me.plBodyFct.BackColor = System.Drawing.Color.Transparent
+        Me.plBodyFct.Controls.Add(Me.Panel32)
+        Me.plBodyFct.Controls.Add(Me.Panel33)
+        Me.plBodyFct.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.plBodyFct.Location = New System.Drawing.Point(5, 39)
+        Me.plBodyFct.Name = "plBodyFct"
+        Me.plBodyFct.Size = New System.Drawing.Size(845, 128)
+        Me.plBodyFct.TabIndex = 19
+        '
+        'Panel32
+        '
+        Me.Panel32.BackColor = System.Drawing.Color.LightGray
+        Me.Panel32.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel32.Location = New System.Drawing.Point(844, 0)
+        Me.Panel32.Name = "Panel32"
+        Me.Panel32.Size = New System.Drawing.Size(1, 126)
+        Me.Panel32.TabIndex = 2
+        '
+        'Panel33
+        '
+        Me.Panel33.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel33.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel33.Location = New System.Drawing.Point(0, 126)
+        Me.Panel33.Name = "Panel33"
+        Me.Panel33.Size = New System.Drawing.Size(845, 2)
+        Me.Panel33.TabIndex = 2
         '
         'Panel24
         '
@@ -663,7 +679,7 @@ Partial Class ClientDetails
         Me.Panel24.Location = New System.Drawing.Point(5, 167)
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
-        Me.Panel24.Size = New System.Drawing.Size(745, 34)
+        Me.Panel24.Size = New System.Drawing.Size(845, 34)
         Me.Panel24.TabIndex = 18
         '
         'Panel25
@@ -673,7 +689,7 @@ Partial Class ClientDetails
         Me.Panel25.Location = New System.Drawing.Point(25, 5)
         Me.Panel25.Name = "Panel25"
         Me.Panel25.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel25.Size = New System.Drawing.Size(248, 24)
+        Me.Panel25.Size = New System.Drawing.Size(348, 24)
         Me.Panel25.TabIndex = 17
         '
         'Panel26
@@ -681,7 +697,7 @@ Partial Class ClientDetails
         Me.Panel26.BackColor = System.Drawing.Color.Transparent
         Me.Panel26.Controls.Add(Me.lbFTtc)
         Me.Panel26.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel26.Location = New System.Drawing.Point(273, 5)
+        Me.Panel26.Location = New System.Drawing.Point(373, 5)
         Me.Panel26.Name = "Panel26"
         Me.Panel26.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel26.Size = New System.Drawing.Size(89, 24)
@@ -705,7 +721,7 @@ Partial Class ClientDetails
         Me.Panel27.BackColor = System.Drawing.Color.Transparent
         Me.Panel27.Controls.Add(Me.lbFAvc)
         Me.Panel27.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel27.Location = New System.Drawing.Point(362, 5)
+        Me.Panel27.Location = New System.Drawing.Point(462, 5)
         Me.Panel27.Name = "Panel27"
         Me.Panel27.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel27.Size = New System.Drawing.Size(90, 24)
@@ -729,7 +745,7 @@ Partial Class ClientDetails
         Me.Panel28.BackColor = System.Drawing.Color.Transparent
         Me.Panel28.Controls.Add(Me.lbFRs)
         Me.Panel28.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel28.Location = New System.Drawing.Point(452, 5)
+        Me.Panel28.Location = New System.Drawing.Point(552, 5)
         Me.Panel28.Name = "Panel28"
         Me.Panel28.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel28.Size = New System.Drawing.Size(84, 24)
@@ -751,7 +767,7 @@ Partial Class ClientDetails
         '
         Me.Panel29.BackColor = System.Drawing.Color.Transparent
         Me.Panel29.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel29.Location = New System.Drawing.Point(536, 5)
+        Me.Panel29.Location = New System.Drawing.Point(636, 5)
         Me.Panel29.Name = "Panel29"
         Me.Panel29.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel29.Size = New System.Drawing.Size(109, 24)
@@ -772,7 +788,7 @@ Partial Class ClientDetails
         Me.plListHeader.Location = New System.Drawing.Point(5, 5)
         Me.plListHeader.Name = "plListHeader"
         Me.plListHeader.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
-        Me.plListHeader.Size = New System.Drawing.Size(745, 34)
+        Me.plListHeader.Size = New System.Drawing.Size(845, 34)
         Me.plListHeader.TabIndex = 17
         '
         'Panel17
@@ -783,7 +799,7 @@ Partial Class ClientDetails
         Me.Panel17.Location = New System.Drawing.Point(139, 5)
         Me.Panel17.Name = "Panel17"
         Me.Panel17.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel17.Size = New System.Drawing.Size(134, 24)
+        Me.Panel17.Size = New System.Drawing.Size(234, 24)
         Me.Panel17.TabIndex = 17
         '
         'Label6
@@ -794,7 +810,7 @@ Partial Class ClientDetails
         Me.Label6.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label6.Location = New System.Drawing.Point(5, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(124, 24)
+        Me.Label6.Size = New System.Drawing.Size(224, 24)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Libellé"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -804,7 +820,7 @@ Partial Class ClientDetails
         Me.Panel18.BackColor = System.Drawing.Color.Transparent
         Me.Panel18.Controls.Add(Me.Label7)
         Me.Panel18.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel18.Location = New System.Drawing.Point(273, 5)
+        Me.Panel18.Location = New System.Drawing.Point(373, 5)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel18.Size = New System.Drawing.Size(89, 24)
@@ -828,7 +844,7 @@ Partial Class ClientDetails
         Me.Panel19.BackColor = System.Drawing.Color.Transparent
         Me.Panel19.Controls.Add(Me.Label8)
         Me.Panel19.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel19.Location = New System.Drawing.Point(362, 5)
+        Me.Panel19.Location = New System.Drawing.Point(462, 5)
         Me.Panel19.Name = "Panel19"
         Me.Panel19.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel19.Size = New System.Drawing.Size(90, 24)
@@ -852,7 +868,7 @@ Partial Class ClientDetails
         Me.Panel20.BackColor = System.Drawing.Color.Transparent
         Me.Panel20.Controls.Add(Me.Label2)
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(452, 5)
+        Me.Panel20.Location = New System.Drawing.Point(552, 5)
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel20.Size = New System.Drawing.Size(84, 24)
@@ -875,7 +891,7 @@ Partial Class ClientDetails
         Me.Panel21.BackColor = System.Drawing.Color.Transparent
         Me.Panel21.Controls.Add(Me.Label10)
         Me.Panel21.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel21.Location = New System.Drawing.Point(536, 5)
+        Me.Panel21.Location = New System.Drawing.Point(636, 5)
         Me.Panel21.Name = "Panel21"
         Me.Panel21.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel21.Size = New System.Drawing.Size(109, 24)
@@ -925,7 +941,7 @@ Partial Class ClientDetails
         Me.Panel10.Location = New System.Drawing.Point(0, 308)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel10.Size = New System.Drawing.Size(777, 54)
+        Me.Panel10.Size = New System.Drawing.Size(877, 54)
         Me.Panel10.TabIndex = 15
         '
         'Panel11
@@ -937,14 +953,12 @@ Partial Class ClientDetails
         Me.Panel11.Controls.Add(Me.lbFctIm)
         Me.Panel11.Controls.Add(Me.Label9)
         Me.Panel11.Controls.Add(Me.Label11)
-        Me.Panel11.Controls.Add(Me.lbNbrF)
-        Me.Panel11.Controls.Add(Me.Label4)
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel11.ForeColor = System.Drawing.Color.Brown
         Me.Panel11.Location = New System.Drawing.Point(10, 10)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel11.Size = New System.Drawing.Size(757, 34)
+        Me.Panel11.Size = New System.Drawing.Size(857, 34)
         Me.Panel11.TabIndex = 1
         '
         'Label3
@@ -963,9 +977,9 @@ Partial Class ClientDetails
         Me.lbFRest.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbFRest.Location = New System.Drawing.Point(640, 9)
         Me.lbFRest.Name = "lbFRest"
-        Me.lbFRest.Size = New System.Drawing.Size(36, 16)
+        Me.lbFRest.Size = New System.Drawing.Size(39, 16)
         Me.lbFRest.TabIndex = 5
-        Me.lbFRest.Text = "0000"
+        Me.lbFRest.Text = "00.00"
         '
         'lbFctIm
         '
@@ -973,9 +987,9 @@ Partial Class ClientDetails
         Me.lbFctIm.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbFctIm.Location = New System.Drawing.Point(378, 9)
         Me.lbFctIm.Name = "lbFctIm"
-        Me.lbFctIm.Size = New System.Drawing.Size(50, 16)
+        Me.lbFctIm.Size = New System.Drawing.Size(22, 16)
         Me.lbFctIm.TabIndex = 5
-        Me.lbFctIm.Text = "000000"
+        Me.lbFctIm.Text = "00"
         '
         'Label9
         '
@@ -997,26 +1011,6 @@ Partial Class ClientDetails
         Me.Label11.TabIndex = 5
         Me.Label11.Text = "Rest :"
         '
-        'lbNbrF
-        '
-        Me.lbNbrF.AutoSize = True
-        Me.lbNbrF.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNbrF.Location = New System.Drawing.Point(167, 9)
-        Me.lbNbrF.Name = "lbNbrF"
-        Me.lbNbrF.Size = New System.Drawing.Size(36, 16)
-        Me.lbNbrF.TabIndex = 5
-        Me.lbNbrF.Text = "0000"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(74, 9)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 16)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Nbr Factures :"
-        '
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.Panel6)
@@ -1024,7 +1018,7 @@ Partial Class ClientDetails
         Me.Panel4.Location = New System.Drawing.Point(0, 101)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel4.Size = New System.Drawing.Size(777, 207)
+        Me.Panel4.Size = New System.Drawing.Size(877, 207)
         Me.Panel4.TabIndex = 13
         '
         'Panel6
@@ -1035,7 +1029,7 @@ Partial Class ClientDetails
         Me.Panel6.Location = New System.Drawing.Point(5, 5)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel6.Size = New System.Drawing.Size(767, 197)
+        Me.Panel6.Size = New System.Drawing.Size(867, 197)
         Me.Panel6.TabIndex = 0
         '
         'Panel14
@@ -1048,7 +1042,7 @@ Partial Class ClientDetails
         Me.Panel14.Controls.Add(Me.Panel16)
         Me.Panel14.Location = New System.Drawing.Point(387, 34)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(367, 134)
+        Me.Panel14.Size = New System.Drawing.Size(467, 134)
         Me.Panel14.TabIndex = 2
         '
         'lbInfo2
@@ -1059,7 +1053,7 @@ Partial Class ClientDetails
         Me.lbInfo2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbInfo2.Location = New System.Drawing.Point(14, 15)
         Me.lbInfo2.Name = "lbInfo2"
-        Me.lbInfo2.Size = New System.Drawing.Size(346, 111)
+        Me.lbInfo2.Size = New System.Drawing.Size(446, 111)
         Me.lbInfo2.TabIndex = 2
         Me.lbInfo2.Text = "Fature à :"
         '
@@ -1067,7 +1061,7 @@ Partial Class ClientDetails
         '
         Me.Panel15.BackColor = System.Drawing.Color.LightGray
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel15.Location = New System.Drawing.Point(366, 0)
+        Me.Panel15.Location = New System.Drawing.Point(466, 0)
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(1, 132)
         Me.Panel15.TabIndex = 2
@@ -1078,7 +1072,7 @@ Partial Class ClientDetails
         Me.Panel16.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel16.Location = New System.Drawing.Point(0, 132)
         Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(367, 2)
+        Me.Panel16.Size = New System.Drawing.Size(467, 2)
         Me.Panel16.TabIndex = 2
         '
         'Panel7
@@ -1092,7 +1086,7 @@ Partial Class ClientDetails
         Me.Panel7.Controls.Add(Me.Panel9)
         Me.Panel7.Location = New System.Drawing.Point(23, 34)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(280, 134)
+        Me.Panel7.Size = New System.Drawing.Size(380, 134)
         Me.Panel7.TabIndex = 2
         '
         'lbInfo
@@ -1103,7 +1097,7 @@ Partial Class ClientDetails
         Me.lbInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbInfo.Location = New System.Drawing.Point(14, 44)
         Me.lbInfo.Name = "lbInfo"
-        Me.lbInfo.Size = New System.Drawing.Size(259, 82)
+        Me.lbInfo.Size = New System.Drawing.Size(359, 82)
         Me.lbInfo.TabIndex = 2
         Me.lbInfo.Text = "Fature à :"
         '
@@ -1121,7 +1115,7 @@ Partial Class ClientDetails
         '
         Me.Panel8.BackColor = System.Drawing.Color.LightGray
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(279, 0)
+        Me.Panel8.Location = New System.Drawing.Point(379, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(1, 132)
         Me.Panel8.TabIndex = 2
@@ -1132,16 +1126,22 @@ Partial Class ClientDetails
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel9.Location = New System.Drawing.Point(0, 132)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(280, 2)
+        Me.Panel9.Size = New System.Drawing.Size(380, 2)
         Me.Panel9.TabIndex = 2
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.Panel30)
+        Me.Panel2.Controls.Add(Me.PictureBox4)
         Me.Panel2.Controls.Add(Me.plRemise)
+        Me.Panel2.Controls.Add(Me.PictureBox3)
         Me.Panel2.Controls.Add(Me.PictureBox2)
+        Me.Panel2.Controls.Add(Me.Label15)
         Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Controls.Add(Me.Label14)
         Me.Panel2.Controls.Add(Me.Label12)
+        Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.lbRef)
         Me.Panel2.Controls.Add(Me.Label22)
         Me.Panel2.Controls.Add(Me.Panel23)
@@ -1149,7 +1149,7 @@ Partial Class ClientDetails
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 5, 20, 5)
-        Me.Panel2.Size = New System.Drawing.Size(777, 101)
+        Me.Panel2.Size = New System.Drawing.Size(877, 101)
         Me.Panel2.TabIndex = 11
         '
         'plRemise
@@ -1158,7 +1158,7 @@ Partial Class ClientDetails
         Me.plRemise.Controls.Add(Me.txtRemise)
         Me.plRemise.Controls.Add(Me.Label1)
         Me.plRemise.Controls.Add(Me.Label13)
-        Me.plRemise.Location = New System.Drawing.Point(68, 61)
+        Me.plRemise.Location = New System.Drawing.Point(68, 67)
         Me.plRemise.Name = "plRemise"
         Me.plRemise.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.plRemise.Size = New System.Drawing.Size(146, 26)
@@ -1184,32 +1184,52 @@ Partial Class ClientDetails
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Remise"
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Location = New System.Drawing.Point(830, 33)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(24, 23)
+        Me.PictureBox2.TabIndex = 8
+        Me.PictureBox2.TabStop = False
+        '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(17, 20)
+        Me.PictureBox1.Location = New System.Drawing.Point(17, 26)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(44, 30)
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(776, 36)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(49, 17)
+        Me.Label12.TabIndex = 2
+        Me.Label12.Text = "Fermer"
         '
         'lbRef
         '
         Me.lbRef.AutoSize = True
         Me.lbRef.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbRef.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lbRef.Location = New System.Drawing.Point(116, 27)
+        Me.lbRef.Location = New System.Drawing.Point(116, 33)
         Me.lbRef.Name = "lbRef"
         Me.lbRef.Size = New System.Drawing.Size(18, 18)
-        Me.lbRef.TabIndex = 5
+        Me.lbRef.TabIndex = 1
         Me.lbRef.Text = "[]"
         '
         'Label22
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(62, 29)
+        Me.Label22.Location = New System.Drawing.Point(62, 35)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(51, 18)
         Me.Label22.TabIndex = 5
@@ -1221,37 +1241,8 @@ Partial Class ClientDetails
         Me.Panel23.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel23.Location = New System.Drawing.Point(5, 5)
         Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(752, 2)
+        Me.Panel23.Size = New System.Drawing.Size(852, 2)
         Me.Panel23.TabIndex = 2
-        '
-        'Panel33
-        '
-        Me.Panel33.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel33.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel33.Location = New System.Drawing.Point(0, 126)
-        Me.Panel33.Name = "Panel33"
-        Me.Panel33.Size = New System.Drawing.Size(745, 2)
-        Me.Panel33.TabIndex = 2
-        '
-        'Panel32
-        '
-        Me.Panel32.BackColor = System.Drawing.Color.LightGray
-        Me.Panel32.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel32.Location = New System.Drawing.Point(744, 0)
-        Me.Panel32.Name = "Panel32"
-        Me.Panel32.Size = New System.Drawing.Size(1, 126)
-        Me.Panel32.TabIndex = 2
-        '
-        'plBodyFct
-        '
-        Me.plBodyFct.BackColor = System.Drawing.Color.Transparent
-        Me.plBodyFct.Controls.Add(Me.Panel32)
-        Me.plBodyFct.Controls.Add(Me.Panel33)
-        Me.plBodyFct.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plBodyFct.Location = New System.Drawing.Point(5, 39)
-        Me.plBodyFct.Name = "plBodyFct"
-        Me.plBodyFct.Size = New System.Drawing.Size(745, 128)
-        Me.plBodyFct.TabIndex = 19
         '
         'txtRemise
         '
@@ -1266,39 +1257,122 @@ Partial Class ClientDetails
         Me.txtRemise.ShowSaveIcon = False
         Me.txtRemise.Size = New System.Drawing.Size(83, 26)
         Me.txtRemise.StartUp = 2
-        Me.txtRemise.TabIndex = 3
+        Me.txtRemise.TabIndex = 33
         Me.txtRemise.TextSize = 8
         Me.txtRemise.TxtBackColor = True
         Me.txtRemise.TxtColor = System.Drawing.Color.White
         Me.txtRemise.txtReadOnly = True
         Me.txtRemise.TxtSelect = New Integer() {1, 0}
         '
-        'Label12
+        'Label4
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(674, 27)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(49, 17)
-        Me.Label12.TabIndex = 2
-        Me.Label12.Text = "Fermer"
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(62, 35)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(51, 18)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Client"
         '
-        'PictureBox2
+        'Label14
         '
-        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(728, 24)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(24, 23)
-        Me.PictureBox2.TabIndex = 8
-        Me.PictureBox2.TabStop = False
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Label14.Location = New System.Drawing.Point(116, 33)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(18, 18)
+        Me.Label14.TabIndex = 1
+        Me.Label14.Text = "[]"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(776, 36)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(49, 17)
+        Me.Label15.TabIndex = 2
+        Me.Label15.Text = "Fermer"
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox3.Location = New System.Drawing.Point(17, 26)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(44, 30)
+        Me.PictureBox3.TabIndex = 8
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox4.Location = New System.Drawing.Point(830, 33)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(24, 23)
+        Me.PictureBox4.TabIndex = 8
+        Me.PictureBox4.TabStop = False
+        '
+        'Panel30
+        '
+        Me.Panel30.BackColor = System.Drawing.Color.Transparent
+        Me.Panel30.Controls.Add(Me.TxtBox1)
+        Me.Panel30.Controls.Add(Me.Label16)
+        Me.Panel30.Controls.Add(Me.Label17)
+        Me.Panel30.Location = New System.Drawing.Point(68, 67)
+        Me.Panel30.Name = "Panel30"
+        Me.Panel30.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
+        Me.Panel30.Size = New System.Drawing.Size(146, 26)
+        Me.Panel30.TabIndex = 10
+        '
+        'TxtBox1
+        '
+        Me.TxtBox1.BackColor = System.Drawing.Color.Transparent
+        Me.TxtBox1.BorderColor = System.Drawing.SystemColors.ButtonFace
+        Me.TxtBox1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.TxtBox1.IsNumiric = False
+        Me.TxtBox1.Location = New System.Drawing.Point(55, 0)
+        Me.TxtBox1.Name = "TxtBox1"
+        Me.TxtBox1.PlaceHolder = ""
+        Me.TxtBox1.ShowClearIcon = False
+        Me.TxtBox1.ShowSaveIcon = False
+        Me.TxtBox1.Size = New System.Drawing.Size(83, 26)
+        Me.TxtBox1.StartUp = 2
+        Me.TxtBox1.TabIndex = 33
+        Me.TxtBox1.TextSize = 8
+        Me.TxtBox1.TxtBackColor = True
+        Me.TxtBox1.TxtColor = System.Drawing.Color.White
+        Me.TxtBox1.txtReadOnly = True
+        Me.TxtBox1.TxtSelect = New Integer() {1, 0}
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(21, 62)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(63, 17)
+        Me.Label16.TabIndex = 2
+        Me.Label16.Text = "Fature à :"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(4, 7)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(50, 17)
+        Me.Label17.TabIndex = 2
+        Me.Label17.Text = "Remise"
         '
         'ClientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.ClientSize = New System.Drawing.Size(840, 558)
+        Me.ClientSize = New System.Drawing.Size(940, 558)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "ClientDetails"
@@ -1325,6 +1399,7 @@ Partial Class ClientDetails
         Me.Panel51.PerformLayout()
         Me.Panel12.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
+        Me.plBodyFct.ResumeLayout(False)
         Me.Panel24.ResumeLayout(False)
         Me.Panel26.ResumeLayout(False)
         Me.Panel27.ResumeLayout(False)
@@ -1348,9 +1423,12 @@ Partial Class ClientDetails
         Me.Panel2.PerformLayout()
         Me.plRemise.ResumeLayout(False)
         Me.plRemise.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.plBodyFct.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel30.ResumeLayout(False)
+        Me.Panel30.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1359,7 +1437,6 @@ Partial Class ClientDetails
     Friend WithEvents Panel13 As System.Windows.Forms.Panel
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
@@ -1369,7 +1446,6 @@ Partial Class ClientDetails
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lbFctIm As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents lbNbrF As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents plBodyBl As System.Windows.Forms.Panel
@@ -1405,8 +1481,6 @@ Partial Class ClientDetails
     Friend WithEvents lbBlImp As System.Windows.Forms.Label
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
-    Friend WithEvents Label37 As System.Windows.Forms.Label
-    Friend WithEvents Label38 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
     Friend WithEvents Panel25 As System.Windows.Forms.Panel
@@ -1451,4 +1525,13 @@ Partial Class ClientDetails
     Friend WithEvents Panel33 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Panel30 As System.Windows.Forms.Panel
+    Friend WithEvents TxtBox1 As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

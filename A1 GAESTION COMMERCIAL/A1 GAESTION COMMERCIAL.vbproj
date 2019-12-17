@@ -301,6 +301,12 @@
     <Compile Include="GUI\TrialVersion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\VehiculeDetails.Designer.vb">
+      <DependentUpon>VehiculeDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VehiculeDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Models\Article.vb" />
     <Compile Include="Models\Client.vb" />
     <Compile Include="Models\Facture.vb" />
@@ -430,6 +436,9 @@
     <EmbeddedResource Include="GUI\TrialVersion.resx">
       <DependentUpon>TrialVersion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VehiculeDetails.resx">
+      <DependentUpon>VehiculeDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -475,6 +484,7 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Cash_register_22.png" />
     <None Include="Resources\trial 22.png" />
     <None Include="Resources\bgLightForm.jpg" />
     <None Include="Resources\bgForm.jpg" />

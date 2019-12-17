@@ -21,7 +21,53 @@
         MySource.AddRange(lst.ToArray)
         Return MySource
     End Function
+    Public Function AutoCompleteByNameUpper(ByVal tb As String) As AutoCompleteStringCollection
+        ' auto complitae
+        'Item is filled either manually or from database
+        Dim lst As New List(Of String)
 
+        'AutoComplete collection that will help to filter keep the records.
+        Dim MySource As New AutoCompleteStringCollection()
+
+        ' added some items
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Dim dt As DataTable = a.SelectDataTable(tb, {"*"})
+            If dt.Rows.Count > 0 Then
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    lst.Add(dt.Rows(i).Item("name").ToString.ToUpper & "|" & dt.Rows(i).Item(0).ToString)
+                Next
+            End If
+        End Using
+
+        'Records binded to the AutocompleteStringCollection.
+        MySource.AddRange(lst.ToArray)
+        Return MySource
+    End Function
+    Public Function AutoCompleteByDomain(ByVal cid As String) As AutoCompleteStringCollection
+        ' auto complitae
+        'Item is filled either manually or from database
+        Dim lst As New List(Of String)
+
+        'AutoComplete collection that will help to filter keep the records.
+        Dim MySource As New AutoCompleteStringCollection()
+
+        ' added some items
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("cid", cid)
+            Dim dt As DataTable = a.SelectDataTable("Domain", {"*"}, params)
+
+            If dt.Rows.Count > 0 Then
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    lst.Add(dt.Rows(i).Item("name").ToString & "|" & dt.Rows(i).Item(0).ToString)
+                Next
+            End If
+        End Using
+
+        'Records binded to the AutocompleteStringCollection.
+        MySource.AddRange(lst.ToArray)
+        Return MySource
+    End Function
     Public Function AutoCompleteByMission(ByVal tb As String) As AutoCompleteStringCollection
         ' auto complitae
         'Item is filled either manually or from database

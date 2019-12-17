@@ -6,6 +6,7 @@
     Dim _index As Integer
 
     Public Event selected()
+    Public SizeAuto As Boolean = False
 
     Event EditSelectedItem(ByRef clientRow As ClientRow)
     Event DeleteItem(ByRef clientRow As ClientRow)
@@ -114,7 +115,7 @@
         plT.Width = Form1.cellWidth
         plRef.Width = Form1.cellWidth / 2
     End Sub
-    Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbVille.Click,  lbType.Click, lbResponsable.Click, lbref.Click, lbName.Click, lbTel.Click
+    Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbVille.Click, lbType.Click, lbResponsable.Click, lbref.Click, lbName.Click, lbTel.Click
         isSelected = Not isSelected
         RaiseEvent selected()
     End Sub
@@ -126,9 +127,21 @@
         If MsgBox(MsgDelete & vbNewLine & lbName.Text & " : " & Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
             RaiseEvent DeleteItem(Me)
         End If
-
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetFactureInfos(Id)
+    End Sub
+
+    Private Sub ClientRow_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+        If SizeAuto = False Then Exit Sub
+
+        Dim w As Integer = Me.Width
+        Dim a As Integer = CInt((w - 22) / 8)
+
+        plP.Width = a
+        plQ.Width = a
+        plR.Width = a
+        plT.Width = a
+        plRef.Width = a / 2
     End Sub
 End Class

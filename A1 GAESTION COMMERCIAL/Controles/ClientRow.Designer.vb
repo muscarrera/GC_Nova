@@ -33,10 +33,10 @@ Partial Class ClientRow
         Me.lbResponsable = New System.Windows.Forms.Label()
         Me.plR = New System.Windows.Forms.Panel()
         Me.lbTel = New System.Windows.Forms.Label()
+        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.plT = New System.Windows.Forms.Panel()
         Me.lbVille = New System.Windows.Forms.Label()
         Me.plSet = New System.Windows.Forms.Panel()
-        Me.PlLeft = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
@@ -170,6 +170,16 @@ Partial Class ClientRow
         Me.lbTel.Text = "-"
         Me.lbTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'PlLeft
+        '
+        Me.PlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
+        Me.PlLeft.Name = "PlLeft"
+        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
+        Me.PlLeft.Size = New System.Drawing.Size(18, 27)
+        Me.PlLeft.TabIndex = 9
+        '
         'plT
         '
         Me.plT.Controls.Add(Me.lbVille)
@@ -201,16 +211,6 @@ Partial Class ClientRow
         Me.plSet.Size = New System.Drawing.Size(130, 27)
         Me.plSet.TabIndex = 10
         Me.plSet.Visible = False
-        '
-        'PlLeft
-        '
-        Me.PlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PlLeft.Location = New System.Drawing.Point(3, 3)
-        Me.PlLeft.Name = "PlLeft"
-        Me.PlLeft.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.PlLeft.Size = New System.Drawing.Size(18, 27)
-        Me.PlLeft.TabIndex = 9
         '
         'Button1
         '

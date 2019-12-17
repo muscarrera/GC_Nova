@@ -43,23 +43,23 @@
             plBodyFct.Height = 111
         End If
 
-        Dim T As Double = 0
-        Dim R As Double = 0
-        Dim Avc As Double = 0
-        Try
-            For Each C As ListLine In plBodyFct.Controls
-                T += C.Total
-                R += C.remise
-                Avc += C.Avance
-            Next
-        Catch ex As Exception
+        'Dim T As Double = 0
+        'Dim R As Double = 0
+        'Dim Avc As Double = 0
+        'Try
+        '    For Each C As ListLine In plBodyFct.Controls
+        '        T += C.Total
+        '        R += C.remise
+        '        Avc += C.Avance
+        '    Next
+        'Catch ex As Exception
 
-        End Try
+        'End Try
 
 
-        lbFTtc.Text = T
-        lbFRs.Text = R
-        lbFAvc.Text = Avc
+        'lbFTtc.Text = T
+        'lbFRs.Text = R
+        'lbFAvc.Text = Avc
 
     End Sub
     Private Sub plBodyBl_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plBodyBl.ControlAdded, plBodyBl.ControlRemoved
@@ -69,22 +69,22 @@
             plBodyBl.Height = 111
         End If
 
-        Dim T As Double = 0
-        Dim R As Double = 0
-        Dim Avc As Double = 0
-        Try
-            For Each C As ListLine In plBodyBl.Controls
-                T += C.Total
-                R += C.remise
-                Avc += C.Avance
-            Next
-        Catch ex As Exception
+        'Dim T As Double = 0
+        'Dim R As Double = 0
+        'Dim Avc As Double = 0
+        'Try
+        '    For Each C As ListLine In plBodyBl.Controls
+        '        T += C.Total
+        '        R += C.remise
+        '        Avc += C.Avance
+        '    Next
+        'Catch ex As Exception
 
-        End Try
+        'End Try
 
-        lbBTtc.Text = T
-        lbBRs.Text = R
-        lbBAvc.Text = Avc
+        'lbBTtc.Text = T
+        'lbBRs.Text = R
+        'lbBAvc.Text = Avc
     End Sub
 
     Private Sub getClientDetails(ByVal value As Integer)
@@ -128,13 +128,17 @@
                 params.Add("cid = ", clid)
                 params.Add("isPayed =", False)
                 params.Add("isAdmin <>", "Facturé")
-                Dim dt = c.SelectDataTableSymbols(tb_F, {"*"}, params)
+                Dim dt = c.SelectDataTableSymbols(tb_B, {"*"}, params)
 
+                Dim avc As Double = 0
+                Dim ttc As Double = 0
+                Dim rs As Double = 0
 
                 Dim t As Double = 0
                 If dtF.Rows.Count > 0 Then
                     For i As Integer = 0 To dtF.Rows.Count - 1
                         Dim a As New ListLine
+                        a.sizeAuto = True
                         a.Id = dtF.Rows(i).Item(0)
                         a.Libele = StrValue(dtF, "name", i)
                         a.Total = DblValue(dtF, "total", i)
@@ -143,8 +147,11 @@
 
                         t += a.Total - a.Avance
 
+                        avc += a.Avance
+                        ttc += a.Total
+                        rs += a.remise
 
-                        a.Index = i
+                        a.Index = i + 1
                         a.Dock = DockStyle.Top
                         a.BringToFront()
 
@@ -154,13 +161,20 @@
                     Next
                 End If
                 lbFctIm.Text = dtF.Rows.Count
-                lbFRest.Text = t
+                lbFRest.Text = String.Format("{0:n}", t)
 
+                lbFTtc.Text = String.Format("{0:n}", ttc)
+                lbFAvc.Text = String.Format("{0:n}", avc)
+                lbFRs.Text = String.Format("{0:n}", rs)
 
                 t = 0
+                avc = 0
+                ttc = 0
+                rs = 0
                 If dt.Rows.Count > 0 Then
                     For i As Integer = 0 To dt.Rows.Count - 1
                         Dim a As New ListLine
+                        a.sizeAuto = True
                         a.Id = dt.Rows(i).Item(0)
                         a.Libele = StrValue(dt, "name", i)
                         a.Total = DblValue(dt, "total", i)
@@ -169,18 +183,62 @@
 
                         t += a.Total - a.Avance
 
-                        a.Index = i
+                        avc += a.Avance
+                        ttc += a.Total
+                        rs += a.remise
+
+                        a.Index = i + 1
                         a.Dock = DockStyle.Top
                         a.BringToFront()
 
                         AddHandler a.EditSelectedFacture, AddressOf Edit_SelectedFacture
                         AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos
-                        plBodyFct.Controls.Add(a)
+                        plBodyBl.Controls.Add(a)
                     Next
 
-                    lbBlImp.Text = dtF.Rows.Count
-                    lbBlRest.Text = t
+                  
+
                 End If
+
+                If tb_C = "Client" Then
+                    params.Clear()
+                    params.Add("cid", clid)
+                    params.Add("isPayed", False)
+                    params.Add("isFactured", False)
+                    Dim dt_T = c.SelectDataTable("Bon_Transport", {"*"}, params)
+
+                    If dt_T.Rows.Count > 0 Then
+                        For i As Integer = 0 To dt_T.Rows.Count - 1
+                            Dim a As New ListLine
+                            a.Id = dt.Rows(i).Item(0)
+                            a.Libele = StrValue(dt_T, "name", i)
+                            a.Total = DblValue(dt_T, "total", i)
+                            a.Avance = DblValue(dt_T, "avance", i)
+                            a.remise = DblValue(dt_T, "remise", i)
+
+                            t += a.Total - a.Avance
+
+                            avc += a.Avance
+                            ttc += a.Total
+                            rs += a.remise
+
+                            a.Index = i
+                            a.Dock = DockStyle.Top
+                            a.BringToFront()
+
+                            AddHandler a.EditSelectedFacture, AddressOf Edit_SelectedFacture
+                            AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos
+                            plBodyBl.Controls.Add(a)
+                        Next
+                        lbBlImp.Text = CInt(dt_T.Rows.Count)
+                    End If
+                End If
+
+                lbBlImp.Text += CInt(dt.Rows.Count)
+                lbBlRest.Text = t
+                lbBTtc.Text = String.Format("{0:n}", ttc)
+                lbBAvc.Text = String.Format("{0:n}", avc)
+                lbBRs.Text = String.Format("{0:n}", rs)
 
             End Using
         Catch ex As Exception
@@ -196,7 +254,7 @@
 
     End Sub
 
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click, Label12.Click
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click, Label12.Click, PictureBox4.Click, Label15.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 End Class

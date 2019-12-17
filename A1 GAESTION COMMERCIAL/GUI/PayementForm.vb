@@ -153,8 +153,11 @@
                         where.Add("id", Id)
                     End If
 
-                    params.Add("avance", avc)
+                    Dim isPayed As Boolean = False
+                    If Avance >= Total Then isPayed = True
 
+                    params.Add("avance", avc)
+                    params.Add("isPayed", isPayed)
                     If c.UpdateRecord(FactureTable, params, where) Then
                         avance = avc
 
@@ -202,7 +205,12 @@
                     avc += pm.Payement.montant
                     avc -= pm._PM_Edit.montant
 
+                    Dim isPayed As Boolean = False
+                    If avc >= Total Then isPayed = True
+
                     params.Add("avance", avc)
+                    params.Add("isPayed", isPayed)
+
                     If FactureTable = "Mission" Then
                         where.Add("Mid", Id)
                     Else
@@ -242,7 +250,13 @@
                     Else
                         where.Add("id", Id)
                     End If
+
+                    Dim isPayed As Boolean = False
+                    If avc >= Total Then isPayed = True
+
                     params.Add("avance", avc)
+                    params.Add("isPayed", isPayed)
+
 
                     If c.UpdateRecord(FactureTable, params, where) Then
                         Avance = avc

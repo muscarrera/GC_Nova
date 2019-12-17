@@ -1063,7 +1063,6 @@
                 where = Nothing
             End Using
         End If
-
     End Sub
     Private Sub GetClientDetails(ByVal ds As DataList)
         If IsNothing(ds.Entete.Client) Then Exit Sub

@@ -54,7 +54,7 @@ Partial Class SearchArchive
         Me.dte2.Location = New System.Drawing.Point(7, 7)
         Me.dte2.Name = "dte2"
         Me.dte2.Size = New System.Drawing.Size(247, 22)
-        Me.dte2.TabIndex = 17
+        Me.dte2.TabIndex = 3
         '
         'dte1
         '
@@ -64,7 +64,7 @@ Partial Class SearchArchive
         Me.dte1.Location = New System.Drawing.Point(7, 7)
         Me.dte1.Name = "dte1"
         Me.dte1.Size = New System.Drawing.Size(247, 22)
-        Me.dte1.TabIndex = 18
+        Me.dte1.TabIndex = 2
         '
         'Label28
         '
@@ -108,7 +108,7 @@ Partial Class SearchArchive
         Me.txtName.ShowSaveIcon = False
         Me.txtName.Size = New System.Drawing.Size(213, 38)
         Me.txtName.StartUp = 2
-        Me.txtName.TabIndex = 4
+        Me.txtName.TabIndex = 1
         Me.txtName.TextSize = 8
         Me.txtName.TxtBackColor = True
         Me.txtName.TxtColor = System.Drawing.Color.White
@@ -234,7 +234,7 @@ Partial Class SearchArchive
         Me.Button8.Name = "Button8"
         Me.Button8.Padding = New System.Windows.Forms.Padding(86, 0, 6, 0)
         Me.Button8.Size = New System.Drawing.Size(262, 40)
-        Me.Button8.TabIndex = 2
+        Me.Button8.TabIndex = 4
         Me.Button8.Text = "          Valider"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button8.UseVisualStyleBackColor = False

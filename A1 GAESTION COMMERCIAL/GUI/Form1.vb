@@ -40,10 +40,11 @@
     Public proformat_Id As Integer
     Public printWithDate As Boolean = True
     Public printWithPrice As Boolean = True
-    Public nbrPrOp_tr As Integer = 220
+    Public nbrPrOp_tr As Integer = 320
     Public ListToPrint As DataTable
     Public factureToPrint As Facture
-    Friend Shared cellWidth As Integer
+    Public cellWidth As Integer
+    Public tva As Double = 14
 
     'Props
     Public Property Exercice As String
@@ -181,8 +182,18 @@
         Dim ds As ParcList = plBody.Controls(0)
         Using a As DrawClass = New DrawClass
             If Facture_Title = "Bons de Transport" Then
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    a.dt_Driver = c.SelectDataTable("Driver", {"*"})
+                    a.dt_Vehicule = c.SelectDataTable("Vehicule", {"*"})
+                End Using
+
                 a.DrawListOfMission(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
             ElseIf Facture_Title = "Listes des Charges" Then
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    a.dt_Driver = c.SelectDataTable("Driver", {"*"})
+                    a.dt_Vehicule = c.SelectDataTable("Vehicule", {"*"})
+                End Using
+
                 a.DrawListOfCharges(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
             ElseIf Facture_Title = "Chauffeurs" Then
 

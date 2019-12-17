@@ -7,7 +7,7 @@
             If IsNumeric(txtvehicule.text) Then
                 v = CInt(txtvehicule.text)
             ElseIf txtvehicule.text.Contains("|") = True Then
-                If txtvehicule.AutoCompleteSource.Contains(txtvehicule.text) Then
+                If txtvehicule.AutoCompleteSource.Contains(txtvehicule.text.ToUpper) Then
                     v = txtvehicule.text.Trim.Split("|")(1)
                 Else
                     v = 0
@@ -28,7 +28,7 @@
             If IsNumeric(txtdriver.text) Then
                 v = CInt(txtdriver.text)
             ElseIf txtdriver.text.Contains("|") = True Then
-                If txtdriver.AutoCompleteSource.Contains(txtdriver.text) Then
+                If txtdriver.AutoCompleteSource.Contains(txtdriver.text.ToUpper) Then
                     v = txtdriver.text.Trim.Split("|")(1)
                 Else
                     v = 0
@@ -117,6 +117,7 @@
             params.Add("drid", Drid)
             params.Add("writer", Form1.adminName)
             params.Add("date", Now.Date)
+            'params.Add("ex", Form1.Exercice)
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
                 If id > 0 Then
@@ -145,11 +146,9 @@
         End If
     End Sub
     Private Sub AddEditCharge_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        txtdriver.AutoCompleteSource = AutoCompleteByName("Driver")
-        txtvehicule.AutoCompleteSource = AutoCompleteByName("Vehicule")
-        txtDKey.AutoCompleteSource = AutoCompleteByMission("Details_Charge")
-
-
+        txtdriver.AutoCompleteSource = AutoCompleteByNameUpper("Driver")
+        txtvehicule.AutoCompleteSource = AutoCompleteByNameUpper("Vehicule")
+        txtDKey.AutoCompleteSource = AutoCompleteByName("Details_Charge")
 
     End Sub
 End Class

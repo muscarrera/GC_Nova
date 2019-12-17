@@ -13,6 +13,7 @@
      Public isStocked As Boolean = True
 
     Public Event selected()
+    Public sizeAuto As Boolean = False
 
     Public Event EditSelectedItem(ByVal ls As ListLine)
     Public Event EditSelectedFacture(ByVal p1 As Integer)
@@ -146,5 +147,18 @@
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetFactureInfos(Id)
+    End Sub
+
+    Private Sub ListLine_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+        If SizeAuto = False Then Exit Sub
+
+        Dim w As Integer = Me.Width
+        Dim a As Integer = CInt((w - 22) / 8)
+
+        plP.Width = a
+        plQ.Width = a
+        plR.Width = a
+        plT.Width = a
+        plRef.Width = a / 2
     End Sub
 End Class

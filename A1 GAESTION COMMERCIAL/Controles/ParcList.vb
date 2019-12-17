@@ -6,6 +6,9 @@
     Dim _did As Integer
     Dim _isAdmin As Boolean
     Dim _avc As Double
+    Friend SearchWords As String
+    Dim _id_T As Integer
+    Dim _MissionBonTransport As Integer
 
 
     Event AddNewDriver(ByVal ds As ParcList, ByVal clientRow As ClientRow)
@@ -29,13 +32,13 @@
 
     Private startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Dim _mode As String
-    Dim _id As Integer
+    Dim _id_M As Integer
     Dim _dt As DataTable
     Dim _client As A1_GAESTION_COMMERCIAL.Client
 
     Public TableName As String = "Mission"
 
-    Event SaveChanges(ByRef parcList As ParcList)
+    Event SaveMissionChanges(ByRef parcList As ParcList)
     Event MissionFactured(ByRef parcList As ParcList)
     Event MissionSolde(ByRef parcList As ParcList)
     Event MissionDuplicate(ByRef parcList As ParcList)
@@ -46,16 +49,22 @@
     Event GetClientDetails(ByVal _cid As Integer)
     Event GetDeiverDetails(ByVal _drid As Integer)
     Event GetVehiculeDetails(ByVal _vid As Integer)
-
     Event AddNewChargeMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
-
-    Event AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
-
+    Event AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal q As Double, ByVal parcList As ParcList)
     Event PrintListOfParc(ByVal parcList As ParcList)
-
     Event addNewCharge(ByVal parcList As ParcList)
-
     Event EditNewCharge(ByVal parcList As ParcList)
+
+    Event ReleveClientByDate(ByVal ds As ParcList)
+
+    Event GetListOfDomain(ByVal ds As ParcList)
+
+    Event GetTransportById(ByVal value As Integer, ByRef ds As ParcList)
+
+    Event SaveTransportChanges(ByRef ds As ParcList)
+    Event addNewTransport(ByRef ds As ParcList)
+    Event TransportFactured(ByRef ds As ParcList)
+    Event DeleteTransport(ByVal i As Integer, ByRef ds As ParcList)
 
 
     Public Property AutoCompleteSourceDetails() As AutoCompleteStringCollection
@@ -75,7 +84,6 @@
         End Set
     End Property
 
-
     Public Property Mode() As String
         Get
             Return _mode
@@ -87,6 +95,8 @@
             If value.ToUpper = "LIST" Then
                 plDetails.Dock = DockStyle.Left
                 plDetails.Width = 1
+                plTransport.Dock = DockStyle.Left
+                plTransport.Width = 1
                 plList.Dock = DockStyle.Fill
                 plFooter.Height = 38
                 Panel3.Height = 165
@@ -96,28 +106,69 @@
                 txtSearchName.text = ""
                 RaiseEvent GetElements(Me)
 
+            ElseIf value.ToUpper = "TRANSPORT" Then
+                plList.Dock = DockStyle.Left
+                plList.Width = 0
+                plDetails.Dock = DockStyle.Left
+                plDetails.Width = 1
+
+
+                'plList.Visible = False
+                'plDetails.Visible = False
+                plTransport.Width = 666
+
+                plTransport.Dock = DockStyle.Fill
+                Panel3.Height = 60
+                plAddEdit.Visible = False
+
+                plFooter.Height = 0
             Else
                 plList.Dock = DockStyle.Left
                 plList.Width = 0
+                plTransport.Dock = DockStyle.Left
+                plTransport.Width = 1
                 plDetails.Width = 666
+                plDetails.Dock = DockStyle.Fill
                 plDetails.BringToFront()
                 Panel3.Height = 60
                 plAddEdit.Visible = False
-                plDetails.Dock = DockStyle.Fill
-                plFooter.Height = 0
 
+                plFooter.Height = 0
             End If
 
         End Set
     End Property
-    Public Property id As Integer
+
+    Public Property id_M As Integer
         Get
-            Return _id
+            Return _id_M
         End Get
         Set(ByVal value As Integer)
-            _id = value
-            lbId.Text = id
+            _id_M = value
+            lbId.Text = id_M
             If value > 0 Then RaiseEvent GetElementsById(value, Me)
+        End Set
+    End Property
+    Public Property id_T As Integer
+        Get
+            Return _id_T
+        End Get
+        Set(ByVal value As Integer)
+            _id_t = value
+            lbTransId.Text = value
+
+            If value > 0 Then RaiseEvent GetTransportById(value, Me)
+        End Set
+    End Property
+    Public Property MissionBonTransport As Integer
+        Get
+            Return _MissionBonTransport
+        End Get
+        Set(ByVal value As Integer)
+            _MissionBonTransport = value
+            lbMissionBon.Text = "--"
+            If value > 0 Then lbMissionBon.Text = "Bon de Transport : " & value
+
         End Set
     End Property
     Public Property cid As Integer
@@ -126,6 +177,7 @@
         End Get
         Set(ByVal value As Integer)
             _cid = value
+            If value > 0 Then RaiseEvent GetListOfDomain(Me)
         End Set
     End Property
     Public Property vid As Integer
@@ -159,16 +211,34 @@
                 str &= value.adresse
                 str &= vbNewLine
                 str &= "Tel: " & value.tel & " - " & "ICE : " & value.cid
+
                 lbInfo.Text = str
+                lbTransportClientInfos.Text = str
             End If
         End Set
     End Property
     Public Property ClientName() As String
         Get
-            Return lbName.Text
+            Dim n = lbTransportClienName.Text
+            If TableName = "Mission" Then n = lbName.Text
+
+            Return n
         End Get
         Set(ByVal value As String)
-            lbName.Text = value
+
+            If TableName = "Mission" Then
+                lbName.Text = value
+            Else
+                lbTransportClienName.Text = value
+            End If
+        End Set
+    End Property
+    Public Property Domain() As String
+        Get
+            Return txtDomainName.text
+        End Get
+        Set(ByVal value As String)
+            txtDomainName.text = value
         End Set
     End Property
     Public Property Bc As String
@@ -193,22 +263,22 @@
 
         End Set
     End Property
-    Public Property Avance As Double
-        Get
-            Return _avc
-        End Get
-        Set(ByVal value As Double)
-            _avc = value
-            lbAvc.Text = String.Format("{0:n}", value)
-        End Set
-    End Property
     Property [date] As Date
         Get
             Return _date
         End Get
         Set(ByVal value As Date)
             _date = value
-            lbDate.Text = "Date " & value.ToString("dd MMM yyyy")
+            lbDateMission.Text = "Date " & value.ToString("dd MMM yyyy")
+        End Set
+    End Property
+    Property date_Transport As Date
+        Get
+            Return _date
+        End Get
+        Set(ByVal value As Date)
+            _date = value
+            lbDateTrans.Text = "Date :" & value.ToString("dd MMM yyyy")
         End Set
     End Property
     Property depart As String
@@ -233,6 +303,18 @@
         End Get
         Set(ByVal value As Boolean)
             btFacturer.Enabled = Not value
+            btSolde.Enabled = Not value
+            If value Then lbAvc.Text = "Facturé"
+        End Set
+    End Property
+    Property isFactured_Transport As Boolean
+        Get
+            Return Not btFacture_Trans.Enabled
+        End Get
+        Set(ByVal value As Boolean)
+            btFacture_Trans.Enabled = Not value
+            btSolde_Trans.Enabled = Not value
+            'If value Then lbAvc.Text = "Facturé"
         End Set
     End Property
     Property pj As Integer
@@ -241,20 +323,32 @@
         End Get
         Set(ByVal value As Integer)
             lbpj.Text = value & " Fichies"
-            pbJoindre.Visible = True
+            pbJoindre_Mission.Visible = True
 
             If value = 0 Then
                 lbpj.Text = "Joindre des fichiers"
-                pbJoindre.Visible = False
+                pbJoindre_Mission.Visible = False
             End If
         End Set
     End Property
     Property writer As String
         Get
-            Return lbwriter.Text
+            If TableName = "Mission" Then
+                Return lbwriterMission.Text
+            Else
+                Return lbwriterTrans.Text
+            End If
+
         End Get
         Set(ByVal value As String)
-            lbwriter.Text = value
+
+            If TableName = "Mission" Then
+                lbwriterMission.Text = value
+            Else
+                lbwriterTrans.Text = value
+            End If
+
+
         End Set
     End Property
     Property km_D As Integer
@@ -289,7 +383,7 @@
             lbVehiculeName.Text = value
         End Set
     End Property
-    Property vehiculeInfo As String
+    Property vehiculeRef As String
         Get
             Return lbVehiculeInfo.Text
         End Get
@@ -315,6 +409,13 @@
     End Property
     Property DataSource As DataTable
         Get
+            If plList.Controls.Count = 0 Then
+                Return Nothing
+            Else
+                Dim c = plList.Controls(0)
+                If TypeOf c Is AddElement Then Return Nothing
+            End If
+
             Return _dt
         End Get
         Set(ByVal value As DataTable)
@@ -353,11 +454,12 @@
             ' Create four typed columns in the DataTable.
             table.Columns.Add("name", GetType(String))
             table.Columns.Add("value", GetType(Integer))
+            table.Columns.Add("qte", GetType(Integer))
 
             Dim a As AddElement
             For Each a In plDBody.Controls()
                 ' Add  rows with those columns filled in the DataTable.
-                table.Rows.Add(a.Key, a.Value)
+                table.Rows.Add(a.Key, a.price, a.qte)
             Next
             Return table
         End Get
@@ -378,14 +480,37 @@
             Return i
         End Get
     End Property
+    Public Property Avance As Double
+        Get
+            Return _avc
+        End Get
+        Set(ByVal value As Double)
+            _avc = value
+            lbAvc.Text = String.Format("{0:n}", value)
+            If isFactured Then lbAvc.Text = "Facturé"
+        End Set
+    End Property
+    Public Property Avance_Transport As Double
+        Get
+            Return TB.avance
+        End Get
+        Set(ByVal value As Double)
+            TB.avance = value
+        End Set
+    End Property
     Public ReadOnly Property Total As Double
         Get
             Dim t As Double = 0
 
             For Each a As AddElement In plDBody.Controls
-                t += a.Value
+                t += a.Total
             Next
             Return t
+        End Get
+    End Property
+    Public ReadOnly Property Total_Transport As Double
+        Get
+            Return TB.TotalHt
         End Get
     End Property
     Public ReadOnly Property TotalCharge As Double
@@ -393,13 +518,14 @@
             Dim t As Double = 0
 
             For Each a As AddElement In plCBody.Controls
-                t += a.Value
+                t += a.Total
             Next
             Return t
         End Get
     End Property
     Public ReadOnly Property isPayed As Boolean
         Get
+            If isFactured Then Return True
             Return Avance >= Total
         End Get
     End Property
@@ -413,21 +539,16 @@
 
     End Sub
 
-
-
-
-
     Public Sub Clear()
         plList.Controls.Clear()
         plDetails.Controls.Clear()
 
     End Sub
 
-
-
-
-
     Private Sub FillRows()
+
+        'If IsNothing(DataSource) Then Exit Sub
+
         plList.Controls.Clear()
 
         If _dt.Rows.Count > 0 Then
@@ -450,6 +571,16 @@
                     If BoolValue(_dt, "isPayed", i) Then a.lbTel.BackColor = Color.PaleGreen
                     If BoolValue(_dt, "isAdmin", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
+                ElseIf TableName = "Bon_Transport" Then
+                    a.Id = _dt.Rows(i).Item(0)
+                    a.Libele = _dt.Rows(i).Item("name")
+                    a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
+                    a.Responsable = StrValue(_dt, "depart", i)
+                    a.Tel = String.Format("{0:n}", DblValue(_dt, "total", i))
+                    a.Ville = String.Format("{0:n}", DblValue(_dt, "avance", i))
+
+                    If BoolValue(_dt, "isPayed", i) Then a.lbTel.BackColor = Color.PaleGreen
+                    If BoolValue(_dt, "isFactured", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 ElseIf TableName = "Details_Charge" Then
                     a.Id = _dt.Rows(i).Item(0)
@@ -511,27 +642,49 @@
         plList.Controls.Remove(ls)
     End Sub
 
-
     'bt Mission
     Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
+        If id_M > 0 Then RaiseEvent SaveMissionChanges(Me)
+        If id_T > 0 Then RaiseEvent SaveTransportChanges(Me)
         'plAddEdit.Height = 0
         HeaderColor(Button11.Text)
         TableName = Button11.Tag
         Mode = "List"
+        id_M = 0
+        id_T = 0
     End Sub
     'bt Driver & vehicule
     Private Sub btClient_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFournisseur.Click, btClient.Click
+        If id_M > 0 Then RaiseEvent SaveMissionChanges(Me)
+        If id_T > 0 Then RaiseEvent SaveTransportChanges(Me)
         plAddEdit.Height = 38
         Dim bt As Button = sender
         HeaderColor(bt.Text)
         TableName = bt.Tag
+
         Mode = "List"
-
+        id_T = 0
+        id_M = 0
     End Sub
-
-
-
-
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
+        If id_M > 0 Then RaiseEvent SaveMissionChanges(Me)
+        If id_T > 0 Then RaiseEvent SaveTransportChanges(Me)
+        HeaderColor(Button15.Text)
+        TableName = Button15.Tag
+        Mode = "List"
+        id_M = 0
+        id_T = 0
+    End Sub
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        If id_M > 0 Then RaiseEvent SaveMissionChanges(Me)
+        If id_T > 0 Then RaiseEvent SaveTransportChanges(Me)
+        'plAddEdit.Height = 0
+        HeaderColor(Button5.Text)
+        TableName = Button5.Tag
+        Mode = "List"
+        id_M = 0
+        id_T = 0
+    End Sub
 
     'Elements Row
     Private Sub EditSelectedClient(ByRef elm As ClientRow)
@@ -540,7 +693,9 @@
         ElseIf TableName = "Vehicule" Then
             RaiseEvent EditSelectedVehicule(Me, elm)
         ElseIf TableName = "Mission" Then
-            id = elm.Id
+            id_M = elm.Id
+        ElseIf TableName = "Bon_Transport" Then
+            id_T = elm.Id
             'RaiseEvent GetElementsById(, Me)
         End If
     End Sub
@@ -550,7 +705,6 @@
     Private Sub GetClientInfos(ByVal _id As Integer)
         RaiseEvent GetElementInfos(Me, _id)
     End Sub
-
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
         If TableName = "Driver" Then
             RaiseEvent AddNewDriver(Me, SelectedItem)
@@ -558,31 +712,31 @@
             RaiseEvent AddNewVehicule(Me, SelectedItem)
         ElseIf TableName = "Mission" Then
             RaiseEvent AddNewMission(Me)
+        ElseIf TableName = "Bon_Transport" Then
+            RaiseEvent addNewTransport(Me)
         ElseIf TableName = "Details_Charge" Then
             RaiseEvent addNewCharge(Me)
         End If
     End Sub
-
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEdit.Click
         If TableName = "Driver" Then
             RaiseEvent EditSelectedDriver(Me, SelectedItem)
         ElseIf TableName = "Vehicule" Then
             RaiseEvent EditSelectedVehicule(Me, SelectedItem)
         ElseIf TableName = "Mission" Then
-
-
+            id_M = SelectedItem.Id
+        ElseIf TableName = "Bon_Transport" Then
+            id_T = SelectedItem.Id
         ElseIf TableName = "Details_Charge" Then
             RaiseEvent EditNewCharge(Me)
         End If
     End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
         If MsgBox(MsgDelete & vbNewLine & TableName & " : " & SelectedItem.Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
             RaiseEvent DeleteSelectedElement(Me, SelectedItem)
         End If
 
     End Sub
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         If currentPage = numberOfPage Then Exit Sub
         currentPage += 1
@@ -591,7 +745,6 @@
 
         btPage.Text = currentPage & "/" & numberOfPage
     End Sub
-
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         If currentPage = 1 Then Exit Sub
         currentPage -= 1
@@ -602,34 +755,27 @@
 
         btPage.Text = currentPage & "/" & numberOfPage
     End Sub
-
     Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
         RaiseEvent GetElements(Me)
     End Sub
-
     Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbSearchDate.Click
         RaiseEvent SearchByDate(Me)
     End Sub
-
     Private Sub PictureBox6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox6.Click
         RaiseEvent AddFiles(Me)
     End Sub
-
     Private Sub Button7_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         RaiseEvent NewBcRef(Me)
     End Sub
-
     Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
         RaiseEvent ClientChanged(Me)
     End Sub
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
         RaiseEvent DriverChanged(Me)
     End Sub
-
     Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
         RaiseEvent VehiculeChanged(Me)
     End Sub
-
     Private Sub plDBody_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plDBody.ControlAdded, plDBody.ControlRemoved
         If plDBody.Controls.Count > 3 Then
             plD.Height = plDBody.Controls(0).Height * plDBody.Controls.Count + 150
@@ -676,85 +822,68 @@
             PictureBox4.BackgroundImage = My.Resources.SUB14
         End If
     End Sub
-
     Private Sub btSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSave.Click
-        RaiseEvent SaveChanges(Me)
+        RaiseEvent SaveMissionChanges(Me)
     End Sub
-
     Private Sub btFacturer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacturer.Click
         RaiseEvent MissionFactured(Me)
     End Sub
-
     Private Sub btSolde_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde.Click
-        RaiseEvent MissionSolde(Me)
+        'RaiseEvent MissionSolde(Me)
     End Sub
-
     Private Sub btDuplicate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDuplicate.Click
+        RaiseEvent SaveMissionChanges(Me)
         RaiseEvent MissionDuplicate(Me)
     End Sub
-
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If MsgBox(MsgDelete & vbNewLine & "Mission : " & id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
-            RaiseEvent DeleteMission(id, Me)
+        If MsgBox(MsgDelete & vbNewLine & "Mission : " & id_M, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+            RaiseEvent DeleteMission(id_M, Me)
         End If
     End Sub
-
     Private Sub btPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPdf.Click
         RaiseEvent SavePdf(Me)
     End Sub
-
     Private Sub btParamsImp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btParamsImp.Click
         RaiseEvent PramsPrint(Me)
     End Sub
-
     Private Sub btPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPrint.Click
         RaiseEvent PrintMission(Me)
     End Sub
-
     Private Sub LbNewFacture_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LbNewFacture.LinkClicked
+        If id_M > 0 Then RaiseEvent SaveMissionChanges(Me)
         RaiseEvent AddNewMission(Me)
     End Sub
-
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetClientDetails(cid)
     End Sub
-
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         RaiseEvent GetDeiverDetails(drid)
     End Sub
-
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
         RaiseEvent GetVehiculeDetails(vid)
     End Sub
-
-    Private Sub AddElement1_AddNewKeyVal(ByVal k As System.String, ByVal v As System.Double)
-        RaiseEvent AddNewDetailsMission(k, v, Me)
-    End Sub
-
-    Private Sub AddElement2_AddNewKeyVal(ByVal k As System.String, ByVal v As System.Double)
-        RaiseEvent AddNewChargeMission(k, v, Me)
-    End Sub
-
-   
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
-        If txtDKey.text = "" Or txtDValue.text = "" Then Exit Sub
+        If txtDKey.text = "" Or txtDPrix.text = "" Then Exit Sub
+        If txtDQte.text = "" Then txtDQte.text = 1
 
         Dim k As String = txtDKey.text
-        Dim v As Double = CDbl(txtDValue.text)
+        Dim v As Double = CDbl(txtDPrix.text)
+        Dim q As Double = CDbl(txtDQte.text)
 
-        RaiseEvent AddNewDetailsMission(k, v, Me)
+        RaiseEvent AddNewDetailsMission(k, v, q, Me)
     End Sub
+    Private Sub txtDValue_KeyDownOk() Handles txtDPrix.KeyDownOk
+        If txtDKey.text = "" Or txtDPrix.text = "" Then Exit Sub
 
-    Private Sub txtDValue_KeyDownOk() Handles txtDValue.KeyDownOk
-        If txtDKey.text = "" Or txtDValue.text = "" Then Exit Sub
+        If txtDQte.text.Trim = "" Then txtDQte.text = 1
 
         Dim k As String = txtDKey.text
-        Dim v As Double = CDbl(txtDValue.text)
+        Dim v As Double = CDbl(txtDPrix.text)
+        Dim q As Double = CDbl(txtDQte.text)
 
-        RaiseEvent AddNewDetailsMission(k, v, Me)
+        RaiseEvent AddNewDetailsMission(k, v, q, Me)
         txtDKey.Focus()
     End Sub
-
     Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
         If txtCKey.text = "" Or txtCValue.text = "" Then Exit Sub
 
@@ -764,7 +893,6 @@
         RaiseEvent AddNewChargeMission(k, v, Me)
         txtCKey.Focus()
     End Sub
-
     Private Sub txtCValue_KeyDownOk() Handles txtCValue.KeyDownOk
         If txtCKey.text = "" Or txtCValue.text = "" Then Exit Sub
 
@@ -773,7 +901,6 @@
 
         RaiseEvent AddNewChargeMission(k, v, Me)
     End Sub
-
     Private Sub txtCKey_KeyDownOk() Handles txtCKey.KeyDownOk
 
         If txtCKey.text.Contains("(") Then
@@ -783,22 +910,22 @@
             txtCKey.Select(txtCKey.text.Length - 1, 0)
         End If
     End Sub
-    Private Sub txtDKey_KeyDownOk() Handles txtDKey.KeyDownOk
-        If txtDKey.text.Contains("(") Then
-            txtDValue.Focus()
-        Else
-            txtDKey.text &= " ( )"
-            txtDKey.Select(txtDKey.text.Length - 1, 0)
-        End If
-    End Sub
+    Private Sub txtDKey_KeyDownOk() Handles txtDKey.KeyDownOk, txtDomainName.KeyDownOk
+        txtDQte.Focus()
 
+        'If txtDKey.text.Contains("(") Then
+        '    txtDPrix.Focus()
+        'Else
+        '    txtDKey.text &= " ( )"
+        '    txtDKey.Select(txtDKey.text.Length - 1, 0)
+        'End If
+    End Sub
     Private Sub Label17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label17.Click, Panel21.Click
         txtDKey.Focus()
     End Sub
-    Private Sub Label21_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label21.Click, Panel57.Click
-        txtDValue.Focus()
+    Private Sub Label21_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label21.Click, Panel57.Click, Panel46.Click, Label24.Click
+        txtDPrix.Focus()
     End Sub
-
     Private Sub Label25_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel62.Click, Label25.Click
         txtCKey.Focus()
     End Sub
@@ -806,7 +933,7 @@
         txtCValue.Focus()
     End Sub
 
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btImpList.Click
         If plList.Controls.Count = 0 Then Exit Sub
         RaiseEvent PrintListOfParc(Me)
     End Sub
@@ -827,13 +954,64 @@
         txtKmArrive.Focus()
     End Sub
 
-    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
-        HeaderColor(Button15.Text)
-        TableName = Button15.Tag
-        Mode = "List"
-    End Sub
-
     Private Sub txtSearchName_KeyDownOk() Handles txtSearchName.KeyDownOk
         RaiseEvent GetElements(Me)
+    End Sub
+
+    Private Sub txtDQte_KeyDownOk() Handles txtDQte.KeyDownOk
+        txtDPrix.Focus()
+    End Sub
+
+    Private Sub Button10_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        RaiseEvent ReleveClientByDate(Me)
+    End Sub
+
+    Private Sub Label27_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel47.Click, Label27.Click
+        txtDomainName.Focus()
+    End Sub
+
+
+    Private Sub LinkLabel13_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel13.LinkClicked
+        RaiseEvent ReleveClientByDate(Me)
+    End Sub
+
+    Private Sub plTransBody_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plTransBody.ControlAdded, plTransBody.ControlRemoved
+        If plTransBody.Controls.Count > 3 Then
+            plTransBody.Height = plTransBody.Controls(0).Height * plTransBody.Controls.Count + 15
+        Else
+            plTransBody.Height = 111
+        End If
+
+        If Mode = "LIST" Then Exit Sub
+
+        Dim T As Double = 0
+        Dim R As Double = 0
+        Dim tva As Double = 0
+
+        For Each C As AddElement In plTransBody.Controls
+            T += C.Total
+        Next
+
+        TB.TotalHt = T
+        TB.Remise = 0
+        TB.TVA = T * Form1.tva / 100
+    End Sub
+
+    Private Sub Button34_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button34.Click
+        RaiseEvent SaveTransportChanges(Me)
+    End Sub
+
+    Private Sub btFacture_Trans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacture_Trans.Click
+        RaiseEvent TransportFactured(Me)
+    End Sub
+
+    Private Sub Button30_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button30.Click
+        If MsgBox(MsgDelete & vbNewLine & "Bon de Transport : " & id_T, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+            RaiseEvent DeleteTransport(id_T, Me)
+        End If
+    End Sub
+
+    Private Sub btSolde_Trans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde_Trans.Click
+        RaiseEvent MissionSolde(Me)
     End Sub
 End Class

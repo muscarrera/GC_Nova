@@ -131,6 +131,8 @@
     End Sub
     Private Sub NewElement(ByRef ds As ProductList)
         Dim pr As New AddEditProduct
+        pr.txtTva.text = Form1.tva
+
         If pr.ShowDialog = DialogResult.OK Then
             ds.txtSearchName.text = pr.txtName.text
             GetElements(ds)

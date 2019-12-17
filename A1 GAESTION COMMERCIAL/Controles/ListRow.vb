@@ -99,7 +99,14 @@
         End Set
     End Property
     Public bprice As Double = 0
-    Public ref As String
+    Public Property ref As String
+        Get
+            Return lbref.Text
+        End Get
+        Set(ByVal value As String)
+            lbref.Text = value
+        End Set
+    End Property
     Public depot As Integer = 0
 
     Public TVA As Double = 20
@@ -193,8 +200,8 @@
                 AddHandler addR.AddNewArticle, AddressOf SaveEditAricle
                 AddHandler addR.Cleared, AddressOf CancelChangement
                 PlButtom.Controls.Add(addR)
-                addR.txtN.txtReadOnly = True
-                addR.txtRf.txtReadOnly = True
+                If arid <> -111 Then addR.txtN.txtReadOnly = True
+                If arid <> -111 Then addR.txtRf.txtReadOnly = True
                 addR.txtQ.text = article.qte
                 addR.FillFields(article)
             Else
