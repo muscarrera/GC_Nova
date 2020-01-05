@@ -1,6 +1,7 @@
 ﻿Public Class EnteteFacture
 
     Dim _isDisibleEditing As Boolean
+    Dim _CompteId As Integer
 
 
     Public Event NewFacture()
@@ -18,6 +19,12 @@
     Public Event AvoirFacture(ByVal id As Integer)
     Public Event PrintParamsFacture()
     Public Event ChangingClient()
+
+    Public Event GetClientDetails()
+    Public Event AddListofBl()
+    Public Event SavePdfList()
+    Public Event PrintList()
+    Public Event NewEnCompteRef()
 
     Public Event NewBlRef()
     Public Event NewBcRef()
@@ -40,14 +47,10 @@
     Dim isAdmin As Boolean
     Dim info As String
     Dim delai As Integer
+    Dim id_Cleared As String
 
-    Event GetClientDetails()
+    Event EdtitFactureDate()
 
-    Event AddListofBl()
-
-    Event SavePdfList()
-
-    Event PrintList()
 
 
 
@@ -57,9 +60,21 @@
         End Get
         Set(ByVal value As Integer)
             fid = value
+            id_Cleared = value.ToString
             Clear()
 
-            lbId.Text = Form1.prefix & value
+            If value.ToString.Length > 5 Then
+                Form1.Ex_fact = value.ToString.Remove(2)
+                id_Cleared = value.ToString.Remove(0, 2)
+
+                Dim sss As Integer = CInt(id_Cleared)
+                id_Cleared = sss.ToString
+
+            End If
+
+
+
+            lbId.Text = Form1.prefix & id_Cleared
 
             ''''''
             If value = 0 Then
@@ -70,6 +85,34 @@
                 'Me.Height = 280
                 ''LbNewFacture.Visible = False
                 lbId.Visible = True
+            End If
+        End Set
+    End Property
+    Public Property CompteId() As Integer
+        Get
+            Return _CompteId
+        End Get
+        Set(ByVal value As Integer)
+            _CompteId = value
+
+            If value = 0 Then
+                plEnCompte.Width = 1
+                lbEnCompte.Text = ""
+            Else
+                Try
+                    Dim c As New Client(value, "Client")
+                 
+                    Dim str As String = c.name '& " [" & c.cid & "]"
+                    str &= vbNewLine
+                    str &= c.adresse
+                    str &= vbNewLine
+                    str &= "ICE : " & c.ICE
+                    lbEnCompte.Text = str
+
+                    plEnCompte.Width = plClient.Width / 3
+                Catch ex As Exception
+
+                End Try
             End If
         End Set
     End Property
@@ -356,7 +399,8 @@
     'Client
     Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEditClient.Click
         If Statut = "Livré" Then Exit Sub
-        If Statut <> "CREATION" And Statut <> "ANNULER" And Statut <> "" And Type = "Facture" Then Exit Sub
+        If Statut = "Facturé" Then Exit Sub
+        'If Statut <> "CREATION" And Statut <> "ANNULER" And Statut <> "" And Type = "Facture" Then Exit Sub
         RaiseEvent ChangingClient()
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
@@ -369,5 +413,13 @@
 
     Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbListPrint.Click
         RaiseEvent PrintList()
+    End Sub
+
+    Private Sub PictureBox2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
+        RaiseEvent NewEnCompteRef()
+    End Sub
+
+    Private Sub lbDate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDate.Click
+        RaiseEvent EdtitFactureDate()
     End Sub
 End Class

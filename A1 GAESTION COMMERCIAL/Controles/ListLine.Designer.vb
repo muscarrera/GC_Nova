@@ -84,6 +84,7 @@ Partial Class ListLine
         Me.lbName.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbName.ForeColor = System.Drawing.Color.DodgerBlue
         Me.lbName.Location = New System.Drawing.Point(10, 2)
+        Me.lbName.MinimumSize = New System.Drawing.Size(238, 22)
         Me.lbName.Name = "lbName"
         Me.lbName.Size = New System.Drawing.Size(238, 22)
         Me.lbName.TabIndex = 0

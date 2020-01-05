@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.plHead = New System.Windows.Forms.Panel()
         Me.plHeader = New System.Windows.Forms.Panel()
         Me.plHeaderButton = New System.Windows.Forms.Panel()
@@ -432,9 +433,10 @@ Partial Class Form1
         Me.Controls.Add(Me.plBody)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.plHead)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "CMC Systeme V 01.10.02"
         Me.plHead.ResumeLayout(False)
         Me.plHeader.ResumeLayout(False)
         Me.plHeader.PerformLayout()

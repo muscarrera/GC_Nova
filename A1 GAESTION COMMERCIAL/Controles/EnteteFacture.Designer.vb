@@ -51,12 +51,17 @@ Partial Class EnteteFacture
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.plClient = New System.Windows.Forms.Panel()
+        Me.Panel28 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.btEditClient = New System.Windows.Forms.Button()
-        Me.lbInfo = New System.Windows.Forms.Label()
         Me.lbName = New System.Windows.Forms.Label()
+        Me.lbInfo = New System.Windows.Forms.Label()
+        Me.plEnCompte = New System.Windows.Forms.Panel()
+        Me.lbEnCompte = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.lbId = New System.Windows.Forms.Label()
@@ -109,7 +114,10 @@ Partial Class EnteteFacture
         Me.plDv.SuspendLayout()
         Me.Panel24.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plClient.SuspendLayout()
+        Me.Panel28.SuspendLayout()
+        Me.plEnCompte.SuspendLayout()
         Me.Panel14.SuspendLayout()
         Me.Panel23.SuspendLayout()
         Me.Panel27.SuspendLayout()
@@ -196,10 +204,11 @@ Partial Class EnteteFacture
         'lbDate
         '
         Me.lbDate.AutoSize = True
-        Me.lbDate.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDate.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDate.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lbDate.Location = New System.Drawing.Point(95, 43)
         Me.lbDate.Name = "lbDate"
-        Me.lbDate.Size = New System.Drawing.Size(44, 17)
+        Me.lbDate.Size = New System.Drawing.Size(46, 16)
         Me.lbDate.TabIndex = 2
         Me.lbDate.Text = "Date :"
         '
@@ -449,13 +458,38 @@ Partial Class EnteteFacture
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.PictureBox2)
+        Me.Panel2.Controls.Add(Me.Label14)
         Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.plClient)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(365, 81)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(430, 195)
         Me.Panel2.TabIndex = 0
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Plus__Orange_34237__1_1
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox2.Location = New System.Drawing.Point(326, 18)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(37, 26)
+        Me.PictureBox2.TabIndex = 4
+        Me.PictureBox2.TabStop = False
+        '
+        'Label14
+        '
+        Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label14.Location = New System.Drawing.Point(233, 30)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(87, 12)
+        Me.Label14.TabIndex = 2
+        Me.Label14.Text = "En compte de :"
         '
         'Label1
         '
@@ -466,32 +500,42 @@ Partial Class EnteteFacture
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "à :"
         '
-        'Panel3
+        'plClient
         '
-        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.plClient.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.Button5)
-        Me.Panel3.Controls.Add(Me.btEditClient)
-        Me.Panel3.Controls.Add(Me.lbInfo)
-        Me.Panel3.Controls.Add(Me.lbName)
-        Me.Panel3.Controls.Add(Me.Panel5)
-        Me.Panel3.Controls.Add(Me.Panel4)
-        Me.Panel3.Location = New System.Drawing.Point(22, 45)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(341, 134)
-        Me.Panel3.TabIndex = 1
+        Me.plClient.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
+        Me.plClient.Controls.Add(Me.Panel28)
+        Me.plClient.Controls.Add(Me.plEnCompte)
+        Me.plClient.Controls.Add(Me.Panel5)
+        Me.plClient.Controls.Add(Me.Panel4)
+        Me.plClient.Location = New System.Drawing.Point(22, 45)
+        Me.plClient.Name = "plClient"
+        Me.plClient.Size = New System.Drawing.Size(341, 134)
+        Me.plClient.TabIndex = 1
+        '
+        'Panel28
+        '
+        Me.Panel28.Controls.Add(Me.Button5)
+        Me.Panel28.Controls.Add(Me.btEditClient)
+        Me.Panel28.Controls.Add(Me.lbName)
+        Me.Panel28.Controls.Add(Me.lbInfo)
+        Me.Panel28.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel28.Location = New System.Drawing.Point(0, 0)
+        Me.Panel28.Name = "Panel28"
+        Me.Panel28.Size = New System.Drawing.Size(195, 132)
+        Me.Panel28.TabIndex = 4
         '
         'Button5
         '
         Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.BackColor = System.Drawing.Color.Silver
+        Me.Button5.BackColor = System.Drawing.Color.Transparent
         Me.Button5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.INFO_22
         Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button5.FlatAppearance.BorderSize = 0
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button5.Location = New System.Drawing.Point(305, 116)
+        Me.Button5.Location = New System.Drawing.Point(159, 114)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(15, 15)
         Me.Button5.TabIndex = 9
@@ -500,17 +544,27 @@ Partial Class EnteteFacture
         'btEditClient
         '
         Me.btEditClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btEditClient.BackColor = System.Drawing.Color.Silver
+        Me.btEditClient.BackColor = System.Drawing.Color.Transparent
         Me.btEditClient.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_preview_23216__1_
         Me.btEditClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btEditClient.FlatAppearance.BorderSize = 0
         Me.btEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btEditClient.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btEditClient.Location = New System.Drawing.Point(323, 116)
+        Me.btEditClient.Location = New System.Drawing.Point(177, 114)
         Me.btEditClient.Name = "btEditClient"
         Me.btEditClient.Size = New System.Drawing.Size(15, 15)
         Me.btEditClient.TabIndex = 9
         Me.btEditClient.UseVisualStyleBackColor = False
+        '
+        'lbName
+        '
+        Me.lbName.AutoSize = True
+        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbName.Location = New System.Drawing.Point(9, 10)
+        Me.lbName.Name = "lbName"
+        Me.lbName.Size = New System.Drawing.Size(80, 19)
+        Me.lbName.TabIndex = 2
+        Me.lbName.Text = "Fature à :"
         '
         'lbInfo
         '
@@ -518,21 +572,31 @@ Partial Class EnteteFacture
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbInfo.Location = New System.Drawing.Point(14, 44)
+        Me.lbInfo.Location = New System.Drawing.Point(10, 39)
         Me.lbInfo.Name = "lbInfo"
-        Me.lbInfo.Size = New System.Drawing.Size(320, 82)
+        Me.lbInfo.Size = New System.Drawing.Size(179, 82)
         Me.lbInfo.TabIndex = 2
         Me.lbInfo.Text = "Fature à :"
         '
-        'lbName
+        'plEnCompte
         '
-        Me.lbName.AutoSize = True
-        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.Location = New System.Drawing.Point(13, 15)
-        Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(80, 19)
-        Me.lbName.TabIndex = 2
-        Me.lbName.Text = "Fature à :"
+        Me.plEnCompte.Controls.Add(Me.lbEnCompte)
+        Me.plEnCompte.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plEnCompte.Location = New System.Drawing.Point(195, 0)
+        Me.plEnCompte.Name = "plEnCompte"
+        Me.plEnCompte.Padding = New System.Windows.Forms.Padding(11)
+        Me.plEnCompte.Size = New System.Drawing.Size(145, 132)
+        Me.plEnCompte.TabIndex = 3
+        '
+        'lbEnCompte
+        '
+        Me.lbEnCompte.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbEnCompte.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbEnCompte.Location = New System.Drawing.Point(11, 11)
+        Me.lbEnCompte.Name = "lbEnCompte"
+        Me.lbEnCompte.Size = New System.Drawing.Size(123, 110)
+        Me.lbEnCompte.TabIndex = 3
+        Me.lbEnCompte.Text = "En Compte de :"
         '
         'Panel5
         '
@@ -1119,8 +1183,11 @@ Partial Class EnteteFacture
         Me.Panel24.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plClient.ResumeLayout(False)
+        Me.Panel28.ResumeLayout(False)
+        Me.Panel28.PerformLayout()
+        Me.plEnCompte.ResumeLayout(False)
         Me.Panel14.ResumeLayout(False)
         Me.Panel23.ResumeLayout(False)
         Me.Panel23.PerformLayout()
@@ -1150,7 +1217,7 @@ Partial Class EnteteFacture
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents plClient As System.Windows.Forms.Panel
     Friend WithEvents lbInfo As System.Windows.Forms.Label
     Friend WithEvents lbName As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
@@ -1224,5 +1291,10 @@ Partial Class EnteteFacture
     Friend WithEvents pllist1 As System.Windows.Forms.Panel
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents pbListPrint As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Panel28 As System.Windows.Forms.Panel
+    Friend WithEvents plEnCompte As System.Windows.Forms.Panel
+    Friend WithEvents lbEnCompte As System.Windows.Forms.Label
 
 End Class

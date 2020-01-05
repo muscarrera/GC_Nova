@@ -7,7 +7,7 @@
 
     Public sprice As Double = 0
     Public bprice As Double = 0
-    Public TVA As Double = 20
+    Public TVA As Double = Form1.tva
 
     Public depot As Integer = 0
     Public remise As Double = 0

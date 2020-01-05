@@ -46,11 +46,13 @@
         AddHandler ds.NewDevisRef, AddressOf NewDevisRef
         AddHandler ds.NewBcRef, AddressOf NewBcRef
         AddHandler ds.NewBlRef, AddressOf NewBlRef
+        AddHandler ds.NewEnCompteRef, AddressOf NewEnCompteRef
         AddHandler ds.ChangingClient, AddressOf ChangingClient
         AddHandler ds.GetClientDetails, AddressOf GetClientDetails
         AddHandler ds.AddListofBl, AddressOf AddListofBl
         AddHandler ds.GetListofCommande, AddressOf GetListofCommande
         AddHandler ds.GetListofFacture, AddressOf GetListofFacture
+        AddHandler ds.EdtitFactureDate, AddressOf EdtitFactureDate
 
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
@@ -310,6 +312,42 @@
         End Try
     End Sub
 
+    Private Sub EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+        Try
+            Dim NF As New NouveauFacture
+            NF.TxtExr.Text = Form1.Exercice
+            NF.txtName.text = ds.Entete.ClientName
+            NF.cName = ds.Entete.ClientName
+            NF.cid = ds.Entete.Client.cid
+
+            NF.TxtExr.Enabled = False
+            NF.txtName.Enabled = False
+
+            NF.TxtDate.Text = ds.Entete.FactureDate.ToString("dd/MM/yyyy")
+            If NF.ShowDialog = DialogResult.OK Then
+
+                If IsDate(NF.TxtDate.Text) = False Then Exit Sub
+                If CDate(NF.TxtDate.Text) = ds.Entete.FactureDate Then Exit Sub
+
+
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim params As New Dictionary(Of String, Object)
+                    Dim where As New Dictionary(Of String, Object)
+
+                    params.Add("date", CDate(NF.TxtDate.Text))
+
+                    where.Add("id", id)
+
+                    If c.UpdateRecord(ds.FactureTable, params, where) Then
+                        ds.Entete.FactureDate = CDate(NF.TxtDate.Text)
+                    End If
+                End Using
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     'Entete events
     Private Sub SavePdf(ByVal ds As DataList)
         Form1.proformat_Id = 0
@@ -499,6 +537,13 @@
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
             Dim isPayed As Boolean = ds.isPayed
+            Dim admin = ds.Entete.Statut
+
+            If admin.ToUpper = "NON" Or admin.ToUpper = "ANNULER" Then
+                If ds.Entete.Client.cid > 0 Then
+                    admin = "Renommée"
+                End If
+            End If
 
             Dim tableName = ds.FactureTable
             Dim dte As Date = ds.Entete.FactureDate
@@ -508,7 +553,7 @@
             params.Clear()
             params.Add("total", ds.TB.TotalTTC)
             params.Add("avance", ds.TB.avance)
-            'params.Add("admin", admin)
+            params.Add("isAdmin", admin)
             params.Add("isPayed", isPayed)
             params.Add("tva", ds.TB.TVA)
             params.Add("remise", ds.TB.Remise)
@@ -523,6 +568,14 @@
 
             params = Nothing
             where = Nothing
+
+
+
+            '''''''''''''''''''''''
+            ''''Save Historique''''
+            '''''''''''''''''''''''
+
+
         End Using
     End Sub
     Private Sub StatusChanged(ByVal status As String, ByVal id As Integer, ByRef Tb_F As String, ByVal opr As String)
@@ -1189,7 +1242,42 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub NewEnCompteRef(ByVal ds As DataList)
 
+        Dim rf As New ReferenceFacture
+        rf.Title = "En Compte de :"
+
+        rf.TxtBox1.AutoCompleteSource = AutoCompleteByName("Client")
+
+        If rf.ShowDialog = DialogResult.OK Then
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim tableName = ds.FactureTable
+                Dim params As New Dictionary(Of String, Object)
+                Dim cid As Integer = 0
+                Try
+                    If rf.Value.Contains("|") And IsNumeric(rf.Value.Split("|")(1)) Then
+                        cid = rf.Value.Split("|")(1)
+                    End If
+                Catch ex As Exception
+                    cid = 0
+                End Try
+
+
+                params.Clear()
+                params.Add("compteId", cid)
+                Dim where As New Dictionary(Of String, Object)
+                where.Add("id", CInt(ds.Id))
+
+                If c.UpdateRecord(tableName, params, where) Then
+                    ds.Entete.CompteId = cid
+                End If
+
+                params = Nothing
+                where = Nothing
+            End Using
+        End If
+    End Sub
 
 
 
@@ -1223,5 +1311,7 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
+
 
 End Class

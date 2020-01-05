@@ -216,6 +216,12 @@
     <Compile Include="GUI\AddEditVehicule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\AddExercice.Designer.vb">
+      <DependentUpon>AddExercice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddExercice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\AddFiles.Designer.vb">
       <DependentUpon>AddFiles.vb</DependentUpon>
     </Compile>
@@ -393,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddEditVehicule.resx">
       <DependentUpon>AddEditVehicule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddExercice.resx">
+      <DependentUpon>AddExercice.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddFiles.resx">
       <DependentUpon>AddFiles.vb</DependentUpon>

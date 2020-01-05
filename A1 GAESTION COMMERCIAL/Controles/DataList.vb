@@ -1,7 +1,5 @@
 ﻿Public Class DataList
 
-
-
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -71,6 +69,10 @@
 
     Event SaveListofFacturesasPdf(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
 
+    Event NewEnCompteRef(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+
+    Event EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+
 
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
@@ -115,7 +117,7 @@
                 DetailsTable = "Details_Sell_Facture"
                 Entete.Type = "Facture"
                 'isSell = True
-                Form1.prefix = "Fc-"
+                Form1.prefix = "Fc"
             ElseIf value = "Devis" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -123,7 +125,7 @@
                 DetailsTable = "Details_Devis"
                 Entete.Type = "Devis"
                 'isSell = True
-                Form1.prefix = "Dv-"
+                Form1.prefix = "Dv"
             ElseIf value = "Commande_Client" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -131,7 +133,7 @@
                 DetailsTable = "Details_Commande"
                 Entete.Type = "Commande"
                 'isSell = True
-                Form1.prefix = "Cmd-"
+                Form1.prefix = "Cmd"
             ElseIf value = "Bon_Livraison" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -139,7 +141,7 @@
                 DetailsTable = "Details_Bon_Livraison"
                 Entete.Type = "BL"
                 'isSell = True
-                Form1.prefix = "BL-"
+                Form1.prefix = "BL"
             ElseIf value = "Buy_Facture" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -147,7 +149,7 @@
                 DetailsTable = "Details_Buy_Facture"
                 Entete.Type = "Buy_Facture"
                 'isSell = False
-                Form1.prefix = "Fc-Ent-"
+                Form1.prefix = "Fc-Ent"
             ElseIf value = "Bon_Commande" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -155,7 +157,7 @@
                 DetailsTable = "Details_Bon_Commande"
                 Entete.Type = "BC"
                 'isSell = False
-                Form1.prefix = "BC-"
+                Form1.prefix = "BC"
             ElseIf value = "Bon_Achat" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -163,7 +165,7 @@
                 DetailsTable = "Details_Bon_Achat"
                 Entete.Type = "BA"
                 'isSell = False
-                Form1.prefix = "BA-"
+                Form1.prefix = "BA"
             ElseIf value = "Sell_Avoir" Then
                 clientTable = "client"
                 payementTable = "Client_Payement"
@@ -171,9 +173,9 @@
                 DetailsTable = "Details_Sell_Avoir"
                 Entete.Type = "Avoir"
                 'isSell = False
-                Form1.prefix = "Av-"
+                Form1.prefix = "Av"
             End If
-            Form1.prefix &= Form1.Exercice & "/000"
+            'Form1.prefix &= Form1.Exercice & "/000"
             RaiseEvent OperationTypeChanged()
         End Set
     End Property
@@ -188,6 +190,11 @@
             Entete.Devis = value.devis
             Entete.Bc = value.bc
             Entete.Bl = value.bl
+            If isSell Then
+                Entete.CompteId = value.CompteId
+            Else
+                Entete.CompteId = 0
+            End If
             DataSource = value.DataSource
             TB.Writer = value.writer
 
@@ -198,6 +205,7 @@
             PayementDataSource = value.PaymenetDataSource
             DisibleEditing(value.isAdmin)
             If value.isAdmin <> "CREATION" Then PlAdd.Height = 1
+
         End Set
     End Property
     Public Property Mode() As String
@@ -548,6 +556,9 @@
     Private Sub EnteteFacture1_NewFacture() Handles Entete.NewFacture
         RaiseEvent NewFacture(FactureTable, clientTable, Me)
     End Sub
+    Private Sub EnteteFacture1_EditDate() Handles Entete.EdtitFactureDate
+        RaiseEvent EdtitFactureDate(FactureTable, Id, Me)
+    End Sub
     Private Sub Entete_SearchById(ByVal id As String) Handles Entete.SearchById
         RaiseEvent SearchById(id, Me)
     End Sub
@@ -656,6 +667,8 @@
             For i = startIndex To _dtList.Rows.Count - 1
 
                 Dim a As New ListLine
+                a.sizeAuto = True
+
                 a.Id = _dtList.Rows(i).Item(0)
                 a.Libele = StrValue(_dtList, "name", i)
                 a.Total = DblValue(_dtList, "total", i)
@@ -759,12 +772,15 @@
     Private Sub TB_AddEditPayement() Handles TB.AddEditPayement
         FillPayement(Nothing)
     End Sub
-   
+
     Private Sub Entete_ChangingClient() Handles Entete.ChangingClient
         RaiseEvent ChangingClient(Me)
     End Sub
     Private Sub Entete_NewBcRef() Handles Entete.NewBcRef
         RaiseEvent NewBcRef(Me)
+    End Sub
+    Private Sub Entete_NewEnCompteRef() Handles Entete.NewEnCompteRef
+        RaiseEvent NewEnCompteRef(Me)
     End Sub
     Private Sub Entete_NewBlRef() Handles Entete.NewBlRef
         RaiseEvent NewBlRef(Me)

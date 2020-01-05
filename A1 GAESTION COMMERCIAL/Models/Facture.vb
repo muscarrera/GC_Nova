@@ -3,7 +3,7 @@
     Public client As New Client
 
     Public id As Integer = 0
-    'Public cid As Integer
+    Public compteId As Integer = 0
     'Public name As String
     'Public adresse As String
     'Public Ice As String
@@ -91,7 +91,7 @@
                 isPayed = BoolValue(dt, "isPayed", 0)
                 dte = DteValue(dt, "Date", 0)
                 cid = IntValue(dt, "cid", 0)
-
+                compteId = IntValue(dt, "compteId", 0)
                 bl = StrValue(dt, "Bon_Livraison", 0)
                 bc = StrValue(dt, "Bon_Commande", 0)
                 devis = StrValue(dt, "Devis", 0)

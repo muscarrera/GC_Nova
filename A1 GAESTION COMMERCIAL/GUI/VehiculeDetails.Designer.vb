@@ -26,8 +26,8 @@ Partial Class VehiculeDetails
         Me.Panel30 = New System.Windows.Forms.Panel()
         Me.TXT = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PB = New System.Windows.Forms.PictureBox()
-        Me.pl = New System.Windows.Forms.Panel()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.pl = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -38,7 +38,7 @@ Partial Class VehiculeDetails
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.lbPath = New System.Windows.Forms.Label()
-        Me.lbFctIm = New System.Windows.Forms.Label()
+        Me.lbNbrMission = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.lbInfo = New System.Windows.Forms.Label()
@@ -62,9 +62,6 @@ Partial Class VehiculeDetails
         Me.lbBTtc = New System.Windows.Forms.Label()
         Me.Panel39 = New System.Windows.Forms.Panel()
         Me.lbBAvc = New System.Windows.Forms.Label()
-        Me.Panel40 = New System.Windows.Forms.Panel()
-        Me.lbBRs = New System.Windows.Forms.Label()
-        Me.Panel41 = New System.Windows.Forms.Panel()
         Me.Panel42 = New System.Windows.Forms.Panel()
         Me.Panel43 = New System.Windows.Forms.Panel()
         Me.Panel44 = New System.Windows.Forms.Panel()
@@ -84,9 +81,7 @@ Partial Class VehiculeDetails
         Me.Panel50 = New System.Windows.Forms.Panel()
         Me.Panel51 = New System.Windows.Forms.Panel()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.lbBlRest = New System.Windows.Forms.Label()
-        Me.lbBlImp = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
+        Me.lbnbCharge = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel12 = New System.Windows.Forms.Panel()
@@ -100,9 +95,6 @@ Partial Class VehiculeDetails
         Me.lbFTtc = New System.Windows.Forms.Label()
         Me.Panel27 = New System.Windows.Forms.Panel()
         Me.lbFAvc = New System.Windows.Forms.Label()
-        Me.Panel28 = New System.Windows.Forms.Panel()
-        Me.lbFRs = New System.Windows.Forms.Label()
-        Me.Panel29 = New System.Windows.Forms.Panel()
         Me.plListHeader = New System.Windows.Forms.Panel()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -133,7 +125,6 @@ Partial Class VehiculeDetails
         Me.Panel36.SuspendLayout()
         Me.Panel38.SuspendLayout()
         Me.Panel39.SuspendLayout()
-        Me.Panel40.SuspendLayout()
         Me.Panel43.SuspendLayout()
         Me.Panel44.SuspendLayout()
         Me.Panel45.SuspendLayout()
@@ -151,7 +142,6 @@ Partial Class VehiculeDetails
         Me.Panel24.SuspendLayout()
         Me.Panel26.SuspendLayout()
         Me.Panel27.SuspendLayout()
-        Me.Panel28.SuspendLayout()
         Me.plListHeader.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel18.SuspendLayout()
@@ -184,8 +174,8 @@ Partial Class VehiculeDetails
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel30.Controls.Add(Me.TXT)
         Me.Panel30.Controls.Add(Me.PB)
-        Me.Panel30.Controls.Add(Me.pl)
         Me.Panel30.Controls.Add(Me.PictureBox8)
+        Me.Panel30.Controls.Add(Me.pl)
         Me.Panel30.Location = New System.Drawing.Point(60, 93)
         Me.Panel30.Name = "Panel30"
         Me.Panel30.Size = New System.Drawing.Size(750, 33)
@@ -223,15 +213,6 @@ Partial Class VehiculeDetails
         Me.PB.TabStop = False
         Me.PB.Visible = False
         '
-        'pl
-        '
-        Me.pl.BackColor = System.Drawing.Color.Silver
-        Me.pl.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.pl.Location = New System.Drawing.Point(0, 32)
-        Me.pl.Name = "pl"
-        Me.pl.Size = New System.Drawing.Size(682, 1)
-        Me.pl.TabIndex = 13
-        '
         'PictureBox8
         '
         Me.PictureBox8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SEARCH_18
@@ -239,9 +220,18 @@ Partial Class VehiculeDetails
         Me.PictureBox8.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox8.Location = New System.Drawing.Point(682, 0)
         Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(68, 33)
+        Me.PictureBox8.Size = New System.Drawing.Size(68, 32)
         Me.PictureBox8.TabIndex = 10
         Me.PictureBox8.TabStop = False
+        '
+        'pl
+        '
+        Me.pl.BackColor = System.Drawing.Color.Silver
+        Me.pl.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.pl.Location = New System.Drawing.Point(0, 32)
+        Me.pl.Name = "pl"
+        Me.pl.Size = New System.Drawing.Size(750, 1)
+        Me.pl.TabIndex = 13
         '
         'PictureBox2
         '
@@ -329,7 +319,7 @@ Partial Class VehiculeDetails
         Me.Panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel11.Controls.Add(Me.Label3)
         Me.Panel11.Controls.Add(Me.lbPath)
-        Me.Panel11.Controls.Add(Me.lbFctIm)
+        Me.Panel11.Controls.Add(Me.lbNbrMission)
         Me.Panel11.Controls.Add(Me.Label9)
         Me.Panel11.Controls.Add(Me.Label11)
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Fill
@@ -350,25 +340,25 @@ Partial Class VehiculeDetails
         Me.lbPath.TabIndex = 5
         Me.lbPath.Text = "00.00"
         '
-        'lbFctIm
+        'lbNbrMission
         '
-        Me.lbFctIm.AutoSize = True
-        Me.lbFctIm.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbFctIm.Location = New System.Drawing.Point(754, 10)
-        Me.lbFctIm.Name = "lbFctIm"
-        Me.lbFctIm.Size = New System.Drawing.Size(22, 16)
-        Me.lbFctIm.TabIndex = 5
-        Me.lbFctIm.Text = "00"
+        Me.lbNbrMission.AutoSize = True
+        Me.lbNbrMission.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNbrMission.Location = New System.Drawing.Point(754, 10)
+        Me.lbNbrMission.Name = "lbNbrMission"
+        Me.lbNbrMission.Size = New System.Drawing.Size(22, 16)
+        Me.lbNbrMission.TabIndex = 5
+        Me.lbNbrMission.Text = "00"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(640, 10)
+        Me.Label9.Location = New System.Drawing.Point(632, 10)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(112, 16)
+        Me.Label9.Size = New System.Drawing.Size(116, 16)
         Me.Label9.TabIndex = 5
-        Me.Label9.Text = "Facture Impayée "
+        Me.Label9.Text = "Nbres des Missions"
         '
         'Label11
         '
@@ -550,13 +540,11 @@ Partial Class VehiculeDetails
         Me.Panel36.Controls.Add(Me.Panel37)
         Me.Panel36.Controls.Add(Me.Panel38)
         Me.Panel36.Controls.Add(Me.Panel39)
-        Me.Panel36.Controls.Add(Me.Panel40)
-        Me.Panel36.Controls.Add(Me.Panel41)
         Me.Panel36.Controls.Add(Me.Panel42)
         Me.Panel36.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel36.Location = New System.Drawing.Point(5, 167)
         Me.Panel36.Name = "Panel36"
-        Me.Panel36.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.Panel36.Padding = New System.Windows.Forms.Padding(25, 5, 11, 5)
         Me.Panel36.Size = New System.Drawing.Size(830, 34)
         Me.Panel36.TabIndex = 18
         '
@@ -567,7 +555,7 @@ Partial Class VehiculeDetails
         Me.Panel37.Location = New System.Drawing.Point(139, 5)
         Me.Panel37.Name = "Panel37"
         Me.Panel37.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel37.Size = New System.Drawing.Size(219, 24)
+        Me.Panel37.Size = New System.Drawing.Size(501, 24)
         Me.Panel37.TabIndex = 17
         '
         'Panel38
@@ -575,7 +563,7 @@ Partial Class VehiculeDetails
         Me.Panel38.BackColor = System.Drawing.Color.Transparent
         Me.Panel38.Controls.Add(Me.lbBTtc)
         Me.Panel38.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel38.Location = New System.Drawing.Point(358, 5)
+        Me.Panel38.Location = New System.Drawing.Point(640, 5)
         Me.Panel38.Name = "Panel38"
         Me.Panel38.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel38.Size = New System.Drawing.Size(89, 24)
@@ -591,7 +579,7 @@ Partial Class VehiculeDetails
         Me.lbBTtc.Name = "lbBTtc"
         Me.lbBTtc.Size = New System.Drawing.Size(79, 24)
         Me.lbBTtc.TabIndex = 2
-        Me.lbBTtc.Text = "Total"
+        Me.lbBTtc.Text = "-"
         Me.lbBTtc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel39
@@ -599,7 +587,7 @@ Partial Class VehiculeDetails
         Me.Panel39.BackColor = System.Drawing.Color.Transparent
         Me.Panel39.Controls.Add(Me.lbBAvc)
         Me.Panel39.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel39.Location = New System.Drawing.Point(447, 5)
+        Me.Panel39.Location = New System.Drawing.Point(729, 5)
         Me.Panel39.Name = "Panel39"
         Me.Panel39.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel39.Size = New System.Drawing.Size(90, 24)
@@ -615,41 +603,8 @@ Partial Class VehiculeDetails
         Me.lbBAvc.Name = "lbBAvc"
         Me.lbBAvc.Size = New System.Drawing.Size(80, 24)
         Me.lbBAvc.TabIndex = 2
-        Me.lbBAvc.Text = "Avance"
+        Me.lbBAvc.Text = "-"
         Me.lbBAvc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel40
-        '
-        Me.Panel40.BackColor = System.Drawing.Color.Transparent
-        Me.Panel40.Controls.Add(Me.lbBRs)
-        Me.Panel40.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel40.Location = New System.Drawing.Point(537, 5)
-        Me.Panel40.Name = "Panel40"
-        Me.Panel40.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel40.Size = New System.Drawing.Size(84, 24)
-        Me.Panel40.TabIndex = 14
-        '
-        'lbBRs
-        '
-        Me.lbBRs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbBRs.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBRs.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.lbBRs.Location = New System.Drawing.Point(5, 0)
-        Me.lbBRs.Name = "lbBRs"
-        Me.lbBRs.Size = New System.Drawing.Size(74, 24)
-        Me.lbBRs.TabIndex = 2
-        Me.lbBRs.Text = "Remise %"
-        Me.lbBRs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel41
-        '
-        Me.Panel41.BackColor = System.Drawing.Color.Transparent
-        Me.Panel41.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel41.Location = New System.Drawing.Point(621, 5)
-        Me.Panel41.Name = "Panel41"
-        Me.Panel41.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel41.Size = New System.Drawing.Size(109, 24)
-        Me.Panel41.TabIndex = 13
         '
         'Panel42
         '
@@ -675,7 +630,7 @@ Partial Class VehiculeDetails
         Me.Panel43.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel43.Location = New System.Drawing.Point(5, 5)
         Me.Panel43.Name = "Panel43"
-        Me.Panel43.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.Panel43.Padding = New System.Windows.Forms.Padding(25, 5, 11, 5)
         Me.Panel43.Size = New System.Drawing.Size(830, 34)
         Me.Panel43.TabIndex = 17
         '
@@ -684,10 +639,10 @@ Partial Class VehiculeDetails
         Me.Panel44.BackColor = System.Drawing.Color.Transparent
         Me.Panel44.Controls.Add(Me.Label26)
         Me.Panel44.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel44.Location = New System.Drawing.Point(139, 5)
+        Me.Panel44.Location = New System.Drawing.Point(54, 5)
         Me.Panel44.Name = "Panel44"
         Me.Panel44.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel44.Size = New System.Drawing.Size(219, 24)
+        Me.Panel44.Size = New System.Drawing.Size(393, 24)
         Me.Panel44.TabIndex = 17
         '
         'Label26
@@ -698,17 +653,17 @@ Partial Class VehiculeDetails
         Me.Label26.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label26.Location = New System.Drawing.Point(5, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(209, 24)
+        Me.Label26.Size = New System.Drawing.Size(383, 24)
         Me.Label26.TabIndex = 2
         Me.Label26.Text = "Libellé"
-        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel45
         '
         Me.Panel45.BackColor = System.Drawing.Color.Transparent
         Me.Panel45.Controls.Add(Me.Label27)
         Me.Panel45.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel45.Location = New System.Drawing.Point(358, 5)
+        Me.Panel45.Location = New System.Drawing.Point(447, 5)
         Me.Panel45.Name = "Panel45"
         Me.Panel45.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel45.Size = New System.Drawing.Size(89, 24)
@@ -724,7 +679,7 @@ Partial Class VehiculeDetails
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(79, 24)
         Me.Label27.TabIndex = 2
-        Me.Label27.Text = "Total"
+        Me.Label27.Text = "date"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel46
@@ -732,7 +687,7 @@ Partial Class VehiculeDetails
         Me.Panel46.BackColor = System.Drawing.Color.Transparent
         Me.Panel46.Controls.Add(Me.Label28)
         Me.Panel46.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel46.Location = New System.Drawing.Point(447, 5)
+        Me.Panel46.Location = New System.Drawing.Point(536, 5)
         Me.Panel46.Name = "Panel46"
         Me.Panel46.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel46.Size = New System.Drawing.Size(90, 24)
@@ -748,7 +703,6 @@ Partial Class VehiculeDetails
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(80, 24)
         Me.Label28.TabIndex = 2
-        Me.Label28.Text = "Avance"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel47
@@ -756,7 +710,7 @@ Partial Class VehiculeDetails
         Me.Panel47.BackColor = System.Drawing.Color.Transparent
         Me.Panel47.Controls.Add(Me.Label29)
         Me.Panel47.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel47.Location = New System.Drawing.Point(537, 5)
+        Me.Panel47.Location = New System.Drawing.Point(626, 5)
         Me.Panel47.Name = "Panel47"
         Me.Panel47.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel47.Size = New System.Drawing.Size(84, 24)
@@ -771,7 +725,7 @@ Partial Class VehiculeDetails
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(74, 24)
         Me.Label29.TabIndex = 2
-        Me.Label29.Text = "Remise %"
+        Me.Label29.Text = "value"
         Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel48
@@ -779,7 +733,7 @@ Partial Class VehiculeDetails
         Me.Panel48.BackColor = System.Drawing.Color.Transparent
         Me.Panel48.Controls.Add(Me.Label30)
         Me.Panel48.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel48.Location = New System.Drawing.Point(621, 5)
+        Me.Panel48.Location = New System.Drawing.Point(710, 5)
         Me.Panel48.Name = "Panel48"
         Me.Panel48.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel48.Size = New System.Drawing.Size(109, 24)
@@ -795,7 +749,7 @@ Partial Class VehiculeDetails
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(99, 24)
         Me.Label30.TabIndex = 2
-        Me.Label30.Text = "Tva"
+        Me.Label30.Text = "-"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel49
@@ -806,7 +760,7 @@ Partial Class VehiculeDetails
         Me.Panel49.Location = New System.Drawing.Point(25, 5)
         Me.Panel49.Name = "Panel49"
         Me.Panel49.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel49.Size = New System.Drawing.Size(114, 24)
+        Me.Panel49.Size = New System.Drawing.Size(29, 24)
         Me.Panel49.TabIndex = 12
         '
         'Label31
@@ -817,10 +771,11 @@ Partial Class VehiculeDetails
         Me.Label31.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label31.Location = New System.Drawing.Point(5, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(104, 24)
+        Me.Label31.Size = New System.Drawing.Size(19, 24)
         Me.Label31.TabIndex = 1
         Me.Label31.Text = "Réf"
         Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label31.Visible = False
         '
         'Panel3
         '
@@ -865,9 +820,7 @@ Partial Class VehiculeDetails
         Me.Panel51.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel51.Controls.Add(Me.Label32)
-        Me.Panel51.Controls.Add(Me.lbBlRest)
-        Me.Panel51.Controls.Add(Me.lbBlImp)
-        Me.Panel51.Controls.Add(Me.Label35)
+        Me.Panel51.Controls.Add(Me.lbnbCharge)
         Me.Panel51.Controls.Add(Me.Label36)
         Me.Panel51.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel51.ForeColor = System.Drawing.Color.Brown
@@ -887,45 +840,25 @@ Partial Class VehiculeDetails
         Me.Label32.TabIndex = 5
         Me.Label32.Text = "Infos"
         '
-        'lbBlRest
+        'lbnbCharge
         '
-        Me.lbBlRest.AutoSize = True
-        Me.lbBlRest.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBlRest.Location = New System.Drawing.Point(640, 9)
-        Me.lbBlRest.Name = "lbBlRest"
-        Me.lbBlRest.Size = New System.Drawing.Size(39, 16)
-        Me.lbBlRest.TabIndex = 5
-        Me.lbBlRest.Text = "00.00"
-        '
-        'lbBlImp
-        '
-        Me.lbBlImp.AutoSize = True
-        Me.lbBlImp.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBlImp.Location = New System.Drawing.Point(395, 9)
-        Me.lbBlImp.Name = "lbBlImp"
-        Me.lbBlImp.Size = New System.Drawing.Size(22, 16)
-        Me.lbBlImp.TabIndex = 5
-        Me.lbBlImp.Text = "00"
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(582, 9)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(37, 16)
-        Me.Label35.TabIndex = 5
-        Me.Label35.Text = "Rest :"
+        Me.lbnbCharge.AutoSize = True
+        Me.lbnbCharge.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbnbCharge.Location = New System.Drawing.Point(703, 6)
+        Me.lbnbCharge.Name = "lbnbCharge"
+        Me.lbnbCharge.Size = New System.Drawing.Size(22, 16)
+        Me.lbnbCharge.TabIndex = 5
+        Me.lbnbCharge.Text = "00"
         '
         'Label36
         '
         Me.Label36.AutoSize = True
         Me.Label36.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(283, 9)
+        Me.Label36.Location = New System.Drawing.Point(579, 6)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(93, 16)
+        Me.Label36.Size = New System.Drawing.Size(118, 16)
         Me.Label36.TabIndex = 5
-        Me.Label36.Text = "Bon  Impayée "
+        Me.Label36.Text = "Nbres des Charges"
         '
         'Button3
         '
@@ -1000,12 +933,10 @@ Partial Class VehiculeDetails
         Me.Panel24.Controls.Add(Me.Panel25)
         Me.Panel24.Controls.Add(Me.Panel26)
         Me.Panel24.Controls.Add(Me.Panel27)
-        Me.Panel24.Controls.Add(Me.Panel28)
-        Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel24.Location = New System.Drawing.Point(5, 167)
         Me.Panel24.Name = "Panel24"
-        Me.Panel24.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.Panel24.Padding = New System.Windows.Forms.Padding(25, 5, 11, 5)
         Me.Panel24.Size = New System.Drawing.Size(830, 34)
         Me.Panel24.TabIndex = 18
         '
@@ -1016,7 +947,7 @@ Partial Class VehiculeDetails
         Me.Panel25.Location = New System.Drawing.Point(25, 5)
         Me.Panel25.Name = "Panel25"
         Me.Panel25.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel25.Size = New System.Drawing.Size(333, 24)
+        Me.Panel25.Size = New System.Drawing.Size(615, 24)
         Me.Panel25.TabIndex = 17
         '
         'Panel26
@@ -1024,7 +955,7 @@ Partial Class VehiculeDetails
         Me.Panel26.BackColor = System.Drawing.Color.Transparent
         Me.Panel26.Controls.Add(Me.lbFTtc)
         Me.Panel26.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel26.Location = New System.Drawing.Point(358, 5)
+        Me.Panel26.Location = New System.Drawing.Point(640, 5)
         Me.Panel26.Name = "Panel26"
         Me.Panel26.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel26.Size = New System.Drawing.Size(89, 24)
@@ -1040,7 +971,7 @@ Partial Class VehiculeDetails
         Me.lbFTtc.Name = "lbFTtc"
         Me.lbFTtc.Size = New System.Drawing.Size(79, 24)
         Me.lbFTtc.TabIndex = 2
-        Me.lbFTtc.Text = "Total"
+        Me.lbFTtc.Text = "-"
         Me.lbFTtc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel27
@@ -1048,7 +979,7 @@ Partial Class VehiculeDetails
         Me.Panel27.BackColor = System.Drawing.Color.Transparent
         Me.Panel27.Controls.Add(Me.lbFAvc)
         Me.Panel27.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel27.Location = New System.Drawing.Point(447, 5)
+        Me.Panel27.Location = New System.Drawing.Point(729, 5)
         Me.Panel27.Name = "Panel27"
         Me.Panel27.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel27.Size = New System.Drawing.Size(90, 24)
@@ -1064,41 +995,8 @@ Partial Class VehiculeDetails
         Me.lbFAvc.Name = "lbFAvc"
         Me.lbFAvc.Size = New System.Drawing.Size(80, 24)
         Me.lbFAvc.TabIndex = 2
-        Me.lbFAvc.Text = "Avance"
+        Me.lbFAvc.Text = "-"
         Me.lbFAvc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel28
-        '
-        Me.Panel28.BackColor = System.Drawing.Color.Transparent
-        Me.Panel28.Controls.Add(Me.lbFRs)
-        Me.Panel28.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel28.Location = New System.Drawing.Point(537, 5)
-        Me.Panel28.Name = "Panel28"
-        Me.Panel28.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel28.Size = New System.Drawing.Size(84, 24)
-        Me.Panel28.TabIndex = 14
-        '
-        'lbFRs
-        '
-        Me.lbFRs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbFRs.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbFRs.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.lbFRs.Location = New System.Drawing.Point(5, 0)
-        Me.lbFRs.Name = "lbFRs"
-        Me.lbFRs.Size = New System.Drawing.Size(74, 24)
-        Me.lbFRs.TabIndex = 2
-        Me.lbFRs.Text = "Remise %"
-        Me.lbFRs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel29
-        '
-        Me.Panel29.BackColor = System.Drawing.Color.Transparent
-        Me.Panel29.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel29.Location = New System.Drawing.Point(621, 5)
-        Me.Panel29.Name = "Panel29"
-        Me.Panel29.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel29.Size = New System.Drawing.Size(109, 24)
-        Me.Panel29.TabIndex = 13
         '
         'plListHeader
         '
@@ -1114,7 +1012,7 @@ Partial Class VehiculeDetails
         Me.plListHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.plListHeader.Location = New System.Drawing.Point(5, 5)
         Me.plListHeader.Name = "plListHeader"
-        Me.plListHeader.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.plListHeader.Padding = New System.Windows.Forms.Padding(11, 5, 11, 5)
         Me.plListHeader.Size = New System.Drawing.Size(830, 34)
         Me.plListHeader.TabIndex = 17
         '
@@ -1123,10 +1021,10 @@ Partial Class VehiculeDetails
         Me.Panel17.BackColor = System.Drawing.Color.Transparent
         Me.Panel17.Controls.Add(Me.Label6)
         Me.Panel17.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel17.Location = New System.Drawing.Point(139, 5)
+        Me.Panel17.Location = New System.Drawing.Point(45, 5)
         Me.Panel17.Name = "Panel17"
         Me.Panel17.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel17.Size = New System.Drawing.Size(219, 24)
+        Me.Panel17.Size = New System.Drawing.Size(402, 24)
         Me.Panel17.TabIndex = 17
         '
         'Label6
@@ -1137,17 +1035,17 @@ Partial Class VehiculeDetails
         Me.Label6.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label6.Location = New System.Drawing.Point(5, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(209, 24)
+        Me.Label6.Size = New System.Drawing.Size(392, 24)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Libellé"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel18
         '
         Me.Panel18.BackColor = System.Drawing.Color.Transparent
         Me.Panel18.Controls.Add(Me.Label7)
         Me.Panel18.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel18.Location = New System.Drawing.Point(358, 5)
+        Me.Panel18.Location = New System.Drawing.Point(447, 5)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel18.Size = New System.Drawing.Size(89, 24)
@@ -1163,7 +1061,7 @@ Partial Class VehiculeDetails
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(79, 24)
         Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Total"
+        Me.Label7.Text = "Date"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel19
@@ -1171,7 +1069,7 @@ Partial Class VehiculeDetails
         Me.Panel19.BackColor = System.Drawing.Color.Transparent
         Me.Panel19.Controls.Add(Me.Label8)
         Me.Panel19.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel19.Location = New System.Drawing.Point(447, 5)
+        Me.Panel19.Location = New System.Drawing.Point(536, 5)
         Me.Panel19.Name = "Panel19"
         Me.Panel19.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel19.Size = New System.Drawing.Size(90, 24)
@@ -1187,7 +1085,7 @@ Partial Class VehiculeDetails
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(80, 24)
         Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Avance"
+        Me.Label8.Text = "Km Dp"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel20
@@ -1195,7 +1093,7 @@ Partial Class VehiculeDetails
         Me.Panel20.BackColor = System.Drawing.Color.Transparent
         Me.Panel20.Controls.Add(Me.Label2)
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(537, 5)
+        Me.Panel20.Location = New System.Drawing.Point(626, 5)
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel20.Size = New System.Drawing.Size(84, 24)
@@ -1210,7 +1108,7 @@ Partial Class VehiculeDetails
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(74, 24)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Remise %"
+        Me.Label2.Text = "Total"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel21
@@ -1218,7 +1116,7 @@ Partial Class VehiculeDetails
         Me.Panel21.BackColor = System.Drawing.Color.Transparent
         Me.Panel21.Controls.Add(Me.Label10)
         Me.Panel21.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel21.Location = New System.Drawing.Point(621, 5)
+        Me.Panel21.Location = New System.Drawing.Point(710, 5)
         Me.Panel21.Name = "Panel21"
         Me.Panel21.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel21.Size = New System.Drawing.Size(109, 24)
@@ -1234,7 +1132,7 @@ Partial Class VehiculeDetails
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(99, 24)
         Me.Label10.TabIndex = 2
-        Me.Label10.Text = "Tva"
+        Me.Label10.Text = "avance"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel22
@@ -1242,10 +1140,10 @@ Partial Class VehiculeDetails
         Me.Panel22.BackColor = System.Drawing.Color.Transparent
         Me.Panel22.Controls.Add(Me.Label5)
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel22.Location = New System.Drawing.Point(25, 5)
+        Me.Panel22.Location = New System.Drawing.Point(11, 5)
         Me.Panel22.Name = "Panel22"
         Me.Panel22.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel22.Size = New System.Drawing.Size(114, 24)
+        Me.Panel22.Size = New System.Drawing.Size(34, 24)
         Me.Panel22.TabIndex = 12
         '
         'Label5
@@ -1256,10 +1154,11 @@ Partial Class VehiculeDetails
         Me.Label5.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label5.Location = New System.Drawing.Point(5, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(104, 24)
+        Me.Label5.Size = New System.Drawing.Size(24, 24)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Réf"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label5.Visible = False
         '
         'VehiculeDetails
         '
@@ -1293,7 +1192,6 @@ Partial Class VehiculeDetails
         Me.Panel36.ResumeLayout(False)
         Me.Panel38.ResumeLayout(False)
         Me.Panel39.ResumeLayout(False)
-        Me.Panel40.ResumeLayout(False)
         Me.Panel43.ResumeLayout(False)
         Me.Panel44.ResumeLayout(False)
         Me.Panel45.ResumeLayout(False)
@@ -1312,7 +1210,6 @@ Partial Class VehiculeDetails
         Me.Panel24.ResumeLayout(False)
         Me.Panel26.ResumeLayout(False)
         Me.Panel27.ResumeLayout(False)
-        Me.Panel28.ResumeLayout(False)
         Me.plListHeader.ResumeLayout(False)
         Me.Panel17.ResumeLayout(False)
         Me.Panel18.ResumeLayout(False)
@@ -1339,16 +1236,13 @@ Partial Class VehiculeDetails
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
     Friend WithEvents lbPath As System.Windows.Forms.Label
-    Friend WithEvents lbFctIm As System.Windows.Forms.Label
+    Friend WithEvents lbNbrMission As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Panel20 As System.Windows.Forms.Panel
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Panel28 As System.Windows.Forms.Panel
-    Friend WithEvents lbFRs As System.Windows.Forms.Label
     Friend WithEvents Panel19 As System.Windows.Forms.Panel
     Friend WithEvents lbFAvc As System.Windows.Forms.Label
-    Friend WithEvents Panel29 As System.Windows.Forms.Panel
     Friend WithEvents plListHeader As System.Windows.Forms.Panel
     Friend WithEvents Panel17 As System.Windows.Forms.Panel
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -1370,7 +1264,6 @@ Partial Class VehiculeDetails
     Friend WithEvents lbBAvc As System.Windows.Forms.Label
     Friend WithEvents Panel26 As System.Windows.Forms.Panel
     Friend WithEvents Panel37 As System.Windows.Forms.Panel
-    Friend WithEvents lbBRs As System.Windows.Forms.Label
     Friend WithEvents Panel38 As System.Windows.Forms.Panel
     Friend WithEvents lbBTtc As System.Windows.Forms.Label
     Friend WithEvents Panel43 As System.Windows.Forms.Panel
@@ -1392,17 +1285,13 @@ Partial Class VehiculeDetails
     Friend WithEvents Panel34 As System.Windows.Forms.Panel
     Friend WithEvents Panel35 As System.Windows.Forms.Panel
     Friend WithEvents Panel36 As System.Windows.Forms.Panel
-    Friend WithEvents Panel40 As System.Windows.Forms.Panel
-    Friend WithEvents Panel41 As System.Windows.Forms.Panel
     Friend WithEvents Panel42 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel50 As System.Windows.Forms.Panel
     Friend WithEvents Panel51 As System.Windows.Forms.Panel
     Friend WithEvents Label32 As System.Windows.Forms.Label
-    Friend WithEvents lbBlRest As System.Windows.Forms.Label
-    Friend WithEvents lbBlImp As System.Windows.Forms.Label
-    Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents lbnbCharge As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Panel12 As System.Windows.Forms.Panel

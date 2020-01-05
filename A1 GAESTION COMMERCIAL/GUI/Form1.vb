@@ -2,7 +2,10 @@
     'Members
     Private _Exercice As String = 19
     Private _Mode As String = "Accueil"
+    Private _prefix As String
 
+    Public zeros As String
+    Public Ex_fact As String
 
     Public admin As Boolean = True
     Public adminId As Integer = 0
@@ -13,7 +16,7 @@
     Public ImgPah As String = "C:\"
     Public SvgdPah As String = "C:\"
     Public BoundDbPath As String = "C:\"
-    Public numberOfItems As Integer = 2
+    Public numberOfItems As Integer = 25
     'font
     Public fontName_Normal As String
     Public fontName_Title As String
@@ -33,18 +36,30 @@
     Public Facture_Title As String
     Public imgEntetePath As String
     Public imgFootherPath As String
+
     Public printEnteteOnPaper As Boolean
+    Public hasEntete_BonTransport As Boolean
     Public printEnteteOnPdf As Boolean
     Public printOnPaper As Boolean
-    Public prefix As String
+
     Public proformat_Id As Integer
     Public printWithDate As Boolean = True
     Public printWithPrice As Boolean = True
-    Public nbrPrOp_tr As Integer = 320
+    Public nbrPrOp_tr As Integer = 666
     Public ListToPrint As DataTable
     Public factureToPrint As Facture
     Public cellWidth As Integer
     Public tva As Double = 14
+
+
+    Public Property prefix As String
+        Get
+            Return _prefix & "- " & Ex_fact & "/" & zeros
+        End Get
+        Set(ByVal value As String)
+            _prefix = value
+        End Set
+    End Property
 
     'Props
     Public Property Exercice As String
@@ -64,12 +79,15 @@
 
         'check Trial
         If TrialVersion_Master = False Then
-            MsgBox("Vous devez Contacter l'administration pour plus d'infos")
+            MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***TRIAL***")
             End
         End If
 
         'Trial
-        If getTrial() = False Then End
+        If getTrial() = False Then
+            MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***NBR***")
+            End
+        End If
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -130,6 +148,7 @@
         HeaderColor(Button9.Text)
     End Sub
 
+
     Private Sub HeaderColor(ByVal value As String)
         For Each b As Control In plHeaderButton.Controls
             If b.Text = value Then
@@ -155,6 +174,7 @@
         plBody.Controls.Add(ds)
     End Sub
 
+
     Private Sub PrintDoc_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage
         Dim ds As DataList = plBody.Controls(0)
         Dim b As Boolean = printEnteteOnPaper
@@ -175,9 +195,6 @@
             m = 0
         End Try
     End Sub
-
-
-
     Private Sub PrintDocMission_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocMission.PrintPage
         Dim ds As ParcList = plBody.Controls(0)
         Using a As DrawClass = New DrawClass
@@ -200,11 +217,12 @@
             ElseIf Facture_Title = "Listes Vehicule" Then
 
             ElseIf Facture_Title = "Bon de Transport" Then
-                a.DrawMission(e, ds, "Mission", printEnteteOnPaper, "Bon de Transport", True, True, m)
+                a.DrawBonTransport(e, ds, "Bon_Transport", printEnteteOnPaper, "Bon de Transport", True, True, m)
+            ElseIf Facture_Title = "Mission" Then
+                a.DrawMission(e, ds, "Mission", printEnteteOnPaper, "Mission", True, True, m)
             End If
         End Using
     End Sub
-
     Private Sub PrintDocList_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocList.PrintPage
         Dim ds As DataList = plBody.Controls(0)
         Using a As DrawClass = New DrawClass
@@ -213,6 +231,7 @@
 
         End Using
     End Sub
+
 
     Private Sub btTrial_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btTrial.Click
         Dim trial As New TrialVersion

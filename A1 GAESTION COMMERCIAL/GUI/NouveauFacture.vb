@@ -47,6 +47,8 @@
         CC.tb_C = tb_C
         If CC.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtName.text = CC.clientName & "|" & CC.cid
+            cName = CC.clientName
+            cid = CC.cid
         End If
     End Sub
 

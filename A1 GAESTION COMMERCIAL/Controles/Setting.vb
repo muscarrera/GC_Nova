@@ -7,6 +7,13 @@
         ' This call is required by the designer.
         InitializeComponent()
 
+        plData.Height = 60
+        plText.Height = 60
+        plPref.Height = 60
+        plRole.Height = 60
+        plUser.Height = 60
+        plImp.Height = 60
+
         ' Add any initialization after the InitializeComponent() call.
         txtnn.text = getRegistryinfo("fontName_Normal", "Arial")
         txtnt.text = getRegistryinfo("fontName_Title", "Arial")
@@ -22,9 +29,9 @@
     Public Sub HandleRegistryinfo()
         Try
             txtCellWidth.Text = getRegistryinfo("cellWidth", 111)
-            'TXTImgPah.Text = getRegistryinfo("ImgPah", "C:\")
-            'TXTSvgdPah.Text = getRegistryinfo("SvgdPah", "C:\")
-            'TXTnumberOfItems.Text = getRegistryinfo("numberOfItems", 22)
+            txtEntete.Text = getRegistryinfo("imgEntetePath", "C:\")
+            txtPied.Text = getRegistryinfo("imgFootherPath", "C:\")
+            txtnumberOfItems.Text = getRegistryinfo("numberOfItems", 22)
             'font
             txtnn.text = getRegistryinfo("fontName_Normal", "Arial")
             txtnt.text = getRegistryinfo("fontName_Title", "Arial")
@@ -32,6 +39,7 @@
             txtsn.text = getRegistryinfo("fontSize_Normal", 10)
             txtst.text = getRegistryinfo("fontSize_Title", 14)
             txtss.text = getRegistryinfo("fontSize_Small", 8)
+            txtnumberOfItems.Text = getRegistryinfo("numberOfItems", 22)
 
             txtImpDv.Text = getRegistryinfo("printer_Devis", "")
             txtImpBon.Text = getRegistryinfo("printer_Bon", "")
@@ -43,8 +51,8 @@
             'Form1.imgEntetePath.Text = getRegistryinfo("imgEntetePath", "")
             'Form1.imgFootherPath.Text = getRegistryinfo("imgFootherPath", "")
             cbImp.Checked = getRegistryinfo("printEnteteOnPaper", False)
-            cbImp.Checked = getRegistryinfo("printEnteteOnPdf", False)
-
+            cbPdf.Checked = getRegistryinfo("printEnteteOnPdf", False)
+            cbHasEPBonTransport.Checked = getRegistryinfo("hasEntete_BonTransport", False)
 
 
 
@@ -175,12 +183,12 @@
         plPref.Height = 1
         plRole.Height = 1
         plUser.Height = 1
-        plImp.Height = 666
+        plImp.Height = 777
     End Sub
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         plData.Height = 1
         plText.Height = 1
-        plPref.Height = 666
+        plPref.Height = 777
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
@@ -189,28 +197,31 @@
         plData.Height = 1
         plText.Height = 1
         plPref.Height = 1
-        plRole.Height = 666
+        plRole.Height = 777
         plUser.Height = 1
         plImp.Height = 1
     End Sub
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        If Form1.admin = False Then Exit Sub
+
+
         plData.Height = 1
         plText.Height = 1
         plPref.Height = 1
         plRole.Height = 1
-        plUser.Height = 666
+        plUser.Height = 777
         plImp.Height = 1
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         plData.Height = 1
-        plText.Height = 666
+        plText.Height = 777
         plPref.Height = 1
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        plData.Height = 666
+        plData.Height = 777
         plText.Height = 1
         plPref.Height = 1
         plRole.Height = 1
@@ -219,13 +230,20 @@
     End Sub
     Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
         Try
-
-
             setRegistryinfo("cellWidth", txtCellWidth.Text)
             Form1.cellWidth = txtCellWidth.Text
         Catch ex As Exception
-
         End Try
+      
+        Try
+            If IsNumeric(txtnumberOfItems.Text) Then
+                setRegistryinfo("numberOfItems", txtnumberOfItems.Text)
+                Form1.numberOfItems = txtnumberOfItems.Text
+            End If
+        Catch ex As Exception
+        End Try
+
+
     End Sub
 
     Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
@@ -240,5 +258,132 @@
 
         End Try
 
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbHasEPBonTransport.CheckedChanged
+        Try
+            setRegistryinfo("hasEntete_BonTransport", cbHasEPBonTransport.Checked)
+            Form1.hasEntete_BonTransport = cbHasEPBonTransport.Checked
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        'check Users
+        Dim pwdwin As New PWDPicker
+        Dim adm As New AddAdmins
+
+        If pwdwin.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+            If pwdwin.DGV1.SelectedRows(0).Cells(2).Value = "admin" Then
+
+                If adm.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+
+
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        'check Users
+
+        Dim str As String = "Vous été sur le point de créer une nouvelle exercice Comptable  "
+        str &= vbNewLine & "si vous ete sure merci de sisaire le mote de passe"
+        str &= vbNewLine & "de  admin pour continue "
+        str &= vbNewLine & "ancien exercices est :"
+        str &= vbNewLine & Form1.Exercice
+
+        If MsgBox(str, MsgBoxStyle.YesNo, "Nouvel exercice comptable") = MsgBoxResult.Yes Then
+            Dim pwdwin As New PWDPicker
+            Dim NE As New AddExercice
+
+            If pwdwin.ShowDialog = Windows.Forms.DialogResult.OK Then
+                If pwdwin.DGV1.SelectedRows(0).Cells(2).Value = "admin" Then
+
+
+                    If NE.ShowDialog = DialogResult.OK Then
+
+                        setRegistryinfo("zeros_number", NE.txtz.text)
+
+                        Using z As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                            Dim params2 As New Dictionary(Of String, Object)
+                            Dim n = NE.txtn.text
+                            If IsNothing(n) = False Then
+                                n = "0"
+                            Else
+                                If CInt(n) > 0 Then
+                                    n = n - 1
+                                End If
+                            End If
+
+
+                            Dim id As String = NE.txty.text & NE.txtz.text & n.ToString
+                            params2.Add("id", id)
+                            z.InsertRecord("Sell_Facture", params2)
+                            z.InsertRecord("Devis", params2)
+                            z.InsertRecord("Commande_Client", params2)
+                            z.InsertRecord("Bon_Livraison", params2)
+                            z.InsertRecord("Buy_Facture", params2)
+                            z.InsertRecord("Bon_Commande", params2)
+                            z.InsertRecord("Bon_Achat", params2)
+                            z.InsertRecord("Sell_Avoir", params2)
+                            z.InsertRecord("Bon_Transport", params2)
+
+
+                            z.DeleteRecords("Sell_Facture", params2)
+                            z.DeleteRecords("Devis", params2)
+                            z.DeleteRecords("Commande_Client", params2)
+                            z.DeleteRecords("Bon_Livraison", params2)
+                            z.DeleteRecords("Buy_Facture", params2)
+                            z.DeleteRecords("Bon_Commande", params2)
+                            z.DeleteRecords("Bon_Achat", params2)
+                            z.DeleteRecords("Sell_Avoir", params2)
+                            z.DeleteRecords("Bon_Transport", params2)
+
+
+                            params2.Clear()
+                            params2.Add("Mid", id)
+
+                            z.InsertRecord("Mission", params2)
+                            z.DeleteRecords("Mission", params2)
+
+
+                            params2.Clear()
+                            params2.Add("isActive", False)
+                            z.UpdateRecordAll("Exercice", params2)
+
+                            params2.Clear()
+                            params2.Add("name", NE.txtnm.text)
+                            params2.Add("startDate", Now.Date)
+                            params2.Add("endDate", Now.Date.AddYears(1))
+                            params2.Add("isActive", True)
+                            Dim ex = z.InsertRecord("Exercice", params2, True)
+
+                            Form1.Exercice = ex
+                            MsgBox(str, MsgBoxStyle.Information, "Nouvel exercice comptable" & vbNewLine & "Exircice N° : " & ex)
+                        End Using
+
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub LinkLabel3_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
+
+        Dim NE As New AddExercice
+        NE.txtnm.Enabled = False
+        NE.txtn.Enabled = False
+        NE.txty.Enabled = False
+
+        If NE.ShowDialog = DialogResult.OK Then
+
+            setRegistryinfo("zeros_number", NE.txtz.text)
+            Form1.zeros = NE.txtz.text
+        End If
     End Sub
 End Class

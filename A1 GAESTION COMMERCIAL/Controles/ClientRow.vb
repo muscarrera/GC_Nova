@@ -136,7 +136,7 @@
         If SizeAuto = False Then Exit Sub
 
         Dim w As Integer = Me.Width
-        Dim a As Integer = CInt((w - 22) / 8)
+        Dim a As Integer = CInt((w - 22) / 10)
 
         plP.Width = a
         plQ.Width = a

@@ -1,16 +1,5 @@
 ﻿Public Class ParcList
 
-    Dim _date As Date
-    Dim _cid As Integer
-    Dim _vid As Integer
-    Dim _did As Integer
-    Dim _isAdmin As Boolean
-    Dim _avc As Double
-    Friend SearchWords As String
-    Dim _id_T As Integer
-    Dim _MissionBonTransport As Integer
-
-
     Event AddNewDriver(ByVal ds As ParcList, ByVal clientRow As ClientRow)
     Event AddNewVehicule(ByVal ds As ParcList, ByVal clientRow As ClientRow)
     Event AddNewMission(ByVal ds As ParcList)
@@ -27,17 +16,6 @@
     Event ClientChanged(ByRef ds As ParcList)
     Event DriverChanged(ByRef ds As ParcList)
     Event VehiculeChanged(ByRef ds As ParcList)
-
-
-
-    Private startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
-    Dim _mode As String
-    Dim _id_M As Integer
-    Dim _dt As DataTable
-    Dim _client As A1_GAESTION_COMMERCIAL.Client
-
-    Public TableName As String = "Mission"
-
     Event SaveMissionChanges(ByRef parcList As ParcList)
     Event MissionFactured(ByRef parcList As ParcList)
     Event MissionSolde(ByRef parcList As ParcList)
@@ -48,23 +26,47 @@
     Event PrintMission(ByVal parcList As ParcList)
     Event GetClientDetails(ByVal _cid As Integer)
     Event GetDeiverDetails(ByVal _drid As Integer)
-    Event GetVehiculeDetails(ByVal _vid As Integer)
+    Event GetVehiculeDetails(ByVal ds As ParcList, ByVal _vid As Integer)
     Event AddNewChargeMission(ByVal k As String, ByVal v As Double, ByVal parcList As ParcList)
     Event AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal q As Double, ByVal parcList As ParcList)
     Event PrintListOfParc(ByVal parcList As ParcList)
     Event addNewCharge(ByVal parcList As ParcList)
     Event EditNewCharge(ByVal parcList As ParcList)
-
     Event ReleveClientByDate(ByVal ds As ParcList)
-
     Event GetListOfDomain(ByVal ds As ParcList)
-
     Event GetTransportById(ByVal value As Integer, ByRef ds As ParcList)
-
     Event SaveTransportChanges(ByRef ds As ParcList)
     Event addNewTransport(ByRef ds As ParcList)
     Event TransportFactured(ByRef ds As ParcList)
     Event DeleteTransport(ByVal i As Integer, ByRef ds As ParcList)
+    Event GetPriceOfDetails(ByVal ds As ParcList, ByVal str As String)
+    Event EditMissionDate(ByVal parcList As ParcList)
+    Event EditTransportDate(ByVal parcList As ParcList)
+    Event EditSelectedCharge(ByVal parcList As ParcList, ByVal clientRow As ClientRow)
+
+
+
+    Dim _date As Date
+    Dim _cid As Integer
+    Dim _vid As Integer
+    Dim _did As Integer
+    Dim _isAdmin As Boolean
+    Dim _avc As Double
+    Friend SearchWords As String
+    Dim _id_T As Integer
+    Dim _MissionBonTransport As Integer
+    Dim id_Cleared As String
+
+    Private startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
+    Dim _mode As String
+    Dim _id_M As Integer
+    Dim _dt As DataTable
+    Dim _client As A1_GAESTION_COMMERCIAL.Client
+
+    Public TableName As String = "Mission"
+
+    Public dt_Driver As DataTable
+    Public dt_Vehicule As DataTable
 
 
     Public Property AutoCompleteSourceDetails() As AutoCompleteStringCollection
@@ -145,7 +147,21 @@
         End Get
         Set(ByVal value As Integer)
             _id_M = value
-            lbId.Text = id_M
+            id_Cleared = value.ToString
+            Form1.prefix = "Ms"
+
+            If value.ToString.Length > 5 Then
+                Form1.Ex_fact = value.ToString.Remove(2)
+                id_Cleared = value.ToString.Remove(0, 2)
+
+                Dim sss As Integer = CInt(id_Cleared)
+                id_Cleared = sss.ToString
+
+            End If
+
+
+
+            lbId.Text = Form1.prefix & id_Cleared
             If value > 0 Then RaiseEvent GetElementsById(value, Me)
         End Set
     End Property
@@ -155,7 +171,21 @@
         End Get
         Set(ByVal value As Integer)
             _id_t = value
-            lbTransId.Text = value
+
+            id_Cleared = value.ToString
+            Form1.prefix = "BT"
+
+            If value.ToString.Length > 5 Then
+                Form1.Ex_fact = value.ToString.Remove(2)
+                id_Cleared = value.ToString.Remove(0, 2)
+
+                Dim sss As Integer = CInt(id_Cleared)
+                id_Cleared = sss.ToString
+
+            End If
+
+
+            lbTransId.Text = Form1.prefix & id_Cleared
 
             If value > 0 Then RaiseEvent GetTransportById(value, Me)
         End Set
@@ -238,7 +268,7 @@
             Return txtDomainName.text
         End Get
         Set(ByVal value As String)
-            txtDomainName.text = value
+            txtDomainName.text = value.ToUpper
         End Set
     End Property
     Public Property Bc As String
@@ -583,23 +613,56 @@
                     If BoolValue(_dt, "isFactured", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 ElseIf TableName = "Details_Charge" Then
+
+
+
+
                     a.Id = _dt.Rows(i).Item(0)
                     a.Libele = _dt.Rows(i).Item("name")
                     a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
-                    a.Responsable = StrValue(_dt, "value", i)
-                    a.Ville = StrValue(_dt, "drid", i)
-                    a.Tel = DblValue(_dt, "vid", i)
-
-
+                    a.Tel = StrValue(_dt, "value", i)
                     If IntValue(_dt, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+                    Dim vid As Integer = IntValue(_dt, "vid", i)
+                    Dim drid As Integer = IntValue(_dt, "drid", i)
+
+                    Try
+                        If vid > 0 Then
+                            'results = From myRow As DataRow In dt_Vehicule.Rows
+                            '                           Where myRow(0) = vid Select myRow
+
+                            'a.Tel = results(0).Item("ref")
+
+                            Dim query = From d In dt_Vehicule.AsEnumerable()
+                                        Where d.Field(Of Integer)(0) = vid
+                                        Select d
+
+                            Dim r As DataTable = query.CopyToDataTable()
+
+                            a.Responsable = r.Rows(0).Item("ref")
+                        End If
+
+
+                        If drid > 0 Then
+                            Dim query = From d In dt_Driver.AsEnumerable()
+                                          Where d.Field(Of Integer)(0) = drid
+                                          Select d
+
+                            Dim r As DataTable = query.CopyToDataTable()
+                            a.Ville = r.Rows(0).Item("name")
+                        End If
+                    Catch ex As Exception
+                    End Try
+
+
 
                 ElseIf TableName = "Vehicule" Then
                     a.Id = _dt.Rows(i).Item(0)
                     a.Libele = _dt.Rows(i).Item("name")
-                    a.lbType.Text = StrValue(_dt, "marque", i)
-                    a.Responsable = StrValue(_dt, "model", i)
+                    a.lbType.Text = StrValue(_dt, "ref", i)
+                    a.Responsable = StrValue(_dt, "carb", i)
                     a.Ville = StrValue(_dt, "km", i)
-                    a.Tel = StrValue(_dt, "carb", i)
+                    a.Tel = StrValue(_dt, "year", i)
 
                     If StrValue(_dt, "info", i).Length > 3 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
@@ -690,10 +753,16 @@
     Private Sub EditSelectedClient(ByRef elm As ClientRow)
         If TableName = "Driver" Then
             RaiseEvent EditSelectedDriver(Me, elm)
+
         ElseIf TableName = "Vehicule" Then
             RaiseEvent EditSelectedVehicule(Me, elm)
+
+        ElseIf TableName = "Details_Charge" Then
+            RaiseEvent EditSelectedCharge(Me, elm)
+
         ElseIf TableName = "Mission" Then
             id_M = elm.Id
+
         ElseIf TableName = "Bon_Transport" Then
             id_T = elm.Id
             'RaiseEvent GetElementsById(, Me)
@@ -721,12 +790,19 @@
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEdit.Click
         If TableName = "Driver" Then
             RaiseEvent EditSelectedDriver(Me, SelectedItem)
+
         ElseIf TableName = "Vehicule" Then
             RaiseEvent EditSelectedVehicule(Me, SelectedItem)
+
+        ElseIf TableName = "Details_Charge" Then
+            RaiseEvent EditSelectedCharge(Me, SelectedItem)
+
         ElseIf TableName = "Mission" Then
             id_M = SelectedItem.Id
+
         ElseIf TableName = "Bon_Transport" Then
             id_T = SelectedItem.Id
+
         ElseIf TableName = "Details_Charge" Then
             RaiseEvent EditNewCharge(Me)
         End If
@@ -857,10 +933,13 @@
         RaiseEvent GetClientDetails(cid)
     End Sub
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        If drid = 0 Then Exit Sub
+
         RaiseEvent GetDeiverDetails(drid)
     End Sub
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
-        RaiseEvent GetVehiculeDetails(vid)
+        If vid = 0 Then Exit Sub
+        RaiseEvent GetVehiculeDetails(Me, vid)
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         If txtDKey.text = "" Or txtDPrix.text = "" Then Exit Sub
@@ -911,14 +990,14 @@
         End If
     End Sub
     Private Sub txtDKey_KeyDownOk() Handles txtDKey.KeyDownOk, txtDomainName.KeyDownOk
-        txtDQte.Focus()
+        If txtDKey.text.Trim = "" Then Exit Sub
+        Try
+            If depart.Trim <> "" And arrive.Trim <> "" Then RaiseEvent GetPriceOfDetails(Me, txtDKey.text)
 
-        'If txtDKey.text.Contains("(") Then
-        '    txtDPrix.Focus()
-        'Else
-        '    txtDKey.text &= " ( )"
-        '    txtDKey.Select(txtDKey.text.Length - 1, 0)
-        'End If
+        Catch ex As Exception
+        End Try
+
+        txtDQte.Focus()
     End Sub
     Private Sub Label17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label17.Click, Panel21.Click
         txtDKey.Focus()
@@ -959,7 +1038,11 @@
     End Sub
 
     Private Sub txtDQte_KeyDownOk() Handles txtDQte.KeyDownOk
-        txtDPrix.Focus()
+        If txtDPrix.text <> "" And IsNumeric(txtDPrix.text) Then
+            txtDValue_KeyDownOk()
+        Else
+            txtDPrix.Focus()
+        End If
     End Sub
 
     Private Sub Button10_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -1013,5 +1096,21 @@
 
     Private Sub btSolde_Trans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde_Trans.Click
         RaiseEvent MissionSolde(Me)
+    End Sub
+
+    Private Sub Button28_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button28.Click
+        RaiseEvent PrintMission(Me)
+    End Sub
+
+    Private Sub Button29_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button29.Click
+        RaiseEvent SavePdf(Me)
+    End Sub
+
+    Private Sub lbDateMission_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDateMission.Click
+        RaiseEvent EditMissionDate(Me)
+    End Sub
+
+    Private Sub lbDateTrans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDateTrans.Click
+        RaiseEvent EditTransportDate(Me)
     End Sub
 End Class

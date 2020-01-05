@@ -48,8 +48,6 @@
             End Using
         End Set
     End Property
-
-
     Public Property Avance As Double
         Get
             Return _avc
@@ -70,7 +68,7 @@
     End Property
 
     Private Sub PayementForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        lbRef.Text = "[" & ClientName & "/" & FactureTable & ": " & Form1.Exercice & "/000" & Id & "]"
+        lbRef.Text = "[" & ClientName & "/" & FactureTable & ": " & Form1.prefix & Id & "]"
     End Sub
     Private Sub FillBloc()
         Dim value As DataTable
@@ -108,8 +106,6 @@
             plPmBody.Controls.AddRange(arr)
         End If
     End Sub
-
-
 
 
     Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement) Handles AddPayementRow1.AddNewArticle

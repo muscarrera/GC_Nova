@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc1"
+    Dim strKey = "ALMsbtrFirstRun_gc2"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
 
     Public ReadOnly Property TrialVersion_Master

@@ -4,6 +4,7 @@
     Public tb_V As String = "Vehicule"
     Dim tb_M As String = "Mission"
     Dim tb_C As String = "Details_Charge"
+    Public dt_Driver As DataTable
 
     Public Property id As Integer
         Get
@@ -32,6 +33,7 @@
                     lbInfo2.Text = StrValue(Vdt, "marque", 0) & vbNewLine & StrValue(Vdt, "model", 0) & " " & StrValue(Vdt, "year", 0) &
                                     vbNewLine & StrValue(Vdt, "carb", 0) & vbNewLine & StrValue(Vdt, "info", 0)
 
+                    lbRef.Text = "[" & StrValue(Vdt, "ref", 0) & "]"
                 End If
             End Using
         End If
@@ -41,6 +43,19 @@
             Dim params As New Dictionary(Of String, Object)
             plBodyBl.Controls.Clear()
             plBodyFct.Controls.Clear()
+
+            lbNbrMission.Text = "0"
+            lbPath.Text = "/ / / / "
+
+            lbFTtc.Text = String.Format("{0:n}", 0)
+            lbFAvc.Text = String.Format("{0:n}", 0)
+
+            lbnbCharge.Text = "0"
+
+            lbBTtc.Text = String.Format("{0:n}", 0)
+            lbBAvc.Text = String.Format("{0:n}", 0)
+
+            '''''///////////////////////////////////////'''''
 
             Dim dt1, dt2 As Date
             Dim str As String() = TXT.text.Split(">")
@@ -75,8 +90,8 @@
 
                 Dim avc As Double = 0
                 Dim ttc As Double = 0
-                Dim kmd As Integer = 0
-                Dim kma As Integer = 0
+                Dim kmd As Integer = 1
+                Dim kma As Integer = 1
 
                 Dim t As Double = 0
                 If dtM.Rows.Count > 0 Then
@@ -85,9 +100,9 @@
                         a.SizeAuto = True
 
                         a.Id = dtM.Rows(i).Item(0)
-                        a.Libele = StrValue(dtM, "km_D", i) & " => " & StrValue(dtM, "km_A", i)
+                        a.Libele = StrValue(dtM, "clientName", i) & " - " & StrValue(dtM, "domain", i)
                         a.lbType.Text = DteValue(dtM, "date", i).ToString("dd/MMM")
-                        a.Responsable = DblValue(dtM, "name", i)
+                        a.Responsable = StrValue(dtM, "km_D", i)
                         a.Tel = String.Format("{0:n}", DblValue(dtM, "total", i))
                         a.Ville = String.Format("{0:n}", DblValue(dtM, "avance", i))
 
@@ -99,8 +114,8 @@
                         avc += DblValue(dtM, "avance", i)
                         ttc += DblValue(dtM, "total", i)
 
-                        If IntValue(dtM, "km_A", i) > 0 And IntValue(dtM, "km_A", i) > kma Then kma = IntValue(dtM, "km_A", i)
-                        If IntValue(dtM, "km_D", i) > 0 And IntValue(dtM, "km_D", i) < kmd Then kmd = IntValue(dtM, "km_D", i)
+                        'If IntValue(dtM, "km_A", i) > kma Then kma = IntValue(dtM, "km_A", i)
+                        'If IntValue(dtM, "km_D", i) > 1 And IntValue(dtM, "km_D", i) < kmd Then kmd = IntValue(dtM, "km_D", i)
 
 
                         a.Index = i + 1
@@ -109,8 +124,17 @@
 
                         plBodyFct.Controls.Add(a)
                     Next
+
+                    'Dim query = From value In dtM.AsEnumerable() Select value.Field(Of Integer)("km_A").Max()
+                    'Dim query = From d In dt_Driver.AsEnumerable()
+                    '                     Where d.Field(Of Integer)(0) = drid
+                    '                     Select d
+                    kma = Convert.ToString(dtM.Compute("MAX(km_A)", String.Empty))
+                    kmd = Convert.ToString(dtM.Compute("MIN(km_D)", String.Empty))
+
+
                 End If
-                lbFctIm.Text = dtM.Rows.Count
+                lbNbrMission.Text = dtM.Rows.Count
                 lbPath.Text = kmd & " => " & kma & " || " & kma - kmd & " Km"
 
                 lbFTtc.Text = String.Format("{0:n}", ttc)
@@ -127,21 +151,33 @@
                         Dim a As New ClientRow
                         a.SizeAuto = True
 
-                        a.Id = dtM.Rows(i).Item(0)
-                        a.Libele = StrValue(dtM, "name", i)
-                        a.lbType.Text = DteValue(dtM, "date", i).ToString("dd/MMM")
-                        a.Responsable = ""
-                        a.Tel = String.Format("{0:n}", DblValue(dtM, "value", i))
-                        a.Ville = ""
+                        a.Id = dtC.Rows(i).Item(0)
+                        a.Libele = StrValue(dtC, "name", i)
+                        a.lbType.Text = DteValue(dtC, "date", i).ToString("dd/MMM")
+                        a.Responsable = String.Format("{0:n}", DblValue(dtC, "value", i))
+                        a.Tel = IntValue(dtC, "mid", i)
+                        'a.Ville = 
 
-                        If IntValue(dtM, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+                        If IntValue(dtC, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+                        Dim drid As Integer = IntValue(dtC, "drid", i)
 
 
-                        ttc += DblValue(dtM, "value", i)
+                        If drid > 0 And IsNothing(dt_Driver) = False Then
+                            Dim query = From d In dt_Driver.AsEnumerable()
+                                          Where d.Field(Of Integer)(0) = drid
+                                          Select d
 
-                        If IntValue(dtM, "km_A", i) > 0 And IntValue(dtM, "km_A", i) > kma Then kma = IntValue(dtM, "km_A", i)
-                        If IntValue(dtM, "km_D", i) > 0 And IntValue(dtM, "km_D", i) < kmd Then kmd = IntValue(dtM, "km_D", i)
+                            Dim r As DataTable = query.CopyToDataTable()
+                            a.Ville = r.Rows(0).Item("name")
+                        End If
 
+
+
+
+
+
+                        ttc += DblValue(dtC, "value", i)
 
                         a.Index = i + 1
                         a.Dock = DockStyle.Top
@@ -154,8 +190,8 @@
 
                 End If
 
-                lbBlImp.Text += CInt(dtC.Rows.Count)
-                lbBlRest.Text = t
+                lbnbCharge.Text = CInt(dtC.Rows.Count)
+
                 lbBTtc.Text = String.Format("{0:n}", ttc)
                 lbBAvc.Text = String.Format("{0:n}", avc)
 
@@ -207,5 +243,10 @@
     Private Sub PB_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PB.Click
         TXT.text = ""
         TXT.Focus()
+    End Sub
+
+    Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
+
+        getFactures(id)
     End Sub
 End Class

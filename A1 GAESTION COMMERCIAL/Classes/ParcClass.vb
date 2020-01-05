@@ -63,18 +63,29 @@ Public Class ParcClass
             AddHandler ds.SaveTransportChanges, AddressOf SaveTransportChanges
             AddHandler ds.transportFactured, AddressOf TransportFactured
             AddHandler ds.DeleteTransport, AddressOf DeleteTransport
+            AddHandler ds.GetPriceOfDetails, AddressOf GetPriceOfDetails
+            AddHandler ds.EditMissionDate, AddressOf EditMissionDate
+            AddHandler ds.EditTransportDate, AddressOf EditTransportDate
+            AddHandler ds.EditSelectedCharge, AddressOf EditSelectedCharge
 
-            ds.AutoCompleteSourceCharges = AutoCompleteByMission("Details_Charge")
-            ds.AutoCompleteSourceDetails = AutoCompleteByMission("Details_Mission")
+
+            ds.txtCKey.AutoCompleteSource = AutoCompleteFromWords("MISSION", "CHARGE") 'AutoCompleteByMission("Details_Charge")
+            ds.txtDKey.AutoCompleteSource = AutoCompleteFromWords("MISSION", "DETAILS") ' AutoCompleteByMission("Details_Mission")
+            ds.txtdepart.AutoCompleteSource = AutoCompleteFromWords("DEPART", "DEPART")
+            ds.txtdest.AutoCompleteSource = AutoCompleteFromWords("ARRIVE", "ARRIVE")
+
+
+            ds.dt_Driver = a.SelectDataTable("Driver", {"*"})
+            ds.dt_Vehicule = a.SelectDataTable("Vehicule", {"*"})
+
+
 
             Form1.plBody.Controls.Add(ds)
         End Using
-
     End Sub
 
     Private Sub AddNewMissin(ByVal ds As ParcList)
         Try
-
             Dim NF As New NouveauFacture
             NF.TxtExr.Text = Form1.Exercice
             NF.txtName.AutoCompleteSource = AutoCompleteByName("Client")
@@ -83,7 +94,6 @@ Public Class ParcClass
             If NF.ShowDialog = DialogResult.OK Then
                 Dim cn As String = NF.txtName.text
                 Dim cid As String = 0
-
                 Try
                     cn = NF.cName
                     cid = NF.cid
@@ -162,6 +172,8 @@ Public Class ParcClass
                     where.Add("cid = ", cid)
                     where.Add("Bon_Transport = ", 0)
                     params.Add("Bon_Transport", mid)
+                    params.Add("isAdmin", True)
+                    params.Add("isPayed", True)
 
                     a.UpdateRecordSymbols("Mission", params, where)
 
@@ -236,6 +248,76 @@ Public Class ParcClass
         End If
     End Sub
 
+    Private Sub EditMissionDate(ByVal ds As ParcList)
+        Try
+            Dim NF As New NouveauFacture
+            NF.TxtExr.Text = Form1.Exercice
+            NF.txtName.text = ds.ClientName
+            NF.cName = ds.ClientName
+            NF.cid = ds.cid
+
+            NF.TxtExr.Enabled = False
+            NF.txtName.Enabled = False
+
+            NF.TxtDate.Text = ds.date.ToString("dd/MM/yyyy")
+            If NF.ShowDialog = DialogResult.OK Then
+             
+                If IsDate(NF.TxtDate.Text) = False Then Exit Sub
+                If CDate(NF.TxtDate.Text) = ds.date Then Exit Sub
+
+
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim params As New Dictionary(Of String, Object)
+                    Dim where As New Dictionary(Of String, Object)
+
+                    params.Add("date", CDate(NF.TxtDate.Text))
+                   
+                    where.Add("Mid", ds.id_M)
+
+                    If c.UpdateRecord("Mission", params, where) Then
+                        ds.date = CDate(NF.TxtDate.Text)
+                    End If
+                End Using
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub EditTransportDate(ByVal ds As ParcList)
+        Try
+            Dim NF As New NouveauFacture
+            NF.TxtExr.Text = Form1.Exercice
+            NF.txtName.text = ds.ClientName
+            NF.cName = ds.ClientName
+            NF.cid = ds.cid
+
+            NF.TxtExr.Enabled = False
+            NF.txtName.Enabled = False
+
+            NF.TxtDate.Text = ds.date.ToString("dd/MM/yyyy")
+            If NF.ShowDialog = DialogResult.OK Then
+
+                If IsDate(NF.TxtDate.Text) = False Then Exit Sub
+                If CDate(NF.TxtDate.Text) = ds.date Then Exit Sub
+
+
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim params As New Dictionary(Of String, Object)
+                    Dim where As New Dictionary(Of String, Object)
+
+                    params.Add("date", CDate(NF.TxtDate.Text))
+
+                    where.Add("id", ds.id_T)
+
+                    If c.UpdateRecord("Bon_Transport", params, where) Then
+                        ds.date_Transport = CDate(NF.TxtDate.Text)
+                    End If
+                End Using
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Private Sub GetElements(ByRef ds As ParcList)
         Try
 
@@ -334,7 +416,7 @@ Public Class ParcClass
                                 params.Add("vid = ", V)
                             Else
                                 where.Clear()
-                                where.Add("[name] Like ", V & "%")
+                                where.Add("[ref] Like ", V & "%")
 
                                 dt = a.SelectDataTableSymbols("Vehicule", {"*"}, where)
                                 If dt.Rows.Count > 0 Then
@@ -511,7 +593,7 @@ Public Class ParcClass
                                 params.Add("vid = ", V)
                             Else
                                 where.Clear()
-                                where.Add("[name] Like ", V & "%")
+                                where.Add("[ref] Like ", V & "%")
 
                                 dt = a.SelectDataTableSymbols("Vehicule", {"*"}, where)
                                 If dt.Rows.Count > 0 Then
@@ -595,10 +677,10 @@ Public Class ParcClass
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 params.Add("Mid", value)
                 dt = a.SelectDataTable(DS.TableName, {"*"}, params)
-                cid = CInt(dt.Rows(0).Item("cid"))
+                cid = IntValue(dt, "cid", 0) 'CInt(dt.Rows(0).Item("cid"))
 
-                Dim vid As Integer = CInt(dt.Rows(0).Item("vid"))
-                Dim drid As Integer = CInt(dt.Rows(0).Item("drid"))
+                Dim vid As Integer = IntValue(dt, "vid", 0) 'CInt(dt.Rows(0).Item("vid"))
+                Dim drid As Integer = IntValue(dt, "drid", 0) 'CInt(dt.Rows(0).Item("drid"))
 
                 DS.isAdmin = BoolValue(dt, "isAdmin", 0)
                 DS.isFactured = BoolValue(dt, "isFactured", 0)
@@ -961,6 +1043,23 @@ Public Class ParcClass
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub GetPriceOfDetails(ByVal ds As ParcList, ByVal str As String)
+        Try
+            Dim params As New Dictionary(Of String, Object)
+
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                params.Add("name", str.ToUpper)
+                params.Add("depart", "(" & ds.depart.ToUpper & " => " & ds.arrive.ToUpper & ")")
+                Dim price = a.SelectByScalar("Details_Mission", "value", params)
+
+                ds.txtDPrix.text = price
+            End Using
+            params = Nothing
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
     Private Sub EditSelectedDriver(ByVal parcList As ParcList, ByVal elm As ClientRow)
         Dim pr As New AddEditDriver
@@ -988,6 +1087,31 @@ Public Class ParcClass
             elm.isEdited = True
         End If
     End Sub
+    Private Sub EditSelectedCharge(ByVal ds As ParcList, ByVal a As ClientRow)
+        Try
+
+            Dim NF As New AddEditCharge
+            NF.id = a.Id
+
+            If NF.ShowDialog = DialogResult.OK Then
+
+                a.Responsable = NF.txtDValue.text
+                a.Ville = NF.txtdriver.text.Split("|")(0)
+                a.Tel = NF.txtvehicule.text.Split("|")(0)
+                a.lbType.Text = CDate(NF.txtDate.text).ToString("dd MMM, yyyy")
+
+
+                a.isEdited = True
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+    End Sub
+
     Private Sub DeleteSelectedElement(ByVal ds As ParcList, ByVal elm As ClientRow)
         Try
             Dim params As New Dictionary(Of String, Object)
@@ -1000,14 +1124,21 @@ Public Class ParcClass
                     DeleteMission(elm.Id, ds)
                     ds.RemoveElement(elm)
                     Exit Sub
+
                 ElseIf ds.TableName = "Bon_Transport" Then
                     DeleteTransport(elm.Id, ds)
                     ds.RemoveElement(elm)
                     Exit Sub
+
                 ElseIf ds.TableName = "Vehicule" Then
                     params.Add("Vid", elm.Id)
+
                 ElseIf ds.TableName = "Driver" Then
                     params.Add("Drid", elm.Id)
+
+                ElseIf ds.TableName = "Details_Charge" Then
+                    params.Add("id", elm.Id)
+
                 End If
 
                 If a.DeleteRecords(ds.TableName, params) > 0 Then
@@ -1131,14 +1262,14 @@ Public Class ParcClass
         Dim info As String
 
 
-        rf.TxtBox1.AutoCompleteSource = AutoCompleteByName("Vehicule")
+        rf.TxtBox1.AutoCompleteSource = AutoCompleteByVehicule("Vehicule")
 
         If rf.ShowDialog = DialogResult.OK Then
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
                 Dim tableName = ds.TableName
                 Dim params As New Dictionary(Of String, Object)
-                params.Add("name", rf.Value.Split("|")(0))
+                params.Add("ref", rf.Value.Split("|")(0))
                 Dim Vdt = c.SelectDataTable("Vehicule", {"*"}, params)
                 If Vdt.Rows.Count > 0 Then
                     vid = Vdt.Rows(0).Item(0)
@@ -1167,6 +1298,17 @@ Public Class ParcClass
     End Sub
 
     Private Sub SaveMissionChanges(ByRef ds As ParcList)
+
+        If ds.txtDKey.text.Trim <> "" And ds.txtDPrix.text.Trim <> "" Then
+            MsgBox("merci de compléter / valider l'operation de saisie", MsgBoxStyle.Information, vbOK)
+            ds.txtDPrix.Focus()
+        End If
+
+        If ds.txtCKey.text.Trim <> "" And ds.txtCValue.text.Trim <> "" Then
+            MsgBox("merci de compléter / valider l'operation de saisie", MsgBoxStyle.Information, vbOK)
+            ds.txtCValue.Focus()
+        End If
+
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
             Dim isPayed As Boolean = ds.isPayed
@@ -1181,22 +1323,22 @@ Public Class ParcClass
             If ds.km_D < ds.km_A Then
                 params.Add("isAdmin", True)
             Else
-                params.Add("isAdmin", False)
+                If ds.MissionBonTransport = 0 Then params.Add("isAdmin", False)
             End If
 
             If ds.Total <= ds.Avance Then
                 params.Add("isPayed", True)
             Else
-                params.Add("isPayed", False)
+                If ds.MissionBonTransport = 0 Then params.Add("isPayed", False)
             End If
 
             params.Add("total", ds.Total)
             params.Add("avance", ds.Avance)
-            params.Add("depart", ds.depart)
+            params.Add("depart", ds.depart.ToUpper)
             params.Add("km_D", ds.km_D)
             params.Add("km_A", ds.km_A)
-            params.Add("arrive", ds.arrive)
-            params.Add("domain", ds.Domain)
+            params.Add("arrive", ds.arrive.ToUpper)
+            params.Add("domain", ds.Domain.ToUpper)
 
             Dim where As New Dictionary(Of String, Object)
             where.Add("mid", ds.id_M)
@@ -1205,12 +1347,22 @@ Public Class ParcClass
             params.Clear()
             where.Clear()
 
-            params.Add("depart", "(" & ds.depart & " => " & ds.arrive & ")")
+            params.Add("depart", "(" & ds.depart.ToUpper & " => " & ds.arrive.ToUpper & ")")
             params.Add("cid", ds.cid)
             params.Add("Bon_Transport", ds.MissionBonTransport)
             params.Add("ref", ds.vehiculeRef)
             where.Add("mid", ds.id_M)
             c.UpdateRecord("details_Mission", params, where)
+
+            params.Clear()
+            where.Clear()
+
+            params.Add("vid", ds.vid)
+            params.Add("drid", ds.drid)
+
+            where.Add("mid", ds.id_M)
+            c.UpdateRecord("details_Charge", params, where)
+
 
             params.Clear()
             where.Clear()
@@ -1230,29 +1382,75 @@ Public Class ParcClass
                 c.UpdateRecord("Vehicule", params, where)
             End If
 
-            If ds.Domain.Contains("|") = False And ds.Domain.Trim <> "" Then
-                params.Clear()
-                params.Add("name", CStr(ds.Domain))
-                params.Add("cid", ds.cid)
-
-                Dim dt_d = c.SelectDataTable("Domain", {"*"}, params)
-                If dt_d.Rows.Count = 0 Then
+            Try ' domais
+                If ds.Domain.Trim <> "" Then
                     params.Clear()
-                    params.Add("name", CStr(ds.Domain).ToUpper)
-                    params.Add("cid", ds.cid)
-
-                    Dim d_id = c.InsertRecord("Domain", params, True)
-                    ds.Domain &= "|" & d_id
-
-                    params.Clear()
-                    params.Add("domain", ds.Domain)
-
                     where.Clear()
-                    where.Add("mid", ds.id_M)
+                    params.Add("name", ds.Domain.ToUpper)
+                    params.Add("key", "DOMAIN")
+                    params.Add("val", ds.cid)
+                    Dim dt_d = c.SelectDataTable("Word", {"*"}, params)
+                    params.Clear()
 
-                    c.UpdateRecord(tableName, params, where)
+                    If dt_d.Rows.Count = 0 Then
+                        params.Clear()
+                        params.Add("name", CStr(ds.Domain).ToUpper)
+                        params.Add("key", "DOMAIN")
+                        params.Add("val", ds.cid)
+
+                        c.InsertRecord("Word", params)
+                    End If
                 End If
-            End If
+
+            Catch ex As Exception
+            End Try
+            params.Clear()
+
+            Try ' DEPART
+                If ds.depart.Trim <> "" Then
+                    params.Add("name", CStr(ds.depart.ToUpper))
+                    params.Add("key", "DEPART")
+                    params.Add("val", "DEPART")
+                    Dim dt_d = c.SelectDataTable("Word", {"*"}, params)
+                    params.Clear()
+
+                    If dt_d.Rows.Count = 0 Then
+                        params.Clear()
+                        params.Add("name", CStr(ds.depart).ToUpper)
+                        params.Add("key", "DEPART")
+                        params.Add("val", "DEPART")
+
+                        c.InsertRecord("Word", params)
+                    End If
+                End If
+
+            Catch ex As Exception
+            End Try
+            params.Clear()
+
+            Try ' ARRIVE
+                If ds.arrive.Trim <> "" Then
+                    params.Add("name", CStr(ds.arrive.ToUpper))
+                    params.Add("key", "ARRIVE")
+                    params.Add("val", "ARRIVE")
+                    Dim dt_d = c.SelectDataTable("Word", {"*"}, params)
+                    params.Clear()
+
+                    If dt_d.Rows.Count = 0 Then
+                        params.Clear()
+                        params.Add("name", CStr(ds.arrive).ToUpper)
+                        params.Add("key", "ARRIVE")
+                        params.Add("val", "ARRIVE")
+
+                        c.InsertRecord("Word", params)
+                    End If
+                End If
+
+            Catch ex As Exception
+            End Try
+            params.Clear()
+
+
 
             params = Nothing
             where = Nothing
@@ -1367,11 +1565,11 @@ Public Class ParcClass
                     params.Add("bprice", el.price)
                     params.Add("price", el.price)
                     params.Add("remise", 0)
-                    params.Add("qte", 1)
+                    params.Add("qte", el.qte)
                     params.Add("tva", 0)
                     params.Add("arid", 0)
                     params.Add("depot", 0)
-                    params.Add("ref", el.Name)
+                    params.Add("ref", el.ref)
                     params.Add("cid", 0)
 
                     c.InsertRecord("Details_Sell_Facture", params)
@@ -1442,25 +1640,43 @@ Public Class ParcClass
                 params.Add("modePayement", "-")
                 params.Add("droitTimbre", 0)
                 params.Add("pj", 0)
+                params.Add("Bon_Livraison", "B.T. : " & ds.id_T)
 
                 fid = c.InsertRecord("Sell_Facture", params, True)
                 params.Clear()
-              
+
+                Dim ListOfDetails As New Dictionary(Of String, String)
+                ListOfDetails.Add("ssss", "0|0")
+
                 For Each el As AddElement In ds.plTransBody.Controls
 
-                    params.Add("fctid", fid)
-                    params.Add("name", el.Key)
-                    params.Add("bprice", el.price)
-                    params.Add("price", el.price)
-                    params.Add("remise", 0)
-                    params.Add("qte", el.qte)
-                    params.Add("tva", Form1.tva)
-                    params.Add("arid", -111)
-                    params.Add("depot", 0)
-                    params.Add("ref", el.ref)
-                    params.Add("cid", 0)
+                    Dim sstr As String = el.Key & el.ref
+                    If ListOfDetails.ContainsKey(sstr) Then
+                        Dim d_id = CInt(ListOfDetails(sstr).Split("|")(0))
+                        Dim d_qte = CDbl(ListOfDetails(sstr).Split("|")(1))
+                        d_qte += el.qte
+                        params.Add("qte", d_qte)
+                        where.Add("id", d_id)
+                        c.UpdateRecord("Details_Sell_Facture", params, where)
+                        where.Clear()
 
-                    c.InsertRecord("Details_Sell_Facture", params)
+                    Else
+                        params.Add("fctid", fid)
+                        params.Add("name", el.Key)
+                        params.Add("bprice", el.price)
+                        params.Add("price", el.price)
+                        params.Add("remise", 0)
+                        params.Add("qte", el.qte)
+                        params.Add("tva", Form1.tva)
+                        params.Add("arid", -111)
+                        params.Add("depot", 0)
+                        params.Add("ref", el.ref)
+                        params.Add("cid", 0)
+
+                        Dim d_id = c.InsertRecord("Details_Sell_Facture", params, True)
+                        ListOfDetails.Add(sstr, d_id & "|" & el.qte)
+                    End If
+
                     params.Clear()
                 Next
 
@@ -1509,10 +1725,15 @@ Public Class ParcClass
             params.Add("total", 0)
             params.Add("avance", 0)
             params.Add("pj", 0)
+            params.Add("Bon_Transport", 0)
+            params.Add("ex", Form1.Exercice)
+            params.Add("km_D", 0)
+            params.Add("km_A", 0)
 
             mid = c.InsertRecord("Mission", params, True)
 
             For Each el As AddElement In ds.plDBody.Controls
+                params.Clear()
 
                 params.Add("name", el.Key)
                 params.Add("value", el.price)
@@ -1520,27 +1741,37 @@ Public Class ParcClass
                 params.Add("mid", mid)
                 params.Add("writer", Form1.adminName)
 
+                params.Add("depart", "(" & ds.depart & " => " & ds.arrive & ")")
+                params.Add("Bon_Transport", 0)
+                params.Add("cid", ds.cid)
+                params.Add("ref", "")
+                params.Add("date", Now.Date)
+
                 c.InsertRecord("Details_Mission", params)
-                params.Clear()
+
             Next
 
             For Each el As AddElement In ds.plCBody.Controls
-
+                params.Clear()
                 params.Add("name", el.Key)
                 params.Add("value", el.price)
                 params.Add("mid", mid)
+                params.Add("vid", ds.vid)
+                params.Add("drid", ds.drid)
+                params.Add("date", Now.Date)
+                params.Add("ex", Form1.Exercice)
                 params.Add("writer", Form1.adminName)
 
-                c.InsertRecord("Details_Mission", params)
-                params.Clear()
+                c.InsertRecord("Details_Charge", params)
             Next
-
-            If mid > 0 Then
-                ds.Mode = "DETAILS"
-                ds.id_M = mid
-                ds.Client = New Client(ds.cid, "Client")
-            End If
         End Using
+        If mid > 0 Then
+            'GetMissionById(mid, ds)
+
+            'ds.Mode = "DETAILS"
+            ds.id_M = mid
+            'ds.Client = New Client(ds.cid, "Client")
+        End If
     End Sub
     Private Sub DeleteMission(ByVal _id As Integer, ByRef ds As ParcList)
         Dim mid As Integer = _id
@@ -1604,10 +1835,11 @@ Public Class ParcClass
         End Using
     End Sub
 
-    Private Sub SavePdf(ByRef parcList As ParcList)
+    Private Sub SavePdf(ByRef ds As ParcList)
 
 
         Form1.Facture_Title = "Bon de Transport"
+        If ds.TableName = "Mission" Then Form1.Facture_Title = "Mission"
 
         Form1.printOnPaper = False
 
@@ -1635,11 +1867,11 @@ Public Class ParcClass
         Form1.printOnPaper = True
         Form1.PrintDocMission.Print()
     End Sub
-    Private Sub PrintMission(ByVal parcList As ParcList)
+    Private Sub PrintMission(ByVal ds As ParcList)
         Form1.Facture_Title = "Bon de Transport"
-
+        If ds.TableName = "Mission" Then Form1.Facture_Title = "Mission"
         Form1.printOnPaper = True
-        Form1.Facture_Title = "Bon de Transport"
+
         Form1.PrintDocMission.PrinterSettings.PrinterName = Form1.printer_Bon
         Form1.PrintDocMission.Print()
     End Sub
@@ -1672,10 +1904,10 @@ Public Class ParcClass
     Private Sub AddNewDetailsMission(ByVal k As String, ByVal v As Double, ByVal q As Double, ByVal ds As ParcList)
         Try
             Dim d_Id As Integer = 0
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
 
-                params.Add("name", k)
+                params.Add("name", k.ToUpper)
                 params.Add("value", v)
                 params.Add("date", Now.Date)
                 params.Add("qte", q)
@@ -1686,7 +1918,7 @@ Public Class ParcClass
                 If d_Id > 0 Then
                     Dim R As New AddElement
 
-                    R.Key = k
+                    R.Key = k.ToUpper
                     R.price = v
                     R.qte = q
                     R.id = d_Id
@@ -1695,10 +1927,35 @@ Public Class ParcClass
 
                     AddHandler R.Clear, AddressOf DeleteDetailsElement
                     ds.plDBody.Controls.Add(R)
+
+                    Try ' AUTOCOMPLITE DETAILS MISSION
+                        If ds.txtDKey.text.Trim <> "" Then
+                            params.Clear()
+                            params.Add("name", k.ToUpper)
+                            params.Add("key", "MISSION")
+                            params.Add("val", "DETAILS")
+                            Dim dt_d = c.SelectDataTable("Word", {"*"}, params)
+                            params.Clear()
+
+                            If dt_d.Rows.Count = 0 Then
+                                params.Clear()
+                                params.Add("name", k.ToUpper)
+                                params.Add("key", "MISSION")
+                                params.Add("val", "DETAILS")
+
+                                c.InsertRecord("Word", params)
+                            End If
+                        End If
+
+                    Catch ex As Exception
+                    End Try
+                    params.Clear()
+
                     ds.txtDPrix.text = ""
                     ds.txtDKey.text = ""
                     ds.txtDQte.text = ""
                 End If
+                params = Nothing
             End Using
         Catch ex As Exception
         End Try
@@ -1709,7 +1966,7 @@ Public Class ParcClass
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
                 Dim params As New Dictionary(Of String, Object)
 
-                params.Add("name", k)
+                params.Add("name", k.ToUpper)
                 params.Add("value", v)
                 params.Add("mid", ds.id_M)
                 params.Add("vid", ds.vid)
@@ -1723,7 +1980,7 @@ Public Class ParcClass
                 If d_Id > 0 Then
                     Dim R As New AddElement
 
-                    R.Key = k
+                    R.Key = k.ToUpper
                     R.price = v
                     R.id = d_Id
                     R.qte = 1
@@ -1731,9 +1988,40 @@ Public Class ParcClass
                     R.Dock = DockStyle.Top
                     AddHandler R.Clear, AddressOf DeleteChargeMission
                     ds.plCBody.Controls.Add(R)
+
+                    Try ' AUTOCOMPLITE CHARGE MISSION
+                        If ds.txtCKey.text.Trim <> "" Then
+                            params.Clear()
+
+                            If k.Contains("(") Then
+                                k = k.Split("(")(0)
+                            End If
+
+                            params.Add("name", k.ToUpper)
+                            params.Add("key", "MISSION")
+                            params.Add("val", "CHARGE")
+                            Dim dt_d = c.SelectDataTable("Word", {"*"}, params)
+                            params.Clear()
+
+                            If dt_d.Rows.Count = 0 Then
+                                params.Clear()
+                                params.Add("name", k.ToUpper)
+                                params.Add("key", "MISSION")
+                                params.Add("val", "CHARGE")
+
+                                c.InsertRecord("Word", params)
+                            End If
+                        End If
+
+                    Catch ex As Exception
+                    End Try
+                    params.Clear()
+
+
                     ds.txtCValue.text = ""
                     ds.txtCKey.text = ""
                 End If
+                params = Nothing
             End Using
         Catch ex As Exception
         End Try
@@ -1802,11 +2090,24 @@ Public Class ParcClass
 
     Private Sub GetListOfDomain(ByVal ds As ParcList)
         Dim cid = ds.cid
-        ds.txtDomainName.AutoCompleteSource = AutoCompleteByDomain(cid)
+        ds.txtDomainName.AutoCompleteSource = AutoCompleteFromWords("DOMAIN", cid)
     End Sub
+    Private Sub GetElementInfos(ByVal ds As ParcList, ByVal id As Integer)
+        If ds.TableName = "Vehicule" Then
+            GetVehiculeDetails(ds, id)
+        End If
+
+    End Sub
+    Private Sub GetVehiculeDetails(ByVal ds As ParcList, ByVal _vid As Integer)
+        Dim vd As New VehiculeDetails
+        vd.id = _vid
+        vd.dt_Driver = ds.dt_Driver
+        If vd.ShowDialog = DialogResult.OK Then
 
 
 
+        End If
+    End Sub
 
 
 
@@ -1841,26 +2142,15 @@ Public Class ParcClass
     End Sub
 #End Region
 
-    Private Sub GetElementInfos(ByVal ds As ParcList, ByVal id As Integer)
-        If ds.TableName = "Vehicule" Then
-            GetVehiculeDetails(id)
-        End If
 
-    End Sub
 
     Private Sub GetDeiverDetails(ByVal _drid As Integer)
         'Throw New NotImplementedException
     End Sub
 
-    Private Sub GetVehiculeDetails(ByVal _vid As Integer)
-        Dim vd As New VehiculeDetails
-        vd.id = _vid
-        If vd.ShowDialog = DialogResult.OK Then
 
 
-
-        End If
-    End Sub
+    
 
   
 

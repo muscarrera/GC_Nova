@@ -23,10 +23,11 @@ Partial Class DataList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DataList))
-        Dim Payement2 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
+        Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.plNewElement = New System.Windows.Forms.Panel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.PlAdd = New System.Windows.Forms.Panel()
+        Me.AddRow1 = New A1_GAESTION_COMMERCIAL.AddRow()
         Me.Pl = New System.Windows.Forms.Panel()
         Me.PlFooter = New System.Windows.Forms.Panel()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -35,6 +36,7 @@ Partial Class DataList
         Me.plL = New System.Windows.Forms.Panel()
         Me.plR = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
+        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plHeaderSells = New System.Windows.Forms.Panel()
@@ -50,6 +52,7 @@ Partial Class DataList
         Me.plPmBody = New System.Windows.Forms.Panel()
         Me.Panel18 = New System.Windows.Forms.Panel()
         Me.plPmHeader = New System.Windows.Forms.Panel()
+        Me.AddPayementRow1 = New A1_GAESTION_COMMERCIAL.AddPayementRow()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
@@ -80,9 +83,6 @@ Partial Class DataList
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.AddPayementRow1 = New A1_GAESTION_COMMERCIAL.AddPayementRow()
-        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
-        Me.AddRow1 = New A1_GAESTION_COMMERCIAL.AddRow()
         Me.Entete = New A1_GAESTION_COMMERCIAL.EnteteFacture()
         Me.plNewElement.SuspendLayout()
         Me.PlAdd.SuspendLayout()
@@ -142,6 +142,18 @@ Partial Class DataList
         Me.PlAdd.Padding = New System.Windows.Forms.Padding(5)
         Me.PlAdd.Size = New System.Drawing.Size(710, 39)
         Me.PlAdd.TabIndex = 6
+        '
+        'AddRow1
+        '
+        Me.AddRow1.AutoCompleteSourceName = Nothing
+        Me.AddRow1.AutoCompleteSourceRef = Nothing
+        Me.AddRow1.BackColor = System.Drawing.Color.Transparent
+        Me.AddRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddRow1.Location = New System.Drawing.Point(5, 5)
+        Me.AddRow1.Name = "AddRow1"
+        Me.AddRow1.Padding = New System.Windows.Forms.Padding(2)
+        Me.AddRow1.Size = New System.Drawing.Size(700, 29)
+        Me.AddRow1.TabIndex = 0
         '
         'Pl
         '
@@ -237,6 +249,22 @@ Partial Class DataList
         Me.plTotal.Padding = New System.Windows.Forms.Padding(5)
         Me.plTotal.Size = New System.Drawing.Size(710, 191)
         Me.plTotal.TabIndex = 7
+        '
+        'TB
+        '
+        Me.TB.avance = 0.0R
+        Me.TB.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TB.isDisibleEditing = False
+        Me.TB.Location = New System.Drawing.Point(5, 5)
+        Me.TB.ModePayement = Nothing
+        Me.TB.Name = "TB"
+        Me.TB.pj = 0
+        Me.TB.Remise = 0.0R
+        Me.TB.Size = New System.Drawing.Size(700, 181)
+        Me.TB.TabIndex = 0
+        Me.TB.TotalHt = 0.0R
+        Me.TB.TVA = 0.0R
+        Me.TB.Writer = "-"
         '
         'Panel9
         '
@@ -420,7 +448,7 @@ Partial Class DataList
         Me.plPmBody.Location = New System.Drawing.Point(5, 99)
         Me.plPmBody.Name = "plPmBody"
         Me.plPmBody.Padding = New System.Windows.Forms.Padding(5)
-        Me.plPmBody.Size = New System.Drawing.Size(683, 104)
+        Me.plPmBody.Size = New System.Drawing.Size(700, 104)
         Me.plPmBody.TabIndex = 8
         '
         'Panel18
@@ -432,7 +460,7 @@ Partial Class DataList
         Me.Panel18.Location = New System.Drawing.Point(5, 76)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel18.Size = New System.Drawing.Size(683, 23)
+        Me.Panel18.Size = New System.Drawing.Size(700, 23)
         Me.Panel18.TabIndex = 9
         '
         'plPmHeader
@@ -443,8 +471,24 @@ Partial Class DataList
         Me.plPmHeader.Location = New System.Drawing.Point(5, 36)
         Me.plPmHeader.Name = "plPmHeader"
         Me.plPmHeader.Padding = New System.Windows.Forms.Padding(5)
-        Me.plPmHeader.Size = New System.Drawing.Size(683, 40)
+        Me.plPmHeader.Size = New System.Drawing.Size(700, 40)
         Me.plPmHeader.TabIndex = 7
+        '
+        'AddPayementRow1
+        '
+        Me.AddPayementRow1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.AddPayementRow1.BackgroundImage = CType(resources.GetObject("AddPayementRow1.BackgroundImage"), System.Drawing.Image)
+        Me.AddPayementRow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AddPayementRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddPayementRow1.EditMode = False
+        Me.AddPayementRow1.id = 0
+        Me.AddPayementRow1.Index = 0
+        Me.AddPayementRow1.Location = New System.Drawing.Point(5, 5)
+        Me.AddPayementRow1.Name = "AddPayementRow1"
+        Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
+        Me.AddPayementRow1.Payement = Payement1
+        Me.AddPayementRow1.Size = New System.Drawing.Size(690, 30)
+        Me.AddPayementRow1.TabIndex = 0
         '
         'Panel11
         '
@@ -455,7 +499,7 @@ Partial Class DataList
         Me.Panel11.Location = New System.Drawing.Point(5, 5)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel11.Size = New System.Drawing.Size(683, 31)
+        Me.Panel11.Size = New System.Drawing.Size(700, 31)
         Me.Panel11.TabIndex = 6
         '
         'Button5
@@ -466,7 +510,7 @@ Partial Class DataList
         Me.Button5.FlatAppearance.BorderSize = 0
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(620, 5)
+        Me.Button5.Location = New System.Drawing.Point(637, 5)
         Me.Button5.Name = "Button5"
         Me.Button5.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
         Me.Button5.Size = New System.Drawing.Size(58, 21)
@@ -819,50 +863,6 @@ Partial Class DataList
         Me.Label10.Text = "Date"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'AddPayementRow1
-        '
-        Me.AddPayementRow1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.AddPayementRow1.BackgroundImage = CType(resources.GetObject("AddPayementRow1.BackgroundImage"), System.Drawing.Image)
-        Me.AddPayementRow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.AddPayementRow1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AddPayementRow1.EditMode = False
-        Me.AddPayementRow1.id = 0
-        Me.AddPayementRow1.Index = 0
-        Me.AddPayementRow1.Location = New System.Drawing.Point(5, 5)
-        Me.AddPayementRow1.Name = "AddPayementRow1"
-        Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddPayementRow1.Payement = Payement2
-        Me.AddPayementRow1.Size = New System.Drawing.Size(673, 30)
-        Me.AddPayementRow1.TabIndex = 0
-        '
-        'TB
-        '
-        Me.TB.avance = 0.0R
-        Me.TB.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TB.isDisibleEditing = False
-        Me.TB.Location = New System.Drawing.Point(5, 5)
-        Me.TB.ModePayement = Nothing
-        Me.TB.Name = "TB"
-        Me.TB.pj = 0
-        Me.TB.Remise = 0.0R
-        Me.TB.Size = New System.Drawing.Size(700, 181)
-        Me.TB.TabIndex = 0
-        Me.TB.TotalHt = 0.0R
-        Me.TB.TVA = 0.0R
-        Me.TB.Writer = "-"
-        '
-        'AddRow1
-        '
-        Me.AddRow1.AutoCompleteSourceName = Nothing
-        Me.AddRow1.AutoCompleteSourceRef = Nothing
-        Me.AddRow1.BackColor = System.Drawing.Color.Transparent
-        Me.AddRow1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AddRow1.Location = New System.Drawing.Point(5, 5)
-        Me.AddRow1.Name = "AddRow1"
-        Me.AddRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddRow1.Size = New System.Drawing.Size(700, 29)
-        Me.AddRow1.TabIndex = 0
-        '
         'Entete
         '
         Me.Entete.BackColor = System.Drawing.Color.Transparent
@@ -871,6 +871,7 @@ Partial Class DataList
         Me.Entete.Client = Nothing
         Me.Entete.ClientAdresse = ""
         Me.Entete.ClientName = ""
+        Me.Entete.CompteId = 0
         Me.Entete.Devis = "Devis"
         Me.Entete.Dock = System.Windows.Forms.DockStyle.Top
         Me.Entete.FactureDate = New Date(CType(0, Long))

@@ -37,12 +37,16 @@ Partial Class AddEditCharge
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtdriver = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtDate = New A1_GAESTION_COMMERCIAL.TxtBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel58.SuspendLayout()
         Me.Panel57.SuspendLayout()
         Me.Panel21.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -62,7 +66,7 @@ Partial Class AddEditCharge
         Me.Panel58.BackColor = System.Drawing.Color.Transparent
         Me.Panel58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel58.Controls.Add(Me.Button8)
-        Me.Panel58.Location = New System.Drawing.Point(82, 387)
+        Me.Panel58.Location = New System.Drawing.Point(89, 436)
         Me.Panel58.Name = "Panel58"
         Me.Panel58.Size = New System.Drawing.Size(295, 37)
         Me.Panel58.TabIndex = 10
@@ -91,7 +95,7 @@ Partial Class AddEditCharge
         Me.Panel57.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel57.Controls.Add(Me.txtDValue)
         Me.Panel57.Controls.Add(Me.Label21)
-        Me.Panel57.Location = New System.Drawing.Point(83, 312)
+        Me.Panel57.Location = New System.Drawing.Point(90, 361)
         Me.Panel57.Name = "Panel57"
         Me.Panel57.Size = New System.Drawing.Size(295, 51)
         Me.Panel57.TabIndex = 9
@@ -135,7 +139,7 @@ Partial Class AddEditCharge
         Me.Panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel21.Controls.Add(Me.Label17)
         Me.Panel21.Controls.Add(Me.txtDKey)
-        Me.Panel21.Location = New System.Drawing.Point(83, 247)
+        Me.Panel21.Location = New System.Drawing.Point(90, 296)
         Me.Panel21.Name = "Panel21"
         Me.Panel21.Size = New System.Drawing.Size(295, 51)
         Me.Panel21.TabIndex = 8
@@ -261,17 +265,62 @@ Partial Class AddEditCharge
         Me.txtdriver.txtReadOnly = False
         Me.txtdriver.TxtSelect = New Integer() {1, 0}
         '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.txtDate)
+        Me.Panel3.Location = New System.Drawing.Point(91, 207)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(295, 51)
+        Me.Panel3.TabIndex = 8
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label3.Location = New System.Drawing.Point(3, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(35, 16)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Date"
+        '
+        'txtDate
+        '
+        Me.txtDate.BackColor = System.Drawing.Color.Transparent
+        Me.txtDate.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDate.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtDate.IsNumiric = False
+        Me.txtDate.Location = New System.Drawing.Point(0, 19)
+        Me.txtDate.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtDate.Name = "txtDate"
+        Me.txtDate.PlaceHolder = ""
+        Me.txtDate.ShowClearIcon = False
+        Me.txtDate.ShowSaveIcon = False
+        Me.txtDate.Size = New System.Drawing.Size(293, 30)
+        Me.txtDate.StartUp = 2
+        Me.txtDate.TabIndex = 1
+        Me.txtDate.TextSize = 8
+        Me.txtDate.TxtBackColor = True
+        Me.txtDate.TxtColor = System.Drawing.Color.White
+        Me.txtDate.txtReadOnly = False
+        Me.txtDate.TxtSelect = New Integer() {1, 0}
+        '
         'AddEditCharge
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(457, 485)
+        Me.ClientSize = New System.Drawing.Size(457, 513)
         Me.Controls.Add(Me.Panel58)
         Me.Controls.Add(Me.Panel57)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel21)
         Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -288,6 +337,8 @@ Partial Class AddEditCharge
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -306,4 +357,7 @@ Partial Class AddEditCharge
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtdriver As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtDate As A1_GAESTION_COMMERCIAL.TxtBox
 End Class

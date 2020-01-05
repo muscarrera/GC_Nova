@@ -47,11 +47,12 @@
             Form1.Facture_Title = getRegistryinfo("Facture_Title", "")
             Form1.imgEntetePath = getRegistryinfo("imgEntetePath", "")
             Form1.imgFootherPath = getRegistryinfo("imgFootherPath", "")
+
             Form1.printEnteteOnPaper = getRegistryinfo("printEnteteOnPaper", False)
             Form1.printEnteteOnPdf = getRegistryinfo("printEnteteOnPdf", False)
+            Form1.hasEntete_BonTransport = getRegistryinfo("hasEntete_BonTransport", False)
 
-
-
+            Form1.zeros = getRegistryinfo("zeros_number", "0000")
 
         Catch ex As Exception
 

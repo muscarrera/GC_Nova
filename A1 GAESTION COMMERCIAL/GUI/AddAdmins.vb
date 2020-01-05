@@ -3,6 +3,8 @@
     Private Sub Addadmin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'ALMohassinDBDataSet.admin' table. You can move, or remove it, as needed.
         Me.AdminTableAdapter.Fill(Me.ALMohassinDBDataSet.admin)
+        'TODO: This line of code loads data into the 'ALMohassinDBDataSet.admin' table. You can move, or remove it, as needed.
+        Me.AdminTableAdapter.Fill(Me.ALMohassinDBDataSet.admin)
        
         If Form1.adminid <> "1" Then
             DataGridView1.Columns(3).Visible = False

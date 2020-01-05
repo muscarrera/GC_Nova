@@ -109,7 +109,7 @@
     End Property
     Public depot As Integer = 0
 
-    Public TVA As Double = 20
+    Public TVA As Double = Form1.tva
 
     Public ReadOnly Property TotalHt() As Double
         Get

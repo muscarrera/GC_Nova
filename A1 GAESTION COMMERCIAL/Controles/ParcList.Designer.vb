@@ -26,6 +26,7 @@ Partial Class ParcList
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.pbSearchDate = New System.Windows.Forms.PictureBox()
         Me.Panel32 = New System.Windows.Forms.Panel()
@@ -47,6 +48,7 @@ Partial Class ParcList
         Me.pl = New System.Windows.Forms.Panel()
         Me.plList = New System.Windows.Forms.Panel()
         Me.plTransport = New System.Windows.Forms.Panel()
+        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
         Me.Panel70 = New System.Windows.Forms.Panel()
         Me.Panel51 = New System.Windows.Forms.Panel()
         Me.plTransBody = New System.Windows.Forms.Panel()
@@ -104,9 +106,11 @@ Partial Class ParcList
         Me.Panel64 = New System.Windows.Forms.Panel()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Panel63 = New System.Windows.Forms.Panel()
+        Me.txtCValue = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Panel62 = New System.Windows.Forms.Panel()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.txtCKey = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel33 = New System.Windows.Forms.Panel()
         Me.Panel42 = New System.Windows.Forms.Panel()
         Me.Panel43 = New System.Windows.Forms.Panel()
@@ -123,11 +127,14 @@ Partial Class ParcList
         Me.Panel58 = New System.Windows.Forms.Panel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Panel46 = New System.Windows.Forms.Panel()
+        Me.txtDQte = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Panel57 = New System.Windows.Forms.Panel()
+        Me.txtDPrix = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel21 = New System.Windows.Forms.Panel()
         Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtDKey = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel39 = New System.Windows.Forms.Panel()
         Me.Panel40 = New System.Windows.Forms.Panel()
         Me.Panel41 = New System.Windows.Forms.Panel()
@@ -145,17 +152,22 @@ Partial Class ParcList
         Me.Panel25 = New System.Windows.Forms.Panel()
         Me.Panel38 = New System.Windows.Forms.Panel()
         Me.Panel61 = New System.Windows.Forms.Panel()
+        Me.txtKmArrive = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel37 = New System.Windows.Forms.Panel()
+        Me.txtStatus = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.txtKmDepart = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel47 = New System.Windows.Forms.Panel()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtDomainName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel31 = New System.Windows.Forms.Panel()
+        Me.txtdest = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -167,6 +179,7 @@ Partial Class ParcList
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Panel19 = New System.Windows.Forms.Panel()
+        Me.txtdepart = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.plBc = New System.Windows.Forms.Panel()
@@ -238,19 +251,6 @@ Partial Class ParcList
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plL = New System.Windows.Forms.Panel()
-        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
-        Me.txtCValue = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtCKey = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtDQte = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtDPrix = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtDKey = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtKmArrive = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtStatus = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtKmDepart = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtDomainName = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtdest = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtdepart = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel10.SuspendLayout()
         Me.Panel15.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -359,6 +359,26 @@ Partial Class ParcList
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(750, 33)
         Me.Panel15.TabIndex = 12
+        '
+        'txtSearchName
+        '
+        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearchName.BorderColor = System.Drawing.Color.Transparent
+        Me.txtSearchName.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtSearchName.IsNumiric = False
+        Me.txtSearchName.Location = New System.Drawing.Point(0, 0)
+        Me.txtSearchName.Name = "txtSearchName"
+        Me.txtSearchName.PlaceHolder = "Recherche ..."
+        Me.txtSearchName.ShowClearIcon = True
+        Me.txtSearchName.ShowSaveIcon = False
+        Me.txtSearchName.Size = New System.Drawing.Size(623, 32)
+        Me.txtSearchName.StartUp = 2
+        Me.txtSearchName.TabIndex = 5
+        Me.txtSearchName.TextSize = 10
+        Me.txtSearchName.TxtBackColor = True
+        Me.txtSearchName.TxtColor = System.Drawing.Color.White
+        Me.txtSearchName.txtReadOnly = False
+        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
         '
         'PictureBox8
         '
@@ -618,9 +638,9 @@ Partial Class ParcList
         'plList
         '
         Me.plList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plList.Location = New System.Drawing.Point(804, 5)
+        Me.plList.Location = New System.Drawing.Point(1642, 5)
         Me.plList.Name = "plList"
-        Me.plList.Size = New System.Drawing.Size(171, 671)
+        Me.plList.Size = New System.Drawing.Size(0, 654)
         Me.plList.TabIndex = 1
         '
         'plTransport
@@ -632,10 +652,26 @@ Partial Class ParcList
         Me.plTransport.Controls.Add(Me.plTransBody)
         Me.plTransport.Controls.Add(Me.plTransHeader)
         Me.plTransport.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plTransport.Location = New System.Drawing.Point(85, 5)
+        Me.plTransport.Location = New System.Drawing.Point(923, 5)
         Me.plTransport.Name = "plTransport"
-        Me.plTransport.Size = New System.Drawing.Size(719, 671)
+        Me.plTransport.Size = New System.Drawing.Size(719, 654)
         Me.plTransport.TabIndex = 2
+        '
+        'TB
+        '
+        Me.TB.avance = 0.0R
+        Me.TB.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TB.isDisibleEditing = False
+        Me.TB.Location = New System.Drawing.Point(0, 426)
+        Me.TB.ModePayement = Nothing
+        Me.TB.Name = "TB"
+        Me.TB.pj = 0
+        Me.TB.Remise = 0.0R
+        Me.TB.Size = New System.Drawing.Size(719, 181)
+        Me.TB.TabIndex = 14
+        Me.TB.TotalHt = 0.0R
+        Me.TB.TVA = 0.0R
+        Me.TB.Writer = "-"
         '
         'Panel70
         '
@@ -651,7 +687,7 @@ Partial Class ParcList
         'Panel51
         '
         Me.Panel51.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel51.Location = New System.Drawing.Point(0, 650)
+        Me.Panel51.Location = New System.Drawing.Point(0, 633)
         Me.Panel51.Name = "Panel51"
         Me.Panel51.Size = New System.Drawing.Size(719, 21)
         Me.Panel51.TabIndex = 13
@@ -700,10 +736,11 @@ Partial Class ParcList
         'lbDateTrans
         '
         Me.lbDateTrans.AutoSize = True
-        Me.lbDateTrans.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateTrans.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateTrans.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lbDateTrans.Location = New System.Drawing.Point(444, 208)
         Me.lbDateTrans.Name = "lbDateTrans"
-        Me.lbDateTrans.Size = New System.Drawing.Size(44, 17)
+        Me.lbDateTrans.Size = New System.Drawing.Size(46, 16)
         Me.lbDateTrans.TabIndex = 23
         Me.lbDateTrans.Text = "Date :"
         '
@@ -1160,7 +1197,7 @@ Partial Class ParcList
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(79, 24)
         Me.Label33.TabIndex = 2
-        Me.Label33.Text = "Total"
+        Me.Label33.Text = "Qte"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel65
@@ -1184,7 +1221,7 @@ Partial Class ParcList
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(80, 24)
         Me.Label34.TabIndex = 2
-        Me.Label34.Text = "Avance"
+        Me.Label34.Text = "PU"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel66
@@ -1207,7 +1244,7 @@ Partial Class ParcList
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(74, 24)
         Me.Label35.TabIndex = 2
-        Me.Label35.Text = "Remise %"
+        Me.Label35.Text = "Total"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel67
@@ -1267,7 +1304,7 @@ Partial Class ParcList
         Me.plDetails.Dock = System.Windows.Forms.DockStyle.Left
         Me.plDetails.Location = New System.Drawing.Point(5, 5)
         Me.plDetails.Name = "plDetails"
-        Me.plDetails.Size = New System.Drawing.Size(80, 671)
+        Me.plDetails.Size = New System.Drawing.Size(918, 654)
         Me.plDetails.TabIndex = 0
         '
         'plC
@@ -1284,7 +1321,7 @@ Partial Class ParcList
         Me.plC.Dock = System.Windows.Forms.DockStyle.Top
         Me.plC.Location = New System.Drawing.Point(0, 675)
         Me.plC.Name = "plC"
-        Me.plC.Size = New System.Drawing.Size(63, 330)
+        Me.plC.Size = New System.Drawing.Size(901, 330)
         Me.plC.TabIndex = 14
         '
         'plCBody
@@ -1294,7 +1331,7 @@ Partial Class ParcList
         Me.plCBody.Location = New System.Drawing.Point(408, 31)
         Me.plCBody.Name = "plCBody"
         Me.plCBody.Padding = New System.Windows.Forms.Padding(5)
-        Me.plCBody.Size = New System.Drawing.Size(0, 270)
+        Me.plCBody.Size = New System.Drawing.Size(491, 270)
         Me.plCBody.TabIndex = 27
         '
         'Panel60
@@ -1351,6 +1388,27 @@ Partial Class ParcList
         Me.Panel63.Size = New System.Drawing.Size(295, 51)
         Me.Panel63.TabIndex = 0
         '
+        'txtCValue
+        '
+        Me.txtCValue.BackColor = System.Drawing.Color.Transparent
+        Me.txtCValue.BorderColor = System.Drawing.Color.Transparent
+        Me.txtCValue.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtCValue.IsNumiric = True
+        Me.txtCValue.Location = New System.Drawing.Point(0, 19)
+        Me.txtCValue.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtCValue.Name = "txtCValue"
+        Me.txtCValue.PlaceHolder = ""
+        Me.txtCValue.ShowClearIcon = False
+        Me.txtCValue.ShowSaveIcon = False
+        Me.txtCValue.Size = New System.Drawing.Size(293, 30)
+        Me.txtCValue.StartUp = 2
+        Me.txtCValue.TabIndex = 10
+        Me.txtCValue.TextSize = 8
+        Me.txtCValue.TxtBackColor = True
+        Me.txtCValue.TxtColor = System.Drawing.Color.White
+        Me.txtCValue.txtReadOnly = False
+        Me.txtCValue.TxtSelect = New Integer() {1, 0}
+        '
         'Label26
         '
         Me.Label26.AutoSize = True
@@ -1386,11 +1444,32 @@ Partial Class ParcList
         Me.Label25.TabIndex = 4
         Me.Label25.Text = "Designation"
         '
+        'txtCKey
+        '
+        Me.txtCKey.BackColor = System.Drawing.Color.Transparent
+        Me.txtCKey.BorderColor = System.Drawing.Color.Transparent
+        Me.txtCKey.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtCKey.IsNumiric = False
+        Me.txtCKey.Location = New System.Drawing.Point(0, 19)
+        Me.txtCKey.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtCKey.Name = "txtCKey"
+        Me.txtCKey.PlaceHolder = ""
+        Me.txtCKey.ShowClearIcon = False
+        Me.txtCKey.ShowSaveIcon = False
+        Me.txtCKey.Size = New System.Drawing.Size(293, 30)
+        Me.txtCKey.StartUp = 2
+        Me.txtCKey.TabIndex = 9
+        Me.txtCKey.TextSize = 8
+        Me.txtCKey.TxtBackColor = True
+        Me.txtCKey.TxtColor = System.Drawing.Color.White
+        Me.txtCKey.txtReadOnly = False
+        Me.txtCKey.TxtSelect = New Integer() {1, 0}
+        '
         'Panel33
         '
         Me.Panel33.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel33.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel33.Location = New System.Drawing.Point(61, 31)
+        Me.Panel33.Location = New System.Drawing.Point(899, 31)
         Me.Panel33.Name = "Panel33"
         Me.Panel33.Size = New System.Drawing.Size(2, 270)
         Me.Panel33.TabIndex = 20
@@ -1401,7 +1480,7 @@ Partial Class ParcList
         Me.Panel42.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel42.Location = New System.Drawing.Point(2, 301)
         Me.Panel42.Name = "Panel42"
-        Me.Panel42.Size = New System.Drawing.Size(61, 2)
+        Me.Panel42.Size = New System.Drawing.Size(899, 2)
         Me.Panel42.TabIndex = 18
         '
         'Panel43
@@ -1419,7 +1498,7 @@ Partial Class ParcList
         Me.Panel44.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel44.Location = New System.Drawing.Point(0, 29)
         Me.Panel44.Name = "Panel44"
-        Me.Panel44.Size = New System.Drawing.Size(63, 2)
+        Me.Panel44.Size = New System.Drawing.Size(901, 2)
         Me.Panel44.TabIndex = 1
         '
         'Panel45
@@ -1432,7 +1511,7 @@ Partial Class ParcList
         Me.Panel45.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel45.Location = New System.Drawing.Point(0, 0)
         Me.Panel45.Name = "Panel45"
-        Me.Panel45.Size = New System.Drawing.Size(63, 29)
+        Me.Panel45.Size = New System.Drawing.Size(901, 29)
         Me.Panel45.TabIndex = 16
         '
         'LinkLabel2
@@ -1453,7 +1532,7 @@ Partial Class ParcList
         Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox4.Location = New System.Drawing.Point(25, 0)
+        Me.PictureBox4.Location = New System.Drawing.Point(863, 0)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(38, 29)
         Me.PictureBox4.TabIndex = 4
@@ -1468,14 +1547,14 @@ Partial Class ParcList
         Me.Panel59.Location = New System.Drawing.Point(0, 303)
         Me.Panel59.Name = "Panel59"
         Me.Panel59.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel59.Size = New System.Drawing.Size(63, 27)
+        Me.Panel59.Size = New System.Drawing.Size(901, 27)
         Me.Panel59.TabIndex = 26
         '
         'LinkLabel6
         '
         Me.LinkLabel6.Dock = System.Windows.Forms.DockStyle.Right
         Me.LinkLabel6.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel6.Location = New System.Drawing.Point(-178, 2)
+        Me.LinkLabel6.Location = New System.Drawing.Point(660, 2)
         Me.LinkLabel6.Name = "LinkLabel6"
         Me.LinkLabel6.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.LinkLabel6.Size = New System.Drawing.Size(54, 23)
@@ -1490,7 +1569,7 @@ Partial Class ParcList
         Me.lbTotalCharge.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbTotalCharge.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotalCharge.LinkColor = System.Drawing.Color.White
-        Me.lbTotalCharge.Location = New System.Drawing.Point(-124, 2)
+        Me.lbTotalCharge.Location = New System.Drawing.Point(714, 2)
         Me.lbTotalCharge.Name = "lbTotalCharge"
         Me.lbTotalCharge.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbTotalCharge.Size = New System.Drawing.Size(185, 23)
@@ -1513,7 +1592,7 @@ Partial Class ParcList
         Me.plD.Dock = System.Windows.Forms.DockStyle.Top
         Me.plD.Location = New System.Drawing.Point(0, 345)
         Me.plD.Name = "plD"
-        Me.plD.Size = New System.Drawing.Size(63, 330)
+        Me.plD.Size = New System.Drawing.Size(901, 330)
         Me.plD.TabIndex = 13
         '
         'plDBody
@@ -1523,7 +1602,7 @@ Partial Class ParcList
         Me.plDBody.Location = New System.Drawing.Point(408, 31)
         Me.plDBody.Name = "plDBody"
         Me.plDBody.Padding = New System.Windows.Forms.Padding(10)
-        Me.plDBody.Size = New System.Drawing.Size(0, 270)
+        Me.plDBody.Size = New System.Drawing.Size(491, 270)
         Me.plDBody.TabIndex = 23
         '
         'plNewElement
@@ -1582,6 +1661,27 @@ Partial Class ParcList
         Me.Panel46.Size = New System.Drawing.Size(126, 51)
         Me.Panel46.TabIndex = 0
         '
+        'txtDQte
+        '
+        Me.txtDQte.BackColor = System.Drawing.Color.Transparent
+        Me.txtDQte.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDQte.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtDQte.IsNumiric = True
+        Me.txtDQte.Location = New System.Drawing.Point(0, 19)
+        Me.txtDQte.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtDQte.Name = "txtDQte"
+        Me.txtDQte.PlaceHolder = ""
+        Me.txtDQte.ShowClearIcon = False
+        Me.txtDQte.ShowSaveIcon = False
+        Me.txtDQte.Size = New System.Drawing.Size(124, 30)
+        Me.txtDQte.StartUp = 2
+        Me.txtDQte.TabIndex = 8
+        Me.txtDQte.TextSize = 8
+        Me.txtDQte.TxtBackColor = True
+        Me.txtDQte.TxtColor = System.Drawing.Color.White
+        Me.txtDQte.txtReadOnly = False
+        Me.txtDQte.TxtSelect = New Integer() {1, 0}
+        '
         'Label24
         '
         Me.Label24.AutoSize = True
@@ -1604,6 +1704,27 @@ Partial Class ParcList
         Me.Panel57.Name = "Panel57"
         Me.Panel57.Size = New System.Drawing.Size(162, 51)
         Me.Panel57.TabIndex = 0
+        '
+        'txtDPrix
+        '
+        Me.txtDPrix.BackColor = System.Drawing.Color.Transparent
+        Me.txtDPrix.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDPrix.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtDPrix.IsNumiric = True
+        Me.txtDPrix.Location = New System.Drawing.Point(0, 19)
+        Me.txtDPrix.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtDPrix.Name = "txtDPrix"
+        Me.txtDPrix.PlaceHolder = ""
+        Me.txtDPrix.ShowClearIcon = False
+        Me.txtDPrix.ShowSaveIcon = False
+        Me.txtDPrix.Size = New System.Drawing.Size(160, 30)
+        Me.txtDPrix.StartUp = 2
+        Me.txtDPrix.TabIndex = 8
+        Me.txtDPrix.TextSize = 8
+        Me.txtDPrix.TxtBackColor = True
+        Me.txtDPrix.TxtColor = System.Drawing.Color.White
+        Me.txtDPrix.txtReadOnly = False
+        Me.txtDPrix.TxtSelect = New Integer() {1, 0}
         '
         'Label21
         '
@@ -1640,11 +1761,32 @@ Partial Class ParcList
         Me.Label17.TabIndex = 4
         Me.Label17.Text = "Designation"
         '
+        'txtDKey
+        '
+        Me.txtDKey.BackColor = System.Drawing.Color.Transparent
+        Me.txtDKey.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDKey.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtDKey.IsNumiric = False
+        Me.txtDKey.Location = New System.Drawing.Point(0, 19)
+        Me.txtDKey.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtDKey.Name = "txtDKey"
+        Me.txtDKey.PlaceHolder = ""
+        Me.txtDKey.ShowClearIcon = False
+        Me.txtDKey.ShowSaveIcon = False
+        Me.txtDKey.Size = New System.Drawing.Size(293, 30)
+        Me.txtDKey.StartUp = 2
+        Me.txtDKey.TabIndex = 7
+        Me.txtDKey.TextSize = 8
+        Me.txtDKey.TxtBackColor = True
+        Me.txtDKey.TxtColor = System.Drawing.Color.White
+        Me.txtDKey.txtReadOnly = False
+        Me.txtDKey.TxtSelect = New Integer() {1, 0}
+        '
         'Panel39
         '
         Me.Panel39.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel39.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel39.Location = New System.Drawing.Point(61, 31)
+        Me.Panel39.Location = New System.Drawing.Point(899, 31)
         Me.Panel39.Name = "Panel39"
         Me.Panel39.Size = New System.Drawing.Size(2, 270)
         Me.Panel39.TabIndex = 20
@@ -1655,7 +1797,7 @@ Partial Class ParcList
         Me.Panel40.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel40.Location = New System.Drawing.Point(2, 301)
         Me.Panel40.Name = "Panel40"
-        Me.Panel40.Size = New System.Drawing.Size(61, 2)
+        Me.Panel40.Size = New System.Drawing.Size(899, 2)
         Me.Panel40.TabIndex = 18
         '
         'Panel41
@@ -1673,7 +1815,7 @@ Partial Class ParcList
         Me.Panel48.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel48.Location = New System.Drawing.Point(0, 29)
         Me.Panel48.Name = "Panel48"
-        Me.Panel48.Size = New System.Drawing.Size(63, 2)
+        Me.Panel48.Size = New System.Drawing.Size(901, 2)
         Me.Panel48.TabIndex = 1
         '
         'Panel49
@@ -1686,7 +1828,7 @@ Partial Class ParcList
         Me.Panel49.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel49.Location = New System.Drawing.Point(0, 0)
         Me.Panel49.Name = "Panel49"
-        Me.Panel49.Size = New System.Drawing.Size(63, 29)
+        Me.Panel49.Size = New System.Drawing.Size(901, 29)
         Me.Panel49.TabIndex = 16
         '
         'LinkLabel1
@@ -1707,7 +1849,7 @@ Partial Class ParcList
         Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox3.Location = New System.Drawing.Point(25, 0)
+        Me.PictureBox3.Location = New System.Drawing.Point(863, 0)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(38, 29)
         Me.PictureBox3.TabIndex = 4
@@ -1724,14 +1866,14 @@ Partial Class ParcList
         Me.Panel14.Location = New System.Drawing.Point(0, 303)
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel14.Size = New System.Drawing.Size(63, 27)
+        Me.Panel14.Size = New System.Drawing.Size(901, 27)
         Me.Panel14.TabIndex = 22
         '
         'LinkLabel3
         '
         Me.LinkLabel3.Dock = System.Windows.Forms.DockStyle.Right
         Me.LinkLabel3.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel3.Location = New System.Drawing.Point(-388, 2)
+        Me.LinkLabel3.Location = New System.Drawing.Point(450, 2)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.LinkLabel3.Size = New System.Drawing.Size(57, 23)
@@ -1746,7 +1888,7 @@ Partial Class ParcList
         Me.lbTotal.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbTotal.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotal.LinkColor = System.Drawing.Color.White
-        Me.lbTotal.Location = New System.Drawing.Point(-331, 2)
+        Me.lbTotal.Location = New System.Drawing.Point(507, 2)
         Me.lbTotal.Name = "lbTotal"
         Me.lbTotal.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbTotal.Size = New System.Drawing.Size(141, 23)
@@ -1759,7 +1901,7 @@ Partial Class ParcList
         '
         Me.aa.Dock = System.Windows.Forms.DockStyle.Right
         Me.aa.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.aa.Location = New System.Drawing.Point(-190, 2)
+        Me.aa.Location = New System.Drawing.Point(648, 2)
         Me.aa.Name = "aa"
         Me.aa.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.aa.Size = New System.Drawing.Size(70, 23)
@@ -1775,7 +1917,7 @@ Partial Class ParcList
         Me.lbAvc.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbAvc.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbAvc.LinkColor = System.Drawing.Color.White
-        Me.lbAvc.Location = New System.Drawing.Point(-120, 2)
+        Me.lbAvc.Location = New System.Drawing.Point(718, 2)
         Me.lbAvc.Name = "lbAvc"
         Me.lbAvc.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbAvc.Size = New System.Drawing.Size(181, 23)
@@ -1799,14 +1941,14 @@ Partial Class ParcList
         Me.plMissionHeader.Location = New System.Drawing.Point(0, 0)
         Me.plMissionHeader.Name = "plMissionHeader"
         Me.plMissionHeader.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.plMissionHeader.Size = New System.Drawing.Size(63, 345)
+        Me.plMissionHeader.Size = New System.Drawing.Size(901, 345)
         Me.plMissionHeader.TabIndex = 12
         '
         'Panel20
         '
         Me.Panel20.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(61, 93)
+        Me.Panel20.Location = New System.Drawing.Point(899, 93)
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Size = New System.Drawing.Size(2, 244)
         Me.Panel20.TabIndex = 20
@@ -1843,7 +1985,7 @@ Partial Class ParcList
         Me.Panel38.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel38.Location = New System.Drawing.Point(0, 93)
         Me.Panel38.Name = "Panel38"
-        Me.Panel38.Size = New System.Drawing.Size(63, 244)
+        Me.Panel38.Size = New System.Drawing.Size(901, 244)
         Me.Panel38.TabIndex = 14
         '
         'Panel61
@@ -1854,11 +1996,31 @@ Partial Class ParcList
         Me.Panel61.Controls.Add(Me.txtKmArrive)
         Me.Panel61.Controls.Add(Me.Label6)
         Me.Panel61.Controls.Add(Me.Label18)
-        Me.Panel61.Location = New System.Drawing.Point(-171, 24)
+        Me.Panel61.Location = New System.Drawing.Point(667, 24)
         Me.Panel61.Name = "Panel61"
         Me.Panel61.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel61.Size = New System.Drawing.Size(219, 30)
         Me.Panel61.TabIndex = 8
+        '
+        'txtKmArrive
+        '
+        Me.txtKmArrive.BackColor = System.Drawing.Color.Transparent
+        Me.txtKmArrive.BorderColor = System.Drawing.Color.Transparent
+        Me.txtKmArrive.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtKmArrive.IsNumiric = True
+        Me.txtKmArrive.Location = New System.Drawing.Point(74, 0)
+        Me.txtKmArrive.Name = "txtKmArrive"
+        Me.txtKmArrive.PlaceHolder = ""
+        Me.txtKmArrive.ShowClearIcon = False
+        Me.txtKmArrive.ShowSaveIcon = False
+        Me.txtKmArrive.Size = New System.Drawing.Size(135, 28)
+        Me.txtKmArrive.StartUp = 2
+        Me.txtKmArrive.TabIndex = 4
+        Me.txtKmArrive.TextSize = 8
+        Me.txtKmArrive.TxtBackColor = True
+        Me.txtKmArrive.TxtColor = System.Drawing.Color.White
+        Me.txtKmArrive.txtReadOnly = False
+        Me.txtKmArrive.TxtSelect = New Integer() {1, 0}
         '
         'Label6
         '
@@ -1892,6 +2054,26 @@ Partial Class ParcList
         Me.Panel37.Size = New System.Drawing.Size(127, 38)
         Me.Panel37.TabIndex = 7
         '
+        'txtStatus
+        '
+        Me.txtStatus.BackColor = System.Drawing.Color.Transparent
+        Me.txtStatus.BorderColor = System.Drawing.SystemColors.ButtonFace
+        Me.txtStatus.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtStatus.IsNumiric = False
+        Me.txtStatus.Location = New System.Drawing.Point(53, 0)
+        Me.txtStatus.Name = "txtStatus"
+        Me.txtStatus.PlaceHolder = ""
+        Me.txtStatus.ShowClearIcon = False
+        Me.txtStatus.ShowSaveIcon = False
+        Me.txtStatus.Size = New System.Drawing.Size(66, 38)
+        Me.txtStatus.StartUp = 2
+        Me.txtStatus.TabIndex = 3
+        Me.txtStatus.TextSize = 8
+        Me.txtStatus.TxtBackColor = True
+        Me.txtStatus.TxtColor = System.Drawing.Color.White
+        Me.txtStatus.txtReadOnly = True
+        Me.txtStatus.TxtSelect = New Integer() {1, 0}
+        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -1920,11 +2102,31 @@ Partial Class ParcList
         Me.Panel4.Controls.Add(Me.txtKmDepart)
         Me.Panel4.Controls.Add(Me.Label2)
         Me.Panel4.Controls.Add(Me.Label4)
-        Me.Panel4.Location = New System.Drawing.Point(-389, 24)
+        Me.Panel4.Location = New System.Drawing.Point(449, 24)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel4.Size = New System.Drawing.Size(212, 30)
         Me.Panel4.TabIndex = 8
+        '
+        'txtKmDepart
+        '
+        Me.txtKmDepart.BackColor = System.Drawing.Color.Transparent
+        Me.txtKmDepart.BorderColor = System.Drawing.Color.Transparent
+        Me.txtKmDepart.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtKmDepart.IsNumiric = True
+        Me.txtKmDepart.Location = New System.Drawing.Point(71, 0)
+        Me.txtKmDepart.Name = "txtKmDepart"
+        Me.txtKmDepart.PlaceHolder = ""
+        Me.txtKmDepart.ShowClearIcon = False
+        Me.txtKmDepart.ShowSaveIcon = False
+        Me.txtKmDepart.Size = New System.Drawing.Size(131, 28)
+        Me.txtKmDepart.StartUp = 2
+        Me.txtKmDepart.TabIndex = 3
+        Me.txtKmDepart.TextSize = 8
+        Me.txtKmDepart.TxtBackColor = True
+        Me.txtKmDepart.TxtColor = System.Drawing.Color.White
+        Me.txtKmDepart.txtReadOnly = False
+        Me.txtKmDepart.TxtSelect = New Integer() {1, 0}
         '
         'Label2
         '
@@ -1969,6 +2171,27 @@ Partial Class ParcList
         Me.Label27.TabIndex = 4
         Me.Label27.Text = "Domain"
         '
+        'txtDomainName
+        '
+        Me.txtDomainName.BackColor = System.Drawing.Color.Transparent
+        Me.txtDomainName.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDomainName.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtDomainName.IsNumiric = False
+        Me.txtDomainName.Location = New System.Drawing.Point(0, 19)
+        Me.txtDomainName.MinimumSize = New System.Drawing.Size(111, 30)
+        Me.txtDomainName.Name = "txtDomainName"
+        Me.txtDomainName.PlaceHolder = ""
+        Me.txtDomainName.ShowClearIcon = False
+        Me.txtDomainName.ShowSaveIcon = False
+        Me.txtDomainName.Size = New System.Drawing.Size(248, 30)
+        Me.txtDomainName.StartUp = 2
+        Me.txtDomainName.TabIndex = 7
+        Me.txtDomainName.TextSize = 8
+        Me.txtDomainName.TxtBackColor = True
+        Me.txtDomainName.TxtColor = System.Drawing.Color.White
+        Me.txtDomainName.txtReadOnly = False
+        Me.txtDomainName.TxtSelect = New Integer() {1, 0}
+        '
         'Panel31
         '
         Me.Panel31.BackColor = System.Drawing.Color.Transparent
@@ -1981,6 +2204,26 @@ Partial Class ParcList
         Me.Panel31.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel31.Size = New System.Drawing.Size(209, 30)
         Me.Panel31.TabIndex = 8
+        '
+        'txtdest
+        '
+        Me.txtdest.BackColor = System.Drawing.Color.Transparent
+        Me.txtdest.BorderColor = System.Drawing.Color.Transparent
+        Me.txtdest.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtdest.IsNumiric = False
+        Me.txtdest.Location = New System.Drawing.Point(75, 0)
+        Me.txtdest.Name = "txtdest"
+        Me.txtdest.PlaceHolder = ""
+        Me.txtdest.ShowClearIcon = False
+        Me.txtdest.ShowSaveIcon = False
+        Me.txtdest.Size = New System.Drawing.Size(124, 28)
+        Me.txtdest.StartUp = 2
+        Me.txtdest.TabIndex = 2
+        Me.txtdest.TextSize = 8
+        Me.txtdest.TxtBackColor = True
+        Me.txtdest.TxtColor = System.Drawing.Color.White
+        Me.txtdest.txtReadOnly = False
+        Me.txtdest.TxtSelect = New Integer() {1, 0}
         '
         'Label12
         '
@@ -2008,7 +2251,7 @@ Partial Class ParcList
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label23.Location = New System.Drawing.Point(-233, 74)
+        Me.Label23.Location = New System.Drawing.Point(605, 74)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(56, 14)
         Me.Label23.TabIndex = 2
@@ -2105,6 +2348,26 @@ Partial Class ParcList
         Me.Panel19.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel19.Size = New System.Drawing.Size(200, 30)
         Me.Panel19.TabIndex = 8
+        '
+        'txtdepart
+        '
+        Me.txtdepart.BackColor = System.Drawing.Color.Transparent
+        Me.txtdepart.BorderColor = System.Drawing.Color.Transparent
+        Me.txtdepart.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtdepart.IsNumiric = False
+        Me.txtdepart.Location = New System.Drawing.Point(54, 0)
+        Me.txtdepart.Name = "txtdepart"
+        Me.txtdepart.PlaceHolder = ""
+        Me.txtdepart.ShowClearIcon = False
+        Me.txtdepart.ShowSaveIcon = False
+        Me.txtdepart.Size = New System.Drawing.Size(136, 28)
+        Me.txtdepart.StartUp = 2
+        Me.txtdepart.TabIndex = 1
+        Me.txtdepart.TextSize = 8
+        Me.txtdepart.TxtBackColor = True
+        Me.txtdepart.TxtColor = System.Drawing.Color.White
+        Me.txtdepart.txtReadOnly = False
+        Me.txtdepart.TxtSelect = New Integer() {1, 0}
         '
         'Label7
         '
@@ -2215,7 +2478,7 @@ Partial Class ParcList
         Me.Panel18.Controls.Add(Me.lbVehiculeName)
         Me.Panel18.Controls.Add(Me.Button9)
         Me.Panel18.Controls.Add(Me.lbVehiculeInfo)
-        Me.Panel18.Location = New System.Drawing.Point(-237, 90)
+        Me.Panel18.Location = New System.Drawing.Point(601, 90)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Size = New System.Drawing.Size(290, 90)
         Me.Panel18.TabIndex = 1
@@ -2283,7 +2546,7 @@ Partial Class ParcList
         Me.Panel17.Controls.Add(Me.lbDriverName)
         Me.Panel17.Location = New System.Drawing.Point(323, 90)
         Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(0, 90)
+        Me.Panel17.Size = New System.Drawing.Size(265, 90)
         Me.Panel17.TabIndex = 1
         '
         'Button6
@@ -2295,7 +2558,7 @@ Partial Class ParcList
         Me.Button6.FlatAppearance.BorderSize = 0
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.Location = New System.Drawing.Point(-32, 67)
+        Me.Button6.Location = New System.Drawing.Point(233, 67)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(15, 15)
         Me.Button6.TabIndex = 9
@@ -2308,7 +2571,7 @@ Partial Class ParcList
         Me.Button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Button13.FlatAppearance.BorderSize = 0
         Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Location = New System.Drawing.Point(-50, 67)
+        Me.Button13.Location = New System.Drawing.Point(215, 67)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(15, 15)
         Me.Button13.TabIndex = 5
@@ -2320,9 +2583,9 @@ Partial Class ParcList
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbDriverInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbDriverInfo.Location = New System.Drawing.Point(12, 33)
+        Me.lbDriverInfo.Location = New System.Drawing.Point(10, 32)
         Me.lbDriverInfo.Name = "lbDriverInfo"
-        Me.lbDriverInfo.Size = New System.Drawing.Size(0, 48)
+        Me.lbDriverInfo.Size = New System.Drawing.Size(238, 48)
         Me.lbDriverInfo.TabIndex = 2
         Me.lbDriverInfo.Text = "-"
         '
@@ -2413,10 +2676,11 @@ Partial Class ParcList
         'lbDateMission
         '
         Me.lbDateMission.AutoSize = True
-        Me.lbDateMission.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateMission.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateMission.ForeColor = System.Drawing.Color.DarkBlue
         Me.lbDateMission.Location = New System.Drawing.Point(737, 186)
         Me.lbDateMission.Name = "lbDateMission"
-        Me.lbDateMission.Size = New System.Drawing.Size(44, 17)
+        Me.lbDateMission.Size = New System.Drawing.Size(41, 16)
         Me.lbDateMission.TabIndex = 2
         Me.lbDateMission.Text = "Date :"
         '
@@ -2446,7 +2710,7 @@ Partial Class ParcList
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel8.Location = New System.Drawing.Point(0, 91)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(63, 2)
+        Me.Panel8.Size = New System.Drawing.Size(901, 2)
         Me.Panel8.TabIndex = 1
         '
         'Panel26
@@ -2465,7 +2729,7 @@ Partial Class ParcList
         Me.Panel26.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel26.Location = New System.Drawing.Point(0, 56)
         Me.Panel26.Name = "Panel26"
-        Me.Panel26.Size = New System.Drawing.Size(63, 35)
+        Me.Panel26.Size = New System.Drawing.Size(901, 35)
         Me.Panel26.TabIndex = 16
         '
         'Panel22
@@ -2476,7 +2740,7 @@ Partial Class ParcList
         Me.Panel22.Controls.Add(Me.btPdf)
         Me.Panel22.Controls.Add(Me.Label10)
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel22.Location = New System.Drawing.Point(-204, 0)
+        Me.Panel22.Location = New System.Drawing.Point(634, 0)
         Me.Panel22.Name = "Panel22"
         Me.Panel22.Size = New System.Drawing.Size(267, 35)
         Me.Panel22.TabIndex = 3
@@ -2656,7 +2920,7 @@ Partial Class ParcList
         Me.Panel30.Location = New System.Drawing.Point(0, 10)
         Me.Panel30.Name = "Panel30"
         Me.Panel30.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel30.Size = New System.Drawing.Size(63, 46)
+        Me.Panel30.Size = New System.Drawing.Size(901, 46)
         Me.Panel30.TabIndex = 17
         '
         'Panel23
@@ -2750,7 +3014,7 @@ Partial Class ParcList
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Location = New System.Drawing.Point(15, 10)
+        Me.PictureBox1.Location = New System.Drawing.Point(853, 10)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(38, 26)
         Me.PictureBox1.TabIndex = 3
@@ -2774,7 +3038,7 @@ Partial Class ParcList
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel12.Location = New System.Drawing.Point(0, 0)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(63, 10)
+        Me.Panel12.Size = New System.Drawing.Size(901, 10)
         Me.Panel12.TabIndex = 13
         '
         'Panel13
@@ -2783,7 +3047,7 @@ Partial Class ParcList
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel13.Location = New System.Drawing.Point(0, 0)
         Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(63, 2)
+        Me.Panel13.Size = New System.Drawing.Size(901, 2)
         Me.Panel13.TabIndex = 1
         '
         'plFooter
@@ -2999,268 +3263,6 @@ Partial Class ParcList
         Me.plL.Padding = New System.Windows.Forms.Padding(5)
         Me.plL.Size = New System.Drawing.Size(105, 920)
         Me.plL.TabIndex = 14
-        '
-        'TB
-        '
-        Me.TB.avance = 0.0R
-        Me.TB.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TB.isDisibleEditing = False
-        Me.TB.Location = New System.Drawing.Point(0, 426)
-        Me.TB.ModePayement = Nothing
-        Me.TB.Name = "TB"
-        Me.TB.pj = 0
-        Me.TB.Remise = 0.0R
-        Me.TB.Size = New System.Drawing.Size(719, 181)
-        Me.TB.TabIndex = 14
-        Me.TB.TotalHt = 0.0R
-        Me.TB.TVA = 0.0R
-        Me.TB.Writer = "-"
-        '
-        'txtCValue
-        '
-        Me.txtCValue.BackColor = System.Drawing.Color.Transparent
-        Me.txtCValue.BorderColor = System.Drawing.Color.Transparent
-        Me.txtCValue.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtCValue.IsNumiric = True
-        Me.txtCValue.Location = New System.Drawing.Point(0, 19)
-        Me.txtCValue.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtCValue.Name = "txtCValue"
-        Me.txtCValue.PlaceHolder = ""
-        Me.txtCValue.ShowClearIcon = False
-        Me.txtCValue.ShowSaveIcon = False
-        Me.txtCValue.Size = New System.Drawing.Size(293, 30)
-        Me.txtCValue.StartUp = 2
-        Me.txtCValue.TabIndex = 10
-        Me.txtCValue.TextSize = 8
-        Me.txtCValue.TxtBackColor = True
-        Me.txtCValue.TxtColor = System.Drawing.Color.White
-        Me.txtCValue.txtReadOnly = False
-        Me.txtCValue.TxtSelect = New Integer() {1, 0}
-        '
-        'txtCKey
-        '
-        Me.txtCKey.BackColor = System.Drawing.Color.Transparent
-        Me.txtCKey.BorderColor = System.Drawing.Color.Transparent
-        Me.txtCKey.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtCKey.IsNumiric = False
-        Me.txtCKey.Location = New System.Drawing.Point(0, 19)
-        Me.txtCKey.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtCKey.Name = "txtCKey"
-        Me.txtCKey.PlaceHolder = ""
-        Me.txtCKey.ShowClearIcon = False
-        Me.txtCKey.ShowSaveIcon = False
-        Me.txtCKey.Size = New System.Drawing.Size(293, 30)
-        Me.txtCKey.StartUp = 2
-        Me.txtCKey.TabIndex = 9
-        Me.txtCKey.TextSize = 8
-        Me.txtCKey.TxtBackColor = True
-        Me.txtCKey.TxtColor = System.Drawing.Color.White
-        Me.txtCKey.txtReadOnly = False
-        Me.txtCKey.TxtSelect = New Integer() {1, 0}
-        '
-        'txtDQte
-        '
-        Me.txtDQte.BackColor = System.Drawing.Color.Transparent
-        Me.txtDQte.BorderColor = System.Drawing.Color.Transparent
-        Me.txtDQte.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtDQte.IsNumiric = True
-        Me.txtDQte.Location = New System.Drawing.Point(0, 19)
-        Me.txtDQte.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtDQte.Name = "txtDQte"
-        Me.txtDQte.PlaceHolder = ""
-        Me.txtDQte.ShowClearIcon = False
-        Me.txtDQte.ShowSaveIcon = False
-        Me.txtDQte.Size = New System.Drawing.Size(124, 30)
-        Me.txtDQte.StartUp = 2
-        Me.txtDQte.TabIndex = 8
-        Me.txtDQte.TextSize = 8
-        Me.txtDQte.TxtBackColor = True
-        Me.txtDQte.TxtColor = System.Drawing.Color.White
-        Me.txtDQte.txtReadOnly = False
-        Me.txtDQte.TxtSelect = New Integer() {1, 0}
-        '
-        'txtDPrix
-        '
-        Me.txtDPrix.BackColor = System.Drawing.Color.Transparent
-        Me.txtDPrix.BorderColor = System.Drawing.Color.Transparent
-        Me.txtDPrix.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtDPrix.IsNumiric = True
-        Me.txtDPrix.Location = New System.Drawing.Point(0, 19)
-        Me.txtDPrix.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtDPrix.Name = "txtDPrix"
-        Me.txtDPrix.PlaceHolder = ""
-        Me.txtDPrix.ShowClearIcon = False
-        Me.txtDPrix.ShowSaveIcon = False
-        Me.txtDPrix.Size = New System.Drawing.Size(160, 30)
-        Me.txtDPrix.StartUp = 2
-        Me.txtDPrix.TabIndex = 8
-        Me.txtDPrix.TextSize = 8
-        Me.txtDPrix.TxtBackColor = True
-        Me.txtDPrix.TxtColor = System.Drawing.Color.White
-        Me.txtDPrix.txtReadOnly = False
-        Me.txtDPrix.TxtSelect = New Integer() {1, 0}
-        '
-        'txtDKey
-        '
-        Me.txtDKey.BackColor = System.Drawing.Color.Transparent
-        Me.txtDKey.BorderColor = System.Drawing.Color.Transparent
-        Me.txtDKey.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtDKey.IsNumiric = False
-        Me.txtDKey.Location = New System.Drawing.Point(0, 19)
-        Me.txtDKey.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtDKey.Name = "txtDKey"
-        Me.txtDKey.PlaceHolder = ""
-        Me.txtDKey.ShowClearIcon = False
-        Me.txtDKey.ShowSaveIcon = False
-        Me.txtDKey.Size = New System.Drawing.Size(293, 30)
-        Me.txtDKey.StartUp = 2
-        Me.txtDKey.TabIndex = 7
-        Me.txtDKey.TextSize = 8
-        Me.txtDKey.TxtBackColor = True
-        Me.txtDKey.TxtColor = System.Drawing.Color.White
-        Me.txtDKey.txtReadOnly = False
-        Me.txtDKey.TxtSelect = New Integer() {1, 0}
-        '
-        'txtKmArrive
-        '
-        Me.txtKmArrive.BackColor = System.Drawing.Color.Transparent
-        Me.txtKmArrive.BorderColor = System.Drawing.Color.Transparent
-        Me.txtKmArrive.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtKmArrive.IsNumiric = True
-        Me.txtKmArrive.Location = New System.Drawing.Point(74, 0)
-        Me.txtKmArrive.Name = "txtKmArrive"
-        Me.txtKmArrive.PlaceHolder = ""
-        Me.txtKmArrive.ShowClearIcon = False
-        Me.txtKmArrive.ShowSaveIcon = False
-        Me.txtKmArrive.Size = New System.Drawing.Size(135, 28)
-        Me.txtKmArrive.StartUp = 2
-        Me.txtKmArrive.TabIndex = 4
-        Me.txtKmArrive.TextSize = 8
-        Me.txtKmArrive.TxtBackColor = True
-        Me.txtKmArrive.TxtColor = System.Drawing.Color.White
-        Me.txtKmArrive.txtReadOnly = False
-        Me.txtKmArrive.TxtSelect = New Integer() {1, 0}
-        '
-        'txtStatus
-        '
-        Me.txtStatus.BackColor = System.Drawing.Color.Transparent
-        Me.txtStatus.BorderColor = System.Drawing.SystemColors.ButtonFace
-        Me.txtStatus.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtStatus.IsNumiric = False
-        Me.txtStatus.Location = New System.Drawing.Point(53, 0)
-        Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.PlaceHolder = ""
-        Me.txtStatus.ShowClearIcon = False
-        Me.txtStatus.ShowSaveIcon = False
-        Me.txtStatus.Size = New System.Drawing.Size(66, 38)
-        Me.txtStatus.StartUp = 2
-        Me.txtStatus.TabIndex = 3
-        Me.txtStatus.TextSize = 8
-        Me.txtStatus.TxtBackColor = True
-        Me.txtStatus.TxtColor = System.Drawing.Color.White
-        Me.txtStatus.txtReadOnly = True
-        Me.txtStatus.TxtSelect = New Integer() {1, 0}
-        '
-        'txtKmDepart
-        '
-        Me.txtKmDepart.BackColor = System.Drawing.Color.Transparent
-        Me.txtKmDepart.BorderColor = System.Drawing.Color.Transparent
-        Me.txtKmDepart.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtKmDepart.IsNumiric = True
-        Me.txtKmDepart.Location = New System.Drawing.Point(71, 0)
-        Me.txtKmDepart.Name = "txtKmDepart"
-        Me.txtKmDepart.PlaceHolder = ""
-        Me.txtKmDepart.ShowClearIcon = False
-        Me.txtKmDepart.ShowSaveIcon = False
-        Me.txtKmDepart.Size = New System.Drawing.Size(131, 28)
-        Me.txtKmDepart.StartUp = 2
-        Me.txtKmDepart.TabIndex = 3
-        Me.txtKmDepart.TextSize = 8
-        Me.txtKmDepart.TxtBackColor = True
-        Me.txtKmDepart.TxtColor = System.Drawing.Color.White
-        Me.txtKmDepart.txtReadOnly = False
-        Me.txtKmDepart.TxtSelect = New Integer() {1, 0}
-        '
-        'txtDomainName
-        '
-        Me.txtDomainName.BackColor = System.Drawing.Color.Transparent
-        Me.txtDomainName.BorderColor = System.Drawing.Color.Transparent
-        Me.txtDomainName.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.txtDomainName.IsNumiric = False
-        Me.txtDomainName.Location = New System.Drawing.Point(0, 19)
-        Me.txtDomainName.MinimumSize = New System.Drawing.Size(111, 30)
-        Me.txtDomainName.Name = "txtDomainName"
-        Me.txtDomainName.PlaceHolder = ""
-        Me.txtDomainName.ShowClearIcon = False
-        Me.txtDomainName.ShowSaveIcon = False
-        Me.txtDomainName.Size = New System.Drawing.Size(248, 30)
-        Me.txtDomainName.StartUp = 2
-        Me.txtDomainName.TabIndex = 7
-        Me.txtDomainName.TextSize = 8
-        Me.txtDomainName.TxtBackColor = True
-        Me.txtDomainName.TxtColor = System.Drawing.Color.White
-        Me.txtDomainName.txtReadOnly = False
-        Me.txtDomainName.TxtSelect = New Integer() {1, 0}
-        '
-        'txtdest
-        '
-        Me.txtdest.BackColor = System.Drawing.Color.Transparent
-        Me.txtdest.BorderColor = System.Drawing.Color.Transparent
-        Me.txtdest.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtdest.IsNumiric = False
-        Me.txtdest.Location = New System.Drawing.Point(75, 0)
-        Me.txtdest.Name = "txtdest"
-        Me.txtdest.PlaceHolder = ""
-        Me.txtdest.ShowClearIcon = False
-        Me.txtdest.ShowSaveIcon = False
-        Me.txtdest.Size = New System.Drawing.Size(124, 28)
-        Me.txtdest.StartUp = 2
-        Me.txtdest.TabIndex = 2
-        Me.txtdest.TextSize = 8
-        Me.txtdest.TxtBackColor = True
-        Me.txtdest.TxtColor = System.Drawing.Color.White
-        Me.txtdest.txtReadOnly = False
-        Me.txtdest.TxtSelect = New Integer() {1, 0}
-        '
-        'txtdepart
-        '
-        Me.txtdepart.BackColor = System.Drawing.Color.Transparent
-        Me.txtdepart.BorderColor = System.Drawing.Color.Transparent
-        Me.txtdepart.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtdepart.IsNumiric = False
-        Me.txtdepart.Location = New System.Drawing.Point(54, 0)
-        Me.txtdepart.Name = "txtdepart"
-        Me.txtdepart.PlaceHolder = ""
-        Me.txtdepart.ShowClearIcon = False
-        Me.txtdepart.ShowSaveIcon = False
-        Me.txtdepart.Size = New System.Drawing.Size(136, 28)
-        Me.txtdepart.StartUp = 2
-        Me.txtdepart.TabIndex = 1
-        Me.txtdepart.TextSize = 8
-        Me.txtdepart.TxtBackColor = True
-        Me.txtdepart.TxtColor = System.Drawing.Color.White
-        Me.txtdepart.txtReadOnly = False
-        Me.txtdepart.TxtSelect = New Integer() {1, 0}
-        '
-        'txtSearchName
-        '
-        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearchName.BorderColor = System.Drawing.Color.Transparent
-        Me.txtSearchName.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtSearchName.IsNumiric = False
-        Me.txtSearchName.Location = New System.Drawing.Point(0, 0)
-        Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.PlaceHolder = "Recherche ..."
-        Me.txtSearchName.ShowClearIcon = True
-        Me.txtSearchName.ShowSaveIcon = False
-        Me.txtSearchName.Size = New System.Drawing.Size(623, 32)
-        Me.txtSearchName.StartUp = 2
-        Me.txtSearchName.TabIndex = 5
-        Me.txtSearchName.TextSize = 10
-        Me.txtSearchName.TxtBackColor = True
-        Me.txtSearchName.TxtColor = System.Drawing.Color.White
-        Me.txtSearchName.txtReadOnly = False
-        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
         '
         'ParcList
         '
