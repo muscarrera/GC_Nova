@@ -104,8 +104,8 @@
                  
                     Dim str As String = c.name '& " [" & c.cid & "]"
                     str &= vbNewLine
-                    str &= c.adresse
-                    str &= vbNewLine
+                    'str &= c.adresse
+                    'str &= vbNewLine
                     str &= "ICE : " & c.ICE
                     lbEnCompte.Text = str
 
@@ -122,6 +122,7 @@
         End Get
         Set(ByVal value As Client)
             _client = value
+            Form1.clientFacture = value
             If Not IsNothing(value) Then
 
                 _clientGroupe = value.groupe

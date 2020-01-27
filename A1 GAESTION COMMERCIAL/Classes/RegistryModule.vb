@@ -54,6 +54,11 @@
 
             Form1.zeros = getRegistryinfo("zeros_number", "0000")
 
+            Form1.isBaseOnOneTva = getRegistryinfo("isBaseOnOneTva", False)
+            Form1.isBaseOnTTC = getRegistryinfo("isBaseOnTTC", False)
+            Form1.tva = getRegistryinfo("tva", 20)
+
+
         Catch ex As Exception
 
         End Try

@@ -150,7 +150,7 @@
                 params.Add("isAdmin", "CREATION")
                 params.Add("isPayed", ds.isPayed)
                 params.Add("modePayement", ds.ModePayement)
-                params.Add(ds.FactureTable, ds.Id)
+                If isDuplicate = False Then params.Add(ds.FactureTable, ds.Id)
                 'params.Add("droitTimbre", ds.TB.DroitTimbre)
                 fid = c.InsertRecord(tb_F, params, True)
                 params.Clear()
@@ -179,7 +179,7 @@
                 End If
 
                 Dim where As New Dictionary(Of String, Object)
-                If avance > 0 Then
+                If avance > 0 And isDuplicate = False Then
                     params.Add(tb_F, fid)
                     where.Add(ds.Operation, CInt(ds.Id))
                     c.UpdateRecord(tb_P, params, where)
@@ -251,48 +251,74 @@
     End Sub
     Public Sub SearchByDate(ByRef ds As DataList)
         Try
-            Dim params As New Dictionary(Of String, Object)
-            Dim dt As DataTable = Nothing
+            SearchByTag(ds)
 
-            Dim NF As New SearchArchive
-            NF.txtName.AutoCompleteSource = AutoCompleteByName(ds.clientTable)
+            'Dim params As New Dictionary(Of String, Object)
+            'Dim dt As DataTable = Nothing
+
+            'Dim NF As New SearchArchive
+            'NF.txtName.AutoCompleteSource = AutoCompleteByName(ds.clientTable)
+
+            'If NF.ShowDialog = DialogResult.OK Then
+            '    Dim dt1 As Date = Date.Parse(NF.dte2.Text).AddDays(1)
+            '    Dim dt2 As Date = Date.Parse(NF.dte1.Text).AddDays(-1)
+            '    If NF.txtName.text <> "" Then
+            '        If IsNumeric(NF.txtName.text) Then
+            '            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            '                params.Add("fctid Like ", "%" & NF.txtName.text & "%")
+            '                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+            '            End Using
+
+            '        ElseIf NF.txtName.text.Contains("|") Then
+            '            Dim str As String = NF.txtName.text.Trim
+            '            str = str.Split(CChar("|"))(1)
+            '            Dim clid As Integer = CInt(str)
+
+            '            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            '                params.Add("cid = ", clid)
+            '                params.Add("[date] < ", dt1)
+            '                params.Add("[date] > ", dt2)
+            '                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+            '            End Using
+            '        End If
+            '    Else
+            '        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            '            params.Add("[date] < ", dt1)
+            '            params.Add("[date] > ", dt2)
+
+            '            dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
+            '        End Using
+            '    End If
+
+            '    ds.Clear()
+            '    If dt.Rows.Count > 0 Then
+            '        ds.Mode = "LIST"
+            '        ds.DataList = dt
+            '    End If
+            'End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Public Sub SearchByTag(ByRef ds As DataList)
+        Try
+
+            Dim NF As New SearchByTags
+            NF.TableName = "Sell_Facture"
+            'If ds.isSell = False Then NF.TableName = "Buy_Facture"
+
+            Dim dt As DataTable
 
             If NF.ShowDialog = DialogResult.OK Then
-                Dim dt1 As Date = Date.Parse(NF.dte2.Text).AddDays(1)
-                Dim dt2 As Date = Date.Parse(NF.dte1.Text).AddDays(-1)
-                If NF.txtName.text <> "" Then
-                    If IsNumeric(NF.txtName.text) Then
-                        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                            params.Add("fctid Like ", "%" & NF.txtName.text & "%")
-                            dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-                        End Using
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim order As New Dictionary(Of String, String)
+                    order.Add("id", "DESC")
+                    dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, NF.params, order)
+                End Using
 
-                    ElseIf NF.txtName.text.Contains("|") Then
-                        Dim str As String = NF.txtName.text.Trim
-                        str = str.Split(CChar("|"))(1)
-                        Dim clid As Integer = CInt(str)
-
-                        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                            params.Add("cid = ", clid)
-                            params.Add("[date] < ", dt1)
-                            params.Add("[date] > ", dt2)
-                            dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-                        End Using
-                    End If
-                Else
-                    Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                        params.Add("[date] < ", dt1)
-                        params.Add("[date] > ", dt2)
-
-                        dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-                    End Using
-                End If
-
+                ds.Clear()
                 If dt.Rows.Count > 0 Then
-                    'Dim arr As New ListLine(dt.Rows.Count - 1)
-                    ds.Clear()
                     ds.Mode = "LIST"
-
                     ds.DataList = dt
                 End If
             End If
@@ -300,6 +326,7 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+
     Public Sub EditModePayement(ByRef ds As DataList)
         Try
             Dim mp As New ModePayement
@@ -727,6 +754,9 @@
             params.Add("isPayed", isPayed)
             params.Add("tva", 0)
             params.Add("remise", 0)
+
+            params.Add("cid", 0)
+
 
             Dim where As New Dictionary(Of String, Object)
 
@@ -1226,8 +1256,9 @@
             Dim dt As DataTable = Nothing
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-
-                dt = a.SelectDataTableWithSyntaxe(ds.FactureTable, "TOP " & Form1.numberOfItems & " ", {"*"})
+                Dim order As New Dictionary(Of String, String)
+                order.Add("id", "DESC")
+                dt = a.SelectDataTableWithSyntaxe(ds.FactureTable, "TOP " & Form1.numberOfItems & " ", {"*"}, , order)
             End Using
 
 

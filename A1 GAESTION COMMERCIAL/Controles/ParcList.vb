@@ -159,8 +159,6 @@
 
             End If
 
-
-
             lbId.Text = Form1.prefix & id_Cleared
             If value > 0 Then RaiseEvent GetElementsById(value, Me)
         End Set
@@ -451,10 +449,11 @@
         Set(ByVal value As DataTable)
             _dt = value
             startIndex = 0
-            lastIndex = value.Rows.Count
+            'lastIndex = value.Rows.Count
+            lastIndex = 0
             numberOfItems = Form1.numberOfItems
-            numberOfPage = Math.Truncate(lastIndex / numberOfItems)
-            If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
+            numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
+            If value.Rows.Count Mod numberOfItems > 0 Then numberOfPage += 1
             currentPage = 1
 
             FillRows()
@@ -473,11 +472,21 @@
                 lbLavc.Text = String.Format("{0:n}", avc)
 
             Catch ex As Exception
+                Try
+                    Dim SM = _dt.AsEnumerable().Aggregate(0, Function(n, r) PriceField(r) + n)
+                    lbLtotal.Text = String.Format("{0:n}", CDec(SM))
+                Catch exe As Exception
+                End Try
             End Try
 
 
         End Set
     End Property
+    Private Shared Function PriceField(ByVal r As DataRow) As Integer
+        Dim v As Integer
+        Return If(Integer.TryParse(If((TryCast(r("value"), String)), String.Empty), v), v, 0)
+    End Function
+
     ReadOnly Property DetailsSource As DataTable
         Get
             Dim table As New DataTable
@@ -571,7 +580,7 @@
 
     Public Sub Clear()
         plList.Controls.Clear()
-        plDetails.Controls.Clear()
+        'plDetails.Controls.Clear()
 
     End Sub
 
@@ -583,7 +592,15 @@
 
         If _dt.Rows.Count > 0 Then
             Dim n = numberOfItems
-            If _dt.Rows.Count - lastIndex < numberOfItems Then n = _dt.Rows.Count - lastIndex
+            'If _dt.Rows.Count - lastIndex < numberOfItems Then n = _dt.Rows.Count - lastIndex
+            If _dt.Rows.Count - lastIndex < numberOfItems Then
+                n = _dt.Rows.Count - lastIndex
+                lastIndex = _dt.Rows.Count - 1
+            Else
+                lastIndex += numberOfItems
+            End If
+
+            'Dim arr(n) As ClientRow
             Dim arr(_dt.Rows.Count - 1) As ClientRow
             Dim i As Integer = 0
             For i = startIndex To _dt.Rows.Count - 1
@@ -596,10 +613,23 @@
                     a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
                     a.Responsable = StrValue(_dt, "depart", i) & " - " & StrValue(_dt, "arrive", i)
                     a.Tel = String.Format("{0:n}", DblValue(_dt, "total", i))
-                    a.Ville = String.Format("{0:n}", DblValue(_dt, "avance", i))
+
+                    Dim vid As Integer = IntValue(_dt, "vid", i)
+                    Try
+                        If vid > 0 Then
+                            Dim query = From d In dt_Vehicule.AsEnumerable()
+                                        Where d.Field(Of Integer)(0) = vid
+                                        Select d
+
+                            Dim r As DataTable = query.CopyToDataTable()
+
+                            a.Ville = r.Rows(0).Item("ref")
+                        End If
+                    Catch ex As Exception
+                    End Try
 
                     If BoolValue(_dt, "isPayed", i) Then a.lbTel.BackColor = Color.PaleGreen
-                    If BoolValue(_dt, "isAdmin", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+                    If IntValue(_dt, "Bon_Transport", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 ElseIf TableName = "Bon_Transport" Then
                     a.Id = _dt.Rows(i).Item(0)
@@ -613,10 +643,6 @@
                     If BoolValue(_dt, "isFactured", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 ElseIf TableName = "Details_Charge" Then
-
-
-
-
                     a.Id = _dt.Rows(i).Item(0)
                     a.Libele = _dt.Rows(i).Item("name")
                     a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
@@ -628,20 +654,13 @@
 
                     Try
                         If vid > 0 Then
-                            'results = From myRow As DataRow In dt_Vehicule.Rows
-                            '                           Where myRow(0) = vid Select myRow
-
-                            'a.Tel = results(0).Item("ref")
-
                             Dim query = From d In dt_Vehicule.AsEnumerable()
                                         Where d.Field(Of Integer)(0) = vid
                                         Select d
 
                             Dim r As DataTable = query.CopyToDataTable()
-
                             a.Responsable = r.Rows(0).Item("ref")
                         End If
-
 
                         If drid > 0 Then
                             Dim query = From d In dt_Driver.AsEnumerable()
@@ -653,8 +672,6 @@
                         End If
                     Catch ex As Exception
                     End Try
-
-
 
                 ElseIf TableName = "Vehicule" Then
                     a.Id = _dt.Rows(i).Item(0)
@@ -788,24 +805,29 @@
         End If
     End Sub
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEdit.Click
-        If TableName = "Driver" Then
-            RaiseEvent EditSelectedDriver(Me, SelectedItem)
+        Try
+            If TableName = "Driver" Then
+                RaiseEvent EditSelectedDriver(Me, SelectedItem)
 
-        ElseIf TableName = "Vehicule" Then
-            RaiseEvent EditSelectedVehicule(Me, SelectedItem)
+            ElseIf TableName = "Vehicule" Then
+                RaiseEvent EditSelectedVehicule(Me, SelectedItem)
 
-        ElseIf TableName = "Details_Charge" Then
-            RaiseEvent EditSelectedCharge(Me, SelectedItem)
+            ElseIf TableName = "Details_Charge" Then
+                RaiseEvent EditSelectedCharge(Me, SelectedItem)
 
-        ElseIf TableName = "Mission" Then
-            id_M = SelectedItem.Id
+            ElseIf TableName = "Mission" Then
+                id_M = SelectedItem.Id
 
-        ElseIf TableName = "Bon_Transport" Then
-            id_T = SelectedItem.Id
+            ElseIf TableName = "Bon_Transport" Then
+                id_T = SelectedItem.Id
 
-        ElseIf TableName = "Details_Charge" Then
-            RaiseEvent EditNewCharge(Me)
-        End If
+            ElseIf TableName = "Details_Charge" Then
+                RaiseEvent EditNewCharge(Me)
+            End If
+        Catch ex As Exception
+
+        End Try
+
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
         If MsgBox(MsgDelete & vbNewLine & TableName & " : " & SelectedItem.Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
@@ -826,6 +848,9 @@
         currentPage -= 1
         startIndex -= numberOfItems * 2
         If startIndex < 0 Then startIndex = 0
+
+        lastIndex -= numberOfItems * 2
+        If lastIndex < 0 Then lastIndex = 0
 
         FillRows()
 

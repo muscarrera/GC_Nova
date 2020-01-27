@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc2"
+    Dim strKey = "ALMsbtrFirstRun_gc3"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
 
     Public ReadOnly Property TrialVersion_Master
@@ -89,7 +89,7 @@ Module AdminModule
 
             End Try
             Return 1
-        ElseIf (Now - ALMohasibfirstRunDate).Days > 60 Then
+        ElseIf (Now - ALMohasibfirstRunDate).Days > 90 Then
             Try
 
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter

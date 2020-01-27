@@ -168,6 +168,18 @@
     <Compile Include="Controles\ProductList.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controles\SearchTags\CompleteListe.Designer.vb">
+      <DependentUpon>CompleteListe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SearchTags\CompleteListe.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\SearchTags\Tag.Designer.vb">
+      <DependentUpon>Tag.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SearchTags\Tag.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\Setting.Designer.vb">
       <DependentUpon>Setting.vb</DependentUpon>
     </Compile>
@@ -295,6 +307,18 @@
     <Compile Include="GUI\SearchArchive.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\SearchByTags.Designer.vb">
+      <DependentUpon>SearchByTags.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SearchByTags.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SearchForArticle.Designer.vb">
+      <DependentUpon>SearchForArticle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SearchForArticle.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\TransformerDevis.Designer.vb">
       <DependentUpon>TransformerDevis.vb</DependentUpon>
     </Compile>
@@ -376,6 +400,12 @@
     <EmbeddedResource Include="Controles\ProductList.resx">
       <DependentUpon>ProductList.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\SearchTags\CompleteListe.resx">
+      <DependentUpon>CompleteListe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\SearchTags\Tag.resx">
+      <DependentUpon>Tag.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\Setting.resx">
       <DependentUpon>Setting.vb</DependentUpon>
     </EmbeddedResource>
@@ -439,6 +469,12 @@
     <EmbeddedResource Include="GUI\SearchArchive.resx">
       <DependentUpon>SearchArchive.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SearchByTags.resx">
+      <DependentUpon>SearchByTags.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SearchForArticle.resx">
+      <DependentUpon>SearchForArticle.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\TransformerDevis.resx">
       <DependentUpon>TransformerDevis.vb</DependentUpon>
     </EmbeddedResource>
@@ -491,8 +527,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ALMohassinDB.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\BARCODE 22.png" />
+    <None Include="Resources\TAGIN-03.png" />
+    <None Include="Resources\TAGIN-04.png" />
+    <None Include="Resources\TAGIN-02.png" />
+    <None Include="Resources\TAG-021.png" />
+    <None Include="Resources\TAGIN-01.png" />
+    <None Include="Resources\TAG-01.png" />
+    <None Include="Resources\TAG-02.png" />
     <None Include="Resources\Cash_register_22.png" />
     <None Include="Resources\trial 22.png" />
     <None Include="Resources\bgLightForm.jpg" />

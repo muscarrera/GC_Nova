@@ -54,14 +54,89 @@
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
             Dim dt As DataTable = a.SelectDataTable("Article", {"*"}, params)
             If dt.Rows.Count > 0 Then
+
+                Dim sprice As Double = DblValue(dt, "sprice", 0)
+                Dim bprice As Double = DblValue(dt, "bprice", 0)
+
+                Dim isPromo = False
+
+                If BoolValue(dt, "isPromo", 0) Then
+                    Dim periode = StrValue(dt, "periode", 0)
+
+                    Dim dt1, dt2 As Date
+                    Dim str As String() = periode.Split(">")
+
+                    Try
+                        dt1 = CDate(str(0).Trim).AddDays(-1)
+                        dt2 = CDate(str(1).Trim).AddDays(1)
+
+                        If Now.Date > dt1 And Now.Date < dt2 Then
+                            If IsNumeric(DblValue(dt, "prixPromo", 0)) And DblValue(dt, "prixPromo", 0) > 0 Then
+                                sprice = DblValue(dt, "prixPromo", 0)
+                                isPromo = True
+                            End If
+                        End If
+                    Catch ex As Exception
+                        isPromo = False
+                        params.Add("isPromo", False)
+                        Dim where As New Dictionary(Of String, Object)
+                        where.Add("arod", dt.Rows(0).Item(0))
+                        a.UpdateRecord("Article", params, where)
+                    End Try
+
+                End If
+
+                Dim tva As Double = DblValue(dt, "tva", 0)
+                If Form1.isBaseOnOneTva Then tva = Form1.tva
+
+                'If Form1.isBaseOnTTC Then
+                '    sprice += sprice * tva / 100
+                '    bprice += bprice * tva / 100
+                'End If
+
                 art = New Article(dt.Rows(0).Item(0), IntValue(dt, "cid", 0),
-                                      StrValue(dt, "name", 0), StrValue(dt, "desc", 0),
-                                      1, DblValue(dt, "sprice", 0), DblValue(dt, "bprice", 0),
-                                       0, IntValue(dt, "depot", 0), BoolValue(dt, "isStocked", 0), StrValue(dt, "ref", 0))
+                                  StrValue(dt, "name", 0), StrValue(dt, "desc", 0),
+                                  1, sprice, bprice, tva, 0, IntValue(dt, "depot", 0),
+                                  BoolValue(dt, "isStocked", 0), StrValue(dt, "ref", 0), isPromo)
             End If
         End Using
         Return art
     End Function
+
+    Public Function GetRemise(ByVal arid As String, ByVal TypeClient As String) As Double
+
+        Dim params As New Dictionary(Of String, Object)
+        params.Add("arid", arid)
+        Dim remise As Double = 0
+        Dim maxRemise As Double = 0
+        ' added some items
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim dt As DataTable = a.SelectDataTable("Article", {"*"}, params)
+            If dt.Rows.Count > 0 Then
+                maxRemise = DblValue(dt, "remiseMax", 0)
+                If TypeClient = "GROS" Then
+                    remise = DblValue(dt, "remiseGr", 0)
+                ElseIf TypeClient = "REVENDEUR" Then
+                    remise = DblValue(dt, "remiseRev", 0)
+                Else
+                    remise = DblValue(dt, "remiseCF", 0)
+                End If
+
+                params.Clear()
+                params.Add("cid", dt.Rows(0).Item("cid"))
+
+                dt.Rows.Clear()
+                dt = a.SelectDataTable("Category", {"*"}, params)
+                If dt.Rows.Count > 0 Then
+                    remise += DblValue(dt, "remise", 0)
+                End If
+            End If
+        End Using
+
+        Return remise
+    End Function
+
 
     Public Sub AddDataList()
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
@@ -140,13 +215,29 @@
     End Sub
     Private Sub EditElement(ByRef ls As ListLine)
         Dim pr As New AddEditProduct
-        pr.Id = ls.Id
-        If pr.ShowDialog = DialogResult.OK Then
-            ls.Libele = pr.txtName.text
-            ls.Total = pr.txtTTC.text
-            ls.Avance = pr.txtPAch.text
-            ls.isEdited = True
-        End If
+        Try
+            pr.Id = ls.Id
+            If pr.ShowDialog = DialogResult.OK Then
+                ls.Libele = pr.txtName.text
+                Dim sp = pr.txtHt.text
+                Dim bp = pr.txtPAch.text
+
+                If Form1.isBaseOnTTC Then
+                    Dim tv = pr.txtTva.text
+                    If Form1.isBaseOnOneTva Then tv = Form1.tva
+
+                    sp += sp * tv / 100
+                    bp += bp * tv / 100
+                End If
+
+                ls.Total = bp
+                ls.Avance = sp
+                ls.isEdited = True
+            End If
+        Catch ex As Exception
+        End Try
+
+
     End Sub
     Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ListLine)
         If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then

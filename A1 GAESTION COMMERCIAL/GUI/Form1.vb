@@ -50,6 +50,9 @@
     Public factureToPrint As Facture
     Public cellWidth As Integer
     Public tva As Double = 14
+    Public clientFacture As Client
+    Public isBaseOnTTC As Boolean = False
+    Public isBaseOnOneTva As Boolean = False
 
 
     Public Property prefix As String
@@ -198,7 +201,7 @@
     Private Sub PrintDocMission_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocMission.PrintPage
         Dim ds As ParcList = plBody.Controls(0)
         Using a As DrawClass = New DrawClass
-            If Facture_Title = "Bons de Transport" Then
+            If Facture_Title = "Liste des missions" Then
                 Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                     a.dt_Driver = c.SelectDataTable("Driver", {"*"})
                     a.dt_Vehicule = c.SelectDataTable("Vehicule", {"*"})
@@ -212,9 +215,16 @@
                 End Using
 
                 a.DrawListOfCharges(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
-            ElseIf Facture_Title = "Chauffeurs" Then
 
+
+            ElseIf Facture_Title = "Chauffeurs" Then
+                a.DrawListOfDrivers(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
             ElseIf Facture_Title = "Listes Vehicule" Then
+                a.DrawListOfVehicules(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
+            ElseIf Facture_Title = "Listes Bon de Transport" Then
+                a.DrawListOfTransport(e, ds.DataSource, printEnteteOnPaper, "", True, True, m)
+
+
 
             ElseIf Facture_Title = "Bon de Transport" Then
                 a.DrawBonTransport(e, ds, "Bon_Transport", printEnteteOnPaper, "Bon de Transport", True, True, m)

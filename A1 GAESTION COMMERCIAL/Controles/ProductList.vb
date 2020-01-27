@@ -108,10 +108,26 @@
 
                 Dim a As New ListLine
                 a.Id = _dt.Rows(i).Item(0)
+                a.lbDate.Text = StrValue(_dt, "ref", i)
                 a.Libele = _dt.Rows(i).Item("name")
 
-                a.Total = _dt.Rows(i).Item("sprice")
-                a.Avance = _dt.Rows(i).Item("bprice")
+                Dim sp = DblValue(_dt, "sprice", i)
+                Dim bp = DblValue(_dt, "bprice", i)
+
+                If Form1.isBaseOnTTC Then
+                    Dim tv = DblValue(_dt, "tva", i)
+                    If Form1.isBaseOnOneTva Then tv = Form1.tva
+
+                    sp += sp * tv / 100
+                    bp += bp * tv / 100
+                End If
+
+                a.Total = bp
+                a.Avance = sp
+
+                If BoolValue(_dt, "isPromo", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()

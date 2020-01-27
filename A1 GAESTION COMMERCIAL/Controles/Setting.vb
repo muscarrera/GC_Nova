@@ -22,6 +22,7 @@
         txtst.text = getRegistryinfo("fontSize_Title", 14)
         txtss.text = getRegistryinfo("fontSize_Small", 8)
 
+
         txtCellWidth.Text = getRegistryinfo("cellWidth", 8)
         HandleRegistryinfo()
     End Sub
@@ -54,6 +55,9 @@
             cbPdf.Checked = getRegistryinfo("printEnteteOnPdf", False)
             cbHasEPBonTransport.Checked = getRegistryinfo("hasEntete_BonTransport", False)
 
+            txtTva.Text = getRegistryinfo("tva", 20)
+            cbBaseOnOneTva.Checked = getRegistryinfo("isBaseOnOneTva", False)
+            cbBaseOnTTC.Checked = getRegistryinfo("isBaseOnTTC", False)
 
 
         Catch ex As Exception
@@ -242,6 +246,21 @@
             End If
         Catch ex As Exception
         End Try
+
+        Try
+            If IsNumeric(txtTva.Text) Then
+                setRegistryinfo("tva", txtTva.Text)
+                Form1.tva = txtTva.Text
+            End If
+            setRegistryinfo("isBaseOnOneTva", cbBaseOnOneTva.Checked)
+            setRegistryinfo("isBaseOnTTC", cbBaseOnTTC.Checked)
+
+            Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
+            Form1.isBaseOnTTC = cbBaseOnTTC.Checked
+        Catch ex As Exception
+
+        End Try
+
 
 
     End Sub

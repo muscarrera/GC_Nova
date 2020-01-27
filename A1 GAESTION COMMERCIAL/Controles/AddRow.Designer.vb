@@ -23,22 +23,24 @@ Partial Class AddRow
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PlRight = New System.Windows.Forms.Panel()
-        Me.btClear = New System.Windows.Forms.Button()
-        Me.btAdd = New System.Windows.Forms.Button()
         Me.plRef = New System.Windows.Forms.Panel()
         Me.plName = New System.Windows.Forms.Panel()
-        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plQte = New System.Windows.Forms.Panel()
-        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plPrice = New System.Windows.Forms.Panel()
-        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plRemise = New System.Windows.Forms.Panel()
-        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
+        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtttc = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.btInfo = New System.Windows.Forms.Button()
+        Me.btCodeBar = New System.Windows.Forms.Button()
+        Me.btClear = New System.Windows.Forms.Button()
+        Me.btAdd = New System.Windows.Forms.Button()
         Me.PlRight.SuspendLayout()
         Me.plRef.SuspendLayout()
         Me.plName.SuspendLayout()
@@ -52,39 +54,14 @@ Partial Class AddRow
         'PlRight
         '
         Me.PlRight.BackColor = System.Drawing.Color.Gainsboro
+        Me.PlRight.Controls.Add(Me.btCodeBar)
         Me.PlRight.Controls.Add(Me.btClear)
         Me.PlRight.Controls.Add(Me.btAdd)
         Me.PlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PlRight.Location = New System.Drawing.Point(792, 0)
+        Me.PlRight.Location = New System.Drawing.Point(771, 0)
         Me.PlRight.Name = "PlRight"
-        Me.PlRight.Size = New System.Drawing.Size(112, 36)
+        Me.PlRight.Size = New System.Drawing.Size(133, 36)
         Me.PlRight.TabIndex = 4
-        '
-        'btClear
-        '
-        Me.btClear.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22
-        Me.btClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btClear.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btClear.FlatAppearance.BorderSize = 0
-        Me.btClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btClear.Location = New System.Drawing.Point(44, 0)
-        Me.btClear.Name = "btClear"
-        Me.btClear.Size = New System.Drawing.Size(43, 36)
-        Me.btClear.TabIndex = 7
-        Me.btClear.UseVisualStyleBackColor = True
-        '
-        'btAdd
-        '
-        Me.btAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btAdd.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btAdd.FlatAppearance.BorderSize = 0
-        Me.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btAdd.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
-        Me.btAdd.Location = New System.Drawing.Point(0, 0)
-        Me.btAdd.Name = "btAdd"
-        Me.btAdd.Size = New System.Drawing.Size(44, 36)
-        Me.btAdd.TabIndex = 6
-        Me.btAdd.UseVisualStyleBackColor = True
         '
         'plRef
         '
@@ -99,18 +76,80 @@ Partial Class AddRow
         Me.plRef.Location = New System.Drawing.Point(0, 0)
         Me.plRef.Name = "plRef"
         Me.plRef.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.plRef.Size = New System.Drawing.Size(792, 36)
+        Me.plRef.Size = New System.Drawing.Size(771, 36)
         Me.plRef.TabIndex = 5
         '
         'plName
         '
         Me.plName.Controls.Add(Me.txtN)
         Me.plName.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plName.Location = New System.Drawing.Point(146, 2)
+        Me.plName.Location = New System.Drawing.Point(210, 2)
         Me.plName.Name = "plName"
         Me.plName.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.plName.Size = New System.Drawing.Size(291, 32)
+        Me.plName.Size = New System.Drawing.Size(206, 32)
         Me.plName.TabIndex = 12
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.txtRf)
+        Me.Panel7.Controls.Add(Me.btInfo)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel7.Location = New System.Drawing.Point(28, 2)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Panel7.Size = New System.Drawing.Size(182, 32)
+        Me.Panel7.TabIndex = 11
+        '
+        'plQte
+        '
+        Me.plQte.Controls.Add(Me.txtQ)
+        Me.plQte.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plQte.Location = New System.Drawing.Point(416, 2)
+        Me.plQte.Name = "plQte"
+        Me.plQte.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
+        Me.plQte.Size = New System.Drawing.Size(88, 32)
+        Me.plQte.TabIndex = 10
+        '
+        'plPrice
+        '
+        Me.plPrice.Controls.Add(Me.txtPr)
+        Me.plPrice.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plPrice.Location = New System.Drawing.Point(504, 2)
+        Me.plPrice.Name = "plPrice"
+        Me.plPrice.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
+        Me.plPrice.Size = New System.Drawing.Size(88, 32)
+        Me.plPrice.TabIndex = 9
+        '
+        'plRemise
+        '
+        Me.plRemise.Controls.Add(Me.txtRs)
+        Me.plRemise.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plRemise.Location = New System.Drawing.Point(592, 2)
+        Me.plRemise.Name = "plRemise"
+        Me.plRemise.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
+        Me.plRemise.Size = New System.Drawing.Size(88, 32)
+        Me.plRemise.TabIndex = 7
+        '
+        'plleft
+        '
+        Me.plleft.BackColor = System.Drawing.Color.Transparent
+        Me.plleft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.plleft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.plleft.Location = New System.Drawing.Point(3, 2)
+        Me.plleft.Name = "plleft"
+        Me.plleft.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.plleft.Size = New System.Drawing.Size(25, 32)
+        Me.plleft.TabIndex = 6
+        '
+        'plTotal
+        '
+        Me.plTotal.Controls.Add(Me.txtttc)
+        Me.plTotal.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plTotal.Location = New System.Drawing.Point(680, 2)
+        Me.plTotal.Name = "plTotal"
+        Me.plTotal.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
+        Me.plTotal.Size = New System.Drawing.Size(88, 32)
+        Me.plTotal.TabIndex = 13
         '
         'txtN
         '
@@ -123,7 +162,7 @@ Partial Class AddRow
         Me.txtN.PlaceHolder = "Designation"
         Me.txtN.ShowClearIcon = False
         Me.txtN.ShowSaveIcon = False
-        Me.txtN.Size = New System.Drawing.Size(281, 32)
+        Me.txtN.Size = New System.Drawing.Size(196, 32)
         Me.txtN.StartUp = 2
         Me.txtN.TabIndex = 2
         Me.txtN.TextSize = 8
@@ -131,16 +170,6 @@ Partial Class AddRow
         Me.txtN.TxtColor = System.Drawing.Color.White
         Me.txtN.txtReadOnly = False
         Me.txtN.TxtSelect = New Integer() {1, 0}
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.txtRf)
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel7.Location = New System.Drawing.Point(34, 2)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel7.Size = New System.Drawing.Size(112, 32)
-        Me.Panel7.TabIndex = 11
         '
         'txtRf
         '
@@ -153,7 +182,7 @@ Partial Class AddRow
         Me.txtRf.PlaceHolder = "Réf"
         Me.txtRf.ShowClearIcon = False
         Me.txtRf.ShowSaveIcon = False
-        Me.txtRf.Size = New System.Drawing.Size(102, 32)
+        Me.txtRf.Size = New System.Drawing.Size(141, 32)
         Me.txtRf.StartUp = 2
         Me.txtRf.TabIndex = 1
         Me.txtRf.TextSize = 8
@@ -161,16 +190,6 @@ Partial Class AddRow
         Me.txtRf.TxtColor = System.Drawing.Color.White
         Me.txtRf.txtReadOnly = False
         Me.txtRf.TxtSelect = New Integer() {1, 0}
-        '
-        'plQte
-        '
-        Me.plQte.Controls.Add(Me.txtQ)
-        Me.plQte.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plQte.Location = New System.Drawing.Point(437, 2)
-        Me.plQte.Name = "plQte"
-        Me.plQte.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
-        Me.plQte.Size = New System.Drawing.Size(88, 32)
-        Me.plQte.TabIndex = 10
         '
         'txtQ
         '
@@ -192,16 +211,6 @@ Partial Class AddRow
         Me.txtQ.txtReadOnly = False
         Me.txtQ.TxtSelect = New Integer() {1, 0}
         '
-        'plPrice
-        '
-        Me.plPrice.Controls.Add(Me.txtPr)
-        Me.plPrice.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plPrice.Location = New System.Drawing.Point(525, 2)
-        Me.plPrice.Name = "plPrice"
-        Me.plPrice.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
-        Me.plPrice.Size = New System.Drawing.Size(88, 32)
-        Me.plPrice.TabIndex = 9
-        '
         'txtPr
         '
         Me.txtPr.BackColor = System.Drawing.Color.White
@@ -221,16 +230,6 @@ Partial Class AddRow
         Me.txtPr.TxtColor = System.Drawing.Color.White
         Me.txtPr.txtReadOnly = False
         Me.txtPr.TxtSelect = New Integer() {1, 0}
-        '
-        'plRemise
-        '
-        Me.plRemise.Controls.Add(Me.txtRs)
-        Me.plRemise.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plRemise.Location = New System.Drawing.Point(613, 2)
-        Me.plRemise.Name = "plRemise"
-        Me.plRemise.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
-        Me.plRemise.Size = New System.Drawing.Size(88, 32)
-        Me.plRemise.TabIndex = 7
         '
         'txtRs
         '
@@ -252,27 +251,6 @@ Partial Class AddRow
         Me.txtRs.txtReadOnly = False
         Me.txtRs.TxtSelect = New Integer() {1, 0}
         '
-        'plleft
-        '
-        Me.plleft.BackColor = System.Drawing.Color.Transparent
-        Me.plleft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.plleft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plleft.Location = New System.Drawing.Point(3, 2)
-        Me.plleft.Name = "plleft"
-        Me.plleft.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.plleft.Size = New System.Drawing.Size(31, 32)
-        Me.plleft.TabIndex = 6
-        '
-        'plTotal
-        '
-        Me.plTotal.Controls.Add(Me.txtttc)
-        Me.plTotal.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plTotal.Location = New System.Drawing.Point(701, 2)
-        Me.plTotal.Name = "plTotal"
-        Me.plTotal.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
-        Me.plTotal.Size = New System.Drawing.Size(88, 32)
-        Me.plTotal.TabIndex = 13
-        '
         'txtttc
         '
         Me.txtttc.BackColor = System.Drawing.Color.White
@@ -292,6 +270,61 @@ Partial Class AddRow
         Me.txtttc.TxtColor = System.Drawing.Color.White
         Me.txtttc.txtReadOnly = True
         Me.txtttc.TxtSelect = New Integer() {1, 0}
+        '
+        'btInfo
+        '
+        Me.btInfo.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_kde_folder_saved_search_25195__1_
+        Me.btInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btInfo.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btInfo.FlatAppearance.BorderSize = 0
+        Me.btInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btInfo.Location = New System.Drawing.Point(146, 0)
+        Me.btInfo.Name = "btInfo"
+        Me.btInfo.Size = New System.Drawing.Size(31, 32)
+        Me.btInfo.TabIndex = 9
+        Me.btInfo.UseVisualStyleBackColor = True
+        '
+        'btCodeBar
+        '
+        Me.btCodeBar.BackColor = System.Drawing.Color.Transparent
+        Me.btCodeBar.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22
+        Me.btCodeBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btCodeBar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btCodeBar.FlatAppearance.BorderSize = 0
+        Me.btCodeBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btCodeBar.Location = New System.Drawing.Point(90, 0)
+        Me.btCodeBar.Name = "btCodeBar"
+        Me.btCodeBar.Size = New System.Drawing.Size(43, 36)
+        Me.btCodeBar.TabIndex = 8
+        Me.btCodeBar.UseVisualStyleBackColor = False
+        '
+        'btClear
+        '
+        Me.btClear.BackColor = System.Drawing.Color.Transparent
+        Me.btClear.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.CANCEL_22
+        Me.btClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btClear.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btClear.FlatAppearance.BorderSize = 0
+        Me.btClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btClear.Location = New System.Drawing.Point(44, 0)
+        Me.btClear.Name = "btClear"
+        Me.btClear.Size = New System.Drawing.Size(43, 36)
+        Me.btClear.TabIndex = 7
+        Me.btClear.UseVisualStyleBackColor = False
+        '
+        'btAdd
+        '
+        Me.btAdd.BackColor = System.Drawing.Color.Transparent
+        Me.btAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btAdd.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btAdd.FlatAppearance.BorderSize = 0
+        Me.btAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btAdd.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
+        Me.btAdd.Location = New System.Drawing.Point(0, 0)
+        Me.btAdd.Name = "btAdd"
+        Me.btAdd.Size = New System.Drawing.Size(44, 36)
+        Me.btAdd.TabIndex = 6
+        Me.btAdd.UseVisualStyleBackColor = False
         '
         'AddRow
         '
@@ -337,5 +370,7 @@ Partial Class AddRow
     Friend WithEvents txtPr As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtRs As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtttc As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents btInfo As System.Windows.Forms.Button
+    Friend WithEvents btCodeBar As System.Windows.Forms.Button
 
 End Class

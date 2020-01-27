@@ -1,6 +1,8 @@
 ﻿Public Class AddRow
     'Members
- 
+
+    Private isUsingBarcodeScaner As Boolean = False
+
     'Eents
     Public Event AddNewArticle(ByVal art As Article)
     Public Event Cleared(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -97,7 +99,7 @@
         txtQ.text = ""
         txtPr.text = ""
         txtRs.text = ""
-        article = New Article(0, 0, "", "", 1, 0, 0, 0, 0, False, "")
+        article = New Article(0, 0, "", "", 1, 0, 0, 0, 0, 0, False, "", False)
         txtRf.Focus()
     End Sub
     'validation
@@ -114,11 +116,16 @@
         If IsSell = False Then sPrice = art.bprice
 
         article = New Article(art.arid, art.cid, art.name, art.desc, art.qte,
-                              sPrice, art.bprice, art.remise, art.depot, art.isStocked, art.ref)
+                              sPrice, art.bprice, art.TVA, art.remise, art.depot,
+                              art.isStocked, art.ref, art.isPromo)
 
         txtRf.text = article.ref
         txtN.text = article.name
-        txtPr.text = String.Format("{0:n}", CDec(article.sprice))
+
+        Dim pr As Double = article.sprice
+        If Form1.isBaseOnTTC Then pr = article.spriceTTC
+
+        txtPr.text = String.Format("{0:n}", CDec(pr))
         txtRs.text = String.Format("{0:n}", CDec(article.remise))
         txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Arid = art.arid
@@ -129,7 +136,14 @@
         'auto Complete
         If txtRf.text.Length > 0 Then
             Using art As AricleClass = New AricleClass
-                Dim a As Article = art.GetByfield("ref", txtRf.text)
+                Dim a As Article
+
+                If isUsingBarcodeScaner Then
+                    a = art.GetByfield("desc", txtRf.text)
+                Else
+                    a = art.GetByfield("ref", txtRf.text)
+                End If
+
                 If Not IsNothing(a) Then FillFields(a)
                 txtQ.Focus()
             End Using
@@ -141,7 +155,13 @@
         If txtN.text.Length > 0 Then
             Using art As AricleClass = New AricleClass
                 Dim a As Article = art.GetByfield("name", txtN.text)
-                If Not IsNothing(a) Then FillFields(a)
+                If Not IsNothing(a) Then
+                    Dim remise = art.GetRemise(a.arid, Form1.clientFacture.groupe)
+                    a.remise = remise
+
+
+                    FillFields(a)
+                End If
             End Using
         End If
         txtQ.Focus()
@@ -182,10 +202,26 @@
         InitForm()
         RaiseEvent Cleared(Me, e)
     End Sub
+    'look for article
+    Private Sub btInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btInfo.Click
+        Dim sr As New SearchForArticle
+
+
+        If sr.ShowDialog = DialogResult.OK Then
+            txtRf.text = sr._ref
+            TxtBox3_KeyDownOk()
+        End If
+    End Sub
+
     'txtChanged
     Private Sub txtPrice_TxtChanged() Handles txtPr.TxtChanged
         Try
-            article.sprice = price
+            If Form1.isBaseOnTTC Then
+                article.spriceTTC = price
+            Else
+                article.sprice = price
+            End If
+
             txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Catch ex As Exception
             txtttc.text = 0
@@ -223,6 +259,16 @@
                 Dim a As Article = art.GetByfield("name", txtN.text)
                 If Not IsNothing(a) Then FillFields(a)
             End Using
+        End If
+    End Sub
+
+    Private Sub btCodeBar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btCodeBar.Click
+        isUsingBarcodeScaner = Not isUsingBarcodeScaner
+
+        If isUsingBarcodeScaner Then
+            btCodeBar.BackColor = Color.Green
+        Else
+            btCodeBar.BackColor = Color.Transparent
         End If
     End Sub
 End Class

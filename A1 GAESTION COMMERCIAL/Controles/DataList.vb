@@ -679,6 +679,13 @@
                 a.Dock = DockStyle.Top
                 a.BringToFront()
 
+                If BoolValue(_dtList, "isPayed", i) Then a.plP.BackColor = Color.PaleGreen
+                If StrValue(_dtList, "isAdmin", i) = "Fini" Or StrValue(_dtList, "isAdmin", i) = "Facturé" Or
+                  StrValue(_dtList, "isAdmin", i) = "Livré" Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+                If StrValue(_dtList, "isAdmin", i).ToUpper = "ANNULER" Or
+                 StrValue(_dtList, "isAdmin", i).ToUpper = "NONE" Then a.PlLeft.BackgroundImage = My.Resources.iconfinder_folder_delete_61770
+
                 AddHandler a.EditSelectedFacture, AddressOf Edit_SelectedFacture
                 AddHandler a.DeleteItem, AddressOf Delete_Item
                 AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos

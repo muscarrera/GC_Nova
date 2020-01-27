@@ -45,6 +45,7 @@ Partial Class VehiculeDetails
         Me.lbName = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.btImpList = New System.Windows.Forms.Button()
         Me.lbInfo2 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.Panel16 = New System.Windows.Forms.Panel()
@@ -53,7 +54,7 @@ Partial Class VehiculeDetails
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.plBodyBl = New System.Windows.Forms.Panel()
+        Me.plBodyCharge = New System.Windows.Forms.Panel()
         Me.Panel34 = New System.Windows.Forms.Panel()
         Me.Panel35 = New System.Windows.Forms.Panel()
         Me.Panel36 = New System.Windows.Forms.Panel()
@@ -76,7 +77,7 @@ Partial Class VehiculeDetails
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Panel49 = New System.Windows.Forms.Panel()
         Me.Label31 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.plCharge = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel50 = New System.Windows.Forms.Panel()
         Me.Panel51 = New System.Windows.Forms.Panel()
@@ -84,9 +85,9 @@ Partial Class VehiculeDetails
         Me.lbnbCharge = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.plMission = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
-        Me.plBodyFct = New System.Windows.Forms.Panel()
+        Me.plBodyMission = New System.Windows.Forms.Panel()
         Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Panel33 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
@@ -108,6 +109,7 @@ Partial Class VehiculeDetails
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel22 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.Panel2.SuspendLayout()
         Me.Panel30.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,7 +123,7 @@ Partial Class VehiculeDetails
         Me.Panel7.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        Me.plBodyBl.SuspendLayout()
+        Me.plBodyCharge.SuspendLayout()
         Me.Panel36.SuspendLayout()
         Me.Panel38.SuspendLayout()
         Me.Panel39.SuspendLayout()
@@ -132,13 +134,13 @@ Partial Class VehiculeDetails
         Me.Panel47.SuspendLayout()
         Me.Panel48.SuspendLayout()
         Me.Panel49.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.plCharge.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel50.SuspendLayout()
         Me.Panel51.SuspendLayout()
-        Me.Panel12.SuspendLayout()
+        Me.plMission.SuspendLayout()
         Me.Panel13.SuspendLayout()
-        Me.plBodyFct.SuspendLayout()
+        Me.plBodyMission.SuspendLayout()
         Me.Panel24.SuspendLayout()
         Me.Panel26.SuspendLayout()
         Me.Panel27.SuspendLayout()
@@ -408,6 +410,7 @@ Partial Class VehiculeDetails
         Me.Panel14.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel14.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
+        Me.Panel14.Controls.Add(Me.btImpList)
         Me.Panel14.Controls.Add(Me.lbInfo2)
         Me.Panel14.Controls.Add(Me.Panel15)
         Me.Panel14.Controls.Add(Me.Panel16)
@@ -415,6 +418,22 @@ Partial Class VehiculeDetails
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Size = New System.Drawing.Size(452, 134)
         Me.Panel14.TabIndex = 2
+        '
+        'btImpList
+        '
+        Me.btImpList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btImpList.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btImpList.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.btImpList.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
+        Me.btImpList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btImpList.Location = New System.Drawing.Point(353, 92)
+        Me.btImpList.Name = "btImpList"
+        Me.btImpList.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
+        Me.btImpList.Size = New System.Drawing.Size(93, 34)
+        Me.btImpList.TabIndex = 4
+        Me.btImpList.Text = "Imprimer"
+        Me.btImpList.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btImpList.UseVisualStyleBackColor = True
         '
         'lbInfo2
         '
@@ -492,7 +511,7 @@ Partial Class VehiculeDetails
         '
         Me.Panel5.BackColor = System.Drawing.Color.FloralWhite
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.plBodyBl)
+        Me.Panel5.Controls.Add(Me.plBodyCharge)
         Me.Panel5.Controls.Add(Me.Panel36)
         Me.Panel5.Controls.Add(Me.Panel43)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
@@ -500,19 +519,20 @@ Partial Class VehiculeDetails
         Me.Panel5.Location = New System.Drawing.Point(10, 10)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel5.Size = New System.Drawing.Size(842, 208)
+        Me.Panel5.Size = New System.Drawing.Size(842, 239)
         Me.Panel5.TabIndex = 1
         '
-        'plBodyBl
+        'plBodyCharge
         '
-        Me.plBodyBl.BackColor = System.Drawing.Color.Transparent
-        Me.plBodyBl.Controls.Add(Me.Panel34)
-        Me.plBodyBl.Controls.Add(Me.Panel35)
-        Me.plBodyBl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plBodyBl.Location = New System.Drawing.Point(5, 39)
-        Me.plBodyBl.Name = "plBodyBl"
-        Me.plBodyBl.Size = New System.Drawing.Size(830, 128)
-        Me.plBodyBl.TabIndex = 19
+        Me.plBodyCharge.AutoScroll = True
+        Me.plBodyCharge.BackColor = System.Drawing.Color.Transparent
+        Me.plBodyCharge.Controls.Add(Me.Panel34)
+        Me.plBodyCharge.Controls.Add(Me.Panel35)
+        Me.plBodyCharge.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.plBodyCharge.Location = New System.Drawing.Point(5, 39)
+        Me.plBodyCharge.Name = "plBodyCharge"
+        Me.plBodyCharge.Size = New System.Drawing.Size(830, 159)
+        Me.plBodyCharge.TabIndex = 19
         '
         'Panel34
         '
@@ -520,14 +540,14 @@ Partial Class VehiculeDetails
         Me.Panel34.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel34.Location = New System.Drawing.Point(829, 0)
         Me.Panel34.Name = "Panel34"
-        Me.Panel34.Size = New System.Drawing.Size(1, 126)
+        Me.Panel34.Size = New System.Drawing.Size(1, 157)
         Me.Panel34.TabIndex = 2
         '
         'Panel35
         '
         Me.Panel35.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel35.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel35.Location = New System.Drawing.Point(0, 126)
+        Me.Panel35.Location = New System.Drawing.Point(0, 157)
         Me.Panel35.Name = "Panel35"
         Me.Panel35.Size = New System.Drawing.Size(830, 2)
         Me.Panel35.TabIndex = 2
@@ -542,7 +562,7 @@ Partial Class VehiculeDetails
         Me.Panel36.Controls.Add(Me.Panel39)
         Me.Panel36.Controls.Add(Me.Panel42)
         Me.Panel36.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel36.Location = New System.Drawing.Point(5, 167)
+        Me.Panel36.Location = New System.Drawing.Point(5, 198)
         Me.Panel36.Name = "Panel36"
         Me.Panel36.Padding = New System.Windows.Forms.Padding(25, 5, 11, 5)
         Me.Panel36.Size = New System.Drawing.Size(830, 34)
@@ -777,25 +797,25 @@ Partial Class VehiculeDetails
         Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Label31.Visible = False
         '
-        'Panel3
+        'plCharge
         '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Panel3.Controls.Add(Me.Panel5)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 677)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel3.Size = New System.Drawing.Size(862, 228)
-        Me.Panel3.TabIndex = 18
+        Me.plCharge.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.plCharge.Controls.Add(Me.Panel5)
+        Me.plCharge.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plCharge.Location = New System.Drawing.Point(0, 691)
+        Me.plCharge.Name = "plCharge"
+        Me.plCharge.Padding = New System.Windows.Forms.Padding(10)
+        Me.plCharge.Size = New System.Drawing.Size(862, 259)
+        Me.plCharge.TabIndex = 18
         '
         'Panel1
         '
         Me.Panel1.AutoScroll = True
         Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel1.Controls.Add(Me.Panel3)
+        Me.Panel1.Controls.Add(Me.plCharge)
         Me.Panel1.Controls.Add(Me.Panel50)
         Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.Panel12)
+        Me.Panel1.Controls.Add(Me.plMission)
         Me.Panel1.Controls.Add(Me.Panel10)
         Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.Panel2)
@@ -809,7 +829,7 @@ Partial Class VehiculeDetails
         '
         Me.Panel50.Controls.Add(Me.Panel51)
         Me.Panel50.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel50.Location = New System.Drawing.Point(0, 623)
+        Me.Panel50.Location = New System.Drawing.Point(0, 637)
         Me.Panel50.Name = "Panel50"
         Me.Panel50.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel50.Size = New System.Drawing.Size(862, 54)
@@ -870,22 +890,22 @@ Partial Class VehiculeDetails
         Me.Button3.UseVisualStyleBackColor = True
         Me.Button3.Visible = False
         '
-        'Panel12
+        'plMission
         '
-        Me.Panel12.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Panel12.Controls.Add(Me.Panel13)
-        Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel12.Location = New System.Drawing.Point(0, 395)
-        Me.Panel12.Name = "Panel12"
-        Me.Panel12.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel12.Size = New System.Drawing.Size(862, 228)
-        Me.Panel12.TabIndex = 14
+        Me.plMission.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.plMission.Controls.Add(Me.Panel13)
+        Me.plMission.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plMission.Location = New System.Drawing.Point(0, 395)
+        Me.plMission.Name = "plMission"
+        Me.plMission.Padding = New System.Windows.Forms.Padding(10)
+        Me.plMission.Size = New System.Drawing.Size(862, 242)
+        Me.plMission.TabIndex = 14
         '
         'Panel13
         '
         Me.Panel13.BackColor = System.Drawing.Color.FloralWhite
         Me.Panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel13.Controls.Add(Me.plBodyFct)
+        Me.Panel13.Controls.Add(Me.plBodyMission)
         Me.Panel13.Controls.Add(Me.Panel24)
         Me.Panel13.Controls.Add(Me.plListHeader)
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Fill
@@ -893,19 +913,20 @@ Partial Class VehiculeDetails
         Me.Panel13.Location = New System.Drawing.Point(10, 10)
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel13.Size = New System.Drawing.Size(842, 208)
+        Me.Panel13.Size = New System.Drawing.Size(842, 222)
         Me.Panel13.TabIndex = 1
         '
-        'plBodyFct
+        'plBodyMission
         '
-        Me.plBodyFct.BackColor = System.Drawing.Color.Transparent
-        Me.plBodyFct.Controls.Add(Me.Panel32)
-        Me.plBodyFct.Controls.Add(Me.Panel33)
-        Me.plBodyFct.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plBodyFct.Location = New System.Drawing.Point(5, 39)
-        Me.plBodyFct.Name = "plBodyFct"
-        Me.plBodyFct.Size = New System.Drawing.Size(830, 128)
-        Me.plBodyFct.TabIndex = 19
+        Me.plBodyMission.AutoScroll = True
+        Me.plBodyMission.BackColor = System.Drawing.Color.Transparent
+        Me.plBodyMission.Controls.Add(Me.Panel32)
+        Me.plBodyMission.Controls.Add(Me.Panel33)
+        Me.plBodyMission.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.plBodyMission.Location = New System.Drawing.Point(5, 39)
+        Me.plBodyMission.Name = "plBodyMission"
+        Me.plBodyMission.Size = New System.Drawing.Size(830, 142)
+        Me.plBodyMission.TabIndex = 19
         '
         'Panel32
         '
@@ -913,14 +934,14 @@ Partial Class VehiculeDetails
         Me.Panel32.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel32.Location = New System.Drawing.Point(829, 0)
         Me.Panel32.Name = "Panel32"
-        Me.Panel32.Size = New System.Drawing.Size(1, 126)
+        Me.Panel32.Size = New System.Drawing.Size(1, 140)
         Me.Panel32.TabIndex = 2
         '
         'Panel33
         '
         Me.Panel33.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel33.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel33.Location = New System.Drawing.Point(0, 126)
+        Me.Panel33.Location = New System.Drawing.Point(0, 140)
         Me.Panel33.Name = "Panel33"
         Me.Panel33.Size = New System.Drawing.Size(830, 2)
         Me.Panel33.TabIndex = 2
@@ -934,7 +955,7 @@ Partial Class VehiculeDetails
         Me.Panel24.Controls.Add(Me.Panel26)
         Me.Panel24.Controls.Add(Me.Panel27)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel24.Location = New System.Drawing.Point(5, 167)
+        Me.Panel24.Location = New System.Drawing.Point(5, 181)
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Padding = New System.Windows.Forms.Padding(25, 5, 11, 5)
         Me.Panel24.Size = New System.Drawing.Size(830, 34)
@@ -1160,6 +1181,9 @@ Partial Class VehiculeDetails
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Label5.Visible = False
         '
+        'PrintDoc
+        '
+        '
         'VehiculeDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1188,7 +1212,7 @@ Partial Class VehiculeDetails
         Me.Panel7.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
-        Me.plBodyBl.ResumeLayout(False)
+        Me.plBodyCharge.ResumeLayout(False)
         Me.Panel36.ResumeLayout(False)
         Me.Panel38.ResumeLayout(False)
         Me.Panel39.ResumeLayout(False)
@@ -1199,14 +1223,14 @@ Partial Class VehiculeDetails
         Me.Panel47.ResumeLayout(False)
         Me.Panel48.ResumeLayout(False)
         Me.Panel49.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
+        Me.plCharge.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel50.ResumeLayout(False)
         Me.Panel51.ResumeLayout(False)
         Me.Panel51.PerformLayout()
-        Me.Panel12.ResumeLayout(False)
+        Me.plMission.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
-        Me.plBodyFct.ResumeLayout(False)
+        Me.plBodyMission.ResumeLayout(False)
         Me.Panel24.ResumeLayout(False)
         Me.Panel26.ResumeLayout(False)
         Me.Panel27.ResumeLayout(False)
@@ -1281,12 +1305,12 @@ Partial Class VehiculeDetails
     Friend WithEvents Label31 As System.Windows.Forms.Label
     Friend WithEvents Panel39 As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents plBodyBl As System.Windows.Forms.Panel
+    Friend WithEvents plBodyCharge As System.Windows.Forms.Panel
     Friend WithEvents Panel34 As System.Windows.Forms.Panel
     Friend WithEvents Panel35 As System.Windows.Forms.Panel
     Friend WithEvents Panel36 As System.Windows.Forms.Panel
     Friend WithEvents Panel42 As System.Windows.Forms.Panel
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents plCharge As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel50 As System.Windows.Forms.Panel
     Friend WithEvents Panel51 As System.Windows.Forms.Panel
@@ -1294,9 +1318,9 @@ Partial Class VehiculeDetails
     Friend WithEvents lbnbCharge As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Panel12 As System.Windows.Forms.Panel
+    Friend WithEvents plMission As System.Windows.Forms.Panel
     Friend WithEvents Panel13 As System.Windows.Forms.Panel
-    Friend WithEvents plBodyFct As System.Windows.Forms.Panel
+    Friend WithEvents plBodyMission As System.Windows.Forms.Panel
     Friend WithEvents Panel32 As System.Windows.Forms.Panel
     Friend WithEvents Panel33 As System.Windows.Forms.Panel
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
@@ -1306,4 +1330,6 @@ Partial Class VehiculeDetails
     Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
     Friend WithEvents pl As System.Windows.Forms.Panel
     Friend WithEvents PB As System.Windows.Forms.PictureBox
+    Friend WithEvents btImpList As System.Windows.Forms.Button
+    Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
 End Class

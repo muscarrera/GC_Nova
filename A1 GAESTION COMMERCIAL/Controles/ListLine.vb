@@ -124,11 +124,10 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        plP.Width = Form1.cellWidth
-        plQ.Width = Form1.cellWidth
-        plR.Width = Form1.cellWidth
-        plT.Width = Form1.cellWidth
-        plRef.Width = Form1.cellWidth
+        
+        ResizePanels()
+
+
     End Sub
     Private Sub PlLeft_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbName.Click, lbAvc.Click, plT.Click, plSet.Click, plRef.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, Panel1.Click, lbDate.Click
         isSelected = Not isSelected
@@ -150,15 +149,44 @@
     End Sub
 
     Private Sub ListLine_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        If SizeAuto = False Then Exit Sub
+        ResizePanels()
+    End Sub
+    Private Sub ResizePanels()
 
-        Dim w As Integer = Me.Width
-        Dim a As Integer = CInt((w - 22) / 8)
 
-        plP.Width = a
-        plQ.Width = a
-        plR.Width = a
-        plT.Width = a
-        plRef.Width = a / 2
+        If sizeAuto = False Then
+            Dim w As Integer = Me.Width
+            w -= plSet.Width
+            w = w / 7
+
+            If w > Form1.cellWidth Then w = Form1.cellWidth
+
+            plP.Width = w
+            plQ.Width = w
+            plR.Width = w
+            plT.Width = w
+            plRef.Width = w
+
+
+            'plP.Width = Form1.cellWidth
+            'plQ.Width = Form1.cellWidth
+            'plR.Width = Form1.cellWidth
+            'plT.Width = Form1.cellWidth
+            'plRef.Width = Form1.cellWidth / 2
+        Else
+            Dim w As Integer = Me.Width
+            w -= plSet.Width
+
+            Dim a As Integer = CInt((w - 22) / 8)
+
+            plP.Width = a
+            plQ.Width = a
+            plR.Width = a
+            plT.Width = a
+            plRef.Width = a / 2
+        End If
+
+
+
     End Sub
 End Class

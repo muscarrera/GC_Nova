@@ -25,6 +25,8 @@
     Public arid As Integer = 0
     Public cid As Integer
     Public alert As Double
+    Public TVA As Double
+
 
     Public Property ArticleName As String
         Get
@@ -66,6 +68,10 @@
                 lbPrice.Visible = True
                 lbTotal.Visible = True
             End If
+
+            Dim pr As Double = value
+            If Form1.isBaseOnTTC Then pr += value * TVA / 100
+
 
             lbPrice.Text = String.Format("{0:n}", CDec(value))
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
@@ -109,7 +115,6 @@
     End Property
     Public depot As Integer = 0
 
-    Public TVA As Double = Form1.tva
 
     Public ReadOnly Property TotalHt() As Double
         Get
@@ -150,6 +155,7 @@
             _article.sprice = sprice
             _article.bprice = bprice
             _article.ref = ref
+            _article.TVA = TVA
             _article.depot = depot
             _article.remise = remise
             Return _article
@@ -160,6 +166,7 @@
             cid = _article.cid
             ArticleName = _article.name
             qte = _article.qte
+            TVA = _article.TVA
             sprice = _article.sprice
             bprice = _article.bprice
             ref = _article.ref

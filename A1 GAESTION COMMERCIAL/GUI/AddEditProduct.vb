@@ -4,6 +4,7 @@ Public Class AddEditProduct
 
     Public EditMode As Boolean = False
     Private _id As Integer = 0
+    Dim _periode As String
 
     Public Property Id As Integer
         Get
@@ -14,6 +15,43 @@ Public Class AddEditProduct
             If value = 0 Then Exit Property
 
             FillForm(value)
+        End Set
+    End Property
+    Public ReadOnly Property Cid As Integer
+        Get
+            Dim _cid As Integer = 0
+            Try
+                If IsNothing(cbctg.SelectedValue) Or Not IsNumeric(cbctg.SelectedValue) Then
+                    If MsgBox("créer un Categorie" & vbNewLine & "Nom: " & cbctg.Text, MsgBoxStyle.YesNo, "Nouveau Categorie") = MsgBoxResult.Yes Then
+
+                        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                            Dim params As New Dictionary(Of String, Object)
+                            params.Add("name", cbctg.Text)
+                            params.Add("parent", 0)
+                            params.Add("img", "-")
+                            params.Add("remise", 0)
+                            _cid = a.InsertRecord("Category", params, True)
+                        End Using
+                    Else
+                        Return 0
+                    End If
+                Else
+                    _cid = CInt(cbctg.SelectedValue)
+                End If
+            Catch ex As Exception
+            End Try
+            Return _cid
+        End Get
+    End Property
+    Public Property Periode As String
+        Get
+            Dim str = _periode
+            If isPromo.Checked Then str = txtPeriode.text
+            Return str
+        End Get
+        Set(ByVal value As String)
+            txtPeriode.text = value
+            _periode = value
         End Set
     End Property
     'Image
@@ -100,10 +138,19 @@ Public Class AddEditProduct
     'prices
     Private Sub txtPAch_TxtChanged() Handles txtPAch.TxtChanged
         Try
-            If txtPAch.text = "" Then Exit Sub
+            If txtPAch.text = "" Then
+                If txtPAchTtc.focused = True Then Exit Sub
+                txtPAchTtc.text = 0
+                Exit Sub
+            End If
+
 
             If txtHt.text <> "" Then
                 txtMarge.text = String.Format("{0:n}", CDec((txtHt.text - txtPAch.text) * 100 / txtPAch.text))
+                If txtPAchTtc.focused = True Then Exit Sub
+                Dim _tva = 0
+                If IsNumeric(txtTva.text) Then _tva = txtTva.text
+                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
             End If
         Catch ex As Exception
 
@@ -147,6 +194,8 @@ Public Class AddEditProduct
         Try
             If txtHt.text <> "" Then
                 txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * txtTva.text) / 100) + txtHt.text))
+                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * txtTva.text) / 100) + txtPAch.text))
+
             End If
         Catch ex As Exception
 
@@ -200,6 +249,14 @@ Public Class AddEditProduct
             Exit Sub
         End If
 
+        If Cid = 0 Then
+            Dim str As String = "Categorie est Obligatoire"
+            str &= vbNewLine
+            str &= "Veuillez remplir tous les champs obligatoires"
+            MsgBox(str, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "ERROR")
+            cbctg.Focus()
+        End If
+
         If txtAlert.text = "" Then txtAlert.text = "0"
         If txtStockType.text = "" Then txtStockType.text = "-"
         If txtPrixPromo.Text = "" Then txtPrixPromo.Text = "0"
@@ -207,7 +264,14 @@ Public Class AddEditProduct
         If txtRGr.text = "" Then txtRGr.text = "0"
         If txtRRev.text = "" Then txtRRev.text = "0"
         If txtRCF.text = "" Then txtRCF.text = "0"
+        If Not IsNumeric(txtTva.text) Then txtTva.text = 20
 
+
+        If CDbl(txtRGr.text) > CDbl(txtRmax.text) Or CDbl(txtRRev.text) > CDbl(txtRmax.text) Or
+            CDbl(txtRCF.text) > CDbl(txtRmax.text) Then
+            txtRmax.Focus()
+            Exit Sub
+        End If
     End Sub
     Private Sub FillForm(ByVal _Pid As Integer)
 
@@ -241,7 +305,8 @@ Public Class AddEditProduct
                 isPromo.Checked = BoolValue(dt, "isPromo", 0) 'dt.Rows(0).Item("")
                 isStocked.Checked = BoolValue(dt, "isStocked", 0) ' dt.Rows(0).Item("")
 
-                lbPeriode.Text = StrValue(dt, "periode", 0) 'dt.Rows(0).Item("")
+                lbPeriode.Text = StrValue(dt, "periode", 0)
+                Periode = StrValue(dt, "periode", 0) 'dt.Rows(0).Item("")
                 lbImage.Text = StrValue(dt, "img", 0) 'dt.Rows(0).Item("")
                 PBImage.BackgroundImage = Drawimg()
             End If
@@ -251,11 +316,12 @@ Public Class AddEditProduct
     Private Sub AddEditElement()
         Validation()
 
+
         Dim params As New Dictionary(Of String, Object)
         params.Add("ref", txtRef.text)
         params.Add("name", txtName.text)
         params.Add("desc", txtDesc.text)
-        params.Add("cid", cbctg.SelectedValue)
+        params.Add("cid", Cid)
 
         params.Add("bprice", CDbl(txtPAch.text))
         params.Add("sprice", CDbl(txtHt.text))
@@ -299,5 +365,36 @@ Public Class AddEditProduct
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         DialogResult = Windows.Forms.DialogResult.Cancel
+    End Sub
+
+    Private Sub txtPeriode_TxtChanged() Handles txtPeriode.TxtChanged
+        If txtPeriode.text.Length = 2 And txtPeriode.text.EndsWith("/") = False Then
+            txtPeriode.text &= "/"
+            txtPeriode.Select(txtPeriode.text.Length, 0)
+        ElseIf txtPeriode.text.Length = 5 And txtPeriode.text.EndsWith("/") = False Then
+            txtPeriode.text &= "/"
+            txtPeriode.Select(txtPeriode.text.Length, 0)
+        ElseIf txtPeriode.text.Length = 10 And txtPeriode.text.EndsWith("/") = False Then
+            txtPeriode.text &= "  >  "
+            txtPeriode.Select(txtPeriode.text.Length, 0)
+        ElseIf txtPeriode.text.Length = 17 And txtPeriode.text.EndsWith("/") = False Then
+            txtPeriode.text &= "/"
+            txtPeriode.Select(txtPeriode.text.Length, 0)
+        ElseIf txtPeriode.text.Length = 20 And txtPeriode.text.EndsWith("/") = False Then
+            txtPeriode.text &= "/"
+            txtPeriode.Select(txtPeriode.text.Length, 0)
+        End If
+    End Sub
+
+    Private Sub txtPAchTtc_TxtChanged() Handles txtPAchTtc.TxtChanged
+        If txtPAchTtc.text = "" Then Exit Sub
+        If txtPAchTtc.focused = False Then Exit Sub
+        Try
+            If txtTva.text <> "" And txtPAch.focused = False Then
+                txtPAch.text = String.Format("{0:n}", CDec((txtPAch.text * 100) / (100 + txtTva.text)))
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

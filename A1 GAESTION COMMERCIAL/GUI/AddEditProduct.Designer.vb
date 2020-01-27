@@ -117,6 +117,8 @@ Partial Class AddEditProduct
         Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.CategoryTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CategoryTableAdapter()
+        Me.txtPAchTtc = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
@@ -468,7 +470,9 @@ Partial Class AddEditProduct
         Me.Panel13.Controls.Add(Me.Label6)
         Me.Panel13.Controls.Add(Me.txtMarge)
         Me.Panel13.Controls.Add(Me.Label13)
+        Me.Panel13.Controls.Add(Me.Label12)
         Me.Panel13.Controls.Add(Me.Label7)
+        Me.Panel13.Controls.Add(Me.txtPAchTtc)
         Me.Panel13.Controls.Add(Me.txtPAch)
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel13.ForeColor = System.Drawing.Color.Brown
@@ -493,12 +497,12 @@ Partial Class AddEditProduct
         Me.txtMarge.BackColor = System.Drawing.Color.Transparent
         Me.txtMarge.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtMarge.IsNumiric = True
-        Me.txtMarge.Location = New System.Drawing.Point(59, 121)
+        Me.txtMarge.Location = New System.Drawing.Point(19, 121)
         Me.txtMarge.Name = "txtMarge"
         Me.txtMarge.PlaceHolder = ""
         Me.txtMarge.ShowClearIcon = False
         Me.txtMarge.ShowSaveIcon = False
-        Me.txtMarge.Size = New System.Drawing.Size(170, 26)
+        Me.txtMarge.Size = New System.Drawing.Size(210, 26)
         Me.txtMarge.StartUp = 2
         Me.txtMarge.TabIndex = 34
         Me.txtMarge.TextSize = 10
@@ -525,21 +529,21 @@ Partial Class AddEditProduct
         Me.Label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label7.Location = New System.Drawing.Point(16, 40)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(78, 17)
+        Me.Label7.Size = New System.Drawing.Size(94, 17)
         Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Prix d'Achat"
+        Me.Label7.Text = "Prix d'Achat HT"
         '
         'txtPAch
         '
         Me.txtPAch.BackColor = System.Drawing.Color.Transparent
         Me.txtPAch.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtPAch.IsNumiric = True
-        Me.txtPAch.Location = New System.Drawing.Point(59, 60)
+        Me.txtPAch.Location = New System.Drawing.Point(19, 60)
         Me.txtPAch.Name = "txtPAch"
         Me.txtPAch.PlaceHolder = ""
         Me.txtPAch.ShowClearIcon = False
         Me.txtPAch.ShowSaveIcon = False
-        Me.txtPAch.Size = New System.Drawing.Size(170, 26)
+        Me.txtPAch.Size = New System.Drawing.Size(102, 26)
         Me.txtPAch.StartUp = 2
         Me.txtPAch.TabIndex = 5
         Me.txtPAch.TextSize = 10
@@ -1350,6 +1354,36 @@ Partial Class AddEditProduct
         '
         Me.CategoryTableAdapter.ClearBeforeFill = True
         '
+        'txtPAchTtc
+        '
+        Me.txtPAchTtc.BackColor = System.Drawing.Color.Transparent
+        Me.txtPAchTtc.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtPAchTtc.IsNumiric = True
+        Me.txtPAchTtc.Location = New System.Drawing.Point(127, 60)
+        Me.txtPAchTtc.Name = "txtPAchTtc"
+        Me.txtPAchTtc.PlaceHolder = ""
+        Me.txtPAchTtc.ShowClearIcon = False
+        Me.txtPAchTtc.ShowSaveIcon = False
+        Me.txtPAchTtc.Size = New System.Drawing.Size(102, 26)
+        Me.txtPAchTtc.StartUp = 2
+        Me.txtPAchTtc.TabIndex = 5
+        Me.txtPAchTtc.TextSize = 10
+        Me.txtPAchTtc.TxtBackColor = True
+        Me.txtPAchTtc.TxtColor = System.Drawing.Color.White
+        Me.txtPAchTtc.txtReadOnly = False
+        Me.txtPAchTtc.TxtSelect = New Integer() {1, 0}
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label12.Location = New System.Drawing.Point(124, 40)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(27, 17)
+        Me.Label12.TabIndex = 5
+        Me.Label12.Text = "TTC"
+        '
         'AddEditProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1499,4 +1533,6 @@ Partial Class AddEditProduct
     Friend WithEvents txtRCF As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents txtPAchTtc As A1_GAESTION_COMMERCIAL.TxtBox
 End Class

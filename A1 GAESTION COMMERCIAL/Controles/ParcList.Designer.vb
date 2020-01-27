@@ -637,8 +637,9 @@ Partial Class ParcList
         '
         'plList
         '
+        Me.plList.AutoScroll = True
         Me.plList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plList.Location = New System.Drawing.Point(1642, 5)
+        Me.plList.Location = New System.Drawing.Point(1142, 5)
         Me.plList.Name = "plList"
         Me.plList.Size = New System.Drawing.Size(0, 654)
         Me.plList.TabIndex = 1
@@ -652,9 +653,9 @@ Partial Class ParcList
         Me.plTransport.Controls.Add(Me.plTransBody)
         Me.plTransport.Controls.Add(Me.plTransHeader)
         Me.plTransport.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plTransport.Location = New System.Drawing.Point(923, 5)
+        Me.plTransport.Location = New System.Drawing.Point(886, 5)
         Me.plTransport.Name = "plTransport"
-        Me.plTransport.Size = New System.Drawing.Size(719, 654)
+        Me.plTransport.Size = New System.Drawing.Size(256, 654)
         Me.plTransport.TabIndex = 2
         '
         'TB
@@ -667,7 +668,7 @@ Partial Class ParcList
         Me.TB.Name = "TB"
         Me.TB.pj = 0
         Me.TB.Remise = 0.0R
-        Me.TB.Size = New System.Drawing.Size(719, 181)
+        Me.TB.Size = New System.Drawing.Size(256, 181)
         Me.TB.TabIndex = 14
         Me.TB.TotalHt = 0.0R
         Me.TB.TVA = 0.0R
@@ -681,7 +682,7 @@ Partial Class ParcList
         Me.Panel70.Location = New System.Drawing.Point(0, 410)
         Me.Panel70.Name = "Panel70"
         Me.Panel70.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel70.Size = New System.Drawing.Size(719, 16)
+        Me.Panel70.Size = New System.Drawing.Size(256, 16)
         Me.Panel70.TabIndex = 19
         '
         'Panel51
@@ -689,7 +690,7 @@ Partial Class ParcList
         Me.Panel51.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel51.Location = New System.Drawing.Point(0, 633)
         Me.Panel51.Name = "Panel51"
-        Me.Panel51.Size = New System.Drawing.Size(719, 21)
+        Me.Panel51.Size = New System.Drawing.Size(256, 21)
         Me.Panel51.TabIndex = 13
         '
         'plTransBody
@@ -699,7 +700,7 @@ Partial Class ParcList
         Me.plTransBody.Location = New System.Drawing.Point(0, 312)
         Me.plTransBody.Name = "plTransBody"
         Me.plTransBody.Padding = New System.Windows.Forms.Padding(15, 10, 15, 10)
-        Me.plTransBody.Size = New System.Drawing.Size(719, 98)
+        Me.plTransBody.Size = New System.Drawing.Size(256, 98)
         Me.plTransBody.TabIndex = 13
         '
         'plTransHeader
@@ -720,7 +721,7 @@ Partial Class ParcList
         Me.plTransHeader.Location = New System.Drawing.Point(0, 0)
         Me.plTransHeader.Name = "plTransHeader"
         Me.plTransHeader.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.plTransHeader.Size = New System.Drawing.Size(719, 312)
+        Me.plTransHeader.Size = New System.Drawing.Size(256, 312)
         Me.plTransHeader.TabIndex = 12
         '
         'lbwriterTrans
@@ -844,7 +845,7 @@ Partial Class ParcList
         Me.Panel108.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel108.Location = New System.Drawing.Point(0, 91)
         Me.Panel108.Name = "Panel108"
-        Me.Panel108.Size = New System.Drawing.Size(719, 2)
+        Me.Panel108.Size = New System.Drawing.Size(256, 2)
         Me.Panel108.TabIndex = 1
         '
         'Panel109
@@ -862,7 +863,7 @@ Partial Class ParcList
         Me.Panel109.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel109.Location = New System.Drawing.Point(0, 56)
         Me.Panel109.Name = "Panel109"
-        Me.Panel109.Size = New System.Drawing.Size(719, 35)
+        Me.Panel109.Size = New System.Drawing.Size(256, 35)
         Me.Panel109.TabIndex = 16
         '
         'Panel110
@@ -872,7 +873,7 @@ Partial Class ParcList
         Me.Panel110.Controls.Add(Me.Button29)
         Me.Panel110.Controls.Add(Me.Label59)
         Me.Panel110.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel110.Location = New System.Drawing.Point(507, 0)
+        Me.Panel110.Location = New System.Drawing.Point(44, 0)
         Me.Panel110.Name = "Panel110"
         Me.Panel110.Size = New System.Drawing.Size(212, 35)
         Me.Panel110.TabIndex = 3
@@ -1015,7 +1016,7 @@ Partial Class ParcList
         Me.Panel113.Location = New System.Drawing.Point(0, 10)
         Me.Panel113.Name = "Panel113"
         Me.Panel113.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel113.Size = New System.Drawing.Size(719, 46)
+        Me.Panel113.Size = New System.Drawing.Size(256, 46)
         Me.Panel113.TabIndex = 17
         '
         'Panel114
@@ -1122,7 +1123,7 @@ Partial Class ParcList
         Me.Panel116.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel116.Location = New System.Drawing.Point(0, 0)
         Me.Panel116.Name = "Panel116"
-        Me.Panel116.Size = New System.Drawing.Size(719, 10)
+        Me.Panel116.Size = New System.Drawing.Size(256, 10)
         Me.Panel116.TabIndex = 13
         '
         'Panel117
@@ -1131,7 +1132,7 @@ Partial Class ParcList
         Me.Panel117.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel117.Location = New System.Drawing.Point(0, 0)
         Me.Panel117.Name = "Panel117"
-        Me.Panel117.Size = New System.Drawing.Size(719, 2)
+        Me.Panel117.Size = New System.Drawing.Size(256, 2)
         Me.Panel117.TabIndex = 1
         '
         'plListHeader
@@ -1149,7 +1150,7 @@ Partial Class ParcList
         Me.plListHeader.Location = New System.Drawing.Point(0, 270)
         Me.plListHeader.Name = "plListHeader"
         Me.plListHeader.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
-        Me.plListHeader.Size = New System.Drawing.Size(719, 34)
+        Me.plListHeader.Size = New System.Drawing.Size(256, 34)
         Me.plListHeader.TabIndex = 25
         '
         'Panel50
@@ -1160,7 +1161,7 @@ Partial Class ParcList
         Me.Panel50.Location = New System.Drawing.Point(248, 5)
         Me.Panel50.Name = "Panel50"
         Me.Panel50.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel50.Size = New System.Drawing.Size(108, 24)
+        Me.Panel50.Size = New System.Drawing.Size(0, 24)
         Me.Panel50.TabIndex = 17
         '
         'Label32
@@ -1171,7 +1172,7 @@ Partial Class ParcList
         Me.Label32.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label32.Location = New System.Drawing.Point(5, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(98, 24)
+        Me.Label32.Size = New System.Drawing.Size(0, 24)
         Me.Label32.TabIndex = 2
         Me.Label32.Text = "Libellé"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1181,7 +1182,7 @@ Partial Class ParcList
         Me.Panel53.BackColor = System.Drawing.Color.Transparent
         Me.Panel53.Controls.Add(Me.Label33)
         Me.Panel53.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel53.Location = New System.Drawing.Point(356, 5)
+        Me.Panel53.Location = New System.Drawing.Point(-107, 5)
         Me.Panel53.Name = "Panel53"
         Me.Panel53.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel53.Size = New System.Drawing.Size(89, 24)
@@ -1205,7 +1206,7 @@ Partial Class ParcList
         Me.Panel65.BackColor = System.Drawing.Color.Transparent
         Me.Panel65.Controls.Add(Me.Label34)
         Me.Panel65.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel65.Location = New System.Drawing.Point(445, 5)
+        Me.Panel65.Location = New System.Drawing.Point(-18, 5)
         Me.Panel65.Name = "Panel65"
         Me.Panel65.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel65.Size = New System.Drawing.Size(90, 24)
@@ -1229,7 +1230,7 @@ Partial Class ParcList
         Me.Panel66.BackColor = System.Drawing.Color.Transparent
         Me.Panel66.Controls.Add(Me.Label35)
         Me.Panel66.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel66.Location = New System.Drawing.Point(535, 5)
+        Me.Panel66.Location = New System.Drawing.Point(72, 5)
         Me.Panel66.Name = "Panel66"
         Me.Panel66.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel66.Size = New System.Drawing.Size(84, 24)
@@ -1304,7 +1305,7 @@ Partial Class ParcList
         Me.plDetails.Dock = System.Windows.Forms.DockStyle.Left
         Me.plDetails.Location = New System.Drawing.Point(5, 5)
         Me.plDetails.Name = "plDetails"
-        Me.plDetails.Size = New System.Drawing.Size(918, 654)
+        Me.plDetails.Size = New System.Drawing.Size(881, 654)
         Me.plDetails.TabIndex = 0
         '
         'plC
@@ -1321,7 +1322,7 @@ Partial Class ParcList
         Me.plC.Dock = System.Windows.Forms.DockStyle.Top
         Me.plC.Location = New System.Drawing.Point(0, 675)
         Me.plC.Name = "plC"
-        Me.plC.Size = New System.Drawing.Size(901, 330)
+        Me.plC.Size = New System.Drawing.Size(864, 330)
         Me.plC.TabIndex = 14
         '
         'plCBody
@@ -1331,7 +1332,7 @@ Partial Class ParcList
         Me.plCBody.Location = New System.Drawing.Point(408, 31)
         Me.plCBody.Name = "plCBody"
         Me.plCBody.Padding = New System.Windows.Forms.Padding(5)
-        Me.plCBody.Size = New System.Drawing.Size(491, 270)
+        Me.plCBody.Size = New System.Drawing.Size(454, 270)
         Me.plCBody.TabIndex = 27
         '
         'Panel60
@@ -1469,7 +1470,7 @@ Partial Class ParcList
         '
         Me.Panel33.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel33.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel33.Location = New System.Drawing.Point(899, 31)
+        Me.Panel33.Location = New System.Drawing.Point(862, 31)
         Me.Panel33.Name = "Panel33"
         Me.Panel33.Size = New System.Drawing.Size(2, 270)
         Me.Panel33.TabIndex = 20
@@ -1480,7 +1481,7 @@ Partial Class ParcList
         Me.Panel42.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel42.Location = New System.Drawing.Point(2, 301)
         Me.Panel42.Name = "Panel42"
-        Me.Panel42.Size = New System.Drawing.Size(899, 2)
+        Me.Panel42.Size = New System.Drawing.Size(862, 2)
         Me.Panel42.TabIndex = 18
         '
         'Panel43
@@ -1498,7 +1499,7 @@ Partial Class ParcList
         Me.Panel44.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel44.Location = New System.Drawing.Point(0, 29)
         Me.Panel44.Name = "Panel44"
-        Me.Panel44.Size = New System.Drawing.Size(901, 2)
+        Me.Panel44.Size = New System.Drawing.Size(864, 2)
         Me.Panel44.TabIndex = 1
         '
         'Panel45
@@ -1511,7 +1512,7 @@ Partial Class ParcList
         Me.Panel45.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel45.Location = New System.Drawing.Point(0, 0)
         Me.Panel45.Name = "Panel45"
-        Me.Panel45.Size = New System.Drawing.Size(901, 29)
+        Me.Panel45.Size = New System.Drawing.Size(864, 29)
         Me.Panel45.TabIndex = 16
         '
         'LinkLabel2
@@ -1532,7 +1533,7 @@ Partial Class ParcList
         Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox4.Location = New System.Drawing.Point(863, 0)
+        Me.PictureBox4.Location = New System.Drawing.Point(826, 0)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(38, 29)
         Me.PictureBox4.TabIndex = 4
@@ -1547,14 +1548,14 @@ Partial Class ParcList
         Me.Panel59.Location = New System.Drawing.Point(0, 303)
         Me.Panel59.Name = "Panel59"
         Me.Panel59.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel59.Size = New System.Drawing.Size(901, 27)
+        Me.Panel59.Size = New System.Drawing.Size(864, 27)
         Me.Panel59.TabIndex = 26
         '
         'LinkLabel6
         '
         Me.LinkLabel6.Dock = System.Windows.Forms.DockStyle.Right
         Me.LinkLabel6.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel6.Location = New System.Drawing.Point(660, 2)
+        Me.LinkLabel6.Location = New System.Drawing.Point(623, 2)
         Me.LinkLabel6.Name = "LinkLabel6"
         Me.LinkLabel6.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.LinkLabel6.Size = New System.Drawing.Size(54, 23)
@@ -1569,7 +1570,7 @@ Partial Class ParcList
         Me.lbTotalCharge.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbTotalCharge.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotalCharge.LinkColor = System.Drawing.Color.White
-        Me.lbTotalCharge.Location = New System.Drawing.Point(714, 2)
+        Me.lbTotalCharge.Location = New System.Drawing.Point(677, 2)
         Me.lbTotalCharge.Name = "lbTotalCharge"
         Me.lbTotalCharge.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbTotalCharge.Size = New System.Drawing.Size(185, 23)
@@ -1592,7 +1593,7 @@ Partial Class ParcList
         Me.plD.Dock = System.Windows.Forms.DockStyle.Top
         Me.plD.Location = New System.Drawing.Point(0, 345)
         Me.plD.Name = "plD"
-        Me.plD.Size = New System.Drawing.Size(901, 330)
+        Me.plD.Size = New System.Drawing.Size(864, 330)
         Me.plD.TabIndex = 13
         '
         'plDBody
@@ -1602,7 +1603,7 @@ Partial Class ParcList
         Me.plDBody.Location = New System.Drawing.Point(408, 31)
         Me.plDBody.Name = "plDBody"
         Me.plDBody.Padding = New System.Windows.Forms.Padding(10)
-        Me.plDBody.Size = New System.Drawing.Size(491, 270)
+        Me.plDBody.Size = New System.Drawing.Size(454, 270)
         Me.plDBody.TabIndex = 23
         '
         'plNewElement
@@ -1786,7 +1787,7 @@ Partial Class ParcList
         '
         Me.Panel39.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel39.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel39.Location = New System.Drawing.Point(899, 31)
+        Me.Panel39.Location = New System.Drawing.Point(862, 31)
         Me.Panel39.Name = "Panel39"
         Me.Panel39.Size = New System.Drawing.Size(2, 270)
         Me.Panel39.TabIndex = 20
@@ -1797,7 +1798,7 @@ Partial Class ParcList
         Me.Panel40.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel40.Location = New System.Drawing.Point(2, 301)
         Me.Panel40.Name = "Panel40"
-        Me.Panel40.Size = New System.Drawing.Size(899, 2)
+        Me.Panel40.Size = New System.Drawing.Size(862, 2)
         Me.Panel40.TabIndex = 18
         '
         'Panel41
@@ -1815,7 +1816,7 @@ Partial Class ParcList
         Me.Panel48.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel48.Location = New System.Drawing.Point(0, 29)
         Me.Panel48.Name = "Panel48"
-        Me.Panel48.Size = New System.Drawing.Size(901, 2)
+        Me.Panel48.Size = New System.Drawing.Size(864, 2)
         Me.Panel48.TabIndex = 1
         '
         'Panel49
@@ -1828,7 +1829,7 @@ Partial Class ParcList
         Me.Panel49.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel49.Location = New System.Drawing.Point(0, 0)
         Me.Panel49.Name = "Panel49"
-        Me.Panel49.Size = New System.Drawing.Size(901, 29)
+        Me.Panel49.Size = New System.Drawing.Size(864, 29)
         Me.Panel49.TabIndex = 16
         '
         'LinkLabel1
@@ -1849,7 +1850,7 @@ Partial Class ParcList
         Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox3.Location = New System.Drawing.Point(863, 0)
+        Me.PictureBox3.Location = New System.Drawing.Point(826, 0)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(38, 29)
         Me.PictureBox3.TabIndex = 4
@@ -1866,14 +1867,14 @@ Partial Class ParcList
         Me.Panel14.Location = New System.Drawing.Point(0, 303)
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel14.Size = New System.Drawing.Size(901, 27)
+        Me.Panel14.Size = New System.Drawing.Size(864, 27)
         Me.Panel14.TabIndex = 22
         '
         'LinkLabel3
         '
         Me.LinkLabel3.Dock = System.Windows.Forms.DockStyle.Right
         Me.LinkLabel3.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel3.Location = New System.Drawing.Point(450, 2)
+        Me.LinkLabel3.Location = New System.Drawing.Point(413, 2)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.LinkLabel3.Size = New System.Drawing.Size(57, 23)
@@ -1888,7 +1889,7 @@ Partial Class ParcList
         Me.lbTotal.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbTotal.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotal.LinkColor = System.Drawing.Color.White
-        Me.lbTotal.Location = New System.Drawing.Point(507, 2)
+        Me.lbTotal.Location = New System.Drawing.Point(470, 2)
         Me.lbTotal.Name = "lbTotal"
         Me.lbTotal.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbTotal.Size = New System.Drawing.Size(141, 23)
@@ -1901,7 +1902,7 @@ Partial Class ParcList
         '
         Me.aa.Dock = System.Windows.Forms.DockStyle.Right
         Me.aa.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.aa.Location = New System.Drawing.Point(648, 2)
+        Me.aa.Location = New System.Drawing.Point(611, 2)
         Me.aa.Name = "aa"
         Me.aa.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.aa.Size = New System.Drawing.Size(70, 23)
@@ -1917,7 +1918,7 @@ Partial Class ParcList
         Me.lbAvc.Dock = System.Windows.Forms.DockStyle.Right
         Me.lbAvc.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbAvc.LinkColor = System.Drawing.Color.White
-        Me.lbAvc.Location = New System.Drawing.Point(718, 2)
+        Me.lbAvc.Location = New System.Drawing.Point(681, 2)
         Me.lbAvc.Name = "lbAvc"
         Me.lbAvc.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
         Me.lbAvc.Size = New System.Drawing.Size(181, 23)
@@ -1941,14 +1942,14 @@ Partial Class ParcList
         Me.plMissionHeader.Location = New System.Drawing.Point(0, 0)
         Me.plMissionHeader.Name = "plMissionHeader"
         Me.plMissionHeader.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.plMissionHeader.Size = New System.Drawing.Size(901, 345)
+        Me.plMissionHeader.Size = New System.Drawing.Size(864, 345)
         Me.plMissionHeader.TabIndex = 12
         '
         'Panel20
         '
         Me.Panel20.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(899, 93)
+        Me.Panel20.Location = New System.Drawing.Point(862, 93)
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Size = New System.Drawing.Size(2, 244)
         Me.Panel20.TabIndex = 20
@@ -1985,7 +1986,7 @@ Partial Class ParcList
         Me.Panel38.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel38.Location = New System.Drawing.Point(0, 93)
         Me.Panel38.Name = "Panel38"
-        Me.Panel38.Size = New System.Drawing.Size(901, 244)
+        Me.Panel38.Size = New System.Drawing.Size(864, 244)
         Me.Panel38.TabIndex = 14
         '
         'Panel61
@@ -1996,7 +1997,7 @@ Partial Class ParcList
         Me.Panel61.Controls.Add(Me.txtKmArrive)
         Me.Panel61.Controls.Add(Me.Label6)
         Me.Panel61.Controls.Add(Me.Label18)
-        Me.Panel61.Location = New System.Drawing.Point(667, 24)
+        Me.Panel61.Location = New System.Drawing.Point(630, 24)
         Me.Panel61.Name = "Panel61"
         Me.Panel61.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel61.Size = New System.Drawing.Size(219, 30)
@@ -2102,7 +2103,7 @@ Partial Class ParcList
         Me.Panel4.Controls.Add(Me.txtKmDepart)
         Me.Panel4.Controls.Add(Me.Label2)
         Me.Panel4.Controls.Add(Me.Label4)
-        Me.Panel4.Location = New System.Drawing.Point(449, 24)
+        Me.Panel4.Location = New System.Drawing.Point(412, 24)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.Panel4.Size = New System.Drawing.Size(212, 30)
@@ -2251,7 +2252,7 @@ Partial Class ParcList
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label23.Location = New System.Drawing.Point(605, 74)
+        Me.Label23.Location = New System.Drawing.Point(568, 74)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(56, 14)
         Me.Label23.TabIndex = 2
@@ -2478,7 +2479,7 @@ Partial Class ParcList
         Me.Panel18.Controls.Add(Me.lbVehiculeName)
         Me.Panel18.Controls.Add(Me.Button9)
         Me.Panel18.Controls.Add(Me.lbVehiculeInfo)
-        Me.Panel18.Location = New System.Drawing.Point(601, 90)
+        Me.Panel18.Location = New System.Drawing.Point(564, 90)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Size = New System.Drawing.Size(290, 90)
         Me.Panel18.TabIndex = 1
@@ -2500,7 +2501,7 @@ Partial Class ParcList
         '
         Me.lbVehiculeName.AutoSize = True
         Me.lbVehiculeName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbVehiculeName.Location = New System.Drawing.Point(7, 13)
+        Me.lbVehiculeName.Location = New System.Drawing.Point(10, 13)
         Me.lbVehiculeName.Name = "lbVehiculeName"
         Me.lbVehiculeName.Size = New System.Drawing.Size(16, 19)
         Me.lbVehiculeName.TabIndex = 2
@@ -2527,7 +2528,7 @@ Partial Class ParcList
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbVehiculeInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbVehiculeInfo.Location = New System.Drawing.Point(7, 34)
+        Me.lbVehiculeInfo.Location = New System.Drawing.Point(12, 34)
         Me.lbVehiculeInfo.Name = "lbVehiculeInfo"
         Me.lbVehiculeInfo.Size = New System.Drawing.Size(264, 48)
         Me.lbVehiculeInfo.TabIndex = 2
@@ -2546,7 +2547,7 @@ Partial Class ParcList
         Me.Panel17.Controls.Add(Me.lbDriverName)
         Me.Panel17.Location = New System.Drawing.Point(323, 90)
         Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(265, 90)
+        Me.Panel17.Size = New System.Drawing.Size(235, 90)
         Me.Panel17.TabIndex = 1
         '
         'Button6
@@ -2558,7 +2559,7 @@ Partial Class ParcList
         Me.Button6.FlatAppearance.BorderSize = 0
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.Location = New System.Drawing.Point(233, 67)
+        Me.Button6.Location = New System.Drawing.Point(203, 67)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(15, 15)
         Me.Button6.TabIndex = 9
@@ -2571,7 +2572,7 @@ Partial Class ParcList
         Me.Button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Button13.FlatAppearance.BorderSize = 0
         Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Location = New System.Drawing.Point(215, 67)
+        Me.Button13.Location = New System.Drawing.Point(185, 67)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(15, 15)
         Me.Button13.TabIndex = 5
@@ -2583,9 +2584,9 @@ Partial Class ParcList
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbDriverInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbDriverInfo.Location = New System.Drawing.Point(10, 32)
+        Me.lbDriverInfo.Location = New System.Drawing.Point(9, 32)
         Me.lbDriverInfo.Name = "lbDriverInfo"
-        Me.lbDriverInfo.Size = New System.Drawing.Size(238, 48)
+        Me.lbDriverInfo.Size = New System.Drawing.Size(222, 48)
         Me.lbDriverInfo.TabIndex = 2
         Me.lbDriverInfo.Text = "-"
         '
@@ -2710,7 +2711,7 @@ Partial Class ParcList
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel8.Location = New System.Drawing.Point(0, 91)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(901, 2)
+        Me.Panel8.Size = New System.Drawing.Size(864, 2)
         Me.Panel8.TabIndex = 1
         '
         'Panel26
@@ -2729,7 +2730,7 @@ Partial Class ParcList
         Me.Panel26.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel26.Location = New System.Drawing.Point(0, 56)
         Me.Panel26.Name = "Panel26"
-        Me.Panel26.Size = New System.Drawing.Size(901, 35)
+        Me.Panel26.Size = New System.Drawing.Size(864, 35)
         Me.Panel26.TabIndex = 16
         '
         'Panel22
@@ -2740,7 +2741,7 @@ Partial Class ParcList
         Me.Panel22.Controls.Add(Me.btPdf)
         Me.Panel22.Controls.Add(Me.Label10)
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel22.Location = New System.Drawing.Point(634, 0)
+        Me.Panel22.Location = New System.Drawing.Point(597, 0)
         Me.Panel22.Name = "Panel22"
         Me.Panel22.Size = New System.Drawing.Size(267, 35)
         Me.Panel22.TabIndex = 3
@@ -2920,7 +2921,7 @@ Partial Class ParcList
         Me.Panel30.Location = New System.Drawing.Point(0, 10)
         Me.Panel30.Name = "Panel30"
         Me.Panel30.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel30.Size = New System.Drawing.Size(901, 46)
+        Me.Panel30.Size = New System.Drawing.Size(864, 46)
         Me.Panel30.TabIndex = 17
         '
         'Panel23
@@ -3014,7 +3015,7 @@ Partial Class ParcList
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB14
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Location = New System.Drawing.Point(853, 10)
+        Me.PictureBox1.Location = New System.Drawing.Point(816, 10)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(38, 26)
         Me.PictureBox1.TabIndex = 3
@@ -3038,7 +3039,7 @@ Partial Class ParcList
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel12.Location = New System.Drawing.Point(0, 0)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(901, 10)
+        Me.Panel12.Size = New System.Drawing.Size(864, 10)
         Me.Panel12.TabIndex = 13
         '
         'Panel13
@@ -3047,7 +3048,7 @@ Partial Class ParcList
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel13.Location = New System.Drawing.Point(0, 0)
         Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(901, 2)
+        Me.Panel13.Size = New System.Drawing.Size(864, 2)
         Me.Panel13.TabIndex = 1
         '
         'plFooter

@@ -47,6 +47,10 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.bg_Blue">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -340,6 +344,34 @@ A1GAESTIONCOMMERCIAL
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.SUB20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAG_01">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAG_02">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAG_021">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAGIN_01">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAGIN_02">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAGIN_03">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.TAGIN_04">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

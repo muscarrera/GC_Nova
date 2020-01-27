@@ -5,6 +5,8 @@
     Dim tb_M As String = "Mission"
     Dim tb_C As String = "Details_Charge"
     Public dt_Driver As DataTable
+    Dim dtM As DataTable
+    Dim dtC As DataTable
 
     Public Property id As Integer
         Get
@@ -18,6 +20,120 @@
             getFactures(value)
         End Set
     End Property
+    Private Property DataSourceMission() As DataTable
+        Get
+            Return dtM
+        End Get
+        Set(ByVal value As DataTable)
+
+            dtM = value
+
+            Dim avc As Double = 0
+            Dim ttc As Double = 0
+            Dim kmd As Integer = 1
+            Dim kma As Integer = 1
+            Dim t As Double = 0
+
+            If dtM.Rows.Count > 0 Then
+                For i As Integer = 0 To dtM.Rows.Count - 1
+                    Dim a As New ClientRow
+                    a.SizeAuto = True
+
+                    a.Id = dtM.Rows(i).Item(0)
+                    a.Libele = StrValue(dtM, "clientName", i) & " - " & StrValue(dtM, "domain", i)
+                    a.lbType.Text = DteValue(dtM, "date", i).ToString("dd/MMM")
+                    a.Responsable = StrValue(dtM, "km_D", i)
+                    a.Tel = String.Format("{0:n}", DblValue(dtM, "total", i))
+                    a.Ville = String.Format("{0:n}", DblValue(dtM, "avance", i))
+
+                    If BoolValue(dtM, "isPayed", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+
+                    t += DblValue(dtM, "total", i) - DblValue(dtM, "avance", i)
+
+                    avc += DblValue(dtM, "avance", i)
+                    ttc += DblValue(dtM, "total", i)
+
+                    'If IntValue(dtM, "km_A", i) > kma Then kma = IntValue(dtM, "km_A", i)
+                    'If IntValue(dtM, "km_D", i) > 1 And IntValue(dtM, "km_D", i) < kmd Then kmd = IntValue(dtM, "km_D", i)
+
+
+                    a.Index = i + 1
+                    a.Dock = DockStyle.Top
+                    a.BringToFront()
+
+                    plBodyMission.Controls.Add(a)
+                Next
+
+                'Dim query = From value In dtM.AsEnumerable() Select value.Field(Of Integer)("km_A").Max()
+                'Dim query = From d In dt_Driver.AsEnumerable()
+                '                     Where d.Field(Of Integer)(0) = drid
+                '                     Select d
+                kma = Convert.ToString(dtM.Compute("MAX(km_A)", String.Empty))
+                kmd = Convert.ToString(dtM.Compute("MIN(km_D)", String.Empty))
+
+
+            End If
+            lbNbrMission.Text = dtM.Rows.Count
+            lbPath.Text = kmd & " => " & kma & " || " & kma - kmd & " Km"
+
+            lbFTtc.Text = String.Format("{0:n}", ttc)
+            lbFAvc.Text = String.Format("{0:n}", avc)
+        End Set
+    End Property
+    Private Property DataSourceCharge() As DataTable
+        Get
+            Return dtC
+        End Get
+        Set(ByVal value As DataTable)
+            dtC = value
+
+            Dim ttc As Double = 0
+            Dim kmd As Integer = 1
+            Dim kma As Integer = 1
+            Dim t As Double = 0
+
+            If dtC.Rows.Count > 0 Then
+                For i As Integer = 0 To dtC.Rows.Count - 1
+
+                    Dim a As New ClientRow
+                    a.SizeAuto = True
+
+                    a.Id = dtC.Rows(i).Item(0)
+                    a.Libele = StrValue(dtC, "name", i)
+                    a.lbType.Text = DteValue(dtC, "date", i).ToString("dd/MMM")
+                    a.Responsable = String.Format("{0:n}", DblValue(dtC, "value", i))
+                    a.Tel = IntValue(dtC, "mid", i)
+                    'a.Ville = 
+
+                    If IntValue(dtC, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+                    Dim drid As Integer = IntValue(dtC, "drid", i)
+
+                    If drid > 0 And IsNothing(dt_Driver) = False Then
+                        Dim query = From d In dt_Driver.AsEnumerable()
+                                      Where d.Field(Of Integer)(0) = drid
+                                      Select d
+
+                        Dim r As DataTable = query.CopyToDataTable()
+                        a.Ville = r.Rows(0).Item("name")
+                    End If
+
+                    ttc += DblValue(dtC, "value", i)
+
+                    a.Index = i + 1
+                    a.Dock = DockStyle.Top
+                    a.BringToFront()
+
+                    plBodyCharge.Controls.Add(a)
+                Next
+            End If
+
+            lbnbCharge.Text = CInt(dtC.Rows.Count)
+            lbBTtc.Text = String.Format("{0:n}", ttc)
+        End Set
+    End Property
+
 
     Private Sub getVehiculeDetails(ByVal value As Integer)
         If id > 0 Then
@@ -41,8 +157,8 @@
     Private Sub getFactures(ByVal vid As Integer)
         Try
             Dim params As New Dictionary(Of String, Object)
-            plBodyBl.Controls.Clear()
-            plBodyFct.Controls.Clear()
+            plBodyCharge.Controls.Clear()
+            plBodyMission.Controls.Clear()
 
             lbNbrMission.Text = "0"
             lbPath.Text = "/ / / / "
@@ -80,120 +196,21 @@
                 params.Add("vid = ", vid)
                 params.Add("[date] > ", dt1)
                 params.Add("[date] < ", dt2)
-                Dim dtM = c.SelectDataTableSymbols(tb_M, {"*"}, params)
+                Dim _dtM = c.SelectDataTableSymbols(tb_M, {"*"}, params)
+
+
+                DataSourceMission = _dtM
 
                 params.Clear()
                 params.Add("vid = ", vid)
                 params.Add("[date] > ", dt1)
                 params.Add("[date] < ", dt2)
-                Dim dtC = c.SelectDataTableSymbols(tb_C, {"*"}, params)
-
-                Dim avc As Double = 0
-                Dim ttc As Double = 0
-                Dim kmd As Integer = 1
-                Dim kma As Integer = 1
-
-                Dim t As Double = 0
-                If dtM.Rows.Count > 0 Then
-                    For i As Integer = 0 To dtM.Rows.Count - 1
-                        Dim a As New ClientRow
-                        a.SizeAuto = True
-
-                        a.Id = dtM.Rows(i).Item(0)
-                        a.Libele = StrValue(dtM, "clientName", i) & " - " & StrValue(dtM, "domain", i)
-                        a.lbType.Text = DteValue(dtM, "date", i).ToString("dd/MMM")
-                        a.Responsable = StrValue(dtM, "km_D", i)
-                        a.Tel = String.Format("{0:n}", DblValue(dtM, "total", i))
-                        a.Ville = String.Format("{0:n}", DblValue(dtM, "avance", i))
-
-                        If BoolValue(dtM, "isPayed", i) Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+                Dim _dtC = c.SelectDataTableSymbols(tb_C, {"*"}, params)
 
 
-                        t += DblValue(dtM, "total", i) - DblValue(dtM, "avance", i)
-
-                        avc += DblValue(dtM, "avance", i)
-                        ttc += DblValue(dtM, "total", i)
-
-                        'If IntValue(dtM, "km_A", i) > kma Then kma = IntValue(dtM, "km_A", i)
-                        'If IntValue(dtM, "km_D", i) > 1 And IntValue(dtM, "km_D", i) < kmd Then kmd = IntValue(dtM, "km_D", i)
+                DataSourceCharge = _dtC
 
 
-                        a.Index = i + 1
-                        a.Dock = DockStyle.Top
-                        a.BringToFront()
-
-                        plBodyFct.Controls.Add(a)
-                    Next
-
-                    'Dim query = From value In dtM.AsEnumerable() Select value.Field(Of Integer)("km_A").Max()
-                    'Dim query = From d In dt_Driver.AsEnumerable()
-                    '                     Where d.Field(Of Integer)(0) = drid
-                    '                     Select d
-                    kma = Convert.ToString(dtM.Compute("MAX(km_A)", String.Empty))
-                    kmd = Convert.ToString(dtM.Compute("MIN(km_D)", String.Empty))
-
-
-                End If
-                lbNbrMission.Text = dtM.Rows.Count
-                lbPath.Text = kmd & " => " & kma & " || " & kma - kmd & " Km"
-
-                lbFTtc.Text = String.Format("{0:n}", ttc)
-                lbFAvc.Text = String.Format("{0:n}", avc)
-
-
-                t = 0
-                avc = 0
-                ttc = 0
-
-                If dtC.Rows.Count > 0 Then
-                    For i As Integer = 0 To dtC.Rows.Count - 1
-
-                        Dim a As New ClientRow
-                        a.SizeAuto = True
-
-                        a.Id = dtC.Rows(i).Item(0)
-                        a.Libele = StrValue(dtC, "name", i)
-                        a.lbType.Text = DteValue(dtC, "date", i).ToString("dd/MMM")
-                        a.Responsable = String.Format("{0:n}", DblValue(dtC, "value", i))
-                        a.Tel = IntValue(dtC, "mid", i)
-                        'a.Ville = 
-
-                        If IntValue(dtC, "mid", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
-
-                        Dim drid As Integer = IntValue(dtC, "drid", i)
-
-
-                        If drid > 0 And IsNothing(dt_Driver) = False Then
-                            Dim query = From d In dt_Driver.AsEnumerable()
-                                          Where d.Field(Of Integer)(0) = drid
-                                          Select d
-
-                            Dim r As DataTable = query.CopyToDataTable()
-                            a.Ville = r.Rows(0).Item("name")
-                        End If
-
-
-
-
-
-
-                        ttc += DblValue(dtC, "value", i)
-
-                        a.Index = i + 1
-                        a.Dock = DockStyle.Top
-                        a.BringToFront()
-
-                        plBodyBl.Controls.Add(a)
-                    Next
-
-
-
-                End If
-
-                lbnbCharge.Text = CInt(dtC.Rows.Count)
-
-                lbBTtc.Text = String.Format("{0:n}", ttc)
-                lbBAvc.Text = String.Format("{0:n}", avc)
 
             End Using
         Catch ex As Exception
@@ -227,7 +244,6 @@
         ElseIf TXT.text.Length = 20 And TXT.text.EndsWith("/") = False Then
             TXT.text &= "/"
             TXT.Select(TXT.text.Length, 0)
-
         End If
 
     End Sub
@@ -246,7 +262,54 @@
     End Sub
 
     Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
-
         getFactures(id)
+    End Sub
+
+    Private Sub btImpList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btImpList.Click
+        PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
+        PrintDoc.Print()
+    End Sub
+
+    Dim n As Integer = 0
+    Dim m As Integer = 0
+    Private Sub PrintDoc_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage
+        Try
+            If id = 0 Then Exit Sub
+
+            Using a As DrawClass = New DrawClass
+                Dim dte As String = Format(Date.Now, "dd-MM-yyyy [hh:mm]")
+
+                a.DrawDetailsVehicule(e, id, lbName.Text, lbInfo.Text, lbInfo2.Text,
+                                      TXT.text, DataSourceMission, DataSourceCharge, False,
+                                      lbFTtc.Text, lbBTtc.Text, m, n)
+            End Using
+        Catch ex As Exception
+            m = 0
+            n = 0
+        End Try
+    End Sub
+
+    Private Sub plBodyMission_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plBodyMission.ControlAdded, plBodyMission.ControlRemoved
+        Dim H = plBodyMission.Controls.Count
+        H *= 40
+
+        If H < 150 Then H = 150
+        H += 120
+
+        If H > 400 Then H = 400
+
+        plMission.Height = H
+    End Sub
+
+    Private Sub plBodyCharge_ControlRemoved(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plBodyCharge.ControlRemoved
+        Dim H = plBodyCharge.Controls.Count
+        H *= 40
+
+        If H < 150 Then H = 150
+        H += 120
+
+        If H > 400 Then H = 400
+
+        plCharge.Height = H
     End Sub
 End Class

@@ -100,6 +100,10 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.txtTva = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
+        Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -247,22 +251,26 @@ Partial Class Setting
         '
         Me.plPref.AutoScroll = True
         Me.plPref.BackColor = System.Drawing.Color.Transparent
+        Me.plPref.Controls.Add(Me.cbBaseOnOneTva)
+        Me.plPref.Controls.Add(Me.cbBaseOnTTC)
         Me.plPref.Controls.Add(Me.Button11)
+        Me.plPref.Controls.Add(Me.Label18)
+        Me.plPref.Controls.Add(Me.txtTva)
         Me.plPref.Controls.Add(Me.Label11)
         Me.plPref.Controls.Add(Me.txtnumberOfItems)
         Me.plPref.Controls.Add(Me.Label7)
         Me.plPref.Controls.Add(Me.txtCellWidth)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 602)
+        Me.plPref.Location = New System.Drawing.Point(5, 337)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(750, 58)
+        Me.plPref.Size = New System.Drawing.Size(750, 361)
         Me.plPref.TabIndex = 18
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(344, 162)
+        Me.Button11.Location = New System.Drawing.Point(344, 309)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(94, 39)
         Me.Button11.TabIndex = 27
@@ -312,7 +320,7 @@ Partial Class Setting
         Me.Panel5.Location = New System.Drawing.Point(10, 10)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel5.Size = New System.Drawing.Size(713, 39)
+        Me.Panel5.Size = New System.Drawing.Size(730, 39)
         Me.Panel5.TabIndex = 20
         '
         'Label17
@@ -369,10 +377,10 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 543)
+        Me.plImp.Location = New System.Drawing.Point(5, 274)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 59)
+        Me.plImp.Size = New System.Drawing.Size(750, 63)
         Me.plImp.TabIndex = 17
         '
         'Label35
@@ -658,10 +666,10 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 481)
+        Me.plRole.Location = New System.Drawing.Point(5, 206)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
-        Me.plRole.Size = New System.Drawing.Size(750, 62)
+        Me.plRole.Size = New System.Drawing.Size(750, 68)
         Me.plRole.TabIndex = 16
         '
         'Panel9
@@ -705,10 +713,10 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 306)
+        Me.plUser.Location = New System.Drawing.Point(5, 144)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
-        Me.plUser.Size = New System.Drawing.Size(750, 175)
+        Me.plUser.Size = New System.Drawing.Size(750, 62)
         Me.plUser.TabIndex = 15
         '
         'LinkLabel1
@@ -731,7 +739,7 @@ Partial Class Setting
         Me.Panel8.Location = New System.Drawing.Point(10, 10)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel8.Size = New System.Drawing.Size(730, 39)
+        Me.Panel8.Size = New System.Drawing.Size(713, 39)
         Me.Panel8.TabIndex = 22
         '
         'Label14
@@ -772,7 +780,7 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.txtnn)
         Me.plText.Controls.Add(Me.Button14)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 243)
+        Me.plText.Location = New System.Drawing.Point(5, 81)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
         Me.plText.Size = New System.Drawing.Size(750, 63)
@@ -973,7 +981,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 238)
+        Me.plData.Size = New System.Drawing.Size(750, 76)
         Me.plData.TabIndex = 13
         '
         'LinkLabel3
@@ -1007,7 +1015,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(730, 39)
+        Me.Panel6.Size = New System.Drawing.Size(713, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1031,6 +1039,43 @@ Partial Class Setting
         Me.PictureBox3.Size = New System.Drawing.Size(60, 35)
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
+        '
+        'txtTva
+        '
+        Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTva.Location = New System.Drawing.Point(230, 156)
+        Me.txtTva.Name = "txtTva"
+        Me.txtTva.Size = New System.Drawing.Size(211, 20)
+        Me.txtTva.TabIndex = 25
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(94, 158)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(69, 13)
+        Me.Label18.TabIndex = 26
+        Me.Label18.Text = "Tva Standart"
+        '
+        'cbBaseOnTTC
+        '
+        Me.cbBaseOnTTC.AutoSize = True
+        Me.cbBaseOnTTC.Location = New System.Drawing.Point(94, 199)
+        Me.cbBaseOnTTC.Name = "cbBaseOnTTC"
+        Me.cbBaseOnTTC.Size = New System.Drawing.Size(129, 17)
+        Me.cbBaseOnTTC.TabIndex = 28
+        Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
+        Me.cbBaseOnTTC.UseVisualStyleBackColor = True
+        '
+        'cbBaseOnOneTva
+        '
+        Me.cbBaseOnOneTva.AutoSize = True
+        Me.cbBaseOnOneTva.Location = New System.Drawing.Point(94, 224)
+        Me.cbBaseOnOneTva.Name = "cbBaseOnOneTva"
+        Me.cbBaseOnOneTva.Size = New System.Drawing.Size(166, 17)
+        Me.cbBaseOnOneTva.TabIndex = 28
+        Me.cbBaseOnOneTva.Text = "Base sur un seul taux de TVA"
+        Me.cbBaseOnOneTva.UseVisualStyleBackColor = True
         '
         'Setting
         '
@@ -1157,5 +1202,9 @@ Partial Class Setting
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel3 As System.Windows.Forms.LinkLabel
+    Friend WithEvents cbBaseOnOneTva As System.Windows.Forms.CheckBox
+    Friend WithEvents cbBaseOnTTC As System.Windows.Forms.CheckBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents txtTva As System.Windows.Forms.TextBox
 
 End Class

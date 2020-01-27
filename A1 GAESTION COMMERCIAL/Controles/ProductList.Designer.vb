@@ -337,7 +337,7 @@ Partial Class ProductList
         '
         Me.PictureBox8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.search_folder_18
         Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox8.Location = New System.Drawing.Point(461, 17)
+        Me.PictureBox8.Location = New System.Drawing.Point(461, 24)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(68, 26)
         Me.PictureBox8.TabIndex = 10
@@ -367,7 +367,7 @@ Partial Class ProductList
         Me.txtSearchCtg.BackColor = System.Drawing.Color.Transparent
         Me.txtSearchCtg.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtSearchCtg.IsNumiric = False
-        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 17)
+        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 24)
         Me.txtSearchCtg.Name = "txtSearchCtg"
         Me.txtSearchCtg.PlaceHolder = ""
         Me.txtSearchCtg.ShowClearIcon = True
@@ -386,7 +386,7 @@ Partial Class ProductList
         Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
         Me.txtSearchName.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtSearchName.IsNumiric = False
-        Me.txtSearchName.Location = New System.Drawing.Point(200, 17)
+        Me.txtSearchName.Location = New System.Drawing.Point(200, 24)
         Me.txtSearchName.Name = "txtSearchName"
         Me.txtSearchName.PlaceHolder = ""
         Me.txtSearchName.ShowClearIcon = True

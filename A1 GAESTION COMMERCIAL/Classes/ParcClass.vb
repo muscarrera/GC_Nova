@@ -318,6 +318,7 @@ Public Class ParcClass
             MsgBox(ex.Message)
         End Try
     End Sub
+
     Private Sub GetElements(ByRef ds As ParcList)
         Try
 
@@ -380,8 +381,8 @@ Public Class ParcClass
             Dim str As String = "Mid"
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 If IsNumeric(ds.txtSearchName.text) Then
-                    params.Add(str, CInt(ds.txtSearchName.text))
-                    dt = a.SelectDataTable(ds.TableName, {"*"}, params)
+                    params.Add(str & " Like ", "%" & ds.txtSearchName.text & "%")
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
 
                 ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
                     Dim txt = ds.txtSearchName.text.Split(";")
@@ -495,8 +496,9 @@ Public Class ParcClass
             Dim str As String = "id"
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 If IsNumeric(ds.txtSearchName.text) Then
-                    params.Add(str, CInt(ds.txtSearchName.text))
-                    dt = a.SelectDataTable(ds.TableName, {"*"}, params)
+
+                    params.Add(str & " Like ", "%" & ds.txtSearchName.text & "%")
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
 
                 ElseIf ds.txtSearchName.text <> "" And ds.txtSearchName.text <> "*" Then
                     Dim txt = ds.txtSearchName.text.Split(";")
@@ -823,148 +825,172 @@ Public Class ParcClass
         End Try
     End Sub
     Public Sub SearchByDate(ByRef ds As ParcList)
-        Try
-            Dim params As New Dictionary(Of String, Object)
-            Dim dt As DataTable = Nothing
-            ds.plList.Controls.Clear()
+        SearchByTag(ds)
 
-            Dim NF As New SearchArchive
-            NF.txtName.AutoCompleteSource = AutoCompleteByName("Client")
+        'Try
+        '    Dim params As New Dictionary(Of String, Object)
+        '    Dim dt As DataTable = Nothing
+        '    ds.plList.Controls.Clear()
+
+        '    Dim NF As New SearchArchive
+        '    NF.txtName.AutoCompleteSource = AutoCompleteByName("Client")
+
+        '    If NF.ShowDialog = DialogResult.OK Then
+        '        Dim dt1 As Date = Date.Parse(NF.dte2.Text).AddDays(1)
+        '        Dim dt2 As Date = Date.Parse(NF.dte1.Text).AddDays(-1)
+
+        '        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+        '            If NF.txtName.text <> "" Then
+        '                ''''''''''''''''''''''''''''
+        '                Dim where As New Dictionary(Of String, Object)
+        '                Dim txt = NF.txtName.text.Split(";")
+
+
+        '                For i As Integer = 0 To txt.Length - 1
+
+        '                    If txt(i).Trim.ToUpper.StartsWith("DP") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        params.Add("depart Like ", V & "%")
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("DS") Then
+        '                        Dim V = txt(i).Remove(0, 2).Trim
+        '                        params.Add("arrive Like ", V & "%")
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("CH") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+
+        '                        If IsNumeric(V) Then
+        '                            params.Add("drid = ", V)
+        '                        Else
+        '                            where.Clear()
+        '                            where.Add("[name] Like ", V & "%")
+
+        '                            dt = a.SelectDataTableSymbols("Driver", {"*"}, where)
+        '                            If dt.Rows.Count > 0 Then
+        '                                params.Add("drid = ", CInt(dt.Rows(0).Item(0)))
+        '                            End If
+        '                        End If
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("VH") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        If IsNumeric(V) Then
+        '                            params.Add("vid = ", V)
+        '                        Else
+        '                            where.Clear()
+        '                            where.Add("[name] Like ", V & "%")
+
+        '                            dt = a.SelectDataTableSymbols("Vehicule", {"*"}, where)
+        '                            If dt.Rows.Count > 0 Then
+        '                                params.Add("vid = ", CInt(dt.Rows(0).Item(0)))
+        '                            End If
+        '                        End If
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("CLN") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 3).Trim
+        '                        If IsNumeric(V) Then
+        '                            params.Add("cid = ", V)
+        '                        Else
+        '                            params.Add("clientName Like ", "%" & V & "%")
+        '                        End If
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("DMN") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 3).Trim
+        '                        params.Add("domain Like ", "%" & V & "%")
+
+        '                    ElseIf txt(i).ToUpper.StartsWith("EX") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        params.Add("ex Like ", "%" & V & "%")
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("EDT") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 3).Trim
+        '                        params.Add("writer Like ", "%" & V & "%")
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("RG") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        Dim isPayed As Boolean = True
+        '                        If V.ToUpper = "NO" Or V.ToUpper = "NON" Or V.ToUpper = "N" Then
+        '                            isPayed = False
+        '                        End If
+        '                        params.Add("isPayed = ", isPayed)
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("ST") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        Dim isAdmin As Boolean = False
+        '                        If V.ToUpper = "F" Or V.ToUpper.StartsWith("FIN") Or V.ToUpper.StartsWith("TER") Then
+        '                            isAdmin = True
+        '                        End If
+        '                        params.Add("isAdmin = ", isAdmin)
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("FCT") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 3).Trim
+        '                        Dim isF As Boolean = True
+        '                        If V.ToUpper = "NO" Or V.ToUpper = "NON" Or V.ToUpper = "N" Then
+        '                            isF = False
+        '                        End If
+        '                        params.Add("isFactured = ", isF)
+
+        '                    ElseIf txt(i).Trim.ToUpper.StartsWith("MS") Then
+        '                        Dim V = txt(i).Trim.Remove(0, 2).Trim
+        '                        If IsNumeric(V) Then
+        '                            params.Add("mid = ", V)
+        '                        Else
+        '                            where.Clear()
+        '                            where.Add("[name] Like ", V & "%")
+
+        '                            dt = a.SelectDataTableSymbols("Mission", {"*"}, params)
+        '                            If dt.Rows.Count > 0 Then
+        '                                params.Add("mid = ", CInt(dt.Rows(0).Item(0)))
+        '                            End If
+        '                        End If
+        '                    Else
+        '                        Try
+        '                            If ds.TableName = "Mission" Then
+        '                                params.Add("clientName Like ", "%" & txt(i).Trim & "%")
+        '                            Else
+        '                                params.Add("name Like ", "%" & txt(i).Trim & "%")
+        '                            End If
+
+        '                        Catch ex As Exception
+        '                        End Try
+        '                    End If
+        '                Next
+        '            End If
+
+
+
+
+        '            params.Add("[date] < ", dt1)
+        '            params.Add("[date] > ", dt2)
+
+        '            dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+        '        End Using
+
+        '        If dt.Rows.Count > 0 Then
+        '            ds.Clear()
+        '            ds.Mode = "LIST"
+
+        '            ds.DataSource = dt
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+    End Sub
+    Public Sub SearchByTag(ByRef ds As ParcList)
+        Try
+
+            Dim NF As New SearchByTags
+            NF.TableName = ds.TableName
+            Dim dt As DataTable
 
             If NF.ShowDialog = DialogResult.OK Then
-                Dim dt1 As Date = Date.Parse(NF.dte2.Text).AddDays(1)
-                Dim dt2 As Date = Date.Parse(NF.dte1.Text).AddDays(-1)
-
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                    If NF.txtName.text <> "" Then
-                        ''''''''''''''''''''''''''''
-                        Dim where As New Dictionary(Of String, Object)
-                        Dim txt = NF.txtName.text.Split(";")
-
-
-                        For i As Integer = 0 To txt.Length - 1
-
-                            If txt(i).Trim.ToUpper.StartsWith("DP") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                params.Add("depart Like ", V & "%")
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("DS") Then
-                                Dim V = txt(i).Remove(0, 2).Trim
-                                params.Add("arrive Like ", V & "%")
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("CH") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-
-                                If IsNumeric(V) Then
-                                    params.Add("drid = ", V)
-                                Else
-                                    where.Clear()
-                                    where.Add("[name] Like ", V & "%")
-
-                                    dt = a.SelectDataTableSymbols("Driver", {"*"}, where)
-                                    If dt.Rows.Count > 0 Then
-                                        params.Add("drid = ", CInt(dt.Rows(0).Item(0)))
-                                    End If
-                                End If
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("VH") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                If IsNumeric(V) Then
-                                    params.Add("vid = ", V)
-                                Else
-                                    where.Clear()
-                                    where.Add("[name] Like ", V & "%")
-
-                                    dt = a.SelectDataTableSymbols("Vehicule", {"*"}, where)
-                                    If dt.Rows.Count > 0 Then
-                                        params.Add("vid = ", CInt(dt.Rows(0).Item(0)))
-                                    End If
-                                End If
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("CLN") Then
-                                Dim V = txt(i).Trim.Remove(0, 3).Trim
-                                If IsNumeric(V) Then
-                                    params.Add("cid = ", V)
-                                Else
-                                    params.Add("clientName Like ", "%" & V & "%")
-                                End If
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("DMN") Then
-                                Dim V = txt(i).Trim.Remove(0, 3).Trim
-                                params.Add("domain Like ", "%" & V & "%")
-
-                            ElseIf txt(i).ToUpper.StartsWith("EX") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                params.Add("ex Like ", "%" & V & "%")
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("EDT") Then
-                                Dim V = txt(i).Trim.Remove(0, 3).Trim
-                                params.Add("writer Like ", "%" & V & "%")
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("RG") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                Dim isPayed As Boolean = True
-                                If V.ToUpper = "NO" Or V.ToUpper = "NON" Or V.ToUpper = "N" Then
-                                    isPayed = False
-                                End If
-                                params.Add("isPayed = ", isPayed)
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("ST") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                Dim isAdmin As Boolean = False
-                                If V.ToUpper = "F" Or V.ToUpper.StartsWith("FIN") Or V.ToUpper.StartsWith("TER") Then
-                                    isAdmin = True
-                                End If
-                                params.Add("isAdmin = ", isAdmin)
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("FCT") Then
-                                Dim V = txt(i).Trim.Remove(0, 3).Trim
-                                Dim isF As Boolean = True
-                                If V.ToUpper = "NO" Or V.ToUpper = "NON" Or V.ToUpper = "N" Then
-                                    isF = False
-                                End If
-                                params.Add("isFactured = ", isF)
-
-                            ElseIf txt(i).Trim.ToUpper.StartsWith("MS") Then
-                                Dim V = txt(i).Trim.Remove(0, 2).Trim
-                                If IsNumeric(V) Then
-                                    params.Add("mid = ", V)
-                                Else
-                                    where.Clear()
-                                    where.Add("[name] Like ", V & "%")
-
-                                    dt = a.SelectDataTableSymbols("Mission", {"*"}, params)
-                                    If dt.Rows.Count > 0 Then
-                                        params.Add("mid = ", CInt(dt.Rows(0).Item(0)))
-                                    End If
-                                End If
-                            Else
-                                Try
-                                    If ds.TableName = "Mission" Then
-                                        params.Add("clientName Like ", "%" & txt(i).Trim & "%")
-                                    Else
-                                        params.Add("name Like ", "%" & txt(i).Trim & "%")
-                                    End If
-
-                                Catch ex As Exception
-                                End Try
-                            End If
-                        Next
-                    End If
-
-
-
-
-                    params.Add("[date] < ", dt1)
-                    params.Add("[date] > ", dt2)
-
-                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, params)
+                    dt = a.SelectDataTableSymbols(ds.TableName, {"*"}, NF.params)
                 End Using
 
+                ds.Clear()
                 If dt.Rows.Count > 0 Then
-                    ds.Clear()
-                    ds.Mode = "LIST"
-
+                    'ds.Mode = "LIST"
                     ds.DataSource = dt
                 End If
             End If
@@ -972,6 +998,7 @@ Public Class ParcClass
             MsgBox(ex.Message)
         End Try
     End Sub
+
     Public Sub ReleveClientByDate(ByVal ds As ParcList)
         Try
             Dim params As New Dictionary(Of String, Object)
@@ -1095,11 +1122,10 @@ Public Class ParcClass
 
             If NF.ShowDialog = DialogResult.OK Then
 
-                a.Responsable = NF.txtDValue.text
+                a.Responsable = NF.txtvehicule.text.Split("|")(0)
                 a.Ville = NF.txtdriver.text.Split("|")(0)
-                a.Tel = NF.txtvehicule.text.Split("|")(0)
+                a.Tel = NF.txtDValue.text
                 a.lbType.Text = CDate(NF.txtDate.text).ToString("dd MMM, yyyy")
-
 
                 a.isEdited = True
             End If
@@ -1351,7 +1377,10 @@ Public Class ParcClass
             params.Add("cid", ds.cid)
             params.Add("Bon_Transport", ds.MissionBonTransport)
             params.Add("ref", ds.vehiculeRef)
+            params.Add("date", ds.date)
+
             where.Add("mid", ds.id_M)
+
             c.UpdateRecord("details_Mission", params, where)
 
             params.Clear()
@@ -1650,7 +1679,7 @@ Public Class ParcClass
 
                 For Each el As AddElement In ds.plTransBody.Controls
 
-                    Dim sstr As String = el.Key & el.ref
+                    Dim sstr As String = el.Key & el.ref & el.price
                     If ListOfDetails.ContainsKey(sstr) Then
                         Dim d_id = CInt(ListOfDetails(sstr).Split("|")(0))
                         Dim d_qte = CDbl(ListOfDetails(sstr).Split("|")(1))
@@ -1658,6 +1687,7 @@ Public Class ParcClass
                         params.Add("qte", d_qte)
                         where.Add("id", d_id)
                         c.UpdateRecord("Details_Sell_Facture", params, where)
+                        ListOfDetails(sstr) = d_id & "|" & d_qte
                         where.Clear()
 
                     Else
@@ -1880,7 +1910,7 @@ Public Class ParcClass
 
         Form1.Facture_Title = ""
         If ds.TableName = "Mission" Then
-            Form1.Facture_Title = "Bons de Transport"
+            Form1.Facture_Title = "Liste des missions"
             Form1.PrintDocMission.DefaultPageSettings.Landscape = True
         ElseIf ds.TableName = "Details_Charge" Then
             Form1.Facture_Title = "Listes des Charges"
@@ -1888,6 +1918,8 @@ Public Class ParcClass
             Form1.Facture_Title = "Chauffeurs"
         ElseIf ds.TableName = "Vehicule" Then
             Form1.Facture_Title = "Listes Vehicule"
+        ElseIf ds.TableName = "Bon_Transport" Then
+            Form1.Facture_Title = "Listes Bon de Transport"
         End If
 
         Form1.printOnPaper = True
@@ -1909,7 +1941,7 @@ Public Class ParcClass
 
                 params.Add("name", k.ToUpper)
                 params.Add("value", v)
-                params.Add("date", Now.Date)
+                params.Add("date", ds.date)
                 params.Add("qte", q)
                 params.Add("mid", ds.id_M)
                 params.Add("writer", Form1.adminName)
@@ -1971,7 +2003,7 @@ Public Class ParcClass
                 params.Add("mid", ds.id_M)
                 params.Add("vid", ds.vid)
                 params.Add("drid", ds.drid)
-                params.Add("date", Now.Date)
+                params.Add("date", ds.date)
                 params.Add("ex", Form1.Exercice)
                 params.Add("writer", Form1.adminName)
 
