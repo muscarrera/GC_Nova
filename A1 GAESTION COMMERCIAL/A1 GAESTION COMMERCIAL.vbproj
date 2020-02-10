@@ -198,6 +198,12 @@
     <Compile Include="GUI\AddAdmins.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\AddEditCat.Designer.vb">
+      <DependentUpon>AddEditCat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddEditCat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\AddEditCharge.Designer.vb">
       <DependentUpon>AddEditCharge.vb</DependentUpon>
     </Compile>
@@ -299,6 +305,12 @@
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
     </Compile>
     <Compile Include="GUI\ReferenceFacture.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\RelveClient.Designer.vb">
+      <DependentUpon>RelveClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\RelveClient.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\SearchArchive.Designer.vb">
@@ -415,6 +427,9 @@
     <EmbeddedResource Include="GUI\AddAdmins.resx">
       <DependentUpon>AddAdmins.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddEditCat.resx">
+      <DependentUpon>AddEditCat.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddEditCharge.resx">
       <DependentUpon>AddEditCharge.vb</DependentUpon>
     </EmbeddedResource>
@@ -465,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ReferenceFacture.resx">
       <DependentUpon>ReferenceFacture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\RelveClient.resx">
+      <DependentUpon>RelveClient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SearchArchive.resx">
       <DependentUpon>SearchArchive.vb</DependentUpon>

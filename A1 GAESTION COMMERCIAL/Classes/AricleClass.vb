@@ -115,9 +115,9 @@
             Dim dt As DataTable = a.SelectDataTable("Article", {"*"}, params)
             If dt.Rows.Count > 0 Then
                 maxRemise = DblValue(dt, "remiseMax", 0)
-                If TypeClient = "GROS" Then
+                If TypeClient = "Grossiste" Then
                     remise = DblValue(dt, "remiseGr", 0)
-                ElseIf TypeClient = "REVENDEUR" Then
+                ElseIf TypeClient = "Revendeur" Then
                     remise = DblValue(dt, "remiseRev", 0)
                 Else
                     remise = DblValue(dt, "remiseCF", 0)
@@ -134,17 +134,19 @@
             End If
         End Using
 
+        If remise > maxRemise Then remise = maxRemise
+
         Return remise
     End Function
 
 
     Public Sub AddDataList()
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            Dim dt As DataTable = a.SelectDataTableWithSyntaxe("Article", "TOP " & Form1.numberOfItems, {"*"})
+            Dim dt As DataTable = a.SelectDataTable("Category", {"*"})
 
             Form1.plBody.Controls.Clear()
             Dim ds As New ProductList
-            ds.Mode = "Article"
+            ds.Mode = "Category"
             ds.DataSource = dt
             ds.AutoCompleteSourceGroupe = AutoCompleteGroupes()
             ds.Dock = DockStyle.Fill
@@ -153,6 +155,8 @@
             AddHandler ds.EditArticle, AddressOf EditElement
             AddHandler ds.DeleteArticle, AddressOf DeleteElement
             'AddHandler ds.SearchById, AddressOf SearchById
+            AddHandler ds.ModeChanged, AddressOf ModeChanged
+            AddHandler ds.GetClientDetails, AddressOf GetClientDetails
 
             Form1.plBody.Controls.Add(ds)
         End Using
@@ -205,40 +209,67 @@
         End Try
     End Sub
     Private Sub NewElement(ByRef ds As ProductList)
-        Dim pr As New AddEditProduct
-        pr.txtTva.text = Form1.tva
+        If ds.Mode = "Article" Then
+            Dim pr As New AddEditProduct
+            pr.txtTva.text = Form1.tva
 
-        If pr.ShowDialog = DialogResult.OK Then
-            ds.txtSearchName.text = pr.txtName.text
-            GetElements(ds)
+            If pr.ShowDialog = DialogResult.OK Then
+                ds.txtSearchName.text = pr.txtName.text
+                GetElements(ds)
+            End If
+        Else
+            Dim pr As New AddEditCat
+         
+            If pr.ShowDialog = DialogResult.OK Then
+                ds.txtSearchName.text = pr.txtName.text
+                GetElements(ds)
+            End If
         End If
+
     End Sub
-    Private Sub EditElement(ByRef ls As ListLine)
-        Dim pr As New AddEditProduct
-        Try
-            pr.Id = ls.Id
+    Private Sub EditElement(ByRef ls As ListLine, ByVal tb As String)
+        If tb = "Article" Then
+
+            Dim pr As New AddEditProduct
+            Try
+                pr.Id = ls.Id
+                If pr.ShowDialog = DialogResult.OK Then
+                    ls.Libele = pr.txtName.text
+                    Dim sp = pr.txtHt.text
+                    Dim bp = pr.txtPAch.text
+
+                    If Form1.isBaseOnTTC Then
+                        Dim tv = pr.txtTva.text
+                        If Form1.isBaseOnOneTva Then tv = Form1.tva
+
+                        sp += sp * tv / 100
+                        bp += bp * tv / 100
+                    End If
+
+                    ls.Total = bp
+                    ls.Avance = sp
+                    ls.isEdited = True
+                End If
+            Catch ex As Exception
+            End Try
+
+        Else
+            Dim pr As New AddEditCat
+            pr.id = ls.Id
+
             If pr.ShowDialog = DialogResult.OK Then
                 ls.Libele = pr.txtName.text
-                Dim sp = pr.txtHt.text
-                Dim bp = pr.txtPAch.text
-
-                If Form1.isBaseOnTTC Then
-                    Dim tv = pr.txtTva.text
-                    If Form1.isBaseOnOneTva Then tv = Form1.tva
-
-                    sp += sp * tv / 100
-                    bp += bp * tv / 100
-                End If
-
-                ls.Total = bp
-                ls.Avance = sp
-                ls.isEdited = True
+                Dim sp = pr.txtRemise.text
+                If Not IsNumeric(sp) Then sp = 0
+                ls.Total = sp
             End If
-        Catch ex As Exception
-        End Try
+
+        End If
+
 
 
     End Sub
+    
     Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ListLine)
         If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
@@ -250,7 +281,11 @@
             Dim cid As Integer = 0
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-                params.Add("arid", ls.Id)
+                If ds.Mode = "Article" Then
+                    params.Add("arid", ls.Id)
+                Else
+                    params.Add("cid", ls.Id)
+                End If
 
                 If a.DeleteRecords(ds.TableName, params) > 0 Then
                     ds.RemoveElement(ls)
@@ -263,6 +298,30 @@
 
     End Sub
 
+    Private Sub ModeChanged(ByVal ds As ProductList)
+        GetElements(ds)
+    End Sub
+    Private Sub GetClientDetails(ByVal ds As ProductList, ByVal id As Integer)
+        ds.Mode = "Article"
+
+        Try
+            Dim params As New Dictionary(Of String, Object)
+            Dim dt As DataTable = Nothing
+            Dim cid As Integer = 0
+
+            params.Add("cid", id)
+                  
+                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                dt = a.SelectDataTable(ds.TableName, {"*"}, params)
+                End Using
+            
+            ds.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+    End Sub
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 

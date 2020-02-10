@@ -19,6 +19,7 @@
         CL.ListeOfNumber.Add("Prix Max", "PX")
         CL.ListeOfNumber.Add("Reference", "RF")
         CL.ListeOfNumber.Add("N°", "ID")
+        CL.ListeOfNumber.Add("Nom", "NM")
         '''''/// Booleans
         CL.ListeOfBoolean.Add("Promo", "PR")
 

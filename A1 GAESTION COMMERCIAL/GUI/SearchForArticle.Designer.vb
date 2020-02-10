@@ -22,8 +22,8 @@ Partial Class SearchForArticle
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -66,7 +66,6 @@ Partial Class SearchForArticle
         Me.plTag.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel58.SuspendLayout()
-        Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel6
@@ -80,7 +79,7 @@ Partial Class SearchForArticle
         Me.Panel6.Location = New System.Drawing.Point(0, 20)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel6.Size = New System.Drawing.Size(939, 534)
+        Me.Panel6.Size = New System.Drawing.Size(939, 677)
         Me.Panel6.TabIndex = 36
         '
         'Panel3
@@ -90,7 +89,7 @@ Partial Class SearchForArticle
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(418, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(516, 524)
+        Me.Panel3.Size = New System.Drawing.Size(516, 667)
         Me.Panel3.TabIndex = 32
         '
         'Panel9
@@ -100,7 +99,7 @@ Partial Class SearchForArticle
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel9.Location = New System.Drawing.Point(0, 0)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(516, 322)
+        Me.Panel9.Size = New System.Drawing.Size(516, 293)
         Me.Panel9.TabIndex = 0
         '
         'DataGridView1
@@ -109,15 +108,15 @@ Partial Class SearchForArticle
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.Padding = New System.Windows.Forms.Padding(3)
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(3)
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4, Me.Column5, Me.Column7})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -125,11 +124,11 @@ Partial Class SearchForArticle
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowTemplate.Height = 28
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(516, 322)
+        Me.DataGridView1.Size = New System.Drawing.Size(516, 293)
         Me.DataGridView1.TabIndex = 0
         '
         'Column1
@@ -177,6 +176,9 @@ Partial Class SearchForArticle
         '
         'Panel8
         '
+        Me.Panel8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgForm
+        Me.Panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel8.Controls.Add(Me.Panel58)
         Me.Panel8.Controls.Add(Me.Label3)
         Me.Panel8.Controls.Add(Me.lbSprice)
         Me.Panel8.Controls.Add(Me.Label2)
@@ -186,35 +188,37 @@ Partial Class SearchForArticle
         Me.Panel8.Controls.Add(Me.lbName)
         Me.Panel8.Controls.Add(Me.PictureBox1)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel8.Location = New System.Drawing.Point(0, 322)
+        Me.Panel8.Location = New System.Drawing.Point(0, 293)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(516, 202)
+        Me.Panel8.Size = New System.Drawing.Size(516, 374)
         Me.Panel8.TabIndex = 0
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(182, 156)
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Green
+        Me.Label3.Location = New System.Drawing.Point(236, 265)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 13)
+        Me.Label3.Size = New System.Drawing.Size(111, 18)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Prix de vente"
         '
         'lbSprice
         '
         Me.lbSprice.AutoSize = True
-        Me.lbSprice.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbSprice.Location = New System.Drawing.Point(252, 156)
+        Me.lbSprice.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbSprice.ForeColor = System.Drawing.Color.Green
+        Me.lbSprice.Location = New System.Drawing.Point(350, 265)
         Me.lbSprice.Name = "lbSprice"
-        Me.lbSprice.Size = New System.Drawing.Size(11, 14)
+        Me.lbSprice.Size = New System.Drawing.Size(13, 18)
         Me.lbSprice.TabIndex = 1
         Me.lbSprice.Text = "-"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(182, 125)
+        Me.Label2.Location = New System.Drawing.Point(236, 234)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 13)
         Me.Label2.TabIndex = 1
@@ -223,7 +227,7 @@ Partial Class SearchForArticle
         'lbBprice
         '
         Me.lbBprice.AutoSize = True
-        Me.lbBprice.Location = New System.Drawing.Point(253, 127)
+        Me.lbBprice.Location = New System.Drawing.Point(307, 236)
         Me.lbBprice.Name = "lbBprice"
         Me.lbBprice.Size = New System.Drawing.Size(10, 13)
         Me.lbBprice.TabIndex = 1
@@ -232,7 +236,7 @@ Partial Class SearchForArticle
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(182, 94)
+        Me.Label1.Location = New System.Drawing.Point(236, 203)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 13)
         Me.Label1.TabIndex = 1
@@ -241,7 +245,7 @@ Partial Class SearchForArticle
         'lbRef
         '
         Me.lbRef.AutoSize = True
-        Me.lbRef.Location = New System.Drawing.Point(244, 94)
+        Me.lbRef.Location = New System.Drawing.Point(298, 203)
         Me.lbRef.Name = "lbRef"
         Me.lbRef.Size = New System.Drawing.Size(10, 13)
         Me.lbRef.TabIndex = 1
@@ -249,18 +253,20 @@ Partial Class SearchForArticle
         '
         'lbName
         '
-        Me.lbName.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.Location = New System.Drawing.Point(182, 18)
+        Me.lbName.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbName.ForeColor = System.Drawing.Color.DarkRed
+        Me.lbName.Location = New System.Drawing.Point(58, 23)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(316, 65)
+        Me.lbName.Size = New System.Drawing.Size(396, 79)
         Me.lbName.TabIndex = 1
         Me.lbName.Text = "-"
+        Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.Download_Product_Png_Image_66617_For_Designing_Projects
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(16, 18)
+        Me.PictureBox1.Location = New System.Drawing.Point(61, 105)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(160, 174)
         Me.PictureBox1.TabIndex = 0
@@ -275,7 +281,7 @@ Partial Class SearchForArticle
         Me.Panel2.Location = New System.Drawing.Point(5, 5)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel2.Size = New System.Drawing.Size(413, 524)
+        Me.Panel2.Size = New System.Drawing.Size(413, 667)
         Me.Panel2.TabIndex = 32
         '
         'Panel7
@@ -284,7 +290,7 @@ Partial Class SearchForArticle
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(10, 141)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(393, 373)
+        Me.Panel7.Size = New System.Drawing.Size(393, 516)
         Me.Panel7.TabIndex = 28
         '
         'FL
@@ -293,7 +299,7 @@ Partial Class SearchForArticle
         Me.FL.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FL.Location = New System.Drawing.Point(0, 0)
         Me.FL.Name = "FL"
-        Me.FL.Size = New System.Drawing.Size(393, 373)
+        Me.FL.Size = New System.Drawing.Size(393, 516)
         Me.FL.TabIndex = 1
         '
         'plTag
@@ -353,9 +359,9 @@ Partial Class SearchForArticle
         Me.Panel58.BackColor = System.Drawing.Color.Transparent
         Me.Panel58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel58.Controls.Add(Me.Button8)
-        Me.Panel58.Location = New System.Drawing.Point(603, 6)
+        Me.Panel58.Location = New System.Drawing.Point(61, 302)
         Me.Panel58.Name = "Panel58"
-        Me.Panel58.Size = New System.Drawing.Size(331, 42)
+        Me.Panel58.Size = New System.Drawing.Size(392, 42)
         Me.Panel58.TabIndex = 34
         '
         'Button8
@@ -370,7 +376,7 @@ Partial Class SearchForArticle
         Me.Button8.Location = New System.Drawing.Point(0, 0)
         Me.Button8.Name = "Button8"
         Me.Button8.Padding = New System.Windows.Forms.Padding(120, 0, 6, 0)
-        Me.Button8.Size = New System.Drawing.Size(329, 40)
+        Me.Button8.Size = New System.Drawing.Size(390, 40)
         Me.Button8.TabIndex = 4
         Me.Button8.Text = "       Valider"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -381,12 +387,11 @@ Partial Class SearchForArticle
         Me.Panel5.BackColor = System.Drawing.Color.White
         Me.Panel5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_13
         Me.Panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel5.Controls.Add(Me.Panel58)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel5.Location = New System.Drawing.Point(0, 554)
+        Me.Panel5.Location = New System.Drawing.Point(0, 697)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel5.Size = New System.Drawing.Size(939, 51)
+        Me.Panel5.Size = New System.Drawing.Size(939, 19)
         Me.Panel5.TabIndex = 35
         '
         'Panel4
@@ -405,7 +410,7 @@ Partial Class SearchForArticle
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(939, 605)
+        Me.ClientSize = New System.Drawing.Size(939, 716)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
@@ -425,7 +430,6 @@ Partial Class SearchForArticle
         Me.plTag.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel58.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

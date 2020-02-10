@@ -195,7 +195,7 @@
                 btFacturer.Visible = True
                 btDelivry.Visible = True
                 btTranformer.Visible = False
-                btSolde.Visible = True
+                btSolde.Visible = False
                 btParamsImp.Visible = True
             ElseIf value = "BL" Or value = "BA" Then
                 btFacturer.Visible = True
@@ -288,6 +288,15 @@
             txtStatus.text = value
             btAvoir.Visible = False
             If value <> "CREATION" And Type = "Facture" Then btAvoir.Visible = True
+
+            If value = "Facturé" Then
+                btSolde.Visible = False
+            Else
+                If Type = "Facture" Or Type = "Buy_Facture" Or
+                    Type = "BL" Or Type = "BA" Then btSolde.Visible = True
+            End If
+
+
         End Set
     End Property
     Public Property HasJoinFiles As Boolean

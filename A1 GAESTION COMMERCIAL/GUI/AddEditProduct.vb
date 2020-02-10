@@ -85,7 +85,6 @@ Public Class AddEditProduct
         'ceate the graphic
         Dim GR As Graphics = Graphics.FromImage(BMG)
 
-
         GR.Clear(Color.White)
 
         'draw the lines
@@ -104,7 +103,7 @@ Public Class AddEditProduct
         If dir1.Exists = False Then dir1.Create()
 
         Try
-            Dim str As String = lbImage.Text
+            Dim str As String = txtName.text & txtRef.text
             str = str.Replace("/", "-")
             str = str.Replace("*", "-")
 
@@ -122,6 +121,8 @@ Public Class AddEditProduct
         Catch ex As Exception
         End Try
     End Sub
+
+
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim savepic As New OpenFileDialog
         savepic.Filter = "*.jpg|*.jpg"
@@ -131,7 +132,7 @@ Public Class AddEditProduct
             lbImage.Text = savepic.FileName
             ImgPrd = pmg2
             PBImage.BackgroundImage = Drawimg()
-
+            saveImage()
         End If
     End Sub
     
@@ -309,13 +310,24 @@ Public Class AddEditProduct
                 Periode = StrValue(dt, "periode", 0) 'dt.Rows(0).Item("")
                 lbImage.Text = StrValue(dt, "img", 0) 'dt.Rows(0).Item("")
                 PBImage.BackgroundImage = Drawimg()
+
+                Try
+                    Dim str As String = Form1.ImgPah & "\art" & lbImage.Text
+                    PBImage.BackgroundImage = Image.FromFile(str)
+                    PBImage.BackgroundImageLayout = ImageLayout.Stretch
+                Catch ex As Exception
+
+                End Try
+
+
+
+
             End If
         End Using
     End Sub
 
     Private Sub AddEditElement()
         Validation()
-
 
         Dim params As New Dictionary(Of String, Object)
         params.Add("ref", txtRef.text)
@@ -396,5 +408,11 @@ Public Class AddEditProduct
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub isPromo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles isPromo.CheckedChanged
+        txtPeriode.Enabled = isPromo.Enabled
+        txtPrixPromo.Enabled = isPromo.Enabled
+
     End Sub
 End Class

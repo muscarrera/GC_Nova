@@ -107,10 +107,6 @@
 
         lbinfo2.text = str
 
-        If cl.remise > 0 Then
-            plRemise.Visible = CBool(cl.remise)
-            txtRemise.text = cl.remise & " %"
-        End If
     End Sub
     Private Sub getFactures(ByVal clid As Integer)
         Try
@@ -254,7 +250,7 @@
 
     End Sub
 
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click, Label12.Click, PictureBox4.Click, Label15.Click
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 End Class

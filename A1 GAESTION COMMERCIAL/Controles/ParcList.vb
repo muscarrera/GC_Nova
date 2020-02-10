@@ -591,10 +591,10 @@
         plList.Controls.Clear()
 
         If _dt.Rows.Count > 0 Then
-            Dim n = numberOfItems
+            'Dim n = numberOfItems
             'If _dt.Rows.Count - lastIndex < numberOfItems Then n = _dt.Rows.Count - lastIndex
             If _dt.Rows.Count - lastIndex < numberOfItems Then
-                n = _dt.Rows.Count - lastIndex
+                'n = _dt.Rows.Count - lastIndex
                 lastIndex = _dt.Rows.Count - 1
             Else
                 lastIndex += numberOfItems

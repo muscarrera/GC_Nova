@@ -1,4 +1,6 @@
-﻿Public Class FactureClass
+﻿Imports System.Drawing.Printing
+
+Public Class FactureClass
     Implements IDisposable
     Public Sub AddDataList(ByVal op As String)
 
@@ -53,6 +55,7 @@
         AddHandler ds.GetListofCommande, AddressOf GetListofCommande
         AddHandler ds.GetListofFacture, AddressOf GetListofFacture
         AddHandler ds.EdtitFactureDate, AddressOf EdtitFactureDate
+        AddHandler ds.PrintListofGoupeInpayed, AddressOf PrintListofGoupeInpayed
 
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
@@ -319,13 +322,119 @@
                 ds.Clear()
                 If dt.Rows.Count > 0 Then
                     ds.Mode = "LIST"
-                    ds.DataList = dt
+
+                    If NF.EtatGénéral = True Then
+                        FillByGroupingByClient(dt, ds)
+                    Else
+                        ds.DataList = dt
+                    End If
+
                 End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub FillByGroupingByClient(ByVal Amounts As DataTable, ByVal ds As DataList)
+
+        'Dim query = From d In dt_Vehicule.AsEnumerable()
+        '                              Where d.Field(Of Integer)(0) = vid
+        '                              Select d
+
+        'Dim r As DataTable = query.CopyToDataTable()
+
+        Dim query = From row In Amounts
+                               Group row By dateGroup = New With {Key .cid = row.Field(Of Integer)("cid"),
+                                                                  .name = row.Field(Of String)("name")} Into Group
+                               Select New With {Key .Dates = dateGroup,
+                                               .total = Group.Sum(Function(x) x.Field(Of Decimal)("total")),
+                                               .avance = Group.Sum(Function(x) x.Field(Of Decimal)("avance")),
+                                              .count = Group.Count(Function(x) x.Field(Of Integer)(0))}
+
+        ds.Pl.Controls.Clear()
+        Dim i As Integer = 0
+        Dim arr(query.Count) As ListLine
+
+        Dim ft = "Factures"
+        If ds.FactureTable <> "Sell_Facture" Then ft = "Bons"
+
+        ds.isEtatGeneral = True
+
+        For Each item In query
+
+            Dim a As New ListLine
+            a.sizeAuto = True
+
+            a.Id = item.Dates.cid
+            a.Libele = item.Dates.name & " - (" & item.count & " " & ft & ")"
+            a.Total = item.total
+            a.Avance = item.avance
+            a.remise = item.total - item.avance
+            a.Index = i
+            a.Dock = DockStyle.Top
+            a.BringToFront()
+            'a.SendToBack()
+
+            AddHandler a.EditSelectedFacture, AddressOf GetInpayedListe
+            AddHandler a.GetFactureInfos, AddressOf GetInpayedListe
+            arr(i) = a
+
+            i += 1
+        Next
+
+        ds.Pl.Controls.AddRange(arr)
+    End Sub
+    Public Sub GetInpayedListe(ByVal cid As String)
+        Try
+            Dim ds As DataList
+            If Form1.plBody.Controls.Count > 0 Then
+                If TypeOf Form1.plBody.Controls(0) Is DataList Then
+                    ds = Form1.plBody.Controls(0)
+                Else
+                    Exit Sub
+                End If
+            End If
+
+            Dim dt As DataTable
+
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+                Dim order As New Dictionary(Of String, String)
+                order.Add("id", "DESC")
+
+                params.Add("cid", cid)
+                params.Add("isPayed", False)
+                dt = a.SelectDataTable(ds.FactureTable, {"*"}, params, order)
+            End Using
+
+            ds.Clear()
+            If dt.Rows.Count > 0 Then
+                ds.Mode = "LIST"
+                ds.DataList = dt
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub PrintListofGoupeInpayed(ByVal ds As DataList, ByVal isPdf As Boolean)
+
+        Form1.ListToPrint = Nothing
+        Form1.Facture_Title = "liste des impayés"
+
+        Form1.printOnPaper = True
+        Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Facture
+
+        If isPdf Then
+            Form1.printOnPaper = False
+            Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Pdf
+        End If
+
+        Form1.PrintDocList.Print()
+    End Sub
+
+
+
 
     Public Sub EditModePayement(ByRef ds As DataList)
         Try
@@ -419,6 +528,10 @@
         ElseIf ds.Operation = "Sell_Facture" Then
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
             Form1.Facture_Title = "Facture "
+
+            Dim ps As New PaperSize("A4", 850, 1100)
+            ps.PaperName = PaperKind.A4
+            Form1.PrintDoc.DefaultPageSettings.PaperSize = ps
             ''''//
         ElseIf ds.Operation = "Bon_Livraison" Then
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
@@ -612,7 +725,7 @@
         Else
             status = opr
         End If
-    
+
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim params As New Dictionary(Of String, Object)
             params.Add("isAdmin", status)
@@ -704,7 +817,7 @@
         For Each b As Button In ds.plHeaderSells.Controls
             b.BackgroundImage = My.Resources.gray_row
         Next
-      
+
         ds.pbBar.Width = ds.Button9.Right
         ds.pbBar.BackColor = RandomColor()
         ds.Button9.BackgroundImage = My.Resources.gui_16
@@ -720,7 +833,7 @@
         PP.Avance = ds.TB.avance
         PP.Total = ds.TB.TotalTTC
 
-        PP.Id = ds.id
+        PP.Id = ds.Id
         If PP.ShowDialog = DialogResult.OK Then
 
         End If
@@ -742,8 +855,8 @@
 
             Dim isPayed As Boolean = False
 
-            Dim tableName = DS.FactureTable
-            Dim dte As Date = DS.Entete.FactureDate
+            Dim tableName = ds.FactureTable
+            Dim dte As Date = ds.Entete.FactureDate
             Dim params As New Dictionary(Of String, Object)
 
             'Facture
@@ -932,7 +1045,7 @@
                     params.Clear()
                     Dim avc As Double = DS.TB.avance
                     avc += pm.Payement.montant
-                    avc -= pm._pm_edit.montant
+                    avc -= pm._PM_Edit.montant
 
                     params.Add("avance", avc)
                     where.Add("id", DS.Id)
@@ -1150,12 +1263,22 @@
     Private Sub GetClientDetails(ByVal ds As DataList)
         If IsNothing(ds.Entete.Client) Then Exit Sub
         If ds.Entete.Client.cid = 0 Then Exit Sub
-        Dim fl As New ClientDetails
-        fl.Table = ds.clientTable
-        fl.id = ds.Entete.Client.cid
+
+        Dim fl As New RelveClient
+        fl.ClientTable = "Client"
+        fl.Client = ds.Entete.ClientName
+        fl.CID = ds.Entete.Client.cid
         If fl.ShowDialog = DialogResult.OK Then
 
         End If
+
+
+        'Dim fl As New ClientDetails
+        'fl.Table = ds.clientTable
+        'fl.id = ds.Entete.Client.cid
+        'If fl.ShowDialog = DialogResult.OK Then
+
+        'End If
     End Sub
     Private Sub AddListofBl(ByVal ds As DataList)
         Dim bls As New ChooseBL
@@ -1167,7 +1290,7 @@
 
 
             Dim data As DataTable
-          
+
             Dim avance = ds.TB.avance
 
             Try

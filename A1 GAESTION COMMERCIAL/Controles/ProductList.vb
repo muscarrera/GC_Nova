@@ -5,7 +5,7 @@
     Public TableName As String = "Article"
 
     Public Event NewElement(ByRef ds As ProductList)
-    Public Event EditArticle(ByRef ls As ListLine)
+    Public Event EditArticle(ByRef ls As ListLine, ByVal m As String)
     Public Event EditClient(ByRef ds As ProductList, ByRef ls As ClientRow)
     Public Event DeleteArticle(ByRef ds As ProductList, ByVal ls As ListLine)
     Public Event DeleteClient(ByRef ds As ProductList, ByRef ls As ClientRow)
@@ -62,13 +62,17 @@
         Set(ByVal value As DataTable)
             _dt = value
             startIndex = 0
-            lastIndex = value.Rows.Count
+            lastIndex = 0   'value.Rows.Count
+
             numberOfItems = Form1.numberOfItems
-            numberOfPage = Math.Truncate(lastIndex / numberOfItems)
+            numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
             If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
             currentPage = 1
             If TableName = "Article" Then
                 FillRows()
+
+            ElseIf TableName = "Category" Then
+                FillRowsCats()
             Else
                 FillRowsClient()
             End If
@@ -83,15 +87,27 @@
 
             If value = "Client" Then
                 plModeClient.Visible = True
+                plModeArticle.Visible = False
                 btClient.ForeColor = Color.Green
                 btFournisseur.ForeColor = Color.DarkGray
             ElseIf value = "Fournisseur" Then
                 plModeClient.Visible = True
+                plModeArticle.Visible = False
                 btClient.ForeColor = Color.DarkGray
                 btFournisseur.ForeColor = Color.Green
+            ElseIf value = "Article" Then
+                plModeClient.Visible = False
+                plModeArticle.Visible = True
+                btArticle.ForeColor = Color.Green
+                btCat.ForeColor = Color.DarkGray
             Else
                 plModeClient.Visible = False
+                plModeArticle.Visible = True
+                btArticle.ForeColor = Color.DarkGray
+                btCat.ForeColor = Color.Green
             End If
+
+
             TableName = value
         End Set
     End Property
@@ -99,10 +115,17 @@
     Private Sub FillRows()
         pl.Controls.Clear()
 
+        lastIndex += numberOfItems
+
         If _dt.Rows.Count > 0 Then
-            Dim n = numberOfItems
-            If (_dt.Rows.Count - startIndex) < numberOfItems Then n = lastIndex - startIndex
-            Dim arr(n - 1) As ListLine
+            If _dt.Rows.Count - lastIndex < numberOfItems Then
+                'n = _dtList.Rows.Count - lastIndex
+                lastIndex = _dt.Rows.Count - 1
+            End If
+
+
+            Dim arr(numberOfItems) As ListLine
+
             Dim i As Integer = 0
             For i = startIndex To _dt.Rows.Count - 1
 
@@ -127,6 +150,38 @@
 
                 If BoolValue(_dt, "isPromo", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
+                a.Index = i
+                a.Dock = DockStyle.Top
+                a.BringToFront()
+
+                AddHandler a.EditSelectedItem, AddressOf EditSelectedItem
+                AddHandler a.DeleteItem, AddressOf DeleteItem
+                AddHandler a.GetFactureInfos, AddressOf GetInfos
+
+                arr(i - startIndex) = a
+                If i = lastIndex Then Exit For
+            Next
+            pl.Controls.AddRange(arr)
+            startIndex = i
+        End If
+    End Sub
+    Private Sub FillRowsCats()
+        pl.Controls.Clear()
+
+        If _dt.Rows.Count > 0 Then
+
+            Dim arr(_dt.Rows.Count - 1) As ListLine
+            Dim i As Integer = 0
+            For i = startIndex To _dt.Rows.Count - 1
+
+                Dim a As New ListLine
+                a.Id = _dt.Rows(i).Item(0)
+                a.Libele = _dt.Rows(i).Item("name")
+
+                Dim rm = DblValue(_dt, "remise", i)
+
+                a.Total = rm
+                If rm > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 a.Index = i
                 a.Dock = DockStyle.Top
@@ -137,7 +192,6 @@
                 AddHandler a.GetFactureInfos, AddressOf GetInfos
 
                 arr(i - startIndex) = a
-                If i = startIndex + n - 1 Then Exit For
             Next
             pl.Controls.AddRange(arr)
             startIndex = i
@@ -147,9 +201,16 @@
         pl.Controls.Clear()
 
         If _dt.Rows.Count > 0 Then
-            Dim n = numberOfItems
-            If _dt.Rows.Count - lastIndex < numberOfItems Then n = _dt.Rows.Count - lastIndex
-            Dim arr(_dt.Rows.Count - 1) As ClientRow
+
+            lastIndex += numberOfItems
+
+            If _dt.Rows.Count - lastIndex < numberOfItems Then
+                'n = _dtList.Rows.Count - lastIndex
+                lastIndex = _dt.Rows.Count - 1
+            End If
+
+            Dim arr(numberOfItems) As ClientRow
+
             Dim i As Integer = 0
             For i = startIndex To _dt.Rows.Count - 1
 
@@ -181,8 +242,8 @@
         RaiseEvent NewElement(Me)
     End Sub
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        If TableName = "Article" Then
-            RaiseEvent EditArticle(SelectedArticle)
+        If TableName = "Article" Or TableName = "Category" Then
+            RaiseEvent EditArticle(SelectedArticle, Mode)
         Else
             RaiseEvent EditClient(Me, SelectedClient)
         End If
@@ -227,6 +288,7 @@
         currentPage -= 1
         startIndex -= numberOfItems * 2
         If startIndex < 0 Then startIndex = 0
+        lastIndex = startIndex
 
         If TableName = "Article" Then
             FillRows()
@@ -241,13 +303,13 @@
     End Sub
     'Article Row
     Private Sub EditSelectedItem(ByVal ls As ListLine)
-        RaiseEvent EditArticle(ls)
+        RaiseEvent EditArticle(ls, Mode)
     End Sub
     Private Sub DeleteItem(ByVal ls As ListLine)
         RaiseEvent DeleteArticle(Me, ls)
     End Sub
     Private Sub GetInfos(ByVal p1 As Integer)
-
+        If Mode = "Category" Then RaiseEvent GetClientDetails(Me, p1)
     End Sub
     'Client row
     Private Sub EditSelectedClient(ByRef cr As ClientRow)
@@ -261,7 +323,9 @@
     End Sub
 
 
-
-
-
+    Private Sub btCat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btCat.Click, btArticle.Click
+        Dim bt As Button = sender
+        Mode = bt.Tag
+        RaiseEvent ModeChanged(Me)
+    End Sub
 End Class

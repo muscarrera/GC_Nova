@@ -48,16 +48,22 @@ Partial Class ProductList
         Me.PB = New System.Windows.Forms.PictureBox()
         Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.plModeClient = New System.Windows.Forms.Panel()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.btFournisseur = New System.Windows.Forms.Button()
-        Me.btClient = New System.Windows.Forms.Button()
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.plModeArticle = New System.Windows.Forms.Panel()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.btCat = New System.Windows.Forms.Button()
+        Me.btArticle = New System.Windows.Forms.Button()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.plModeClient = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.btFournisseur = New System.Windows.Forms.Button()
+        Me.btClient = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -66,8 +72,10 @@ Partial Class ProductList
         Me.Panel10.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.plModeClient.SuspendLayout()
         Me.Panel24.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.plModeArticle.SuspendLayout()
+        Me.plModeClient.SuspendLayout()
         Me.SuspendLayout()
         '
         'plL
@@ -203,8 +211,8 @@ Partial Class ProductList
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.plrightA)
         Me.Panel3.Controls.Add(Me.Panel10)
-        Me.Panel3.Controls.Add(Me.plModeClient)
         Me.Panel3.Controls.Add(Me.Panel24)
+        Me.Panel3.Controls.Add(Me.Panel8)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(5, 5)
         Me.Panel3.Name = "Panel3"
@@ -400,62 +408,6 @@ Partial Class ProductList
         Me.txtSearchName.txtReadOnly = False
         Me.txtSearchName.TxtSelect = New Integer() {1, 0}
         '
-        'plModeClient
-        '
-        Me.plModeClient.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.plModeClient.Controls.Add(Me.Panel9)
-        Me.plModeClient.Controls.Add(Me.btFournisseur)
-        Me.plModeClient.Controls.Add(Me.btClient)
-        Me.plModeClient.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plModeClient.Location = New System.Drawing.Point(5, 5)
-        Me.plModeClient.Name = "plModeClient"
-        Me.plModeClient.Size = New System.Drawing.Size(690, 37)
-        Me.plModeClient.TabIndex = 10
-        '
-        'Panel9
-        '
-        Me.Panel9.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel9.Location = New System.Drawing.Point(0, 0)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(690, 2)
-        Me.Panel9.TabIndex = 1
-        '
-        'btFournisseur
-        '
-        Me.btFournisseur.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFournisseur.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btFournisseur.ForeColor = System.Drawing.Color.DarkGray
-        Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
-        Me.btFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btFournisseur.Location = New System.Drawing.Point(566, 5)
-        Me.btFournisseur.Name = "btFournisseur"
-        Me.btFournisseur.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.btFournisseur.Size = New System.Drawing.Size(116, 28)
-        Me.btFournisseur.TabIndex = 2
-        Me.btFournisseur.Tag = "Fournisseur"
-        Me.btFournisseur.Text = "Fournisseur"
-        Me.btFournisseur.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btFournisseur.UseVisualStyleBackColor = True
-        '
-        'btClient
-        '
-        Me.btClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btClient.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btClient.ForeColor = System.Drawing.SystemColors.AppWorkspace
-        Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
-        Me.btClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btClient.Location = New System.Drawing.Point(444, 5)
-        Me.btClient.Name = "btClient"
-        Me.btClient.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.btClient.Size = New System.Drawing.Size(116, 28)
-        Me.btClient.TabIndex = 2
-        Me.btClient.Tag = "Client"
-        Me.btClient.Text = "Client"
-        Me.btClient.UseVisualStyleBackColor = True
-        '
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
@@ -535,6 +487,139 @@ Partial Class ProductList
         Me.Panel29.Size = New System.Drawing.Size(690, 2)
         Me.Panel29.TabIndex = 1
         '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel8.Controls.Add(Me.plModeArticle)
+        Me.Panel8.Controls.Add(Me.Panel12)
+        Me.Panel8.Controls.Add(Me.plModeClient)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel8.Location = New System.Drawing.Point(5, 5)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(690, 37)
+        Me.Panel8.TabIndex = 10
+        '
+        'plModeArticle
+        '
+        Me.plModeArticle.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.plModeArticle.Controls.Add(Me.Panel14)
+        Me.plModeArticle.Controls.Add(Me.btCat)
+        Me.plModeArticle.Controls.Add(Me.btArticle)
+        Me.plModeArticle.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plModeArticle.Location = New System.Drawing.Point(172, 2)
+        Me.plModeArticle.Name = "plModeArticle"
+        Me.plModeArticle.Size = New System.Drawing.Size(259, 35)
+        Me.plModeArticle.TabIndex = 11
+        '
+        'Panel14
+        '
+        Me.Panel14.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel14.Location = New System.Drawing.Point(0, 0)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(259, 2)
+        Me.Panel14.TabIndex = 1
+        '
+        'btCat
+        '
+        Me.btCat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btCat.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCat.ForeColor = System.Drawing.Color.DarkGray
+        Me.btCat.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
+        Me.btCat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btCat.Location = New System.Drawing.Point(135, 5)
+        Me.btCat.Name = "btCat"
+        Me.btCat.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btCat.Size = New System.Drawing.Size(116, 28)
+        Me.btCat.TabIndex = 2
+        Me.btCat.Tag = "Category"
+        Me.btCat.Text = "Categorie"
+        Me.btCat.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btCat.UseVisualStyleBackColor = True
+        '
+        'btArticle
+        '
+        Me.btArticle.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btArticle.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btArticle.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.btArticle.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22
+        Me.btArticle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btArticle.Location = New System.Drawing.Point(13, 5)
+        Me.btArticle.Name = "btArticle"
+        Me.btArticle.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btArticle.Size = New System.Drawing.Size(116, 28)
+        Me.btArticle.TabIndex = 2
+        Me.btArticle.Tag = "Article"
+        Me.btArticle.Text = "Article"
+        Me.btArticle.UseVisualStyleBackColor = True
+        '
+        'Panel12
+        '
+        Me.Panel12.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel12.Location = New System.Drawing.Point(0, 0)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(431, 2)
+        Me.Panel12.TabIndex = 1
+        '
+        'plModeClient
+        '
+        Me.plModeClient.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.plModeClient.Controls.Add(Me.Panel9)
+        Me.plModeClient.Controls.Add(Me.btFournisseur)
+        Me.plModeClient.Controls.Add(Me.btClient)
+        Me.plModeClient.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plModeClient.Location = New System.Drawing.Point(431, 0)
+        Me.plModeClient.Name = "plModeClient"
+        Me.plModeClient.Size = New System.Drawing.Size(259, 37)
+        Me.plModeClient.TabIndex = 10
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel9.Location = New System.Drawing.Point(0, 0)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(259, 2)
+        Me.Panel9.TabIndex = 1
+        '
+        'btFournisseur
+        '
+        Me.btFournisseur.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btFournisseur.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btFournisseur.ForeColor = System.Drawing.Color.DarkGray
+        Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
+        Me.btFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btFournisseur.Location = New System.Drawing.Point(135, 5)
+        Me.btFournisseur.Name = "btFournisseur"
+        Me.btFournisseur.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btFournisseur.Size = New System.Drawing.Size(116, 28)
+        Me.btFournisseur.TabIndex = 2
+        Me.btFournisseur.Tag = "Fournisseur"
+        Me.btFournisseur.Text = "Fournisseur"
+        Me.btFournisseur.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btFournisseur.UseVisualStyleBackColor = True
+        '
+        'btClient
+        '
+        Me.btClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btClient.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btClient.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
+        Me.btClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btClient.Location = New System.Drawing.Point(13, 5)
+        Me.btClient.Name = "btClient"
+        Me.btClient.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btClient.Size = New System.Drawing.Size(116, 28)
+        Me.btClient.TabIndex = 2
+        Me.btClient.Tag = "Client"
+        Me.btClient.Text = "Client"
+        Me.btClient.UseVisualStyleBackColor = True
+        '
         'ProductList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -554,8 +639,10 @@ Partial Class ProductList
         Me.Panel10.ResumeLayout(False)
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.plModeClient.ResumeLayout(False)
         Me.Panel24.ResumeLayout(False)
+        Me.Panel8.ResumeLayout(False)
+        Me.plModeArticle.ResumeLayout(False)
+        Me.plModeClient.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -595,5 +682,11 @@ Partial Class ProductList
     Friend WithEvents Button14 As System.Windows.Forms.Button
     Friend WithEvents Button15 As System.Windows.Forms.Button
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents Panel8 As System.Windows.Forms.Panel
+    Friend WithEvents plModeArticle As System.Windows.Forms.Panel
+    Friend WithEvents Panel14 As System.Windows.Forms.Panel
+    Friend WithEvents btCat As System.Windows.Forms.Button
+    Friend WithEvents btArticle As System.Windows.Forms.Button
+    Friend WithEvents Panel12 As System.Windows.Forms.Panel
 
 End Class

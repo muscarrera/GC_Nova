@@ -105,25 +105,13 @@ Partial Class ClientDetails
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.plRemise = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.txtRemise = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.Panel30 = New System.Windows.Forms.Panel()
-        Me.TxtBox1 = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -162,12 +150,8 @@ Partial Class ClientDetails
         Me.Panel14.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.plRemise.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel30.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -193,7 +177,7 @@ Partial Class ClientDetails
         Me.Panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Panel3.Controls.Add(Me.Panel5)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 644)
+        Me.Panel3.Location = New System.Drawing.Point(0, 610)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel3.Size = New System.Drawing.Size(877, 228)
@@ -527,7 +511,7 @@ Partial Class ClientDetails
         '
         Me.Panel50.Controls.Add(Me.Panel51)
         Me.Panel50.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel50.Location = New System.Drawing.Point(0, 590)
+        Me.Panel50.Location = New System.Drawing.Point(0, 556)
         Me.Panel50.Name = "Panel50"
         Me.Panel50.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel50.Size = New System.Drawing.Size(877, 54)
@@ -615,7 +599,7 @@ Partial Class ClientDetails
         Me.Panel12.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Panel12.Controls.Add(Me.Panel13)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel12.Location = New System.Drawing.Point(0, 362)
+        Me.Panel12.Location = New System.Drawing.Point(0, 328)
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel12.Size = New System.Drawing.Size(877, 228)
@@ -938,7 +922,7 @@ Partial Class ClientDetails
         '
         Me.Panel10.Controls.Add(Me.Panel11)
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel10.Location = New System.Drawing.Point(0, 308)
+        Me.Panel10.Location = New System.Drawing.Point(0, 274)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Padding = New System.Windows.Forms.Padding(10)
         Me.Panel10.Size = New System.Drawing.Size(877, 54)
@@ -1015,7 +999,7 @@ Partial Class ClientDetails
         '
         Me.Panel4.Controls.Add(Me.Panel6)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 101)
+        Me.Panel4.Location = New System.Drawing.Point(0, 67)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(5)
         Me.Panel4.Size = New System.Drawing.Size(877, 207)
@@ -1132,15 +1116,9 @@ Partial Class ClientDetails
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.Panel30)
-        Me.Panel2.Controls.Add(Me.PictureBox4)
-        Me.Panel2.Controls.Add(Me.plRemise)
         Me.Panel2.Controls.Add(Me.PictureBox3)
-        Me.Panel2.Controls.Add(Me.PictureBox2)
-        Me.Panel2.Controls.Add(Me.Label15)
         Me.Panel2.Controls.Add(Me.PictureBox1)
         Me.Panel2.Controls.Add(Me.Label14)
-        Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.lbRef)
         Me.Panel2.Controls.Add(Me.Label22)
@@ -1149,50 +1127,18 @@ Partial Class ClientDetails
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 5, 20, 5)
-        Me.Panel2.Size = New System.Drawing.Size(877, 101)
+        Me.Panel2.Size = New System.Drawing.Size(877, 67)
         Me.Panel2.TabIndex = 11
         '
-        'plRemise
+        'PictureBox3
         '
-        Me.plRemise.BackColor = System.Drawing.Color.Transparent
-        Me.plRemise.Controls.Add(Me.txtRemise)
-        Me.plRemise.Controls.Add(Me.Label1)
-        Me.plRemise.Controls.Add(Me.Label13)
-        Me.plRemise.Location = New System.Drawing.Point(68, 67)
-        Me.plRemise.Name = "plRemise"
-        Me.plRemise.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
-        Me.plRemise.Size = New System.Drawing.Size(146, 26)
-        Me.plRemise.TabIndex = 10
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(21, 62)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 17)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Fature à :"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(4, 7)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(50, 17)
-        Me.Label13.TabIndex = 2
-        Me.Label13.Text = "Remise"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(830, 33)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(24, 23)
-        Me.PictureBox2.TabIndex = 8
-        Me.PictureBox2.TabStop = False
+        Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox3.Location = New System.Drawing.Point(17, 26)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(44, 30)
+        Me.PictureBox3.TabIndex = 8
+        Me.PictureBox3.TabStop = False
         '
         'PictureBox1
         '
@@ -1204,22 +1150,33 @@ Partial Class ClientDetails
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
-        'Label12
+        'Label14
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(776, 36)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(49, 17)
-        Me.Label12.TabIndex = 2
-        Me.Label12.Text = "Fermer"
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Label14.Location = New System.Drawing.Point(116, 31)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(18, 18)
+        Me.Label14.TabIndex = 1
+        Me.Label14.Text = "[]"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(62, 33)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(51, 18)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Client"
         '
         'lbRef
         '
         Me.lbRef.AutoSize = True
         Me.lbRef.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbRef.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lbRef.Location = New System.Drawing.Point(116, 33)
+        Me.lbRef.Location = New System.Drawing.Point(116, 31)
         Me.lbRef.Name = "lbRef"
         Me.lbRef.Size = New System.Drawing.Size(18, 18)
         Me.lbRef.TabIndex = 1
@@ -1229,7 +1186,7 @@ Partial Class ClientDetails
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(62, 35)
+        Me.Label22.Location = New System.Drawing.Point(62, 33)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(51, 18)
         Me.Label22.TabIndex = 5
@@ -1244,129 +1201,6 @@ Partial Class ClientDetails
         Me.Panel23.Size = New System.Drawing.Size(852, 2)
         Me.Panel23.TabIndex = 2
         '
-        'txtRemise
-        '
-        Me.txtRemise.BackColor = System.Drawing.Color.Transparent
-        Me.txtRemise.BorderColor = System.Drawing.SystemColors.ButtonFace
-        Me.txtRemise.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtRemise.IsNumiric = False
-        Me.txtRemise.Location = New System.Drawing.Point(55, 0)
-        Me.txtRemise.Name = "txtRemise"
-        Me.txtRemise.PlaceHolder = ""
-        Me.txtRemise.ShowClearIcon = False
-        Me.txtRemise.ShowSaveIcon = False
-        Me.txtRemise.Size = New System.Drawing.Size(83, 26)
-        Me.txtRemise.StartUp = 2
-        Me.txtRemise.TabIndex = 33
-        Me.txtRemise.TextSize = 8
-        Me.txtRemise.TxtBackColor = True
-        Me.txtRemise.TxtColor = System.Drawing.Color.White
-        Me.txtRemise.txtReadOnly = True
-        Me.txtRemise.TxtSelect = New Integer() {1, 0}
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(62, 35)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 18)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Client"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Label14.Location = New System.Drawing.Point(116, 33)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(18, 18)
-        Me.Label14.TabIndex = 1
-        Me.Label14.Text = "[]"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(776, 36)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(49, 17)
-        Me.Label15.TabIndex = 2
-        Me.Label15.Text = "Fermer"
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_278871
-        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox3.Location = New System.Drawing.Point(17, 26)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(44, 30)
-        Me.PictureBox3.TabIndex = 8
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox4.Location = New System.Drawing.Point(830, 33)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(24, 23)
-        Me.PictureBox4.TabIndex = 8
-        Me.PictureBox4.TabStop = False
-        '
-        'Panel30
-        '
-        Me.Panel30.BackColor = System.Drawing.Color.Transparent
-        Me.Panel30.Controls.Add(Me.TxtBox1)
-        Me.Panel30.Controls.Add(Me.Label16)
-        Me.Panel30.Controls.Add(Me.Label17)
-        Me.Panel30.Location = New System.Drawing.Point(68, 67)
-        Me.Panel30.Name = "Panel30"
-        Me.Panel30.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
-        Me.Panel30.Size = New System.Drawing.Size(146, 26)
-        Me.Panel30.TabIndex = 10
-        '
-        'TxtBox1
-        '
-        Me.TxtBox1.BackColor = System.Drawing.Color.Transparent
-        Me.TxtBox1.BorderColor = System.Drawing.SystemColors.ButtonFace
-        Me.TxtBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.TxtBox1.IsNumiric = False
-        Me.TxtBox1.Location = New System.Drawing.Point(55, 0)
-        Me.TxtBox1.Name = "TxtBox1"
-        Me.TxtBox1.PlaceHolder = ""
-        Me.TxtBox1.ShowClearIcon = False
-        Me.TxtBox1.ShowSaveIcon = False
-        Me.TxtBox1.Size = New System.Drawing.Size(83, 26)
-        Me.TxtBox1.StartUp = 2
-        Me.TxtBox1.TabIndex = 33
-        Me.TxtBox1.TextSize = 8
-        Me.TxtBox1.TxtBackColor = True
-        Me.TxtBox1.TxtColor = System.Drawing.Color.White
-        Me.TxtBox1.txtReadOnly = True
-        Me.TxtBox1.TxtSelect = New Integer() {1, 0}
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(21, 62)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(63, 17)
-        Me.Label16.TabIndex = 2
-        Me.Label16.Text = "Fature à :"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(4, 7)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(50, 17)
-        Me.Label17.TabIndex = 2
-        Me.Label17.Text = "Remise"
-        '
         'ClientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1374,7 +1208,7 @@ Partial Class ClientDetails
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ClientSize = New System.Drawing.Size(940, 558)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "ClientDetails"
         Me.Padding = New System.Windows.Forms.Padding(22)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1421,14 +1255,8 @@ Partial Class ClientDetails
         Me.Panel7.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.plRemise.ResumeLayout(False)
-        Me.plRemise.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel30.ResumeLayout(False)
-        Me.Panel30.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1516,22 +1344,10 @@ Partial Class ClientDetails
     Friend WithEvents Panel9 As System.Windows.Forms.Panel
     Friend WithEvents lbFRest As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents plRemise As System.Windows.Forms.Panel
-    Friend WithEvents txtRemise As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents plBodyFct As System.Windows.Forms.Panel
     Friend WithEvents Panel32 As System.Windows.Forms.Panel
     Friend WithEvents Panel33 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Panel30 As System.Windows.Forms.Panel
-    Friend WithEvents TxtBox1 As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

@@ -52,7 +52,9 @@ Partial Class AddEditProduct
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtMarge = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtPAchTtc = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtPAch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel19 = New System.Windows.Forms.Panel()
@@ -117,8 +119,6 @@ Partial Class AddEditProduct
         Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.CategoryTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CategoryTableAdapter()
-        Me.txtPAchTtc = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
@@ -522,6 +522,17 @@ Partial Class AddEditProduct
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Marge %"
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label12.Location = New System.Drawing.Point(124, 40)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(27, 17)
+        Me.Label12.TabIndex = 5
+        Me.Label12.Text = "TTC"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -532,6 +543,25 @@ Partial Class AddEditProduct
         Me.Label7.Size = New System.Drawing.Size(94, 17)
         Me.Label7.TabIndex = 5
         Me.Label7.Text = "Prix d'Achat HT"
+        '
+        'txtPAchTtc
+        '
+        Me.txtPAchTtc.BackColor = System.Drawing.Color.Transparent
+        Me.txtPAchTtc.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtPAchTtc.IsNumiric = True
+        Me.txtPAchTtc.Location = New System.Drawing.Point(127, 60)
+        Me.txtPAchTtc.Name = "txtPAchTtc"
+        Me.txtPAchTtc.PlaceHolder = ""
+        Me.txtPAchTtc.ShowClearIcon = False
+        Me.txtPAchTtc.ShowSaveIcon = False
+        Me.txtPAchTtc.Size = New System.Drawing.Size(102, 26)
+        Me.txtPAchTtc.StartUp = 2
+        Me.txtPAchTtc.TabIndex = 5
+        Me.txtPAchTtc.TextSize = 10
+        Me.txtPAchTtc.TxtBackColor = True
+        Me.txtPAchTtc.TxtColor = System.Drawing.Color.White
+        Me.txtPAchTtc.txtReadOnly = False
+        Me.txtPAchTtc.TxtSelect = New Integer() {1, 0}
         '
         'txtPAch
         '
@@ -1168,7 +1198,7 @@ Partial Class AddEditProduct
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.DimGray
-        Me.Button1.Location = New System.Drawing.Point(95, 141)
+        Me.Button1.Location = New System.Drawing.Point(97, 141)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(69, 30)
         Me.Button1.TabIndex = 6
@@ -1267,11 +1297,11 @@ Partial Class AddEditProduct
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 74)
+        Me.Label2.Location = New System.Drawing.Point(13, 84)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(82, 17)
+        Me.Label2.Size = New System.Drawing.Size(120, 17)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Description :"
+        Me.Label2.Text = "Description / Code"
         '
         'Label1
         '
@@ -1298,7 +1328,7 @@ Partial Class AddEditProduct
         Me.txtDesc.BackColor = System.Drawing.Color.Transparent
         Me.txtDesc.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtDesc.IsNumiric = False
-        Me.txtDesc.Location = New System.Drawing.Point(13, 98)
+        Me.txtDesc.Location = New System.Drawing.Point(13, 108)
         Me.txtDesc.Name = "txtDesc"
         Me.txtDesc.PlaceHolder = ""
         Me.txtDesc.ShowClearIcon = False
@@ -1353,36 +1383,6 @@ Partial Class AddEditProduct
         'CategoryTableAdapter
         '
         Me.CategoryTableAdapter.ClearBeforeFill = True
-        '
-        'txtPAchTtc
-        '
-        Me.txtPAchTtc.BackColor = System.Drawing.Color.Transparent
-        Me.txtPAchTtc.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtPAchTtc.IsNumiric = True
-        Me.txtPAchTtc.Location = New System.Drawing.Point(127, 60)
-        Me.txtPAchTtc.Name = "txtPAchTtc"
-        Me.txtPAchTtc.PlaceHolder = ""
-        Me.txtPAchTtc.ShowClearIcon = False
-        Me.txtPAchTtc.ShowSaveIcon = False
-        Me.txtPAchTtc.Size = New System.Drawing.Size(102, 26)
-        Me.txtPAchTtc.StartUp = 2
-        Me.txtPAchTtc.TabIndex = 5
-        Me.txtPAchTtc.TextSize = 10
-        Me.txtPAchTtc.TxtBackColor = True
-        Me.txtPAchTtc.TxtColor = System.Drawing.Color.White
-        Me.txtPAchTtc.txtReadOnly = False
-        Me.txtPAchTtc.TxtSelect = New Integer() {1, 0}
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label12.Location = New System.Drawing.Point(124, 40)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(27, 17)
-        Me.Label12.TabIndex = 5
-        Me.Label12.Text = "TTC"
         '
         'AddEditProduct
         '

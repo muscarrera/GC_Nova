@@ -44,6 +44,9 @@
             Form1.printer_Avoir = getRegistryinfo("printer_Avoir", "")
             Form1.printer_Pdf = getRegistryinfo("printer_Pdf", "")
 
+            Form1.Ech_Bon = getRegistryinfo("txtEchBon", "1")
+            Form1.Ech_Facture = getRegistryinfo("txtEchFct", "1")
+
             Form1.Facture_Title = getRegistryinfo("Facture_Title", "")
             Form1.imgEntetePath = getRegistryinfo("imgEntetePath", "")
             Form1.imgFootherPath = getRegistryinfo("imgFootherPath", "")
@@ -59,6 +62,9 @@
             Form1.tva = getRegistryinfo("tva", 20)
 
 
+            Form1.BoundDbPath = getRegistryinfo("PathBound", "C:\")
+            Form1.SvgdPah = getRegistryinfo("PathSvgd", "C:\")
+            Form1.ImgPah = getRegistryinfo("ImgPath", "C:\")
         Catch ex As Exception
 
         End Try

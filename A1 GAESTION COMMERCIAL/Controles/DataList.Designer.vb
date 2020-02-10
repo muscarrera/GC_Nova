@@ -716,7 +716,7 @@ Partial Class DataList
         Me.plListHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.plListHeader.Location = New System.Drawing.Point(105, 181)
         Me.plListHeader.Name = "plListHeader"
-        Me.plListHeader.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.plListHeader.Padding = New System.Windows.Forms.Padding(10, 5, 10, 5)
         Me.plListHeader.Size = New System.Drawing.Size(710, 34)
         Me.plListHeader.TabIndex = 16
         '
@@ -725,10 +725,10 @@ Partial Class DataList
         Me.Panel12.BackColor = System.Drawing.Color.Transparent
         Me.Panel12.Controls.Add(Me.Label6)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel12.Location = New System.Drawing.Point(248, 5)
+        Me.Panel12.Location = New System.Drawing.Point(233, 5)
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel12.Size = New System.Drawing.Size(99, 24)
+        Me.Panel12.Size = New System.Drawing.Size(204, 24)
         Me.Panel12.TabIndex = 17
         '
         'Label6
@@ -739,7 +739,7 @@ Partial Class DataList
         Me.Label6.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label6.Location = New System.Drawing.Point(5, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(89, 24)
+        Me.Label6.Size = New System.Drawing.Size(194, 24)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Libellé"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -749,7 +749,7 @@ Partial Class DataList
         Me.Panel13.BackColor = System.Drawing.Color.Transparent
         Me.Panel13.Controls.Add(Me.Label7)
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel13.Location = New System.Drawing.Point(347, 5)
+        Me.Panel13.Location = New System.Drawing.Point(437, 5)
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel13.Size = New System.Drawing.Size(89, 24)
@@ -773,7 +773,7 @@ Partial Class DataList
         Me.Panel14.BackColor = System.Drawing.Color.Transparent
         Me.Panel14.Controls.Add(Me.Label8)
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel14.Location = New System.Drawing.Point(436, 5)
+        Me.Panel14.Location = New System.Drawing.Point(526, 5)
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel14.Size = New System.Drawing.Size(90, 24)
@@ -797,7 +797,7 @@ Partial Class DataList
         Me.Panel15.BackColor = System.Drawing.Color.Transparent
         Me.Panel15.Controls.Add(Me.Label9)
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel15.Location = New System.Drawing.Point(526, 5)
+        Me.Panel15.Location = New System.Drawing.Point(616, 5)
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel15.Size = New System.Drawing.Size(84, 24)
@@ -820,7 +820,7 @@ Partial Class DataList
         Me.Panel17.BackColor = System.Drawing.Color.Transparent
         Me.Panel17.Controls.Add(Me.Label11)
         Me.Panel17.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel17.Location = New System.Drawing.Point(134, 5)
+        Me.Panel17.Location = New System.Drawing.Point(119, 5)
         Me.Panel17.Name = "Panel17"
         Me.Panel17.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel17.Size = New System.Drawing.Size(114, 24)
@@ -844,7 +844,7 @@ Partial Class DataList
         Me.Panel16.BackColor = System.Drawing.Color.Transparent
         Me.Panel16.Controls.Add(Me.Label10)
         Me.Panel16.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel16.Location = New System.Drawing.Point(25, 5)
+        Me.Panel16.Location = New System.Drawing.Point(10, 5)
         Me.Panel16.Name = "Panel16"
         Me.Panel16.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel16.Size = New System.Drawing.Size(109, 24)

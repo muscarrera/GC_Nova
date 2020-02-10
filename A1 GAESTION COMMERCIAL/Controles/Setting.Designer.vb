@@ -33,7 +33,11 @@ Partial Class Setting
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.plPref = New System.Windows.Forms.Panel()
+        Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
+        Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtTva = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtnumberOfItems = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -52,6 +56,8 @@ Partial Class Setting
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.txtNbrCopie = New System.Windows.Forms.TextBox()
         Me.txtPied = New System.Windows.Forms.TextBox()
@@ -61,10 +67,13 @@ Partial Class Setting
         Me.txtImpBon = New System.Windows.Forms.TextBox()
         Me.Button13 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button15 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.txtImpDv = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.txtEchBon = New System.Windows.Forms.TextBox()
+        Me.txtEchFct = New System.Windows.Forms.TextBox()
         Me.txtImpfct = New System.Windows.Forms.TextBox()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button71 = New System.Windows.Forms.Button()
@@ -100,10 +109,15 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.txtTva = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
-        Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
+        Me.txtPathImg = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtPathSvgd = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtPathBound = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.Button18 = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -254,19 +268,48 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.cbBaseOnOneTva)
         Me.plPref.Controls.Add(Me.cbBaseOnTTC)
         Me.plPref.Controls.Add(Me.Button11)
+        Me.plPref.Controls.Add(Me.Label23)
         Me.plPref.Controls.Add(Me.Label18)
+        Me.plPref.Controls.Add(Me.txtPathBound)
         Me.plPref.Controls.Add(Me.txtTva)
+        Me.plPref.Controls.Add(Me.Label22)
+        Me.plPref.Controls.Add(Me.txtPathSvgd)
         Me.plPref.Controls.Add(Me.Label11)
+        Me.plPref.Controls.Add(Me.Label21)
         Me.plPref.Controls.Add(Me.txtnumberOfItems)
+        Me.plPref.Controls.Add(Me.txtPathImg)
         Me.plPref.Controls.Add(Me.Label7)
         Me.plPref.Controls.Add(Me.txtCellWidth)
         Me.plPref.Controls.Add(Me.Panel5)
+        Me.plPref.Controls.Add(Me.Button18)
+        Me.plPref.Controls.Add(Me.Button17)
+        Me.plPref.Controls.Add(Me.Button16)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 337)
+        Me.plPref.Location = New System.Drawing.Point(5, 416)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 361)
         Me.plPref.TabIndex = 18
+        '
+        'cbBaseOnOneTva
+        '
+        Me.cbBaseOnOneTva.AutoSize = True
+        Me.cbBaseOnOneTva.Location = New System.Drawing.Point(32, 219)
+        Me.cbBaseOnOneTva.Name = "cbBaseOnOneTva"
+        Me.cbBaseOnOneTva.Size = New System.Drawing.Size(166, 17)
+        Me.cbBaseOnOneTva.TabIndex = 28
+        Me.cbBaseOnOneTva.Text = "Base sur un seul taux de TVA"
+        Me.cbBaseOnOneTva.UseVisualStyleBackColor = True
+        '
+        'cbBaseOnTTC
+        '
+        Me.cbBaseOnTTC.AutoSize = True
+        Me.cbBaseOnTTC.Location = New System.Drawing.Point(32, 194)
+        Me.cbBaseOnTTC.Name = "cbBaseOnTTC"
+        Me.cbBaseOnTTC.Size = New System.Drawing.Size(129, 17)
+        Me.cbBaseOnTTC.TabIndex = 28
+        Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
+        Me.cbBaseOnTTC.UseVisualStyleBackColor = True
         '
         'Button11
         '
@@ -277,10 +320,27 @@ Partial Class Setting
         Me.Button11.Text = "Valider"
         Me.Button11.UseVisualStyleBackColor = True
         '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(32, 153)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(69, 13)
+        Me.Label18.TabIndex = 26
+        Me.Label18.Text = "Tva Standart"
+        '
+        'txtTva
+        '
+        Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTva.Location = New System.Drawing.Point(168, 151)
+        Me.txtTva.Name = "txtTva"
+        Me.txtTva.Size = New System.Drawing.Size(107, 20)
+        Me.txtTva.TabIndex = 25
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(91, 120)
+        Me.Label11.Location = New System.Drawing.Point(29, 115)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(122, 13)
         Me.Label11.TabIndex = 26
@@ -289,15 +349,15 @@ Partial Class Setting
         'txtnumberOfItems
         '
         Me.txtnumberOfItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtnumberOfItems.Location = New System.Drawing.Point(227, 118)
+        Me.txtnumberOfItems.Location = New System.Drawing.Point(165, 113)
         Me.txtnumberOfItems.Name = "txtnumberOfItems"
-        Me.txtnumberOfItems.Size = New System.Drawing.Size(211, 20)
+        Me.txtnumberOfItems.Size = New System.Drawing.Size(107, 20)
         Me.txtnumberOfItems.TabIndex = 25
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(91, 84)
+        Me.Label7.Location = New System.Drawing.Point(29, 79)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(94, 13)
         Me.Label7.TabIndex = 26
@@ -306,9 +366,9 @@ Partial Class Setting
         'txtCellWidth
         '
         Me.txtCellWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCellWidth.Location = New System.Drawing.Point(227, 82)
+        Me.txtCellWidth.Location = New System.Drawing.Point(165, 77)
         Me.txtCellWidth.Name = "txtCellWidth"
-        Me.txtCellWidth.Size = New System.Drawing.Size(211, 20)
+        Me.txtCellWidth.Size = New System.Drawing.Size(107, 20)
         Me.txtCellWidth.TabIndex = 25
         '
         'Panel5
@@ -359,6 +419,8 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Label3)
         Me.plImp.Controls.Add(Me.Label2)
         Me.plImp.Controls.Add(Me.Label1)
+        Me.plImp.Controls.Add(Me.Label20)
+        Me.plImp.Controls.Add(Me.Label19)
         Me.plImp.Controls.Add(Me.Label53)
         Me.plImp.Controls.Add(Me.txtNbrCopie)
         Me.plImp.Controls.Add(Me.txtPied)
@@ -368,10 +430,13 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.txtImpBon)
         Me.plImp.Controls.Add(Me.Button13)
         Me.plImp.Controls.Add(Me.Button12)
+        Me.plImp.Controls.Add(Me.Button15)
         Me.plImp.Controls.Add(Me.Button10)
         Me.plImp.Controls.Add(Me.Button9)
         Me.plImp.Controls.Add(Me.txtImpDv)
         Me.plImp.Controls.Add(Me.Button8)
+        Me.plImp.Controls.Add(Me.txtEchBon)
+        Me.plImp.Controls.Add(Me.txtEchFct)
         Me.plImp.Controls.Add(Me.txtImpfct)
         Me.plImp.Controls.Add(Me.Button7)
         Me.plImp.Controls.Add(Me.Button71)
@@ -380,7 +445,7 @@ Partial Class Setting
         Me.plImp.Location = New System.Drawing.Point(5, 274)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 63)
+        Me.plImp.Size = New System.Drawing.Size(750, 142)
         Me.plImp.TabIndex = 17
         '
         'Label35
@@ -476,6 +541,24 @@ Partial Class Setting
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Devis"
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(520, 151)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(48, 13)
+        Me.Label20.TabIndex = 21
+        Me.Label20.Text = "Ech Bon"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(517, 85)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(65, 13)
+        Me.Label19.TabIndex = 21
+        Me.Label19.Text = "Ech Facture"
+        '
         'Label53
         '
         Me.Label53.AutoSize = True
@@ -558,6 +641,16 @@ Partial Class Setting
         Me.Button12.Text = "اختر"
         Me.Button12.UseVisualStyleBackColor = True
         '
+        'Button15
+        '
+        Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button15.Location = New System.Drawing.Point(523, 221)
+        Me.Button15.Name = "Button15"
+        Me.Button15.Size = New System.Drawing.Size(200, 29)
+        Me.Button15.TabIndex = 20
+        Me.Button15.Text = "اختر"
+        Me.Button15.UseVisualStyleBackColor = True
+        '
         'Button10
         '
         Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -596,6 +689,22 @@ Partial Class Setting
         Me.Button8.TabIndex = 20
         Me.Button8.Text = "اختر"
         Me.Button8.UseVisualStyleBackColor = True
+        '
+        'txtEchBon
+        '
+        Me.txtEchBon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEchBon.Location = New System.Drawing.Point(523, 176)
+        Me.txtEchBon.Name = "txtEchBon"
+        Me.txtEchBon.Size = New System.Drawing.Size(200, 20)
+        Me.txtEchBon.TabIndex = 22
+        '
+        'txtEchFct
+        '
+        Me.txtEchFct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEchFct.Location = New System.Drawing.Point(520, 101)
+        Me.txtEchFct.Name = "txtEchFct"
+        Me.txtEchFct.Size = New System.Drawing.Size(200, 20)
+        Me.txtEchFct.TabIndex = 22
         '
         'txtImpfct
         '
@@ -1040,42 +1149,86 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'txtTva
+        'txtPathImg
         '
-        Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTva.Location = New System.Drawing.Point(230, 156)
-        Me.txtTva.Name = "txtTva"
-        Me.txtTva.Size = New System.Drawing.Size(211, 20)
-        Me.txtTva.TabIndex = 25
+        Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathImg.Location = New System.Drawing.Point(436, 77)
+        Me.txtPathImg.Name = "txtPathImg"
+        Me.txtPathImg.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathImg.TabIndex = 25
         '
-        'Label18
+        'Label21
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(94, 158)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(69, 13)
-        Me.Label18.TabIndex = 26
-        Me.Label18.Text = "Tva Standart"
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(341, 79)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(49, 13)
+        Me.Label21.TabIndex = 26
+        Me.Label21.Text = "Path Img"
         '
-        'cbBaseOnTTC
+        'txtPathSvgd
         '
-        Me.cbBaseOnTTC.AutoSize = True
-        Me.cbBaseOnTTC.Location = New System.Drawing.Point(94, 199)
-        Me.cbBaseOnTTC.Name = "cbBaseOnTTC"
-        Me.cbBaseOnTTC.Size = New System.Drawing.Size(129, 17)
-        Me.cbBaseOnTTC.TabIndex = 28
-        Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
-        Me.cbBaseOnTTC.UseVisualStyleBackColor = True
+        Me.txtPathSvgd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathSvgd.Location = New System.Drawing.Point(436, 113)
+        Me.txtPathSvgd.Name = "txtPathSvgd"
+        Me.txtPathSvgd.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathSvgd.TabIndex = 25
         '
-        'cbBaseOnOneTva
+        'Label22
         '
-        Me.cbBaseOnOneTva.AutoSize = True
-        Me.cbBaseOnOneTva.Location = New System.Drawing.Point(94, 224)
-        Me.cbBaseOnOneTva.Name = "cbBaseOnOneTva"
-        Me.cbBaseOnOneTva.Size = New System.Drawing.Size(166, 17)
-        Me.cbBaseOnOneTva.TabIndex = 28
-        Me.cbBaseOnOneTva.Text = "Base sur un seul taux de TVA"
-        Me.cbBaseOnOneTva.UseVisualStyleBackColor = True
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(341, 115)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(60, 13)
+        Me.Label22.TabIndex = 26
+        Me.Label22.Text = "Path Svgrd"
+        '
+        'txtPathBound
+        '
+        Me.txtPathBound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathBound.Location = New System.Drawing.Point(439, 151)
+        Me.txtPathBound.Name = "txtPathBound"
+        Me.txtPathBound.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathBound.TabIndex = 25
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(344, 153)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(80, 13)
+        Me.Label23.TabIndex = 26
+        Me.Label23.Text = "Path Db Bound"
+        '
+        'Button16
+        '
+        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button16.Location = New System.Drawing.Point(602, 68)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(75, 29)
+        Me.Button16.TabIndex = 20
+        Me.Button16.Text = "اختر"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'Button17
+        '
+        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button17.Location = New System.Drawing.Point(602, 104)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(75, 29)
+        Me.Button17.TabIndex = 20
+        Me.Button17.Text = "اختر"
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'Button18
+        '
+        Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button18.Location = New System.Drawing.Point(602, 142)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(75, 29)
+        Me.Button18.TabIndex = 20
+        Me.Button18.Text = "اختر"
+        Me.Button18.UseVisualStyleBackColor = True
         '
         'Setting
         '
@@ -1206,5 +1359,19 @@ Partial Class Setting
     Friend WithEvents cbBaseOnTTC As System.Windows.Forms.CheckBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents txtTva As System.Windows.Forms.TextBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Button15 As System.Windows.Forms.Button
+    Friend WithEvents txtEchBon As System.Windows.Forms.TextBox
+    Friend WithEvents txtEchFct As System.Windows.Forms.TextBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents txtPathBound As System.Windows.Forms.TextBox
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents txtPathSvgd As System.Windows.Forms.TextBox
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents txtPathImg As System.Windows.Forms.TextBox
+    Friend WithEvents Button18 As System.Windows.Forms.Button
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents Button16 As System.Windows.Forms.Button
 
 End Class

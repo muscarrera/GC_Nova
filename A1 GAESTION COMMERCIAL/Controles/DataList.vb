@@ -1,5 +1,7 @@
 ﻿Public Class DataList
 
+    Dim _isEG As Boolean
+
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -42,6 +44,13 @@
     Public Event AddPayement(ByVal pm As Payement, ByVal ds As A1_GAESTION_COMMERCIAL.DataList, ByRef d_Id As Integer)
     Public Event EditPayement(ByVal pm As AddPayementRow, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
     Public Event DeletePayement(ByVal pm As AddPayementRow, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    'events
+    Public Event GetListofCommande(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event GetListofFacture(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event PrintListofFactures(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event SaveListofFacturesasPdf(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event NewEnCompteRef(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
 
 
     'Members
@@ -61,19 +70,7 @@
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Private _isDisibleEditing As Boolean = True
 
-    Event GetListofCommande(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-    Event GetListofFacture(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-    Event PrintListofFactures(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-    Event SaveListofFacturesasPdf(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-    Event NewEnCompteRef(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
-
-    Event EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
-
-
+    Event PrintListofGoupeInpayed(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
         Get
@@ -215,7 +212,8 @@
         Set(ByVal value As String)
             _Mode = value
             PlPayement.Visible = False
-            'Pl.Controls.Clear()
+            'annuler l etat general
+            _isEG = False
 
             If value = "LIST" Then
                 plDetailsHeader.Visible = False
@@ -247,6 +245,17 @@
                 TB.Visible = True
                 PlFooter.Visible = False
             End If
+        End Set
+    End Property
+    Public Property isEtatGeneral() As Boolean
+        Get
+            Return _isEG
+        End Get
+        Set(ByVal value As Boolean)
+            _isEG = value
+            If value = False Then Exit Property
+            plDetailsHeader.Visible = False
+            plListHeader.Visible = False
         End Set
     End Property
     Public ReadOnly Property Total_Ht As Decimal
@@ -369,6 +378,8 @@
         End Get
         Set(ByVal value As DataTable)
             _dtList = value
+            _isEG = False
+
             startIndex = 0
             lastIndex = value.Rows.Count
             numberOfItems = Form1.numberOfItems
@@ -376,7 +387,8 @@
             If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
             currentPage = 1
             btPage.Text = "1/" & numberOfPage
-
+            If numberOfPage = 0 Then btPage.Text = "0"
+            lastIndex = 0
             FillRows()
         End Set
     End Property
@@ -642,6 +654,9 @@
         startIndex -= (numberOfItems * 2)
         If startIndex < 0 Then startIndex = 0
 
+        lastIndex -= numberOfItems * 2
+        If lastIndex < 0 Then lastIndex = 0
+
         FillRows()
         btPage.Text = currentPage & "/" & numberOfPage
     End Sub
@@ -658,14 +673,21 @@
     End Sub
     Private Sub FillRows()
         pl.Controls.Clear()
+        lastIndex += numberOfItems
 
         If _dtList.Rows.Count > 0 Then
-            Dim n = numberOfItems
-            If (_dtList.Rows.Count - startIndex) < numberOfItems Then n = lastIndex - startIndex
-            Dim arr(n - 1) As ListLine
-            Dim i As Integer = 0
-            For i = startIndex To _dtList.Rows.Count - 1
+            'Dim n = numberOfItems
 
+            'If (_dtList.Rows.Count - startIndex) < numberOfItems Then n = lastIndex - startIndex
+            If _dtList.Rows.Count - lastIndex < numberOfItems Then
+                'n = _dtList.Rows.Count - lastIndex
+                lastIndex = _dtList.Rows.Count - 1
+            End If
+
+            Dim arr(numberOfItems) As ListLine
+            Dim i As Integer = 0
+
+            For i = startIndex To _dtList.Rows.Count - 1
                 Dim a As New ListLine
                 a.sizeAuto = True
 
@@ -678,6 +700,7 @@
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()
+                'a.SendToBack()
 
                 If BoolValue(_dtList, "isPayed", i) Then a.plP.BackColor = Color.PaleGreen
                 If StrValue(_dtList, "isAdmin", i) = "Fini" Or StrValue(_dtList, "isAdmin", i) = "Facturé" Or
@@ -690,11 +713,14 @@
                 AddHandler a.DeleteItem, AddressOf Delete_Item
                 AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos
 
+                'Pl.Controls.Add(a)
                 arr(i - startIndex) = a
 
-                If i = startIndex + n - 1 Then Exit For
+                If i = lastIndex Then Exit For
             Next
+
             Pl.Controls.AddRange(arr)
+
             startIndex = i + 1
         End If
 
@@ -802,9 +828,20 @@
         RaiseEvent AddListofBl(Me)
     End Sub
     Private Sub Entete_PrintList() Handles Entete.PrintList
-        RaiseEvent PrintListofFactures(Me)
+        If isEtatGeneral Then
+            RaiseEvent PrintListofGoupeInpayed(Me, False)
+        Else
+            RaiseEvent PrintListofFactures(Me)
+        End If
+
     End Sub
     Private Sub Entete_SavePdfList() Handles Entete.SavePdfList
-        RaiseEvent SaveListofFacturesasPdf(Me)
+        If isEtatGeneral Then
+            RaiseEvent PrintListofGoupeInpayed(Me, True)
+        Else
+            RaiseEvent SaveListofFacturesasPdf(Me)
+        End If
+
+
     End Sub
 End Class

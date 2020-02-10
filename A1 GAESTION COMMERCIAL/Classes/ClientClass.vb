@@ -130,14 +130,20 @@
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
-                params.Add("Clid", ls.Id)
+                params.Add("cid", ls.Id)
 
-                dt = a.SelectDataTable(tb_F, {"id"}, params)
+                dt = a.SelectDataTable(ds.Mode, {"id"}, params)
 
                 If dt.Rows.Count > 0 Then
+                    ' he has factures
+
+                Else
+                    params.Add("Clid", ls.Id)
                     If a.DeleteRecords(ds.TableName, params) > 0 Then
                         ds.RemoveElement(ls)
                     End If
+
+
                 End If
             End Using
 
@@ -150,14 +156,19 @@
         GetElements(ds)
     End Sub
     Private Sub GetClientDetails(ByVal ds As ProductList, ByVal id As Integer)
-        Dim fl As New ClientDetails
-        fl.Table = ds.Mode
-        fl.id = id
+        'Dim fl As New ClientDetails
+        'fl.Table = ds.Mode
+        'fl.id = id
+        'If fl.ShowDialog = DialogResult.OK Then
+
+        'End If
+
+        Dim fl As New RelveClient
+        fl.ClientTable = "Client"
+        fl.CID = id
         If fl.ShowDialog = DialogResult.OK Then
 
         End If
-
-
     End Sub
 
 

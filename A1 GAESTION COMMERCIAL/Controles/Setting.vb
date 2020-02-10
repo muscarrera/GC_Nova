@@ -47,6 +47,8 @@
             txtImpfct.Text = getRegistryinfo("printer_Facture", "")
             txtImpAv.Text = getRegistryinfo("printer_Avoir", "")
             txtImpPdf.Text = getRegistryinfo("printer_Pdf", "")
+            txtEchBon.Text = getRegistryinfo("txtEchBon", "1")
+            txtEchFct.Text = getRegistryinfo("txtEchFct", "1")
 
             'TXTFAC.Text = getRegistryinfo("Facture_Title", "")
             'Form1.imgEntetePath.Text = getRegistryinfo("imgEntetePath", "")
@@ -59,7 +61,9 @@
             cbBaseOnOneTva.Checked = getRegistryinfo("isBaseOnOneTva", False)
             cbBaseOnTTC.Checked = getRegistryinfo("isBaseOnTTC", False)
 
-
+            txtPathBound.Text = getRegistryinfo("PathBound", "C:\")
+            txtPathSvgd.Text = getRegistryinfo("PathSvgd", "C:\")
+            txtPathImg.Text = getRegistryinfo("ImgPath", "C:\")
         Catch ex As Exception
 
         End Try
@@ -257,6 +261,7 @@
 
             Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
             Form1.isBaseOnTTC = cbBaseOnTTC.Checked
+
         Catch ex As Exception
 
         End Try
@@ -404,5 +409,68 @@
             setRegistryinfo("zeros_number", NE.txtz.text)
             Form1.zeros = NE.txtz.text
         End If
+    End Sub
+
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
+        Try
+            setRegistryinfo("txtEchBon", txtEchBon.Text)
+            setRegistryinfo("txtEchFct", txtEchFct.Text)
+
+            Form1.Ech_Bon = txtEchBon.Text
+            Form1.Ech_Facture = txtEchFct.Text
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
+        Try
+            Dim OPF As New OpenFileDialog
+            If OPF.ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim fi As New IO.FileInfo(OPF.FileName)
+                Dim directoryName As String = fi.DirectoryName
+                txtPathImg.Text = directoryName
+            End If
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "ImgPath", txtPathImg.Text)
+            Form1.ImgPah = txtPathImg.Text
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        End Try
+    End Sub
+
+    Private Sub Button17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button17.Click
+        Try
+            Dim OPF As New OpenFileDialog
+            If OPF.ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim fi As New IO.FileInfo(OPF.FileName)
+                Dim directoryName As String = fi.DirectoryName
+                txtPathSvgd.Text = directoryName
+            End If
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "PathSvgd", txtPathSvgd.Text)
+            Form1.SvgdPah = txtPathSvgd.Text
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        End Try
+    End Sub
+
+    Private Sub Button18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button18.Click
+        Try
+            Dim OPF As New OpenFileDialog
+            If OPF.ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim fi As New IO.FileInfo(OPF.FileName)
+                Dim directoryName As String = fi.DirectoryName
+                txtPathBound.Text = directoryName
+            End If
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "PathBound", txtPathBound.Text)
+
+            Form1.BoundDbPath = txtPathBound.Text
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        End Try
     End Sub
 End Class

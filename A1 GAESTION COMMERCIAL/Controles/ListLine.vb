@@ -183,7 +183,7 @@
             plQ.Width = a
             plR.Width = a
             plT.Width = a
-            plRef.Width = a / 2
+            plRef.Width = a
         End If
 
 

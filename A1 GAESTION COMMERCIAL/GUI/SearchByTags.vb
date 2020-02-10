@@ -3,6 +3,8 @@
     Dim myId As String = "id"
 
     Public params As New Dictionary(Of String, Object)
+    Friend EtatGénéral As Boolean = False
+
 
     Public Property TableName As String
         Get
@@ -78,6 +80,7 @@
                 CL.ListeOfDates.Add("Date Min", "DM")
 
             ElseIf value = "Sell_Facture" Then
+                CL.ListeOfString.Add("Etat Général", "EG")
                 CL.ListeOfString.Add("Editeur", "ED")
                 CL.ListeOfString.Add("Mode de Payement", "MP")
                 CL.ListeOfString.Add("En Compte de", "EC")
@@ -270,7 +273,13 @@
                 End If
                 myKey = "isPayed = "
                 myVal = isPayed
+            Case "EG"
+                Dim isPayed As Boolean = False
+                EtatGénéral = True
 
+                myKey = "isPayed = "
+                myVal = isPayed
+                txt.text = ""
             Case "FT"
                 Dim isf As Boolean = True
                 Dim v = txt.text
@@ -302,15 +311,9 @@
                 txt.text = CDate(txt.text).ToString("dd MMM yyyy")
         End Select
 
-
-
-
-
-
         Dim tg As New Tag
         tg.myKey = myKey
         tg.myVal = myVal
-
 
         tg.val = txt.text
         tg.key = key
@@ -331,6 +334,12 @@
         For Each c As Tag In FL.Controls
             Try
                 params.Add(c.myKey, c.myVal)
+
+                If EtatGénéral Then
+                    params.Clear()
+                    params.Add(c.myKey, c.myVal)
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                End If
             Catch ex As Exception
             End Try
         Next

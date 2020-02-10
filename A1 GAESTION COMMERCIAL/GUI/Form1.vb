@@ -10,6 +10,7 @@
     Public admin As Boolean = True
     Public adminId As Integer = 0
     Public adminName As String = "User"
+
     Public isMaster As Boolean = True
     Public imgLarge As Integer = 100
     Public imgLonger As Integer = 200
@@ -53,6 +54,8 @@
     Public clientFacture As Client
     Public isBaseOnTTC As Boolean = False
     Public isBaseOnOneTva As Boolean = False
+    Public Ech_Bon As String
+    Public Ech_Facture As String
 
 
     Public Property prefix As String
@@ -237,7 +240,11 @@
         Dim ds As DataList = plBody.Controls(0)
         Using a As DrawClass = New DrawClass
 
-            a.DrawListOfFacture(e, ds.DataList, printEnteteOnPaper, ds.FactureTable, True, True, m)
+            If Facture_Title = "liste des impayés" Then
+                a.PrintListofGoupeInpayed(e, ds, printEnteteOnPaper, m)
+            Else
+                a.DrawListOfFacture(e, ds.DataList, printEnteteOnPaper, ds.FactureTable, True, True, m)
+            End If
 
         End Using
     End Sub
