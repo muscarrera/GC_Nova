@@ -461,7 +461,6 @@
             btPage.Text = "1/" & numberOfPage
 
             Try
-
                 lbLnbr.Text = value.Rows.Count
                 lbLtotal.Text = ""
                 lbLavc.Text = ""
@@ -635,7 +634,7 @@
                     a.Id = _dt.Rows(i).Item(0)
                     a.Libele = _dt.Rows(i).Item("name")
                     a.lbType.Text = DteValue(_dt, "date", i).ToString("dd MMM, yyyy")
-                    a.Responsable = StrValue(_dt, "depart", i)
+                    a.Responsable = StrValue(_dt, "delai", i)
                     a.Tel = String.Format("{0:n}", DblValue(_dt, "total", i))
                     a.Ville = String.Format("{0:n}", DblValue(_dt, "avance", i))
 

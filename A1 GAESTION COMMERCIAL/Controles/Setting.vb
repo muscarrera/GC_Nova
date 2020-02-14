@@ -200,6 +200,10 @@
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
+
+
+
+
     End Sub
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         plData.Height = 1
@@ -259,8 +263,15 @@
             setRegistryinfo("isBaseOnOneTva", cbBaseOnOneTva.Checked)
             setRegistryinfo("isBaseOnTTC", cbBaseOnTTC.Checked)
 
-            Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
-            Form1.isBaseOnTTC = cbBaseOnTTC.Checked
+            If txtTrial.Visible Then
+                Dim a As Integer = 11
+                If txtTrial.Text = "TRn-1" Then a = -1
+                setRegistryinfo("nbrPrOp_Tr", a)
+            End If
+
+
+                Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
+                Form1.isBaseOnTTC = cbBaseOnTTC.Checked
 
         Catch ex As Exception
 
@@ -472,5 +483,11 @@
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub LinkLabel4_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel4.LinkClicked
+        Dim stok As New AddEditDepot
+        If stok.ShowDialog = Windows.Forms.DialogResult.OK Then
+        End If
     End Sub
 End Class

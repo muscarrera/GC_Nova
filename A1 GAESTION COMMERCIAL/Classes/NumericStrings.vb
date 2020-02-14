@@ -10,7 +10,7 @@ Public NotInheritable Class NumericStrings
     Public Shared DecimalSeparator As String = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator
     Public Shared GroupSeparator As String = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator
     Public Shared SpaceString As String = " "
-    Public Shared AndString As String = "et"
+    Public Shared AndString As String = " " '"et"
     Public Shared DashString As String = "-"
     Public Shared DecimalString As String = "virgule"
     Public Shared NegativeString As String = "negative"

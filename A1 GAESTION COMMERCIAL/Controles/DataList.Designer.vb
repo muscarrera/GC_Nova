@@ -84,6 +84,12 @@ Partial Class DataList
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Entete = New A1_GAESTION_COMMERCIAL.EnteteFacture()
+        Me.lbLavc = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lbLtotal = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lbLnbr = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.plNewElement.SuspendLayout()
         Me.PlAdd.SuspendLayout()
         Me.PlFooter.SuspendLayout()
@@ -169,13 +175,19 @@ Partial Class DataList
         'PlFooter
         '
         Me.PlFooter.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.PlFooter.Controls.Add(Me.lbLavc)
+        Me.PlFooter.Controls.Add(Me.Label12)
+        Me.PlFooter.Controls.Add(Me.lbLtotal)
+        Me.PlFooter.Controls.Add(Me.Label13)
+        Me.PlFooter.Controls.Add(Me.lbLnbr)
+        Me.PlFooter.Controls.Add(Me.Label14)
         Me.PlFooter.Controls.Add(Me.Button4)
         Me.PlFooter.Controls.Add(Me.btPage)
         Me.PlFooter.Controls.Add(Me.Button2)
         Me.PlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PlFooter.Location = New System.Drawing.Point(105, 873)
+        Me.PlFooter.Location = New System.Drawing.Point(105, 868)
         Me.PlFooter.Name = "PlFooter"
-        Me.PlFooter.Size = New System.Drawing.Size(710, 27)
+        Me.PlFooter.Size = New System.Drawing.Size(710, 32)
         Me.PlFooter.TabIndex = 8
         '
         'Button4
@@ -186,7 +198,7 @@ Partial Class DataList
         Me.Button4.Location = New System.Drawing.Point(530, 0)
         Me.Button4.Name = "Button4"
         Me.Button4.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button4.Size = New System.Drawing.Size(60, 27)
+        Me.Button4.Size = New System.Drawing.Size(60, 32)
         Me.Button4.TabIndex = 5
         Me.Button4.Text = "<"
         Me.Button4.UseVisualStyleBackColor = True
@@ -200,7 +212,7 @@ Partial Class DataList
         Me.btPage.Location = New System.Drawing.Point(590, 0)
         Me.btPage.Name = "btPage"
         Me.btPage.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.btPage.Size = New System.Drawing.Size(60, 27)
+        Me.btPage.Size = New System.Drawing.Size(60, 32)
         Me.btPage.TabIndex = 4
         Me.btPage.Text = "-"
         Me.btPage.UseVisualStyleBackColor = True
@@ -213,7 +225,7 @@ Partial Class DataList
         Me.Button2.Location = New System.Drawing.Point(650, 0)
         Me.Button2.Name = "Button2"
         Me.Button2.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button2.Size = New System.Drawing.Size(60, 27)
+        Me.Button2.Size = New System.Drawing.Size(60, 32)
         Me.Button2.TabIndex = 6
         Me.Button2.Text = ">"
         Me.Button2.UseVisualStyleBackColor = True
@@ -886,6 +898,84 @@ Partial Class DataList
         Me.Entete.TabIndex = 0
         Me.Entete.Type = Nothing
         '
+        'lbLavc
+        '
+        Me.lbLavc.BackColor = System.Drawing.Color.LightGray
+        Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLavc.Location = New System.Drawing.Point(392, 0)
+        Me.lbLavc.Name = "lbLavc"
+        Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLavc.Size = New System.Drawing.Size(96, 32)
+        Me.lbLavc.TabIndex = 10
+        Me.lbLavc.Text = "0"
+        Me.lbLavc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label12
+        '
+        Me.Label12.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(307, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label12.Size = New System.Drawing.Size(85, 32)
+        Me.Label12.TabIndex = 11
+        Me.Label12.Text = "Avance:"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbLtotal
+        '
+        Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
+        Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLtotal.Location = New System.Drawing.Point(211, 0)
+        Me.lbLtotal.Name = "lbLtotal"
+        Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLtotal.Size = New System.Drawing.Size(96, 32)
+        Me.lbLtotal.TabIndex = 12
+        Me.lbLtotal.Text = "0"
+        Me.lbLtotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label13
+        '
+        Me.Label13.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label13.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(134, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label13.Size = New System.Drawing.Size(77, 32)
+        Me.Label13.TabIndex = 7
+        Me.Label13.Text = "Total :"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbLnbr
+        '
+        Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
+        Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLnbr.Location = New System.Drawing.Point(71, 0)
+        Me.lbLnbr.Name = "lbLnbr"
+        Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLnbr.Size = New System.Drawing.Size(63, 32)
+        Me.lbLnbr.TabIndex = 8
+        Me.lbLnbr.Text = "0"
+        Me.lbLnbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label14
+        '
+        Me.Label14.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(0, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label14.Size = New System.Drawing.Size(71, 32)
+        Me.Label14.TabIndex = 9
+        Me.Label14.Text = "Nbre :"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'DataList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -998,5 +1088,11 @@ Partial Class DataList
     Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
     Friend WithEvents Panel18 As System.Windows.Forms.Panel
     Friend WithEvents Panel19 As System.Windows.Forms.Panel
+    Friend WithEvents lbLavc As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents lbLtotal As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents lbLnbr As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 
 End Class

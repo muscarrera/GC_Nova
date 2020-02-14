@@ -148,15 +148,43 @@ Public Class ParcClass
             If NF.ShowDialog = DialogResult.OK Then
                 Dim mid As Integer = 0
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
                     Dim cid = NF.cid
                     Dim cname = NF.cName
                     Dim params As New Dictionary(Of String, Object)
                     Dim where As New Dictionary(Of String, Object)
 
                     params.Add("cid", cid)
+                    params.Add("Bon_Transport", 0)
+                    Dim dmn As String = "-"
+                    Try
+                        Dim m_dt = a.SelectDataTable("Mission", {"*"}, params)
+                        If Not IsNothing(m_dt) Then
+                            If m_dt.Rows.Count > 0 Then
+                                For i As Integer = 0 To m_dt.Rows.Count - 1
+                                    dmn = StrValue(m_dt, "domain", i)
+                                    If dmn.Length > 1 Then Exit For
+                                Next
+                            Else
+                                MsgBox("Toute les mission de ce client sont bien enregistré dans les bons de transport", MsgBoxStyle.Information, "CMC Gestion")
+                                Exit Sub
+                            End If
+                        Else
+                            MsgBox("Toute les mission de ce client sont bien enregistré dans les bons de transport", MsgBoxStyle.Information, "CMC Gestion")
+                            Exit Sub
+                        End If
+
+                    Catch ex As Exception
+
+                    End Try
+
+
+                    '''''''''''''start
+                    params.Clear()
+                    params.Add("cid", cid)
                     params.Add("name", cname)
                     params.Add("date", NF.dte)
-                    params.Add("delai", "-")
+                    params.Add("delai", dmn)
                     params.Add("ex", Form1.Exercice)
                     params.Add("total", 0)
                     params.Add("avance", 0)
@@ -183,6 +211,10 @@ Public Class ParcClass
                     where.Add("Bon_Transport = ", 0)
                     params.Add("Bon_Transport", mid)
                     a.UpdateRecordSymbols("Details_Mission", params, where)
+
+                
+
+
                 End Using
 
                 If mid > 0 Then

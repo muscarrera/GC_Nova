@@ -106,7 +106,11 @@
                     str &= vbNewLine
                     'str &= c.adresse
                     'str &= vbNewLine
-                    str &= "ICE : " & c.ICE
+                    Try
+                        If c.ICE.Length > 2 Then str &= "ICE : " & c.ICE
+                    Catch ex As Exception
+                    End Try
+
                     lbEnCompte.Text = str
 
                     plEnCompte.Width = plClient.Width / 3
@@ -153,7 +157,11 @@
                 str &= vbNewLine
                 str &= ClientAdresse
                 str &= vbNewLine
-                str &= "ICE : " & _ice
+                Try
+                    If _ice.Length > 2 Then str &= "ICE : " & _ice
+                Catch ex As Exception
+                End Try
+
                 lbInfo.Text = str
             End If
         End Set
@@ -169,7 +177,11 @@
                 str &= vbNewLine
                 str &= ClientAdresse
                 str &= vbNewLine
-                str &= "ICE : " & _ice
+
+                Try
+                    If _ice.Length > 2 Then str &= "ICE : " & _ice
+                Catch ex As Exception
+                End Try
                 lbInfo.Text = str
             End If
         End Set
@@ -321,16 +333,11 @@
         End Set
     End Property
 
-
-
-
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
     End Sub
     Public Sub Clear()
         'Id = 0

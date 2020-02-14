@@ -141,7 +141,7 @@
 
 
     Public Sub AddDataList()
-        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim dt As DataTable = a.SelectDataTable("Category", {"*"})
 
             Form1.plBody.Controls.Clear()
@@ -157,6 +157,8 @@
             'AddHandler ds.SearchById, AddressOf SearchById
             AddHandler ds.ModeChanged, AddressOf ModeChanged
             AddHandler ds.GetClientDetails, AddressOf GetClientDetails
+
+            ds.dt_Cats = a.SelectDataTable("Category", {"*"})
 
             Form1.plBody.Controls.Add(ds)
         End Using
@@ -297,7 +299,6 @@
         End Try
 
     End Sub
-
     Private Sub ModeChanged(ByVal ds As ProductList)
         GetElements(ds)
     End Sub
@@ -322,6 +323,7 @@
 
 
     End Sub
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 

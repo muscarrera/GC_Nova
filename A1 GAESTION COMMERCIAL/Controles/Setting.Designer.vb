@@ -36,15 +36,26 @@ Partial Class Setting
         Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtPathBound = New System.Windows.Forms.TextBox()
+        Me.txtTrial = New System.Windows.Forms.TextBox()
         Me.txtTva = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtPathSvgd = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.txtnumberOfItems = New System.Windows.Forms.TextBox()
+        Me.txtPathImg = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtCellWidth = New System.Windows.Forms.TextBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Button18 = New System.Windows.Forms.Button()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.Button16 = New System.Windows.Forms.Button()
         Me.plImp = New System.Windows.Forms.Panel()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.cbHasEPBonTransport = New System.Windows.Forms.CheckBox()
@@ -109,15 +120,7 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.txtPathImg = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.txtPathSvgd = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.txtPathBound = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Button16 = New System.Windows.Forms.Button()
-        Me.Button17 = New System.Windows.Forms.Button()
-        Me.Button18 = New System.Windows.Forms.Button()
+        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -269,8 +272,10 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.cbBaseOnTTC)
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Label23)
+        Me.plPref.Controls.Add(Me.Label24)
         Me.plPref.Controls.Add(Me.Label18)
         Me.plPref.Controls.Add(Me.txtPathBound)
+        Me.plPref.Controls.Add(Me.txtTrial)
         Me.plPref.Controls.Add(Me.txtTva)
         Me.plPref.Controls.Add(Me.Label22)
         Me.plPref.Controls.Add(Me.txtPathSvgd)
@@ -285,7 +290,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button17)
         Me.plPref.Controls.Add(Me.Button16)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 416)
+        Me.plPref.Location = New System.Drawing.Point(5, 634)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 361)
@@ -320,6 +325,25 @@ Partial Class Setting
         Me.Button11.Text = "Valider"
         Me.Button11.UseVisualStyleBackColor = True
         '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(344, 153)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(80, 13)
+        Me.Label23.TabIndex = 26
+        Me.Label23.Text = "Path Db Bound"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(32, 291)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(83, 13)
+        Me.Label24.TabIndex = 26
+        Me.Label24.Text = "Nbr Jrs Anl/Trial"
+        Me.Label24.Visible = False
+        '
         'Label18
         '
         Me.Label18.AutoSize = True
@@ -329,6 +353,23 @@ Partial Class Setting
         Me.Label18.TabIndex = 26
         Me.Label18.Text = "Tva Standart"
         '
+        'txtPathBound
+        '
+        Me.txtPathBound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathBound.Location = New System.Drawing.Point(439, 151)
+        Me.txtPathBound.Name = "txtPathBound"
+        Me.txtPathBound.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathBound.TabIndex = 25
+        '
+        'txtTrial
+        '
+        Me.txtTrial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTrial.Location = New System.Drawing.Point(181, 284)
+        Me.txtTrial.Name = "txtTrial"
+        Me.txtTrial.Size = New System.Drawing.Size(107, 20)
+        Me.txtTrial.TabIndex = 25
+        Me.txtTrial.Visible = False
+        '
         'txtTva
         '
         Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -336,6 +377,23 @@ Partial Class Setting
         Me.txtTva.Name = "txtTva"
         Me.txtTva.Size = New System.Drawing.Size(107, 20)
         Me.txtTva.TabIndex = 25
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(341, 115)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(60, 13)
+        Me.Label22.TabIndex = 26
+        Me.Label22.Text = "Path Svgrd"
+        '
+        'txtPathSvgd
+        '
+        Me.txtPathSvgd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathSvgd.Location = New System.Drawing.Point(436, 113)
+        Me.txtPathSvgd.Name = "txtPathSvgd"
+        Me.txtPathSvgd.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathSvgd.TabIndex = 25
         '
         'Label11
         '
@@ -346,6 +404,15 @@ Partial Class Setting
         Me.Label11.TabIndex = 26
         Me.Label11.Text = "Nombres des Article /Pg"
         '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(341, 79)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(49, 13)
+        Me.Label21.TabIndex = 26
+        Me.Label21.Text = "Path Img"
+        '
         'txtnumberOfItems
         '
         Me.txtnumberOfItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -353,6 +420,14 @@ Partial Class Setting
         Me.txtnumberOfItems.Name = "txtnumberOfItems"
         Me.txtnumberOfItems.Size = New System.Drawing.Size(107, 20)
         Me.txtnumberOfItems.TabIndex = 25
+        '
+        'txtPathImg
+        '
+        Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathImg.Location = New System.Drawing.Point(436, 77)
+        Me.txtPathImg.Name = "txtPathImg"
+        Me.txtPathImg.Size = New System.Drawing.Size(148, 20)
+        Me.txtPathImg.TabIndex = 25
         '
         'Label7
         '
@@ -405,6 +480,36 @@ Partial Class Setting
         Me.PictureBox2.TabIndex = 11
         Me.PictureBox2.TabStop = False
         '
+        'Button18
+        '
+        Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button18.Location = New System.Drawing.Point(602, 142)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(75, 29)
+        Me.Button18.TabIndex = 20
+        Me.Button18.Text = "اختر"
+        Me.Button18.UseVisualStyleBackColor = True
+        '
+        'Button17
+        '
+        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button17.Location = New System.Drawing.Point(602, 104)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(75, 29)
+        Me.Button17.TabIndex = 20
+        Me.Button17.Text = "اختر"
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'Button16
+        '
+        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button16.Location = New System.Drawing.Point(602, 68)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(75, 29)
+        Me.Button16.TabIndex = 20
+        Me.Button16.Text = "اختر"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
         'plImp
         '
         Me.plImp.AutoScroll = True
@@ -442,7 +547,7 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 274)
+        Me.plImp.Location = New System.Drawing.Point(5, 492)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
         Me.plImp.Size = New System.Drawing.Size(750, 142)
@@ -775,7 +880,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 206)
+        Me.plRole.Location = New System.Drawing.Point(5, 424)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 68)
@@ -822,7 +927,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 144)
+        Me.plUser.Location = New System.Drawing.Point(5, 362)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -889,7 +994,7 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.txtnn)
         Me.plText.Controls.Add(Me.Button14)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 81)
+        Me.plText.Location = New System.Drawing.Point(5, 299)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
         Me.plText.Size = New System.Drawing.Size(750, 63)
@@ -1084,20 +1189,21 @@ Partial Class Setting
         Me.plData.AutoScroll = True
         Me.plData.BackColor = System.Drawing.Color.Transparent
         Me.plData.Controls.Add(Me.LinkLabel3)
+        Me.plData.Controls.Add(Me.LinkLabel4)
         Me.plData.Controls.Add(Me.LinkLabel2)
         Me.plData.Controls.Add(Me.Panel6)
         Me.plData.Dock = System.Windows.Forms.DockStyle.Top
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 76)
+        Me.plData.Size = New System.Drawing.Size(750, 294)
         Me.plData.TabIndex = 13
         '
         'LinkLabel3
         '
         Me.LinkLabel3.AutoSize = True
         Me.LinkLabel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel3.Location = New System.Drawing.Point(94, 114)
+        Me.LinkLabel3.Location = New System.Drawing.Point(91, 201)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Size = New System.Drawing.Size(181, 16)
         Me.LinkLabel3.TabIndex = 23
@@ -1124,7 +1230,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(713, 39)
+        Me.Panel6.Size = New System.Drawing.Size(730, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1149,86 +1255,16 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'txtPathImg
+        'LinkLabel4
         '
-        Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathImg.Location = New System.Drawing.Point(436, 77)
-        Me.txtPathImg.Name = "txtPathImg"
-        Me.txtPathImg.Size = New System.Drawing.Size(148, 20)
-        Me.txtPathImg.TabIndex = 25
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(341, 79)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(49, 13)
-        Me.Label21.TabIndex = 26
-        Me.Label21.Text = "Path Img"
-        '
-        'txtPathSvgd
-        '
-        Me.txtPathSvgd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathSvgd.Location = New System.Drawing.Point(436, 113)
-        Me.txtPathSvgd.Name = "txtPathSvgd"
-        Me.txtPathSvgd.Size = New System.Drawing.Size(148, 20)
-        Me.txtPathSvgd.TabIndex = 25
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(341, 115)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(60, 13)
-        Me.Label22.TabIndex = 26
-        Me.Label22.Text = "Path Svgrd"
-        '
-        'txtPathBound
-        '
-        Me.txtPathBound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathBound.Location = New System.Drawing.Point(439, 151)
-        Me.txtPathBound.Name = "txtPathBound"
-        Me.txtPathBound.Size = New System.Drawing.Size(148, 20)
-        Me.txtPathBound.TabIndex = 25
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(344, 153)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(80, 13)
-        Me.Label23.TabIndex = 26
-        Me.Label23.Text = "Path Db Bound"
-        '
-        'Button16
-        '
-        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button16.Location = New System.Drawing.Point(602, 68)
-        Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(75, 29)
-        Me.Button16.TabIndex = 20
-        Me.Button16.Text = "اختر"
-        Me.Button16.UseVisualStyleBackColor = True
-        '
-        'Button17
-        '
-        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button17.Location = New System.Drawing.Point(602, 104)
-        Me.Button17.Name = "Button17"
-        Me.Button17.Size = New System.Drawing.Size(75, 29)
-        Me.Button17.TabIndex = 20
-        Me.Button17.Text = "اختر"
-        Me.Button17.UseVisualStyleBackColor = True
-        '
-        'Button18
-        '
-        Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button18.Location = New System.Drawing.Point(602, 142)
-        Me.Button18.Name = "Button18"
-        Me.Button18.Size = New System.Drawing.Size(75, 29)
-        Me.Button18.TabIndex = 20
-        Me.Button18.Text = "اختر"
-        Me.Button18.UseVisualStyleBackColor = True
+        Me.LinkLabel4.AutoSize = True
+        Me.LinkLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel4.Location = New System.Drawing.Point(91, 114)
+        Me.LinkLabel4.Name = "LinkLabel4"
+        Me.LinkLabel4.Size = New System.Drawing.Size(119, 16)
+        Me.LinkLabel4.TabIndex = 23
+        Me.LinkLabel4.TabStop = True
+        Me.LinkLabel4.Text = "liste des depots"
         '
         'Setting
         '
@@ -1373,5 +1409,8 @@ Partial Class Setting
     Friend WithEvents Button18 As System.Windows.Forms.Button
     Friend WithEvents Button17 As System.Windows.Forms.Button
     Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents txtTrial As System.Windows.Forms.TextBox
+    Friend WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
 
 End Class

@@ -126,10 +126,10 @@ Public Class DrawClass
             End If
             e.Graphics.DrawRectangle(pen, CInt(55 * a), l, CInt(720 * a), 22)
 
-            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60 * a, l + 5, (460 - a_Rms) * a, 25), sf_L)
-            e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF((525 - a_Rms) * a, l + 5, 65 * a, 25), sf_R)
-            e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF((600 - a_Rms) * a, l + 5, 70 * a, 25), sf_R)
-            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(680 * a, l + 5, 90 * a, 25), sf_R)
+            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60 * a, l + 5, (460 - a_Rms) * a, 25), sf_C)
+            e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF((525 - a_Rms) * a, l + 5, 65 * a, 25), sf_C)
+            e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF((600 - a_Rms) * a, l + 5, 70 * a, 25), sf_C)
+            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(680 * a, l + 5, 90 * a, 25), sf_C)
 
             pn.DashCap = System.Drawing.Drawing2D.DashCap.Round
 
@@ -218,7 +218,17 @@ Public Class DrawClass
             If isCache Then l -= 20
             If remise > 0 Then l -= 20
 
-            Dim strTotal As String = "Arrêté la présente facture à la somme : " & NumericStrings.GetNumberWords(CDec(ttc)) & " (Dhs)"
+            Dim nPart As Decimal = 0
+            Dim zPart As Decimal = 0
+
+            SplitDecimal(CDec(ttc), nPart, zPart)
+
+            Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            If zPart > 0 Then
+                stt &= "et " & NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+            End If
+
+            Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
             Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
             If with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, 440 * a, sze.Height), sf_L)
 
@@ -472,14 +482,14 @@ Public Class DrawClass
             Dim a As Integer = 0
             If remise > 0 Then
                 a = 50
-                e.Graphics.DrawString("Remise", fnt, Brushes.Black, New RectangleF(630, l + 5, 40, 25), sf_R)
+                e.Graphics.DrawString("Remise", fnt, Brushes.Black, New RectangleF(630, l + 5, 40, 25), sf_C)
                 e.Graphics.DrawLine(pen, 630, l + 20, 670, l + 20)
             End If
 
-            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60, l + 5, 460 - a, 25), sf_L)
-            e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF(525 - a, l + 5, 65, 25), sf_R)
-            e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF(600 - a, l + 5, 70, 25), sf_R)
-            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(680, l + 5, 90, 25), sf_R)
+            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60, l + 5, 460 - a, 25), sf_C)
+            e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF(525 - a, l + 5, 65, 25), sf_C)
+            e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF(600 - a, l + 5, 70, 25), sf_C)
+            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(680, l + 5, 90, 25), sf_C)
 
             pn.DashCap = System.Drawing.Drawing2D.DashCap.Round
 
@@ -554,9 +564,22 @@ Public Class DrawClass
             If isCache Then l -= 20
             If remise > 0 Then l -= 20
 
-            Dim strTotal As String = "Arrêté la présente facture à la somme : " & NumericStrings.GetNumberWords(CDec(ttc)) & " (Dhs)"
+
+
+            Dim nPart As Decimal = 0
+            Dim zPart As Decimal = 0
+
+            SplitDecimal(CDec(ttc), nPart, zPart)
+
+            Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            If zPart > 0 Then
+                stt &= NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+            End If
+
+            Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
             Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
-            If with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60, l + 25, 440, sze.Height), sf_L)
+            If with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, 440 * a, sze.Height), sf_L)
+
 
             e.Graphics.DrawLine(pn, 60, l + sze.Height + 35, 160, l + sze.Height + 35)
             If with_Price Then e.Graphics.DrawString("* Mode de paiement : " & ds.modePayement, fntsmall, Brushes.Black, New RectangleF(60, l + sze.Height + 45, 266, 22), sf_L)
@@ -1414,8 +1437,8 @@ Public Class DrawClass
 
             e.Graphics.DrawString("Id/N°", fnt, Brushes.Black, New RectangleF(40, l + 5, 50, 25), sf_L)
             e.Graphics.DrawString("Libelle", fnt, Brushes.Black, New RectangleF(94, l + 5, 300, 25), sf_L)
-            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(398, l + 5, 80, 25), sf_L)
-            'e.Graphics.DrawString("", fnt, Brushes.Black, New RectangleF(482, l + 5, 80, 25), sf_R)
+            e.Graphics.DrawString("Domain", fnt, Brushes.Black, New RectangleF(398, l + 5, 80, 25), sf_L)
+            e.Graphics.DrawString("Date", fnt, Brushes.Black, New RectangleF(482, l + 5, 80, 25), sf_R)
             e.Graphics.DrawString("Total ", fnt, Brushes.Black, New RectangleF(566, l + 5, 100, 25), sf_L)
             e.Graphics.DrawString("Solde  ", fnt, Brushes.Black, New RectangleF(668, l + 5, 100, 25), sf_L)
 
@@ -1440,6 +1463,7 @@ Public Class DrawClass
                 Dim ID As String = StrValue(data, "id", m)
                 Dim libelle As String = data.Rows(m).Item("name")
                 Dim dte As String = DteValue(data, "date", m).ToString("dd/MM/yyyy")
+                Dim domain As String = StrValue(data, "delai", m)
                 Dim total As String = String.Format("{0:n}", DblValue(data, "total", m))
                 Dim Avc As String = String.Format("{0:n}", DblValue(data, "avance", m))
                 Dim Vid As String = StrValue(data, "depart", m)
@@ -1450,8 +1474,8 @@ Public Class DrawClass
 
                 If IntValue(data, "id", m) > 0 Then e.Graphics.DrawString(ID, fnt, Brushes.Black, New RectangleF(40, l, 50, 25), sf_L)
                 e.Graphics.DrawString(libelle, fnt, Brushes.Black, New RectangleF(94, l, 300, size.Height), sf_L)
-                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(398, l, 80, 25), sf_L)
-                e.Graphics.DrawString(Vid, fnt, Brushes.Black, New RectangleF(482, l, 80, 25), sf_R)
+                e.Graphics.DrawString(domain, fnt, Brushes.Black, New RectangleF(398, l, 80, 25), sf_L)
+                e.Graphics.DrawString(dte, fnt, Brushes.Black, New RectangleF(482, l, 80, 25), sf_R)
                 e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(566, l, 100, 25), sf_L)
                 e.Graphics.DrawString(Avc, fnt, Brushes.Black, New RectangleF(668, l, 100, 25), sf_L)
 

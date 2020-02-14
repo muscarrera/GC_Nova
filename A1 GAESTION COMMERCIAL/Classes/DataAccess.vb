@@ -339,13 +339,10 @@ Public Class DataAccess
             Next
         End If
 
-
-
         Try
             Using cmd As OleDbCommand = BuildCommand(q, params)
                 Return cmd.ExecuteScalar
             End Using
-
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
             _hasError = True

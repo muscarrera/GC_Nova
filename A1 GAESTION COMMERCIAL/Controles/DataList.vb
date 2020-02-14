@@ -390,8 +390,32 @@
             If numberOfPage = 0 Then btPage.Text = "0"
             lastIndex = 0
             FillRows()
+
+
+            Try
+                lbLnbr.Text = value.Rows.Count
+                lbLtotal.Text = ""
+                lbLavc.Text = ""
+
+                Dim sum As Double = Convert.ToDouble(_dtList.Compute("SUM(total)", String.Empty))
+                lbLtotal.Text = String.Format("{0:n}", CDec(sum))
+                Dim avc As Double = Convert.ToDouble(_dtList.Compute("SUM(avance)", String.Empty))
+                lbLavc.Text = String.Format("{0:n}", avc)
+
+            Catch ex As Exception
+                Try
+                    Dim SM = _dtList.AsEnumerable().Aggregate(0, Function(n, r) PriceField(r) + n)
+                    lbLtotal.Text = String.Format("{0:n}", CDec(SM))
+                Catch exe As Exception
+                End Try
+            End Try
         End Set
     End Property
+    Private Shared Function PriceField(ByVal r As DataRow) As Integer
+        Dim v As Integer
+        Return If(Integer.TryParse(If((TryCast(r("value"), String)), String.Empty), v), v, 0)
+    End Function
+
     Public Property ModePayement As String
         Get
             Return TB.ModePayement
@@ -697,24 +721,25 @@
                 a.Avance = DblValue(_dtList, "avance", i)
                 a.remise = DblValue(_dtList, "remise", i)
                 a.Dte = DteValue(_dtList, "date", i)
-                a.Index = i
-                a.Dock = DockStyle.Top
-                a.BringToFront()
-                'a.SendToBack()
-
+              
                 If BoolValue(_dtList, "isPayed", i) Then a.plP.BackColor = Color.PaleGreen
                 If StrValue(_dtList, "isAdmin", i) = "Fini" Or StrValue(_dtList, "isAdmin", i) = "Facturé" Or
                   StrValue(_dtList, "isAdmin", i) = "Livré" Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 If StrValue(_dtList, "isAdmin", i).ToUpper = "ANNULER" Or
                  StrValue(_dtList, "isAdmin", i).ToUpper = "NONE" Then a.PlLeft.BackgroundImage = My.Resources.iconfinder_folder_delete_61770
+                a.Index = i
+                a.Dock = DockStyle.Top
+                a.BringToFront()
+                arr(i - startIndex) = a
 
                 AddHandler a.EditSelectedFacture, AddressOf Edit_SelectedFacture
                 AddHandler a.DeleteItem, AddressOf Delete_Item
                 AddHandler a.GetFactureInfos, AddressOf Get_FactureInfos
 
-                'Pl.Controls.Add(a)
-                arr(i - startIndex) = a
+
+
+
 
                 If i = lastIndex Then Exit For
             Next

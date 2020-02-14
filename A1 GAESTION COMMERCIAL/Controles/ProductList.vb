@@ -3,6 +3,7 @@
     Private startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Private _dt As DataTable
     Public TableName As String = "Article"
+    Public dt_Cats As DataTable
 
     Public Event NewElement(ByRef ds As ProductList)
     Public Event EditArticle(ByRef ls As ListLine, ByVal m As String)
@@ -132,6 +133,7 @@
                 Dim a As New ListLine
                 a.Id = _dt.Rows(i).Item(0)
                 a.lbDate.Text = StrValue(_dt, "ref", i)
+
                 a.Libele = _dt.Rows(i).Item("name")
 
                 Dim sp = DblValue(_dt, "sprice", i)
@@ -149,6 +151,22 @@
                 a.Avance = sp
 
                 If BoolValue(_dt, "isPromo", i) > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
+
+                Dim vid As Integer = IntValue(_dt, "cid", i)
+                a.lbref.Text = vid
+
+                Try
+                    If vid > 0 Then
+                        Dim query = From d In dt_Cats.AsEnumerable()
+                                    Where d.Field(Of Integer)(0) = vid
+                                    Select d
+
+                        Dim r As DataTable = query.CopyToDataTable()
+
+                        a.lbref.Text = r.Rows(0).Item("name")
+                    End If
+                Catch ex As Exception
+                End Try
 
                 a.Index = i
                 a.Dock = DockStyle.Top

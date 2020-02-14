@@ -216,6 +216,12 @@
     <Compile Include="GUI\AddEditClient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\AddEditDepot.Designer.vb">
+      <DependentUpon>AddEditDepot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddEditDepot.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\AddEditDriver.Designer.vb">
       <DependentUpon>AddEditDriver.vb</DependentUpon>
     </Compile>
@@ -435,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddEditClient.resx">
       <DependentUpon>AddEditClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddEditDepot.resx">
+      <DependentUpon>AddEditDepot.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddEditDriver.resx">
       <DependentUpon>AddEditDriver.vb</DependentUpon>

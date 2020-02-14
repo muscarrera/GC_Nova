@@ -174,6 +174,13 @@
     End Function
 
 
+    Sub SplitDecimal(ByVal number As Decimal, ByRef wholePart As Decimal, _
+                 ByRef fractionalPart As Decimal)
+        wholePart = Math.Truncate(number)
+        fractionalPart = number - wholePart
+    End Sub
+
+
 
     '''''''''''''''''''''''''
     'Strings

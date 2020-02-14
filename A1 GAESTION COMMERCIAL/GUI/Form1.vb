@@ -46,7 +46,7 @@
     Public proformat_Id As Integer
     Public printWithDate As Boolean = True
     Public printWithPrice As Boolean = True
-    Public nbrPrOp_tr As Integer = 666
+    Public nbrPrOp_tr As Integer = 300
     Public ListToPrint As DataTable
     Public factureToPrint As Facture
     Public cellWidth As Integer
@@ -84,16 +84,13 @@
         HandleRegistryinfo()
 
         'check Trial
-        If TrialVersion_Master = False Then
+        If TrialVersion_Slave = False Then
             MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***TRIAL***")
             End
         End If
 
         'Trial
-        If getTrial() = False Then
-            MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***NBR***")
-            End
-        End If
+     
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -119,6 +116,18 @@
         Exercice = Now.Date.ToString("yy")
 
 
+
+        Me.Show()
+
+        If getTrial() = False Then
+            'MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***NBR***")
+            'End
+            Dim str = "une nouvelle mise à jour a été publiée récemment," & vbNewLine &
+                    "veuillez appeler l'administrateur pour en bénéficier" & vbNewLine &
+                    "sécurité ** vitesse ** optimisation"
+            MsgBox(str, MsgBoxStyle.Information, "***NBR***")
+
+        End If
     End Sub
 
     'Add DataList to pl Body
