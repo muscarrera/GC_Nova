@@ -215,13 +215,14 @@
                 btTranformer.Visible = False
                 btSolde.Visible = True
                 btParamsImp.Visible = False
+                btAvoir.Visible = True
             ElseIf value = "Facture" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
                 btParamsImp.Visible = True
-                If Statut <> "CREATION" Then btAvoir.Visible = True
+                btAvoir.Visible = True
 
             ElseIf value = "Buy_Facture" Then
                 btFacturer.Visible = False
@@ -299,7 +300,9 @@
         Set(ByVal value As String)
             txtStatus.text = value
             btAvoir.Visible = False
-            If value <> "CREATION" And Type = "Facture" Then btAvoir.Visible = True
+            btDelete.Visible = True
+
+            If Type = "Facture" Or Type = "BL" Then btAvoir.Visible = True
 
             If value = "Facturé" Then
                 btSolde.Visible = False
@@ -308,7 +311,11 @@
                     Type = "BL" Or Type = "BA" Then btSolde.Visible = True
             End If
 
-
+            If value = "AVOIR" Then
+                btSolde.Visible = False
+                btAvoir.Visible = False
+                btDelete.Visible = False
+            End If
         End Set
     End Property
     Public Property HasJoinFiles As Boolean

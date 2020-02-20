@@ -180,17 +180,18 @@
             lbName.Text = DataGridView1.SelectedRows(0).Cells(1).Value
             lbRef.Text = DataGridView1.SelectedRows(0).Cells(2).Value
             _ref = CStr(DataGridView1.SelectedRows(0).Cells(2).Value)
+            lbCat.Text = DataGridView1.SelectedRows(0).Cells(3).Value
 
             lbBprice.Text = String.Format("{0:n}", CDec(DataGridView1.SelectedRows(0).Cells(4).Value))
             lbSprice.Text = String.Format("{0:n}", CDec(DataGridView1.SelectedRows(0).Cells(5).Value))
-
+            lbStk.Text = GetArticleStock(arid)
             Try
                 Dim STR As String = Form1.ImgPah & "\art" & DataGridView1.SelectedRows(0).Cells(6).Value
                 Dim pmg2 As New Bitmap(STR)
 
                 PictureBox1.BackgroundImage = pmg2
             Catch ex As Exception
-                PictureBox1.BackgroundImage = My.Resources.Download_Product_Png_Image_66617_For_Designing_Projects
+                PictureBox1.BackgroundImage = My.Resources.BGpRD
             End Try
 
 
@@ -199,11 +200,46 @@
         End Try
 
     End Sub
+    Private Function GetArticleStock(ByVal id As Integer) As String
+        Dim str = "- "
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            If Form1.isWorkinOnStock = False Then Return "------------"
+            Dim where As New Dictionary(Of String, Object)
+
+
+            'For i As Integer=0 to 
+            where.Clear()
+            where.Add("arid", id)
+
+            Dim dt = a.SelectDataTable("Details_Stock", {"*"}, where)
+
+            If IsNothing(dt) Then Return "------------"
+
+
+            Try
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    If i > 0 Then str &= vbNewLine & "- "
+
+                    str &= " Depôt N° " & dt.Rows(i).Item("dpid") & " : " & dt.Rows(i).Item("qte")
+
+
+
+                Next
+            Catch ex As Exception
+            End Try
+
+        End Using
+        Return str
+    End Function
+
+
+
 
     Private Sub resetForm()
         arid = 0
         lbName.Text = "-"
         lbRef.Text = "-"
+        lbStk.Text = "-"
         lbBprice.Text = "0.00"
         lbSprice.Text = "0.00"
         _ref = ""

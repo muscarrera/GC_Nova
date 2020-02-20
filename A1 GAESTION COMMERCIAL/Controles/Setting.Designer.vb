@@ -116,11 +116,12 @@ Partial Class Setting
         Me.Button14 = New System.Windows.Forms.Button()
         Me.plData = New System.Windows.Forms.Panel()
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel5 = New System.Windows.Forms.LinkLabel()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -1189,6 +1190,7 @@ Partial Class Setting
         Me.plData.AutoScroll = True
         Me.plData.BackColor = System.Drawing.Color.Transparent
         Me.plData.Controls.Add(Me.LinkLabel3)
+        Me.plData.Controls.Add(Me.LinkLabel5)
         Me.plData.Controls.Add(Me.LinkLabel4)
         Me.plData.Controls.Add(Me.LinkLabel2)
         Me.plData.Controls.Add(Me.Panel6)
@@ -1203,12 +1205,23 @@ Partial Class Setting
         '
         Me.LinkLabel3.AutoSize = True
         Me.LinkLabel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel3.Location = New System.Drawing.Point(91, 201)
+        Me.LinkLabel3.Location = New System.Drawing.Point(91, 240)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Size = New System.Drawing.Size(181, 16)
         Me.LinkLabel3.TabIndex = 23
         Me.LinkLabel3.TabStop = True
         Me.LinkLabel3.Text = "Modifier les ajouts (0000)"
+        '
+        'LinkLabel4
+        '
+        Me.LinkLabel4.AutoSize = True
+        Me.LinkLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel4.Location = New System.Drawing.Point(91, 114)
+        Me.LinkLabel4.Name = "LinkLabel4"
+        Me.LinkLabel4.Size = New System.Drawing.Size(119, 16)
+        Me.LinkLabel4.TabIndex = 23
+        Me.LinkLabel4.TabStop = True
+        Me.LinkLabel4.Text = "liste des depots"
         '
         'LinkLabel2
         '
@@ -1255,16 +1268,16 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'LinkLabel4
+        'LinkLabel5
         '
-        Me.LinkLabel4.AutoSize = True
-        Me.LinkLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel4.Location = New System.Drawing.Point(91, 114)
-        Me.LinkLabel4.Name = "LinkLabel4"
-        Me.LinkLabel4.Size = New System.Drawing.Size(119, 16)
-        Me.LinkLabel4.TabIndex = 23
-        Me.LinkLabel4.TabStop = True
-        Me.LinkLabel4.Text = "liste des depots"
+        Me.LinkLabel5.AutoSize = True
+        Me.LinkLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel5.Location = New System.Drawing.Point(91, 152)
+        Me.LinkLabel5.Name = "LinkLabel5"
+        Me.LinkLabel5.Size = New System.Drawing.Size(115, 16)
+        Me.LinkLabel5.TabIndex = 23
+        Me.LinkLabel5.TabStop = True
+        Me.LinkLabel5.Text = "Depôt Principal"
         '
         'Setting
         '
@@ -1412,5 +1425,6 @@ Partial Class Setting
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents txtTrial As System.Windows.Forms.TextBox
     Friend WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabel5 As System.Windows.Forms.LinkLabel
 
 End Class

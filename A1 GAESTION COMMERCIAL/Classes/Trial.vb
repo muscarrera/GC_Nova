@@ -14,11 +14,12 @@
             setRegistryinfo("nbrPrOp_Tr", 1)
             n = 1
         End If
-
+        n += 1
+        setRegistryinfo("nbrPrOp_Tr", n)
         If n < 20 Then Return False
 
         
-        'n += 1
+
         'setRegistryinfo("nbrPrOp_Tr", n)
         'If n > Form1.nbrPrOp_tr Then b = False
 

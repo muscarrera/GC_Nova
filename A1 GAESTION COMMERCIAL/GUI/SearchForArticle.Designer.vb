@@ -22,8 +22,8 @@ Partial Class SearchForArticle
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -35,15 +35,6 @@ Partial Class SearchForArticle
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lbSprice = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.lbBprice = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lbRef = New System.Windows.Forms.Label()
-        Me.lbName = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.FL = New System.Windows.Forms.FlowLayoutPanel()
@@ -51,6 +42,20 @@ Partial Class SearchForArticle
         Me.CL = New A1_GAESTION_COMMERCIAL.CompleteListe()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txt = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lbStk = New System.Windows.Forms.Label()
+        Me.lbCat = New System.Windows.Forms.Label()
+        Me.lbRef = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbSprice = New System.Windows.Forms.Label()
+        Me.lbBprice = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lbName = New System.Windows.Forms.Label()
         Me.Panel58 = New System.Windows.Forms.Panel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -59,12 +64,14 @@ Partial Class SearchForArticle
         Me.Panel3.SuspendLayout()
         Me.Panel9.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel8.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.plTag.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel11.SuspendLayout()
+        Me.Panel10.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel58.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,7 +82,7 @@ Partial Class SearchForArticle
         Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel6.Controls.Add(Me.Panel3)
         Me.Panel6.Controls.Add(Me.Panel2)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Controls.Add(Me.Panel8)
         Me.Panel6.Location = New System.Drawing.Point(0, 20)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5)
@@ -85,11 +92,10 @@ Partial Class SearchForArticle
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Panel9)
-        Me.Panel3.Controls.Add(Me.Panel8)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(418, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(516, 667)
+        Me.Panel3.Size = New System.Drawing.Size(516, 293)
         Me.Panel3.TabIndex = 32
         '
         'Panel9
@@ -108,15 +114,15 @@ Partial Class SearchForArticle
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(3)
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(3)
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4, Me.Column5, Me.Column7})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -124,8 +130,8 @@ Partial Class SearchForArticle
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.RowTemplate.Height = 28
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(516, 293)
@@ -174,104 +180,6 @@ Partial Class SearchForArticle
         Me.Column7.ReadOnly = True
         Me.Column7.Visible = False
         '
-        'Panel8
-        '
-        Me.Panel8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgForm
-        Me.Panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel8.Controls.Add(Me.Panel58)
-        Me.Panel8.Controls.Add(Me.Label3)
-        Me.Panel8.Controls.Add(Me.lbSprice)
-        Me.Panel8.Controls.Add(Me.Label2)
-        Me.Panel8.Controls.Add(Me.lbBprice)
-        Me.Panel8.Controls.Add(Me.Label1)
-        Me.Panel8.Controls.Add(Me.lbRef)
-        Me.Panel8.Controls.Add(Me.lbName)
-        Me.Panel8.Controls.Add(Me.PictureBox1)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel8.Location = New System.Drawing.Point(0, 293)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(516, 374)
-        Me.Panel8.TabIndex = 0
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Green
-        Me.Label3.Location = New System.Drawing.Point(236, 265)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(111, 18)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Prix de vente"
-        '
-        'lbSprice
-        '
-        Me.lbSprice.AutoSize = True
-        Me.lbSprice.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbSprice.ForeColor = System.Drawing.Color.Green
-        Me.lbSprice.Location = New System.Drawing.Point(350, 265)
-        Me.lbSprice.Name = "lbSprice"
-        Me.lbSprice.Size = New System.Drawing.Size(13, 18)
-        Me.lbSprice.TabIndex = 1
-        Me.lbSprice.Text = "-"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(236, 234)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Prix d'achat :"
-        '
-        'lbBprice
-        '
-        Me.lbBprice.AutoSize = True
-        Me.lbBprice.Location = New System.Drawing.Point(307, 236)
-        Me.lbBprice.Name = "lbBprice"
-        Me.lbBprice.Size = New System.Drawing.Size(10, 13)
-        Me.lbBprice.TabIndex = 1
-        Me.lbBprice.Text = "-"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(236, 203)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(30, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Réf :"
-        '
-        'lbRef
-        '
-        Me.lbRef.AutoSize = True
-        Me.lbRef.Location = New System.Drawing.Point(298, 203)
-        Me.lbRef.Name = "lbRef"
-        Me.lbRef.Size = New System.Drawing.Size(10, 13)
-        Me.lbRef.TabIndex = 1
-        Me.lbRef.Text = "-"
-        '
-        'lbName
-        '
-        Me.lbName.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.ForeColor = System.Drawing.Color.DarkRed
-        Me.lbName.Location = New System.Drawing.Point(58, 23)
-        Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(396, 79)
-        Me.lbName.TabIndex = 1
-        Me.lbName.Text = "-"
-        Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.Download_Product_Png_Image_66617_For_Designing_Projects
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(61, 105)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(160, 174)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Panel7)
@@ -281,7 +189,7 @@ Partial Class SearchForArticle
         Me.Panel2.Location = New System.Drawing.Point(5, 5)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel2.Size = New System.Drawing.Size(413, 667)
+        Me.Panel2.Size = New System.Drawing.Size(413, 293)
         Me.Panel2.TabIndex = 32
         '
         'Panel7
@@ -290,7 +198,7 @@ Partial Class SearchForArticle
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(10, 141)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(393, 516)
+        Me.Panel7.Size = New System.Drawing.Size(393, 142)
         Me.Panel7.TabIndex = 28
         '
         'FL
@@ -299,7 +207,7 @@ Partial Class SearchForArticle
         Me.FL.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FL.Location = New System.Drawing.Point(0, 0)
         Me.FL.Name = "FL"
-        Me.FL.Size = New System.Drawing.Size(393, 516)
+        Me.FL.Size = New System.Drawing.Size(393, 142)
         Me.FL.TabIndex = 1
         '
         'plTag
@@ -354,14 +262,165 @@ Partial Class SearchForArticle
         Me.txt.txtReadOnly = False
         Me.txt.TxtSelect = New Integer() {1, 0}
         '
+        'Panel8
+        '
+        Me.Panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel8.Controls.Add(Me.Panel11)
+        Me.Panel8.Controls.Add(Me.Panel10)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel8.Location = New System.Drawing.Point(5, 298)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(929, 374)
+        Me.Panel8.TabIndex = 0
+        '
+        'Panel11
+        '
+        Me.Panel11.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgLightForm
+        Me.Panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Panel11.Controls.Add(Me.Label3)
+        Me.Panel11.Controls.Add(Me.lbStk)
+        Me.Panel11.Controls.Add(Me.lbCat)
+        Me.Panel11.Controls.Add(Me.lbRef)
+        Me.Panel11.Controls.Add(Me.Label4)
+        Me.Panel11.Controls.Add(Me.Label1)
+        Me.Panel11.Controls.Add(Me.lbSprice)
+        Me.Panel11.Controls.Add(Me.lbBprice)
+        Me.Panel11.Controls.Add(Me.Label2)
+        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel11.Location = New System.Drawing.Point(413, 0)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(516, 374)
+        Me.Panel11.TabIndex = 35
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Green
+        Me.Label3.Location = New System.Drawing.Point(101, 274)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(111, 18)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Prix de vente"
+        '
+        'lbStk
+        '
+        Me.lbStk.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbStk.ForeColor = System.Drawing.Color.DarkRed
+        Me.lbStk.Location = New System.Drawing.Point(100, 135)
+        Me.lbStk.Name = "lbStk"
+        Me.lbStk.Size = New System.Drawing.Size(319, 79)
+        Me.lbStk.TabIndex = 1
+        Me.lbStk.Text = "-"
+        '
+        'lbCat
+        '
+        Me.lbCat.AutoSize = True
+        Me.lbCat.Location = New System.Drawing.Point(168, 109)
+        Me.lbCat.Name = "lbCat"
+        Me.lbCat.Size = New System.Drawing.Size(10, 13)
+        Me.lbCat.TabIndex = 1
+        Me.lbCat.Text = "-"
+        '
+        'lbRef
+        '
+        Me.lbRef.AutoSize = True
+        Me.lbRef.Location = New System.Drawing.Point(163, 82)
+        Me.lbRef.Name = "lbRef"
+        Me.lbRef.Size = New System.Drawing.Size(10, 13)
+        Me.lbRef.TabIndex = 1
+        Me.lbRef.Text = "-"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(101, 109)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(61, 13)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Categorie  :"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(101, 82)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(30, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Réf :"
+        '
+        'lbSprice
+        '
+        Me.lbSprice.AutoSize = True
+        Me.lbSprice.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbSprice.ForeColor = System.Drawing.Color.Green
+        Me.lbSprice.Location = New System.Drawing.Point(215, 274)
+        Me.lbSprice.Name = "lbSprice"
+        Me.lbSprice.Size = New System.Drawing.Size(13, 18)
+        Me.lbSprice.TabIndex = 1
+        Me.lbSprice.Text = "-"
+        '
+        'lbBprice
+        '
+        Me.lbBprice.AutoSize = True
+        Me.lbBprice.Location = New System.Drawing.Point(172, 245)
+        Me.lbBprice.Name = "lbBprice"
+        Me.lbBprice.Size = New System.Drawing.Size(10, 13)
+        Me.lbBprice.TabIndex = 1
+        Me.lbBprice.Text = "-"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(101, 243)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(68, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Prix d'achat :"
+        '
+        'Panel10
+        '
+        Me.Panel10.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgLightForm
+        Me.Panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel10.Controls.Add(Me.PictureBox1)
+        Me.Panel10.Controls.Add(Me.lbName)
+        Me.Panel10.Controls.Add(Me.Panel58)
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel10.Location = New System.Drawing.Point(0, 0)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(413, 374)
+        Me.Panel10.TabIndex = 35
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BGpRD
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(32, 27)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(343, 177)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'lbName
+        '
+        Me.lbName.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbName.ForeColor = System.Drawing.Color.DarkBlue
+        Me.lbName.Location = New System.Drawing.Point(28, 221)
+        Me.lbName.Name = "lbName"
+        Me.lbName.Size = New System.Drawing.Size(347, 83)
+        Me.lbName.TabIndex = 1
+        Me.lbName.Text = "-"
+        Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Panel58
         '
         Me.Panel58.BackColor = System.Drawing.Color.Transparent
         Me.Panel58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel58.Controls.Add(Me.Button8)
-        Me.Panel58.Location = New System.Drawing.Point(61, 302)
+        Me.Panel58.Location = New System.Drawing.Point(32, 319)
         Me.Panel58.Name = "Panel58"
-        Me.Panel58.Size = New System.Drawing.Size(392, 42)
+        Me.Panel58.Size = New System.Drawing.Size(343, 42)
         Me.Panel58.TabIndex = 34
         '
         'Button8
@@ -376,7 +435,7 @@ Partial Class SearchForArticle
         Me.Button8.Location = New System.Drawing.Point(0, 0)
         Me.Button8.Name = "Button8"
         Me.Button8.Padding = New System.Windows.Forms.Padding(120, 0, 6, 0)
-        Me.Button8.Size = New System.Drawing.Size(390, 40)
+        Me.Button8.Size = New System.Drawing.Size(341, 40)
         Me.Button8.TabIndex = 4
         Me.Button8.Text = "       Valider"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -422,13 +481,15 @@ Partial Class SearchForArticle
         Me.Panel3.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.plTag.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel11.ResumeLayout(False)
+        Me.Panel11.PerformLayout()
+        Me.Panel10.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel58.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -464,4 +525,9 @@ Partial Class SearchForArticle
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Panel11 As System.Windows.Forms.Panel
+    Friend WithEvents lbStk As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Panel10 As System.Windows.Forms.Panel
+    Friend WithEvents lbCat As System.Windows.Forms.Label
 End Class

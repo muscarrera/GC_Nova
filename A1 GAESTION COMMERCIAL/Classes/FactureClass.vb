@@ -32,6 +32,8 @@ Public Class FactureClass
         AddHandler ds.SaveListofFacturesasPdf, AddressOf SaveListofFacturesasPdf
         AddHandler ds.PrintListofFactures, AddressOf PrintListofFactures
         AddHandler ds.PrintParamsFacture, AddressOf PrintParamsFacture
+        AddHandler ds.PrintListofGoupeInpayed, AddressOf PrintListofGoupeInpayed
+        AddHandler ds.PrintListofDetailsJornalier, AddressOf PrintListofDetailsJornalier
         AddHandler ds.SaveChanges, AddressOf SaveChanges
         AddHandler ds.TypeTransformer, AddressOf TypeTransformer
         AddHandler ds.CommandeDelivry, AddressOf CommandeDelivry
@@ -55,7 +57,8 @@ Public Class FactureClass
         AddHandler ds.GetListofCommande, AddressOf GetListofCommande
         AddHandler ds.GetListofFacture, AddressOf GetListofFacture
         AddHandler ds.EdtitFactureDate, AddressOf EdtitFactureDate
-        AddHandler ds.PrintListofGoupeInpayed, AddressOf PrintListofGoupeInpayed
+        AddHandler ds.getStockForAddRow, AddressOf getStockForAddRow
+        AddHandler ds.GetArticleStock, AddressOf GetArticleStock
 
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
@@ -63,6 +66,9 @@ Public Class FactureClass
         AddHandler ds.DeletePayement, AddressOf DeletePayement
         'Joindre fichiers
         AddHandler ds.AddFiles, AddressOf AddFiles
+        'init depot
+        ds.AddRow1.dpid = Form1.mainDepot
+        ds.AddRow1.isSlave = Form1.admin
 
         Form1.plBody.Controls.Add(ds)
     End Sub
@@ -154,6 +160,7 @@ Public Class FactureClass
                 params.Add("isPayed", ds.isPayed)
                 params.Add("modePayement", ds.ModePayement)
                 If isDuplicate = False Then params.Add(ds.FactureTable, ds.Id)
+                If tb_F = "Sell_Avoir" And ds.FactureTable = "Sell_Facture" Then params.Add("Bon_Livraison", "Fct N° : " & ds.Id)
                 'params.Add("droitTimbre", ds.TB.DroitTimbre)
                 fid = c.InsertRecord(tb_F, params, True)
                 params.Clear()
@@ -178,6 +185,28 @@ Public Class FactureClass
 
                         c.InsertRecord(tb_D, params)
                         params.Clear()
+
+                        If Form1.isWorkinOnStock = False Then Continue For
+                        If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
+                            Dim q As Double = CDbl(data.Rows(i).Item("qte"))
+
+                            If tb_D = "Details_Bon_Livraison" Then
+                                q = q * -1
+                            ElseIf tb_D = "Details_Bon_Achat" Then
+                                q = q
+                            Else
+                                Continue For
+                            End If
+
+                            Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+                            If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+                                AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
+                                            data.Rows(i).Item("cid"), q, c)
+                            Else
+                                oldStock += q
+                                updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
+                            End If
+                        End If
                     Next
                 End If
 
@@ -311,24 +340,68 @@ Public Class FactureClass
             'If ds.isSell = False Then NF.TableName = "Buy_Facture"
 
             Dim dt As DataTable
-
             If NF.ShowDialog = DialogResult.OK Then
-                Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-                    Dim order As New Dictionary(Of String, String)
-                    order.Add("id", "DESC")
-                    dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, NF.params, order)
-                End Using
+                If NF.ReferenceArticle = True Then
+                    Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                        Dim params As New Dictionary(Of String, Object)
+                        Dim arid As String = ""
+                        For Each kvp As KeyValuePair(Of String, Object) In NF.params
+                            If kvp.Key = "ref Like " Then
+                                arid = kvp.Value
+                            Else
+                                params.Add(ds.FactureTable & "." & kvp.Key, kvp.Value)
+                            End If
+                        Next
 
-                ds.Clear()
-                If dt.Rows.Count > 0 Then
-                    ds.Mode = "LIST"
+                        If params.Count > 0 Then
+                            If arid = "" Then Exit Sub
 
-                    If NF.EtatGénéral = True Then
-                        FillByGroupingByClient(dt, ds)
-                    Else
-                        ds.DataList = dt
+                            Dim order As New Dictionary(Of String, String)
+                            order.Add("id", "DESC")
+                            dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params, order)
+                        Else
+                            Dim order As New Dictionary(Of String, String)
+                            order.Add("id", "DESC")
+                            params.Clear()
+                            params.Add("ref = ", arid)
+                            dt = a.SelectDataTableSymbols(ds.DetailsTable, {"*"}, params, order)
+                            arid = ""
+                        End If
+                        'Dim order As New Dictionary(Of String, String)
+                        'order.Add("id", "DESC")
+                        'dt = a.SelectDataLike(ds.DetailsTable, ds.FactureTable, ds.DetailsTable & ".[fctid]",
+                        '                     ds.FactureTable & ".[id]", {"fctid", "price", "qte"}, params)
+
+                        ds.Clear()
+                        If dt.Rows.Count > 0 Then
+                            ds.Mode = "LIST"
+                            FillByDetailsArticle(dt, arid, ds)
+
+                        End If
+                    End Using
+                Else
+
+
+                    Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                        Dim order As New Dictionary(Of String, String)
+                        order.Add("id", "DESC")
+                        dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, NF.params, order)
+                    End Using
+
+                    ds.Clear()
+                    If dt.Rows.Count > 0 Then
+                        ds.Mode = "LIST"
+
+                        If NF.EtatGénéral = True Then
+                            FillByGroupingByClient(dt, ds)
+
+                        ElseIf NF.EtatJournalier = True Then
+                            FillByEtatjournalier(dt, ds)
+                        Else
+                            ds.DataList = dt
+                        End If
+
                     End If
-
                 End If
             End If
         Catch ex As Exception
@@ -433,8 +506,224 @@ Public Class FactureClass
         Form1.PrintDocList.Print()
     End Sub
 
+    Private Sub FillByEtatjournalier(ByVal dt As DataTable, ByVal ds As DataList)
+
+        Dim list As DataTable = Nothing
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            For t As Integer = 0 To dt.Rows.Count - 1
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("fctid", dt.Rows(t).Item(0))
+                If t = 0 Then
+                    list = a.SelectDataTable(ds.DetailsTable, {"*"}, params)
+                Else
+                    list.Merge(a.SelectDataTable(ds.DetailsTable, {"*"}, params))
+                End If
+
+            Next
+        End Using
 
 
+
+        Dim query = From row In list
+                               Group row By dateGroup = New With {Key .arid = row.Field(Of Integer)("arid"),
+                                                                  .name = row.Field(Of String)("name")} Into Group
+                               Select New With {Key .Dates = dateGroup,
+                                               .prix = Group.Sum(Function(x) x.Field(Of Decimal)("price") * x.Field(Of Decimal)("qte")),
+                                               .qte = Group.Sum(Function(x) x.Field(Of Decimal)("qte"))}
+
+        ds.Pl.Controls.Clear()
+        Dim i As Integer = 0
+        Dim arr(query.Count) As ListLine
+        ds.isEtatJournalier = True
+
+        Dim ft = "Factures"
+        If ds.FactureTable <> "Sell_Facture" Then ft = "Bons"
+        Dim sum As Double = 0
+
+        For Each item In query
+
+            Dim a As New ListLine
+            a.sizeAuto = True
+
+            a.Id = item.Dates.arid
+            a.Libele = item.Dates.name
+            a.Total = item.prix / item.qte
+            a.Avance = item.prix
+            a.lbref.Text = item.qte
+            'a.remise = item.total - item.avance
+            a.Index = i
+            a.Dock = DockStyle.Top
+            a.BringToFront()
+            'a.SendToBack()
+
+            'AddHandler a.EditSelectedFacture, AddressOf GetInpayedListe
+            'AddHandler a.GetFactureInfos, AddressOf GetInpayedListe
+            arr(i) = a
+
+            sum += item.prix
+
+            i += 1
+        Next
+
+        ds.lbLtotal.Text = String.Format("{0:n}", CDec(sum))
+
+        ds.Pl.Controls.AddRange(arr)
+    End Sub
+    Private Sub FillByDetailsArticle(ByVal dt As DataTable, ByVal ref As String, ByVal ds As DataList)
+
+        Dim list As DataTable = Nothing
+        If dt.Rows.Count = 0 Then Exit Sub
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            If ref <> "" Then
+                For t As Integer = 0 To dt.Rows.Count - 1
+                    Dim params As New Dictionary(Of String, Object)
+                    params.Add("ref", ref)
+                    params.Add("fctid", dt.Rows(t).Item(0))
+                    If t = 0 Then
+                        list = a.SelectDataTable(ds.DetailsTable, {"*"}, params)
+                    Else
+                        list.Merge(a.SelectDataTable(ds.DetailsTable, {"*"}, params))
+                    End If
+                Next
+
+            Else
+                list = dt
+            End If
+
+        End Using
+
+
+
+        ds.Pl.Controls.Clear()
+        Dim i As Integer = 0
+        ds.isEtatJournalier = True
+        Dim arr(list.Rows.Count) As ListLine
+        Dim sum As Double = 0
+        Dim qt As Double = 0
+
+        For i = 0 To list.Rows.Count - 1
+            Dim a As New ListLine
+            a.sizeAuto = True
+
+            a.Id = StrValue(list, "fctid", i)
+            a.lbDate.Text = StrValue(list, "fctid", i)
+
+            a.Libele = StrValue(list, "name", i)
+            a.Total = StrValue(list, "qte", i)
+            a.Avance = StrValue(list, "price", i)
+            a.lbref.Text = StrValue(list, "ref", i)
+
+            a.Index = i
+            a.Dock = DockStyle.Top
+            a.BringToFront()
+
+            AddHandler a.EditSelectedFacture, AddressOf GetFactureDetailFromArticle
+            AddHandler a.GetFactureInfos, AddressOf GetFactureDetailFromArticle
+
+            arr(i) = a
+            sum += (DblValue(list, "price", i) * DblValue(list, "qte", i))
+            qt += DblValue(list, "qte", i)
+            'i += 1
+        Next
+
+        ds.lbLtotal.Text = String.Format("{0:n}", CDec(sum))
+        ds.lbLnbr.Text = qt
+        ds.Pl.Controls.AddRange(arr)
+    End Sub
+    Private Sub GetFactureDetailFromArticle(ByVal id As Integer)
+        Try
+            Dim ds As DataList = Form1.plBody.Controls(0)
+            ds.Clear()
+            ds.Mode = "DETAILS"
+            ds.Id = id
+            'ds.Facture = New Facture(id, ds.FactureTable, ds.clientTable, ds.DetailsTable, ds.payementTable)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    '*Stock function and methodes
+    Private Function getStockById(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Double
+        If Form1.isWorkinOnStock = False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        Dim qte = c.SelectByScalar("Details_Stock", "qte", where)
+
+        Return qte
+    End Function
+    Private Function getStockId(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Integer
+        If Form1.isWorkinOnStock = False Then Return 0
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        Dim id = c.SelectByScalar("Details_Stock", "id", where)
+        If IsNothing(id) Then id = 0
+        Return id
+    End Function
+    Private Function AddNewStock(ByVal arid As Integer, ByVal dpid As Integer,
+                                     ByVal cid As Integer, ByVal qte As Double,
+                                     ByVal c As DataAccess) As Integer
+        If Form1.isWorkinOnStock = False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+        where.Add("cid", cid)
+        where.Add("qte", qte)
+
+        Return c.InsertRecord("Details_Stock", where)
+
+        Return qte
+    End Function
+    Private Function updateStock(ByVal arid As Integer, ByVal dpid As Integer,
+                                    ByVal qte As Double, ByVal c As DataAccess) As Integer
+        If Form1.isWorkinOnStock = False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        Dim params As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        params.Add("qte", qte)
+
+        Return c.UpdateRecord("Details_Stock", params, where)
+
+        Return qte
+    End Function
+    Private Sub GetArticleStock(ByRef pl As Panel, ByVal isS As Boolean)
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            If Form1.isWorkinOnStock = False Then Exit Sub
+            Dim where As New Dictionary(Of String, Object)
+
+            For Each l As ListRow In pl.Controls
+                'For i As Integer=0 to 
+                where.Clear()
+                where.Add("arid", l.arid)
+                where.Add("dpid", l.depot)
+                Dim qte = a.SelectByScalar("Details_Stock", "qte", where)
+
+                If IsNothing(qte) Then Continue For
+
+                If isS Then
+                    l.Stock = qte + l.qte
+                Else
+                    l.Stock = qte - l.qte
+                End If
+
+            Next
+
+        End Using
+
+    End Sub
 
     Public Sub EditModePayement(ByRef ds As DataList)
         Try
@@ -879,7 +1168,64 @@ Public Class FactureClass
                 where.Clear()
                 where.Add("fctid", id)
                 c.DeleteRecords(ds.DetailsTable, where)
-            End If
+
+                If tableName = "Sell_Avoir" Then
+                    where.Clear()
+                    where.Add("id", id)
+
+                    Dim fctid = c.SelectByScalar(tableName, "Sell_Facture", where)
+                    If IsNumeric(fctid) Then
+                        params.Clear()
+                        where.Clear()
+                        params.Add("isAdmin", "RESTAURER")
+                           params.Add("isPayed", isPayed)
+                        where.Add("id", fctid)
+                        c.UpdateRecord("Sell_Facture", params, where)
+
+                        where.Clear()
+                        where.Add("id", fctid)
+
+                        Dim str = c.SelectByScalar("Sell_Facture", "Bon_Livraison", where)
+                        If str.StartsWith("B.T. : ") Then
+                            Dim bt_id = str.Split(":")(1)
+
+                            If IsNumeric(id) Then
+                                params.Clear()
+                                params.Add("isPayed", True)
+                                params.Add("isFactured", True)
+
+                                where.Clear()
+                                where.Add("id", bt_id)
+
+                                c.UpdateRecord("Bon_Transport", params, where)
+                            End If
+                        End If
+
+                    End If
+                End If
+
+                If tableName = "Sell_Facture" Then
+                    where.Clear()
+                    where.Add("id", id)
+
+                        Dim str = c.SelectByScalar("Sell_Facture", "Bon_Livraison", where)
+                        If str.StartsWith("B.T. : ") Then
+                            Dim bt_id = str.Split(":")(1)
+
+                            If IsNumeric(id) Then
+                            params.Clear()
+                            params.Add("isPayed", False)
+                            params.Add("isFactured", False)
+
+                            where.Clear()
+                            where.Add("id", bt_id)
+
+                            c.UpdateRecord("Bon_Transport", params, where)
+                            End If
+                        End If
+
+                    End If
+                End If
 
             params.Clear()
             where.Clear()
@@ -896,8 +1242,41 @@ Public Class FactureClass
     End Sub
     Private Sub AvoirFacture(ByVal p1 As Integer, ByVal ds As DataList)
         ds.TB.avance = 0
-        NewFacture_Transforme("Sell_Avoir", "Details_Sell_Avoir", "Client_Payement", Now.Date, ds.Operation, ds, False)
-        DeleteFacture(p1, ds)
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "AVOIR")
+
+        If ds.Entete.Bl.StartsWith("B.T. : ") Then
+
+            Dim id = ds.Entete.Bl.Split(":")(1)
+
+            If IsNumeric(id) Then
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                    Dim params As New Dictionary(Of String, Object)
+                    params.Add("isPayed", False)
+                    params.Add("isFactured", False)
+
+                    Dim where As New Dictionary(Of String, Object)
+                    where.Add("id", id)
+
+                    c.UpdateRecord("Bon_Transport", params, where)
+
+                    params.Clear()
+                    where.Clear()
+
+                    params.Add("isPayed", True)
+                    where.Add("id", id)
+
+                    c.UpdateRecord(ds.FactureTable, params, where)
+
+                    params = Nothing
+                    where = Nothing
+                End Using
+            End If
+        End If
+
+        NewFacture_Transforme("Sell_Avoir", "Details_Sell_Avoir", "Client_Payement", Now.Date, "Sell_Avoir", ds, False)
+
+
+        'DeleteFacture(p1, ds)
     End Sub
     'ListLines Events
     Private Sub EditSelectedFacture(ByVal id As Integer)
@@ -922,7 +1301,7 @@ Public Class FactureClass
 
             Dim arid As Integer = 0
 
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
                 params.Add("fctid", id)
                 params.Add("name", R.ArticleName)
@@ -937,6 +1316,27 @@ Public Class FactureClass
                 params.Add("cid", R.cid)
 
                 d_Id = c.InsertRecord(tb_D, params, True)
+
+                If d_Id > 0 And R.depot > 0 And R.arid > 0 Then
+                    Dim q As Double = 0
+                    If tb_D = "Details_Bon_Livraison" Then
+                        q = R.qte * -1
+                    ElseIf tb_D = "Details_Bon_Achat" Then
+                        q = R.qte
+                    Else
+                        Exit Sub
+                    End If
+
+                    Dim oldStock = getStockById(R.arid, R.depot, c)
+                    If getStockId(R.arid, R.depot, c) = 0 Then
+                        oldStock = q
+                        AddNewStock(R.arid, R.depot, R.cid, q, c)
+                    Else
+                        oldStock += q
+                        updateStock(R.arid, R.depot, oldStock, c)
+                    End If
+                    R.Stock = oldStock
+                End If
             End Using
         Catch ex As Exception
         End Try
@@ -947,7 +1347,6 @@ Public Class FactureClass
             Dim ds As DataList = Form1.plBody.Controls(0)
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
-
 
                 params.Add("name", R.name)
                 params.Add("bprice", R.bprice)
@@ -962,6 +1361,33 @@ Public Class FactureClass
                 Dim where As New Dictionary(Of String, Object)
                 where.Add("id", lr.id)
                 If c.UpdateRecord(ds.DetailsTable, params, where) Then
+                    Dim oldQte As Double = lr.qte
+                    Dim newQte As Double = R.qte
+
+                    If R.depot > 0 And R.arid > 0 Then
+                        Dim b As Boolean = False
+                        If ds.DetailsTable = "Details_Bon_Livraison" Then
+                            oldQte = oldQte - newQte
+                            b = True
+                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                            oldQte = newQte - oldQte
+                            b = True
+                        Else
+                            b = False
+                        End If
+
+                        If b Then
+                            Dim oldStock = getStockById(R.arid, R.depot, c)
+                            If getStockId(R.arid, R.depot, c) = 0 Then
+                                'AddNewStock(R.arid, R.arid, R.cid, R.qte, c)
+                            Else
+                                oldStock += oldQte
+                                updateStock(R.arid, R.depot, oldStock, c)
+                            End If
+                        End If
+
+                    End If
+
                     lr.article = R
                     lr.EditMode = False
                 End If
@@ -976,6 +1402,29 @@ Public Class FactureClass
                 Dim where As New Dictionary(Of String, Object)
                 where.Add("id", lr.id)
                 If c.DeleteRecords(ds.DetailsTable, where) Then
+
+                    If lr.article.depot > 0 And lr.article.arid > 0 Then
+                        Dim b As Boolean = False
+                        Dim qte = lr.qte
+                        If ds.DetailsTable = "Details_Bon_Livraison" Then
+                            b = True
+                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                            qte = qte * -1
+                            b = True
+                        Else
+                            b = False
+                        End If
+
+                        If b Then
+
+                            If getStockId(lr.article.arid, lr.article.depot, c) > 0 Then
+                                Dim oldStock = getStockById(lr.article.arid, lr.article.depot, c)
+                                oldStock += qte
+                                updateStock(lr.article.arid, lr.article.depot, oldStock, c)
+                            End If
+                        End If
+                    End If
+
                     ds.Pl.Controls.Remove(lr)
                 End If
             End Using
@@ -1465,6 +1914,27 @@ Public Class FactureClass
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
+    Private Sub getStockForAddRow(ByVal arid As Integer, ByVal dpid As Integer, ByRef stk As Double)
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            stk = getStockById(arid, dpid, a)
+        End Using
+    End Sub
+
+    Private Sub PrintListofDetailsJornalier(ByVal dataList As DataList, ByVal isPdf As Boolean)
+        Form1.ListToPrint = Nothing
+        Form1.Facture_Title = "Details journals"
+
+        Form1.printOnPaper = True
+        Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Facture
+
+        If isPdf Then
+            Form1.printOnPaper = False
+            Form1.PrintDocList.PrinterSettings.PrinterName = Form1.printer_Pdf
+        End If
+
+        Form1.PrintDocList.Print()
+    End Sub
 
 
 

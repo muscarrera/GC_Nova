@@ -4,6 +4,7 @@
     Private _dt As DataTable
     Public TableName As String = "Article"
     Public dt_Cats As DataTable
+    Dim _dpid As Integer
 
     Public Event NewElement(ByRef ds As ProductList)
     Public Event EditArticle(ByRef ls As ListLine, ByVal m As String)
@@ -13,6 +14,7 @@
     Public Event GetElements(ByRef ds As ProductList)
     Public Event ModeChanged(ByVal ds As ProductList)
     Public Event GetClientDetails(ByVal ds As ProductList, ByVal _id As Integer)
+    Public Event GetArticleStock(ByRef productList As ProductList)
 
     Public Sub New()
 
@@ -23,6 +25,23 @@
         txtSearchCtg.PlaceHolder = "Groupe"
         txtSearchName.PlaceHolder = "N°/Designation/Réf"
     End Sub
+    Public Property dpid As Integer
+        Get
+            Return _dpid
+        End Get
+        Set(ByVal value As Integer)
+            _dpid = value
+
+            If value > 0 Then
+                btDepot.Text = value
+                btDepot.BackgroundImage = My.Resources.BG_STK
+                RaiseEvent GetArticleStock(Me)
+            Else
+                btDepot.Text = ""
+                btDepot.BackgroundImage = My.Resources.stock_icon_png_14
+            End If
+        End Set
+    End Property
 
     Public Property AutoCompleteSourceGroupe() As AutoCompleteStringCollection
         Get
@@ -85,6 +104,7 @@
             Return TableName
         End Get
         Set(ByVal value As String)
+            btDepot.Visible = False
 
             If value = "Client" Then
                 plModeClient.Visible = True
@@ -101,6 +121,7 @@
                 plModeArticle.Visible = True
                 btArticle.ForeColor = Color.Green
                 btCat.ForeColor = Color.DarkGray
+                btDepot.Visible = True
             Else
                 plModeClient.Visible = False
                 plModeArticle.Visible = True
@@ -181,6 +202,7 @@
             Next
             pl.Controls.AddRange(arr)
             startIndex = i
+            RaiseEvent GetArticleStock(Me)
         End If
     End Sub
     Private Sub FillRowsCats()
@@ -346,4 +368,14 @@
         Mode = bt.Tag
         RaiseEvent ModeChanged(Me)
     End Sub
+
+    Private Sub btDepot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDepot.Click
+
+        Dim clc As New ChooseDepot
+        If clc.ShowDialog = DialogResult.OK Then
+            dpid = clc.dpid
+        End If
+    End Sub
+
+    
 End Class

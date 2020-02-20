@@ -81,7 +81,7 @@
 
     End Sub
 
-    Private Sub lb_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lb.Click
+    Private Sub lb_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lb.Click, PLS.Click, PLR.Click, PL.Click, MyBase.Click
         isActive = Not isActive
     End Sub
 End Class

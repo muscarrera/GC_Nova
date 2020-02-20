@@ -14,6 +14,8 @@
     Public isStocked As Boolean = True
     Public isPromo As Boolean = False
 
+    Public stock As Double = 0
+
     Public qte As Double = 0
 
     Public Property sprice As Double

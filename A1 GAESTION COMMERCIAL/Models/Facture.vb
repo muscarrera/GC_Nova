@@ -92,8 +92,10 @@
                 dte = DteValue(dt, "Date", 0)
                 cid = IntValue(dt, "cid", 0)
                 compteId = IntValue(dt, "compteId", 0)
+
+
                 bl = StrValue(dt, "Bon_Livraison", 0)
-                bc = StrValue(dt, "Bon_Commande", 0)
+                'bc = StrValue(dt, "Bon_Commande", 0)
                 devis = StrValue(dt, "Devis", 0)
 
                 writer = StrValue(dt, "writer", 0)
@@ -105,7 +107,7 @@
 
                 params.Clear()
                 params.Add(tb_F, _id)
-                PaymenetDataSource = a.SelectDataTable(tb_P, {"*"}, params)
+                If tb_F <> "Sell_Avoir" Then PaymenetDataSource = a.SelectDataTable(tb_P, {"*"}, params)
             End If
         End Using
         client = New Client(cid, tb_C)

@@ -64,6 +64,7 @@ Partial Class ProductList
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.btFournisseur = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
+        Me.btDepot = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -502,13 +503,14 @@ Partial Class ProductList
         'plModeArticle
         '
         Me.plModeArticle.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.plModeArticle.Controls.Add(Me.btDepot)
         Me.plModeArticle.Controls.Add(Me.Panel14)
         Me.plModeArticle.Controls.Add(Me.btCat)
         Me.plModeArticle.Controls.Add(Me.btArticle)
         Me.plModeArticle.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plModeArticle.Location = New System.Drawing.Point(172, 2)
+        Me.plModeArticle.Location = New System.Drawing.Point(131, 2)
         Me.plModeArticle.Name = "plModeArticle"
-        Me.plModeArticle.Size = New System.Drawing.Size(259, 35)
+        Me.plModeArticle.Size = New System.Drawing.Size(300, 35)
         Me.plModeArticle.TabIndex = 11
         '
         'Panel14
@@ -517,7 +519,7 @@ Partial Class ProductList
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel14.Location = New System.Drawing.Point(0, 0)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(259, 2)
+        Me.Panel14.Size = New System.Drawing.Size(300, 2)
         Me.Panel14.TabIndex = 1
         '
         'btCat
@@ -528,7 +530,7 @@ Partial Class ProductList
         Me.btCat.ForeColor = System.Drawing.Color.DarkGray
         Me.btCat.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btCat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btCat.Location = New System.Drawing.Point(135, 5)
+        Me.btCat.Location = New System.Drawing.Point(176, 5)
         Me.btCat.Name = "btCat"
         Me.btCat.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btCat.Size = New System.Drawing.Size(116, 28)
@@ -546,7 +548,7 @@ Partial Class ProductList
         Me.btArticle.ForeColor = System.Drawing.SystemColors.AppWorkspace
         Me.btArticle.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22
         Me.btArticle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btArticle.Location = New System.Drawing.Point(13, 5)
+        Me.btArticle.Location = New System.Drawing.Point(54, 5)
         Me.btArticle.Name = "btArticle"
         Me.btArticle.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btArticle.Size = New System.Drawing.Size(116, 28)
@@ -620,6 +622,22 @@ Partial Class ProductList
         Me.btClient.Text = "Client"
         Me.btClient.UseVisualStyleBackColor = True
         '
+        'btDepot
+        '
+        Me.btDepot.BackColor = System.Drawing.Color.Transparent
+        Me.btDepot.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.stock_icon_png_14
+        Me.btDepot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btDepot.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btDepot.FlatAppearance.BorderSize = 0
+        Me.btDepot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btDepot.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDepot.ForeColor = System.Drawing.Color.Teal
+        Me.btDepot.Location = New System.Drawing.Point(0, 2)
+        Me.btDepot.Name = "btDepot"
+        Me.btDepot.Size = New System.Drawing.Size(43, 33)
+        Me.btDepot.TabIndex = 10
+        Me.btDepot.UseVisualStyleBackColor = False
+        '
         'ProductList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -688,5 +706,6 @@ Partial Class ProductList
     Friend WithEvents btCat As System.Windows.Forms.Button
     Friend WithEvents btArticle As System.Windows.Forms.Button
     Friend WithEvents Panel12 As System.Windows.Forms.Panel
+    Friend WithEvents btDepot As System.Windows.Forms.Button
 
 End Class

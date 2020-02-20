@@ -157,8 +157,10 @@
             'AddHandler ds.SearchById, AddressOf SearchById
             AddHandler ds.ModeChanged, AddressOf ModeChanged
             AddHandler ds.GetClientDetails, AddressOf GetClientDetails
+            AddHandler ds.GetArticleStock, AddressOf GetArticleStock
 
             ds.dt_Cats = a.SelectDataTable("Category", {"*"})
+            ds.dpid = Form1.mainDepot
 
             Form1.plBody.Controls.Add(ds)
         End Using
@@ -324,6 +326,41 @@
 
     End Sub
 
+    Private Sub GetArticleStock(ByRef ds As ProductList)
+        If ds.dpid = 0 Then Exit Sub
+        If ds.pl.Controls.Count = 0 Then Exit Sub
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            If Form1.isWorkinOnStock = False Then Exit Sub
+            Dim where As New Dictionary(Of String, Object)
+
+            For Each l As ListLine In ds.pl.Controls
+                'For i As Integer=0 to 
+                where.Clear()
+                where.Add("arid", l.Id)
+                where.Add("dpid", ds.dpid)
+                Dim qte = a.SelectByScalar("Details_Stock", "qte", where)
+
+                If IsNothing(qte) Then qte = 0
+
+                l.remise = qte
+
+                If qte > Form1.myMinStock Then
+                    l.plR.BackColor = Color.Honeydew
+                ElseIf qte <= Form1.myMinStock And qte > 0 Then
+                    l.plR.BackColor = Color.SeaShell
+                Else
+                    l.plR.BackColor = Color.Crimson
+                End If
+            Next
+
+        End Using
+
+    End Sub
+
+
+
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 
@@ -354,4 +391,7 @@
         GC.SuppressFinalize(Me)
     End Sub
 #End Region
+
+
+
 End Class

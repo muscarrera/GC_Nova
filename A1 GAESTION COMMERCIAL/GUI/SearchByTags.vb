@@ -3,7 +3,9 @@
     Dim myId As String = "id"
 
     Public params As New Dictionary(Of String, Object)
-    Friend EtatGénéral As Boolean = False
+    Public EtatGénéral As Boolean = False
+    Public EtatJournalier As Boolean = False
+    Public ReferenceArticle As Boolean = False
 
 
     Public Property TableName As String
@@ -81,12 +83,15 @@
 
             ElseIf value = "Sell_Facture" Then
                 CL.ListeOfString.Add("Etat Général", "EG")
+                CL.ListeOfString.Add("Liste des Details", "EJ")
+                CL.ListeOfString.Add("Referance Article", "RA")
                 CL.ListeOfString.Add("Editeur", "ED")
                 CL.ListeOfString.Add("Mode de Payement", "MP")
                 CL.ListeOfString.Add("En Compte de", "EC")
                 CL.ListeOfString.Add("Client", "CL")
 
                 '''''/// numbers
+                CL.ListeOfNumber.Add("Referance Article", "RA")
                 CL.ListeOfNumber.Add("Tva Min", "TM")
                 CL.ListeOfNumber.Add("Remise Min", "RM")
                 CL.ListeOfNumber.Add("Avance Min", "AM")
@@ -276,10 +281,21 @@
             Case "EG"
                 Dim isPayed As Boolean = False
                 EtatGénéral = True
+                ReferenceArticle = False
 
                 myKey = "isPayed = "
                 myVal = isPayed
                 txt.text = ""
+            Case "EJ"
+                EtatJournalier = True
+                ReferenceArticle = False
+                myKey = "id > "
+                myVal = 0
+                txt.text = ""
+            Case "RA"
+                ReferenceArticle = True
+                myKey = "ref Like "
+                myVal = txt.text
             Case "FT"
                 Dim isf As Boolean = True
                 Dim v = txt.text
@@ -298,7 +314,10 @@
                 myKey = "isAdmin = "
 
             Case "DT" ''''''''''''''''''''''''''''''
-
+                Dim dte As Date = CDate(txt.text)
+                myKey = "** Date"
+                myVal = dte
+                txt.text = CDate(txt.text).ToString("dd MMM yyyy")
             Case "DM"
                 Dim dte As Date = CDate(txt.text).AddDays(-1)
                 myKey = "[date] > "
@@ -333,7 +352,14 @@
         params.Clear()
         For Each c As Tag In FL.Controls
             Try
-                params.Add(c.myKey, c.myVal)
+                If c.myKey.StartsWith("**") Then
+                    Dim dte As Date = CDate(c.myVal)
+                    params.Add("[date] > ", dte.AddDays(-1))
+                    params.Add("[date] < ", dte.AddDays(1))
+                Else
+                    params.Add(c.myKey, c.myVal)
+                End If
+
 
                 If EtatGénéral Then
                     params.Clear()

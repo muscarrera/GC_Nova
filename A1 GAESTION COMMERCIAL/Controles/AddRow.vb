@@ -2,6 +2,7 @@
     'Members
 
     Private isUsingBarcodeScaner As Boolean = False
+    Dim _dpid As Integer
 
     'Eents
     Public Event AddNewArticle(ByVal art As Article)
@@ -10,7 +11,50 @@
     Public article As New Article
     Public IsSell As Boolean = True
 
+    Event getStock(ByVal _arid As Integer, ByVal _dpid As Integer, ByRef stk As Double)
 
+    Public Property dpid As Integer
+        Get
+            Return _dpid
+        End Get
+        Set(ByVal value As Integer)
+            _dpid = value
+            article.depot = value
+
+            If value > 0 Then
+                btDepot.Text = value
+                btDepot.BackgroundImage = My.Resources.BG_STK
+            Else
+                btDepot.Text = ""
+                btDepot.BackgroundImage = My.Resources.stock_icon_png_14
+            End If
+            RaiseEvent getStock(Arid, dpid, myStock)
+        End Set
+    End Property
+    Public Property myStock As Double
+        Get
+            Return article.stock
+        End Get
+        Set(ByVal value As Double)
+            article.stock = value
+
+            If IsNothing(value) Or dpid = 0 Or Arid = 0 Then
+                article.stock = 0
+                plAlert.Visible = False
+                Exit Property
+            End If
+
+            If value <= 0 Then
+                plAlert.Visible = True
+                plAlert.BackColor = Color.Red
+            ElseIf value <= Form1.myMinStock And value > 0 Then
+                plAlert.Visible = True
+                plAlert.BackColor = Color.Orange
+            Else
+                plAlert.Visible = False
+            End If
+        End Set
+    End Property
     'Properties
     Private Property Arid As Integer
         Get
@@ -78,6 +122,23 @@
             Return t
         End Get
     End Property
+    Public Property isAlerted() As Boolean
+        Get
+            Return plAlert.Visible
+        End Get
+        Set(ByVal value As Boolean)
+            plAlert.Visible = value
+        End Set
+    End Property
+    Public Property isSlave() As Boolean
+        Get
+            Return Not txtPr.txtReadOnly
+        End Get
+        Set(ByVal value As Boolean)
+            txtPr.txtReadOnly = Not value
+            txtRs.txtReadOnly = Not value
+        End Set
+    End Property
     '
     Public Sub New()
 
@@ -99,6 +160,8 @@
         txtQ.text = ""
         txtPr.text = ""
         txtRs.text = ""
+        myStock = Nothing
+
         article = New Article(0, 0, "", "", 1, 0, 0, 0, 0, 0, False, "", False)
         txtRf.Focus()
     End Sub
@@ -129,6 +192,9 @@
         txtRs.text = String.Format("{0:n}", CDec(article.remise))
         txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
         Arid = art.arid
+        article.depot = dpid
+
+        RaiseEvent getStock(Arid, dpid, myStock)
     End Sub
 
     'tub with home key
@@ -169,6 +235,17 @@
     Private Sub txtQte_KeyDownOk() Handles txtQ.KeyDownOk
         If txtQ.text = "" Then txtQ.text = 1
         article.qte = qte
+
+
+        If isSlave = False Then
+            If ValidationForm() Then
+                RaiseEvent AddNewArticle(article)
+                InitForm()
+            End If
+        End If
+
+
+
         If txtPr.text.Count > 0 And price > 0 Then
             txtRs.Focus()
         Else
@@ -231,6 +308,23 @@
         Try
             article.qte = qte
             txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+
+            ''''
+            Dim STK = myStock - qte
+            If IsSell = False Then STK = myStock + qte
+
+            If dpid = 0 Or Arid = 0 Then Exit Sub
+
+            If STK <= 0 Then
+                plAlert.Visible = True
+                plAlert.BackColor = Color.Red
+            ElseIf STK <= Form1.myMinStock And STK > 0 Then
+                plAlert.Visible = True
+                plAlert.BackColor = Color.Orange
+            Else
+                plAlert.Visible = False
+            End If
+
         Catch ex As Exception
             txtttc.text = 0
         End Try
@@ -269,6 +363,15 @@
             btCodeBar.BackColor = Color.Green
         Else
             btCodeBar.BackColor = Color.Transparent
+        End If
+        txtRf.Focus()
+
+    End Sub
+
+    Private Sub btDepot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDepot.Click
+        Dim clc As New ChooseDepot
+        If clc.ShowDialog = DialogResult.OK Then
+            dpid = clc.dpid
         End If
     End Sub
 End Class

@@ -23,9 +23,9 @@ Partial Class Tag
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PL = New System.Windows.Forms.Panel()
+        Me.PLD = New System.Windows.Forms.Panel()
         Me.lb = New System.Windows.Forms.Label()
         Me.PLR = New System.Windows.Forms.Panel()
-        Me.PLD = New System.Windows.Forms.Panel()
         Me.PLS = New System.Windows.Forms.Panel()
         Me.PL.SuspendLayout()
         Me.SuspendLayout()
@@ -40,6 +40,17 @@ Partial Class Tag
         Me.PL.Name = "PL"
         Me.PL.Size = New System.Drawing.Size(365, 32)
         Me.PL.TabIndex = 1
+        '
+        'PLD
+        '
+        Me.PLD.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
+        Me.PLD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PLD.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PLD.Location = New System.Drawing.Point(321, 0)
+        Me.PLD.Name = "PLD"
+        Me.PLD.Size = New System.Drawing.Size(31, 32)
+        Me.PLD.TabIndex = 1
+        Me.PLD.Visible = False
         '
         'lb
         '
@@ -62,17 +73,6 @@ Partial Class Tag
         Me.PLR.Size = New System.Drawing.Size(13, 32)
         Me.PLR.TabIndex = 3
         Me.PLR.Visible = False
-        '
-        'PLD
-        '
-        Me.PLD.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
-        Me.PLD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PLD.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PLD.Location = New System.Drawing.Point(321, 0)
-        Me.PLD.Name = "PLD"
-        Me.PLD.Size = New System.Drawing.Size(31, 32)
-        Me.PLD.TabIndex = 1
-        Me.PLD.Visible = False
         '
         'PLS
         '

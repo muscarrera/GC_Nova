@@ -57,6 +57,10 @@
     Public Ech_Bon As String
     Public Ech_Facture As String
 
+    Public myMinStock As Double = 2
+    Public isWorkinOnStock As Boolean = True
+    Public mainDepot As Integer = 3
+
 
     Public Property prefix As String
         Get
@@ -84,7 +88,7 @@
         HandleRegistryinfo()
 
         'check Trial
-        If TrialVersion_Slave = False Then
+        If TrialVersion_Master = False Then
             MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***TRIAL***")
             End
         End If
@@ -98,10 +102,14 @@
         If pwdwin.ShowDialog = Windows.Forms.DialogResult.OK Then
 
             If pwdwin.DGV1.SelectedRows(0).Cells(2).Value = "admin" Then
-
+                admin = True
+                adminId = pwdwin.DGV1.SelectedRows(0).Cells(0).Value
+                adminName = pwdwin.DGV1.SelectedRows(0).Cells(1).Value
             Else
                 btSetting.Enabled = False
-
+                admin = False
+                adminId = pwdwin.DGV1.SelectedRows(0).Cells(0).Value
+                adminName = pwdwin.DGV1.SelectedRows(0).Cells(1).Value
             End If
         Else
             End
@@ -162,7 +170,6 @@
         End Using
         HeaderColor(Button9.Text)
     End Sub
-
 
     Private Sub HeaderColor(ByVal value As String)
         For Each b As Control In plHeaderButton.Controls
@@ -251,6 +258,8 @@
 
             If Facture_Title = "liste des impayés" Then
                 a.PrintListofGoupeInpayed(e, ds, printEnteteOnPaper, m)
+            ElseIf Facture_Title = "Details journals" Then
+                a.PrintListDetailsJournalier(e, ds, printEnteteOnPaper, m)
             Else
                 a.DrawListOfFacture(e, ds.DataList, printEnteteOnPaper, ds.FactureTable, True, True, m)
             End If

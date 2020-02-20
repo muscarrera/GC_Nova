@@ -490,4 +490,12 @@
         If stok.ShowDialog = Windows.Forms.DialogResult.OK Then
         End If
     End Sub
+
+    Private Sub LinkLabel5_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel5.LinkClicked
+        Dim clc As New ChooseDepot
+        If clc.ShowDialog = DialogResult.OK Then
+            Form1.mainDepot = clc.dpid
+            setRegistryinfo("mainDepot", clc.dpid)
+        End If
+    End Sub
 End Class

@@ -1,6 +1,7 @@
 ﻿Public Class DataList
 
     Dim _isEG As Boolean
+    Dim _isEJ As Boolean
 
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
@@ -51,6 +52,8 @@
     Public Event SaveListofFacturesasPdf(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
     Public Event NewEnCompteRef(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList)
     Public Event EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
+    Public Event PrintListofGoupeInpayed(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
+    Public Event getStockForAddRow(ByVal arid As Integer, ByVal dpid As Integer, ByRef stk As Double)
 
 
     'Members
@@ -70,8 +73,11 @@
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Private _isDisibleEditing As Boolean = True
 
-    Event PrintListofGoupeInpayed(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
+    Event GetArticleStock(ByRef panel As Panel, ByVal isS As Boolean)
 
+    Event PrintListofDetailsJornalier(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
+
+  
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
         Get
             Return Nothing
@@ -94,7 +100,11 @@
             Return Entete.Id
         End Get
         Set(ByVal value As String)
-            If CInt(Entete.Id) > 0 Then RaiseEvent SaveChanges(CInt(Entete.Id), Me)
+
+            If CInt(Entete.Id) > 0 And Entete.Statut <> "AVOIR" Then
+                RaiseEvent SaveChanges(CInt(Entete.Id), Me)
+            End If
+
 
             Entete.Id = value
             RaiseEvent IdChanged(value, Me)
@@ -164,7 +174,7 @@
                 'isSell = False
                 Form1.prefix = "BA"
             ElseIf value = "Sell_Avoir" Then
-                clientTable = "client"
+                clientTable = "Client"
                 payementTable = "Client_Payement"
                 FactureTable = "Sell_Avoir"
                 DetailsTable = "Details_Sell_Avoir"
@@ -187,6 +197,7 @@
             Entete.Devis = value.devis
             Entete.Bc = value.bc
             Entete.Bl = value.bl
+
             If isSell Then
                 Entete.CompteId = value.CompteId
             Else
@@ -258,6 +269,18 @@
             plListHeader.Visible = False
         End Set
     End Property
+    Public Property isEtatJournalier() As Boolean
+        Get
+            Return _isEJ
+        End Get
+        Set(ByVal value As Boolean)
+            _isEJ = value
+            If value = False Then Exit Property
+            plDetailsHeader.Visible = False
+            plListHeader.Visible = False
+        End Set
+    End Property
+
     Public ReadOnly Property Total_Ht As Decimal
         Get
 
@@ -326,15 +349,20 @@
                     R.titleFont = _fntTitle
                     R.Dock = DockStyle.Top
                     R.id = value.Rows(i).Item(0)
+                    R.isSell = isSell
+                    R.BringToFront()
 
                     If FactureTable = "Sell_Facture" Then R.bl = IntValue(value, "bl", i)
-                    R.BringToFront()
+
                     AddHandler R.itemChanged, AddressOf Article_Item_Changed
                     AddHandler R.DeleteItem, AddressOf Article_Item_Delete
 
                     arr(i) = R
                 Next
                 Pl.Controls.AddRange(arr)
+
+                RaiseEvent GetArticleStock(Pl, isSell)
+
             End If
         End Set
     End Property
@@ -491,13 +519,13 @@
 
     End Sub
     Public Sub Clear()
-        If CInt(Entete.Id) > 0 Then RaiseEvent SaveChanges(CInt(Entete.Id), Me)
+        If CInt(Entete.Id) > 0 And Entete.Statut <> "AVOIR" Then RaiseEvent SaveChanges(CInt(Entete.Id), Me)
         Pl.Controls.Clear()
         Entete.Clear()
     End Sub
     Public Sub DisibleEditing(ByVal str As String)
         isDisibleEditing = False
-        If str = "Facturé" Then isDisibleEditing = True
+        If str = "Facturé" Or str = "AVOIR" Then isDisibleEditing = True
     End Sub
     Private Sub AddRow1_AddNewArticle(ByVal art As Article) Handles AddRow1.AddNewArticle
         If Id = 0 Then Exit Sub
@@ -509,6 +537,9 @@
         R.Dock = DockStyle.Top
         R.BringToFront()
         R.index = Pl.Controls.Count
+        R.isSell = isSell
+
+        'R.Stock = art.stock
 
         RaiseEvent NewRowAdded(CInt(Id), DetailsTable, R, d_id)
 
@@ -605,7 +636,7 @@
         RaiseEvent CommandeDelivry(CInt(p1), Me)
     End Sub
     Private Sub Entete_DeleteFacture(ByVal p1 As Integer) Handles Entete.DeleteFacture
-        RaiseEvent DeleteFacture(CInt(p1), Me)
+        If Entete.Statut <> "AVOIR" Then RaiseEvent DeleteFacture(CInt(p1), Me)
     End Sub
     Private Sub Entete_DuplicateFacture(ByVal p1 As Integer) Handles Entete.DuplicateFacture
         RaiseEvent DuplicateFacture(CInt(p1), Me)
@@ -639,7 +670,7 @@
         RaiseEvent PrintParamsFacture(Me)
     End Sub
     Private Sub Entete_SaveChanges(ByVal p1 As Integer) Handles Entete.SaveChanges
-        RaiseEvent SaveChanges(CInt(p1), Me)
+        If Entete.Statut <> "AVOIR" Then RaiseEvent SaveChanges(CInt(p1), Me)
     End Sub
     Private Sub Entete_SavePdf() Handles Entete.SavePdf
         RaiseEvent SavePdf(Me)
@@ -727,7 +758,10 @@
                   StrValue(_dtList, "isAdmin", i) = "Livré" Then a.PlLeft.BackgroundImage = My.Resources.fav_16
 
                 If StrValue(_dtList, "isAdmin", i).ToUpper = "ANNULER" Or
-                 StrValue(_dtList, "isAdmin", i).ToUpper = "NONE" Then a.PlLeft.BackgroundImage = My.Resources.iconfinder_folder_delete_61770
+                 StrValue(_dtList, "isAdmin", i).ToUpper = "NONE" Or
+                 StrValue(_dtList, "isAdmin", i).ToUpper = "AVOIR" Then a.PlLeft.BackgroundImage = My.Resources.iconfinder_folder_delete_61770
+                a.PlLeft.BackgroundImageLayout = ImageLayout.Zoom
+
                 a.Index = i
                 a.Dock = DockStyle.Top
                 a.BringToFront()
@@ -855,6 +889,8 @@
     Private Sub Entete_PrintList() Handles Entete.PrintList
         If isEtatGeneral Then
             RaiseEvent PrintListofGoupeInpayed(Me, False)
+        ElseIf isEtatJournalier Then
+            RaiseEvent PrintListofDetailsJornalier(Me, False)
         Else
             RaiseEvent PrintListofFactures(Me)
         End If
@@ -866,7 +902,9 @@
         Else
             RaiseEvent SaveListofFacturesasPdf(Me)
         End If
+    End Sub
 
-
+    Private Sub AddRow1_getStock(ByVal _arid As System.Int32, ByVal _dpid As System.Int32, ByRef stk As System.Double) Handles AddRow1.getStock
+        RaiseEvent getStockForAddRow(_arid, _dpid, stk)
     End Sub
 End Class

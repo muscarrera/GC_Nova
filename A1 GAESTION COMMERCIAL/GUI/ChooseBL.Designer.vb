@@ -307,6 +307,8 @@ Partial Class ChooseBL
         'pl2
         '
         Me.pl2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.pl2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgForm
+        Me.pl2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pl2.Controls.Add(Me.Button7)
         Me.pl2.Controls.Add(Me.Panel15)
         Me.pl2.Controls.Add(Me.Button1)

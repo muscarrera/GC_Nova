@@ -37,6 +37,8 @@
             Form1.fontSize_Title = getRegistryinfo("fontSize_Title", 14)
             Form1.fontSize_Small = getRegistryinfo("fontSize_Small", 8)
 
+            Form1.mainDepot = getRegistryinfo("mainDepot", 3)
+
             Form1.printer_Devis = getRegistryinfo("printer_Devis", "")
             Form1.printer_Bon = getRegistryinfo("printer_Bon", "")
             Form1.printer_Commande_Client = getRegistryinfo("printer_Commande_Client", "")

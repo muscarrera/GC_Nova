@@ -30,6 +30,12 @@ Partial Class DataList
         Me.AddRow1 = New A1_GAESTION_COMMERCIAL.AddRow()
         Me.Pl = New System.Windows.Forms.Panel()
         Me.PlFooter = New System.Windows.Forms.Panel()
+        Me.lbLavc = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lbLtotal = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lbLnbr = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.btPage = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -84,12 +90,6 @@ Partial Class DataList
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Entete = New A1_GAESTION_COMMERCIAL.EnteteFacture()
-        Me.lbLavc = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.lbLtotal = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.lbLnbr = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.plNewElement.SuspendLayout()
         Me.PlAdd.SuspendLayout()
         Me.PlFooter.SuspendLayout()
@@ -155,7 +155,11 @@ Partial Class DataList
         Me.AddRow1.AutoCompleteSourceRef = Nothing
         Me.AddRow1.BackColor = System.Drawing.Color.Transparent
         Me.AddRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddRow1.dpid = 0
+        Me.AddRow1.isAlerted = False
+        Me.AddRow1.isSlave = True
         Me.AddRow1.Location = New System.Drawing.Point(5, 5)
+        Me.AddRow1.myStock = 0.0R
         Me.AddRow1.Name = "AddRow1"
         Me.AddRow1.Padding = New System.Windows.Forms.Padding(2)
         Me.AddRow1.Size = New System.Drawing.Size(700, 29)
@@ -189,6 +193,84 @@ Partial Class DataList
         Me.PlFooter.Name = "PlFooter"
         Me.PlFooter.Size = New System.Drawing.Size(710, 32)
         Me.PlFooter.TabIndex = 8
+        '
+        'lbLavc
+        '
+        Me.lbLavc.BackColor = System.Drawing.Color.LightGray
+        Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLavc.Location = New System.Drawing.Point(392, 0)
+        Me.lbLavc.Name = "lbLavc"
+        Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLavc.Size = New System.Drawing.Size(96, 32)
+        Me.lbLavc.TabIndex = 10
+        Me.lbLavc.Text = "0"
+        Me.lbLavc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label12
+        '
+        Me.Label12.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(307, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label12.Size = New System.Drawing.Size(85, 32)
+        Me.Label12.TabIndex = 11
+        Me.Label12.Text = "Avance:"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbLtotal
+        '
+        Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
+        Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLtotal.Location = New System.Drawing.Point(211, 0)
+        Me.lbLtotal.Name = "lbLtotal"
+        Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLtotal.Size = New System.Drawing.Size(96, 32)
+        Me.lbLtotal.TabIndex = 12
+        Me.lbLtotal.Text = "0"
+        Me.lbLtotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label13
+        '
+        Me.Label13.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label13.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(134, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label13.Size = New System.Drawing.Size(77, 32)
+        Me.Label13.TabIndex = 7
+        Me.Label13.Text = "Total :"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbLnbr
+        '
+        Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
+        Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLnbr.Location = New System.Drawing.Point(71, 0)
+        Me.lbLnbr.Name = "lbLnbr"
+        Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLnbr.Size = New System.Drawing.Size(63, 32)
+        Me.lbLnbr.TabIndex = 8
+        Me.lbLnbr.Text = "0"
+        Me.lbLnbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label14
+        '
+        Me.Label14.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(0, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label14.Size = New System.Drawing.Size(71, 32)
+        Me.Label14.TabIndex = 9
+        Me.Label14.Text = "Nbre :"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Button4
         '
@@ -567,7 +649,7 @@ Partial Class DataList
         Me.plDetailsHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.plDetailsHeader.Location = New System.Drawing.Point(105, 215)
         Me.plDetailsHeader.Name = "plDetailsHeader"
-        Me.plDetailsHeader.Padding = New System.Windows.Forms.Padding(25, 5, 100, 5)
+        Me.plDetailsHeader.Padding = New System.Windows.Forms.Padding(25, 5, 160, 5)
         Me.plDetailsHeader.Size = New System.Drawing.Size(710, 34)
         Me.plDetailsHeader.TabIndex = 9
         '
@@ -579,7 +661,7 @@ Partial Class DataList
         Me.Panel6.Location = New System.Drawing.Point(139, 5)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel6.Size = New System.Drawing.Size(99, 24)
+        Me.Panel6.Size = New System.Drawing.Size(39, 24)
         Me.Panel6.TabIndex = 17
         '
         'Label1
@@ -590,7 +672,7 @@ Partial Class DataList
         Me.Label1.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label1.Location = New System.Drawing.Point(5, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 24)
+        Me.Label1.Size = New System.Drawing.Size(29, 24)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Designation"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -600,7 +682,7 @@ Partial Class DataList
         Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel5.Location = New System.Drawing.Point(238, 5)
+        Me.Panel5.Location = New System.Drawing.Point(178, 5)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel5.Size = New System.Drawing.Size(89, 24)
@@ -624,7 +706,7 @@ Partial Class DataList
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.Controls.Add(Me.Label3)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(327, 5)
+        Me.Panel4.Location = New System.Drawing.Point(267, 5)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel4.Size = New System.Drawing.Size(90, 24)
@@ -648,7 +730,7 @@ Partial Class DataList
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(417, 5)
+        Me.Panel3.Location = New System.Drawing.Point(357, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel3.Size = New System.Drawing.Size(84, 24)
@@ -671,7 +753,7 @@ Partial Class DataList
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(501, 5)
+        Me.Panel2.Location = New System.Drawing.Point(441, 5)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel2.Size = New System.Drawing.Size(109, 24)
@@ -897,84 +979,6 @@ Partial Class DataList
         Me.Entete.Statut = ""
         Me.Entete.TabIndex = 0
         Me.Entete.Type = Nothing
-        '
-        'lbLavc
-        '
-        Me.lbLavc.BackColor = System.Drawing.Color.LightGray
-        Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLavc.Location = New System.Drawing.Point(392, 0)
-        Me.lbLavc.Name = "lbLavc"
-        Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbLavc.Size = New System.Drawing.Size(96, 32)
-        Me.lbLavc.TabIndex = 10
-        Me.lbLavc.Text = "0"
-        Me.lbLavc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label12
-        '
-        Me.Label12.BackColor = System.Drawing.Color.Gainsboro
-        Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(307, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.Label12.Size = New System.Drawing.Size(85, 32)
-        Me.Label12.TabIndex = 11
-        Me.Label12.Text = "Avance:"
-        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbLtotal
-        '
-        Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
-        Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLtotal.Location = New System.Drawing.Point(211, 0)
-        Me.lbLtotal.Name = "lbLtotal"
-        Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbLtotal.Size = New System.Drawing.Size(96, 32)
-        Me.lbLtotal.TabIndex = 12
-        Me.lbLtotal.Text = "0"
-        Me.lbLtotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label13
-        '
-        Me.Label13.BackColor = System.Drawing.Color.Gainsboro
-        Me.Label13.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(134, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.Label13.Size = New System.Drawing.Size(77, 32)
-        Me.Label13.TabIndex = 7
-        Me.Label13.Text = "Total :"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbLnbr
-        '
-        Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
-        Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLnbr.Location = New System.Drawing.Point(71, 0)
-        Me.lbLnbr.Name = "lbLnbr"
-        Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbLnbr.Size = New System.Drawing.Size(63, 32)
-        Me.lbLnbr.TabIndex = 8
-        Me.lbLnbr.Text = "0"
-        Me.lbLnbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label14
-        '
-        Me.Label14.BackColor = System.Drawing.Color.Gainsboro
-        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(0, 0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.Label14.Size = New System.Drawing.Size(71, 32)
-        Me.Label14.TabIndex = 9
-        Me.Label14.Text = "Nbre :"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'DataList
         '

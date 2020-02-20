@@ -5,7 +5,7 @@
     Public Event selected(ByVal R As ListRow)
     Public Event itemChanged(ByVal listRow As ListRow, ByVal art As A1_GAESTION_COMMERCIAL.Article)
     Public Event GetArticleInfos(ByVal arid As Integer)
-
+ 
     Private _sPrice As Double = 0
     Private _Qte As Double = 0
     Private _Remise As Double = 0
@@ -19,6 +19,7 @@
 
     Private _editMode As Boolean = False
     Private _isSelected As Boolean = False
+    Public isSell As Boolean = True
 
     Public id As Integer = 0
     Private _bl As Integer = 0
@@ -115,7 +116,6 @@
     End Property
     Public depot As Integer = 0
 
-
     Public ReadOnly Property TotalHt() As Double
         Get
             Dim t As Double = sprice * qte
@@ -158,6 +158,8 @@
             _article.TVA = TVA
             _article.depot = depot
             _article.remise = remise
+            _article.stock = Stock
+
             Return _article
         End Get
         Set(ByVal value As Article)
@@ -172,6 +174,7 @@
             ref = _article.ref
             depot = _article.depot
             remise = _article.remise
+            Stock = article.stock
         End Set
     End Property
     Public Property Stock As Double
@@ -181,9 +184,9 @@
         Set(ByVal value As Double)
             _Stk = value
 
-            If Stock = 0 Then
+            If value < 0 Then
                 PlLeft.BackgroundImage = My.Resources.ERROR_15
-            ElseIf _Stk < alert Then
+            ElseIf _Stk < Form1.myMinStock And value > 0 Then
                 PlLeft.BackgroundImage = My.Resources.WARNING_15
             Else
                 PlLeft.BackgroundImage = Nothing
@@ -200,17 +203,24 @@
 
             If value Then
                 PlButtom.Height = Me.Height
-
+              
                 Dim addR As New AddRow
                 addR.Dock = DockStyle.Fill
+                addR.IsSell = isSell
+                addR.isSlave = Form1.admin
 
                 AddHandler addR.AddNewArticle, AddressOf SaveEditAricle
                 AddHandler addR.Cleared, AddressOf CancelChangement
                 PlButtom.Controls.Add(addR)
+
                 If arid <> -111 Then addR.txtN.txtReadOnly = True
                 If arid <> -111 Then addR.txtRf.txtReadOnly = True
                 addR.txtQ.text = article.qte
                 addR.FillFields(article)
+
+                addR.dpid = article.depot
+                addR.myStock = Stock + article.qte
+                If isSell = False Then addR.myStock = Stock - article.qte
             Else
                 PlButtom.Height = 1
                 PlButtom.Controls.Clear()

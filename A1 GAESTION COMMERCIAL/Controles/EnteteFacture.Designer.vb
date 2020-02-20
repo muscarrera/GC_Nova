@@ -267,7 +267,7 @@ Partial Class EnteteFacture
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(49, 36)
         Me.Label10.TabIndex = 2
-        Me.Label10.Text = "BL"
+        Me.Label10.Text = "Réf"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel17
