@@ -28,6 +28,8 @@
     Public alert As Double
     Public TVA As Double
 
+    Event ChangeArticleDepot(ByVal addRow As ListRow, ByVal p2 As Object)
+
 
     Public Property ArticleName As String
         Get
@@ -207,10 +209,13 @@
                 Dim addR As New AddRow
                 addR.Dock = DockStyle.Fill
                 addR.IsSell = isSell
+                addR.EditMode = True
                 addR.isSlave = Form1.admin
 
                 AddHandler addR.AddNewArticle, AddressOf SaveEditAricle
                 AddHandler addR.Cleared, AddressOf CancelChangement
+                AddHandler addR.ChangeElementDepot, AddressOf ChangeElementDepot
+
                 PlButtom.Controls.Add(addR)
 
                 If arid <> -111 Then addR.txtN.txtReadOnly = True
@@ -319,6 +324,9 @@
     Private Sub SaveEditAricle(ByVal art As A1_GAESTION_COMMERCIAL.Article)
         RaiseEvent itemChanged(Me, art)
     End Sub
+    Private Sub ChangeElementDepot(ByVal addRow As AddRow, ByVal _dpid As Integer)
+        RaiseEvent ChangeArticleDepot(Me, _dpid)
+    End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
         If bl > 0 Then Exit Sub
         RaiseEvent DeleteItem(Me)
@@ -330,4 +338,7 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent GetArticleInfos(arid)
     End Sub
+
+   
+
 End Class

@@ -77,6 +77,8 @@
 
     Event PrintListofDetailsJornalier(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
 
+    Event ChangeItemDepot(ByVal addRow As ListRow, ByVal dpid As Object)
+
   
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
         Get
@@ -545,6 +547,7 @@
 
         AddHandler R.itemChanged, AddressOf Article_Item_Changed
         AddHandler R.DeleteItem, AddressOf Article_Item_Delete
+        AddHandler R.ChangeArticleDepot, AddressOf ChangeArticleDepot
 
         R.id = d_id
         If d_id > 0 Then Pl.Controls.Add(R)
@@ -789,6 +792,10 @@
         RaiseEvent ArticleItemChanged(listRow, art)
         Pl_ControlAdded(Nothing, Nothing)
     End Sub
+    Private Sub ChangeArticleDepot(ByVal addRow As ListRow, ByVal _dpid As Object)
+        RaiseEvent ChangeItemDepot(addRow, _dpid)
+    End Sub
+
     Private Sub Article_Item_Delete(ByVal listRow As ListRow)
         RaiseEvent ArticleItemDelete(listRow)
         Pl_ControlAdded(Nothing, Nothing)
@@ -907,4 +914,6 @@
     Private Sub AddRow1_getStock(ByVal _arid As System.Int32, ByVal _dpid As System.Int32, ByRef stk As System.Double) Handles AddRow1.getStock
         RaiseEvent getStockForAddRow(_arid, _dpid, stk)
     End Sub
+
+   
 End Class

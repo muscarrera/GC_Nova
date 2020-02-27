@@ -46,6 +46,7 @@ Public Class FactureClass
         AddHandler ds.DeleteItem, AddressOf DeleteItem
         AddHandler ds.EditSelectedFacture, AddressOf EditSelectedFacture
         AddHandler ds.ArticleItemChanged, AddressOf ArticleItemChanged
+        AddHandler ds.ChangeItemDepot, AddressOf ChangeItemDepot
         AddHandler ds.ArticleItemDelete, AddressOf ArticleItemDelete
         AddHandler ds.NewDevisRef, AddressOf NewDevisRef
         AddHandler ds.NewBcRef, AddressOf NewBcRef
@@ -1934,6 +1935,58 @@ Public Class FactureClass
         End If
 
         Form1.PrintDocList.Print()
+    End Sub
+
+    Private Sub ChangeItemDepot(ByVal R As ListRow, ByVal dpid As Object)
+        Try
+            Dim ds As DataList = Form1.plBody.Controls(0)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+
+
+                Dim b As Boolean = False
+                Dim oldQte As Double = R.qte
+                Dim newQte As Double = R.qte
+
+
+                If ds.DetailsTable = "Details_Bon_Livraison" Then
+                    oldQte = R.qte
+                    newQte = R.qte * -1
+                    b = True
+                ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                    oldQte = R.qte * -1
+                    newQte = R.qte
+                    b = True
+                Else
+                    b = False
+                End If
+
+                If b And R.article.arid > 0 Then
+
+                    If R.depot > 0 Then
+                        Dim oldStock = getStockById(R.arid, R.depot, c)
+                        If getStockId(R.arid, R.depot, c) = 0 Then
+                            'AddNewStock(R.arid, R.arid, R.cid, oldQte, c)
+                        Else
+                            oldStock += oldQte
+                            updateStock(R.arid, R.depot, oldStock, c)
+                        End If
+                    End If
+
+                    If dpid > 0 Then
+                        Dim oldStock = getStockById(R.arid, dpid, c)
+                        If getStockId(R.arid, dpid, c) = 0 Then
+                            'AddNewStock(R.arid, R.arid, R.cid, oldQte, c)
+                        Else
+                            oldStock += newQte
+                            updateStock(R.arid, dpid, oldStock, c)
+                        End If
+                    End If
+
+                End If
+            End Using
+        Catch ex As Exception
+        End Try
     End Sub
 
 

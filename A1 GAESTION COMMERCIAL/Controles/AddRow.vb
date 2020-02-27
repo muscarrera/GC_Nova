@@ -10,8 +10,11 @@
 
     Public article As New Article
     Public IsSell As Boolean = True
+    Public EditMode As Boolean = False
 
     Event getStock(ByVal _arid As Integer, ByVal _dpid As Integer, ByRef stk As Double)
+
+    Event ChangeElementDepot(ByVal addRow As AddRow, ByVal dpid As Integer)
 
     Public Property dpid As Integer
         Get
@@ -176,7 +179,7 @@
     'fill
     Public Sub FillFields(ByVal art As Article)
         Dim sPrice As Double = art.sprice
-        If IsSell = False Then sPrice = art.bprice
+        If IsSell = False And EditMode = False Then sPrice = art.bprice
 
         article = New Article(art.arid, art.cid, art.name, art.desc, art.qte,
                               sPrice, art.bprice, art.TVA, art.remise, art.depot,
@@ -371,6 +374,9 @@
     Private Sub btDepot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDepot.Click
         Dim clc As New ChooseDepot
         If clc.ShowDialog = DialogResult.OK Then
+            If dpid <> clc.dpid And EditMode = True Then
+                RaiseEvent ChangeElementDepot(Me, clc.dpid)
+            End If
             dpid = clc.dpid
         End If
     End Sub
