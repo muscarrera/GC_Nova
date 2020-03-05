@@ -730,9 +730,21 @@ Public Class FactureClass
         Try
             Dim mp As New ModePayement
             If mp.ShowDialog = DialogResult.OK Then
-                ds.ModePayement = mp.mode
-            End If
+                Dim id = ds.Id
 
+                Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                    Dim params As New Dictionary(Of String, Object)
+                    Dim where As New Dictionary(Of String, Object)
+
+                    params.Add("modePayement", mp.mode)
+
+                    where.Add("id", id)
+
+                    If c.UpdateRecord(ds.FactureTable, params, where) Then
+                        ds.ModePayement = mp.mode
+                    End If
+                End Using
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -796,7 +808,7 @@ Public Class FactureClass
         ElseIf ds.Operation = "Commande_Client" Then
             Form1.Facture_Title = "Commande Client "
         ElseIf ds.Operation = "Sell_Avoir" Then
-            Form1.Facture_Title = "Bon d'Avoir "
+            Form1.Facture_Title = "Facture d'Avoir "
         End If
         Form1.printOnPaper = False
 
@@ -838,7 +850,7 @@ Public Class FactureClass
             Form1.Facture_Title = "Commande Client "
         ElseIf ds.Operation = "Sell_Avoir" Then
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
-            Form1.Facture_Title = "Bon d'Avoir "
+            Form1.Facture_Title = "Facture d'Avoir "
         Else
             Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
         End If
@@ -881,7 +893,7 @@ Public Class FactureClass
                 Form1.Facture_Title = "Commande Client "
             ElseIf ds.Operation = "Sell_Avoir" Then
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
-                Form1.Facture_Title = "Bon d'Avoir "
+                Form1.Facture_Title = "Facture d'Avoir "
             Else
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
             End If
@@ -939,7 +951,7 @@ Public Class FactureClass
                 Form1.Facture_Title = "Commande Client "
             ElseIf ds.Operation = "Sell_Avoir" Then
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Avoir
-                Form1.Facture_Title = "Bon d'Avoir "
+                Form1.Facture_Title = "Facture d'Avoir "
             Else
                 Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Bon
             End If

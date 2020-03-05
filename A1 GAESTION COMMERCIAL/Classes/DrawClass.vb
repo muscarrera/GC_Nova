@@ -226,10 +226,16 @@ Public Class DrawClass
 
             SplitDecimal(CDec(ttc), nPart, zPart)
 
-            Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            'Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            'If zPart > 0 Then
+            '    stt &= "et " & NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+            'End If
+
+            Dim stt As String = ChLettre.NBLT(nPart) & " (Dhs)  "
             If zPart > 0 Then
-                stt &= "et " & NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+                stt &= "et " & ChLettre.NBLT(CInt(zPart * 100)) & " (Cts)"
             End If
+
 
             Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
             Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
@@ -574,10 +580,18 @@ Public Class DrawClass
 
             SplitDecimal(CDec(ttc), nPart, zPart)
 
-            Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            'Dim stt As String = NumericStrings.GetNumberWords(nPart) & " (Dhs)  "
+            'If zPart > 0 Then
+            '    stt &= NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+            'End If
+
+
+            Dim stt As String = ChLettre.NBLT(nPart) & " (Dhs)  "
             If zPart > 0 Then
-                stt &= NumericStrings.GetNumberWords(CInt(zPart * 100)) & " (Cts)"
+                stt &= "et " & ChLettre.NBLT(CInt(zPart * 100)) & " (Cts)"
             End If
+
+
 
             Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
             Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
@@ -780,7 +794,7 @@ Public Class DrawClass
             e.Graphics.DrawString("Client  : ", fnt, Brushes.Black, 50, 230)
             e.Graphics.DrawString("M : " & clientName, fnt, Brushes.Black, 50, 250)
             Dim str As String = ds.lbInfo.Text
-            e.Graphics.DrawString(str, fnt, Brushes.Black, New RectangleF(50, 270, 220, 100), sf_L)
+            e.Graphics.DrawString(str, fnt, Brushes.Black, New RectangleF(50, 270, 444, 100), sf_L)
 
             If m > 0 Then e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 60, 270)
 

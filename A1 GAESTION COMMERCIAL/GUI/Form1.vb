@@ -60,6 +60,7 @@
     Public myMinStock As Double = 2
     Public isWorkinOnStock As Boolean = True
     Public mainDepot As Integer = 3
+    Public prf_Params As New Dictionary(Of String, String)
 
 
     Public Property prefix As String
@@ -84,11 +85,12 @@
 
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         'Regs info
         HandleRegistryinfo()
 
         'check Trial
-        If TrialVersion_Master = False Then
+        If TrialVersion_Slave = False Then
             MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***TRIAL***")
             End
         End If

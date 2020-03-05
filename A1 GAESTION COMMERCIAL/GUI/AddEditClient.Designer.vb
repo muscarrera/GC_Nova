@@ -72,6 +72,7 @@ Partial Class AddEditClient
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtICE = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtAdresse = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.btRemise = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
@@ -136,6 +137,7 @@ Partial Class AddEditClient
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel24.Controls.Add(Me.btRemise)
         Me.Panel24.Controls.Add(Me.Button7)
         Me.Panel24.Controls.Add(Me.Button6)
         Me.Panel24.Controls.Add(Me.Panel29)
@@ -738,6 +740,20 @@ Partial Class AddEditClient
         Me.txtAdresse.txtReadOnly = False
         Me.txtAdresse.TxtSelect = New Integer() {1, 0}
         '
+        'btRemise
+        '
+        Me.btRemise.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
+        Me.btRemise.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btRemise.Location = New System.Drawing.Point(487, 5)
+        Me.btRemise.Name = "btRemise"
+        Me.btRemise.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
+        Me.btRemise.Size = New System.Drawing.Size(90, 28)
+        Me.btRemise.TabIndex = 2
+        Me.btRemise.Text = "Remises"
+        Me.btRemise.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btRemise.UseVisualStyleBackColor = True
+        Me.btRemise.Visible = False
+        '
         'AddEditClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -824,4 +840,5 @@ Partial Class AddEditClient
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtICE As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtAdresse As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents btRemise As System.Windows.Forms.Button
 End Class

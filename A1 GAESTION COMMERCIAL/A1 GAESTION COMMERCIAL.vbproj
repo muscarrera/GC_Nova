@@ -87,6 +87,7 @@
     <Compile Include="Classes\AdminModule.vb" />
     <Compile Include="Classes\AricleClass.vb" />
     <Compile Include="Classes\AutoModule.vb" />
+    <Compile Include="Classes\chLettre.vb" />
     <Compile Include="Classes\ClientClass.vb" />
     <Compile Include="Classes\DataAccess.vb" />
     <Compile Include="Classes\DrawClass.vb" />
@@ -280,6 +281,12 @@
       <DependentUpon>ClientDetails.vb</DependentUpon>
     </Compile>
     <Compile Include="GUI\ClientDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Client_Remise.Designer.vb">
+      <DependentUpon>Client_Remise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Client_Remise.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Form1.vb">
@@ -486,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ClientDetails.resx">
       <DependentUpon>ClientDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Client_Remise.resx">
+      <DependentUpon>Client_Remise.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

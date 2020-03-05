@@ -67,6 +67,19 @@
             Form1.BoundDbPath = getRegistryinfo("PathBound", "C:\")
             Form1.SvgdPah = getRegistryinfo("PathSvgd", "C:\")
             Form1.ImgPah = getRegistryinfo("ImgPath", "C:\")
+
+            'prefix
+            Form1.prf_Params.clear()
+            Form1.prf_Params.Add("dv", getRegistryinfo("prf_s_dv", "Av"))
+            Form1.prf_Params.Add("cm", getRegistryinfo("prf_s_cm", "Cm"))
+            Form1.prf_Params.Add("bl", getRegistryinfo("prf_s_bl", "Bl"))
+            Form1.prf_Params.Add("fc", getRegistryinfo("prf_s_fc", "Fc"))
+            Form1.prf_Params.Add("av", getRegistryinfo("prf_s_av", "Av"))
+
+            Form1.prf_Params.Add("bc", getRegistryinfo("prf_b_bc", "Bc"))
+            Form1.prf_Params.Add("ba", getRegistryinfo("prf_b_ba", "Ba"))
+            Form1.prf_Params.Add("fc_b", getRegistryinfo("prf_b_fc", "Fc"))
+            Form1.prf_Params.Add("av_b", getRegistryinfo("prf_b_av", "Av"))
         Catch ex As Exception
 
         End Try

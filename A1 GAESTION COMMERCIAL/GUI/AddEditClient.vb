@@ -15,8 +15,10 @@ Public Class AddEditClient
         End Get
         Set(ByVal value As Integer)
             _id = value
+
             If value = 0 Then Exit Property
 
+            btRemise.Visible = True
             FillForm(value, tb_C)
         End Set
     End Property
@@ -201,5 +203,15 @@ Public Class AddEditClient
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         DialogResult = Windows.Forms.DialogResult.Cancel
+    End Sub
+
+    Private Sub btRemise_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btRemise.Click
+        Dim rm As New Client_Remise
+        rm.client_Id = Id
+        rm.lbClient.Text = txtName.text
+
+        If rm.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+        End If
     End Sub
 End Class

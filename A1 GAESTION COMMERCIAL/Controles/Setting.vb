@@ -64,6 +64,20 @@
             txtPathBound.Text = getRegistryinfo("PathBound", "C:\")
             txtPathSvgd.Text = getRegistryinfo("PathSvgd", "C:\")
             txtPathImg.Text = getRegistryinfo("ImgPath", "C:\")
+
+
+            'prefix
+            txtdv.Text = getRegistryinfo("prf_s_dv", "Av")
+            txtcm.Text = getRegistryinfo("prf_s_cm", "Cm")
+            txtbl.Text = getRegistryinfo("prf_s_bl", "Bl")
+            txtfc.Text = getRegistryinfo("prf_s_fc", "Fc")
+            txtav.Text = getRegistryinfo("prf_s_av", "Av")
+
+            txt_bc.Text = getRegistryinfo("prf_b_bc", "Bc")
+            txt_ba.Text = getRegistryinfo("prf_b_ba", "Ba")
+            txt_fc.Text = getRegistryinfo("prf_b_fc", "Fc")
+            txt_av.Text = getRegistryinfo("prf_b_av", "Av")
+
         Catch ex As Exception
 
         End Try
@@ -278,6 +292,23 @@
         End Try
 
 
+
+        Try
+       
+            setRegistryinfo("prf_s_dv", txtdv.Text)
+            setRegistryinfo("prf_s_cm", txtcm.Text)
+            setRegistryinfo("prf_s_bl", txtbl.Text)
+            setRegistryinfo("prf_s_fc", txtfc.Text)
+            setRegistryinfo("prf_s_av", txtav.Text)
+
+            setRegistryinfo("prf_b_bc", txt_bc.Text)
+            setRegistryinfo("prf_b_ba", txt_ba.Text)
+            setRegistryinfo("prf_b_fc", txt_fc.Text)
+            setRegistryinfo("prf_b_av", txt_av.Text)
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
@@ -498,4 +529,5 @@
             setRegistryinfo("mainDepot", clc.dpid)
         End If
     End Sub
+
 End Class

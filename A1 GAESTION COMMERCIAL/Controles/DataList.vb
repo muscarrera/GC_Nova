@@ -126,7 +126,7 @@
                 DetailsTable = "Details_Sell_Facture"
                 Entete.Type = "Facture"
                 'isSell = True
-                Form1.prefix = "Fc"
+                Form1.prefix = Form1.prf_Params("fc")
             ElseIf value = "Devis" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -134,7 +134,7 @@
                 DetailsTable = "Details_Devis"
                 Entete.Type = "Devis"
                 'isSell = True
-                Form1.prefix = "Dv"
+                Form1.prefix = Form1.prf_Params("dv")
             ElseIf value = "Commande_Client" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -142,7 +142,7 @@
                 DetailsTable = "Details_Commande"
                 Entete.Type = "Commande"
                 'isSell = True
-                Form1.prefix = "Cmd"
+                Form1.prefix = Form1.prf_Params("cm")
             ElseIf value = "Bon_Livraison" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -150,7 +150,7 @@
                 DetailsTable = "Details_Bon_Livraison"
                 Entete.Type = "BL"
                 'isSell = True
-                Form1.prefix = "BL"
+                Form1.prefix = Form1.prf_Params("bl")
             ElseIf value = "Buy_Facture" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -158,7 +158,7 @@
                 DetailsTable = "Details_Buy_Facture"
                 Entete.Type = "Buy_Facture"
                 'isSell = False
-                Form1.prefix = "Fc-Ent"
+                Form1.prefix = Form1.prf_Params("fc_b")
             ElseIf value = "Bon_Commande" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -166,7 +166,7 @@
                 DetailsTable = "Details_Bon_Commande"
                 Entete.Type = "BC"
                 'isSell = False
-                Form1.prefix = "BC"
+                Form1.prefix = Form1.prf_Params("bc")
             ElseIf value = "Bon_Achat" Then
                 clientTable = "Fournisseur"
                 payementTable = "Company_Payement"
@@ -174,7 +174,7 @@
                 DetailsTable = "Details_Bon_Achat"
                 Entete.Type = "BA"
                 'isSell = False
-                Form1.prefix = "BA"
+                Form1.prefix = Form1.prf_Params("ba")
             ElseIf value = "Sell_Avoir" Then
                 clientTable = "Client"
                 payementTable = "Client_Payement"
@@ -182,7 +182,15 @@
                 DetailsTable = "Details_Sell_Avoir"
                 Entete.Type = "Avoir"
                 'isSell = False
-                Form1.prefix = "Av"
+                Form1.prefix = Form1.prf_Params("av")
+            ElseIf value = "Buy_Avoir" Then
+                clientTable = "Fournisseur"
+                payementTable = "Company_Payement"
+                FactureTable = "Buy_Avoir"
+                DetailsTable = "Details_Buy_Avoir"
+                Entete.Type = "Avoir"
+                'isSell = False
+                Form1.prefix = Form1.prf_Params("av_b")
             End If
             'Form1.prefix &= Form1.Exercice & "/000"
             RaiseEvent OperationTypeChanged()

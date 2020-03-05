@@ -235,10 +235,9 @@
                 cid = value.cid
                 ClientName = value.name
                 Dim str As String = "[" & value.cid & "]"
-                str &= vbNewLine
                 str &= value.adresse
                 str &= vbNewLine
-                str &= "Tel: " & value.tel & " - " & "ICE : " & value.cid
+                str &= "ICE: " & value.cid
 
                 lbInfo.Text = str
                 lbTransportClientInfos.Text = str
