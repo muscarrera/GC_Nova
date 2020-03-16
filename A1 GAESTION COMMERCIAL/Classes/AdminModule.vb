@@ -1,8 +1,9 @@
 ﻿Imports System.IO
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc3"
+    Dim strKey = "ALMsbtrFirstRun_gc44"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
+    Dim nbrDays = 15
 
     Public ReadOnly Property TrialVersion_Master
         Get
@@ -89,12 +90,12 @@ Module AdminModule
 
             End Try
             Return 1
-        ElseIf (Now - ALMohasibfirstRunDate).Days > 90 Then
+        ElseIf (Now - ALMohasibfirstRunDate).Days > nbrDays Then
             Try
 
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
                 Dim dt = ta.GetData("keypsv")
-                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "d15-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
+                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
                 ''''''
                 If dt.Rows.Count > 0 Then
 
@@ -136,7 +137,7 @@ Module AdminModule
             Try
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
                 Dim dt = ta.GetData("keypsv")
-                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "d15-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
+                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
                 ''''''
                 If dt.Rows.Count > 0 Then
 
@@ -218,7 +219,7 @@ Module AdminModule
             My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", strKey, ALMohasibfirstRunDate)
 
             Return 1
-        ElseIf (Now - ALMohasibfirstRunDate).Days > 60 Then
+        ElseIf (Now - ALMohasibfirstRunDate).Days > nbrDays Then
             Return 0
         Else
             Return 1

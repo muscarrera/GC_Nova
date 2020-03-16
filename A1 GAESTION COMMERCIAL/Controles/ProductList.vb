@@ -86,7 +86,7 @@
 
             numberOfItems = Form1.numberOfItems
             numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
-            If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
+            If value.Rows.Count > numberOfItems * numberOfPage Then numberOfPage += 1
             currentPage = 1
             If TableName = "Article" Then
                 FillRows()
@@ -140,7 +140,7 @@
         lastIndex += numberOfItems
 
         If _dt.Rows.Count > 0 Then
-            If _dt.Rows.Count - lastIndex < numberOfItems Then
+            If lastIndex > _dt.Rows.Count - 1 Then
                 'n = _dtList.Rows.Count - lastIndex
                 lastIndex = _dt.Rows.Count - 1
             End If
@@ -225,7 +225,7 @@
 
                 a.Index = i
                 a.Dock = DockStyle.Top
-                a.BringToFront()
+                a.SendToBack()
 
                 AddHandler a.EditSelectedItem, AddressOf EditSelectedItem
                 AddHandler a.DeleteItem, AddressOf DeleteItem
@@ -378,4 +378,12 @@
     End Sub
 
     
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim mv As New TransformeStock
+        mv.arid = SelectedArticle.Id
+
+        If mv.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+        End If
+    End Sub
 End Class

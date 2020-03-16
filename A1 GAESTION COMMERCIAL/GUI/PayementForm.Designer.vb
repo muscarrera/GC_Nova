@@ -22,27 +22,37 @@ Partial Class PayementForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim Payement2 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
+        Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Panel24 = New System.Windows.Forms.Panel()
+        Me.AddPayementRow1 = New A1_GAESTION_COMMERCIAL.AddPayementRow()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.plPmBody = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.AddPayementRow1 = New A1_GAESTION_COMMERCIAL.AddPayementRow()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.lbLavc = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lbLtotal = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.lbAvoir = New System.Windows.Forms.Label()
+        Me.lb_PorteMonie = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -53,6 +63,10 @@ Partial Class PayementForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.Panel8)
+        Me.Panel1.Controls.Add(Me.Panel7)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.lbRef)
         Me.Panel1.Controls.Add(Me.Label22)
@@ -62,8 +76,78 @@ Partial Class PayementForm
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel1.Size = New System.Drawing.Size(884, 121)
+        Me.Panel1.Size = New System.Drawing.Size(884, 127)
         Me.Panel1.TabIndex = 6
+        '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel8.Controls.Add(Me.lbAvoir)
+        Me.Panel8.Controls.Add(Me.Button3)
+        Me.Panel8.Location = New System.Drawing.Point(656, 41)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(216, 32)
+        Me.Panel8.TabIndex = 9
+        Me.Panel8.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(656, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(41, 15)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Avoir"
+        '
+        'Button3
+        '
+        Me.Button3.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(174, 0)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button3.Size = New System.Drawing.Size(42, 32)
+        Me.Button3.TabIndex = 3
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel7.Controls.Add(Me.lb_PorteMonie)
+        Me.Panel7.Controls.Add(Me.Button1)
+        Me.Panel7.Location = New System.Drawing.Point(434, 41)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(216, 32)
+        Me.Panel7.TabIndex = 9
+        Me.Panel7.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(431, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(102, 15)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "porte-monnaie"
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(174, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(42, 32)
+        Me.Button1.TabIndex = 3
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -102,10 +186,25 @@ Partial Class PayementForm
         Me.Panel24.Controls.Add(Me.AddPayementRow1)
         Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel24.Location = New System.Drawing.Point(5, 80)
+        Me.Panel24.Location = New System.Drawing.Point(5, 86)
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(874, 36)
         Me.Panel24.TabIndex = 3
+        '
+        'AddPayementRow1
+        '
+        Me.AddPayementRow1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.AddPayementRow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AddPayementRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddPayementRow1.EditMode = False
+        Me.AddPayementRow1.id = 0
+        Me.AddPayementRow1.Index = 0
+        Me.AddPayementRow1.Location = New System.Drawing.Point(0, 2)
+        Me.AddPayementRow1.Name = "AddPayementRow1"
+        Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
+        Me.AddPayementRow1.Payement = Payement1
+        Me.AddPayementRow1.Size = New System.Drawing.Size(874, 34)
+        Me.AddPayementRow1.TabIndex = 9
         '
         'Panel29
         '
@@ -138,10 +237,10 @@ Partial Class PayementForm
         '
         Me.Panel4.Controls.Add(Me.plPmBody)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 121)
+        Me.Panel4.Location = New System.Drawing.Point(0, 127)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel4.Size = New System.Drawing.Size(884, 331)
+        Me.Panel4.Size = New System.Drawing.Size(884, 325)
         Me.Panel4.TabIndex = 8
         '
         'plPmBody
@@ -152,7 +251,7 @@ Partial Class PayementForm
         Me.plPmBody.Location = New System.Drawing.Point(5, 5)
         Me.plPmBody.Name = "plPmBody"
         Me.plPmBody.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPmBody.Size = New System.Drawing.Size(874, 321)
+        Me.plPmBody.Size = New System.Drawing.Size(874, 315)
         Me.plPmBody.TabIndex = 0
         '
         'Panel2
@@ -164,21 +263,6 @@ Partial Class PayementForm
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(884, 17)
         Me.Panel2.TabIndex = 7
-        '
-        'AddPayementRow1
-        '
-        Me.AddPayementRow1.BackColor = System.Drawing.Color.Transparent
-        Me.AddPayementRow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.AddPayementRow1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AddPayementRow1.EditMode = False
-        Me.AddPayementRow1.id = 0
-        Me.AddPayementRow1.Index = 0
-        Me.AddPayementRow1.Location = New System.Drawing.Point(0, 2)
-        Me.AddPayementRow1.Name = "AddPayementRow1"
-        Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddPayementRow1.Payement = Payement2
-        Me.AddPayementRow1.Size = New System.Drawing.Size(874, 34)
-        Me.AddPayementRow1.TabIndex = 9
         '
         'Panel3
         '
@@ -194,29 +278,6 @@ Partial Class PayementForm
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(884, 37)
         Me.Panel3.TabIndex = 9
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(756, 5)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button2.Size = New System.Drawing.Size(116, 28)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Enregistrer   "
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(884, 2)
-        Me.Panel6.TabIndex = 1
         '
         'lbLavc
         '
@@ -270,6 +331,49 @@ Partial Class PayementForm
         Me.Label3.Text = "Total :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(756, 5)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button2.Size = New System.Drawing.Size(116, 28)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Enregistrer   "
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel6.Location = New System.Drawing.Point(0, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(884, 2)
+        Me.Panel6.TabIndex = 1
+        '
+        'lbAvoir
+        '
+        Me.lbAvoir.AutoSize = True
+        Me.lbAvoir.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvoir.Location = New System.Drawing.Point(16, 9)
+        Me.lbAvoir.Name = "lbAvoir"
+        Me.lbAvoir.Size = New System.Drawing.Size(15, 15)
+        Me.lbAvoir.TabIndex = 11
+        Me.lbAvoir.Text = "0"
+        '
+        'lb_PorteMonie
+        '
+        Me.lb_PorteMonie.AutoSize = True
+        Me.lb_PorteMonie.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_PorteMonie.Location = New System.Drawing.Point(13, 9)
+        Me.lb_PorteMonie.Name = "lb_PorteMonie"
+        Me.lb_PorteMonie.Size = New System.Drawing.Size(15, 15)
+        Me.lb_PorteMonie.TabIndex = 12
+        Me.lb_PorteMonie.Text = "0"
+        '
         'PayementForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -285,6 +389,10 @@ Partial Class PayementForm
         Me.Text = "Payement"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel24.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
@@ -312,4 +420,12 @@ Partial Class PayementForm
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents lbLtotal As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Panel8 As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Panel7 As System.Windows.Forms.Panel
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents lbAvoir As System.Windows.Forms.Label
+    Friend WithEvents lb_PorteMonie As System.Windows.Forms.Label
 End Class

@@ -237,7 +237,7 @@
                 Dim str As String = "[" & value.cid & "]"
                 str &= value.adresse
                 str &= vbNewLine
-                str &= "ICE: " & value.cid
+                str &= "ICE: " & value.ICE
 
                 lbInfo.Text = str
                 lbTransportClientInfos.Text = str

@@ -1848,14 +1848,17 @@ Public Class ParcClass
                 c.DeleteRecords("Details_Charge", params)
 
                 ds.TableName = "Mission"
-                If ds.Mode.ToUpper = "LIST" Then
-                    'ds.RemoveElement(elm)
-                Else
-                    ds.Mode = "LIST"
-                End If
+            
             End If
 
         End Using
+
+        If ds.Mode.ToUpper = "LIST" Then
+            'ds.RemoveElement(elm)
+        Else
+
+            ds.Mode = "LIST"
+        End If
     End Sub
     Private Sub DeleteTransport(ByVal _id As Integer, ByRef ds As ParcList)
         Dim mid As Integer = _id
@@ -2129,6 +2132,7 @@ Public Class ParcClass
         PP.cid = parcList.Client.cid
         PP.FactureTable = parcList.TableName
         PP.payementTable = "Client_Payement"
+        PP.clientTable = "Client"
         PP.Avance = parcList.Avance_Transport
         PP.Total = parcList.Total_Transport
         PP.Id = parcList.id_T

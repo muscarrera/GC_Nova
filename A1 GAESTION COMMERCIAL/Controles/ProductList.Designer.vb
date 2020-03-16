@@ -56,6 +56,7 @@ Partial Class ProductList
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.plModeArticle = New System.Windows.Forms.Panel()
+        Me.btDepot = New System.Windows.Forms.Button()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.btCat = New System.Windows.Forms.Button()
         Me.btArticle = New System.Windows.Forms.Button()
@@ -64,7 +65,7 @@ Partial Class ProductList
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.btFournisseur = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
-        Me.btDepot = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -507,19 +508,36 @@ Partial Class ProductList
         Me.plModeArticle.Controls.Add(Me.Panel14)
         Me.plModeArticle.Controls.Add(Me.btCat)
         Me.plModeArticle.Controls.Add(Me.btArticle)
+        Me.plModeArticle.Controls.Add(Me.LinkLabel1)
         Me.plModeArticle.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plModeArticle.Location = New System.Drawing.Point(131, 2)
+        Me.plModeArticle.Location = New System.Drawing.Point(-24, 2)
         Me.plModeArticle.Name = "plModeArticle"
-        Me.plModeArticle.Size = New System.Drawing.Size(300, 35)
+        Me.plModeArticle.Size = New System.Drawing.Size(459, 35)
         Me.plModeArticle.TabIndex = 11
+        '
+        'btDepot
+        '
+        Me.btDepot.BackColor = System.Drawing.Color.Transparent
+        Me.btDepot.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.stock_icon_png_14
+        Me.btDepot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btDepot.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btDepot.FlatAppearance.BorderSize = 0
+        Me.btDepot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btDepot.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDepot.ForeColor = System.Drawing.Color.Teal
+        Me.btDepot.Location = New System.Drawing.Point(166, 2)
+        Me.btDepot.Name = "btDepot"
+        Me.btDepot.Size = New System.Drawing.Size(43, 33)
+        Me.btDepot.TabIndex = 10
+        Me.btDepot.UseVisualStyleBackColor = False
         '
         'Panel14
         '
         Me.Panel14.BackColor = System.Drawing.Color.Gainsboro
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel14.Location = New System.Drawing.Point(0, 0)
+        Me.Panel14.Location = New System.Drawing.Point(166, 0)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(300, 2)
+        Me.Panel14.Size = New System.Drawing.Size(293, 2)
         Me.Panel14.TabIndex = 1
         '
         'btCat
@@ -530,7 +548,7 @@ Partial Class ProductList
         Me.btCat.ForeColor = System.Drawing.Color.DarkGray
         Me.btCat.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btCat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btCat.Location = New System.Drawing.Point(176, 5)
+        Me.btCat.Location = New System.Drawing.Point(335, 5)
         Me.btCat.Name = "btCat"
         Me.btCat.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btCat.Size = New System.Drawing.Size(116, 28)
@@ -548,7 +566,7 @@ Partial Class ProductList
         Me.btArticle.ForeColor = System.Drawing.SystemColors.AppWorkspace
         Me.btArticle.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22
         Me.btArticle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btArticle.Location = New System.Drawing.Point(54, 5)
+        Me.btArticle.Location = New System.Drawing.Point(213, 5)
         Me.btArticle.Name = "btArticle"
         Me.btArticle.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btArticle.Size = New System.Drawing.Size(116, 28)
@@ -563,7 +581,7 @@ Partial Class ProductList
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel12.Location = New System.Drawing.Point(0, 0)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(431, 2)
+        Me.Panel12.Size = New System.Drawing.Size(435, 2)
         Me.Panel12.TabIndex = 1
         '
         'plModeClient
@@ -573,9 +591,9 @@ Partial Class ProductList
         Me.plModeClient.Controls.Add(Me.btFournisseur)
         Me.plModeClient.Controls.Add(Me.btClient)
         Me.plModeClient.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plModeClient.Location = New System.Drawing.Point(431, 0)
+        Me.plModeClient.Location = New System.Drawing.Point(435, 0)
         Me.plModeClient.Name = "plModeClient"
-        Me.plModeClient.Size = New System.Drawing.Size(259, 37)
+        Me.plModeClient.Size = New System.Drawing.Size(255, 37)
         Me.plModeClient.TabIndex = 10
         '
         'Panel9
@@ -584,7 +602,7 @@ Partial Class ProductList
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel9.Location = New System.Drawing.Point(0, 0)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(259, 2)
+        Me.Panel9.Size = New System.Drawing.Size(255, 2)
         Me.Panel9.TabIndex = 1
         '
         'btFournisseur
@@ -595,7 +613,7 @@ Partial Class ProductList
         Me.btFournisseur.ForeColor = System.Drawing.Color.DarkGray
         Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btFournisseur.Location = New System.Drawing.Point(135, 5)
+        Me.btFournisseur.Location = New System.Drawing.Point(131, 5)
         Me.btFournisseur.Name = "btFournisseur"
         Me.btFournisseur.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btFournisseur.Size = New System.Drawing.Size(116, 28)
@@ -613,7 +631,7 @@ Partial Class ProductList
         Me.btClient.ForeColor = System.Drawing.SystemColors.AppWorkspace
         Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
         Me.btClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btClient.Location = New System.Drawing.Point(13, 5)
+        Me.btClient.Location = New System.Drawing.Point(9, 5)
         Me.btClient.Name = "btClient"
         Me.btClient.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
         Me.btClient.Size = New System.Drawing.Size(116, 28)
@@ -622,21 +640,16 @@ Partial Class ProductList
         Me.btClient.Text = "Client"
         Me.btClient.UseVisualStyleBackColor = True
         '
-        'btDepot
+        'LinkLabel1
         '
-        Me.btDepot.BackColor = System.Drawing.Color.Transparent
-        Me.btDepot.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.stock_icon_png_14
-        Me.btDepot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btDepot.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btDepot.FlatAppearance.BorderSize = 0
-        Me.btDepot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btDepot.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btDepot.ForeColor = System.Drawing.Color.Teal
-        Me.btDepot.Location = New System.Drawing.Point(0, 2)
-        Me.btDepot.Name = "btDepot"
-        Me.btDepot.Size = New System.Drawing.Size(43, 33)
-        Me.btDepot.TabIndex = 10
-        Me.btDepot.UseVisualStyleBackColor = False
+        Me.LinkLabel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.LinkLabel1.Location = New System.Drawing.Point(0, 0)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(166, 35)
+        Me.LinkLabel1.TabIndex = 11
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Transfert inter/intra-dépôt(s)"
+        Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ProductList
         '
@@ -707,5 +720,6 @@ Partial Class ProductList
     Friend WithEvents btArticle As System.Windows.Forms.Button
     Friend WithEvents Panel12 As System.Windows.Forms.Panel
     Friend WithEvents btDepot As System.Windows.Forms.Button
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
 
 End Class

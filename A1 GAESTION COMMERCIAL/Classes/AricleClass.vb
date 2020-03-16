@@ -331,7 +331,7 @@
         If ds.pl.Controls.Count = 0 Then Exit Sub
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-            If Form1.isWorkinOnStock = False Then Exit Sub
+            If Form1.isWorkinOnStock = False And Form1.useBlLivrable = False Then Exit Sub
             Dim where As New Dictionary(Of String, Object)
 
             For Each l As ListLine In ds.pl.Controls

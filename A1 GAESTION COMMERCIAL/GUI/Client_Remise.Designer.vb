@@ -27,11 +27,14 @@ Partial Class Client_Remise
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.plRef = New System.Windows.Forms.Panel()
         Me.plName = New System.Windows.Forms.Panel()
+        Me.txtCat = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.cbTous = New System.Windows.Forms.CheckBox()
         Me.plRemise = New System.Windows.Forms.Panel()
+        Me.txtArt = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
+        Me.txtRemise = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
@@ -45,9 +48,6 @@ Partial Class Client_Remise
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtCat = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtArt = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtRemise = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -117,6 +117,26 @@ Partial Class Client_Remise
         Me.plName.Size = New System.Drawing.Size(170, 34)
         Me.plName.TabIndex = 12
         '
+        'txtCat
+        '
+        Me.txtCat.BackColor = System.Drawing.Color.White
+        Me.txtCat.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtCat.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtCat.IsNumiric = False
+        Me.txtCat.Location = New System.Drawing.Point(5, 0)
+        Me.txtCat.Name = "txtCat"
+        Me.txtCat.PlaceHolder = "Famille"
+        Me.txtCat.ShowClearIcon = False
+        Me.txtCat.ShowSaveIcon = False
+        Me.txtCat.Size = New System.Drawing.Size(160, 34)
+        Me.txtCat.StartUp = 2
+        Me.txtCat.TabIndex = 2
+        Me.txtCat.TextSize = 8
+        Me.txtCat.TxtBackColor = True
+        Me.txtCat.TxtColor = System.Drawing.Color.White
+        Me.txtCat.txtReadOnly = False
+        Me.txtCat.TxtSelect = New Integer() {1, 0}
+        '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.cbTous)
@@ -148,6 +168,26 @@ Partial Class Client_Remise
         Me.plRemise.Size = New System.Drawing.Size(208, 34)
         Me.plRemise.TabIndex = 7
         '
+        'txtArt
+        '
+        Me.txtArt.BackColor = System.Drawing.Color.White
+        Me.txtArt.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtArt.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtArt.IsNumiric = False
+        Me.txtArt.Location = New System.Drawing.Point(10, 0)
+        Me.txtArt.Name = "txtArt"
+        Me.txtArt.PlaceHolder = "Articles"
+        Me.txtArt.ShowClearIcon = False
+        Me.txtArt.ShowSaveIcon = False
+        Me.txtArt.Size = New System.Drawing.Size(193, 34)
+        Me.txtArt.StartUp = 2
+        Me.txtArt.TabIndex = 5
+        Me.txtArt.TextSize = 8
+        Me.txtArt.TxtBackColor = True
+        Me.txtArt.TxtColor = System.Drawing.Color.White
+        Me.txtArt.txtReadOnly = False
+        Me.txtArt.TxtSelect = New Integer() {1, 0}
+        '
         'plleft
         '
         Me.plleft.BackColor = System.Drawing.Color.Transparent
@@ -168,6 +208,26 @@ Partial Class Client_Remise
         Me.plTotal.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plTotal.Size = New System.Drawing.Size(148, 34)
         Me.plTotal.TabIndex = 13
+        '
+        'txtRemise
+        '
+        Me.txtRemise.BackColor = System.Drawing.Color.White
+        Me.txtRemise.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRemise.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRemise.IsNumiric = True
+        Me.txtRemise.Location = New System.Drawing.Point(10, 0)
+        Me.txtRemise.Name = "txtRemise"
+        Me.txtRemise.PlaceHolder = ""
+        Me.txtRemise.ShowClearIcon = False
+        Me.txtRemise.ShowSaveIcon = False
+        Me.txtRemise.Size = New System.Drawing.Size(133, 34)
+        Me.txtRemise.StartUp = 2
+        Me.txtRemise.TabIndex = 58
+        Me.txtRemise.TextSize = 8
+        Me.txtRemise.TxtBackColor = True
+        Me.txtRemise.TxtColor = System.Drawing.Color.White
+        Me.txtRemise.txtReadOnly = False
+        Me.txtRemise.TxtSelect = New Integer() {1, 0}
         '
         'Panel5
         '
@@ -312,66 +372,6 @@ Partial Class Client_Remise
         Me.Column4.HeaderText = "Value"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        '
-        'txtCat
-        '
-        Me.txtCat.BackColor = System.Drawing.Color.White
-        Me.txtCat.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtCat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtCat.IsNumiric = False
-        Me.txtCat.Location = New System.Drawing.Point(5, 0)
-        Me.txtCat.Name = "txtCat"
-        Me.txtCat.PlaceHolder = "Famille"
-        Me.txtCat.ShowClearIcon = False
-        Me.txtCat.ShowSaveIcon = False
-        Me.txtCat.Size = New System.Drawing.Size(160, 34)
-        Me.txtCat.StartUp = 2
-        Me.txtCat.TabIndex = 2
-        Me.txtCat.TextSize = 8
-        Me.txtCat.TxtBackColor = True
-        Me.txtCat.TxtColor = System.Drawing.Color.White
-        Me.txtCat.txtReadOnly = False
-        Me.txtCat.TxtSelect = New Integer() {1, 0}
-        '
-        'txtArt
-        '
-        Me.txtArt.BackColor = System.Drawing.Color.White
-        Me.txtArt.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtArt.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtArt.IsNumiric = True
-        Me.txtArt.Location = New System.Drawing.Point(10, 0)
-        Me.txtArt.Name = "txtArt"
-        Me.txtArt.PlaceHolder = "Articles"
-        Me.txtArt.ShowClearIcon = False
-        Me.txtArt.ShowSaveIcon = False
-        Me.txtArt.Size = New System.Drawing.Size(193, 34)
-        Me.txtArt.StartUp = 2
-        Me.txtArt.TabIndex = 5
-        Me.txtArt.TextSize = 8
-        Me.txtArt.TxtBackColor = True
-        Me.txtArt.TxtColor = System.Drawing.Color.White
-        Me.txtArt.txtReadOnly = False
-        Me.txtArt.TxtSelect = New Integer() {1, 0}
-        '
-        'txtRemise
-        '
-        Me.txtRemise.BackColor = System.Drawing.Color.White
-        Me.txtRemise.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRemise.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRemise.IsNumiric = True
-        Me.txtRemise.Location = New System.Drawing.Point(10, 0)
-        Me.txtRemise.Name = "txtRemise"
-        Me.txtRemise.PlaceHolder = ""
-        Me.txtRemise.ShowClearIcon = False
-        Me.txtRemise.ShowSaveIcon = False
-        Me.txtRemise.Size = New System.Drawing.Size(133, 34)
-        Me.txtRemise.StartUp = 2
-        Me.txtRemise.TabIndex = 58
-        Me.txtRemise.TextSize = 8
-        Me.txtRemise.TxtBackColor = True
-        Me.txtRemise.TxtColor = System.Drawing.Color.White
-        Me.txtRemise.txtReadOnly = False
-        Me.txtRemise.TxtSelect = New Integer() {1, 0}
         '
         'Client_Remise
         '

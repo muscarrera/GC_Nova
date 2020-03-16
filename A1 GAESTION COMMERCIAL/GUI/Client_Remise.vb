@@ -367,7 +367,7 @@
             If dt.Rows.Count > 0 Then
                
                 If CInt(dt.Rows(0).Item("cid")) > 0 Then
-                    txtArt.text = dt.Rows(0).Item("cat_name") & "|" & dt.Rows(0).Item("cid")
+                    txtCat.text = dt.Rows(0).Item("cat_name") & "|" & dt.Rows(0).Item("cid")
                 End If
 
                 If CInt(dt.Rows(0).Item("arid")) > 0 Then

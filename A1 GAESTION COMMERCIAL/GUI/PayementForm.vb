@@ -6,8 +6,11 @@
     Private _Id As Integer
     Public payementTable As String
     Public FactureTable As String
+    Public clientTable As String
+
     Public ClientName As String
     Public cid As String
+
 
     Public Property Id As Integer
         Get
@@ -44,6 +47,24 @@
                         arr(i) = R
                     Next
                     plPmBody.Controls.AddRange(arr)
+
+
+                    'getAvoir
+                    If Form1.useSoldByAvoir Then
+                        params.Clear()
+                        params.Add("isPayement", False)
+                        Dim av As Double = a.SelectByScalar("Sell_Avoir", "SUM(total) ", params)
+
+                        lbAvoir.Text = av.ToString("F:2")
+                    End If
+
+                    'get port Monie
+                    params.Clear()
+                    params.Add("Clid", cid)
+                    Dim pm As Double = a.SelectByScalar(clientTable, "port_Monie", params)
+
+                    lb_PorteMonie.Text = pm.ToString("F:2")
+
                 End If
             End Using
         End Set
@@ -106,7 +127,6 @@
             plPmBody.Controls.AddRange(arr)
         End If
     End Sub
-
 
     Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement) Handles AddPayementRow1.AddNewArticle
         If Id = 0 Then Exit Sub

@@ -18,7 +18,7 @@ Public Class AddEditClient
 
             If value = 0 Then Exit Property
 
-            btRemise.Visible = True
+            If Form1.useClientRemise_Way Then btRemise.Visible = True
             FillForm(value, tb_C)
         End Set
     End Property
@@ -152,7 +152,16 @@ Public Class AddEditClient
                 txtInfo.text = StrValue(dt, "info", 0)
 
                 lbImage.Text = StrValue(dt, "img", 0)
-                PBImage.BackgroundImage = Drawimg()
+                'PBImage.BackgroundImage = Drawimg()
+
+                Try
+                    Dim str As String = Form1.ImgPah & "\art" & lbImage.Text
+                    PBImage.BackgroundImage = Image.FromFile(str)
+                    PBImage.BackgroundImageLayout = ImageLayout.Stretch
+                Catch ex As Exception
+
+                End Try
+
             End If
         End Using
     End Sub
@@ -164,7 +173,7 @@ Public Class AddEditClient
         params.Add("ref", txtRef.text)
         params.Add("name", txtName.text)
         params.Add("isCompany", rbSte.Checked)
-        params.Add("groupe", cbctg.SelectedText)
+        params.Add("groupe", cbctg.Text)
 
         params.Add("adresse", txtAdresse.text)
         params.Add("cp", txtCp.text)

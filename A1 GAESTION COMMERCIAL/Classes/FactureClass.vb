@@ -60,6 +60,7 @@ Public Class FactureClass
         AddHandler ds.EdtitFactureDate, AddressOf EdtitFactureDate
         AddHandler ds.getStockForAddRow, AddressOf getStockForAddRow
         AddHandler ds.GetArticleStock, AddressOf GetArticleStock
+        AddHandler ds.getClientRemise, AddressOf getClientRemise
 
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
@@ -460,7 +461,7 @@ Public Class FactureClass
     End Sub
     Public Sub GetInpayedListe(ByVal cid As String)
         Try
-            Dim ds As DataList
+            Dim ds As DataList = Nothing
             If Form1.plBody.Controls.Count > 0 Then
                 If TypeOf Form1.plBody.Controls(0) Is DataList Then
                     ds = Form1.plBody.Controls(0)
@@ -757,6 +758,8 @@ Public Class FactureClass
             NF.txtName.text = ds.Entete.ClientName
             NF.cName = ds.Entete.ClientName
             NF.cid = ds.Entete.Client.cid
+
+            NF.tb_C = ds.clientTable
 
             NF.TxtExr.Enabled = False
             NF.txtName.Enabled = False
@@ -1088,8 +1091,19 @@ Public Class FactureClass
             tb_P = "Company_Payement"
             Operation = "Bon_Achat"
         End If
-        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Livré")
-        NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+
+        '''''''''''''''''''''''''''''''''''''''''
+        If ds.isSell And Form1.useBlLivrable Then
+            Bl_Livrable(tb_F, tb_D, tb_P, Operation, ds)
+            Exit Sub
+        Else
+
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "LIVRE")
+            NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, False)
+
+        End If
+        ''''''''''''''''''''''''''''''
+
 
         For Each b As Button In ds.plHeaderSells.Controls
             b.BackgroundImage = My.Resources.gray_row
@@ -1098,6 +1112,141 @@ Public Class FactureClass
         ds.pbBar.BackColor = RandomColor()
         ds.Button8.BackgroundImage = My.Resources.gui_16
     End Sub
+    Public Sub Bl_Livrable(ByVal tb_F As String, ByVal tb_D As String, ByVal tb_P As String,
+                                  ByVal Op As String, ByRef ds As DataList)
+        Dim data = ds.DataSource
+        Dim fid As Integer = 0
+        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+
+        Dim avance = ds.TB.avance
+
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                'params.Add(ds.FactureTable, ds.)
+                params.Add(ds.FactureTable, ds.Id)
+                Dim dt As DataTable = c.SelectDataTable(tb_F, {"id"}, params)
+                Dim tt As Double = ds.TB.TotalTTC
+                Dim isLivrable = False
+
+                If dt.Rows.Count > 0 Then
+                    tt = 0
+                    avance = 0
+                End If
+
+
+                If IsNothing(data) Then Exit Sub
+                If data.Rows.Count > 0 Then
+                    For i As Integer = 0 To data.Rows.Count - 1
+                        Dim qq As Double = 0
+
+                        For t As Integer = 0 To dt.Rows.Count - 1
+                            Try
+                                params.Clear()
+                                params.Add("fctid", dt.Rows(t).Item(0))
+                                params.Add("arid", data.Rows(i).Item("arid"))
+                                qq += c.SelectByScalar(tb_D, "qte", params)
+                            Catch ex As Exception
+                            End Try
+                        Next
+
+                        qq = CDbl(data.Rows(i).Item("qte")) - qq
+                        Dim p = CDbl(data.Rows(i).Item("price"))
+
+                        If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
+                            Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+
+                            If qq > oldStock Then
+                                qq = oldStock
+                                isLivrable = True
+                            End If
+
+                        End If
+
+
+                        params.Clear()
+                        params.Add("fctid", fid)
+                        params.Add("name", data.Rows(i).Item("name"))
+                        params.Add("bprice", data.Rows(i).Item("bprice"))
+                        params.Add("price", p)
+                        params.Add("remise", data.Rows(i).Item("remise"))
+                        params.Add("qte", qq)
+                        params.Add("tva", data.Rows(i).Item("tva"))
+                        params.Add("arid", data.Rows(i).Item("arid"))
+                        params.Add("depot", data.Rows(i).Item("depot"))
+                        params.Add("ref", data.Rows(i).Item("ref"))
+                        params.Add("cid", data.Rows(i).Item("cid"))
+
+                        c.InsertRecord(tb_D, params)
+                        params.Clear()
+
+
+                        If Form1.isWorkinOnStock = False Then Continue For
+                        If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
+                            Dim q As Double = qq * -1
+
+                            Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+                            If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+                                AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
+                                            data.Rows(i).Item("cid"), q, c)
+                            Else
+                                oldStock += q
+                                updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
+                            End If
+                        End If
+                    Next
+                End If
+
+
+                params.Add("name", ds.Entete.ClientName)
+                params.Add("total", tt)
+                params.Add("avance", avance)
+                params.Add("remise", ds.TB.Remise)
+                params.Add("tva", ds.TB.TVA)
+                params.Add("date", dte)
+                params.Add("writer", CStr(Form1.adminName))
+                params.Add("isAdmin", "CREATION")
+                params.Add("isPayed", ds.isPayed)
+                params.Add("modePayement", ds.ModePayement)
+                params.Add(ds.FactureTable, ds.Id)
+
+                fid = c.InsertRecord(tb_F, params, True)
+                params.Clear()
+
+
+                Dim where As New Dictionary(Of String, Object)
+                If avance > 0 Then
+                    params.Add(tb_F, fid)
+                    where.Add(ds.Operation, CInt(ds.Id))
+                    c.UpdateRecord(tb_P, params, where)
+                    params.Clear()
+                    where.Clear()
+                End If
+
+                Dim status = "LIVRE"
+                If isLivrable Then status = "TRAITE"
+                params.Add("isAdmin", status)
+                where.Clear()
+                where.Add("id", ds.Id)
+                c.UpdateRecord(ds.FactureTable, params, where)
+
+            End Using
+
+            If fid > 0 Then
+                'ds.Clear()
+                ds.Mode = "DETAILS"
+                ds.Operation = Op
+                ds.Id = fid
+
+                For Each b As Button In ds.plHeaderSells.Controls
+                    b.BackgroundImage = My.Resources.gray_row
+                Next
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub Facturer(ByVal id As Integer, ByRef ds As DataList)
         Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
 
@@ -1132,6 +1281,7 @@ Public Class FactureClass
         PP.cid = ds.Entete.Client.cid
         PP.FactureTable = ds.FactureTable
         PP.payementTable = ds.payementTable
+        PP.clientTable = ds.clientTable
         PP.Avance = ds.TB.avance
         PP.Total = ds.TB.TotalTTC
 
@@ -1308,7 +1458,6 @@ Public Class FactureClass
     Public Sub NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
 
         Try
-
             'Dim dpt As Integer = Form1.RPl.CP.Depot
             'If Form1.CbDepotOrigine.Checked Then dpt = R.depot
 
@@ -1316,6 +1465,11 @@ Public Class FactureClass
 
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
+                Dim oldStock = getStockById(R.arid, R.depot, c)
+
+                If tb_D = "Details_Bon_Livraison" And R.qte > oldStock Then R.qte = oldStock
+
+
                 params.Add("fctid", id)
                 params.Add("name", R.ArticleName)
                 params.Add("bprice", R.bprice)
@@ -1340,15 +1494,16 @@ Public Class FactureClass
                         Exit Sub
                     End If
 
-                    Dim oldStock = getStockById(R.arid, R.depot, c)
-                    If getStockId(R.arid, R.depot, c) = 0 Then
-                        oldStock = q
-                        AddNewStock(R.arid, R.depot, R.cid, q, c)
-                    Else
-                        oldStock += q
-                        updateStock(R.arid, R.depot, oldStock, c)
+                    If Form1.isWorkinOnStock = True Then
+                        If getStockId(R.arid, R.depot, c) = 0 Then
+                            oldStock = q
+                            AddNewStock(R.arid, R.depot, R.cid, q, c)
+                        Else
+                            oldStock += q
+                            updateStock(R.arid, R.depot, oldStock, c)
+                        End If
+                        R.Stock = oldStock
                     End If
-                    R.Stock = oldStock
                 End If
             End Using
         Catch ex As Exception
@@ -1998,6 +2153,18 @@ Public Class FactureClass
                 End If
             End Using
         Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub getClientRemise(ByRef ds As DataList, ByVal clientId As Integer, ByVal isS As Boolean)
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("Clid", clientId)
+                ds.dt_Client_Remise = c.SelectDataTable("Client_Remise", {"*"}, params)
+            End Using
+        Catch ex As Exception
+
         End Try
     End Sub
 

@@ -135,6 +135,8 @@
                 cid = value.cid
                 ICE = value.ICE
                 ClientAdresse = value.adresse
+
+
             End If
         End Set
     End Property
@@ -336,7 +338,7 @@
             plBL.Enabled = Not value
             plDv.Enabled = Not value
             btEditClient.Enabled = Not value
-            btSolde.Enabled = Not value
+            'btSolde.Enabled = Not value
         End Set
     End Property
 

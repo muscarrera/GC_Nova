@@ -105,7 +105,9 @@
     Private Sub EditElement(ByRef ds As ProductList, ByRef ls As ClientRow)
         Dim pr As New AddEditClient
         pr.EditMode = True
+        pr.tb_C = ds.TableName
         pr.Id = ls.Id
+
         If pr.ShowDialog = DialogResult.OK Then
             ls.Libele = pr.txtName.text
             ls.Ville = pr.txtVille.text
@@ -132,12 +134,13 @@
 
                 params.Add("cid", ls.Id)
 
-                dt = a.SelectDataTable(ds.Mode, {"id"}, params)
+                dt = a.SelectDataTable(tb_F, {"id"}, params)
 
                 If dt.Rows.Count > 0 Then
                     ' he has factures
-
+                    MsgBox("Ce Client a des bons et/ou des Facture", MsgBoxStyle.Information, "Suppression annuler")
                 Else
+                    params.Clear()
                     params.Add("Clid", ls.Id)
                     If a.DeleteRecords(ds.TableName, params) > 0 Then
                         ds.RemoveElement(ls)

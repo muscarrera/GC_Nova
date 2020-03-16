@@ -12,9 +12,9 @@
     Public IsSell As Boolean = True
     Public EditMode As Boolean = False
 
-    Event getStock(ByVal _arid As Integer, ByVal _dpid As Integer, ByRef stk As Double)
-
-    Event ChangeElementDepot(ByVal addRow As AddRow, ByVal dpid As Integer)
+    Public Event getStock(ByVal _arid As Integer, ByVal _dpid As Integer, ByRef stk As Double)
+    Public Event ChangeElementDepot(ByVal addRow As AddRow, ByVal dpid As Integer)
+    Public Event GetRemiseByClient(ByRef art As A1_GAESTION_COMMERCIAL.Article)
 
     Public Property dpid As Integer
         Get
@@ -213,7 +213,13 @@
                     a = art.GetByfield("ref", txtRf.text)
                 End If
 
-                If Not IsNothing(a) Then FillFields(a)
+                If Not IsNothing(a) Then
+                    'get Remise Client
+                    If Form1.useClientRemise_Way Then RaiseEvent GetRemiseByClient(a)
+                    'fill the information
+                    FillFields(a)
+                End If
+
                 txtQ.Focus()
             End Using
         End If
@@ -228,8 +234,13 @@
                     Dim remise = art.GetRemise(a.arid, Form1.clientFacture.groupe)
                     a.remise = remise
 
+                    If Not IsNothing(a) Then
+                        'get Remise Client
+                        If Form1.useClientRemise_Way Then RaiseEvent GetRemiseByClient(a)
+                        'fill the information
+                        FillFields(a)
+                    End If
 
-                    FillFields(a)
                 End If
             End Using
         End If

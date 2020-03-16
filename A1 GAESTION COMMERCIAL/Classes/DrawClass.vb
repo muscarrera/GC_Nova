@@ -132,7 +132,10 @@ Public Class DrawClass
             e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60 * a, l + 5, (460 - a_Rms) * a, 25), sf_C)
             e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF((525 - a_Rms) * a, l + 5, 65 * a, 25), sf_C)
             e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF((600 - a_Rms) * a, l + 5, 70 * a, 25), sf_C)
-            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(680 * a, l + 5, 90 * a, 25), sf_C)
+
+            Dim str_TT = "Total HT"
+            If Form1.Facture_Title.StartsWith("Bon") And Form1.isBaseOnTTC Then str_TT = "Total"
+            e.Graphics.DrawString(str_TT, fnt, Brushes.Black, New RectangleF(680 * a, l + 5, 90 * a, 25), sf_C)
 
             pn.DashCap = System.Drawing.Drawing2D.DashCap.Round
 
@@ -146,6 +149,19 @@ Public Class DrawClass
             While m < data.Rows.Count
 
                 If l + 180 > h Then
+                    l = 855
+                    e.Graphics.DrawLine(pen, CInt(55 * a), AAA, CInt(55 * a), l)
+                    e.Graphics.DrawLine(pen, CInt(775 * a), AAA, CInt(775 * a), l)
+                    If remise > 0 Then e.Graphics.DrawLine(pen, CInt(682 * a), AAA, CInt(682 * a), l)
+                    e.Graphics.DrawLine(pen, CInt((522 - a_Rms) * a), AAA, CInt((522 - a_Rms) * a), l)
+                    e.Graphics.DrawLine(pen, CInt((592 - a_Rms) * a), AAA, CInt((592 - a_Rms) * a), l)
+                    e.Graphics.DrawLine(pen, CInt((680 - a_Rms) * a), AAA, CInt((680 - a_Rms) * a), l)
+
+                    e.Graphics.DrawLine(pen, CInt(55 * a), l, CInt(775 * a), l)
+
+
+
+
                     e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605 * a, 870)
                     l = 250
                     e.HasMorePages = True
@@ -191,33 +207,50 @@ Public Class DrawClass
             e.Graphics.DrawLine(pen, CInt((680 - a_Rms) * a), AAA, CInt((680 - a_Rms) * a), l)
 
             e.Graphics.DrawLine(pen, CInt(55 * a), l, CInt(775 * a), l)
-            e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_R)
 
-            e.Graphics.DrawLine(pn, CInt(550 * a), l + 45, CInt(770 * a), l + 45)
-            e.Graphics.DrawString("TVA (14%)", fnt, Brushes.Black, New RectangleF(550 * a, l + 49, 220 * a, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(Ttva, fnt, Brushes.Black, New RectangleF(550 * a, l + 49, 220 * a, 22), sf_R)
 
-            If remise > 0 Then
-                e.Graphics.DrawLine(pn, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
-                e.Graphics.DrawString("Remise", fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_L)
-                If with_Price Then e.Graphics.DrawString(String.Format("{0:n}", CDec(remise)), fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_R)
-                l += 20
+            'Start drow then Total Bloc (Footer)
+            If Form1.Facture_Title.StartsWith("Bon") And Form1.isBaseOnTTC Then
+                e.Graphics.DrawString("Total", fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_L)
+                If with_Price Then e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_R)
+                e.Graphics.DrawLine(pn, CInt(550 * a), l + 45, CInt(770 * a), l + 45)
+            Else
+                e.Graphics.DrawString("Total HT", fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_L)
+                If with_Price Then e.Graphics.DrawString(ht, fnt, Brushes.Black, New RectangleF(550 * a, l + 29, 220 * a, 22), sf_R)
+
+                e.Graphics.DrawLine(pn, CInt(550 * a), l + 45, CInt(770 * a), l + 45)
+                If Form1.isBaseOnOneTva Then
+                    e.Graphics.DrawString("TVA (" & Form1.tva & "%)", fnt, Brushes.Black, New RectangleF(550 * a, l + 49, 220 * a, 22), sf_L)
+                Else
+                    e.Graphics.DrawString("TVA ", fnt, Brushes.Black, New RectangleF(550 * a, l + 49, 220 * a, 22), sf_L)
+
+                End If
+                If with_Price Then e.Graphics.DrawString(Ttva, fnt, Brushes.Black, New RectangleF(550 * a, l + 49, 220 * a, 22), sf_R)
+
+                If remise > 0 Then
+                    e.Graphics.DrawLine(pn, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
+                    e.Graphics.DrawString("Remise", fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_L)
+                    If with_Price Then e.Graphics.DrawString(String.Format("{0:n}", CDec(remise)), fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_R)
+                    l += 20
+                End If
+
+                If isCache Then
+                    e.Graphics.DrawLine(pn, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
+                    e.Graphics.DrawString("Droit de timbre", fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_L)
+                    If with_Price Then e.Graphics.DrawString(String.Format("{0:F}", (ds.Total_Ht - remise) * 0.0025), fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_R)
+                    ttc = String.Format("{0:n}", CDec(ds.TB.TotalTTC + ((ds.TB.TotalTTC - remise) * 0.0025)))
+                    l += 20
+                End If
+
+                e.Graphics.DrawLine(pen, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
+                e.Graphics.DrawString("Total TTC (Dhs) ", fnt, Brushes.Black, New RectangleF(550 * a, l + 70, 266 * a, 22), sf_L)
+                If with_Price Then e.Graphics.DrawString(ttc, fntTitle, Brushes.Black, New RectangleF(550 * a, l + 67, 220 * a, 22), sf_R)
+                e.Graphics.DrawLine(pn, CInt(550 * a), l + 90, CInt(770 * a), l + 90)
+
             End If
 
-            If isCache Then
-                e.Graphics.DrawLine(pn, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
-                e.Graphics.DrawString("Droit de timbre", fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_L)
-                If with_Price Then e.Graphics.DrawString(String.Format("{0:F}", (ds.Total_Ht - remise) * 0.0025), fnt, Brushes.Black, New RectangleF(550 * a, l + 69, 220 * a, 22), sf_R)
-                ttc = String.Format("{0:n}", CDec(ds.TB.TotalTTC + ((ds.TB.TotalTTC - remise) * 0.0025)))
-                l += 20
-            End If
 
-            e.Graphics.DrawLine(pen, CInt(550 * a), l + 65, CInt(770 * a), l + 65)
-            e.Graphics.DrawString("Total TTC (Dhs) ", fnt, Brushes.Black, New RectangleF(550 * a, l + 70, 266 * a, 22), sf_L)
-            If with_Price Then e.Graphics.DrawString(ttc, fntTitle, Brushes.Black, New RectangleF(550 * a, l + 67, 220 * a, 22), sf_R)
-            e.Graphics.DrawLine(pn, CInt(550 * a), l + 90, CInt(770 * a), l + 90)
-
+         
             If isCache Then l -= 20
             If remise > 0 Then l -= 20
 
@@ -239,10 +272,10 @@ Public Class DrawClass
 
             Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
             Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
-            If with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, 440 * a, sze.Height), sf_L)
+            If Form1.Facture_Title.StartsWith("Bon") = False And with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, 440 * a, sze.Height), sf_L)
 
             e.Graphics.DrawLine(pn, CInt(60 * a), l + sze.Height + 35, CInt(160 * a), l + sze.Height + 35)
-            If with_Price Then e.Graphics.DrawString("* Mode de paiement : " & ds.TB.ModePayement, fntsmall, Brushes.Black, New RectangleF(60 * a, l + sze.Height + 45, 266 * a, 22), sf_L)
+            If with_Price And ds.TB.ModePayement.Length > 3 Then e.Graphics.DrawString("* Mode de paiement : " & ds.TB.ModePayement, fntsmall, Brushes.Black, New RectangleF(60 * a, l + sze.Height + 45, 266 * a, 22), sf_L)
 
             Try
                 If entete Then e.Graphics.DrawImage(Image.FromFile(Form1.imgFootherPath), CInt(10 * a), h - 20, CInt(750 * a), 120)
@@ -788,7 +821,21 @@ Public Class DrawClass
                 fnt, Brushes.Black, New RectangleF(620, 197, 174, 24), sf_L)
             'print  num Facture 
 
-            e.Graphics.DrawString("Bon de Transport: N° : " & Form1.Exercice & "/000" & ds.id_T, fntTitle, Brushes.Black, 65, 195)
+            Dim id_Cleared As String = ds.id_T
+
+            If ds.id_T.ToString.Length > 5 Then
+                Form1.Ex_fact = ds.id_T.ToString.Remove(2)
+                id_Cleared = ds.id_T.ToString.Remove(0, 2)
+
+                Dim sss As Integer = CInt(id_Cleared)
+                id_Cleared = sss.ToString
+            End If
+
+
+            id_Cleared = Form1.prefix & id_Cleared
+
+
+            e.Graphics.DrawString("Bon de Transport: N° : " & id_Cleared, fntTitle, Brushes.Black, 65, 195)
 
             'print Client 
             e.Graphics.DrawString("Client  : ", fnt, Brushes.Black, 50, 230)

@@ -144,6 +144,7 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.cbBlTTC = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -313,6 +314,7 @@ Partial Class Setting
         Me.GroupBox3.Controls.Add(Me.txtTva)
         Me.GroupBox3.Controls.Add(Me.Label18)
         Me.GroupBox3.Controls.Add(Me.cbBaseOnTTC)
+        Me.GroupBox3.Controls.Add(Me.cbBlTTC)
         Me.GroupBox3.Controls.Add(Me.cbBaseOnOneTva)
         Me.GroupBox3.Location = New System.Drawing.Point(36, 75)
         Me.GroupBox3.Name = "GroupBox3"
@@ -324,7 +326,7 @@ Partial Class Setting
         'txtTva
         '
         Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTva.Location = New System.Drawing.Point(109, 82)
+        Me.txtTva.Location = New System.Drawing.Point(106, 120)
         Me.txtTva.Name = "txtTva"
         Me.txtTva.Size = New System.Drawing.Size(107, 20)
         Me.txtTva.TabIndex = 25
@@ -332,7 +334,7 @@ Partial Class Setting
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(19, 86)
+        Me.Label18.Location = New System.Drawing.Point(16, 124)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(69, 13)
         Me.Label18.TabIndex = 26
@@ -1519,6 +1521,17 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
+        'cbBlTTC
+        '
+        Me.cbBlTTC.AutoSize = True
+        Me.cbBlTTC.Location = New System.Drawing.Point(19, 75)
+        Me.cbBlTTC.Name = "cbBlTTC"
+        Me.cbBlTTC.Size = New System.Drawing.Size(181, 17)
+        Me.cbBlTTC.TabIndex = 28
+        Me.cbBlTTC.Text = "Taxe est comprise au total du BL"
+        Me.cbBlTTC.UseVisualStyleBackColor = True
+        Me.cbBlTTC.Visible = False
+        '
         'Setting
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1695,5 +1708,6 @@ Partial Class Setting
     Friend WithEvents Label30 As System.Windows.Forms.Label
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents cbBlTTC As System.Windows.Forms.CheckBox
 
 End Class

@@ -1,9 +1,24 @@
 ﻿Public Class Form1
     'Members
+
+    'Difference system
+    Public useClientRemise_Way As Boolean = True
+    Public useBlLivrable As Boolean = True
+    Public useButtonValidForStock As Boolean = False
+
+    Public useAccessClient As Boolean = False
+    Public useSoldByAvoir As Boolean = False
+    Public useBtValider As Boolean = False
+
+
+
+
+    'private members
     Private _Exercice As String = 19
     Private _Mode As String = "Accueil"
     Private _prefix As String
 
+    'public members
     Public zeros As String
     Public Ex_fact As String
 
@@ -61,11 +76,12 @@
     Public isWorkinOnStock As Boolean = True
     Public mainDepot As Integer = 3
     Public prf_Params As New Dictionary(Of String, String)
+    Friend Shared isBonTTC As Boolean
 
 
     Public Property prefix As String
         Get
-            Return _prefix & "- " & Ex_fact & "/" & zeros
+            Return _prefix & Ex_fact & "/" & zeros
         End Get
         Set(ByVal value As String)
             _prefix = value

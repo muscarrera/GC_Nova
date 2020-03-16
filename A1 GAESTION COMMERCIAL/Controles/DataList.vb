@@ -1,8 +1,8 @@
 ﻿Public Class DataList
-
+    'mode de recherche -- etats general -- journalier
     Dim _isEG As Boolean
     Dim _isEJ As Boolean
-
+   
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -54,8 +54,10 @@
     Public Event EdtitFactureDate(ByVal FactureTable As String, ByVal id As String, ByVal ds As A1_GAESTION_COMMERCIAL.DataList)
     Public Event PrintListofGoupeInpayed(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
     Public Event getStockForAddRow(ByVal arid As Integer, ByVal dpid As Integer, ByRef stk As Double)
-
-
+    Public Event GetArticleStock(ByRef panel As Panel, ByVal isS As Boolean)
+    Public Event PrintListofDetailsJornalier(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
+    Public Event ChangeItemDepot(ByVal addRow As ListRow, ByVal dpid As Object)
+    Public Event getClientRemise(ByRef ds As DataList, ByVal clientId As Integer, ByVal isS As Boolean)
     'Members
     Private _DataSource As DataTable
     Private _dtList As DataTable
@@ -63,23 +65,20 @@
     Private _fntNormal As Font
     Private _fntTitle As Font
     Private _Mode As String
+    Private _isDisibleEditing As Boolean = True
+    Private _isSell As Boolean = True
     Private operationType As String = "SELL"
 
     Public clientTable As String = "Client"
     Public payementTable As String = "Client_Payement"
     Public FactureTable As String = "Sell_Facture"
     Public DetailsTable As String = "Details_Sell_Facture"
-    Private _isSell As Boolean = True
+
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
-    Private _isDisibleEditing As Boolean = True
+    Public dt_Client_Remise As DataTable
 
-    Event GetArticleStock(ByRef panel As Panel, ByVal isS As Boolean)
 
-    Event PrintListofDetailsJornalier(ByVal dataList As A1_GAESTION_COMMERCIAL.DataList, ByVal p2 As Boolean)
 
-    Event ChangeItemDepot(ByVal addRow As ListRow, ByVal dpid As Object)
-
-  
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
         Get
             Return Nothing
@@ -209,7 +208,11 @@
             Entete.Bl = value.bl
 
             If isSell Then
-                Entete.CompteId = value.CompteId
+                If Form1.useClientRemise_Way Then
+                    RaiseEvent getClientRemise(Me, Entete.Client.cid, isSell)
+                End If
+
+                Entete.CompteId = value.compteId
             Else
                 Entete.CompteId = 0
             End If
@@ -364,8 +367,10 @@
 
                     If FactureTable = "Sell_Facture" Then R.bl = IntValue(value, "bl", i)
 
-                    AddHandler R.itemChanged, AddressOf Article_Item_Changed
-                    AddHandler R.DeleteItem, AddressOf Article_Item_Delete
+                    If isDisibleEditing = False Then
+                        AddHandler R.itemChanged, AddressOf Article_Item_Changed
+                        AddHandler R.DeleteItem, AddressOf Article_Item_Delete
+                    End If
 
                     arr(i) = R
                 Next
@@ -664,6 +669,7 @@
         pf.cid = Entete.Client.cid
         pf.FactureTable = FactureTable
         pf.payementTable = payementTable
+        pf.clientTable = clientTable
         pf.Avance = TB.avance
         pf.Total = TB.TotalTTC
         pf.Id = Id
@@ -923,5 +929,31 @@
         RaiseEvent getStockForAddRow(_arid, _dpid, stk)
     End Sub
 
-   
+    Private Sub AddRow1_GetRemiseByClient(ByRef _art As Article) Handles AddRow1.GetRemiseByClient
+        Dim R_All As Double = 0
+        If isSell = False Then Exit Sub
+
+
+        For i As Integer = 0 To dt_Client_Remise.Rows.Count - 1
+            If dt_Client_Remise.Rows(i).Item("all") Then
+                R_All = CDbl(dt_Client_Remise.Rows(i).Item("remise"))
+            End If
+        Next
+
+        For i As Integer = 0 To dt_Client_Remise.Rows.Count - 1
+            Dim ar = dt_Client_Remise.Rows(i).Item("arid")
+            Dim ct = dt_Client_Remise.Rows(i).Item("cid")
+
+            If ar = _art.arid And ct = _art.cid Then
+                R_All = CDbl(dt_Client_Remise.Rows(i).Item("remise"))
+                Exit For
+            End If
+
+            If ar = 0 And ct = _art.cid Then
+                R_All = CDbl(dt_Client_Remise.Rows(i).Item("remise"))
+            End If
+        Next
+
+        _art.remise = R_All
+    End Sub
 End Class

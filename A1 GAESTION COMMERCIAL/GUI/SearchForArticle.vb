@@ -247,4 +247,11 @@
 
     End Sub
 
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim mv As New TransformeStock
+        mv.arid = arid
+        If mv.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+        End If
+    End Sub
 End Class

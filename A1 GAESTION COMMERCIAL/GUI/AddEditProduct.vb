@@ -148,11 +148,16 @@ Public Class AddEditProduct
 
             If txtHt.text <> "" Then
                 txtMarge.text = String.Format("{0:n}", CDec((txtHt.text - txtPAch.text) * 100 / txtPAch.text))
-                If txtPAchTtc.focused = True Then Exit Sub
-                Dim _tva = 0
-                If IsNumeric(txtTva.text) Then _tva = txtTva.text
-                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
             End If
+
+
+            If txtPAchTtc.focused = True Then Exit Sub
+            Dim _tva As Double = 0
+            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            If Form1.isBaseOnOneTva Then _tva = Form1.tva
+
+            txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
+
         Catch ex As Exception
 
         End Try
@@ -179,10 +184,15 @@ Public Class AddEditProduct
         Catch ex As Exception
 
         End Try
-
         Try
-            If txtTva.text <> "" And txtTTC.focused = False Then
-                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * txtTva.text) / 100) + txtHt.text))
+
+            Dim _tva As Double = 0
+            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            If Form1.isBaseOnOneTva Then _tva = Form1.tva
+
+
+            If txtTTC.focused = False Then
+                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * _tva) / 100) + txtHt.text))
             End If
         Catch ex As Exception
 
@@ -190,12 +200,18 @@ Public Class AddEditProduct
 
     End Sub
     Private Sub txtTva_TxtChanged() Handles txtTva.TxtChanged
-        If txtTva.text = "" Then Exit Sub
+        'If txtTva.text = "" Then Exit Sub
 
         Try
+            Dim _tva As Double = 0
+            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            If Form1.isBaseOnOneTva Then _tva = Form1.tva
+
+
+
             If txtHt.text <> "" Then
-                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * txtTva.text) / 100) + txtHt.text))
-                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * txtTva.text) / 100) + txtPAch.text))
+                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * _tva) / 100) + txtHt.text))
+                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
 
             End If
         Catch ex As Exception
@@ -206,8 +222,13 @@ Public Class AddEditProduct
         If txtTTC.text = "" Then Exit Sub
         If txtTTC.focused = False Then Exit Sub
         Try
-            If txtTva.text <> "" And txtHt.focused = False Then
-                txtHt.text = String.Format("{0:n}", CDec((txtHt.text * 100) / (100 + txtTva.text)))
+            Dim _tva As Double = 0
+            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            If Form1.isBaseOnOneTva Then _tva = Form1.tva
+
+
+            If txtHt.focused = False Then
+                txtHt.text = String.Format("{0:n}", CDec((txtTTC.text * 100) / (100 + _tva)))
             End If
         Catch ex As Exception
 
@@ -222,6 +243,8 @@ Public Class AddEditProduct
         'TODO: This line of code loads data into the 'ALMohassinDBDataSet.Category' table. You can move, or remove it, as needed.
         Me.CategoryTableAdapter.Fill(Me.ALMohassinDBDataSet.Category)
 
+
+        If EditMode = False Then txtTva.text = Form1.tva
     End Sub
 
     Private Sub Validation()
@@ -288,20 +311,20 @@ Public Class AddEditProduct
                 txtRef.text = StrValue(dt, "ref", 0) ' dt.Rows(0).Item("ref")
                 txtName.text = StrValue(dt, "name", 0) 'dt.Rows(0).Item("")
                 txtDesc.text = StrValue(dt, "desc", 0) 'dt.Rows(0).Item("")
-                cbctg.SelectedValue = StrValue(dt, "cid", 0) 'dt.Rows(0).Item("")
+                cbctg.SelectedValue = IntValue(dt, "cid", 0) 'dt.Rows(0).Item("")
 
-                txtPAch.text = StrValue(dt, "bprice", 0) 'dt.Rows(0).Item("")
-                txtHt.text = StrValue(dt, "sprice", 0) ' dt.Rows(0).Item("")
-                txtTva.text = StrValue(dt, "tva", 0) ' dt.Rows(0).Item("")
-                txtPrixPromo.Text = StrValue(dt, "prixPromo", 0) ' dt.Rows(0).Item("")
+                txtPAch.text = DblValue(dt, "bprice", 0) 'dt.Rows(0).Item("")
+                txtHt.text = DblValue(dt, "sprice", 0) ' dt.Rows(0).Item("")
+                txtTva.text = DblValue(dt, "tva", 0) ' dt.Rows(0).Item("")
+                txtPrixPromo.Text = DblValue(dt, "prixPromo", 0) ' dt.Rows(0).Item("")
 
-                txtRmax.text = StrValue(dt, "remiseMax", 0) ' dt.Rows(0).Item("")
-                txtRGr.text = StrValue(dt, "remiseGr", 0) 'dt.Rows(0).Item("")
-                txtRRev.text = StrValue(dt, "remiseRev", 0) 'dt.Rows(0).Item("")
-                txtRCF.text = StrValue(dt, "remiseCF", 0) 'dt.Rows(0).Item("")
+                txtRmax.text = DblValue(dt, "remiseMax", 0) ' dt.Rows(0).Item("")
+                txtRGr.text = DblValue(dt, "remiseGr", 0) 'dt.Rows(0).Item("")
+                txtRRev.text = DblValue(dt, "remiseRev", 0) 'dt.Rows(0).Item("")
+                txtRCF.text = DblValue(dt, "remiseCF", 0) 'dt.Rows(0).Item("")
 
                 txtStockType.text = StrValue(dt, "stockType", 0) 'dt.Rows(0).Item("")
-                txtAlert.text = StrValue(dt, "alertStock", 0) 'dt.Rows(0).Item("")
+                txtAlert.text = DblValue(dt, "alertStock", 0) 'dt.Rows(0).Item("")
 
                 isPromo.Checked = BoolValue(dt, "isPromo", 0) 'dt.Rows(0).Item("")
                 isStocked.Checked = BoolValue(dt, "isStocked", 0) ' dt.Rows(0).Item("")
@@ -399,12 +422,17 @@ Public Class AddEditProduct
     End Sub
 
     Private Sub txtPAchTtc_TxtChanged() Handles txtPAchTtc.TxtChanged
-        If txtPAchTtc.text = "" Then Exit Sub
-        If txtPAchTtc.focused = False Then Exit Sub
         Try
-            If txtTva.text <> "" And txtPAch.focused = False Then
-                txtPAch.text = String.Format("{0:n}", CDec((txtPAch.text * 100) / (100 + txtTva.text)))
-            End If
+            'If txtPAchTtc.text = "" Then Exit Sub
+
+            If txtPAchTtc.focused = False Then Exit Sub
+
+            Dim _tva = 0
+            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            If Form1.isBaseOnOneTva Then _tva = Form1.tva
+
+
+            txtPAch.text = String.Format("{0:n}", CDec((txtPAchTtc.text * 100) / (100 + _tva)))
         Catch ex As Exception
 
         End Try

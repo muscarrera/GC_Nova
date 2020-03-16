@@ -276,6 +276,7 @@
             End If
             setRegistryinfo("isBaseOnOneTva", cbBaseOnOneTva.Checked)
             setRegistryinfo("isBaseOnTTC", cbBaseOnTTC.Checked)
+            setRegistryinfo("isBonTTC", cbBlTTC.Checked)
 
             If txtTrial.Visible Then
                 Dim a As Integer = 11
@@ -286,6 +287,7 @@
 
                 Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
                 Form1.isBaseOnTTC = cbBaseOnTTC.Checked
+            Form1.isBonTTC = cbBlTTC.Checked
 
         Catch ex As Exception
 

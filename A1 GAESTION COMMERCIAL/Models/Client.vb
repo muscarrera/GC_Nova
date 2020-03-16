@@ -53,32 +53,32 @@
             Dim dt As DataTable = a.SelectDataTable(tb_C, {"*"}, params)
             If dt.Rows.Count > 0 Then
                 cid = dt.Rows(0).Item(0)
-                name = dt.Rows(0).Item("name")
-                ref = dt.Rows(0).Item("ref")
-                isCompany = dt.Rows(0).Item("isCompany")
-                groupe = dt.Rows(0).Item("groupe")
-                ICE = dt.Rows(0).Item("ice")
+                name = StrValue(dt, "name", 0) '
+                ref = StrValue(dt, "ref", 0) 'dt.Rows(0).Item("ref")
+                isCompany = StrValue(dt, "isCompany", 0) 'dt.Rows(0).Item("isCompany")
+                groupe = StrValue(dt, "groupe", 0) 'dt.Rows(0).Item("groupe")
+                ICE = StrValue(dt, "ice", 0) 'dt.Rows(0).Item("ice")
 
-                adresse = dt.Rows(0).Item("adresse")
+                adresse = StrValue(dt, "adresse", 0) 'dt.Rows(0).Item("adresse")
 
                 Dim x As Boolean
                 If Not IsDBNull(dt.Rows(0).Item("cp")) And dt.Rows(0).Item("cp") <> "" Then
                     x = True
                     adresse &= vbNewLine
-                    adresse &= "CP : " & dt.Rows(0).Item("cp")
+                    adresse &= "CP : " & StrValue(dt, "cp", 0) 'dt.Rows(0).Item("cp")
                 End If
                 If Not IsDBNull(dt.Rows(0).Item("ville")) And dt.Rows(0).Item("ville") <> "" Then
 
                     If x = False Then adresse &= vbNewLine
-                    adresse &= "-  " & dt.Rows(0).Item("ville").ToString.ToUpper
+                    adresse &= "-  " & StrValue(dt, "ville", 0).ToUpper ' dt.Rows(0).Item("ville").ToString.ToUpper
                 End If
 
-                tel = dt.Rows(0).Item("tel")
-                gsm = dt.Rows(0).Item("gsm")
-                email = dt.Rows(0).Item("email")
-                info = dt.Rows(0).Item("info")
-                cp = dt.Rows(0).Item("cp")
-                ville = dt.Rows(0).Item("ville")
+                tel = StrValue(dt, "tel", 0) 'dt.Rows(0).Item("tel")
+                gsm = StrValue(dt, "gsm", 0) 'dt.Rows(0).Item("gsm")
+                email = StrValue(dt, "email", 0) 'dt.Rows(0).Item("email")
+                info = StrValue(dt, "info", 0) 'dt.Rows(0).Item("info")
+                cp = StrValue(dt, "cp", 0) 'dt.Rows(0).Item("cp")
+                ville = StrValue(dt, "ville", 0) ' dt.Rows(0).Item("ville")
                 'delai = dt.Rows(0).Item("delai")
                 'remise = dt.Rows(0).Item("remise")
                 'max = dt.Rows(0).Item("max")
