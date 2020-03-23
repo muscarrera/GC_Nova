@@ -39,7 +39,6 @@ Partial Class ChooseBL
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.pl2 = New System.Windows.Forms.Panel()
@@ -54,16 +53,15 @@ Partial Class ChooseBL
         Me.pl1 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.lbremise = New System.Windows.Forms.Label()
-        Me.lbHT = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LbVidal = New System.Windows.Forms.Label()
-        Me.LbTva = New System.Windows.Forms.Label()
         Me.Lbavc = New System.Windows.Forms.Label()
         Me.LbSum = New System.Windows.Forms.Label()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.plBody = New System.Windows.Forms.Panel()
+        Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -265,26 +263,6 @@ Partial Class ChooseBL
         Me.Panel8.Size = New System.Drawing.Size(149, 30)
         Me.Panel8.TabIndex = 7
         '
-        'txtSearch
-        '
-        Me.txtSearch.BackColor = System.Drawing.Color.White
-        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ControlDark
-        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtSearch.IsNumiric = False
-        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PlaceHolder = "Id/N°"
-        Me.txtSearch.ShowClearIcon = False
-        Me.txtSearch.ShowSaveIcon = False
-        Me.txtSearch.Size = New System.Drawing.Size(149, 30)
-        Me.txtSearch.StartUp = 2
-        Me.txtSearch.TabIndex = 3
-        Me.txtSearch.TextSize = 8
-        Me.txtSearch.TxtBackColor = True
-        Me.txtSearch.TxtColor = System.Drawing.Color.White
-        Me.txtSearch.txtReadOnly = False
-        Me.txtSearch.TxtSelect = New Integer() {1, 0}
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -417,11 +395,9 @@ Partial Class ChooseBL
         'Panel11
         '
         Me.Panel11.Controls.Add(Me.lbremise)
-        Me.Panel11.Controls.Add(Me.lbHT)
         Me.Panel11.Controls.Add(Me.Label2)
         Me.Panel11.Controls.Add(Me.Label1)
         Me.Panel11.Controls.Add(Me.LbVidal)
-        Me.Panel11.Controls.Add(Me.LbTva)
         Me.Panel11.Controls.Add(Me.Lbavc)
         Me.Panel11.Controls.Add(Me.LbSum)
         Me.Panel11.Controls.Add(Me.ShapeContainer2)
@@ -440,16 +416,6 @@ Partial Class ChooseBL
         Me.lbremise.TabIndex = 7
         Me.lbremise.Text = "Remise =  0"
         Me.lbremise.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lbHT
-        '
-        Me.lbHT.AutoSize = True
-        Me.lbHT.Location = New System.Drawing.Point(28, 14)
-        Me.lbHT.Name = "lbHT"
-        Me.lbHT.Size = New System.Drawing.Size(47, 13)
-        Me.lbHT.TabIndex = 9
-        Me.lbHT.Text = "T HT : 0"
-        Me.lbHT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label2
         '
@@ -480,16 +446,6 @@ Partial Class ChooseBL
         Me.LbVidal.TabIndex = 11
         Me.LbVidal.Text = "0 - Vidal"
         Me.LbVidal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LbTva
-        '
-        Me.LbTva.AutoSize = True
-        Me.LbTva.Location = New System.Drawing.Point(28, 33)
-        Me.LbTva.Name = "LbTva"
-        Me.LbTva.Size = New System.Drawing.Size(55, 13)
-        Me.LbTva.TabIndex = 4
-        Me.LbTva.Text = "Tva : 20%"
-        Me.LbTva.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbavc
         '
@@ -539,6 +495,26 @@ Partial Class ChooseBL
         Me.plBody.Name = "plBody"
         Me.plBody.Size = New System.Drawing.Size(368, 307)
         Me.plBody.TabIndex = 20
+        '
+        'txtSearch
+        '
+        Me.txtSearch.BackColor = System.Drawing.Color.White
+        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ControlDark
+        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtSearch.IsNumiric = False
+        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.PlaceHolder = "Id/N°"
+        Me.txtSearch.ShowClearIcon = False
+        Me.txtSearch.ShowSaveIcon = False
+        Me.txtSearch.Size = New System.Drawing.Size(149, 30)
+        Me.txtSearch.StartUp = 2
+        Me.txtSearch.TabIndex = 3
+        Me.txtSearch.TextSize = 8
+        Me.txtSearch.TxtBackColor = True
+        Me.txtSearch.TxtColor = System.Drawing.Color.White
+        Me.txtSearch.txtReadOnly = False
+        Me.txtSearch.TxtSelect = New Integer() {1, 0}
         '
         'ChooseBL
         '
@@ -610,6 +586,4 @@ Partial Class ChooseBL
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents plBody As System.Windows.Forms.Panel
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents lbHT As System.Windows.Forms.Label
-    Friend WithEvents LbTva As System.Windows.Forms.Label
 End Class

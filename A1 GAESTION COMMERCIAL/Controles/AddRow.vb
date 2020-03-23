@@ -268,7 +268,9 @@
 
     End Sub
     Private Sub txtPrice_KeyDownOk() Handles txtPr.KeyDownOk
-        txtPr.text = String.Format("{0:n}", CDec(article.sprice))
+        Dim PR As Decimal = IIf(Form1.isBaseOnTTC, CDec(article.spriceTTC), CDec(article.sprice))
+
+        txtPr.text = String.Format("{0:n}", PR)
         txtRs.Focus()
     End Sub
     Private Sub txtRemise_KeyDownOk() Handles txtRs.KeyDownOk

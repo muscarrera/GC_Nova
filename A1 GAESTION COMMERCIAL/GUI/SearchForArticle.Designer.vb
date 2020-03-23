@@ -28,13 +28,6 @@ Partial Class SearchForArticle
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.FL = New System.Windows.Forms.FlowLayoutPanel()
@@ -44,6 +37,7 @@ Partial Class SearchForArticle
         Me.txt = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbStk = New System.Windows.Forms.Label()
         Me.lbCat = New System.Windows.Forms.Label()
@@ -60,8 +54,14 @@ Partial Class SearchForArticle
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.plDp = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel6.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel9.SuspendLayout()
@@ -75,7 +75,6 @@ Partial Class SearchForArticle
         Me.Panel10.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel58.SuspendLayout()
-        Me.plDp.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel6
@@ -127,7 +126,7 @@ Partial Class SearchForArticle
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4, Me.Column5, Me.Column7})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4, Me.Column5, Me.Column7, Me.Column8})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.MultiSelect = False
@@ -139,49 +138,6 @@ Partial Class SearchForArticle
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(516, 293)
         Me.DataGridView1.TabIndex = 0
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Designation"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Réf"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Categorie"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Prix d'achat"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Prix de vente"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "img"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Visible = False
         '
         'Panel2
         '
@@ -280,7 +236,7 @@ Partial Class SearchForArticle
         '
         Me.Panel11.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.bgLightForm
         Me.Panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Panel11.Controls.Add(Me.plDp)
+        Me.Panel11.Controls.Add(Me.Button1)
         Me.Panel11.Controls.Add(Me.Label3)
         Me.Panel11.Controls.Add(Me.lbStk)
         Me.Panel11.Controls.Add(Me.lbCat)
@@ -295,6 +251,23 @@ Partial Class SearchForArticle
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(516, 374)
         Me.Panel11.TabIndex = 35
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Ivory
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.FloralWhite
+        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.stock_icon_png_14
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(401, 207)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(35, 28)
+        Me.Button1.TabIndex = 4
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -469,32 +442,55 @@ Partial Class SearchForArticle
         Me.Panel4.Size = New System.Drawing.Size(939, 20)
         Me.Panel4.TabIndex = 34
         '
-        'plDp
+        'Column1
         '
-        Me.plDp.BackColor = System.Drawing.Color.Transparent
-        Me.plDp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.plDp.Controls.Add(Me.Button1)
-        Me.plDp.Location = New System.Drawing.Point(382, 184)
-        Me.plDp.Name = "plDp"
-        Me.plDp.Size = New System.Drawing.Size(63, 30)
-        Me.plDp.TabIndex = 34
+        Me.Column1.HeaderText = "ID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
-        'Button1
+        'Column2
         '
-        Me.Button1.BackColor = System.Drawing.Color.Ivory
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Olive
-        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.stock_icon_png_14
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(61, 28)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Dp"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Column2.HeaderText = "Designation"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Réf"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Categorie"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Prix d'achat"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Prix de vente"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "img"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Visible = False
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "tva"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        Me.Column8.Visible = False
         '
         'SearchForArticle
         '
@@ -522,7 +518,6 @@ Partial Class SearchForArticle
         Me.Panel10.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel58.ResumeLayout(False)
-        Me.plDp.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -550,6 +545,12 @@ Partial Class SearchForArticle
     Friend WithEvents lbRef As System.Windows.Forms.Label
     Friend WithEvents lbName As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Panel11 As System.Windows.Forms.Panel
+    Friend WithEvents lbStk As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Panel10 As System.Windows.Forms.Panel
+    Friend WithEvents lbCat As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -557,11 +558,5 @@ Partial Class SearchForArticle
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Panel11 As System.Windows.Forms.Panel
-    Friend WithEvents lbStk As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Panel10 As System.Windows.Forms.Panel
-    Friend WithEvents lbCat As System.Windows.Forms.Label
-    Friend WithEvents plDp As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -476,27 +476,28 @@
             AddRow1.IsSell = value
 
             If value Then
-                Button3.Visible = True
-                Button1.Visible = True
+                btav.Visible = True
+                btdv.Visible = True
 
-                Button9.Tag = "Sell_Facture"
-                Button8.Tag = "Bon_Livraison"
-                Button8.Text = "BL"
-                Button7.Text = "Commande"
-                Button7.Tag = "Commande_Client"
+                btfc.Tag = "Sell_Facture"
+                btbon.Tag = "Bon_Livraison"
+                btbon.Text = "BL"
+                btcmd.Text = "Commande"
+                btcmd.Tag = "Commande_Client"
+                btav.Tag = "Sell_Avoir"
 
-                Button1_Click_1(Button1, Nothing)
+                Button1_Click_1(btdv, Nothing)
             Else
-                Button3.Visible = False
-                Button1.Visible = False
+                'btav.Visible = False
+                btdv.Visible = False
 
-                Button9.Tag = "Buy_Facture"
-                Button8.Tag = "Bon_Achat"
-                Button8.Text = "Achats"
-                Button7.Text = "BC"
-                Button7.Tag = "Bon_Commande"
-
-                Button1_Click_1(Button7, Nothing)
+                btfc.Tag = "Buy_Facture"
+                btbon.Tag = "Bon_Achat"
+                btbon.Text = "Achats"
+                btcmd.Text = "BC"
+                btcmd.Tag = "Bon_Commande"
+                btav.Tag = "Buy_Avoir"
+                Button1_Click_1(btcmd, Nothing)
             End If
 
 
@@ -769,7 +770,7 @@
                 a.Avance = DblValue(_dtList, "avance", i)
                 a.remise = DblValue(_dtList, "remise", i)
                 a.Dte = DteValue(_dtList, "date", i)
-              
+
                 If BoolValue(_dtList, "isPayed", i) Then a.plP.BackColor = Color.PaleGreen
                 If StrValue(_dtList, "isAdmin", i) = "Fini" Or StrValue(_dtList, "isAdmin", i) = "Facturé" Or
                   StrValue(_dtList, "isAdmin", i) = "Livré" Then a.PlLeft.BackgroundImage = My.Resources.fav_16
@@ -814,7 +815,7 @@
         RaiseEvent ArticleItemDelete(listRow)
         Pl_ControlAdded(Nothing, Nothing)
     End Sub
-    Public Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button8.Click, Button7.Click, Button1.Click, Button3.Click
+    Public Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btfc.Click, btbon.Click, btcmd.Click, btdv.Click, btav.Click
         Dim bt As Button = sender
         Clear()
         Entete.txtSearch.text = ""

@@ -24,11 +24,13 @@ Partial Class PayementForm
     Private Sub InitializeComponent()
         Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.lbAvoir = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lb_PorteMonie = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
@@ -48,8 +50,6 @@ Partial Class PayementForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.lbAvoir = New System.Windows.Forms.Label()
-        Me.lb_PorteMonie = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -79,6 +79,28 @@ Partial Class PayementForm
         Me.Panel1.Size = New System.Drawing.Size(884, 127)
         Me.Panel1.TabIndex = 6
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(656, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(41, 15)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Avoir"
+        Me.Label1.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(431, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(102, 15)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "porte-monnaie"
+        Me.Label2.Visible = False
+        '
         'Panel8
         '
         Me.Panel8.BackColor = System.Drawing.Color.DarkGray
@@ -90,15 +112,15 @@ Partial Class PayementForm
         Me.Panel8.TabIndex = 9
         Me.Panel8.Visible = False
         '
-        'Label1
+        'lbAvoir
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(656, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 15)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Avoir"
+        Me.lbAvoir.AutoSize = True
+        Me.lbAvoir.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvoir.Location = New System.Drawing.Point(16, 9)
+        Me.lbAvoir.Name = "lbAvoir"
+        Me.lbAvoir.Size = New System.Drawing.Size(15, 15)
+        Me.lbAvoir.TabIndex = 11
+        Me.lbAvoir.Text = "0"
         '
         'Button3
         '
@@ -125,15 +147,15 @@ Partial Class PayementForm
         Me.Panel7.TabIndex = 9
         Me.Panel7.Visible = False
         '
-        'Label2
+        'lb_PorteMonie
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(431, 23)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(102, 15)
-        Me.Label2.TabIndex = 10
-        Me.Label2.Text = "porte-monnaie"
+        Me.lb_PorteMonie.AutoSize = True
+        Me.lb_PorteMonie.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_PorteMonie.Location = New System.Drawing.Point(13, 9)
+        Me.lb_PorteMonie.Name = "lb_PorteMonie"
+        Me.lb_PorteMonie.Size = New System.Drawing.Size(15, 15)
+        Me.lb_PorteMonie.TabIndex = 12
+        Me.lb_PorteMonie.Text = "0"
         '
         'Button1
         '
@@ -353,26 +375,6 @@ Partial Class PayementForm
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(884, 2)
         Me.Panel6.TabIndex = 1
-        '
-        'lbAvoir
-        '
-        Me.lbAvoir.AutoSize = True
-        Me.lbAvoir.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbAvoir.Location = New System.Drawing.Point(16, 9)
-        Me.lbAvoir.Name = "lbAvoir"
-        Me.lbAvoir.Size = New System.Drawing.Size(15, 15)
-        Me.lbAvoir.TabIndex = 11
-        Me.lbAvoir.Text = "0"
-        '
-        'lb_PorteMonie
-        '
-        Me.lb_PorteMonie.AutoSize = True
-        Me.lb_PorteMonie.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_PorteMonie.Location = New System.Drawing.Point(13, 9)
-        Me.lb_PorteMonie.Name = "lb_PorteMonie"
-        Me.lb_PorteMonie.Size = New System.Drawing.Size(15, 15)
-        Me.lb_PorteMonie.TabIndex = 12
-        Me.lb_PorteMonie.Text = "0"
         '
         'PayementForm
         '

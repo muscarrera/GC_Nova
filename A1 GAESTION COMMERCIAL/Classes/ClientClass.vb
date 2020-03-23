@@ -102,20 +102,20 @@
             GetElements(ds)
         End If
     End Sub
-    Private Sub EditElement(ByRef ds As ProductList, ByRef ls As ClientRow)
+    Private Sub EditElement(ByRef ds As ProductList, ByRef ls As DataGridView)
         Dim pr As New AddEditClient
         pr.EditMode = True
         pr.tb_C = ds.TableName
-        pr.Id = ls.Id
+        pr.Id = ls.SelectedRows(0).Cells(0).Value
 
         If pr.ShowDialog = DialogResult.OK Then
-            ls.Libele = pr.txtName.text
-            ls.Ville = pr.txtVille.text
-            ls.Tel = pr.txtTel.text
-            ls.isEdited = pr.rbSte.Checked
+            ls.SelectedRows(0).Cells(1).Value = pr.txtName.text
+            ls.SelectedRows(0).Cells(7).Value = pr.txtVille.text
+            ls.SelectedRows(0).Cells(8).Value = pr.txtTel.text
+            'ls.isEdited = pr.rbSte.Checked
         End If
     End Sub
-    Private Sub DeleteElement(ByRef ds As ProductList, ByRef ls As ClientRow)
+    Private Sub DeleteElement(ByRef ds As ProductList, ByRef ls As DataGridView)
         If MsgBox("Etes-vous certain de vouloir supprimer ce Client" & vbNewLine & ls.Name,
                   MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
@@ -132,8 +132,7 @@
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
-                params.Add("cid", ls.Id)
-
+                params.Add("cid", ls.SelectedRows(0).Cells(0).Value)
                 dt = a.SelectDataTable(tb_F, {"id"}, params)
 
                 If dt.Rows.Count > 0 Then
@@ -141,12 +140,10 @@
                     MsgBox("Ce Client a des bons et/ou des Facture", MsgBoxStyle.Information, "Suppression annuler")
                 Else
                     params.Clear()
-                    params.Add("Clid", ls.Id)
+                    params.Add("Clid", ls.SelectedRows(0).Cells(0).Value)
                     If a.DeleteRecords(ds.TableName, params) > 0 Then
-                        ds.RemoveElement(ls)
+                        ds.RemoveElementSelectedRows()
                     End If
-
-
                 End If
             End Using
 

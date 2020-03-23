@@ -37,6 +37,7 @@ Partial Class Setting
         Me.txtTva = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
+        Me.cbBlTTC = New System.Windows.Forms.CheckBox()
         Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -123,19 +124,27 @@ Partial Class Setting
         Me.Label14 = New System.Windows.Forms.Label()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.plText = New System.Windows.Forms.Panel()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.plSelRow = New System.Windows.Forms.Panel()
+        Me.lbSelectText = New System.Windows.Forms.Label()
+        Me.plAltRow = New System.Windows.Forms.Panel()
+        Me.plDefRow = New System.Windows.Forms.Panel()
+        Me.lbDefaultText = New System.Windows.Forms.Label()
+        Me.Button19 = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtnn = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtnt = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtns = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtss = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtsn = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtst = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtss = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtst = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtsn = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtns = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtnt = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtnn = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Button14 = New System.Windows.Forms.Button()
         Me.plData = New System.Windows.Forms.Panel()
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel5 = New System.Windows.Forms.LinkLabel()
@@ -144,7 +153,6 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.cbBlTTC = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -166,6 +174,10 @@ Partial Class Setting
         Me.Panel8.SuspendLayout()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plText.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
+        Me.plSelRow.SuspendLayout()
+        Me.plDefRow.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.Panel7.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plData.SuspendLayout()
@@ -303,7 +315,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 246)
+        Me.plPref.Location = New System.Drawing.Point(5, 662)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 541)
@@ -349,6 +361,17 @@ Partial Class Setting
         Me.cbBaseOnTTC.TabIndex = 28
         Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
         Me.cbBaseOnTTC.UseVisualStyleBackColor = True
+        '
+        'cbBlTTC
+        '
+        Me.cbBlTTC.AutoSize = True
+        Me.cbBlTTC.Location = New System.Drawing.Point(19, 75)
+        Me.cbBlTTC.Name = "cbBlTTC"
+        Me.cbBlTTC.Size = New System.Drawing.Size(181, 17)
+        Me.cbBlTTC.TabIndex = 28
+        Me.cbBlTTC.Text = "Taxe est comprise au total du BL"
+        Me.cbBlTTC.UseVisualStyleBackColor = True
+        Me.cbBlTTC.Visible = False
         '
         'cbBaseOnOneTva
         '
@@ -790,7 +813,7 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 236)
+        Me.plImp.Location = New System.Drawing.Point(5, 652)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
         Me.plImp.Size = New System.Drawing.Size(750, 10)
@@ -1123,7 +1146,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 168)
+        Me.plRole.Location = New System.Drawing.Point(5, 584)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 68)
@@ -1170,7 +1193,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 106)
+        Me.plUser.Location = New System.Drawing.Point(5, 522)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1225,23 +1248,249 @@ Partial Class Setting
         '
         Me.plText.AutoScroll = True
         Me.plText.BackColor = System.Drawing.Color.Transparent
+        Me.plText.Controls.Add(Me.GroupBox6)
+        Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
-        Me.plText.Controls.Add(Me.Label10)
-        Me.plText.Controls.Add(Me.Label9)
-        Me.plText.Controls.Add(Me.Label8)
-        Me.plText.Controls.Add(Me.txtss)
-        Me.plText.Controls.Add(Me.txtst)
-        Me.plText.Controls.Add(Me.txtsn)
-        Me.plText.Controls.Add(Me.txtns)
-        Me.plText.Controls.Add(Me.txtnt)
-        Me.plText.Controls.Add(Me.txtnn)
-        Me.plText.Controls.Add(Me.Button14)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 43)
+        Me.plText.Location = New System.Drawing.Point(5, 131)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
-        Me.plText.Size = New System.Drawing.Size(750, 63)
+        Me.plText.Size = New System.Drawing.Size(750, 391)
         Me.plText.TabIndex = 14
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.plSelRow)
+        Me.GroupBox6.Controls.Add(Me.plAltRow)
+        Me.GroupBox6.Controls.Add(Me.plDefRow)
+        Me.GroupBox6.Controls.Add(Me.Button19)
+        Me.GroupBox6.Location = New System.Drawing.Point(379, 80)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(341, 254)
+        Me.GroupBox6.TabIndex = 30
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Couleur"
+        '
+        'plSelRow
+        '
+        Me.plSelRow.Controls.Add(Me.lbSelectText)
+        Me.plSelRow.Location = New System.Drawing.Point(53, 101)
+        Me.plSelRow.Name = "plSelRow"
+        Me.plSelRow.Size = New System.Drawing.Size(251, 31)
+        Me.plSelRow.TabIndex = 1
+        '
+        'lbSelectText
+        '
+        Me.lbSelectText.AutoSize = True
+        Me.lbSelectText.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbSelectText.Location = New System.Drawing.Point(22, 10)
+        Me.lbSelectText.Name = "lbSelectText"
+        Me.lbSelectText.Size = New System.Drawing.Size(60, 13)
+        Me.lbSelectText.TabIndex = 2
+        Me.lbSelectText.Text = "Selection"
+        '
+        'plAltRow
+        '
+        Me.plAltRow.Location = New System.Drawing.Point(53, 63)
+        Me.plAltRow.Name = "plAltRow"
+        Me.plAltRow.Size = New System.Drawing.Size(251, 31)
+        Me.plAltRow.TabIndex = 1
+        '
+        'plDefRow
+        '
+        Me.plDefRow.Controls.Add(Me.lbDefaultText)
+        Me.plDefRow.Location = New System.Drawing.Point(53, 33)
+        Me.plDefRow.Name = "plDefRow"
+        Me.plDefRow.Size = New System.Drawing.Size(251, 31)
+        Me.plDefRow.TabIndex = 1
+        '
+        'lbDefaultText
+        '
+        Me.lbDefaultText.AutoSize = True
+        Me.lbDefaultText.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDefaultText.Location = New System.Drawing.Point(22, 9)
+        Me.lbDefaultText.Name = "lbDefaultText"
+        Me.lbDefaultText.Size = New System.Drawing.Size(32, 13)
+        Me.lbDefaultText.TabIndex = 2
+        Me.lbDefaultText.Text = "Text"
+        '
+        'Button19
+        '
+        Me.Button19.Location = New System.Drawing.Point(152, 180)
+        Me.Button19.Name = "Button19"
+        Me.Button19.Size = New System.Drawing.Size(152, 39)
+        Me.Button19.TabIndex = 0
+        Me.Button19.Text = "Valider"
+        Me.Button19.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label8)
+        Me.GroupBox5.Controls.Add(Me.Button14)
+        Me.GroupBox5.Controls.Add(Me.Label10)
+        Me.GroupBox5.Controls.Add(Me.txtnn)
+        Me.GroupBox5.Controls.Add(Me.Label9)
+        Me.GroupBox5.Controls.Add(Me.txtnt)
+        Me.GroupBox5.Controls.Add(Me.txtns)
+        Me.GroupBox5.Controls.Add(Me.txtss)
+        Me.GroupBox5.Controls.Add(Me.txtsn)
+        Me.GroupBox5.Controls.Add(Me.txtst)
+        Me.GroupBox5.Location = New System.Drawing.Point(16, 80)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(341, 254)
+        Me.GroupBox5.TabIndex = 30
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Text"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(19, 33)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(94, 13)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "POLICE NORMAL"
+        '
+        'Button14
+        '
+        Me.Button14.Location = New System.Drawing.Point(171, 180)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(149, 39)
+        Me.Button14.TabIndex = 0
+        Me.Button14.Text = "Valider"
+        Me.Button14.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(19, 120)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(83, 13)
+        Me.Label10.TabIndex = 3
+        Me.Label10.Text = "POLICE SMALL"
+        '
+        'txtnn
+        '
+        Me.txtnn.BackColor = System.Drawing.Color.Transparent
+        Me.txtnn.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnn.IsNumiric = False
+        Me.txtnn.Location = New System.Drawing.Point(19, 46)
+        Me.txtnn.Name = "txtnn"
+        Me.txtnn.PlaceHolder = ""
+        Me.txtnn.ShowClearIcon = False
+        Me.txtnn.ShowSaveIcon = False
+        Me.txtnn.Size = New System.Drawing.Size(228, 23)
+        Me.txtnn.StartUp = 2
+        Me.txtnn.TabIndex = 1
+        Me.txtnn.TextSize = 8
+        Me.txtnn.TxtBackColor = True
+        Me.txtnn.TxtColor = System.Drawing.Color.White
+        Me.txtnn.txtReadOnly = False
+        Me.txtnn.TxtSelect = New Integer() {1, 0}
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(19, 79)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(91, 13)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Text = "POLICE ENTETE"
+        '
+        'txtnt
+        '
+        Me.txtnt.BackColor = System.Drawing.Color.Transparent
+        Me.txtnt.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnt.IsNumiric = False
+        Me.txtnt.Location = New System.Drawing.Point(19, 94)
+        Me.txtnt.Name = "txtnt"
+        Me.txtnt.PlaceHolder = ""
+        Me.txtnt.ShowClearIcon = False
+        Me.txtnt.ShowSaveIcon = False
+        Me.txtnt.Size = New System.Drawing.Size(228, 23)
+        Me.txtnt.StartUp = 2
+        Me.txtnt.TabIndex = 1
+        Me.txtnt.TextSize = 8
+        Me.txtnt.TxtBackColor = True
+        Me.txtnt.TxtColor = System.Drawing.Color.White
+        Me.txtnt.txtReadOnly = False
+        Me.txtnt.TxtSelect = New Integer() {1, 0}
+        '
+        'txtns
+        '
+        Me.txtns.BackColor = System.Drawing.Color.Transparent
+        Me.txtns.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtns.IsNumiric = False
+        Me.txtns.Location = New System.Drawing.Point(16, 135)
+        Me.txtns.Name = "txtns"
+        Me.txtns.PlaceHolder = ""
+        Me.txtns.ShowClearIcon = False
+        Me.txtns.ShowSaveIcon = False
+        Me.txtns.Size = New System.Drawing.Size(228, 23)
+        Me.txtns.StartUp = 2
+        Me.txtns.TabIndex = 1
+        Me.txtns.TextSize = 8
+        Me.txtns.TxtBackColor = True
+        Me.txtns.TxtColor = System.Drawing.Color.White
+        Me.txtns.txtReadOnly = False
+        Me.txtns.TxtSelect = New Integer() {1, 0}
+        '
+        'txtss
+        '
+        Me.txtss.BackColor = System.Drawing.Color.Transparent
+        Me.txtss.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtss.IsNumiric = False
+        Me.txtss.Location = New System.Drawing.Point(263, 135)
+        Me.txtss.Name = "txtss"
+        Me.txtss.PlaceHolder = ""
+        Me.txtss.ShowClearIcon = False
+        Me.txtss.ShowSaveIcon = False
+        Me.txtss.Size = New System.Drawing.Size(57, 23)
+        Me.txtss.StartUp = 2
+        Me.txtss.TabIndex = 1
+        Me.txtss.TextSize = 8
+        Me.txtss.TxtBackColor = True
+        Me.txtss.TxtColor = System.Drawing.Color.White
+        Me.txtss.txtReadOnly = False
+        Me.txtss.TxtSelect = New Integer() {1, 0}
+        '
+        'txtsn
+        '
+        Me.txtsn.BackColor = System.Drawing.Color.Transparent
+        Me.txtsn.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtsn.IsNumiric = False
+        Me.txtsn.Location = New System.Drawing.Point(266, 46)
+        Me.txtsn.Name = "txtsn"
+        Me.txtsn.PlaceHolder = ""
+        Me.txtsn.ShowClearIcon = False
+        Me.txtsn.ShowSaveIcon = False
+        Me.txtsn.Size = New System.Drawing.Size(57, 23)
+        Me.txtsn.StartUp = 2
+        Me.txtsn.TabIndex = 1
+        Me.txtsn.TextSize = 8
+        Me.txtsn.TxtBackColor = True
+        Me.txtsn.TxtColor = System.Drawing.Color.White
+        Me.txtsn.txtReadOnly = False
+        Me.txtsn.TxtSelect = New Integer() {1, 0}
+        '
+        'txtst
+        '
+        Me.txtst.BackColor = System.Drawing.Color.Transparent
+        Me.txtst.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtst.IsNumiric = False
+        Me.txtst.Location = New System.Drawing.Point(266, 94)
+        Me.txtst.Name = "txtst"
+        Me.txtst.PlaceHolder = ""
+        Me.txtst.ShowClearIcon = False
+        Me.txtst.ShowSaveIcon = False
+        Me.txtst.Size = New System.Drawing.Size(57, 23)
+        Me.txtst.StartUp = 2
+        Me.txtst.TabIndex = 1
+        Me.txtst.TextSize = 8
+        Me.txtst.TxtBackColor = True
+        Me.txtst.TxtColor = System.Drawing.Color.White
+        Me.txtst.txtReadOnly = False
+        Me.txtst.TxtSelect = New Integer() {1, 0}
         '
         'Panel7
         '
@@ -1252,7 +1501,7 @@ Partial Class Setting
         Me.Panel7.Location = New System.Drawing.Point(10, 10)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel7.Size = New System.Drawing.Size(713, 39)
+        Me.Panel7.Size = New System.Drawing.Size(730, 39)
         Me.Panel7.TabIndex = 21
         '
         'Label13
@@ -1277,156 +1526,6 @@ Partial Class Setting
         Me.PictureBox4.TabIndex = 11
         Me.PictureBox4.TabStop = False
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(100, 214)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(83, 13)
-        Me.Label10.TabIndex = 3
-        Me.Label10.Text = "POLICE SMALL"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(97, 141)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(91, 13)
-        Me.Label9.TabIndex = 2
-        Me.Label9.Text = "POLICE ENTETE"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(97, 68)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(94, 13)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "POLICE NORMAL"
-        '
-        'txtss
-        '
-        Me.txtss.BackColor = System.Drawing.Color.Transparent
-        Me.txtss.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtss.IsNumiric = False
-        Me.txtss.Location = New System.Drawing.Point(344, 229)
-        Me.txtss.Name = "txtss"
-        Me.txtss.PlaceHolder = ""
-        Me.txtss.ShowClearIcon = False
-        Me.txtss.ShowSaveIcon = False
-        Me.txtss.Size = New System.Drawing.Size(57, 23)
-        Me.txtss.StartUp = 2
-        Me.txtss.TabIndex = 1
-        Me.txtss.TextSize = 8
-        Me.txtss.TxtBackColor = True
-        Me.txtss.TxtColor = System.Drawing.Color.White
-        Me.txtss.txtReadOnly = False
-        Me.txtss.TxtSelect = New Integer() {1, 0}
-        '
-        'txtst
-        '
-        Me.txtst.BackColor = System.Drawing.Color.Transparent
-        Me.txtst.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtst.IsNumiric = False
-        Me.txtst.Location = New System.Drawing.Point(344, 156)
-        Me.txtst.Name = "txtst"
-        Me.txtst.PlaceHolder = ""
-        Me.txtst.ShowClearIcon = False
-        Me.txtst.ShowSaveIcon = False
-        Me.txtst.Size = New System.Drawing.Size(57, 23)
-        Me.txtst.StartUp = 2
-        Me.txtst.TabIndex = 1
-        Me.txtst.TextSize = 8
-        Me.txtst.TxtBackColor = True
-        Me.txtst.TxtColor = System.Drawing.Color.White
-        Me.txtst.txtReadOnly = False
-        Me.txtst.TxtSelect = New Integer() {1, 0}
-        '
-        'txtsn
-        '
-        Me.txtsn.BackColor = System.Drawing.Color.Transparent
-        Me.txtsn.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtsn.IsNumiric = False
-        Me.txtsn.Location = New System.Drawing.Point(344, 81)
-        Me.txtsn.Name = "txtsn"
-        Me.txtsn.PlaceHolder = ""
-        Me.txtsn.ShowClearIcon = False
-        Me.txtsn.ShowSaveIcon = False
-        Me.txtsn.Size = New System.Drawing.Size(57, 23)
-        Me.txtsn.StartUp = 2
-        Me.txtsn.TabIndex = 1
-        Me.txtsn.TextSize = 8
-        Me.txtsn.TxtBackColor = True
-        Me.txtsn.TxtColor = System.Drawing.Color.White
-        Me.txtsn.txtReadOnly = False
-        Me.txtsn.TxtSelect = New Integer() {1, 0}
-        '
-        'txtns
-        '
-        Me.txtns.BackColor = System.Drawing.Color.Transparent
-        Me.txtns.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtns.IsNumiric = False
-        Me.txtns.Location = New System.Drawing.Point(97, 229)
-        Me.txtns.Name = "txtns"
-        Me.txtns.PlaceHolder = ""
-        Me.txtns.ShowClearIcon = False
-        Me.txtns.ShowSaveIcon = False
-        Me.txtns.Size = New System.Drawing.Size(228, 23)
-        Me.txtns.StartUp = 2
-        Me.txtns.TabIndex = 1
-        Me.txtns.TextSize = 8
-        Me.txtns.TxtBackColor = True
-        Me.txtns.TxtColor = System.Drawing.Color.White
-        Me.txtns.txtReadOnly = False
-        Me.txtns.TxtSelect = New Integer() {1, 0}
-        '
-        'txtnt
-        '
-        Me.txtnt.BackColor = System.Drawing.Color.Transparent
-        Me.txtnt.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtnt.IsNumiric = False
-        Me.txtnt.Location = New System.Drawing.Point(97, 156)
-        Me.txtnt.Name = "txtnt"
-        Me.txtnt.PlaceHolder = ""
-        Me.txtnt.ShowClearIcon = False
-        Me.txtnt.ShowSaveIcon = False
-        Me.txtnt.Size = New System.Drawing.Size(228, 23)
-        Me.txtnt.StartUp = 2
-        Me.txtnt.TabIndex = 1
-        Me.txtnt.TextSize = 8
-        Me.txtnt.TxtBackColor = True
-        Me.txtnt.TxtColor = System.Drawing.Color.White
-        Me.txtnt.txtReadOnly = False
-        Me.txtnt.TxtSelect = New Integer() {1, 0}
-        '
-        'txtnn
-        '
-        Me.txtnn.BackColor = System.Drawing.Color.Transparent
-        Me.txtnn.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtnn.IsNumiric = False
-        Me.txtnn.Location = New System.Drawing.Point(97, 81)
-        Me.txtnn.Name = "txtnn"
-        Me.txtnn.PlaceHolder = ""
-        Me.txtnn.ShowClearIcon = False
-        Me.txtnn.ShowSaveIcon = False
-        Me.txtnn.Size = New System.Drawing.Size(228, 23)
-        Me.txtnn.StartUp = 2
-        Me.txtnn.TabIndex = 1
-        Me.txtnn.TextSize = 8
-        Me.txtnn.TxtBackColor = True
-        Me.txtnn.TxtColor = System.Drawing.Color.White
-        Me.txtnn.txtReadOnly = False
-        Me.txtnn.TxtSelect = New Integer() {1, 0}
-        '
-        'Button14
-        '
-        Me.Button14.Location = New System.Drawing.Point(252, 274)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(149, 39)
-        Me.Button14.TabIndex = 0
-        Me.Button14.Text = "Valider"
-        Me.Button14.UseVisualStyleBackColor = True
-        '
         'plData
         '
         Me.plData.AutoScroll = True
@@ -1440,7 +1539,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 38)
+        Me.plData.Size = New System.Drawing.Size(750, 126)
         Me.plData.TabIndex = 13
         '
         'LinkLabel3
@@ -1521,17 +1620,6 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'cbBlTTC
-        '
-        Me.cbBlTTC.AutoSize = True
-        Me.cbBlTTC.Location = New System.Drawing.Point(19, 75)
-        Me.cbBlTTC.Name = "cbBlTTC"
-        Me.cbBlTTC.Size = New System.Drawing.Size(181, 17)
-        Me.cbBlTTC.TabIndex = 28
-        Me.cbBlTTC.Text = "Taxe est comprise au total du BL"
-        Me.cbBlTTC.UseVisualStyleBackColor = True
-        Me.cbBlTTC.Visible = False
-        '
         'Setting
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1574,7 +1662,13 @@ Partial Class Setting
         Me.Panel8.PerformLayout()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.plText.ResumeLayout(False)
-        Me.plText.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.plSelRow.ResumeLayout(False)
+        Me.plSelRow.PerformLayout()
+        Me.plDefRow.ResumeLayout(False)
+        Me.plDefRow.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1709,5 +1803,13 @@ Partial Class Setting
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cbBlTTC As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents plSelRow As System.Windows.Forms.Panel
+    Friend WithEvents lbSelectText As System.Windows.Forms.Label
+    Friend WithEvents plAltRow As System.Windows.Forms.Panel
+    Friend WithEvents plDefRow As System.Windows.Forms.Panel
+    Friend WithEvents lbDefaultText As System.Windows.Forms.Label
+    Friend WithEvents Button19 As System.Windows.Forms.Button
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
 
 End Class

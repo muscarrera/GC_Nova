@@ -153,7 +153,7 @@ Public Class AddEditProduct
 
             If txtPAchTtc.focused = True Then Exit Sub
             Dim _tva As Double = 0
-            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
             txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
@@ -187,7 +187,8 @@ Public Class AddEditProduct
         Try
 
             Dim _tva As Double = 0
-            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            'IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
 
@@ -204,7 +205,7 @@ Public Class AddEditProduct
 
         Try
             Dim _tva As Double = 0
-            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
 
@@ -223,7 +224,7 @@ Public Class AddEditProduct
         If txtTTC.focused = False Then Exit Sub
         Try
             Dim _tva As Double = 0
-            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
 
@@ -332,6 +333,8 @@ Public Class AddEditProduct
                 lbPeriode.Text = StrValue(dt, "periode", 0)
                 Periode = StrValue(dt, "periode", 0) 'dt.Rows(0).Item("")
                 lbImage.Text = StrValue(dt, "img", 0) 'dt.Rows(0).Item("")
+                If Form1.useValue_CUMP Then txtCUMP.text = DblValue(dt, "CUMP", 0)
+
                 PBImage.BackgroundImage = Drawimg()
 
                 Try
@@ -374,6 +377,8 @@ Public Class AddEditProduct
         params.Add("isStocked", isStocked.Checked)
         params.Add("periode", lbPeriode.Text)
         params.Add("img", lbImage.Text)
+
+        If Form1.useValue_CUMP Then params.Add("CUMP", txtCUMP.text)
 
         Dim x As Integer = 0
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -428,7 +433,7 @@ Public Class AddEditProduct
             If txtPAchTtc.focused = False Then Exit Sub
 
             Dim _tva = 0
-            IIf(txtTva.text = "", _tva = 0, _tva = CDbl(txtTva.text))
+            _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
 

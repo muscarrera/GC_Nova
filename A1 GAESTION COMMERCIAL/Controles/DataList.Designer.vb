@@ -46,11 +46,11 @@ Partial Class DataList
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plHeaderSells = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.btdv = New System.Windows.Forms.Button()
+        Me.btcmd = New System.Windows.Forms.Button()
+        Me.btav = New System.Windows.Forms.Button()
+        Me.btfc = New System.Windows.Forms.Button()
+        Me.btbon = New System.Windows.Forms.Button()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.pbBar = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -385,11 +385,11 @@ Partial Class DataList
         'plHeaderSells
         '
         Me.plHeaderSells.BackColor = System.Drawing.Color.White
-        Me.plHeaderSells.Controls.Add(Me.Button1)
-        Me.plHeaderSells.Controls.Add(Me.Button7)
-        Me.plHeaderSells.Controls.Add(Me.Button3)
-        Me.plHeaderSells.Controls.Add(Me.Button9)
-        Me.plHeaderSells.Controls.Add(Me.Button8)
+        Me.plHeaderSells.Controls.Add(Me.btdv)
+        Me.plHeaderSells.Controls.Add(Me.btcmd)
+        Me.plHeaderSells.Controls.Add(Me.btav)
+        Me.plHeaderSells.Controls.Add(Me.btfc)
+        Me.plHeaderSells.Controls.Add(Me.btbon)
         Me.plHeaderSells.Dock = System.Windows.Forms.DockStyle.Top
         Me.plHeaderSells.Location = New System.Drawing.Point(5, 23)
         Me.plHeaderSells.Name = "plHeaderSells"
@@ -397,95 +397,95 @@ Partial Class DataList
         Me.plHeaderSells.Size = New System.Drawing.Size(700, 48)
         Me.plHeaderSells.TabIndex = 19
         '
-        'Button1
+        'btdv
         '
-        Me.Button1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(20, 6)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
-        Me.Button1.Size = New System.Drawing.Size(120, 35)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Tag = "Devis"
-        Me.Button1.Text = "Devis"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btdv.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
+        Me.btdv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btdv.FlatAppearance.BorderSize = 0
+        Me.btdv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btdv.Image = CType(resources.GetObject("btdv.Image"), System.Drawing.Image)
+        Me.btdv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btdv.Location = New System.Drawing.Point(20, 6)
+        Me.btdv.Name = "btdv"
+        Me.btdv.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.btdv.Size = New System.Drawing.Size(120, 35)
+        Me.btdv.TabIndex = 2
+        Me.btdv.Tag = "Devis"
+        Me.btdv.Text = "Devis"
+        Me.btdv.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btdv.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btcmd
         '
-        Me.Button7.BackgroundImage = CType(resources.GetObject("Button7.BackgroundImage"), System.Drawing.Image)
-        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Calendar_27835__2_
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(177, 6)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
-        Me.Button7.Size = New System.Drawing.Size(120, 35)
-        Me.Button7.TabIndex = 1
-        Me.Button7.Tag = "Commande_Client"
-        Me.Button7.Text = "Commande"
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.btcmd.BackgroundImage = CType(resources.GetObject("btcmd.BackgroundImage"), System.Drawing.Image)
+        Me.btcmd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btcmd.FlatAppearance.BorderSize = 0
+        Me.btcmd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btcmd.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Calendar_27835__2_
+        Me.btcmd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btcmd.Location = New System.Drawing.Point(177, 6)
+        Me.btcmd.Name = "btcmd"
+        Me.btcmd.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.btcmd.Size = New System.Drawing.Size(120, 35)
+        Me.btcmd.TabIndex = 1
+        Me.btcmd.Tag = "Commande_Client"
+        Me.btcmd.Text = "Commande"
+        Me.btcmd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btcmd.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btav
         '
-        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_delete_61770
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(610, 6)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
-        Me.Button3.Size = New System.Drawing.Size(94, 35)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Tag = "Sell_Avoir"
-        Me.Button3.Text = "Avoir"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btav.BackgroundImage = CType(resources.GetObject("btav.BackgroundImage"), System.Drawing.Image)
+        Me.btav.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btav.FlatAppearance.BorderSize = 0
+        Me.btav.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btav.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_delete_61770
+        Me.btav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btav.Location = New System.Drawing.Point(610, 6)
+        Me.btav.Name = "btav"
+        Me.btav.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.btav.Size = New System.Drawing.Size(94, 35)
+        Me.btav.TabIndex = 3
+        Me.btav.Tag = "Sell_Avoir"
+        Me.btav.Text = "Avoir"
+        Me.btav.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btav.UseVisualStyleBackColor = True
         '
-        'Button9
+        'btfc
         '
-        Me.Button9.BackgroundImage = CType(resources.GetObject("Button9.BackgroundImage"), System.Drawing.Image)
-        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button9.FlatAppearance.BorderSize = 0
-        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_application_vnd_ms_excel_24744__1_
-        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button9.Location = New System.Drawing.Point(471, 6)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
-        Me.Button9.Size = New System.Drawing.Size(102, 35)
-        Me.Button9.TabIndex = 3
-        Me.Button9.Tag = "Sell_Facture"
-        Me.Button9.Text = "Facture"
-        Me.Button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.btfc.BackgroundImage = CType(resources.GetObject("btfc.BackgroundImage"), System.Drawing.Image)
+        Me.btfc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btfc.FlatAppearance.BorderSize = 0
+        Me.btfc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btfc.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_application_vnd_ms_excel_24744__1_
+        Me.btfc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btfc.Location = New System.Drawing.Point(471, 6)
+        Me.btfc.Name = "btfc"
+        Me.btfc.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.btfc.Size = New System.Drawing.Size(102, 35)
+        Me.btfc.TabIndex = 3
+        Me.btfc.Tag = "Sell_Facture"
+        Me.btfc.Text = "Facture"
+        Me.btfc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btfc.UseVisualStyleBackColor = True
         '
-        'Button8
+        'btbon
         '
-        Me.Button8.BackgroundImage = CType(resources.GetObject("Button8.BackgroundImage"), System.Drawing.Image)
-        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button8.FlatAppearance.BorderSize = 0
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
-        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button8.Location = New System.Drawing.Point(334, 6)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
-        Me.Button8.Size = New System.Drawing.Size(100, 35)
-        Me.Button8.TabIndex = 4
-        Me.Button8.Tag = "Bon_Livraison"
-        Me.Button8.Text = "BL"
-        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.btbon.BackgroundImage = CType(resources.GetObject("btbon.BackgroundImage"), System.Drawing.Image)
+        Me.btbon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btbon.FlatAppearance.BorderSize = 0
+        Me.btbon.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btbon.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
+        Me.btbon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btbon.Location = New System.Drawing.Point(334, 6)
+        Me.btbon.Name = "btbon"
+        Me.btbon.Padding = New System.Windows.Forms.Padding(5, 0, 10, 0)
+        Me.btbon.Size = New System.Drawing.Size(100, 35)
+        Me.btbon.TabIndex = 4
+        Me.btbon.Tag = "Bon_Livraison"
+        Me.btbon.Text = "BL"
+        Me.btbon.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btbon.UseVisualStyleBackColor = True
         '
         'Panel10
         '
@@ -1075,14 +1075,14 @@ Partial Class DataList
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents btPage As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button9 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btfc As System.Windows.Forms.Button
+    Friend WithEvents btbon As System.Windows.Forms.Button
+    Friend WithEvents btcmd As System.Windows.Forms.Button
+    Friend WithEvents btdv As System.Windows.Forms.Button
     Friend WithEvents plHeaderSells As System.Windows.Forms.Panel
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
     Friend WithEvents pbBar As System.Windows.Forms.Panel
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btav As System.Windows.Forms.Button
     Friend WithEvents PlPayement As System.Windows.Forms.Panel
     Friend WithEvents plPmBody As System.Windows.Forms.Panel
     Friend WithEvents plPmHeader As System.Windows.Forms.Panel

@@ -155,13 +155,13 @@
 
                             Dim r As DataTable = query.CopyToDataTable()
 
-                            ctg = r.Rows(0).Item("ref")
+                            ctg = r.Rows(0).Item("name")
                         End If
                     Catch ex As Exception
                     End Try
 
                     DataGridView1.Rows.Add(dt.Rows(i).Item(0), dt.Rows(i).Item("name"), dt.Rows(i).Item("ref"),
-                                          ctg, dt.Rows(i).Item("bprice"), dt.Rows(i).Item("sprice"), dt.Rows(i).Item("img"))
+                                          ctg, dt.Rows(i).Item("bprice"), dt.Rows(i).Item("sprice"), dt.Rows(i).Item("img"), dt.Rows(i).Item("tva"))
 
                 Next
             End If
@@ -182,8 +182,21 @@
             _ref = CStr(DataGridView1.SelectedRows(0).Cells(2).Value)
             lbCat.Text = DataGridView1.SelectedRows(0).Cells(3).Value
 
-            lbBprice.Text = String.Format("{0:n}", CDec(DataGridView1.SelectedRows(0).Cells(4).Value))
-            lbSprice.Text = String.Format("{0:n}", CDec(DataGridView1.SelectedRows(0).Cells(5).Value))
+
+            Dim sp = CDbl(DataGridView1.SelectedRows(0).Cells(5).Value)
+            Dim bp = CDbl(DataGridView1.SelectedRows(0).Cells(4).Value)
+
+            If Form1.isBaseOnTTC Then
+                Dim tv = CDbl(DataGridView1.SelectedRows(0).Cells(7).Value)
+                If Form1.isBaseOnOneTva Then tv = Form1.tva
+
+                sp += sp * tv / 100
+                bp += bp * tv / 100
+            End If
+
+
+            lbBprice.Text = String.Format("{0:n}", bp)
+            lbSprice.Text = String.Format("{0:n}", sp)
             lbStk.Text = GetArticleStock(arid)
             Try
                 Dim STR As String = Form1.ImgPah & "\art" & DataGridView1.SelectedRows(0).Cells(6).Value
@@ -251,7 +264,9 @@
         Dim mv As New TransformeStock
         mv.arid = arid
         If mv.ShowDialog = Windows.Forms.DialogResult.OK Then
-
+            lbStk.Text = GetArticleStock(arid)
         End If
+
+
     End Sub
 End Class

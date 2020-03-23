@@ -28,8 +28,6 @@ Partial Class TransformeStock
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Cb1 = New System.Windows.Forms.ComboBox()
-        Me.DepotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ALMohassinDBDataSet = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet()
         Me.lbName = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
@@ -44,14 +42,18 @@ Partial Class TransformeStock
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.ALMohassinDBDataSet = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet()
+        Me.DepotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DepotTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DepotTableAdapter()
+        Me.DepotBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel24.SuspendLayout()
-        CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel11.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DepotBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel24
@@ -115,16 +117,6 @@ Partial Class TransformeStock
         Me.Cb1.TabIndex = 1
         Me.Cb1.ValueMember = "dpid"
         '
-        'DepotBindingSource
-        '
-        Me.DepotBindingSource.DataMember = "Depot"
-        Me.DepotBindingSource.DataSource = Me.ALMohassinDBDataSet
-        '
-        'ALMohassinDBDataSet
-        '
-        Me.ALMohassinDBDataSet.DataSetName = "ALMohassinDBDataSet"
-        Me.ALMohassinDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'lbName
         '
         Me.lbName.AutoSize = True
@@ -187,7 +179,7 @@ Partial Class TransformeStock
         '
         'Cb2
         '
-        Me.Cb2.DataSource = Me.DepotBindingSource
+        Me.Cb2.DataSource = Me.DepotBindingSource1
         Me.Cb2.DisplayMember = "name"
         Me.Cb2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cb2.FormattingEnabled = True
@@ -232,26 +224,24 @@ Partial Class TransformeStock
         '
         'lbQteStock2
         '
-        Me.lbQteStock2.AutoSize = True
         Me.lbQteStock2.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbQteStock2.ForeColor = System.Drawing.Color.Green
         Me.lbQteStock2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbQteStock2.Location = New System.Drawing.Point(338, 223)
+        Me.lbQteStock2.Location = New System.Drawing.Point(127, 152)
         Me.lbQteStock2.Name = "lbQteStock2"
-        Me.lbQteStock2.Size = New System.Drawing.Size(21, 24)
+        Me.lbQteStock2.Size = New System.Drawing.Size(161, 24)
         Me.lbQteStock2.TabIndex = 5
         Me.lbQteStock2.Text = "0"
         Me.lbQteStock2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbQteStock
         '
-        Me.lbQteStock.AutoSize = True
         Me.lbQteStock.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbQteStock.ForeColor = System.Drawing.Color.Navy
         Me.lbQteStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbQteStock.Location = New System.Drawing.Point(338, 186)
+        Me.lbQteStock.Location = New System.Drawing.Point(131, 86)
         Me.lbQteStock.Name = "lbQteStock"
-        Me.lbQteStock.Size = New System.Drawing.Size(21, 24)
+        Me.lbQteStock.Size = New System.Drawing.Size(157, 24)
         Me.lbQteStock.TabIndex = 5
         Me.lbQteStock.Text = "0"
         Me.lbQteStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -314,9 +304,24 @@ Partial Class TransformeStock
         Me.Panel23.Size = New System.Drawing.Size(505, 2)
         Me.Panel23.TabIndex = 2
         '
+        'ALMohassinDBDataSet
+        '
+        Me.ALMohassinDBDataSet.DataSetName = "ALMohassinDBDataSet"
+        Me.ALMohassinDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DepotBindingSource
+        '
+        Me.DepotBindingSource.DataMember = "Depot"
+        Me.DepotBindingSource.DataSource = Me.ALMohassinDBDataSet
+        '
         'DepotTableAdapter
         '
         Me.DepotTableAdapter.ClearBeforeFill = True
+        '
+        'DepotBindingSource1
+        '
+        Me.DepotBindingSource1.DataMember = "Depot"
+        Me.DepotBindingSource1.DataSource = Me.ALMohassinDBDataSet
         '
         'TransformeStock
         '
@@ -330,13 +335,14 @@ Partial Class TransformeStock
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Mouvement de Stock"
         Me.Panel24.ResumeLayout(False)
-        CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DepotBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -357,9 +363,10 @@ Partial Class TransformeStock
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Cb2 As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents lbQteStock As System.Windows.Forms.Label
+    Friend WithEvents lbQteStock2 As System.Windows.Forms.Label
     Friend WithEvents ALMohassinDBDataSet As A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet
     Friend WithEvents DepotBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents DepotTableAdapter As A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DepotTableAdapter
-    Friend WithEvents lbQteStock As System.Windows.Forms.Label
-    Friend WithEvents lbQteStock2 As System.Windows.Forms.Label
+    Friend WithEvents DepotBindingSource1 As System.Windows.Forms.BindingSource
 End Class

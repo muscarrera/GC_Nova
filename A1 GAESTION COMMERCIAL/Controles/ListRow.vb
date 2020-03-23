@@ -76,7 +76,7 @@
             If Form1.isBaseOnTTC Then pr += value * TVA / 100
 
 
-            lbPrice.Text = String.Format("{0:n}", CDec(value))
+            lbPrice.Text = String.Format("{0:n}", CDec(pr))
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
         End Set
     End Property

@@ -56,14 +56,24 @@
                         Dim av As Double = a.SelectByScalar("Sell_Avoir", "SUM(total) ", params)
 
                         lbAvoir.Text = av.ToString("F:2")
+
+
+                        Label2.Visible = True
+                        Panel7.Visible = True
                     End If
 
                     'get port Monie
-                    params.Clear()
-                    params.Add("Clid", cid)
-                    Dim pm As Double = a.SelectByScalar(clientTable, "port_Monie", params)
+                    If Form1.usePortMonie Then
+                        params.Clear()
+                        params.Add("Clid", cid)
+                        Dim pm As Double = a.SelectByScalar(clientTable, "port_Monie", params)
 
-                    lb_PorteMonie.Text = pm.ToString("F:2")
+                        lb_PorteMonie.Text = pm.ToString("F:2")
+
+
+                        Label1.Visible = True
+                        Panel8.Visible = True
+                    End If
 
                 End If
             End Using

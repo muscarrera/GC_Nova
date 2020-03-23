@@ -47,7 +47,7 @@ Module ChLettre
         chaine = Replace(chaine, "- ", "-")
         NBLT = chaine
     End Function
-    Private Function Decompose(ByVal Nombre As Long) As String
+    Private Sub Decompose(ByVal Nombre As Long)
         Dim Reste As Long
         If Nombre > (10 ^ 9) Then
 
@@ -186,5 +186,5 @@ Module ChLettre
                 End If
             End If
         End If
-    End Function
+    End Sub
 End Module

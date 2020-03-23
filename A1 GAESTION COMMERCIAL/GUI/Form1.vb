@@ -2,14 +2,15 @@
     'Members
 
     'Difference system
-    Public useClientRemise_Way As Boolean = True
-    Public useBlLivrable As Boolean = True
+    Public useClientRemise_Way As Boolean = False
+    Public useBlLivrable As Boolean = False
     Public useButtonValidForStock As Boolean = False
 
     Public useAccessClient As Boolean = False
     Public useSoldByAvoir As Boolean = False
+    Public usePortMonie As Boolean = False
     Public useBtValider As Boolean = False
-
+    Public useValue_CUMP As Boolean = False
 
 
 
@@ -77,6 +78,15 @@
     Public mainDepot As Integer = 3
     Public prf_Params As New Dictionary(Of String, String)
     Friend Shared isBonTTC As Boolean
+    Friend Shared printRef As Boolean
+
+    Public Color_Default_Text As Color = Color.Blue
+    Public Color_Selected_Text As Color = Color.Yellow
+    Public Color_Default_Row As Color = Color.Bisque
+    Public Color_Alternating_Row As Color = Color.WhiteSmoke
+    Public Color_Selected_Row As Color = Color.Red
+
+
 
 
     Public Property prefix As String
@@ -106,13 +116,17 @@
         HandleRegistryinfo()
 
         'check Trial
-        If TrialVersion_Slave = False Then
+        If TrialVersion_Master = False Then
             MsgBox("Vous devez Contacter l'administration pour plus d'infos", MsgBoxStyle.Information, "***TRIAL***")
             End
         End If
 
-        'Trial
-     
+
+
+        bt_Parck.Visible = False
+
+
+
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -128,6 +142,9 @@
                 admin = False
                 adminId = pwdwin.DGV1.SelectedRows(0).Cells(0).Value
                 adminName = pwdwin.DGV1.SelectedRows(0).Cells(1).Value
+
+                bt_Achat.Visible = False
+                bt_Contact.Visible = False
             End If
         Else
             End
@@ -157,36 +174,36 @@
     End Sub
 
     'Add DataList to pl Body
-    Public Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btVente.Click
+    Public Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Vente.Click
         Using c As New FactureClass
             c.AddDataList(True)
         End Using
-        HeaderColor(btVente.Text)
+        HeaderColor(bt_Vente.Text)
     End Sub
-    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Achat.Click
         Using c As New FactureClass
             Dim bt As Button = sender
             c.AddDataList(False)
         End Using
-        HeaderColor(Button12.Text)
+        HeaderColor(bt_Achat.Text)
     End Sub
-    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Produit.Click
         Using c As New AricleClass
             c.AddDataList()
         End Using
-        HeaderColor(Button10.Text)
+        HeaderColor(bt_Produit.Text)
     End Sub
-    Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
+    Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Contact.Click
         Using c As New ClientClass
             c.AddDataList()
         End Using
-        HeaderColor(Button11.Text)
+        HeaderColor(bt_Contact.Text)
     End Sub
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Parck.Click
         Using c As New ParcClass
             c.AddDataList()
         End Using
-        HeaderColor(Button9.Text)
+        HeaderColor(bt_Parck.Text)
     End Sub
 
     Private Sub HeaderColor(ByVal value As String)
@@ -198,8 +215,8 @@
             End If
         Next
     End Sub
-    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
-        HeaderColor(Button13.Text)
+    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Home.Click
+        HeaderColor(bt_Home.Text)
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSetting.Click
         If plBody.Controls.Count > 0 Then

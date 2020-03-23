@@ -231,14 +231,15 @@
         End If
 
     End Sub
-    Private Sub EditElement(ByRef ls As ListLine, ByVal tb As String)
+    Private Sub EditElement(ByRef ls As DataGridView, ByVal tb As String)
         If tb = "Article" Then
 
             Dim pr As New AddEditProduct
             Try
-                pr.Id = ls.Id
+                pr.Id = ls.SelectedRows(0).Cells(0).Value
+
                 If pr.ShowDialog = DialogResult.OK Then
-                    ls.Libele = pr.txtName.text
+                    ls.SelectedRows(0).Cells(2).Value = pr.txtName.text
                     Dim sp = pr.txtHt.text
                     Dim bp = pr.txtPAch.text
 
@@ -250,22 +251,22 @@
                         bp += bp * tv / 100
                     End If
 
-                    ls.Total = bp
-                    ls.Avance = sp
-                    ls.isEdited = True
+                    ls.SelectedRows(0).Cells(5).Value = bp
+                    ls.SelectedRows(0).Cells(6).Value = sp
+                    'ls.isEdited = True
                 End If
             Catch ex As Exception
             End Try
 
         Else
             Dim pr As New AddEditCat
-            pr.id = ls.Id
+            pr.id = ls.SelectedRows(0).Cells(0).Value
 
             If pr.ShowDialog = DialogResult.OK Then
-                ls.Libele = pr.txtName.text
+                ls.SelectedRows(0).Cells(1).Value = pr.txtName.text
                 Dim sp = pr.txtRemise.text
                 If Not IsNumeric(sp) Then sp = 0
-                ls.Total = sp
+                ls.SelectedRows(0).Cells(4).Value = sp
             End If
 
         End If
@@ -274,7 +275,7 @@
 
     End Sub
     
-    Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As ListLine)
+    Private Sub DeleteElement(ByRef ds As ProductList, ByVal ls As DataGridView)
         If MsgBox("عند قيامكم على الضغط على 'موافق' سيتم حذف المادة المؤشر عليها من القائمة .. إضغط  'لا'  لالغاء الحذف ", MsgBoxStyle.YesNo Or MessageBoxIcon.Exclamation, "حذف المادة") = MsgBoxResult.No Then
             Exit Sub
         End If
@@ -286,13 +287,14 @@
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 If ds.Mode = "Article" Then
-                    params.Add("arid", ls.Id)
+                    params.Add("arid", ls.SelectedRows(0).Cells(0).Value)
                 Else
-                    params.Add("cid", ls.Id)
+                    params.Add("cid", ls.SelectedRows(0).Cells(0).Value)
                 End If
 
                 If a.DeleteRecords(ds.TableName, params) > 0 Then
-                    ds.RemoveElement(ls)
+                    ds.RemoveElementSelectedRows()
+                    'ds.RemoveElementRows(ls)
                 End If
             End Using
 
@@ -334,26 +336,57 @@
             If Form1.isWorkinOnStock = False And Form1.useBlLivrable = False Then Exit Sub
             Dim where As New Dictionary(Of String, Object)
 
-            For Each l As ListLine In ds.pl.Controls
+            'For Each l As ListLine In ds.pl.Controls
+            '    'For i As Integer=0 to 
+            '    where.Clear()
+            '    where.Add("arid", l.Id)
+            '    where.Add("dpid", ds.dpid)
+            '    Dim qte = a.SelectByScalar("Details_Stock", "qte", where)
+
+            '    If IsNothing(qte) Then qte = 0
+
+            '    l.remise = qte
+
+            '    If qte > Form1.myMinStock Then
+            '        l.plR.BackColor = Color.Honeydew
+            '    ElseIf qte <= Form1.myMinStock And qte > 0 Then
+            '        l.plR.BackColor = Color.SeaShell
+            '    Else
+            '        l.plR.BackColor = Color.Crimson
+            '    End If
+            'Next
+            Dim dt As DataGridView = ds.pl.Controls(0)
+            Dim Stock_Value As Double = 0
+
+            For i As Integer = 0 To dt.Rows.Count - 1
                 'For i As Integer=0 to 
                 where.Clear()
-                where.Add("arid", l.Id)
+                where.Add("arid", dt.Rows(i).Cells(0).Value)
                 where.Add("dpid", ds.dpid)
                 Dim qte = a.SelectByScalar("Details_Stock", "qte", where)
 
                 If IsNothing(qte) Then qte = 0
 
-                l.remise = qte
+                dt.Rows(i).Cells(7).Value = qte
+
+                Dim pr As Double = dt.Rows(i).Cells(5).Value
+                If Form1.useValue_CUMP Then pr = dt.Rows(i).Cells(20).Value
+
+                Stock_Value += qte * pr
 
                 If qte > Form1.myMinStock Then
-                    l.plR.BackColor = Color.Honeydew
+                    dt.Rows(i).Cells(7).Style.BackColor = Color.Honeydew
                 ElseIf qte <= Form1.myMinStock And qte > 0 Then
-                    l.plR.BackColor = Color.SeaShell
+                    dt.Rows(i).Cells(7).Style.BackColor = Color.SeaShell
                 Else
-                    l.plR.BackColor = Color.Crimson
+                    dt.Rows(i).Cells(7).Style.BackColor = Color.Crimson
                 End If
             Next
 
+
+            ds.lbValueTitle.Visible = True
+            ds.lbValue.Visible = True
+            ds.lbValue.Text = Stock_Value.ToString("c")
         End Using
 
     End Sub

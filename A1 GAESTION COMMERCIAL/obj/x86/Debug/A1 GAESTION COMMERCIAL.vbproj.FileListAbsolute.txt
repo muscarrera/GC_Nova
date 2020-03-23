@@ -56,3 +56,4 @@ C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\o
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ChooseDepot.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.Client_Remise.resources
 C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.TransformeStock.resources
+C:\Users\admin\Desktop\prjt test\A1 GAESTION COMMERCIAL\A1 GAESTION COMMERCIAL\obj\x86\Debug\A1_GAESTION_COMMERCIAL.ArticleDetails.resources

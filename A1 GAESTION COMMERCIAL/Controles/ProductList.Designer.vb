@@ -29,25 +29,19 @@ Partial Class ProductList
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.lbValue = New System.Windows.Forms.Label()
+        Me.lbValueTitle = New System.Windows.Forms.Label()
+        Me.lbLnbr = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.btPage = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.plrightA = New System.Windows.Forms.Panel()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button14 = New System.Windows.Forms.Button()
-        Me.Button15 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.PB = New System.Windows.Forms.PictureBox()
-        Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -60,17 +54,19 @@ Partial Class ProductList
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.btCat = New System.Windows.Forms.Button()
         Me.btArticle = New System.Windows.Forms.Button()
+        Me.link = New System.Windows.Forms.LinkLabel()
         Me.Panel12 = New System.Windows.Forms.Panel()
         Me.plModeClient = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.btFournisseur = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.plrightA.SuspendLayout()
         Me.Panel10.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,10 +115,10 @@ Partial Class ProductList
         Me.pl.AutoScroll = True
         Me.pl.BackColor = System.Drawing.Color.Transparent
         Me.pl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pl.Location = New System.Drawing.Point(5, 247)
+        Me.pl.Location = New System.Drawing.Point(5, 174)
         Me.pl.Name = "pl"
         Me.pl.Padding = New System.Windows.Forms.Padding(5)
-        Me.pl.Size = New System.Drawing.Size(700, 611)
+        Me.pl.Size = New System.Drawing.Size(700, 684)
         Me.pl.TabIndex = 12
         '
         'Panel6
@@ -132,9 +128,9 @@ Partial Class ProductList
         Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel6.Controls.Add(Me.Panel7)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(5, 204)
+        Me.Panel6.Location = New System.Drawing.Point(5, 157)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(700, 43)
+        Me.Panel6.Size = New System.Drawing.Size(700, 17)
         Me.Panel6.TabIndex = 14
         '
         'Panel7
@@ -149,6 +145,10 @@ Partial Class ProductList
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel4.Controls.Add(Me.lbValue)
+        Me.Panel4.Controls.Add(Me.lbValueTitle)
+        Me.Panel4.Controls.Add(Me.lbLnbr)
+        Me.Panel4.Controls.Add(Me.Label14)
         Me.Panel4.Controls.Add(Me.Button2)
         Me.Panel4.Controls.Add(Me.Button4)
         Me.Panel4.Controls.Add(Me.btPage)
@@ -158,6 +158,58 @@ Partial Class ProductList
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(700, 37)
         Me.Panel4.TabIndex = 13
+        '
+        'lbValue
+        '
+        Me.lbValue.BackColor = System.Drawing.Color.LightGray
+        Me.lbValue.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValue.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValue.Location = New System.Drawing.Point(211, 2)
+        Me.lbValue.Name = "lbValue"
+        Me.lbValue.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValue.Size = New System.Drawing.Size(116, 35)
+        Me.lbValue.TabIndex = 16
+        Me.lbValue.Text = "0"
+        Me.lbValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbValueTitle
+        '
+        Me.lbValueTitle.BackColor = System.Drawing.Color.Gainsboro
+        Me.lbValueTitle.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValueTitle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValueTitle.Location = New System.Drawing.Point(134, 2)
+        Me.lbValueTitle.Name = "lbValueTitle"
+        Me.lbValueTitle.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValueTitle.Size = New System.Drawing.Size(77, 35)
+        Me.lbValueTitle.TabIndex = 13
+        Me.lbValueTitle.Text = "Valeur:"
+        Me.lbValueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbLnbr
+        '
+        Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
+        Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLnbr.Location = New System.Drawing.Point(71, 2)
+        Me.lbLnbr.Name = "lbLnbr"
+        Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbLnbr.Size = New System.Drawing.Size(63, 35)
+        Me.lbLnbr.TabIndex = 14
+        Me.lbLnbr.Text = "0"
+        Me.lbLnbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label14
+        '
+        Me.Label14.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(0, 2)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label14.Size = New System.Drawing.Size(71, 35)
+        Me.Label14.TabIndex = 15
+        Me.Label14.Text = "Nbre :"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Button2
         '
@@ -211,7 +263,6 @@ Partial Class ProductList
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
-        Me.Panel3.Controls.Add(Me.plrightA)
         Me.Panel3.Controls.Add(Me.Panel10)
         Me.Panel3.Controls.Add(Me.Panel24)
         Me.Panel3.Controls.Add(Me.Panel8)
@@ -219,115 +270,8 @@ Partial Class ProductList
         Me.Panel3.Location = New System.Drawing.Point(5, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(5, 5, 5, 15)
-        Me.Panel3.Size = New System.Drawing.Size(700, 199)
+        Me.Panel3.Size = New System.Drawing.Size(700, 152)
         Me.Panel3.TabIndex = 11
-        '
-        'plrightA
-        '
-        Me.plrightA.BackColor = System.Drawing.Color.DimGray
-        Me.plrightA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.plrightA.Controls.Add(Me.Button9)
-        Me.plrightA.Controls.Add(Me.Button3)
-        Me.plrightA.Controls.Add(Me.Button8)
-        Me.plrightA.Controls.Add(Me.Button10)
-        Me.plrightA.Controls.Add(Me.Button14)
-        Me.plrightA.Controls.Add(Me.Button15)
-        Me.plrightA.Controls.Add(Me.TextBox5)
-        Me.plrightA.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.plrightA.Location = New System.Drawing.Point(5, 109)
-        Me.plrightA.Name = "plrightA"
-        Me.plrightA.Padding = New System.Windows.Forms.Padding(3)
-        Me.plrightA.Size = New System.Drawing.Size(690, 37)
-        Me.plrightA.TabIndex = 16
-        Me.plrightA.Visible = False
-        '
-        'Button9
-        '
-        Me.Button9.BackColor = System.Drawing.Color.DarkCyan
-        Me.Button9.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.ForeColor = System.Drawing.Color.White
-        Me.Button9.Location = New System.Drawing.Point(334, 3)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(75, 31)
-        Me.Button9.TabIndex = 19
-        Me.Button9.Tag = "1"
-        Me.Button9.Text = "الدفعات"
-        Me.Button9.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(259, 3)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 31)
-        Me.Button3.TabIndex = 18
-        Me.Button3.Tag = "1"
-        Me.Button3.Text = "الدين"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'Button8
-        '
-        Me.Button8.BackColor = System.Drawing.Color.DarkGreen
-        Me.Button8.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.ForeColor = System.Drawing.Color.White
-        Me.Button8.Location = New System.Drawing.Point(131, 3)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(128, 31)
-        Me.Button8.TabIndex = 11
-        Me.Button8.Tag = "1"
-        Me.Button8.Text = "Op. Général"
-        Me.Button8.UseVisualStyleBackColor = False
-        '
-        'Button10
-        '
-        Me.Button10.BackColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button10.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button10.ForeColor = System.Drawing.Color.White
-        Me.Button10.Location = New System.Drawing.Point(3, 3)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(128, 31)
-        Me.Button10.TabIndex = 9
-        Me.Button10.Tag = "1"
-        Me.Button10.Text = "Etat Clients"
-        Me.Button10.UseVisualStyleBackColor = False
-        '
-        'Button14
-        '
-        Me.Button14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button14.Location = New System.Drawing.Point(1141, 11)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(56, 24)
-        Me.Button14.TabIndex = 1
-        Me.Button14.Text = "الغاء"
-        Me.Button14.UseVisualStyleBackColor = True
-        '
-        'Button15
-        '
-        Me.Button15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button15.Location = New System.Drawing.Point(1199, 12)
-        Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(56, 24)
-        Me.Button15.TabIndex = 1
-        Me.Button15.Text = "بحث"
-        Me.Button15.UseVisualStyleBackColor = True
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox5.Location = New System.Drawing.Point(1261, 13)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(187, 20)
-        Me.TextBox5.TabIndex = 0
         '
         'Panel10
         '
@@ -340,14 +284,14 @@ Partial Class ProductList
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel10.Location = New System.Drawing.Point(5, 42)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(690, 104)
+        Me.Panel10.Size = New System.Drawing.Size(690, 57)
         Me.Panel10.TabIndex = 11
         '
         'PictureBox8
         '
         Me.PictureBox8.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.search_folder_18
         Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox8.Location = New System.Drawing.Point(461, 24)
+        Me.PictureBox8.Location = New System.Drawing.Point(461, 17)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(68, 26)
         Me.PictureBox8.TabIndex = 10
@@ -372,44 +316,6 @@ Partial Class ProductList
         Me.PB.TabIndex = 9
         Me.PB.TabStop = False
         '
-        'txtSearchCtg
-        '
-        Me.txtSearchCtg.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearchCtg.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtSearchCtg.IsNumiric = False
-        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 24)
-        Me.txtSearchCtg.Name = "txtSearchCtg"
-        Me.txtSearchCtg.PlaceHolder = ""
-        Me.txtSearchCtg.ShowClearIcon = True
-        Me.txtSearchCtg.ShowSaveIcon = False
-        Me.txtSearchCtg.Size = New System.Drawing.Size(101, 26)
-        Me.txtSearchCtg.StartUp = 2
-        Me.txtSearchCtg.TabIndex = 5
-        Me.txtSearchCtg.TextSize = 10
-        Me.txtSearchCtg.TxtBackColor = True
-        Me.txtSearchCtg.TxtColor = System.Drawing.Color.White
-        Me.txtSearchCtg.txtReadOnly = False
-        Me.txtSearchCtg.TxtSelect = New Integer() {1, 0}
-        '
-        'txtSearchName
-        '
-        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearchName.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtSearchName.IsNumiric = False
-        Me.txtSearchName.Location = New System.Drawing.Point(200, 24)
-        Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.PlaceHolder = ""
-        Me.txtSearchName.ShowClearIcon = True
-        Me.txtSearchName.ShowSaveIcon = False
-        Me.txtSearchName.Size = New System.Drawing.Size(255, 26)
-        Me.txtSearchName.StartUp = 2
-        Me.txtSearchName.TabIndex = 5
-        Me.txtSearchName.TextSize = 10
-        Me.txtSearchName.TxtBackColor = True
-        Me.txtSearchName.TxtColor = System.Drawing.Color.White
-        Me.txtSearchName.txtReadOnly = False
-        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
-        '
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
@@ -419,7 +325,7 @@ Partial Class ProductList
         Me.Panel24.Controls.Add(Me.Button6)
         Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel24.Location = New System.Drawing.Point(5, 146)
+        Me.Panel24.Location = New System.Drawing.Point(5, 99)
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(690, 38)
         Me.Panel24.TabIndex = 4
@@ -508,7 +414,7 @@ Partial Class ProductList
         Me.plModeArticle.Controls.Add(Me.Panel14)
         Me.plModeArticle.Controls.Add(Me.btCat)
         Me.plModeArticle.Controls.Add(Me.btArticle)
-        Me.plModeArticle.Controls.Add(Me.LinkLabel1)
+        Me.plModeArticle.Controls.Add(Me.link)
         Me.plModeArticle.Dock = System.Windows.Forms.DockStyle.Right
         Me.plModeArticle.Location = New System.Drawing.Point(-24, 2)
         Me.plModeArticle.Name = "plModeArticle"
@@ -575,6 +481,18 @@ Partial Class ProductList
         Me.btArticle.Text = "Article"
         Me.btArticle.UseVisualStyleBackColor = True
         '
+        'link
+        '
+        Me.link.Dock = System.Windows.Forms.DockStyle.Left
+        Me.link.Location = New System.Drawing.Point(0, 0)
+        Me.link.Name = "link"
+        Me.link.Size = New System.Drawing.Size(166, 35)
+        Me.link.TabIndex = 11
+        Me.link.TabStop = True
+        Me.link.Text = "Transfert inter/intra-dépôt(s)"
+        Me.link.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.link.Visible = False
+        '
         'Panel12
         '
         Me.Panel12.BackColor = System.Drawing.Color.Gainsboro
@@ -640,16 +558,46 @@ Partial Class ProductList
         Me.btClient.Text = "Client"
         Me.btClient.UseVisualStyleBackColor = True
         '
-        'LinkLabel1
+        'txtSearchCtg
         '
-        Me.LinkLabel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LinkLabel1.Location = New System.Drawing.Point(0, 0)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(166, 35)
-        Me.LinkLabel1.TabIndex = 11
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Transfert inter/intra-dépôt(s)"
-        Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.txtSearchCtg.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearchCtg.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtSearchCtg.IsNumiric = False
+        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 17)
+        Me.txtSearchCtg.Name = "txtSearchCtg"
+        Me.txtSearchCtg.PlaceHolder = ""
+        Me.txtSearchCtg.ShowClearIcon = True
+        Me.txtSearchCtg.ShowSaveIcon = False
+        Me.txtSearchCtg.Size = New System.Drawing.Size(101, 26)
+        Me.txtSearchCtg.StartUp = 2
+        Me.txtSearchCtg.TabIndex = 5
+        Me.txtSearchCtg.TextSize = 10
+        Me.txtSearchCtg.TxtBackColor = True
+        Me.txtSearchCtg.TxtColor = System.Drawing.Color.White
+        Me.txtSearchCtg.txtReadOnly = False
+        Me.txtSearchCtg.TxtSelect = New Integer() {1, 0}
+        '
+        'txtSearchName
+        '
+        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearchName.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtSearchName.IsNumiric = False
+        Me.txtSearchName.Location = New System.Drawing.Point(200, 17)
+        Me.txtSearchName.Name = "txtSearchName"
+        Me.txtSearchName.PlaceHolder = ""
+        Me.txtSearchName.ShowClearIcon = True
+        Me.txtSearchName.ShowSaveIcon = False
+        Me.txtSearchName.Size = New System.Drawing.Size(255, 26)
+        Me.txtSearchName.StartUp = 2
+        Me.txtSearchName.TabIndex = 5
+        Me.txtSearchName.TextSize = 10
+        Me.txtSearchName.TxtBackColor = True
+        Me.txtSearchName.TxtColor = System.Drawing.Color.White
+        Me.txtSearchName.txtReadOnly = False
+        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
+        '
+        'PrintDoc
+        '
         '
         'ProductList
         '
@@ -665,8 +613,6 @@ Partial Class ProductList
         Me.Panel6.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
-        Me.plrightA.ResumeLayout(False)
-        Me.plrightA.PerformLayout()
         Me.Panel10.ResumeLayout(False)
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
@@ -705,14 +651,6 @@ Partial Class ProductList
     Friend WithEvents btClient As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
-    Friend WithEvents plrightA As System.Windows.Forms.Panel
-    Friend WithEvents Button9 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
-    Friend WithEvents Button10 As System.Windows.Forms.Button
-    Friend WithEvents Button14 As System.Windows.Forms.Button
-    Friend WithEvents Button15 As System.Windows.Forms.Button
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents plModeArticle As System.Windows.Forms.Panel
     Friend WithEvents Panel14 As System.Windows.Forms.Panel
@@ -720,6 +658,11 @@ Partial Class ProductList
     Friend WithEvents btArticle As System.Windows.Forms.Button
     Friend WithEvents Panel12 As System.Windows.Forms.Panel
     Friend WithEvents btDepot As System.Windows.Forms.Button
-    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents link As System.Windows.Forms.LinkLabel
+    Friend WithEvents lbValue As System.Windows.Forms.Label
+    Friend WithEvents lbValueTitle As System.Windows.Forms.Label
+    Friend WithEvents lbLnbr As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
 
 End Class

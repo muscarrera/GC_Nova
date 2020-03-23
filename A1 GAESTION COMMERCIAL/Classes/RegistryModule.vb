@@ -16,6 +16,7 @@
             Return v
         End Try
     End Function
+    
     Public Sub setRegistryinfo(ByVal str As String, ByVal val As Object)
         Try
             My.Computer.Registry.SetValue(regPath, str, val)
@@ -80,6 +81,15 @@
             Form1.prf_Params.Add("ba", getRegistryinfo("prf_b_ba", "Ba"))
             Form1.prf_Params.Add("fc_b", getRegistryinfo("prf_b_fc", "Fc"))
             Form1.prf_Params.Add("av_b", getRegistryinfo("prf_b_av", "Av"))
+
+
+            'Colors
+            Form1.Color_Default_Text = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
+            Form1.Color_Selected_Text = Color.FromArgb(getRegistryinfo("Color_Selected_Text", Color.Yellow.ToArgb.ToString))
+            Form1.Color_Default_Row = Color.FromArgb(getRegistryinfo("Color_Default_Row", Color.Bisque.ToArgb.ToString))
+            Form1.Color_Alternating_Row = Color.FromArgb(getRegistryinfo("Color_Alternating_Row", Color.WhiteSmoke.ToArgb.ToString))
+            Form1.Color_Selected_Row = Color.FromArgb(getRegistryinfo("Color_Selected_Row", Color.Red.ToArgb.ToString))
+
         Catch ex As Exception
 
         End Try

@@ -192,9 +192,9 @@ Public Class FactureClass
                         If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
                             Dim q As Double = CDbl(data.Rows(i).Item("qte"))
 
-                            If tb_D = "Details_Bon_Livraison" Then
+                            If tb_D = "Details_Bon_Livraison" Or tb_D = "Details_Buy_Avoir" Then
                                 q = q * -1
-                            ElseIf tb_D = "Details_Bon_Achat" Then
+                            ElseIf tb_D = "Details_Bon_Achat" Or tb_D = "Details_Sell_Avoir" Then
                                 q = q
                             Else
                                 Continue For
@@ -202,9 +202,38 @@ Public Class FactureClass
 
                             Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
                             If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+                                If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
+                                    params.Clear()
+                                    params.Add("arid", data.Rows(i).Item("arid"))
+
+                                    Dim params2 As New Dictionary(Of String, Object)
+                                    params2.Add("CUMP", data.Rows(i).Item("bprice"))
+
+                                    c.UpdateRecord("Article", params2, params)
+                                End If
+
+
                                 AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
                                             data.Rows(i).Item("cid"), q, c)
                             Else
+                                If tb_F = "Bon_Achat" And Form1.useValue_CUMP Then
+                                    params.Clear()
+                                    params.Add("arid", data.Rows(i).Item("arid"))
+                                    Dim cump As Double = c.SelectByScalar("Article", "CUMP", params)
+                                    If IsDBNull(cump) Then cump = 0
+                                    If Not IsNumeric(cump) Then cump = 0
+
+                                    If cump = 0 Then
+                                        cump = c.SelectByScalar("Article", "bprice", params)
+                                    End If
+                                    cump = ((cump * oldStock) + (data.Rows(i).Item("bprice") * q)) / (oldStock + q)
+                                    Dim params2 As New Dictionary(Of String, Object)
+
+                                    params2.Add("CUMP", cump)
+                                    c.UpdateRecord("Article", params2, params)
+                                End If
+
+
                                 oldStock += q
                                 updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
                             End If
@@ -697,7 +726,7 @@ Public Class FactureClass
         params.Add("qte", qte)
 
         Return c.UpdateRecord("Details_Stock", params, where)
-
+         
         Return qte
     End Function
     Private Sub GetArticleStock(ByRef pl As Panel, ByVal isS As Boolean)
@@ -1108,9 +1137,9 @@ Public Class FactureClass
         For Each b As Button In ds.plHeaderSells.Controls
             b.BackgroundImage = My.Resources.gray_row
         Next
-        ds.pbBar.Width = ds.Button8.Right
+        ds.pbBar.Width = ds.btbon.Right
         ds.pbBar.BackColor = RandomColor()
-        ds.Button8.BackgroundImage = My.Resources.gui_16
+        ds.btbon.BackgroundImage = My.Resources.gui_16
     End Sub
     Public Sub Bl_Livrable(ByVal tb_F As String, ByVal tb_D As String, ByVal tb_P As String,
                                   ByVal Op As String, ByRef ds As DataList)
@@ -1190,6 +1219,7 @@ Public Class FactureClass
                                 AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
                                             data.Rows(i).Item("cid"), q, c)
                             Else
+
                                 oldStock += q
                                 updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
                             End If
@@ -1269,15 +1299,15 @@ Public Class FactureClass
             b.BackgroundImage = My.Resources.gray_row
         Next
 
-        ds.pbBar.Width = ds.Button9.Right
+        ds.pbBar.Width = ds.btfc.Right
         ds.pbBar.BackColor = RandomColor()
-        ds.Button9.BackgroundImage = My.Resources.gui_16
+        ds.btfc.BackgroundImage = My.Resources.gui_16
     End Sub
     Private Sub PayFacture(ByVal id As Integer, ByRef ds As DataList)
         'Throw New NotImplementedException
         Dim PP As New PayementForm
 
-        PP.ClientName = ds.Entete.Name
+        PP.ClientName = ds.Entete.ClientName
         PP.cid = ds.Entete.Client.cid
         PP.FactureTable = ds.FactureTable
         PP.payementTable = ds.payementTable
@@ -1467,7 +1497,7 @@ Public Class FactureClass
                 Dim params As New Dictionary(Of String, Object)
                 Dim oldStock = getStockById(R.arid, R.depot, c)
 
-                If tb_D = "Details_Bon_Livraison" And R.qte > oldStock Then R.qte = oldStock
+                If Form1.useBlLivrable And tb_D = "Details_Bon_Livraison" And R.qte > oldStock Then R.qte = oldStock
 
 
                 params.Add("fctid", id)
@@ -1486,9 +1516,10 @@ Public Class FactureClass
 
                 If d_Id > 0 And R.depot > 0 And R.arid > 0 Then
                     Dim q As Double = 0
-                    If tb_D = "Details_Bon_Livraison" Then
-                        q = R.qte * -1
-                    ElseIf tb_D = "Details_Bon_Achat" Then
+
+                    If tb_D = "Details_Bon_Livraison" Or tb_D = "Details_Buy_Avoir" Then
+                        q = q * -1
+                    ElseIf tb_D = "Details_Bon_Achat" Or tb_D = "Details_Sell_Avoir" Then
                         q = R.qte
                     Else
                         Exit Sub
@@ -1496,15 +1527,42 @@ Public Class FactureClass
 
                     If Form1.isWorkinOnStock = True Then
                         If getStockId(R.arid, R.depot, c) = 0 Then
+
+                            If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
+                                params.Clear()
+                                params.Add("arid", R.arid)
+
+                                Dim params2 As New Dictionary(Of String, Object)
+                                params2.Add("CUMP", R.bprice)
+
+                                c.UpdateRecord("Article", params2, params)
+                            End If
+                           
                             oldStock = q
                             AddNewStock(R.arid, R.depot, R.cid, q, c)
                         Else
+                            If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
+                                params.Clear()
+                                params.Add("arid", R.arid)
+                                Dim cump As Double = c.SelectByScalar("Article", "CUMP", params)
+                                If IsDBNull(cump) Then cump = 0
+                                If Not IsNumeric(cump) Then cump = 0
+
+                                If cump = 0 Then
+                                    cump = c.SelectByScalar("Article", "bprice", params)
+                                End If
+                                cump = ((cump * oldStock) + (R.bprice * q)) / (oldStock + q)
+                                Dim params2 As New Dictionary(Of String, Object)
+
+                                params2.Add("CUMP", cump)
+                                c.UpdateRecord("Article", params2, params)
+                            End If
                             oldStock += q
                             updateStock(R.arid, R.depot, oldStock, c)
                         End If
                         R.Stock = oldStock
                     End If
-                End If
+                    End If
             End Using
         Catch ex As Exception
         End Try
@@ -1905,7 +1963,6 @@ Public Class FactureClass
         bls.id = ds.Id
         If bls.ShowDialog = DialogResult.OK Then
 
-
             Dim data As DataTable
 
             Dim avance = ds.TB.avance
@@ -1925,15 +1982,31 @@ Public Class FactureClass
                     where.Clear()
 
                     For Each a As ListLine In bls.plBody.Controls
-                        params.Add("Sell_Facture", CInt(ds.Id))
+                        Dim bonId As Integer = CInt(a.Id)
+
+                        If bls.oldList.ContainsKey(bonId) Then
+                            bls.oldList(bonId) = 0
+                            Continue For
+                        End If
+
+                        params.Add(bls.tb_F, CInt(ds.Id))
                         params.Add("isAdmin", "Facturé")
 
-                        where.Add("id", CInt(a.Id))
+
+                        where.Add("id", bonId)
                         c.UpdateRecord(bls.tb_D, params, where)
                         params.Clear()
                         where.Clear()
 
-                        where.Add("fctid", CInt(a.Id))
+
+
+                        params.Add(bls.tb_F, CInt(ds.Id))
+                        where.Add(bls.tb_D, bonId)
+                        c.UpdateRecord(bls.tb_P, params, where)
+                        params.Clear()
+                        where.Clear()
+
+                        where.Add("fctid", bonId)
                         data = c.SelectDataTable(bls.tb_D_D, {"*"}, where)
                         where.Clear()
 
@@ -1941,17 +2014,17 @@ Public Class FactureClass
                             For i As Integer = 0 To data.Rows.Count - 1
 
                                 params.Add("fctid", CInt(ds.Id))
-                                params.Add("name", data.Rows(i).Item("name"))
-                                params.Add("bprice", data.Rows(i).Item("bprice"))
-                                params.Add("price", data.Rows(i).Item("price"))
-                                params.Add("remise", data.Rows(i).Item("remise"))
-                                params.Add("qte", data.Rows(i).Item("qte"))
-                                params.Add("tva", data.Rows(i).Item("tva"))
-                                params.Add("arid", data.Rows(i).Item("arid"))
-                                params.Add("depot", data.Rows(i).Item("depot"))
-                                params.Add("ref", data.Rows(i).Item("ref"))
-                                params.Add("cid", data.Rows(i).Item("cid"))
-                                params.Add("bl", data.Rows(i).Item(0))
+                                params.Add("name", StrValue(data, "name", i))
+                                params.Add("bprice", DblValue(data, "bprice", i)) 'data.Rows(i).Item("bprice"))
+                                params.Add("price", DblValue(data, "price", i)) 'data.Rows(i).Item("price"))
+                                params.Add("remise", DblValue(data, "remise", i)) ' data.Rows(i).Item(""))
+                                params.Add("qte", DblValue(data, "qte", i)) 'data.Rows(i).Item(""))
+                                params.Add("tva", DblValue(data, "tva", i)) 'data.Rows(i).Item(""))
+                                params.Add("arid", IntValue(data, "arid", i)) ' data.Rows(i).Item(""))
+                                params.Add("depot", IntValue(data, "depot", i)) 'data.Rows(i).Item(""))
+                                params.Add("ref", StrValue(data, "ref", i)) 'data.Rows(i).Item(""))
+                                params.Add("cid", IntValue(data, "cid", i)) ' data.Rows(i).Item("cid"))
+                                params.Add("bl", bonId) 'IntValue(data, "fctid", i)) 'data.Rows(i).Item(0))
 
                                 c.InsertRecord(ds.DetailsTable, params)
                                 params.Clear()
@@ -1959,9 +2032,34 @@ Public Class FactureClass
                         End If
                     Next
 
-                    ds.Id = ds.Id
+                    For Each kv As KeyValuePair(Of Integer, Integer) In bls.oldList
 
+                        params.Clear()
+                        where.Clear()
+
+                        If kv.Value = 0 Then Continue For
+
+                        params.Add(bls.tb_F, 0)
+                        params.Add("isAdmin", "Traite")
+
+                        where.Add("id", kv.Key)
+                        c.UpdateRecord(bls.tb_D, params, where)
+                        params.Clear()
+                        where.Clear()
+
+                        params.Add(bls.tb_F, 0)
+                        where.Add(bls.tb_D, kv.Key)
+                        c.UpdateRecord(bls.tb_P, params, where)
+                        params.Clear()
+                        where.Clear()
+
+                        where.Add("bl", kv.Key)
+                        c.DeleteRecords(ds.DetailsTable, where)
+                    Next
                 End Using
+
+                ds.Id = ds.Id
+
             Catch ex As Exception
             End Try
         End If

@@ -259,6 +259,12 @@
     <Compile Include="GUI\AddReference.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\ArticleDetails.Designer.vb">
+      <DependentUpon>ArticleDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ArticleDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\ChooseBL.Designer.vb">
       <DependentUpon>ChooseBL.vb</DependentUpon>
     </Compile>
@@ -487,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddReference.resx">
       <DependentUpon>AddReference.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ArticleDetails.resx">
+      <DependentUpon>ArticleDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChooseBL.resx">
       <DependentUpon>ChooseBL.vb</DependentUpon>

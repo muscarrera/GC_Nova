@@ -4,6 +4,10 @@
     Public tb_F As String
     Public tb_D As String
     Public tb_D_D As String
+    Public tb_P As String
+
+    Public oldList As New Dictionary(Of Integer, Integer)
+
     Dim _id As Integer
     Dim ls As String
 
@@ -26,9 +30,11 @@
             If value = "Sell_Facture" Then
                 tb_D = "Bon_Livraison"
                 tb_D_D = "Details_Bon_Livraison"
+                tb_P = "Client_Payement"
             Else
                 tb_D = "Bon_Achat"
                 tb_D_D = "Details_Bon_Achat"
+                tb_P = "Company_Payement"
             End If
         End Set
     End Property
@@ -49,6 +55,7 @@
             Dim params As New Dictionary(Of String, Object)
             Dim _dtList As DataTable = Nothing
 
+            oldList.Clear()
             plBody.Controls.Clear()
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
@@ -90,6 +97,8 @@
 
                     a.lbref.Font = a.lbName.Font
                     a.lbref.ForeColor = Color.Blue
+
+                    oldList.Add(a.Id, a.Id)
                 Next
                 plBody.Controls.AddRange(arr)
 
@@ -129,7 +138,7 @@
             End If
 
             If _dtList.Rows.Count > 0 Then
-                Dim arr(_dtList.Rows.Count - 1) As ListLine
+                Dim arr(_dtList.Rows.Count) As ListLine
                 Dim i As Integer = 0
                 For i = 0 To _dtList.Rows.Count - 1
                     Dim b As New ListLine
@@ -226,7 +235,6 @@
         Next
 
         LbSum.Text = String.Format("{0:n}", T)
-        lbHT.Text = String.Format("{0:n}", T - 20%)
         lbremise.Text = String.Format("Remise : {0:n}", R)
         Lbavc.Text = String.Format("{0:n}", av)
 

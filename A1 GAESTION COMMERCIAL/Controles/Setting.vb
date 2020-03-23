@@ -78,6 +78,15 @@
             txt_fc.Text = getRegistryinfo("prf_b_fc", "Fc")
             txt_av.Text = getRegistryinfo("prf_b_av", "Av")
 
+
+
+            lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
+            lbSelectText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Selected_Text", Color.Yellow.ToArgb.ToString))
+            plDefRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Default_Row", Color.Bisque.ToArgb.ToString))
+            plAltRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Alternating_Row", Color.WhiteSmoke.ToArgb.ToString))
+            plSelRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Selected_Row", Color.Red.ToArgb.ToString))
+
+
         Catch ex As Exception
 
         End Try
@@ -314,14 +323,14 @@
 
     End Sub
 
-    Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
+    Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click, Button19.Click
         Try
             setRegistryinfo("fontName_Normal", txtnn.text)
             setRegistryinfo("fontName_Title", txtnt.text)
             setRegistryinfo("fontName_Small", txtns.text)
-            setRegistryinfo("fontSize_Normal", txtsn.Text)
-            setRegistryinfo("fontSize_Title", txtst.Text)
-            setRegistryinfo("fontSize_Small", txtss.Text)
+            setRegistryinfo("fontSize_Normal", txtsn.text)
+            setRegistryinfo("fontSize_Title", txtst.text)
+            setRegistryinfo("fontSize_Small", txtss.text)
         Catch ex As Exception
 
         End Try
@@ -380,7 +389,7 @@
 
                             Dim params2 As New Dictionary(Of String, Object)
                             Dim n = NE.txtn.text
-                            If IsNothing(n) = False Then
+                            If IsNothing(n) Then
                                 n = "0"
                             Else
                                 If CInt(n) > 0 Then
@@ -532,4 +541,48 @@
         End If
     End Sub
 
+    Private Sub plDefRow_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plDefRow.DoubleClick
+        Dim cr As New ColorDialog
+        If cr.ShowDialog = DialogResult.OK Then
+            plDefRow.BackColor = cr.Color
+            setRegistryinfo("Color_Default_Row", cr.Color.ToArgb.ToString)
+            Form1.Color_Default_Row = cr.Color
+        End If
+    End Sub
+    Private Sub plAltRow_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plAltRow.DoubleClick
+
+        Dim cr As New ColorDialog
+        If cr.ShowDialog = DialogResult.OK Then
+            plAltRow.BackColor = cr.Color
+            setRegistryinfo("Color_Alternating_Row", cr.Color.ToArgb.ToString)
+            Form1.Color_Alternating_Row = cr.Color
+        End If
+    End Sub
+    Private Sub plSelRow_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plSelRow.DoubleClick
+        Dim cr As New ColorDialog
+        If cr.ShowDialog = DialogResult.OK Then
+            plSelRow.BackColor = cr.Color
+            setRegistryinfo("Color_Selected_Row", cr.Color.ToArgb.ToString)
+            Form1.Color_Selected_Row = cr.Color
+        End If
+    End Sub
+
+    Private Sub lbDefaultText_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDefaultText.DoubleClick
+        Dim cr As New ColorDialog
+        If cr.ShowDialog = DialogResult.OK Then
+            lbDefaultText.ForeColor = cr.Color
+            setRegistryinfo("Color_Default_Text", cr.Color.ToArgb.ToString)
+            Form1.Color_Default_Text = cr.Color
+        End If
+    End Sub
+    Private Sub lbSelectText_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbSelectText.DoubleClick
+        Dim cr As New ColorDialog
+        If cr.ShowDialog = DialogResult.OK Then
+
+            lbSelectText.ForeColor = cr.Color
+            setRegistryinfo("Color_Selected_Text", cr.Color.ToArgb.ToString)
+            Form1.Color_Selected_Text = cr.Color
+        End If
+
+    End Sub
 End Class

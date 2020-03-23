@@ -6,8 +6,6 @@
     Dim ds_id2 As Integer = 0
     Dim cid As Integer = 0
 
-
-
     Public Property arid As Integer
         Get
             Return _arid
@@ -18,10 +16,10 @@
 
             If value > 0 Then
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
- 
+
                     Dim params As New Dictionary(Of String, Object)
                     params.Add("arid", value)
-                
+
 
                     Dim dt As DataTable = a.SelectDataTable("Article", {"*"}, params)
                     If dt.Rows.Count > 0 Then
@@ -48,9 +46,15 @@
         'TODO: This line of code loads data into the 'ALMohassinDBDataSet.Depot' table. You can move, or remove it, as needed.
         Me.DepotTableAdapter.Fill(Me.ALMohassinDBDataSet.Depot)
 
+
+
+        Cb1_SelectedIndexChanged(Nothing, Nothing)
+        Cb2_SelectedIndexChanged(Nothing, Nothing)
+
+        If Form1.admin = False Then Button6.Enabled = False
     End Sub
 
-    Private Sub cbType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cb1.SelectedIndexChanged
+    Private Sub Cb1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cb1.SelectedIndexChanged
         Dim dpid As Integer = Cb1.SelectedValue
         ds_id1 = 0
         qte1 = 0
@@ -72,13 +76,7 @@
 
         End Using
     End Sub
-
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cb2.SelectedIndexChanged
+    Private Sub Cb2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cb2.SelectedIndexChanged
         Dim dpid As Integer = Cb2.SelectedValue
         ds_id2 = 0
         qte2 = 0
@@ -98,6 +96,10 @@
                 lbQteStock2.Text = qte2
             End If
         End Using
+    End Sub
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+
     End Sub
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
