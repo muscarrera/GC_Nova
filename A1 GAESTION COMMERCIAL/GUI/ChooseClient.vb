@@ -7,6 +7,7 @@
     Public num As String = 0
     Public isSell As Boolean
     Public isEditing As Boolean
+    Public isBlocked As Boolean = False
     Public editMode As Boolean
     Public id As Integer
 
@@ -54,8 +55,10 @@
                 Dim adr As String = dt.Rows(i).Item("adresse")
                 Dim tp As String = 0
                 tp = dt.Rows(i).Item("Clid")
+                Dim isB As Boolean = False
+                If Form1.useAccessClient Then isB = BoolValue(dt, "isBlocked", i)
                 Dim tel As String = dt.Rows(i).Item("ice")
-                Dim Cl As New ClientBloc(sid, nm, adr, tel, tp, Form1.admin)
+                Dim Cl As New ClientBloc(sid, nm, adr, tel, tp, Form1.admin, isB)
                 AddHandler Cl.IsActivated, AddressOf IsActivated
                 AddHandler Cl.IsDisActivated, AddressOf IsdisActivated
                 'AddHandler Cl.IsChoosen, AddressOf Button1_Click
@@ -77,6 +80,8 @@
         cid = cl.Clid
         clientName = cl.clientName
         lbRef.Text = clientName
+        isBlocked = cl.isBlocked
+
         cl.isActive = True
 
     End Sub
@@ -85,6 +90,7 @@
         clientName = ""
         clientadresse = ""
         tp = 0
+        isBlocked = False
     End Sub
 
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click

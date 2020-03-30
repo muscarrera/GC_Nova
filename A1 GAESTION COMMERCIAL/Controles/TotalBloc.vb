@@ -133,7 +133,7 @@
         End Get
         Set(ByVal value As Boolean)
             _isDisibleEditing = value
-            plAddPayement.Enabled = Not value
+            'plAddPayement.Enabled = Not value
             plMP.Enabled = Not value
         End Set
     End Property
@@ -141,7 +141,7 @@
         RaiseEvent EditModePayement()
     End Sub
 
-    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         RaiseEvent AddEditPayement()
     End Sub
 

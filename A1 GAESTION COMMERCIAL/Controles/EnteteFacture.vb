@@ -30,6 +30,11 @@
     Public Event NewBcRef()
     Public Event NewDevisRef()
 
+    Public Event EdtitFactureDate()
+    Public Event ValiderBl(ByVal id As Integer)
+
+
+    'Members
     Private fid As Integer
     Private cid As Integer
     Private _adresse As String
@@ -48,10 +53,6 @@
     Dim info As String
     Dim delai As Integer
     Dim id_Cleared As String
-
-    Event EdtitFactureDate()
-
-
 
 
     Public Property Id() As Integer
@@ -197,6 +198,7 @@
             lbType.Text = value
             Id = 0
             btAvoir.Visible = False
+            btValideBl.Visible = False
             btPrint.Visible = True
 
             If value = "Devis" Then
@@ -205,12 +207,14 @@
                 btTranformer.Visible = True
                 btSolde.Visible = False
                 btParamsImp.Visible = True
+
             ElseIf value = "Commande" Or value = "BC" Then
                 btFacturer.Visible = True
                 btDelivry.Visible = True
                 btTranformer.Visible = False
                 btSolde.Visible = False
                 btParamsImp.Visible = True
+
             ElseIf value = "BL" Or value = "BA" Then
                 btFacturer.Visible = True
                 btDelivry.Visible = False
@@ -218,6 +222,8 @@
                 btSolde.Visible = True
                 btParamsImp.Visible = False
                 btAvoir.Visible = True
+                If Form1.useButtonValidForStock Then btValideBl.Visible = True
+
             ElseIf value = "Facture" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
@@ -225,6 +231,7 @@
                 btSolde.Visible = True
                 btParamsImp.Visible = True
                 btAvoir.Visible = True
+                If Form1.useButtonValidForStock Then btValideBl.Visible = True
 
             ElseIf value = "Buy_Facture" Then
                 btFacturer.Visible = False
@@ -234,6 +241,7 @@
                 btParamsImp.Visible = False
                 btAvoir.Visible = False
                 btPrint.Visible = False
+                If Form1.useButtonValidForStock Then btValideBl.Visible = True
 
             ElseIf value = "Avoir" Then
                 btFacturer.Visible = False
@@ -241,6 +249,7 @@
                 btTranformer.Visible = False
                 btSolde.Visible = False
                 btParamsImp.Visible = False
+                If Form1.useButtonValidForStock Then btValideBl.Visible = True
             End If
         End Set
     End Property
@@ -304,10 +313,12 @@
             btAvoir.Visible = False
             btDelete.Visible = True
 
+            If value.ToUpper.StartsWith("LIV") Then btDelivry.Visible = False
             If Type = "Facture" Or Type = "BL" Then btAvoir.Visible = True
 
             If value = "Facturé" Then
                 btSolde.Visible = False
+                btFacturer.Visible = False
             Else
                 If Type = "Facture" Or Type = "Buy_Facture" Or
                     Type = "BL" Or Type = "BA" Then btSolde.Visible = True
@@ -338,6 +349,7 @@
             plBL.Enabled = Not value
             plDv.Enabled = Not value
             btEditClient.Enabled = Not value
+            'btValideBl.Visible = Not value
             'btSolde.Enabled = Not value
         End Set
     End Property
@@ -447,5 +459,9 @@
 
     Private Sub lbDate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDate.Click
         RaiseEvent EdtitFactureDate()
+    End Sub
+
+    Private Sub btValideBl_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btValideBl.Click
+        RaiseEvent ValiderBl(Id)
     End Sub
 End Class

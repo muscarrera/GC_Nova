@@ -154,6 +154,16 @@ Public Class AddEditClient
                 lbImage.Text = StrValue(dt, "img", 0)
                 'PBImage.BackgroundImage = Drawimg()
 
+                If Form1.useAccessClient Then
+                    Dim isb As Boolean = BoolValue(dt, "isBlocked", 0)
+                    If isb Then
+                        BtBlock.Image = My.Resources.block_24
+                    Else
+                        BtBlock.Image = My.Resources.ALLOW_24
+                    End If
+                    BtBlock.Visible = True
+                End If
+
                 Try
                     Dim str As String = Form1.ImgPah & "\art" & lbImage.Text
                     PBImage.BackgroundImage = Image.FromFile(str)
@@ -222,5 +232,29 @@ Public Class AddEditClient
         If rm.ShowDialog = Windows.Forms.DialogResult.OK Then
 
         End If
+    End Sub
+
+    Private Sub BtBlock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtBlock.Click
+        If Id = 0 Then Exit Sub
+        If EditMode = False Then Exit Sub
+
+        Dim isB As Boolean = CBool(BtBlock.Tag)
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("isBlocked", Not isB)
+
+            Dim where As New Dictionary(Of String, Object)
+            where.Add("Clid", Id)
+            If a.UpdateRecord(tb_C, params, where) Then
+                BtBlock.Tag = Not isB
+                If isB Then
+                    BtBlock.Image = My.Resources.ALLOW_24
+                Else
+                    BtBlock.Image = My.Resources.block_24
+                End If
+
+            End If
+        End Using
     End Sub
 End Class

@@ -4,6 +4,7 @@
     Public Event IsDisActivated(ByVal Arid As Integer)
 
     Private _isActive As Boolean
+    Public isBlocked As Boolean = False
     'Property
     Public Property Clid() As Integer
         Get
@@ -99,7 +100,7 @@
 
     ''Construtor
     Public Sub New(ByVal id As Integer, ByVal nm As String, ByVal adr As String,
-                   ByVal t As String, ByVal tp As String, ByVal isa As Boolean)
+                   ByVal t As String, ByVal tp As String, ByVal isa As Boolean, ByVal isb As Boolean)
         Call InitializeComponent()
 
         Clid = id
@@ -109,6 +110,7 @@
         Clienttype = tp
         isAdmin = isa
         ' Img = im
+        isBlocked = isb
 
         Dim RND As New Random
         lbArid.ForeColor = Color.FromArgb(255, RND.Next(255), RND.Next(255), RND.Next(255))

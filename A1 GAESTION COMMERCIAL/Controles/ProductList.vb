@@ -89,8 +89,9 @@
             pl.Controls.Clear()
 
             numberOfItems = Form1.numberOfItems
-            numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
-            If value.Rows.Count > numberOfItems * numberOfPage Then numberOfPage += 1
+            'numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
+            'If value.Rows.Count > numberOfItems * numberOfPage Then numberOfPage += 1
+            numberOfPage = 1
             currentPage = 1
             If TableName = "Article" Then
                 'FillRows()
@@ -293,6 +294,7 @@
                 dg.Columns(6).DefaultCellStyle.Format = "c"
 
                 AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+                AddHandler dg.Sorted, AddressOf Dg_Sorted
                 RaiseEvent GetArticleStock(Me)
             End If
         Catch ex As Exception
@@ -417,6 +419,9 @@
                 dg.Columns(12).Visible = False
                 dg.Columns(13).Visible = False
                 dg.Columns(14).Visible = False
+                dg.Columns(15).Visible = False
+                dg.Columns(16).Visible = False
+
                 If Form1.usePortMonie = False Then dg.Columns(15).Visible = False
 
                 dg.Columns(1).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
@@ -665,4 +670,22 @@
         End Try
 
     End Sub
+
+    Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
+        Dim dt As DataGridView = sender
+        Dim qte As Double = 0
+        For i As Integer = 0 To dt.Rows.Count - 1
+            qte = dt.Rows(i).Cells(7).Value
+
+            If qte > Form1.myMinStock Then
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
+                dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            ElseIf qte <= Form1.myMinStock And qte >= 0 Then
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
+            Else
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
+            End If
+        Next
+    End Sub
+
 End Class

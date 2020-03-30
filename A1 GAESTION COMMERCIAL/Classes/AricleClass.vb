@@ -369,17 +369,27 @@
 
                 dt.Rows(i).Cells(7).Value = qte
 
-                Dim pr As Double = dt.Rows(i).Cells(5).Value
-                If Form1.useValue_CUMP Then pr = dt.Rows(i).Cells(20).Value
+                'Prix moyenne
+                Dim pr As Double = 0
+                Try
+                    If Form1.useValue_CUMP Then pr = dt.Rows(i).Cells(20).Value
+                    If pr = 0 Then pr = dt.Rows(i).Cells(5).Value
+                Catch ex As Exception
+                    pr = dt.Rows(i).Cells(5).Value
+                End Try
 
+
+                'valeur
                 Stock_Value += qte * pr
 
                 If qte > Form1.myMinStock Then
-                    dt.Rows(i).Cells(7).Style.BackColor = Color.Honeydew
-                ElseIf qte <= Form1.myMinStock And qte > 0 Then
-                    dt.Rows(i).Cells(7).Style.BackColor = Color.SeaShell
+                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
+                    dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+                ElseIf qte <= Form1.myMinStock And qte >= 0 Then
+                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
+
                 Else
-                    dt.Rows(i).Cells(7).Style.BackColor = Color.Crimson
+                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
                 End If
             Next
 

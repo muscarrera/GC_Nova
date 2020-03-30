@@ -2,7 +2,8 @@
     'mode de recherche -- etats general -- journalier
     Dim _isEG As Boolean
     Dim _isEJ As Boolean
-   
+    Dim isValid As Boolean
+
     Public Event SearchById(ByVal id As String, ByRef ds As DataList)
     Public Event SearchByDate(ByRef ds As DataList)
     Public Event IdChanged(ByVal id As Integer, ByRef ds As DataList)
@@ -18,6 +19,7 @@
     Public Event TypeTransformer(ByVal id As Integer, ByRef ds As DataList)
     Public Event CommandeDelivry(ByVal id As Integer, ByRef ds As DataList)
     Public Event Facturer(ByVal id As Integer, ByRef ds As DataList)
+    Public Event Valider(ByVal id As Integer, ByVal isV As Boolean, ByRef ds As DataList)
     Public Event PayFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
     Public Event DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
@@ -224,7 +226,9 @@
             TB.pj = value.pj
             TB.avance = value.Avance
             PayementDataSource = value.PaymenetDataSource
-            DisibleEditing(value.isAdmin)
+            DisibleEditing(value.isAdmin, value.isValid)
+            isValid = value.isValid
+
             If value.isAdmin <> "CREATION" Then PlAdd.Height = 1
 
         End Set
@@ -387,7 +391,7 @@
         End Get
         Set(ByVal value As DataTable)
 
-            plPmBody.Controls.Clear()
+            'plPmBody.Controls.Clear()
             PlPayement.Visible = False
 
             If Operation = "Devis" Then Exit Property
@@ -411,7 +415,7 @@
                     R.BringToFront()
                     arr(i) = R
                 Next
-                plPmBody.Controls.AddRange(arr)
+                'plPmBody.Controls.AddRange(arr)
             End If
         End Set
     End Property
@@ -539,9 +543,20 @@
         Pl.Controls.Clear()
         Entete.Clear()
     End Sub
-    Public Sub DisibleEditing(ByVal str As String)
+    Public Sub DisibleEditing(ByVal str As String, ByVal b As Boolean)
         isDisibleEditing = False
         If str = "Facturé" Or str = "AVOIR" Then isDisibleEditing = True
+        If b Then
+            isDisibleEditing = True
+            Entete.btValideBl.Text = "Invalider"
+            Entete.btValideBl.Image = My.Resources.vector_cancel_icon_png_302651
+            Entete.btValideBl.Tag = True
+        Else
+            Entete.btValideBl.Text = "Valider"
+            Entete.btValideBl.Image = My.Resources.ICON_22
+            Entete.btValideBl.Tag = Facture
+        End If
+
     End Sub
     Private Sub AddRow1_AddNewArticle(ByVal art As Article) Handles AddRow1.AddNewArticle
         If Id = 0 Then Exit Sub
@@ -607,10 +622,25 @@
         Dim R As Double = 0
         Dim tva As Double = 0
 
+        TB.dg.Rows.Clear()
+
         For Each C As ListRow In Pl.Controls
             T += C.TotalHt
             R += C.TotalRemise
             tva += C.TotaltVA
+
+            'Multi TVA
+            If Form1.isBaseOnOneTva = False Then
+                Dim B = True
+
+                For i As Integer = 0 To TB.dg.Rows.Count - 1
+                    If TB.dg.Rows(i).Cells(0).Value = C.TVA Then
+                        TB.dg.Rows(i).Cells(1).Value = CDbl(TB.dg.Rows(i).Cells(1).Value) + C.TotaltVA
+                        B = False
+                    End If
+                Next
+                If B Then TB.dg.Rows.Add(C.TVA, C.TotaltVA)
+            End If
         Next
 
         TB.TotalHt = T
@@ -618,14 +648,14 @@
         TB.TVA = tva
 
     End Sub
-    Private Sub PlPm_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles plPmBody.ControlAdded, plPmBody.ControlRemoved
-        If plPmBody.Controls.Count > 3 Then
-            plPmBody.Height = plPmBody.Controls(0).Height * plPmBody.Controls.Count + 15
-            PlPayement.Height = 280 + Pl.Height
-        Else
-            plPmBody.Height = 111
-            PlPayement.Height = 280
-        End If
+    Private Sub PlPm_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs)
+        'If plPmBody.Controls.Count > 3 Then
+        '    plPmBody.Height = plPmBody.Controls(0).Height * plPmBody.Controls.Count + 15
+        '    PlPayement.Height = 280 + Pl.Height
+        'Else
+        '    plPmBody.Height = 111
+        '    PlPayement.Height = 280
+        'End If
 
     End Sub
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
@@ -837,36 +867,36 @@
         End If
 
     End Sub
-    Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement) Handles AddPayementRow1.AddNewArticle
+    Private Sub AddPayementRow1_AddNewArticle(ByVal pm As A1_GAESTION_COMMERCIAL.Payement)
 
-        If Id = 0 Then Exit Sub
+        'If Id = 0 Then Exit Sub
 
-        'DataSource.Add(art.arid, art)
-        Dim d_id As Integer = 0
-        Dim R As New AddPayementRow
+        ''DataSource.Add(art.arid, art)
+        'Dim d_id As Integer = 0
+        'Dim R As New AddPayementRow
 
-        R.Dock = DockStyle.Top
-        R.BringToFront()
-        R.Index = plPmBody.Controls.Count
+        'R.Dock = DockStyle.Top
+        'R.BringToFront()
+        'R.Index = plPmBody.Controls.Count
 
-        AddHandler R.EditPayement, AddressOf Edit_Payement
-        AddHandler R.Cleared, AddressOf Delete_Payement
+        'AddHandler R.EditPayement, AddressOf Edit_Payement
+        'AddHandler R.Cleared, AddressOf Delete_Payement
 
-        RaiseEvent AddPayement(pm, Me, d_id)
+        'RaiseEvent AddPayement(pm, Me, d_id)
 
 
-        R.Payement = pm
-        R.id = d_id
-        R.EditMode = True
-        R.Index = plPmBody.Controls.Count
-        If d_id > 0 Then plPmBody.Controls.Add(R)
+        'R.Payement = pm
+        'R.id = d_id
+        'R.EditMode = True
+        'R.Index = plPmBody.Controls.Count
+        'If d_id > 0 Then plPmBody.Controls.Add(R)
 
 
     End Sub
     Public Sub FillPayement(ByVal dt As DataTable)
         PlPayement.Visible = True
         PlPayement.Height = 200
-        Me.ScrollControlIntoView(plPmHeader)
+        'Me.ScrollControlIntoView(plPmHeader)
     End Sub
     Private Sub Edit_Payement(ByVal PR As A1_GAESTION_COMMERCIAL.AddPayementRow)
         RaiseEvent EditPayement(PR, Me)
@@ -877,10 +907,10 @@
     Private Sub TB_AddFiles() Handles TB.AddFiles
         RaiseEvent AddFiles(Me)
     End Sub
-    Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+    Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
         PlPayement.Visible = True
     End Sub
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         PlPayement.Height = 0
     End Sub
     Private Sub TB_AddEditPayement() Handles TB.AddEditPayement
@@ -889,6 +919,9 @@
 
     Private Sub Entete_ChangingClient() Handles Entete.ChangingClient
         RaiseEvent ChangingClient(Me)
+        If isSell And Form1.useClientRemise_Way Then
+            RaiseEvent getClientRemise(Me, Entete.Client.cid, isSell)
+        End If
     End Sub
     Private Sub Entete_NewBcRef() Handles Entete.NewBcRef
         RaiseEvent NewBcRef(Me)
@@ -956,5 +989,9 @@
         Next
 
         _art.remise = R_All
+    End Sub
+
+    Private Sub Entete_ValiderBl(ByVal id As Integer) Handles Entete.ValiderBl
+        RaiseEvent Valider(id, isValid, Me)
     End Sub
 End Class

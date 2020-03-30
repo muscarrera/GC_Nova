@@ -35,6 +35,9 @@
             txtRef.text = value.ref
             txtDesig.text = value.desig
 
+            If value.way = "AVOIR" Or value.way = "PORTE-MONIE" Then btAdd.Visible = False
+            If value.way = "CONSERVATION" Then btAdd.Visible = False
+
         End Set
 
     End Property

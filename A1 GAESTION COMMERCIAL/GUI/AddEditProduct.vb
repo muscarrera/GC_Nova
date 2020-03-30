@@ -291,6 +291,7 @@ Public Class AddEditProduct
         If txtRCF.text = "" Then txtRCF.text = "0"
         If Not IsNumeric(txtTva.text) Then txtTva.text = 20
 
+        If Not IsNumeric(txtCUMP.text) Then txtCUMP.text = txtPAch.text
 
         If CDbl(txtRGr.text) > CDbl(txtRmax.text) Or CDbl(txtRRev.text) > CDbl(txtRmax.text) Or
             CDbl(txtRCF.text) > CDbl(txtRmax.text) Then

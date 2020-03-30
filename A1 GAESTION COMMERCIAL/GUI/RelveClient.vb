@@ -44,7 +44,6 @@
             getDetails()
         End Set
     End Property
-
     Private Sub getDetails()
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)

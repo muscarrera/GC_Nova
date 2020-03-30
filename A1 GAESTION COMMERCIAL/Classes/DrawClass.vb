@@ -188,7 +188,7 @@ Public Class DrawClass
                     x_name = 160
                 End If
                 size = e.Graphics.MeasureString(prdName, fnt, CInt((520 - x_name - a_Rms) * a))
-                e.Graphics.DrawString(prdName, fnt, Brushes.Black, New RectangleF(60 * a, l, CInt((520 - x_name - a_Rms) * a), size.Height), sf_L)
+                e.Graphics.DrawString(prdName, fnt, Brushes.Black, New RectangleF(x_name * a, l, CInt((520 - x_name - a_Rms) * a), size.Height), sf_L)
                 If CDbl(qte) > 0 Then e.Graphics.DrawString(qte, fnt, Brushes.Black, New RectangleF(CInt((523 - a_Rms) * a), l, 70 * a, 25), sf_R)
                 If with_Price Or CDbl(price) > 0 Then e.Graphics.DrawString(price, fnt, Brushes.Black, New RectangleF(CInt((602 - a_Rms) * a), l, 76 * a, 25), sf_R)
                 If with_Price Or CDbl(total) > 0 Then e.Graphics.DrawString(total, fnt, Brushes.Black, New RectangleF(682 * a, l, 90 * a, 25), sf_R)
@@ -255,8 +255,6 @@ Public Class DrawClass
 
             End If
 
-
-
             If isCache Then l -= 20
             If remise > 0 Then l -= 20
 
@@ -277,10 +275,43 @@ Public Class DrawClass
 
 
             Dim strTotal As String = "Arrêté la présente facture à la somme : " & stt
-            Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440)
-            If Form1.Facture_Title.StartsWith("Bon") = False And with_Price Then e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, 440 * a, sze.Height), sf_L)
+            Dim sze As SizeF = e.Graphics.MeasureString(strTotal, fnt, 440 * a)
+            If Form1.Facture_Title.StartsWith("Bon") = False And with_Price Then
+                Dim str_w As Integer = CInt(440 * a)
+                If Form1.isBaseOnOneTva = False Then
+                    str_w = CInt(300 * a)
 
-            e.Graphics.DrawLine(pn, CInt(60 * a), l + sze.Height + 35, CInt(160 * a), l + sze.Height + 35)
+                    e.Graphics.DrawLine(pn, CInt(380 * a), l + 20, CInt(500 * a), l + 20)
+                    e.Graphics.DrawLine(pn, CInt(380 * a), l + 40, CInt(500 * a), l + 40)
+
+                    e.Graphics.DrawLine(pn, CInt(380 * a), l + 20, CInt(380 * a), l + 60)
+                    e.Graphics.DrawLine(pn, CInt(430 * a), l + 20, CInt(430 * a), l + 60)
+                    e.Graphics.DrawLine(pn, CInt(500 * a), l + 20, CInt(500 * a), l + 60)
+                    e.Graphics.DrawString("Taux", fnt, Brushes.Black,
+                                          New RectangleF(380 * a * a, l + 25, 50 * a, sze.Height), sf_C)
+                    e.Graphics.DrawString("Montant", fnt, Brushes.Black,
+                                         New RectangleF(430 * a * a, l + 25, 70 * a, sze.Height), sf_C)
+
+                    Dim ln As Integer = l + 50
+
+                    For I As Integer = 0 To ds.TB.dg.Rows.Count - 1
+                        e.Graphics.DrawLine(pn, CInt(380 * a), ln, CInt(380 * a), ln + 20)
+                        e.Graphics.DrawLine(pn, CInt(430 * a), ln, CInt(430 * a), ln + 20)
+                        e.Graphics.DrawLine(pn, CInt(500 * a), ln, CInt(500 * a), ln + 20)
+                        e.Graphics.DrawString(ds.TB.dg.Rows(I).Cells(0).Value, fnt, Brushes.Black,
+                                              New RectangleF(380 * a * a, ln, 50 * a, sze.Height), sf_C)
+                        e.Graphics.DrawString(ds.TB.dg.Rows(I).Cells(1).Value, fnt, Brushes.Black,
+                                             New RectangleF(430 * a * a, ln, 70 * a, sze.Height), sf_C)
+                        ln += 15
+                    Next
+                    e.Graphics.DrawLine(pn, CInt(380 * a), ln, CInt(500 * a), ln)
+                End If
+
+                sze = e.Graphics.MeasureString(strTotal, fnt, str_w)
+                e.Graphics.DrawString(strTotal, fnt, Brushes.Black, New RectangleF(60 * a, l + 25, str_w, sze.Height), sf_L)
+                e.Graphics.DrawLine(pn, CInt(60 * a), l + sze.Height + 35, CInt(160 * a), l + sze.Height + 35)
+            End If
+
             If with_Price And ds.TB.ModePayement.Length > 3 Then e.Graphics.DrawString("* Mode de paiement : " & ds.TB.ModePayement, fntsmall, Brushes.Black, New RectangleF(60 * a, l + sze.Height + 45, 266 * a, 22), sf_L)
 
             Try

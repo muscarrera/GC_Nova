@@ -64,10 +64,23 @@
             Form1.isBaseOnTTC = getRegistryinfo("isBaseOnTTC", False)
             Form1.tva = getRegistryinfo("tva", 20)
 
+            Form1.useValue_CUMP = getRegistryinfo("useValue_CUMP", False)
 
             Form1.BoundDbPath = getRegistryinfo("PathBound", "C:\")
             Form1.SvgdPah = getRegistryinfo("PathSvgd", "C:\")
             Form1.ImgPah = getRegistryinfo("ImgPath", "C:\")
+
+ 
+
+            Form1.useClientRemise_Way = getRegistryinfo("useClientRemise_Way", False)
+            Form1.useBlLivrable = getRegistryinfo("useBlLivrable", False)
+            Form1.useButtonValidForStock = getRegistryinfo("useButtonValidForStock", False)
+
+            Form1.useAccessClient = getRegistryinfo("useAccessClient", False)
+            Form1.useSoldByAvoir = getRegistryinfo("useSoldByAvoir", False)
+            Form1.usePortMonie = getRegistryinfo("usePortMonie", False)
+            Form1.useValue_CUMP = getRegistryinfo("useValue_CUMP", False)
+            Form1.printRef = getRegistryinfo("printRef", False)
 
             'prefix
             Form1.prf_Params.clear()
@@ -90,6 +103,12 @@
             Form1.Color_Alternating_Row = Color.FromArgb(getRegistryinfo("Color_Alternating_Row", Color.WhiteSmoke.ToArgb.ToString))
             Form1.Color_Selected_Row = Color.FromArgb(getRegistryinfo("Color_Selected_Row", Color.Red.ToArgb.ToString))
 
+
+
+
+
+            'way of Stock
+            If Form1.useButtonValidForStock Then Form1.isWorkinOnStock = False
         Catch ex As Exception
 
         End Try

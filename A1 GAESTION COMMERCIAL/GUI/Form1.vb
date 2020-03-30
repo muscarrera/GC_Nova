@@ -7,12 +7,14 @@
     Public useButtonValidForStock As Boolean = False
 
     Public useAccessClient As Boolean = False
-    Public useSoldByAvoir As Boolean = False
-    Public usePortMonie As Boolean = False
-    Public useBtValider As Boolean = False
-    Public useValue_CUMP As Boolean = False
+    Public useSoldByAvoir As Boolean = True
+    Public usePortMonie As Boolean = True
+    Public useValue_CUMP As Boolean = True
 
-
+    Public isWorkinOnStock As Boolean = True
+    Public printRef As Boolean
+    Public isBaseOnTTC As Boolean = False
+    Public isBaseOnOneTva As Boolean = False
 
     'private members
     Private _Exercice As String = 19
@@ -23,7 +25,7 @@
     Public zeros As String
     Public Ex_fact As String
 
-    Public admin As Boolean = True
+    Public admin As Boolean = False
     Public adminId As Integer = 0
     Public adminName As String = "User"
 
@@ -68,17 +70,14 @@
     Public cellWidth As Integer
     Public tva As Double = 14
     Public clientFacture As Client
-    Public isBaseOnTTC As Boolean = False
-    Public isBaseOnOneTva As Boolean = False
+
     Public Ech_Bon As String
     Public Ech_Facture As String
 
     Public myMinStock As Double = 2
-    Public isWorkinOnStock As Boolean = True
+   
     Public mainDepot As Integer = 3
     Public prf_Params As New Dictionary(Of String, String)
-    Friend Shared isBonTTC As Boolean
-    Friend Shared printRef As Boolean
 
     Public Color_Default_Text As Color = Color.Blue
     Public Color_Selected_Text As Color = Color.Yellow
@@ -121,12 +120,7 @@
             End
         End If
 
-
-
         bt_Parck.Visible = False
-
-
-
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -149,12 +143,7 @@
         Else
             End
         End If
-
-
-
-
-
-
+         
         'Exercice
         Exercice = Now.Date.ToString("yy")
 

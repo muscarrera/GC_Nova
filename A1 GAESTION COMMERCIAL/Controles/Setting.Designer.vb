@@ -34,22 +34,41 @@ Partial Class Setting
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.plPref = New System.Windows.Forms.Panel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.txtTva = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
-        Me.cbBlTTC = New System.Windows.Forms.CheckBox()
+        Me.cbAccessClient = New System.Windows.Forms.CheckBox()
+        Me.cbImpRef = New System.Windows.Forms.CheckBox()
+        Me.cbPorteMonie = New System.Windows.Forms.CheckBox()
+        Me.cbSoldByAvoir = New System.Windows.Forms.CheckBox()
+        Me.cbBlLivrable = New System.Windows.Forms.CheckBox()
+        Me.cbValidationBL = New System.Windows.Forms.CheckBox()
+        Me.cbClientRemise = New System.Windows.Forms.CheckBox()
+        Me.cbCump = New System.Windows.Forms.CheckBox()
         Me.cbBaseOnOneTva = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtTva = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtCellWidth = New System.Windows.Forms.TextBox()
         Me.txtnumberOfItems = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtTrial = New System.Windows.Forms.TextBox()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.plImp = New System.Windows.Forms.Panel()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtEchFct = New System.Windows.Forms.TextBox()
+        Me.txtEchBon = New System.Windows.Forms.TextBox()
+        Me.Button15 = New System.Windows.Forms.Button()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.Button20 = New System.Windows.Forms.Button()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.txtav = New System.Windows.Forms.TextBox()
@@ -64,22 +83,9 @@ Partial Class Setting
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button18 = New System.Windows.Forms.Button()
-        Me.Button16 = New System.Windows.Forms.Button()
-        Me.Button17 = New System.Windows.Forms.Button()
-        Me.txtPathImg = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.txtPathSvgd = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.txtPathBound = New System.Windows.Forms.TextBox()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.plImp = New System.Windows.Forms.Panel()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.cbHasEPBonTransport = New System.Windows.Forms.CheckBox()
         Me.cbPdf = New System.Windows.Forms.CheckBox()
@@ -90,8 +96,6 @@ Partial Class Setting
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.txtNbrCopie = New System.Windows.Forms.TextBox()
         Me.txtPied = New System.Windows.Forms.TextBox()
@@ -101,13 +105,10 @@ Partial Class Setting
         Me.txtImpBon = New System.Windows.Forms.TextBox()
         Me.Button13 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
-        Me.Button15 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.txtImpDv = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.txtEchBon = New System.Windows.Forms.TextBox()
-        Me.txtEchFct = New System.Windows.Forms.TextBox()
         Me.txtImpfct = New System.Windows.Forms.TextBox()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button71 = New System.Windows.Forms.Button()
@@ -146,6 +147,16 @@ Partial Class Setting
         Me.Label13 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.plData = New System.Windows.Forms.Panel()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button18 = New System.Windows.Forms.Button()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.txtPathImg = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtPathSvgd = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtPathBound = New System.Windows.Forms.TextBox()
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel5 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
@@ -160,11 +171,11 @@ Partial Class Setting
         Me.plPref.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plImp.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plRole.SuspendLayout()
@@ -181,6 +192,7 @@ Partial Class Setting
         Me.Panel7.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.plData.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -310,47 +322,33 @@ Partial Class Setting
         Me.plPref.BackColor = System.Drawing.Color.Transparent
         Me.plPref.Controls.Add(Me.GroupBox3)
         Me.plPref.Controls.Add(Me.GroupBox2)
-        Me.plPref.Controls.Add(Me.GroupBox4)
-        Me.plPref.Controls.Add(Me.GroupBox1)
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 662)
+        Me.plPref.Location = New System.Drawing.Point(5, 668)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(750, 541)
+        Me.plPref.Size = New System.Drawing.Size(750, 402)
         Me.plPref.TabIndex = 18
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.txtTva)
-        Me.GroupBox3.Controls.Add(Me.Label18)
         Me.GroupBox3.Controls.Add(Me.cbBaseOnTTC)
-        Me.GroupBox3.Controls.Add(Me.cbBlTTC)
+        Me.GroupBox3.Controls.Add(Me.cbAccessClient)
+        Me.GroupBox3.Controls.Add(Me.cbImpRef)
+        Me.GroupBox3.Controls.Add(Me.cbPorteMonie)
+        Me.GroupBox3.Controls.Add(Me.cbSoldByAvoir)
+        Me.GroupBox3.Controls.Add(Me.cbBlLivrable)
+        Me.GroupBox3.Controls.Add(Me.cbValidationBL)
+        Me.GroupBox3.Controls.Add(Me.cbClientRemise)
+        Me.GroupBox3.Controls.Add(Me.cbCump)
         Me.GroupBox3.Controls.Add(Me.cbBaseOnOneTva)
         Me.GroupBox3.Location = New System.Drawing.Point(36, 75)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(320, 156)
+        Me.GroupBox3.Size = New System.Drawing.Size(320, 310)
         Me.GroupBox3.TabIndex = 29
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "TTC"
-        '
-        'txtTva
-        '
-        Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTva.Location = New System.Drawing.Point(106, 120)
-        Me.txtTva.Name = "txtTva"
-        Me.txtTva.Size = New System.Drawing.Size(107, 20)
-        Me.txtTva.TabIndex = 25
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(16, 124)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(69, 13)
-        Me.Label18.TabIndex = 26
-        Me.Label18.Text = "Tva Standart"
         '
         'cbBaseOnTTC
         '
@@ -362,21 +360,90 @@ Partial Class Setting
         Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
         Me.cbBaseOnTTC.UseVisualStyleBackColor = True
         '
-        'cbBlTTC
+        'cbAccessClient
         '
-        Me.cbBlTTC.AutoSize = True
-        Me.cbBlTTC.Location = New System.Drawing.Point(19, 75)
-        Me.cbBlTTC.Name = "cbBlTTC"
-        Me.cbBlTTC.Size = New System.Drawing.Size(181, 17)
-        Me.cbBlTTC.TabIndex = 28
-        Me.cbBlTTC.Text = "Taxe est comprise au total du BL"
-        Me.cbBlTTC.UseVisualStyleBackColor = True
-        Me.cbBlTTC.Visible = False
+        Me.cbAccessClient.AutoSize = True
+        Me.cbAccessClient.Location = New System.Drawing.Point(17, 240)
+        Me.cbAccessClient.Name = "cbAccessClient"
+        Me.cbAccessClient.Size = New System.Drawing.Size(178, 17)
+        Me.cbAccessClient.TabIndex = 28
+        Me.cbAccessClient.Text = "activer l'option de blocage client"
+        Me.cbAccessClient.UseVisualStyleBackColor = True
+        '
+        'cbImpRef
+        '
+        Me.cbImpRef.AutoSize = True
+        Me.cbImpRef.Location = New System.Drawing.Point(17, 217)
+        Me.cbImpRef.Name = "cbImpRef"
+        Me.cbImpRef.Size = New System.Drawing.Size(123, 17)
+        Me.cbImpRef.TabIndex = 28
+        Me.cbImpRef.Text = "Impremier Réf Article"
+        Me.cbImpRef.UseVisualStyleBackColor = True
+        '
+        'cbPorteMonie
+        '
+        Me.cbPorteMonie.AutoSize = True
+        Me.cbPorteMonie.Location = New System.Drawing.Point(17, 193)
+        Me.cbPorteMonie.Name = "cbPorteMonie"
+        Me.cbPorteMonie.Size = New System.Drawing.Size(116, 17)
+        Me.cbPorteMonie.TabIndex = 28
+        Me.cbPorteMonie.Text = "Activer PorteMonie"
+        Me.cbPorteMonie.UseVisualStyleBackColor = True
+        '
+        'cbSoldByAvoir
+        '
+        Me.cbSoldByAvoir.AutoSize = True
+        Me.cbSoldByAvoir.Location = New System.Drawing.Point(17, 169)
+        Me.cbSoldByAvoir.Name = "cbSoldByAvoir"
+        Me.cbSoldByAvoir.Size = New System.Drawing.Size(137, 17)
+        Me.cbSoldByAvoir.TabIndex = 28
+        Me.cbSoldByAvoir.Text = "Activer Solder par Avoir"
+        Me.cbSoldByAvoir.UseVisualStyleBackColor = True
+        '
+        'cbBlLivrable
+        '
+        Me.cbBlLivrable.AutoSize = True
+        Me.cbBlLivrable.Location = New System.Drawing.Point(17, 145)
+        Me.cbBlLivrable.Name = "cbBlLivrable"
+        Me.cbBlLivrable.Size = New System.Drawing.Size(115, 17)
+        Me.cbBlLivrable.TabIndex = 28
+        Me.cbBlLivrable.Text = "Activer BL Livrable"
+        Me.cbBlLivrable.UseVisualStyleBackColor = True
+        '
+        'cbValidationBL
+        '
+        Me.cbValidationBL.AutoSize = True
+        Me.cbValidationBL.Location = New System.Drawing.Point(18, 121)
+        Me.cbValidationBL.Name = "cbValidationBL"
+        Me.cbValidationBL.Size = New System.Drawing.Size(124, 17)
+        Me.cbValidationBL.TabIndex = 28
+        Me.cbValidationBL.Text = "Activer Validation-BL"
+        Me.cbValidationBL.UseVisualStyleBackColor = True
+        '
+        'cbClientRemise
+        '
+        Me.cbClientRemise.AutoSize = True
+        Me.cbClientRemise.Location = New System.Drawing.Point(18, 97)
+        Me.cbClientRemise.Name = "cbClientRemise"
+        Me.cbClientRemise.Size = New System.Drawing.Size(126, 17)
+        Me.cbClientRemise.TabIndex = 28
+        Me.cbClientRemise.Text = "Activer Client-Remise"
+        Me.cbClientRemise.UseVisualStyleBackColor = True
+        '
+        'cbCump
+        '
+        Me.cbCump.AutoSize = True
+        Me.cbCump.Location = New System.Drawing.Point(18, 73)
+        Me.cbCump.Name = "cbCump"
+        Me.cbCump.Size = New System.Drawing.Size(118, 17)
+        Me.cbCump.TabIndex = 28
+        Me.cbCump.Text = "Calculer Prix CUMP"
+        Me.cbCump.UseVisualStyleBackColor = True
         '
         'cbBaseOnOneTva
         '
         Me.cbBaseOnOneTva.AutoSize = True
-        Me.cbBaseOnOneTva.Location = New System.Drawing.Point(18, 50)
+        Me.cbBaseOnOneTva.Location = New System.Drawing.Point(18, 49)
         Me.cbBaseOnOneTva.Name = "cbBaseOnOneTva"
         Me.cbBaseOnOneTva.Size = New System.Drawing.Size(166, 17)
         Me.cbBaseOnOneTva.TabIndex = 28
@@ -385,18 +452,37 @@ Partial Class Setting
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.txtTva)
+        Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.txtCellWidth)
         Me.GroupBox2.Controls.Add(Me.txtnumberOfItems)
         Me.GroupBox2.Controls.Add(Me.Label11)
         Me.GroupBox2.Controls.Add(Me.Label24)
         Me.GroupBox2.Controls.Add(Me.txtTrial)
-        Me.GroupBox2.Location = New System.Drawing.Point(388, 75)
+        Me.GroupBox2.Location = New System.Drawing.Point(387, 81)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(320, 156)
+        Me.GroupBox2.Size = New System.Drawing.Size(320, 168)
         Me.GroupBox2.TabIndex = 29
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Valeur"
+        '
+        'txtTva
+        '
+        Me.txtTva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTva.Location = New System.Drawing.Point(152, 140)
+        Me.txtTva.Name = "txtTva"
+        Me.txtTva.Size = New System.Drawing.Size(107, 20)
+        Me.txtTva.TabIndex = 25
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(19, 142)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(69, 13)
+        Me.Label18.TabIndex = 26
+        Me.Label18.Text = "Tva Standart"
         '
         'Label7
         '
@@ -418,7 +504,7 @@ Partial Class Setting
         'txtnumberOfItems
         '
         Me.txtnumberOfItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtnumberOfItems.Location = New System.Drawing.Point(152, 71)
+        Me.txtnumberOfItems.Location = New System.Drawing.Point(152, 70)
         Me.txtnumberOfItems.Name = "txtnumberOfItems"
         Me.txtnumberOfItems.Size = New System.Drawing.Size(74, 20)
         Me.txtnumberOfItems.TabIndex = 25
@@ -426,7 +512,7 @@ Partial Class Setting
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(16, 73)
+        Me.Label11.Location = New System.Drawing.Point(16, 72)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(122, 13)
         Me.Label11.TabIndex = 26
@@ -435,7 +521,7 @@ Partial Class Setting
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(19, 109)
+        Me.Label24.Location = New System.Drawing.Point(19, 107)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(83, 13)
         Me.Label24.TabIndex = 26
@@ -445,299 +531,17 @@ Partial Class Setting
         'txtTrial
         '
         Me.txtTrial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTrial.Location = New System.Drawing.Point(152, 110)
+        Me.txtTrial.Location = New System.Drawing.Point(152, 105)
         Me.txtTrial.Name = "txtTrial"
         Me.txtTrial.Size = New System.Drawing.Size(74, 20)
         Me.txtTrial.TabIndex = 25
         Me.txtTrial.Visible = False
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Label29)
-        Me.GroupBox4.Controls.Add(Me.Label33)
-        Me.GroupBox4.Controls.Add(Me.Label28)
-        Me.GroupBox4.Controls.Add(Me.Label32)
-        Me.GroupBox4.Controls.Add(Me.Label27)
-        Me.GroupBox4.Controls.Add(Me.txtav)
-        Me.GroupBox4.Controls.Add(Me.txt_av)
-        Me.GroupBox4.Controls.Add(Me.txtfc)
-        Me.GroupBox4.Controls.Add(Me.txt_fc)
-        Me.GroupBox4.Controls.Add(Me.txtbl)
-        Me.GroupBox4.Controls.Add(Me.txt_ba)
-        Me.GroupBox4.Controls.Add(Me.txtcm)
-        Me.GroupBox4.Controls.Add(Me.txt_bc)
-        Me.GroupBox4.Controls.Add(Me.txtdv)
-        Me.GroupBox4.Controls.Add(Me.Label31)
-        Me.GroupBox4.Controls.Add(Me.Label26)
-        Me.GroupBox4.Controls.Add(Me.Label30)
-        Me.GroupBox4.Controls.Add(Me.Label25)
-        Me.GroupBox4.Location = New System.Drawing.Point(36, 249)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(320, 206)
-        Me.GroupBox4.TabIndex = 29
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Liens"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(15, 163)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(31, 13)
-        Me.Label29.TabIndex = 26
-        Me.Label29.Text = "Avoir"
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(170, 135)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(31, 13)
-        Me.Label33.TabIndex = 26
-        Me.Label33.Text = "Avoir"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(15, 133)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(43, 13)
-        Me.Label28.TabIndex = 26
-        Me.Label28.Text = "Facture"
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(170, 107)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(43, 13)
-        Me.Label32.TabIndex = 26
-        Me.Label32.Text = "Facture"
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(15, 105)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(20, 13)
-        Me.Label27.TabIndex = 26
-        Me.Label27.Text = "BL"
-        '
-        'txtav
-        '
-        Me.txtav.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtav.Location = New System.Drawing.Point(79, 160)
-        Me.txtav.Name = "txtav"
-        Me.txtav.Size = New System.Drawing.Size(68, 20)
-        Me.txtav.TabIndex = 25
-        '
-        'txt_av
-        '
-        Me.txt_av.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_av.Location = New System.Drawing.Point(216, 136)
-        Me.txt_av.Name = "txt_av"
-        Me.txt_av.Size = New System.Drawing.Size(68, 20)
-        Me.txt_av.TabIndex = 25
-        '
-        'txtfc
-        '
-        Me.txtfc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtfc.Location = New System.Drawing.Point(79, 133)
-        Me.txtfc.Name = "txtfc"
-        Me.txtfc.Size = New System.Drawing.Size(68, 20)
-        Me.txtfc.TabIndex = 25
-        '
-        'txt_fc
-        '
-        Me.txt_fc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_fc.Location = New System.Drawing.Point(216, 108)
-        Me.txt_fc.Name = "txt_fc"
-        Me.txt_fc.Size = New System.Drawing.Size(68, 20)
-        Me.txt_fc.TabIndex = 25
-        '
-        'txtbl
-        '
-        Me.txtbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtbl.Location = New System.Drawing.Point(79, 105)
-        Me.txtbl.Name = "txtbl"
-        Me.txtbl.Size = New System.Drawing.Size(68, 20)
-        Me.txtbl.TabIndex = 25
-        '
-        'txt_ba
-        '
-        Me.txt_ba.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_ba.Location = New System.Drawing.Point(216, 79)
-        Me.txt_ba.Name = "txt_ba"
-        Me.txt_ba.Size = New System.Drawing.Size(68, 20)
-        Me.txt_ba.TabIndex = 25
-        '
-        'txtcm
-        '
-        Me.txtcm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtcm.Location = New System.Drawing.Point(79, 76)
-        Me.txtcm.Name = "txtcm"
-        Me.txtcm.Size = New System.Drawing.Size(68, 20)
-        Me.txtcm.TabIndex = 25
-        '
-        'txt_bc
-        '
-        Me.txt_bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_bc.Location = New System.Drawing.Point(216, 52)
-        Me.txt_bc.Name = "txt_bc"
-        Me.txt_bc.Size = New System.Drawing.Size(68, 20)
-        Me.txt_bc.TabIndex = 25
-        '
-        'txtdv
-        '
-        Me.txtdv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtdv.Location = New System.Drawing.Point(79, 49)
-        Me.txtdv.Name = "txtdv"
-        Me.txtdv.Size = New System.Drawing.Size(68, 20)
-        Me.txtdv.TabIndex = 25
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(170, 80)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(21, 13)
-        Me.Label31.TabIndex = 26
-        Me.Label31.Text = "BA"
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(15, 78)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(60, 13)
-        Me.Label26.TabIndex = 26
-        Me.Label26.Text = "Commande"
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(170, 53)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(21, 13)
-        Me.Label30.TabIndex = 26
-        Me.Label30.Text = "BC"
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(15, 51)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(34, 13)
-        Me.Label25.TabIndex = 26
-        Me.Label25.Text = "Devis"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Button18)
-        Me.GroupBox1.Controls.Add(Me.Button16)
-        Me.GroupBox1.Controls.Add(Me.Button17)
-        Me.GroupBox1.Controls.Add(Me.txtPathImg)
-        Me.GroupBox1.Controls.Add(Me.Label23)
-        Me.GroupBox1.Controls.Add(Me.Label21)
-        Me.GroupBox1.Controls.Add(Me.txtPathSvgd)
-        Me.GroupBox1.Controls.Add(Me.Label22)
-        Me.GroupBox1.Controls.Add(Me.txtPathBound)
-        Me.GroupBox1.Location = New System.Drawing.Point(388, 249)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 206)
-        Me.GroupBox1.TabIndex = 29
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Liens"
-        '
-        'Button18
-        '
-        Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button18.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button18.Location = New System.Drawing.Point(220, 160)
-        Me.Button18.Name = "Button18"
-        Me.Button18.Size = New System.Drawing.Size(75, 29)
-        Me.Button18.TabIndex = 20
-        Me.Button18.Text = "UpLoad"
-        Me.Button18.UseVisualStyleBackColor = True
-        '
-        'Button16
-        '
-        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button16.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button16.Location = New System.Drawing.Point(220, 46)
-        Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(75, 29)
-        Me.Button16.TabIndex = 20
-        Me.Button16.Text = "UpLoad"
-        Me.Button16.UseVisualStyleBackColor = True
-        '
-        'Button17
-        '
-        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button17.Location = New System.Drawing.Point(220, 103)
-        Me.Button17.Name = "Button17"
-        Me.Button17.Size = New System.Drawing.Size(75, 29)
-        Me.Button17.TabIndex = 20
-        Me.Button17.Text = "UpLoad"
-        Me.Button17.UseVisualStyleBackColor = True
-        '
-        'txtPathImg
-        '
-        Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathImg.Location = New System.Drawing.Point(19, 55)
-        Me.txtPathImg.Name = "txtPathImg"
-        Me.txtPathImg.Size = New System.Drawing.Size(195, 20)
-        Me.txtPathImg.TabIndex = 25
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(19, 151)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(80, 13)
-        Me.Label23.TabIndex = 26
-        Me.Label23.Text = "Path Db Bound"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(19, 39)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(49, 13)
-        Me.Label21.TabIndex = 26
-        Me.Label21.Text = "Path Img"
-        '
-        'txtPathSvgd
-        '
-        Me.txtPathSvgd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathSvgd.Location = New System.Drawing.Point(19, 112)
-        Me.txtPathSvgd.Name = "txtPathSvgd"
-        Me.txtPathSvgd.Size = New System.Drawing.Size(195, 20)
-        Me.txtPathSvgd.TabIndex = 25
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(19, 93)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(60, 13)
-        Me.Label22.TabIndex = 26
-        Me.Label22.Text = "Path Svgrd"
-        '
-        'txtPathBound
-        '
-        Me.txtPathBound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPathBound.Location = New System.Drawing.Point(19, 169)
-        Me.txtPathBound.Name = "txtPathBound"
-        Me.txtPathBound.Size = New System.Drawing.Size(195, 20)
-        Me.txtPathBound.TabIndex = 25
-        '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(540, 489)
+        Me.Button11.Location = New System.Drawing.Point(387, 346)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(162, 39)
+        Me.Button11.Size = New System.Drawing.Size(275, 39)
         Me.Button11.TabIndex = 27
         Me.Button11.Text = "Valider"
         Me.Button11.UseVisualStyleBackColor = True
@@ -780,6 +584,8 @@ Partial Class Setting
         '
         Me.plImp.AutoScroll = True
         Me.plImp.BackColor = System.Drawing.Color.Transparent
+        Me.plImp.Controls.Add(Me.GroupBox7)
+        Me.plImp.Controls.Add(Me.GroupBox4)
         Me.plImp.Controls.Add(Me.Label35)
         Me.plImp.Controls.Add(Me.cbHasEPBonTransport)
         Me.plImp.Controls.Add(Me.cbPdf)
@@ -790,8 +596,6 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Label3)
         Me.plImp.Controls.Add(Me.Label2)
         Me.plImp.Controls.Add(Me.Label1)
-        Me.plImp.Controls.Add(Me.Label20)
-        Me.plImp.Controls.Add(Me.Label19)
         Me.plImp.Controls.Add(Me.Label53)
         Me.plImp.Controls.Add(Me.txtNbrCopie)
         Me.plImp.Controls.Add(Me.txtPied)
@@ -801,23 +605,291 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.txtImpBon)
         Me.plImp.Controls.Add(Me.Button13)
         Me.plImp.Controls.Add(Me.Button12)
-        Me.plImp.Controls.Add(Me.Button15)
         Me.plImp.Controls.Add(Me.Button10)
         Me.plImp.Controls.Add(Me.Button9)
         Me.plImp.Controls.Add(Me.txtImpDv)
         Me.plImp.Controls.Add(Me.Button8)
-        Me.plImp.Controls.Add(Me.txtEchBon)
-        Me.plImp.Controls.Add(Me.txtEchFct)
         Me.plImp.Controls.Add(Me.txtImpfct)
         Me.plImp.Controls.Add(Me.Button7)
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 652)
+        Me.plImp.Location = New System.Drawing.Point(5, 509)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 10)
+        Me.plImp.Size = New System.Drawing.Size(750, 159)
         Me.plImp.TabIndex = 17
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Label19)
+        Me.GroupBox7.Controls.Add(Me.txtEchFct)
+        Me.GroupBox7.Controls.Add(Me.txtEchBon)
+        Me.GroupBox7.Controls.Add(Me.Button15)
+        Me.GroupBox7.Controls.Add(Me.Label20)
+        Me.GroupBox7.Location = New System.Drawing.Point(485, 69)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(305, 235)
+        Me.GroupBox7.TabIndex = 31
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Ech"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(45, 32)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(65, 13)
+        Me.Label19.TabIndex = 21
+        Me.Label19.Text = "Ech Facture"
+        '
+        'txtEchFct
+        '
+        Me.txtEchFct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEchFct.Location = New System.Drawing.Point(48, 48)
+        Me.txtEchFct.Name = "txtEchFct"
+        Me.txtEchFct.Size = New System.Drawing.Size(200, 20)
+        Me.txtEchFct.TabIndex = 22
+        '
+        'txtEchBon
+        '
+        Me.txtEchBon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEchBon.Location = New System.Drawing.Point(51, 123)
+        Me.txtEchBon.Name = "txtEchBon"
+        Me.txtEchBon.Size = New System.Drawing.Size(200, 20)
+        Me.txtEchBon.TabIndex = 22
+        '
+        'Button15
+        '
+        Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button15.Location = New System.Drawing.Point(51, 168)
+        Me.Button15.Name = "Button15"
+        Me.Button15.Size = New System.Drawing.Size(200, 29)
+        Me.Button15.TabIndex = 20
+        Me.Button15.Text = "Valider"
+        Me.Button15.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(48, 98)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(48, 13)
+        Me.Label20.TabIndex = 21
+        Me.Label20.Text = "Ech Bon"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Label29)
+        Me.GroupBox4.Controls.Add(Me.Label33)
+        Me.GroupBox4.Controls.Add(Me.Label28)
+        Me.GroupBox4.Controls.Add(Me.Button20)
+        Me.GroupBox4.Controls.Add(Me.Label32)
+        Me.GroupBox4.Controls.Add(Me.Label27)
+        Me.GroupBox4.Controls.Add(Me.txtav)
+        Me.GroupBox4.Controls.Add(Me.txt_av)
+        Me.GroupBox4.Controls.Add(Me.txtfc)
+        Me.GroupBox4.Controls.Add(Me.txt_fc)
+        Me.GroupBox4.Controls.Add(Me.txtbl)
+        Me.GroupBox4.Controls.Add(Me.txt_ba)
+        Me.GroupBox4.Controls.Add(Me.txtcm)
+        Me.GroupBox4.Controls.Add(Me.txt_bc)
+        Me.GroupBox4.Controls.Add(Me.txtdv)
+        Me.GroupBox4.Controls.Add(Me.Label31)
+        Me.GroupBox4.Controls.Add(Me.Label26)
+        Me.GroupBox4.Controls.Add(Me.Label30)
+        Me.GroupBox4.Controls.Add(Me.Label36)
+        Me.GroupBox4.Controls.Add(Me.Label34)
+        Me.GroupBox4.Controls.Add(Me.Label25)
+        Me.GroupBox4.Location = New System.Drawing.Point(483, 310)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(320, 251)
+        Me.GroupBox4.TabIndex = 30
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Prefix"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(30, 179)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(31, 13)
+        Me.Label29.TabIndex = 26
+        Me.Label29.Text = "Avoir"
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(185, 151)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(31, 13)
+        Me.Label33.TabIndex = 26
+        Me.Label33.Text = "Avoir"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(30, 149)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(43, 13)
+        Me.Label28.TabIndex = 26
+        Me.Label28.Text = "Facture"
+        '
+        'Button20
+        '
+        Me.Button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button20.Location = New System.Drawing.Point(33, 208)
+        Me.Button20.Name = "Button20"
+        Me.Button20.Size = New System.Drawing.Size(266, 29)
+        Me.Button20.TabIndex = 20
+        Me.Button20.Text = "Valider"
+        Me.Button20.UseVisualStyleBackColor = True
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(185, 123)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(43, 13)
+        Me.Label32.TabIndex = 26
+        Me.Label32.Text = "Facture"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(30, 121)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(20, 13)
+        Me.Label27.TabIndex = 26
+        Me.Label27.Text = "BL"
+        '
+        'txtav
+        '
+        Me.txtav.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtav.Location = New System.Drawing.Point(94, 176)
+        Me.txtav.Name = "txtav"
+        Me.txtav.Size = New System.Drawing.Size(68, 20)
+        Me.txtav.TabIndex = 25
+        '
+        'txt_av
+        '
+        Me.txt_av.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_av.Location = New System.Drawing.Point(231, 152)
+        Me.txt_av.Name = "txt_av"
+        Me.txt_av.Size = New System.Drawing.Size(68, 20)
+        Me.txt_av.TabIndex = 25
+        '
+        'txtfc
+        '
+        Me.txtfc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtfc.Location = New System.Drawing.Point(94, 149)
+        Me.txtfc.Name = "txtfc"
+        Me.txtfc.Size = New System.Drawing.Size(68, 20)
+        Me.txtfc.TabIndex = 25
+        '
+        'txt_fc
+        '
+        Me.txt_fc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_fc.Location = New System.Drawing.Point(231, 124)
+        Me.txt_fc.Name = "txt_fc"
+        Me.txt_fc.Size = New System.Drawing.Size(68, 20)
+        Me.txt_fc.TabIndex = 25
+        '
+        'txtbl
+        '
+        Me.txtbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtbl.Location = New System.Drawing.Point(94, 121)
+        Me.txtbl.Name = "txtbl"
+        Me.txtbl.Size = New System.Drawing.Size(68, 20)
+        Me.txtbl.TabIndex = 25
+        '
+        'txt_ba
+        '
+        Me.txt_ba.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_ba.Location = New System.Drawing.Point(231, 95)
+        Me.txt_ba.Name = "txt_ba"
+        Me.txt_ba.Size = New System.Drawing.Size(68, 20)
+        Me.txt_ba.TabIndex = 25
+        '
+        'txtcm
+        '
+        Me.txtcm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtcm.Location = New System.Drawing.Point(94, 92)
+        Me.txtcm.Name = "txtcm"
+        Me.txtcm.Size = New System.Drawing.Size(68, 20)
+        Me.txtcm.TabIndex = 25
+        '
+        'txt_bc
+        '
+        Me.txt_bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_bc.Location = New System.Drawing.Point(231, 68)
+        Me.txt_bc.Name = "txt_bc"
+        Me.txt_bc.Size = New System.Drawing.Size(68, 20)
+        Me.txt_bc.TabIndex = 25
+        '
+        'txtdv
+        '
+        Me.txtdv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtdv.Location = New System.Drawing.Point(94, 65)
+        Me.txtdv.Name = "txtdv"
+        Me.txtdv.Size = New System.Drawing.Size(68, 20)
+        Me.txtdv.TabIndex = 25
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(185, 96)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(21, 13)
+        Me.Label31.TabIndex = 26
+        Me.Label31.Text = "BA"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(30, 94)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(60, 13)
+        Me.Label26.TabIndex = 26
+        Me.Label26.Text = "Commande"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(185, 69)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(21, 13)
+        Me.Label30.TabIndex = 26
+        Me.Label30.Text = "BC"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Location = New System.Drawing.Point(184, 39)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(40, 13)
+        Me.Label36.TabIndex = 26
+        Me.Label36.Text = "Achat"
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Location = New System.Drawing.Point(32, 39)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(40, 13)
+        Me.Label34.TabIndex = 26
+        Me.Label34.Text = "Vente"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(30, 67)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(34, 13)
+        Me.Label25.TabIndex = 26
+        Me.Label25.Text = "Devis"
         '
         'Label35
         '
@@ -912,24 +984,6 @@ Partial Class Setting
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Devis"
         '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(520, 151)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(48, 13)
-        Me.Label20.TabIndex = 21
-        Me.Label20.Text = "Ech Bon"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(517, 85)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(65, 13)
-        Me.Label19.TabIndex = 21
-        Me.Label19.Text = "Ech Facture"
-        '
         'Label53
         '
         Me.Label53.AutoSize = True
@@ -999,7 +1053,7 @@ Partial Class Setting
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(75, 29)
         Me.Button13.TabIndex = 20
-        Me.Button13.Text = "اختر"
+        Me.Button13.Text = "Load"
         Me.Button13.UseVisualStyleBackColor = True
         '
         'Button12
@@ -1009,18 +1063,8 @@ Partial Class Setting
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(75, 29)
         Me.Button12.TabIndex = 20
-        Me.Button12.Text = "اختر"
+        Me.Button12.Text = "Load"
         Me.Button12.UseVisualStyleBackColor = True
-        '
-        'Button15
-        '
-        Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button15.Location = New System.Drawing.Point(523, 221)
-        Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(200, 29)
-        Me.Button15.TabIndex = 20
-        Me.Button15.Text = "اختر"
-        Me.Button15.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -1029,7 +1073,7 @@ Partial Class Setting
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(75, 29)
         Me.Button10.TabIndex = 20
-        Me.Button10.Text = "اختر"
+        Me.Button10.Text = "Definir"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'Button9
@@ -1039,7 +1083,7 @@ Partial Class Setting
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(75, 29)
         Me.Button9.TabIndex = 20
-        Me.Button9.Text = "اختر"
+        Me.Button9.Text = "Definir"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'txtImpDv
@@ -1058,24 +1102,8 @@ Partial Class Setting
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 29)
         Me.Button8.TabIndex = 20
-        Me.Button8.Text = "اختر"
+        Me.Button8.Text = "Definir"
         Me.Button8.UseVisualStyleBackColor = True
-        '
-        'txtEchBon
-        '
-        Me.txtEchBon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtEchBon.Location = New System.Drawing.Point(523, 176)
-        Me.txtEchBon.Name = "txtEchBon"
-        Me.txtEchBon.Size = New System.Drawing.Size(200, 20)
-        Me.txtEchBon.TabIndex = 22
-        '
-        'txtEchFct
-        '
-        Me.txtEchFct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtEchFct.Location = New System.Drawing.Point(520, 101)
-        Me.txtEchFct.Name = "txtEchFct"
-        Me.txtEchFct.Size = New System.Drawing.Size(200, 20)
-        Me.txtEchFct.TabIndex = 22
         '
         'txtImpfct
         '
@@ -1093,7 +1121,7 @@ Partial Class Setting
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(75, 29)
         Me.Button7.TabIndex = 20
-        Me.Button7.Text = "اختر"
+        Me.Button7.Text = "Definir"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'Button71
@@ -1103,7 +1131,7 @@ Partial Class Setting
         Me.Button71.Name = "Button71"
         Me.Button71.Size = New System.Drawing.Size(75, 29)
         Me.Button71.TabIndex = 20
-        Me.Button71.Text = "اختر"
+        Me.Button71.Text = "Definir"
         Me.Button71.UseVisualStyleBackColor = True
         '
         'Panel4
@@ -1115,7 +1143,7 @@ Partial Class Setting
         Me.Panel4.Location = New System.Drawing.Point(10, 10)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel4.Size = New System.Drawing.Size(713, 39)
+        Me.Panel4.Size = New System.Drawing.Size(783, 39)
         Me.Panel4.TabIndex = 19
         '
         'Label16
@@ -1146,10 +1174,10 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 584)
+        Me.plRole.Location = New System.Drawing.Point(5, 451)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
-        Me.plRole.Size = New System.Drawing.Size(750, 68)
+        Me.plRole.Size = New System.Drawing.Size(750, 58)
         Me.plRole.TabIndex = 16
         '
         'Panel9
@@ -1193,7 +1221,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 522)
+        Me.plUser.Location = New System.Drawing.Point(5, 389)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1252,10 +1280,10 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 131)
+        Me.plText.Location = New System.Drawing.Point(5, 325)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
-        Me.plText.Size = New System.Drawing.Size(750, 391)
+        Me.plText.Size = New System.Drawing.Size(750, 64)
         Me.plText.TabIndex = 14
         '
         'GroupBox6
@@ -1501,7 +1529,7 @@ Partial Class Setting
         Me.Panel7.Location = New System.Drawing.Point(10, 10)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel7.Size = New System.Drawing.Size(730, 39)
+        Me.Panel7.Size = New System.Drawing.Size(713, 39)
         Me.Panel7.TabIndex = 21
         '
         'Label13
@@ -1530,6 +1558,7 @@ Partial Class Setting
         '
         Me.plData.AutoScroll = True
         Me.plData.BackColor = System.Drawing.Color.Transparent
+        Me.plData.Controls.Add(Me.GroupBox1)
         Me.plData.Controls.Add(Me.LinkLabel3)
         Me.plData.Controls.Add(Me.LinkLabel5)
         Me.plData.Controls.Add(Me.LinkLabel4)
@@ -1539,8 +1568,110 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 126)
+        Me.plData.Size = New System.Drawing.Size(750, 320)
         Me.plData.TabIndex = 13
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Button18)
+        Me.GroupBox1.Controls.Add(Me.Button16)
+        Me.GroupBox1.Controls.Add(Me.Button17)
+        Me.GroupBox1.Controls.Add(Me.txtPathImg)
+        Me.GroupBox1.Controls.Add(Me.Label23)
+        Me.GroupBox1.Controls.Add(Me.Label21)
+        Me.GroupBox1.Controls.Add(Me.txtPathSvgd)
+        Me.GroupBox1.Controls.Add(Me.Label22)
+        Me.GroupBox1.Controls.Add(Me.txtPathBound)
+        Me.GroupBox1.Location = New System.Drawing.Point(363, 76)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(320, 206)
+        Me.GroupBox1.TabIndex = 30
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Liens"
+        '
+        'Button18
+        '
+        Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button18.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button18.Location = New System.Drawing.Point(220, 160)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(75, 29)
+        Me.Button18.TabIndex = 20
+        Me.Button18.Text = "UpLoad"
+        Me.Button18.UseVisualStyleBackColor = True
+        '
+        'Button16
+        '
+        Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button16.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button16.Location = New System.Drawing.Point(220, 46)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(75, 29)
+        Me.Button16.TabIndex = 20
+        Me.Button16.Text = "UpLoad"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'Button17
+        '
+        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button17.Location = New System.Drawing.Point(220, 103)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(75, 29)
+        Me.Button17.TabIndex = 20
+        Me.Button17.Text = "UpLoad"
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'txtPathImg
+        '
+        Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathImg.Location = New System.Drawing.Point(19, 55)
+        Me.txtPathImg.Name = "txtPathImg"
+        Me.txtPathImg.Size = New System.Drawing.Size(195, 20)
+        Me.txtPathImg.TabIndex = 25
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(19, 151)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(80, 13)
+        Me.Label23.TabIndex = 26
+        Me.Label23.Text = "Path Db Bound"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(19, 39)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(49, 13)
+        Me.Label21.TabIndex = 26
+        Me.Label21.Text = "Path Img"
+        '
+        'txtPathSvgd
+        '
+        Me.txtPathSvgd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathSvgd.Location = New System.Drawing.Point(19, 112)
+        Me.txtPathSvgd.Name = "txtPathSvgd"
+        Me.txtPathSvgd.Size = New System.Drawing.Size(195, 20)
+        Me.txtPathSvgd.TabIndex = 25
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(19, 93)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(60, 13)
+        Me.Label22.TabIndex = 26
+        Me.Label22.Text = "Path Svgrd"
+        '
+        'txtPathBound
+        '
+        Me.txtPathBound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPathBound.Location = New System.Drawing.Point(19, 169)
+        Me.txtPathBound.Name = "txtPathBound"
+        Me.txtPathBound.Size = New System.Drawing.Size(195, 20)
+        Me.txtPathBound.TabIndex = 25
         '
         'LinkLabel3
         '
@@ -1595,7 +1726,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(713, 39)
+        Me.Panel6.Size = New System.Drawing.Size(730, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1640,15 +1771,15 @@ Partial Class Setting
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.plImp.ResumeLayout(False)
         Me.plImp.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1674,6 +1805,8 @@ Partial Class Setting
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.plData.ResumeLayout(False)
         Me.plData.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1767,21 +1900,21 @@ Partial Class Setting
     Friend WithEvents Button15 As System.Windows.Forms.Button
     Friend WithEvents txtEchBon As System.Windows.Forms.TextBox
     Friend WithEvents txtEchFct As System.Windows.Forms.TextBox
-    Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents txtPathBound As System.Windows.Forms.TextBox
-    Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents txtPathSvgd As System.Windows.Forms.TextBox
-    Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents txtPathImg As System.Windows.Forms.TextBox
-    Friend WithEvents Button18 As System.Windows.Forms.Button
-    Friend WithEvents Button17 As System.Windows.Forms.Button
-    Friend WithEvents Button16 As System.Windows.Forms.Button
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents txtTrial As System.Windows.Forms.TextBox
     Friend WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel5 As System.Windows.Forms.LinkLabel
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents plSelRow As System.Windows.Forms.Panel
+    Friend WithEvents lbSelectText As System.Windows.Forms.Label
+    Friend WithEvents plAltRow As System.Windows.Forms.Panel
+    Friend WithEvents plDefRow As System.Windows.Forms.Panel
+    Friend WithEvents lbDefaultText As System.Windows.Forms.Label
+    Friend WithEvents Button19 As System.Windows.Forms.Button
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents cbCump As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents Label29 As System.Windows.Forms.Label
     Friend WithEvents Label33 As System.Windows.Forms.Label
@@ -1800,16 +1933,27 @@ Partial Class Setting
     Friend WithEvents Label31 As System.Windows.Forms.Label
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents Label30 As System.Windows.Forms.Label
+    Friend WithEvents Label36 As System.Windows.Forms.Label
+    Friend WithEvents Label34 As System.Windows.Forms.Label
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents cbBlTTC As System.Windows.Forms.CheckBox
-    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents plSelRow As System.Windows.Forms.Panel
-    Friend WithEvents lbSelectText As System.Windows.Forms.Label
-    Friend WithEvents plAltRow As System.Windows.Forms.Panel
-    Friend WithEvents plDefRow As System.Windows.Forms.Panel
-    Friend WithEvents lbDefaultText As System.Windows.Forms.Label
-    Friend WithEvents Button19 As System.Windows.Forms.Button
-    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button18 As System.Windows.Forms.Button
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents txtPathImg As System.Windows.Forms.TextBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents txtPathSvgd As System.Windows.Forms.TextBox
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents txtPathBound As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button20 As System.Windows.Forms.Button
+    Friend WithEvents cbClientRemise As System.Windows.Forms.CheckBox
+    Friend WithEvents cbBlLivrable As System.Windows.Forms.CheckBox
+    Friend WithEvents cbValidationBL As System.Windows.Forms.CheckBox
+    Friend WithEvents cbPorteMonie As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSoldByAvoir As System.Windows.Forms.CheckBox
+    Friend WithEvents cbImpRef As System.Windows.Forms.CheckBox
+    Friend WithEvents cbAccessClient As System.Windows.Forms.CheckBox
 
 End Class

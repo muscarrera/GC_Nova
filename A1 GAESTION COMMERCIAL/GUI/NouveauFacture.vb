@@ -3,6 +3,7 @@
     Public cid As Integer
     Public cName As String
     Public dte As Date
+    Public isBlocked As Boolean = False
     Public tb_C As String = "Client"
 
 
@@ -60,7 +61,7 @@
                 txtName.Focus()
                 Exit Sub
             End If
-
+            If Form1.useAccessClient Then isBlocked = Cl.isBlocked
         Else
             If MsgBox("créer un compte Client" & vbNewLine & "Nom: " & cName, MsgBoxStyle.YesNo, "Nouveau Client") = MsgBoxResult.Yes Then
                 Dim x = AddEditElement()

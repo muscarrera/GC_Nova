@@ -24,10 +24,10 @@
 
 
         txtCellWidth.Text = getRegistryinfo("cellWidth", 8)
-        HandleRegistryinfo()
+        HandleRegistryinfo1()
     End Sub
 
-    Public Sub HandleRegistryinfo()
+    Public Sub HandleRegistryinfo1()
         Try
             txtCellWidth.Text = getRegistryinfo("cellWidth", 111)
             txtEntete.Text = getRegistryinfo("imgEntetePath", "C:\")
@@ -78,7 +78,16 @@
             txt_fc.Text = getRegistryinfo("prf_b_fc", "Fc")
             txt_av.Text = getRegistryinfo("prf_b_av", "Av")
 
+            cbClientRemise.Checked = getRegistryinfo("useClientRemise_Way", False)
+            cbBlLivrable.Checked = getRegistryinfo("useBlLivrable", False)
+            cbValidationBL.Checked = getRegistryinfo("useButtonValidForStock", False)
 
+            cbAccessClient.Checked = getRegistryinfo("useAccessClient", False)
+            cbSoldByAvoir.Checked = getRegistryinfo("useSoldByAvoir", False)
+            cbPorteMonie.Checked = getRegistryinfo("usePortMonie", False)
+            cbCump.Checked = getRegistryinfo("useValue_CUMP", False)
+            cbImpRef.Checked = getRegistryinfo("printRef", False)
+             
 
             lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
             lbSelectText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Selected_Text", Color.Yellow.ToArgb.ToString))
@@ -92,6 +101,7 @@
         End Try
 
     End Sub
+    'PRINTERS
     Private Sub Button71_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button71.Click
         If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             Exit Sub
@@ -104,7 +114,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             Exit Sub
@@ -116,7 +125,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
         If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             Exit Sub
@@ -129,7 +137,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
         If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             Exit Sub
@@ -141,7 +148,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
         If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             Exit Sub
@@ -153,7 +159,7 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
+    'img
     Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
         Try
             Dim OPF As New OpenFileDialog
@@ -179,6 +185,7 @@
 
         End Try
     End Sub
+    'bool
     Private Sub cbImp_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbImp.CheckedChanged
         Try
             setRegistryinfo("printEnteteOnPaper", cbImp.Checked)
@@ -193,6 +200,7 @@
 
         End Try
     End Sub
+    'int
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtNbrCopie.TextChanged
         Try
 
@@ -207,7 +215,7 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
+    'side menu
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         plData.Height = 1
         plText.Height = 1
@@ -263,13 +271,14 @@
         plUser.Height = 1
         plImp.Height = 1
     End Sub
+    'width
     Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
         Try
             setRegistryinfo("cellWidth", txtCellWidth.Text)
             Form1.cellWidth = txtCellWidth.Text
         Catch ex As Exception
         End Try
-      
+
         Try
             If IsNumeric(txtnumberOfItems.Text) Then
                 setRegistryinfo("numberOfItems", txtnumberOfItems.Text)
@@ -283,9 +292,6 @@
                 setRegistryinfo("tva", txtTva.Text)
                 Form1.tva = txtTva.Text
             End If
-            setRegistryinfo("isBaseOnOneTva", cbBaseOnOneTva.Checked)
-            setRegistryinfo("isBaseOnTTC", cbBaseOnTTC.Checked)
-            setRegistryinfo("isBonTTC", cbBlTTC.Checked)
 
             If txtTrial.Visible Then
                 Dim a As Integer = 11
@@ -293,36 +299,29 @@
                 setRegistryinfo("nbrPrOp_Tr", a)
             End If
 
+            setRegistryinfo("isBaseOnOneTva", cbBaseOnOneTva.Checked)
+            setRegistryinfo("isBaseOnTTC", cbBaseOnTTC.Checked)
+            setRegistryinfo("useValue_CUMP", cbCump.Checked)
+            setRegistryinfo("useClientRemise_Way", cbClientRemise.Checked)
+            setRegistryinfo("useBlLivrable", cbBlLivrable.Checked)
+            setRegistryinfo("useButtonValidForStock", cbValidationBL.Checked)
+            setRegistryinfo("useAccessClient", cbAccessClient.Checked)
+            setRegistryinfo("useSoldByAvoir", cbSoldByAvoir.Checked)
+            setRegistryinfo("usePortMonie", cbPorteMonie.Checked)
+            setRegistryinfo("useValue_CUMP", cbCump.Checked)
+            setRegistryinfo("printRef", cbImpRef.Checked)
 
-                Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
-                Form1.isBaseOnTTC = cbBaseOnTTC.Checked
-            Form1.isBonTTC = cbBlTTC.Checked
 
+
+            Form1.useValue_CUMP = cbCump.Checked
+            Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked
+            Form1.isBaseOnTTC = cbBaseOnTTC.Checked
+            Form1.printRef = cbImpRef.Checked
         Catch ex As Exception
-
-        End Try
-
-
-
-        Try
-       
-            setRegistryinfo("prf_s_dv", txtdv.Text)
-            setRegistryinfo("prf_s_cm", txtcm.Text)
-            setRegistryinfo("prf_s_bl", txtbl.Text)
-            setRegistryinfo("prf_s_fc", txtfc.Text)
-            setRegistryinfo("prf_s_av", txtav.Text)
-
-            setRegistryinfo("prf_b_bc", txt_bc.Text)
-            setRegistryinfo("prf_b_ba", txt_ba.Text)
-            setRegistryinfo("prf_b_fc", txt_fc.Text)
-            setRegistryinfo("prf_b_av", txt_av.Text)
-
-        Catch ex As Exception
-
         End Try
 
     End Sub
-
+    'fonts
     Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click, Button19.Click
         Try
             setRegistryinfo("fontName_Normal", txtnn.text)
@@ -363,7 +362,6 @@
             End If
         End If
     End Sub
-
     Private Sub LinkLabel2_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
         'check Users
 
@@ -449,7 +447,6 @@
             End If
         End If
     End Sub
-
     Private Sub LinkLabel3_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
 
         Dim NE As New AddExercice
@@ -463,7 +460,6 @@
             Form1.zeros = NE.txtz.text
         End If
     End Sub
-
     Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
         Try
             setRegistryinfo("txtEchBon", txtEchBon.Text)
@@ -476,7 +472,6 @@
 
         End Try
     End Sub
-
     Private Sub Button16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
         Try
             Dim OPF As New OpenFileDialog
@@ -492,7 +487,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button17.Click
         Try
             Dim OPF As New OpenFileDialog
@@ -508,7 +502,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-
     Private Sub Button18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button18.Click
         Try
             Dim OPF As New OpenFileDialog
@@ -540,7 +533,7 @@
             setRegistryinfo("mainDepot", clc.dpid)
         End If
     End Sub
-
+    'colors
     Private Sub plDefRow_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plDefRow.DoubleClick
         Dim cr As New ColorDialog
         If cr.ShowDialog = DialogResult.OK Then
@@ -566,7 +559,6 @@
             Form1.Color_Selected_Row = cr.Color
         End If
     End Sub
-
     Private Sub lbDefaultText_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDefaultText.DoubleClick
         Dim cr As New ColorDialog
         If cr.ShowDialog = DialogResult.OK Then
@@ -585,4 +577,26 @@
         End If
 
     End Sub
+    'set params prefix
+    Private Sub Button20_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button20.Click
+        Try
+            setRegistryinfo("prf_s_dv", txtdv.Text)
+            setRegistryinfo("prf_s_cm", txtcm.Text)
+            setRegistryinfo("prf_s_bl", txtbl.Text)
+            setRegistryinfo("prf_s_fc", txtfc.Text)
+            setRegistryinfo("prf_s_av", txtav.Text)
+
+            setRegistryinfo("prf_b_bc", txt_bc.Text)
+            setRegistryinfo("prf_b_ba", txt_ba.Text)
+            setRegistryinfo("prf_b_fc", txt_fc.Text)
+            setRegistryinfo("prf_b_av", txt_av.Text)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub Setting_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Leave
+        HandleRegistryinfo()
+    End Sub
+     
+    
 End Class

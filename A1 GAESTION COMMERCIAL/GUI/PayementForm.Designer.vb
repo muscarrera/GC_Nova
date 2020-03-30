@@ -22,7 +22,7 @@ Partial Class PayementForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
+        Dim Payement2 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -50,6 +50,7 @@ Partial Class PayementForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.btAddPorteMonie = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -63,10 +64,11 @@ Partial Class PayementForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Panel7)
+        Me.Panel1.Controls.Add(Me.btAddPorteMonie)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Panel8)
-        Me.Panel1.Controls.Add(Me.Panel7)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.lbRef)
         Me.Panel1.Controls.Add(Me.Label22)
@@ -224,7 +226,7 @@ Partial Class PayementForm
         Me.AddPayementRow1.Location = New System.Drawing.Point(0, 2)
         Me.AddPayementRow1.Name = "AddPayementRow1"
         Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddPayementRow1.Payement = Payement1
+        Me.AddPayementRow1.Payement = Payement2
         Me.AddPayementRow1.Size = New System.Drawing.Size(874, 34)
         Me.AddPayementRow1.TabIndex = 9
         '
@@ -376,6 +378,24 @@ Partial Class PayementForm
         Me.Panel6.Size = New System.Drawing.Size(884, 2)
         Me.Panel6.TabIndex = 1
         '
+        'btAddPorteMonie
+        '
+        Me.btAddPorteMonie.BackColor = System.Drawing.Color.Transparent
+        Me.btAddPorteMonie.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ADD14
+        Me.btAddPorteMonie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btAddPorteMonie.FlatAppearance.BorderSize = 0
+        Me.btAddPorteMonie.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btAddPorteMonie.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAddPorteMonie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btAddPorteMonie.Location = New System.Drawing.Point(538, 11)
+        Me.btAddPorteMonie.Name = "btAddPorteMonie"
+        Me.btAddPorteMonie.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btAddPorteMonie.Size = New System.Drawing.Size(24, 32)
+        Me.btAddPorteMonie.TabIndex = 11
+        Me.btAddPorteMonie.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btAddPorteMonie.UseVisualStyleBackColor = False
+        Me.btAddPorteMonie.Visible = False
+        '
         'PayementForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -430,4 +450,5 @@ Partial Class PayementForm
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents lbAvoir As System.Windows.Forms.Label
     Friend WithEvents lb_PorteMonie As System.Windows.Forms.Label
+    Friend WithEvents btAddPorteMonie As System.Windows.Forms.Button
 End Class

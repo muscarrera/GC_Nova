@@ -22,6 +22,7 @@ Partial Class TotalBloc
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.plLeft = New System.Windows.Forms.Panel()
         Me.lbNB = New System.Windows.Forms.Label()
         Me.plAvc = New System.Windows.Forms.Panel()
@@ -66,27 +67,25 @@ Partial Class TotalBloc
         Me.lbwriter = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Panel19 = New System.Windows.Forms.Panel()
         Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.lbpj = New System.Windows.Forms.Label()
         Me.Panel22 = New System.Windows.Forms.Panel()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.plAddPayement = New System.Windows.Forms.Panel()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Panel20 = New System.Windows.Forms.Panel()
-        Me.Panel21 = New System.Windows.Forms.Panel()
         Me.plMP = New System.Windows.Forms.Panel()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lbModePayement = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
-        Me.Panel16 = New System.Windows.Forms.Panel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.plBlocTva = New System.Windows.Forms.Panel()
+        Me.dg = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.plLeft.SuspendLayout()
         Me.plAvc.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -102,16 +101,15 @@ Partial Class TotalBloc
         Me.Panel1.SuspendLayout()
         Me.Panel14.SuspendLayout()
         Me.plWriter.SuspendLayout()
-        Me.Panel17.SuspendLayout()
-        Me.plAddPayement.SuspendLayout()
-        Me.plMP.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel17.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plMP.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plBlocTva.SuspendLayout()
+        CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'plLeft
@@ -556,12 +554,11 @@ Partial Class TotalBloc
         '
         Me.Panel14.Controls.Add(Me.plWriter)
         Me.Panel14.Controls.Add(Me.Panel17)
-        Me.Panel14.Controls.Add(Me.plAddPayement)
         Me.Panel14.Controls.Add(Me.plMP)
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel14.Location = New System.Drawing.Point(0, 0)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(404, 281)
+        Me.Panel14.Size = New System.Drawing.Size(394, 281)
         Me.Panel14.TabIndex = 8
         '
         'plWriter
@@ -577,7 +574,7 @@ Partial Class TotalBloc
         Me.plWriter.Location = New System.Drawing.Point(18, 15)
         Me.plWriter.MaximumSize = New System.Drawing.Size(500, 44)
         Me.plWriter.Name = "plWriter"
-        Me.plWriter.Size = New System.Drawing.Size(348, 38)
+        Me.plWriter.Size = New System.Drawing.Size(338, 38)
         Me.plWriter.TabIndex = 2
         '
         'lbwriter
@@ -587,7 +584,7 @@ Partial Class TotalBloc
         Me.lbwriter.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbwriter.Location = New System.Drawing.Point(91, 0)
         Me.lbwriter.Name = "lbwriter"
-        Me.lbwriter.Size = New System.Drawing.Size(256, 36)
+        Me.lbwriter.Size = New System.Drawing.Size(246, 36)
         Me.lbwriter.TabIndex = 3
         Me.lbwriter.Text = "-"
         Me.lbwriter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -609,10 +606,22 @@ Partial Class TotalBloc
         '
         Me.Panel18.BackColor = System.Drawing.Color.LightGray
         Me.Panel18.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel18.Location = New System.Drawing.Point(347, 0)
+        Me.Panel18.Location = New System.Drawing.Point(337, 0)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Size = New System.Drawing.Size(1, 36)
         Me.Panel18.TabIndex = 2
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(31, 36)
+        Me.PictureBox2.TabIndex = 4
+        Me.PictureBox2.TabStop = False
         '
         'Panel19
         '
@@ -620,22 +629,35 @@ Partial Class TotalBloc
         Me.Panel19.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel19.Location = New System.Drawing.Point(0, 36)
         Me.Panel19.Name = "Panel19"
-        Me.Panel19.Size = New System.Drawing.Size(348, 2)
+        Me.Panel19.Size = New System.Drawing.Size(338, 2)
         Me.Panel19.TabIndex = 2
         '
         'Panel17
         '
+        Me.Panel17.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel17.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
         Me.Panel17.Controls.Add(Me.PictureBox6)
         Me.Panel17.Controls.Add(Me.lbpj)
         Me.Panel17.Controls.Add(Me.Panel22)
         Me.Panel17.Controls.Add(Me.PictureBox7)
         Me.Panel17.Controls.Add(Me.Panel23)
-        Me.Panel17.Location = New System.Drawing.Point(177, 125)
+        Me.Panel17.Location = New System.Drawing.Point(18, 125)
         Me.Panel17.MaximumSize = New System.Drawing.Size(500, 44)
         Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(189, 38)
+        Me.Panel17.Size = New System.Drawing.Size(337, 38)
         Me.Panel17.TabIndex = 2
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
+        Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PictureBox6.Location = New System.Drawing.Point(305, 0)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(31, 36)
+        Me.PictureBox6.TabIndex = 5
+        Me.PictureBox6.TabStop = False
         '
         'lbpj
         '
@@ -654,10 +676,22 @@ Partial Class TotalBloc
         '
         Me.Panel22.BackColor = System.Drawing.Color.LightGray
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel22.Location = New System.Drawing.Point(188, 0)
+        Me.Panel22.Location = New System.Drawing.Point(336, 0)
         Me.Panel22.Name = "Panel22"
         Me.Panel22.Size = New System.Drawing.Size(1, 36)
         Me.Panel22.TabIndex = 2
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.PictureBox7.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.JOINDRE_20
+        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox7.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox7.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(31, 36)
+        Me.PictureBox7.TabIndex = 4
+        Me.PictureBox7.TabStop = False
         '
         'Panel23
         '
@@ -665,53 +699,8 @@ Partial Class TotalBloc
         Me.Panel23.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel23.Location = New System.Drawing.Point(0, 36)
         Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(189, 2)
+        Me.Panel23.Size = New System.Drawing.Size(337, 2)
         Me.Panel23.TabIndex = 2
-        '
-        'plAddPayement
-        '
-        Me.plAddPayement.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer), CType(CType(254, Byte), Integer))
-        Me.plAddPayement.Controls.Add(Me.PictureBox4)
-        Me.plAddPayement.Controls.Add(Me.Label12)
-        Me.plAddPayement.Controls.Add(Me.Panel20)
-        Me.plAddPayement.Controls.Add(Me.PictureBox5)
-        Me.plAddPayement.Controls.Add(Me.Panel21)
-        Me.plAddPayement.Location = New System.Drawing.Point(18, 125)
-        Me.plAddPayement.MaximumSize = New System.Drawing.Size(500, 44)
-        Me.plAddPayement.Name = "plAddPayement"
-        Me.plAddPayement.Size = New System.Drawing.Size(135, 38)
-        Me.plAddPayement.TabIndex = 2
-        '
-        'Label12
-        '
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label12.Location = New System.Drawing.Point(31, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(125, 36)
-        Me.Label12.TabIndex = 2
-        Me.Label12.Text = "Solder"
-        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel20
-        '
-        Me.Panel20.BackColor = System.Drawing.Color.LightGray
-        Me.Panel20.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel20.Location = New System.Drawing.Point(134, 0)
-        Me.Panel20.Name = "Panel20"
-        Me.Panel20.Size = New System.Drawing.Size(1, 36)
-        Me.Panel20.TabIndex = 2
-        '
-        'Panel21
-        '
-        Me.Panel21.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel21.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel21.Location = New System.Drawing.Point(0, 36)
-        Me.Panel21.Name = "Panel21"
-        Me.Panel21.Size = New System.Drawing.Size(135, 2)
-        Me.Panel21.TabIndex = 2
         '
         'plMP
         '
@@ -727,8 +716,19 @@ Partial Class TotalBloc
         Me.plMP.Location = New System.Drawing.Point(18, 68)
         Me.plMP.MaximumSize = New System.Drawing.Size(500, 44)
         Me.plMP.Name = "plMP"
-        Me.plMP.Size = New System.Drawing.Size(348, 38)
+        Me.plMP.Size = New System.Drawing.Size(338, 38)
         Me.plMP.TabIndex = 2
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PictureBox3.Location = New System.Drawing.Point(306, 0)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(31, 36)
+        Me.PictureBox3.TabIndex = 5
+        Me.PictureBox3.TabStop = False
         '
         'lbModePayement
         '
@@ -737,7 +737,7 @@ Partial Class TotalBloc
         Me.lbModePayement.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbModePayement.Location = New System.Drawing.Point(156, 0)
         Me.lbModePayement.Name = "lbModePayement"
-        Me.lbModePayement.Size = New System.Drawing.Size(191, 36)
+        Me.lbModePayement.Size = New System.Drawing.Size(181, 36)
         Me.lbModePayement.TabIndex = 3
         Me.lbModePayement.Text = "-"
         Me.lbModePayement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -759,88 +759,10 @@ Partial Class TotalBloc
         '
         Me.Panel15.BackColor = System.Drawing.Color.LightGray
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel15.Location = New System.Drawing.Point(347, 0)
+        Me.Panel15.Location = New System.Drawing.Point(337, 0)
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(1, 36)
         Me.Panel15.TabIndex = 2
-        '
-        'Panel16
-        '
-        Me.Panel16.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel16.Location = New System.Drawing.Point(0, 36)
-        Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(348, 2)
-        Me.Panel16.TabIndex = 2
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.PictureBox2.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox2.TabIndex = 4
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
-        Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox6.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox6.Location = New System.Drawing.Point(157, 0)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox6.TabIndex = 5
-        Me.PictureBox6.TabStop = False
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.PictureBox7.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.JOINDRE_20
-        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox7.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox7.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox7.TabIndex = 4
-        Me.PictureBox7.TabStop = False
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Plus__Orange_34237__1_
-        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox4.Location = New System.Drawing.Point(103, 0)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox4.TabIndex = 5
-        Me.PictureBox4.TabStop = False
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.PictureBox5.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_22
-        Me.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox5.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox5.TabIndex = 4
-        Me.PictureBox5.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_advancedsettings_3283__1_
-        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox3.Location = New System.Drawing.Point(316, 0)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(31, 36)
-        Me.PictureBox3.TabIndex = 5
-        Me.PictureBox3.TabStop = False
         '
         'PictureBox1
         '
@@ -854,11 +776,73 @@ Partial Class TotalBloc
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
+        'Panel16
+        '
+        Me.Panel16.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel16.Location = New System.Drawing.Point(0, 36)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(338, 2)
+        Me.Panel16.TabIndex = 2
+        '
+        'plBlocTva
+        '
+        Me.plBlocTva.Controls.Add(Me.dg)
+        Me.plBlocTva.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plBlocTva.Location = New System.Drawing.Point(394, 0)
+        Me.plBlocTva.Name = "plBlocTva"
+        Me.plBlocTva.Padding = New System.Windows.Forms.Padding(3, 2, 55, 11)
+        Me.plBlocTva.Size = New System.Drawing.Size(10, 281)
+        Me.plBlocTva.TabIndex = 9
+        '
+        'dg
+        '
+        Me.dg.AllowUserToAddRows = False
+        Me.dg.AllowUserToDeleteRows = False
+        Me.dg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg.BackgroundColor = System.Drawing.Color.White
+        Me.dg.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(3)
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column3})
+        Me.dg.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg.GridColor = System.Drawing.Color.DarkRed
+        Me.dg.Location = New System.Drawing.Point(3, 2)
+        Me.dg.Name = "dg"
+        Me.dg.ReadOnly = True
+        Me.dg.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dg.RowHeadersVisible = False
+        Me.dg.RowTemplate.Height = 33
+        Me.dg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dg.Size = New System.Drawing.Size(0, 268)
+        Me.dg.TabIndex = 0
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Taux %"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Valeur"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
         'TotalBloc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel14)
+        Me.Controls.Add(Me.plBlocTva)
         Me.Controls.Add(Me.plLeft)
         Me.Name = "TotalBloc"
         Me.Size = New System.Drawing.Size(762, 281)
@@ -877,16 +861,15 @@ Partial Class TotalBloc
         Me.Panel1.ResumeLayout(False)
         Me.Panel14.ResumeLayout(False)
         Me.plWriter.ResumeLayout(False)
-        Me.Panel17.ResumeLayout(False)
-        Me.plAddPayement.ResumeLayout(False)
-        Me.plMP.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel17.ResumeLayout(False)
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plMP.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plBlocTva.ResumeLayout(False)
+        CType(Me.dg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -943,17 +926,15 @@ Partial Class TotalBloc
     Friend WithEvents Panel19 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents plAddPayement As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Panel20 As System.Windows.Forms.Panel
-    Friend WithEvents Panel21 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel17 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
     Friend WithEvents lbpj As System.Windows.Forms.Label
     Friend WithEvents Panel22 As System.Windows.Forms.Panel
     Friend WithEvents Panel23 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
+    Friend WithEvents plBlocTva As System.Windows.Forms.Panel
+    Friend WithEvents dg As System.Windows.Forms.DataGridView
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

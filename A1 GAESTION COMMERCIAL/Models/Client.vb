@@ -14,6 +14,7 @@
     Public gsm As String
     Public email As String
     Public info As String
+    Public isBlocked As Boolean = False
 
     Public remise As Double = 0
     Public max As Double = 0
@@ -43,6 +44,7 @@
         delai = _delai
         remise = _remise
         max = _max
+
     End Sub
     Public Sub New(ByVal _cid As Integer, ByVal tb_C As String)
         cid = 0
@@ -82,6 +84,8 @@
                 'delai = dt.Rows(0).Item("delai")
                 'remise = dt.Rows(0).Item("remise")
                 'max = dt.Rows(0).Item("max")
+
+                isBlocked = BoolValue(dt, "isBlocked", 0)
             End If
         End Using
     End Sub

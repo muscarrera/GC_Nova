@@ -308,6 +308,12 @@
     <Compile Include="GUI\ImpressionParams.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\Liste_Avoir.Designer.vb">
+      <DependentUpon>Liste_Avoir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Liste_Avoir.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\ModePayement.Designer.vb">
       <DependentUpon>ModePayement.vb</DependentUpon>
     </Compile>
@@ -518,6 +524,9 @@
     <EmbeddedResource Include="GUI\ImpressionParams.resx">
       <DependentUpon>ImpressionParams.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Liste_Avoir.resx">
+      <DependentUpon>Liste_Avoir.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ModePayement.resx">
       <DependentUpon>ModePayement.vb</DependentUpon>
     </EmbeddedResource>
@@ -602,6 +611,8 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\ALLOW 24.png" />
+    <None Include="Resources\block 24.png" />
     <None Include="Resources\BGpRD.png" />
     <None Include="Resources\BG STK.png" />
     <None Include="Resources\stock-icon-png-14.png" />

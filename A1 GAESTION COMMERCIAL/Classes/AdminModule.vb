@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc44"
+    Dim strKey = "ALMsbtrFirstRun_gc55"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
     Dim nbrDays = 15
 

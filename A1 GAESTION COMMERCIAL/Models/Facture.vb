@@ -27,6 +27,8 @@
     Public devis As String = ""
     Public pj As Integer = 0
 
+    Public isValid As Boolean = False
+
     Public DataSource As DataTable = Nothing
     Public PaymenetDataSource As DataTable = Nothing
 
@@ -101,13 +103,15 @@
                 writer = StrValue(dt, "writer", 0)
                 pj = IntValue(dt, "pj", 0)
 
+                isValid = BoolValue(dt, "isValid", 0)
+
                 params.Clear()
                 params.Add("fctid", _id)
                 DataSource = a.SelectDataTable(tb_D, {"*"}, params)
 
                 params.Clear()
                 params.Add(tb_F, _id)
-                If tb_F <> "Sell_Avoir" Then PaymenetDataSource = a.SelectDataTable(tb_P, {"*"}, params)
+                If tb_F <> "Sell_Avoir" And tb_F <> "Buy_Avoir" Then PaymenetDataSource = a.SelectDataTable(tb_P, {"*"}, params)
             End If
         End Using
         client = New Client(cid, tb_C)

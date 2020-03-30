@@ -103,6 +103,7 @@ Partial Class EnteteFacture
         Me.btTranformer = New System.Windows.Forms.Button()
         Me.btFacturer = New System.Windows.Forms.Button()
         Me.btDelivry = New System.Windows.Forms.Button()
+        Me.btValideBl = New System.Windows.Forms.Button()
         Me.btSave = New System.Windows.Forms.Button()
         Me.Panel21 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
@@ -920,6 +921,7 @@ Partial Class EnteteFacture
         Me.Panel6.Controls.Add(Me.btTranformer)
         Me.Panel6.Controls.Add(Me.btFacturer)
         Me.Panel6.Controls.Add(Me.btDelivry)
+        Me.Panel6.Controls.Add(Me.btValideBl)
         Me.Panel6.Controls.Add(Me.btSave)
         Me.Panel6.Controls.Add(Me.Panel21)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
@@ -936,9 +938,9 @@ Partial Class EnteteFacture
         Me.Panel7.Controls.Add(Me.btPdf)
         Me.Panel7.Controls.Add(Me.Label4)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel7.Location = New System.Drawing.Point(526, 0)
+        Me.Panel7.Location = New System.Drawing.Point(520, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(271, 35)
+        Me.Panel7.Size = New System.Drawing.Size(277, 35)
         Me.Panel7.TabIndex = 3
         '
         'btParamsImp
@@ -966,7 +968,7 @@ Partial Class EnteteFacture
         Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
         Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btPrint.Location = New System.Drawing.Point(162, 1)
+        Me.btPrint.Location = New System.Drawing.Point(168, 1)
         Me.btPrint.Name = "btPrint"
         Me.btPrint.Size = New System.Drawing.Size(99, 32)
         Me.btPrint.TabIndex = 4
@@ -1010,7 +1012,7 @@ Partial Class EnteteFacture
         Me.btAvoir.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btAvoir.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.AVOIR_22
         Me.btAvoir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btAvoir.Location = New System.Drawing.Point(682, 0)
+        Me.btAvoir.Location = New System.Drawing.Point(764, 0)
         Me.btAvoir.Name = "btAvoir"
         Me.btAvoir.Size = New System.Drawing.Size(80, 35)
         Me.btAvoir.TabIndex = 9
@@ -1027,7 +1029,7 @@ Partial Class EnteteFacture
         Me.btDelete.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDelete.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.DELETE_20
         Me.btDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btDelete.Location = New System.Drawing.Point(582, 0)
+        Me.btDelete.Location = New System.Drawing.Point(664, 0)
         Me.btDelete.Name = "btDelete"
         Me.btDelete.Size = New System.Drawing.Size(100, 35)
         Me.btDelete.TabIndex = 4
@@ -1039,9 +1041,9 @@ Partial Class EnteteFacture
         '
         Me.Panel22.BackColor = System.Drawing.Color.Transparent
         Me.Panel22.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel22.Location = New System.Drawing.Point(552, 0)
+        Me.Panel22.Location = New System.Drawing.Point(632, 0)
         Me.Panel22.Name = "Panel22"
-        Me.Panel22.Size = New System.Drawing.Size(30, 35)
+        Me.Panel22.Size = New System.Drawing.Size(32, 35)
         Me.Panel22.TabIndex = 6
         '
         'btDuplicate
@@ -1053,7 +1055,7 @@ Partial Class EnteteFacture
         Me.btDuplicate.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDuplicate.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_new_23212__1_1
         Me.btDuplicate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btDuplicate.Location = New System.Drawing.Point(456, 0)
+        Me.btDuplicate.Location = New System.Drawing.Point(536, 0)
         Me.btDuplicate.Name = "btDuplicate"
         Me.btDuplicate.Size = New System.Drawing.Size(96, 35)
         Me.btDuplicate.TabIndex = 4
@@ -1070,7 +1072,7 @@ Partial Class EnteteFacture
         Me.btSolde.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSolde.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_221
         Me.btSolde.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btSolde.Location = New System.Drawing.Point(372, 0)
+        Me.btSolde.Location = New System.Drawing.Point(452, 0)
         Me.btSolde.Name = "btSolde"
         Me.btSolde.Size = New System.Drawing.Size(84, 35)
         Me.btSolde.TabIndex = 4
@@ -1087,7 +1089,7 @@ Partial Class EnteteFacture
         Me.btTranformer.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btTranformer.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_export_23210__1_
         Me.btTranformer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btTranformer.Location = New System.Drawing.Point(268, 0)
+        Me.btTranformer.Location = New System.Drawing.Point(348, 0)
         Me.btTranformer.Name = "btTranformer"
         Me.btTranformer.Size = New System.Drawing.Size(104, 35)
         Me.btTranformer.TabIndex = 4
@@ -1104,7 +1106,7 @@ Partial Class EnteteFacture
         Me.btFacturer.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFacturer.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
         Me.btFacturer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btFacturer.Location = New System.Drawing.Point(184, 0)
+        Me.btFacturer.Location = New System.Drawing.Point(264, 0)
         Me.btFacturer.Name = "btFacturer"
         Me.btFacturer.Size = New System.Drawing.Size(84, 35)
         Me.btFacturer.TabIndex = 8
@@ -1122,7 +1124,7 @@ Partial Class EnteteFacture
         Me.btDelivry.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDelivry.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btDelivry.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btDelivry.Location = New System.Drawing.Point(114, 0)
+        Me.btDelivry.Location = New System.Drawing.Point(194, 0)
         Me.btDelivry.Name = "btDelivry"
         Me.btDelivry.Size = New System.Drawing.Size(70, 35)
         Me.btDelivry.TabIndex = 7
@@ -1130,6 +1132,24 @@ Partial Class EnteteFacture
         Me.btDelivry.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btDelivry.UseVisualStyleBackColor = False
         Me.btDelivry.Visible = False
+        '
+        'btValideBl
+        '
+        Me.btValideBl.BackColor = System.Drawing.Color.Transparent
+        Me.btValideBl.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btValideBl.FlatAppearance.BorderSize = 0
+        Me.btValideBl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btValideBl.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btValideBl.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ICON_22
+        Me.btValideBl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btValideBl.Location = New System.Drawing.Point(114, 0)
+        Me.btValideBl.Name = "btValideBl"
+        Me.btValideBl.Size = New System.Drawing.Size(80, 35)
+        Me.btValideBl.TabIndex = 10
+        Me.btValideBl.Text = "Valider"
+        Me.btValideBl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btValideBl.UseVisualStyleBackColor = False
+        Me.btValideBl.Visible = False
         '
         'btSave
         '
@@ -1296,5 +1316,6 @@ Partial Class EnteteFacture
     Friend WithEvents Panel28 As System.Windows.Forms.Panel
     Friend WithEvents plEnCompte As System.Windows.Forms.Panel
     Friend WithEvents lbEnCompte As System.Windows.Forms.Label
+    Friend WithEvents btValideBl As System.Windows.Forms.Button
 
 End Class

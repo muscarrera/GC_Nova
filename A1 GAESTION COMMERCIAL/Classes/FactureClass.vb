@@ -61,6 +61,7 @@ Public Class FactureClass
         AddHandler ds.getStockForAddRow, AddressOf getStockForAddRow
         AddHandler ds.GetArticleStock, AddressOf GetArticleStock
         AddHandler ds.getClientRemise, AddressOf getClientRemise
+        AddHandler ds.Valider, AddressOf valider
 
         'payement
         AddHandler ds.AddPayement, AddressOf AddPayement
@@ -71,6 +72,9 @@ Public Class FactureClass
         'init depot
         ds.AddRow1.dpid = Form1.mainDepot
         ds.AddRow1.isSlave = Form1.admin
+        'tva
+        If Form1.isBaseOnOneTva = False Then ds.TB.plBlocTva.Width = 270
+
 
         Form1.plBody.Controls.Add(ds)
     End Sub
@@ -93,6 +97,13 @@ Public Class FactureClass
                 Catch ex As Exception
                     cid = 0
                 End Try
+
+                If NF.isBlocked Then
+                    MsgBox("merci de vérifier avec l'administration pour l'autorisation de créer une nouvel enregistrement pour ce client",
+                           MsgBoxStyle.Information, "Accès refusé")
+                    Exit Sub
+                End If
+
 
                 NewFacture(tb_F, cid, cn, ds)
             End If
@@ -1163,8 +1174,26 @@ Public Class FactureClass
                     avance = 0
                 End If
 
-
                 If IsNothing(data) Then Exit Sub
+
+
+                params.Add("name", ds.Entete.ClientName)
+                params.Add("total", tt)
+                params.Add("avance", avance)
+                params.Add("remise", ds.TB.Remise)
+                params.Add("tva", ds.TB.TVA)
+                params.Add("date", dte)
+                params.Add("writer", CStr(Form1.adminName))
+                params.Add("isAdmin", "CREATION")
+                params.Add("isPayed", ds.isPayed)
+                params.Add("modePayement", ds.ModePayement)
+                params.Add(ds.FactureTable, ds.Id)
+
+                fid = c.InsertRecord(tb_F, params, True)
+                params.Clear()
+
+
+
                 If data.Rows.Count > 0 Then
                     For i As Integer = 0 To data.Rows.Count - 1
                         Dim qq As Double = 0
@@ -1206,11 +1235,11 @@ Public Class FactureClass
                         params.Add("ref", data.Rows(i).Item("ref"))
                         params.Add("cid", data.Rows(i).Item("cid"))
 
-                        c.InsertRecord(tb_D, params)
+                        If qq > 0 Then c.InsertRecord(tb_D, params)
                         params.Clear()
 
 
-                        If Form1.isWorkinOnStock = False Then Continue For
+                        If Form1.isWorkinOnStock = False And qq <= 0 Then Continue For
                         If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
                             Dim q As Double = qq * -1
 
@@ -1226,23 +1255,6 @@ Public Class FactureClass
                         End If
                     Next
                 End If
-
-
-                params.Add("name", ds.Entete.ClientName)
-                params.Add("total", tt)
-                params.Add("avance", avance)
-                params.Add("remise", ds.TB.Remise)
-                params.Add("tva", ds.TB.TVA)
-                params.Add("date", dte)
-                params.Add("writer", CStr(Form1.adminName))
-                params.Add("isAdmin", "CREATION")
-                params.Add("isPayed", ds.isPayed)
-                params.Add("modePayement", ds.ModePayement)
-                params.Add(ds.FactureTable, ds.Id)
-
-                fid = c.InsertRecord(tb_F, params, True)
-                params.Clear()
-
 
                 Dim where As New Dictionary(Of String, Object)
                 If avance > 0 Then
@@ -1333,14 +1345,63 @@ Public Class FactureClass
         NewFacture_Transforme(tb_F, tb_D, tb_P, dte, Operation, ds, True)
     End Sub
     Private Sub DeleteFacture(ByVal id As Integer, ByRef ds As DataList)
+
+        If ds.DetailsTable = "Details_Bon_Livraison" Or
+            ds.DetailsTable = "Details_Buy_Avoir" Or
+            ds.DetailsTable = "Details_Bon_Achat" Or
+            ds.DetailsTable = "Details_Sell_Avoir" Then
+
+            DeleteBon(id, ds)
+            Exit Sub
+        End If
+
+
         Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-
-            Dim isPayed As Boolean = False
-
-            Dim tableName = ds.FactureTable
-            Dim dte As Date = ds.Entete.FactureDate
             Dim params As New Dictionary(Of String, Object)
+            Dim where As New Dictionary(Of String, Object)
+            Dim tableName = ds.FactureTable
 
+            If ds.FactureTable = "Commande_Client" Or
+                ds.FactureTable = "Devis" Or
+                ds.FactureTable = "Bon_Commande" Then
+                where.Add("id", id)
+                If c.DeleteRecords(tableName, where) Then
+                    where.Clear()
+                    where.Add("fctid", id)
+                    c.DeleteRecords(ds.DetailsTable, where)
+
+                    params.Clear()
+                    where.Clear()
+                    where.Add(tableName & "=", id)
+                    params.Add(tableName & " = ", 0)
+                    c.UpdateRecordSymbols("Commande_Client", params, where)
+
+                    params.Clear()
+                    where.Clear()
+                    where.Add(tableName & "=", id)
+                    params.Add(tableName & " = ", 0)
+                    c.UpdateRecordSymbols("Sell_Facture", params, where)
+
+                    params.Clear()
+                    where.Clear()
+                    where.Add(tableName & "=", id)
+                    params.Add(tableName & " = ", 0)
+                    c.UpdateRecordSymbols("Bon_Livraison", params, where)
+
+                    params.Clear()
+                    where.Clear()
+                    where.Add(tableName & "=", id)
+                    params.Add(tableName & " = ", 0)
+                    c.UpdateRecordSymbols("Bon_Achat", params, where)
+                End If
+
+                Exit Sub
+            End If
+
+            'Facture TTC
+            Dim isPayed As Boolean = False
+            Dim dte As Date = ds.Entete.FactureDate
+         
             'Facture
             params.Clear()
             params.Add("total", 0)
@@ -1349,15 +1410,98 @@ Public Class FactureClass
             params.Add("isPayed", isPayed)
             params.Add("tva", 0)
             params.Add("remise", 0)
-
             params.Add("cid", 0)
-
-
-            Dim where As New Dictionary(Of String, Object)
 
             where.Add("id", id)
 
             If c.UpdateRecord(tableName, params, where) Then
+                where.Clear()
+                where.Add("fctid", id)
+                c.DeleteRecords(ds.DetailsTable, where)
+
+                If tableName = "Sell_Facture" Then
+                    where.Clear()
+                    where.Add("id", id)
+
+                    Dim str = c.SelectByScalar("Sell_Facture", "Bon_Livraison", where)
+                    If str.StartsWith("B.T. : ") Then
+                        Dim bt_id = str.Split(":")(1)
+
+                        If IsNumeric(id) Then
+                            params.Clear()
+                            params.Add("isPayed", False)
+                            params.Add("isFactured", False)
+
+                            where.Clear()
+                            where.Add("id", bt_id)
+
+                            c.UpdateRecord("Bon_Transport", params, where)
+                        End If
+
+                    End If
+
+                End If
+            End If
+
+            params.Clear()
+            where.Clear()
+
+            params = Nothing
+            where = Nothing
+            If ds.FactureTable = "Commande_Client" Or ds.FactureTable = "Bon_Commande" Then
+                GetListofCommande(ds)
+            Else
+                GetListofFacture(ds)
+            End If
+            ds.Mode = "LIST"
+        End Using
+    End Sub
+    Private Sub DeleteBon(ByVal id As Integer, ByRef ds As DataList)
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+            Dim data As DataTable = ds.DataSource
+            Dim dp As Integer = 0
+            Dim qte As Double = 0
+            Dim arid As Integer = 0
+
+            If Form1.isWorkinOnStock Then
+                 
+                For i As Integer = 0 To data.Rows.Count - 1
+
+                    dp = data.Rows(i).Item("depot")
+                    qte = data.Rows(i).Item("qte")
+                    arid = data.Rows(i).Item("arid")
+                    Dim b As Boolean = False
+
+                    If dp > 0 And arid > 0 Then
+
+                        If ds.DetailsTable = "Details_Bon_Livraison" Or ds.DetailsTable = "Details_Buy_Avoir" Then
+                            qte = qte
+                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Or ds.DetailsTable = "Details_Sell_Avoir" Then
+                            qte = qte * -1
+                        Else
+                            Continue For
+                        End If
+
+                        If getStockId(arid, dp, c) > 0 Then
+                            Dim oldStock = getStockById(arid, dp, c)
+                            oldStock += qte
+                            updateStock(arid, dp, oldStock, c)
+                        End If
+                    End If
+                Next
+            End If
+
+
+
+            Dim tableName = ds.FactureTable
+            Dim dte As Date = ds.Entete.FactureDate
+            Dim params As New Dictionary(Of String, Object)
+            Dim where As New Dictionary(Of String, Object)
+
+            where.Add("id", id)
+
+            If c.DeleteRecords(tableName, where) Then
                 where.Clear()
                 where.Add("fctid", id)
                 c.DeleteRecords(ds.DetailsTable, where)
@@ -1371,7 +1515,7 @@ Public Class FactureClass
                         params.Clear()
                         where.Clear()
                         params.Add("isAdmin", "RESTAURER")
-                           params.Add("isPayed", isPayed)
+                        params.Add("isPayed", False)
                         where.Add("id", fctid)
                         c.UpdateRecord("Sell_Facture", params, where)
 
@@ -1392,47 +1536,36 @@ Public Class FactureClass
 
                                 c.UpdateRecord("Bon_Transport", params, where)
                             End If
-                        End If
 
-                    End If
-                End If
+                        ElseIf IsNumeric(str) Then
 
-                If tableName = "Sell_Facture" Then
-                    where.Clear()
-                    where.Add("id", id)
-
-                        Dim str = c.SelectByScalar("Sell_Facture", "Bon_Livraison", where)
-                        If str.StartsWith("B.T. : ") Then
-                            Dim bt_id = str.Split(":")(1)
-
-                            If IsNumeric(id) Then
-                            params.Clear()
-                            params.Add("isPayed", False)
-                            params.Add("isFactured", False)
+                            params.Add("isFactured", True)
 
                             where.Clear()
-                            where.Add("id", bt_id)
+                            where.Add("id", CInt(str))
 
-                            c.UpdateRecord("Bon_Transport", params, where)
-                            End If
+                            c.UpdateRecord("Bon_Livraison", params, where)
                         End If
-
                     End If
                 End If
+
 
             params.Clear()
             where.Clear()
 
             params = Nothing
             where = Nothing
-            If ds.FactureTable = "Commande_Client" Or ds.FactureTable = "Bon_Commande" Then
-                GetListofCommande(ds)
-            Else
-                GetListofFacture(ds)
             End If
+
+            GetListofFacture(ds)
             ds.Mode = "LIST"
+
         End Using
     End Sub
+    
+
+
+
     Private Sub AvoirFacture(ByVal p1 As Integer, ByVal ds As DataList)
         ds.TB.avance = 0
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "AVOIR")
@@ -1518,7 +1651,7 @@ Public Class FactureClass
                     Dim q As Double = 0
 
                     If tb_D = "Details_Bon_Livraison" Or tb_D = "Details_Buy_Avoir" Then
-                        q = q * -1
+                        q = R.qte * -1
                     ElseIf tb_D = "Details_Bon_Achat" Or tb_D = "Details_Sell_Avoir" Then
                         q = R.qte
                     Else
@@ -1592,17 +1725,18 @@ Public Class FactureClass
 
                     If R.depot > 0 And R.arid > 0 Then
                         Dim b As Boolean = False
-                        If ds.DetailsTable = "Details_Bon_Livraison" Then
+                        If ds.DetailsTable = "Details_Bon_Livraison" Or ds.DetailsTable = "Details_Buy_Avoir" Then
                             oldQte = oldQte - newQte
                             b = True
-                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Or ds.DetailsTable = "Details_Sell_Avoir" Then
                             oldQte = newQte - oldQte
                             b = True
                         Else
                             b = False
                         End If
 
-                        If b Then
+
+                        If b And Form1.isWorkinOnStock Then
                             Dim oldStock = getStockById(R.arid, R.depot, c)
                             If getStockId(R.arid, R.depot, c) = 0 Then
                                 'AddNewStock(R.arid, R.arid, R.cid, R.qte, c)
@@ -1632,16 +1766,16 @@ Public Class FactureClass
                     If lr.article.depot > 0 And lr.article.arid > 0 Then
                         Dim b As Boolean = False
                         Dim qte = lr.qte
-                        If ds.DetailsTable = "Details_Bon_Livraison" Then
+                        If ds.DetailsTable = "Details_Bon_Livraison" Or ds.DetailsTable = "Details_Buy_Avoir" Then
                             b = True
-                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                        ElseIf ds.DetailsTable = "Details_Bon_Achat" Or ds.DetailsTable = "Details_Sell_Avoir" Then
                             qte = qte * -1
                             b = True
                         Else
                             b = False
                         End If
 
-                        If b Then
+                        If b And Form1.isWorkinOnStock Then
 
                             If getStockId(lr.article.arid, lr.article.depot, c) > 0 Then
                                 Dim oldStock = getStockById(lr.article.arid, lr.article.depot, c)
@@ -1649,10 +1783,10 @@ Public Class FactureClass
                                 updateStock(lr.article.arid, lr.article.depot, oldStock, c)
                             End If
                         End If
-                    End If
+                        End If
 
-                    ds.Pl.Controls.Remove(lr)
-                End If
+                        ds.Pl.Controls.Remove(lr)
+                    End If
             End Using
         Catch ex As Exception
         End Try
@@ -1757,7 +1891,7 @@ Public Class FactureClass
 
                     If c.UpdateRecord(dataList.FactureTable, params, where) Then
                         dataList.TB.avance = avc
-                        dataList.plPmBody.Controls.Remove(pm)
+                        'dataList.plPmBody.Controls.Remove(pm)
                     End If
                 End If
             End Using
@@ -1908,6 +2042,13 @@ Public Class FactureClass
         CC.tb_C = ds.clientTable
 
         If CC.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+            If CC.isBlocked Then
+                MsgBox("merci de vérifier avec l'administration pour l'autorisation de créer une nouvel enregistrement pour ce client",
+                       MsgBoxStyle.Information, "Accès refusé")
+                Exit Sub
+            End If
+
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
 
                 Dim isPayed As Boolean = ds.isPayed
@@ -2148,8 +2289,6 @@ Public Class FactureClass
         End If
     End Sub
 
-
-
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 
@@ -2214,11 +2353,11 @@ Public Class FactureClass
                 Dim newQte As Double = R.qte
 
 
-                If ds.DetailsTable = "Details_Bon_Livraison" Then
+                If ds.DetailsTable = "Details_Bon_Livraison" Or ds.DetailsTable = "Details_Buy_Avoir" Then
                     oldQte = R.qte
                     newQte = R.qte * -1
                     b = True
-                ElseIf ds.DetailsTable = "Details_Bon_Achat" Then
+                ElseIf ds.DetailsTable = "Details_Bon_Achat" Or ds.DetailsTable = "Details_Sell_Avoir" Then
                     oldQte = R.qte * -1
                     newQte = R.qte
                     b = True
@@ -2226,7 +2365,7 @@ Public Class FactureClass
                     b = False
                 End If
 
-                If b And R.article.arid > 0 Then
+                If b And R.article.arid > 0 And Form1.isWorkinOnStock Then
 
                     If R.depot > 0 Then
                         Dim oldStock = getStockById(R.arid, R.depot, c)
@@ -2256,11 +2395,92 @@ Public Class FactureClass
 
     Private Sub getClientRemise(ByRef ds As DataList, ByVal clientId As Integer, ByVal isS As Boolean)
         Try
-            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
                 Dim params As New Dictionary(Of String, Object)
                 params.Add("Clid", clientId)
                 ds.dt_Client_Remise = c.SelectDataTable("Client_Remise", {"*"}, params)
             End Using
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub valider(ByVal id As Integer, ByVal isV As Boolean, ByRef ds As DataList)
+        Try
+            Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+                Dim params As New Dictionary(Of String, Object)
+                Dim where As New Dictionary(Of String, Object)
+                params.Add("isvalid", Not isV)
+                where.Add("id", id)
+
+                c.UpdateRecord(ds.FactureTable, params, where)
+                params.Clear()
+                where.Clear()
+
+                ds.DisibleEditing("v", Not isV)
+
+                If ds.FactureTable.Contains("Facture") Then Exit Sub
+
+
+                Dim data = ds.DataSource
+                Dim tb_D = ds.DetailsTable
+                Dim tb_F = ds.FactureTable
+
+                For i As Integer = 0 To data.Rows.Count - 1
+
+                    If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
+                        Dim q As Double = CDbl(data.Rows(i).Item("qte"))
+
+                        If tb_D = "Details_Bon_Livraison" Or tb_D = "Details_Buy_Avoir" Then
+                            q = q * -1
+                            If isV = True Then q = q
+                        ElseIf tb_D = "Details_Bon_Achat" Or tb_D = "Details_Sell_Avoir" Then
+                            q = q
+                            If isV = True Then q = q * -1
+                        Else
+                            Continue For
+                        End If
+
+                        Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+                        If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+                            If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
+                                params.Clear()
+                                params.Add("arid", data.Rows(i).Item("arid"))
+
+                                Dim params2 As New Dictionary(Of String, Object)
+                                params2.Add("CUMP", data.Rows(i).Item("bprice"))
+
+                                c.UpdateRecord("Article", params2, params)
+                            End If
+                            AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
+                                        data.Rows(i).Item("cid"), q, c)
+                        Else
+                            If tb_F = "Bon_Achat" And Form1.useValue_CUMP Then
+                                params.Clear()
+                                params.Add("arid", data.Rows(i).Item("arid"))
+                                Dim cump As Double = c.SelectByScalar("Article", "CUMP", params)
+                                If IsDBNull(cump) Then cump = 0
+                                If Not IsNumeric(cump) Then cump = 0
+
+                                If cump = 0 Then
+                                    cump = c.SelectByScalar("Article", "bprice", params)
+                                End If
+                                cump = ((cump * oldStock) + (data.Rows(i).Item("bprice") * q)) / (oldStock + q)
+                                Dim params2 As New Dictionary(Of String, Object)
+
+                                params2.Add("CUMP", cump)
+                                c.UpdateRecord("Article", params2, params)
+                            End If
+
+                            oldStock += q
+                            updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
+                        End If
+                    End If
+                Next
+
+            End Using
+
+            ds.Id = id
         Catch ex As Exception
 
         End Try

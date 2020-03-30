@@ -234,9 +234,6 @@
                     If i > 0 Then str &= vbNewLine & "- "
 
                     str &= " Depôt N° " & dt.Rows(i).Item("dpid") & " : " & dt.Rows(i).Item("qte")
-
-
-
                 Next
             Catch ex As Exception
             End Try
