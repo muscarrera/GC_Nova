@@ -37,6 +37,8 @@ Partial Class Setting
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
         Me.cbAccessClient = New System.Windows.Forms.CheckBox()
         Me.cbImpRef = New System.Windows.Forms.CheckBox()
+        Me.cbFactureGetSold = New System.Windows.Forms.CheckBox()
+        Me.cbBlGetSold = New System.Windows.Forms.CheckBox()
         Me.cbPorteMonie = New System.Windows.Forms.CheckBox()
         Me.cbSoldByAvoir = New System.Windows.Forms.CheckBox()
         Me.cbBlLivrable = New System.Windows.Forms.CheckBox()
@@ -325,7 +327,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 668)
+        Me.plPref.Location = New System.Drawing.Point(5, 619)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 402)
@@ -336,6 +338,8 @@ Partial Class Setting
         Me.GroupBox3.Controls.Add(Me.cbBaseOnTTC)
         Me.GroupBox3.Controls.Add(Me.cbAccessClient)
         Me.GroupBox3.Controls.Add(Me.cbImpRef)
+        Me.GroupBox3.Controls.Add(Me.cbFactureGetSold)
+        Me.GroupBox3.Controls.Add(Me.cbBlGetSold)
         Me.GroupBox3.Controls.Add(Me.cbPorteMonie)
         Me.GroupBox3.Controls.Add(Me.cbSoldByAvoir)
         Me.GroupBox3.Controls.Add(Me.cbBlLivrable)
@@ -363,7 +367,7 @@ Partial Class Setting
         'cbAccessClient
         '
         Me.cbAccessClient.AutoSize = True
-        Me.cbAccessClient.Location = New System.Drawing.Point(17, 240)
+        Me.cbAccessClient.Location = New System.Drawing.Point(17, 286)
         Me.cbAccessClient.Name = "cbAccessClient"
         Me.cbAccessClient.Size = New System.Drawing.Size(178, 17)
         Me.cbAccessClient.TabIndex = 28
@@ -373,12 +377,32 @@ Partial Class Setting
         'cbImpRef
         '
         Me.cbImpRef.AutoSize = True
-        Me.cbImpRef.Location = New System.Drawing.Point(17, 217)
+        Me.cbImpRef.Location = New System.Drawing.Point(17, 263)
         Me.cbImpRef.Name = "cbImpRef"
         Me.cbImpRef.Size = New System.Drawing.Size(123, 17)
         Me.cbImpRef.TabIndex = 28
         Me.cbImpRef.Text = "Impremier Réf Article"
         Me.cbImpRef.UseVisualStyleBackColor = True
+        '
+        'cbFactureGetSold
+        '
+        Me.cbFactureGetSold.AutoSize = True
+        Me.cbFactureGetSold.Location = New System.Drawing.Point(17, 239)
+        Me.cbFactureGetSold.Name = "cbFactureGetSold"
+        Me.cbFactureGetSold.Size = New System.Drawing.Size(176, 17)
+        Me.cbFactureGetSold.TabIndex = 28
+        Me.cbFactureGetSold.Text = "Obligation de payement Facture"
+        Me.cbFactureGetSold.UseVisualStyleBackColor = True
+        '
+        'cbBlGetSold
+        '
+        Me.cbBlGetSold.AutoSize = True
+        Me.cbBlGetSold.Location = New System.Drawing.Point(17, 216)
+        Me.cbBlGetSold.Name = "cbBlGetSold"
+        Me.cbBlGetSold.Size = New System.Drawing.Size(172, 17)
+        Me.cbBlGetSold.TabIndex = 28
+        Me.cbBlGetSold.Text = "Obligation de payement BL/BA"
+        Me.cbBlGetSold.UseVisualStyleBackColor = True
         '
         'cbPorteMonie
         '
@@ -614,7 +638,7 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 509)
+        Me.plImp.Location = New System.Drawing.Point(5, 460)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
         Me.plImp.Size = New System.Drawing.Size(750, 159)
@@ -1174,7 +1198,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 451)
+        Me.plRole.Location = New System.Drawing.Point(5, 402)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 58)
@@ -1221,7 +1245,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 389)
+        Me.plUser.Location = New System.Drawing.Point(5, 340)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1280,7 +1304,7 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 325)
+        Me.plText.Location = New System.Drawing.Point(5, 276)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
         Me.plText.Size = New System.Drawing.Size(750, 64)
@@ -1568,7 +1592,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 320)
+        Me.plData.Size = New System.Drawing.Size(750, 271)
         Me.plData.TabIndex = 13
         '
         'GroupBox1
@@ -1726,7 +1750,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(730, 39)
+        Me.Panel6.Size = New System.Drawing.Size(713, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1955,5 +1979,7 @@ Partial Class Setting
     Friend WithEvents cbSoldByAvoir As System.Windows.Forms.CheckBox
     Friend WithEvents cbImpRef As System.Windows.Forms.CheckBox
     Friend WithEvents cbAccessClient As System.Windows.Forms.CheckBox
+    Friend WithEvents cbFactureGetSold As System.Windows.Forms.CheckBox
+    Friend WithEvents cbBlGetSold As System.Windows.Forms.CheckBox
 
 End Class

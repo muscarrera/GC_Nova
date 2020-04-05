@@ -268,7 +268,7 @@
                 dg.Columns(17).Visible = False
                 dg.Columns(18).Visible = False
                 dg.Columns(19).Visible = False
-                dg.Columns(20).Visible = False
+                If Form1.useValue_CUMP = False Then dg.Columns(20).Visible = False
 
                 If Form1.isWorkinOnStock Or Form1.useButtonValidForStock Then
                     dg.Columns(7).Visible = True
@@ -279,7 +279,7 @@
                 dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
                 dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
                 dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                dg.Columns(2).FillWeight = 200
+                dg.Columns(2).FillWeight = 69
              
                 dg.Columns(3).HeaderText = "Grp"
                 dg.Columns(2).HeaderText = "Designation"
@@ -289,9 +289,11 @@
 
                 dg.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 dg.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                dg.Columns(20).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
                 dg.Columns(5).DefaultCellStyle.Format = "c"
                 dg.Columns(6).DefaultCellStyle.Format = "c"
+                dg.Columns(20).DefaultCellStyle.Format = "c"
 
                 AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
                 AddHandler dg.Sorted, AddressOf Dg_Sorted
@@ -493,6 +495,23 @@
             GetInfos(id)
         End If
     End Sub
+    Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
+        Dim dt As DataGridView = sender
+        Dim qte As Double = 0
+        For i As Integer = 0 To dt.Rows.Count - 1
+            qte = dt.Rows(i).Cells(7).Value
+
+            If qte > Form1.myMinStock Then
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
+                dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            ElseIf qte <= Form1.myMinStock And qte >= 0 Then
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
+            Else
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
+            End If
+        Next
+    End Sub
+
 
     'raise Events
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
@@ -671,21 +690,6 @@
 
     End Sub
 
-    Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
-        Dim dt As DataGridView = sender
-        Dim qte As Double = 0
-        For i As Integer = 0 To dt.Rows.Count - 1
-            qte = dt.Rows(i).Cells(7).Value
-
-            If qte > Form1.myMinStock Then
-                dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
-                dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-            ElseIf qte <= Form1.myMinStock And qte >= 0 Then
-                dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
-            Else
-                dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
-            End If
-        Next
-    End Sub
+   
 
 End Class

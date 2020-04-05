@@ -64,12 +64,12 @@
                 adresse = StrValue(dt, "adresse", 0) 'dt.Rows(0).Item("adresse")
 
                 Dim x As Boolean
-                If Not IsDBNull(dt.Rows(0).Item("cp")) And dt.Rows(0).Item("cp") <> "" Then
+                If StrValue(dt, "cp", 0) <> "" Then
                     x = True
                     adresse &= vbNewLine
                     adresse &= "CP : " & StrValue(dt, "cp", 0) 'dt.Rows(0).Item("cp")
                 End If
-                If Not IsDBNull(dt.Rows(0).Item("ville")) And dt.Rows(0).Item("ville") <> "" Then
+                If StrValue(dt, "ville", 0) <> "" Then
 
                     If x = False Then adresse &= vbNewLine
                     adresse &= "-  " & StrValue(dt, "ville", 0).ToUpper ' dt.Rows(0).Item("ville").ToString.ToUpper

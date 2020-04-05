@@ -233,7 +233,7 @@
                 btAvoir.Visible = True
                 If Form1.useButtonValidForStock Then btValideBl.Visible = True
 
-            ElseIf value = "Buy_Facture" Then
+            ElseIf value = "Facture_Achat" Then
                 btFacturer.Visible = False
                 btDelivry.Visible = False
                 btTranformer.Visible = False
@@ -320,7 +320,7 @@
                 btSolde.Visible = False
                 btFacturer.Visible = False
             Else
-                If Type = "Facture" Or Type = "Buy_Facture" Or
+                If Type = "Facture" Or Type = "Facture_Achat" Or
                     Type = "BL" Or Type = "BA" Then btSolde.Visible = True
             End If
 
@@ -426,7 +426,7 @@
         RaiseEvent NewBcRef()
     End Sub
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If Type = "Facture" Then
+        If Type.StartsWith("Facture") Then
             RaiseEvent AddListofBl()
         Else
             RaiseEvent NewBlRef()

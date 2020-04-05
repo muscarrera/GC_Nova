@@ -170,7 +170,7 @@ Public Class FactureClass
                 params.Add("date", dte)
                 params.Add("writer", CStr(Form1.adminName))
                 params.Add("isAdmin", "CREATION")
-                params.Add("isPayed", ds.isPayed)
+                params.Add("isPayed", False) ' ds.isPayed)
                 params.Add("modePayement", ds.ModePayement)
                 If isDuplicate = False Then params.Add(ds.FactureTable, ds.Id)
                 If tb_F = "Sell_Avoir" And ds.FactureTable = "Sell_Facture" Then params.Add("Bon_Livraison", "Fct N° : " & ds.Id)
@@ -182,7 +182,7 @@ Public Class FactureClass
                 If data.Rows.Count > 0 Then
 
                     For i As Integer = 0 To data.Rows.Count - 1
-
+                        params.Clear()
                         params.Add("fctid", fid)
                         params.Add("name", data.Rows(i).Item("name"))
                         params.Add("bprice", data.Rows(i).Item("bprice"))
@@ -226,6 +226,7 @@ Public Class FactureClass
 
                                 AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
                                             data.Rows(i).Item("cid"), q, c)
+                                params.Clear()
                             Else
                                 If tb_F = "Bon_Achat" And Form1.useValue_CUMP Then
                                     params.Clear()
@@ -242,6 +243,7 @@ Public Class FactureClass
 
                                     params2.Add("CUMP", cump)
                                     c.UpdateRecord("Article", params2, params)
+                                    params.Clear()
                                 End If
 
 
@@ -689,7 +691,7 @@ Public Class FactureClass
 
     '*Stock function and methodes
     Private Function getStockById(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Double
-        If Form1.isWorkinOnStock = False Then Return Nothing
+        'If Form1.isWorkinOnStock = False Then Return Nothing
 
         Dim where As New Dictionary(Of String, Object)
         where.Add("arid", arid)
@@ -700,7 +702,7 @@ Public Class FactureClass
         Return qte
     End Function
     Private Function getStockId(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Integer
-        If Form1.isWorkinOnStock = False Then Return 0
+        'If Form1.isWorkinOnStock = False Then Return 0
 
         Dim where As New Dictionary(Of String, Object)
         where.Add("arid", arid)
@@ -713,7 +715,7 @@ Public Class FactureClass
     Private Function AddNewStock(ByVal arid As Integer, ByVal dpid As Integer,
                                      ByVal cid As Integer, ByVal qte As Double,
                                      ByVal c As DataAccess) As Integer
-        If Form1.isWorkinOnStock = False Then Return Nothing
+        'If Form1.isWorkinOnStock = False And Form1.useButtonValidForStock + False Then Return Nothing
 
         Dim where As New Dictionary(Of String, Object)
         where.Add("arid", arid)
@@ -727,7 +729,7 @@ Public Class FactureClass
     End Function
     Private Function updateStock(ByVal arid As Integer, ByVal dpid As Integer,
                                     ByVal qte As Double, ByVal c As DataAccess) As Integer
-        If Form1.isWorkinOnStock = False Then Return Nothing
+        'If Form1.isWorkinOnStock = False Then Return Nothing
 
         Dim where As New Dictionary(Of String, Object)
         Dim params As New Dictionary(Of String, Object)
@@ -743,7 +745,7 @@ Public Class FactureClass
     Private Sub GetArticleStock(ByRef pl As Panel, ByVal isS As Boolean)
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-            If Form1.isWorkinOnStock = False Then Exit Sub
+            'If Form1.isWorkinOnStock = False Then Exit Sub
             Dim where As New Dictionary(Of String, Object)
 
             For Each l As ListRow In pl.Controls
@@ -1448,12 +1450,23 @@ Public Class FactureClass
 
             params = Nothing
             where = Nothing
-            If ds.FactureTable = "Commande_Client" Or ds.FactureTable = "Bon_Commande" Then
-                GetListofCommande(ds)
+            If ds.Mode = "LIST" Then
+                Dim dtt = ds.DataList
+                For i As Integer = 0 To dtt.Rows.Count - 1
+                    If dtt.Rows(i).Item(0) = id Then
+                        dtt.Rows.Remove(dtt.Rows(i))
+                        ds.DataList = dtt
+                    End If
+                Next
             Else
-                GetListofFacture(ds)
+                If ds.FactureTable = "Commande_Client" Or ds.FactureTable = "Bon_Commande" Then
+                    GetListofCommande(ds)
+                Else
+                    GetListofFacture(ds)
+                End If
+                ds.Mode = "LIST"
             End If
-            ds.Mode = "LIST"
+
         End Using
     End Sub
     Private Sub DeleteBon(ByVal id As Integer, ByRef ds As DataList)
@@ -1684,7 +1697,7 @@ Public Class FactureClass
                                 If cump = 0 Then
                                     cump = c.SelectByScalar("Article", "bprice", params)
                                 End If
-                                cump = ((cump * oldStock) + (R.bprice * q)) / (oldStock + q)
+                                cump = ((cump * oldStock) + (R.sprice * q)) / (oldStock + q)
                                 Dim params2 As New Dictionary(Of String, Object)
 
                                 params2.Add("CUMP", cump)
@@ -2448,7 +2461,7 @@ Public Class FactureClass
                                 params.Add("arid", data.Rows(i).Item("arid"))
 
                                 Dim params2 As New Dictionary(Of String, Object)
-                                params2.Add("CUMP", data.Rows(i).Item("bprice"))
+                                params2.Add("CUMP", data.Rows(i).Item("price"))
 
                                 c.UpdateRecord("Article", params2, params)
                             End If

@@ -1,7 +1,8 @@
 ﻿Public Class SearchForArticle
     Dim params As New Dictionary(Of String, Object)
     Dim dt_Cat As DataTable
-    Dim arid As Integer = 0
+    Public arid As Integer = 0
+    Public _name As String = ""
 
     Public _ref As String = ""
 
@@ -178,6 +179,7 @@
         Try
             arid = DataGridView1.SelectedRows(0).Cells(0).Value
             lbName.Text = DataGridView1.SelectedRows(0).Cells(1).Value
+            _name = DataGridView1.SelectedRows(0).Cells(1).Value
             lbRef.Text = DataGridView1.SelectedRows(0).Cells(2).Value
             _ref = CStr(DataGridView1.SelectedRows(0).Cells(2).Value)
             lbCat.Text = DataGridView1.SelectedRows(0).Cells(3).Value
@@ -216,7 +218,7 @@
     Private Function GetArticleStock(ByVal id As Integer) As String
         Dim str = "- "
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-            If Form1.isWorkinOnStock = False Then Return "------------"
+            If Form1.isWorkinOnStock = False And Form1.useButtonValidForStock = False Then Return "------------"
             Dim where As New Dictionary(Of String, Object)
 
 
@@ -263,7 +265,5 @@
         If mv.ShowDialog = Windows.Forms.DialogResult.OK Then
             lbStk.Text = GetArticleStock(arid)
         End If
-
-
     End Sub
 End Class

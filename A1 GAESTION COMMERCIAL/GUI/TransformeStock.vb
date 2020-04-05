@@ -141,6 +141,22 @@
                 params.Add("qte", qte)
                 a.InsertRecord("Details_Stock", params)
             End If
+
+            params.Clear()
+            where.Clear()
+
+            params.Add("arid", arid)
+            params.Add("name", lbName.Text)
+            params.Add("dpOrigin_id", dpid1)
+            params.Add("dpDest_id", dpid2)
+            params.Add("dpOrigin_name", Cb1.Text)
+            params.Add("dpDest_name", Cb2.Text)
+            params.Add("qte", CDbl(txtQte.text))
+            params.Add("date", Now.Date)
+            params.Add("writer", Form1.adminName)
+
+            a.InsertRecord("Details_Transfer", params)
+
             Me.DialogResult = Windows.Forms.DialogResult.OK
 
         End Using

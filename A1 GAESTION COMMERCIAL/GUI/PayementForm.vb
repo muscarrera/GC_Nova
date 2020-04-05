@@ -317,7 +317,7 @@
                     c.UpdateRecord(clientTable, where, params)
                     where.Clear()
                     params.Clear()
-                    lb_PorteMonie.Text = pm.ToString("c")
+                    lb_PorteMonie.Text = m.ToString("c")
                 End If
             
 
@@ -415,6 +415,8 @@
                             params.Add("porte_Monie", pm)
                             c.UpdateRecord(clientTable, params, where)
 
+                            where.Clear()
+                            params.Clear()
 
                             If FactureTable = "Mission" Then
                                 where.Add("Mid", Id)
@@ -536,7 +538,8 @@
                                 R.EditMode = True
                                 R.Dock = DockStyle.Top
                                 R.BringToFront()
-                                AddHandler R.EditPayement, AddressOf Edit_Payement
+                                AddHandler R.Cleared, AddressOf Delete_Payement
+
                                 'add control
                                 If d_id > 0 Then
                                     plPmBody.Controls.Add(R)
@@ -568,7 +571,13 @@
 
               
                 params.Add("Clid", cid)
-                Dim old_porteMonie As Double = c.SelectByScalar(clientTable, "porte_Monie", params)
+                Dim old_porteMonie As Double = 0
+                Try
+                    old_porteMonie = c.SelectByScalar(clientTable, "porte_Monie", params)
+                Catch ex As Exception
+                    old_porteMonie = 0
+                End Try
+
                 old_porteMonie += rest
                 where.Add("porte_Monie", old_porteMonie)
 

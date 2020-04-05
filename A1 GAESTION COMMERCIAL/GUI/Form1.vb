@@ -16,6 +16,9 @@
     Public isBaseOnTTC As Boolean = False
     Public isBaseOnOneTva As Boolean = False
 
+    Public isBlGetSold As Boolean
+    Public isFactureGetSold As Boolean
+
     'private members
     Private _Exercice As String = 19
     Private _Mode As String = "Accueil"
@@ -84,6 +87,7 @@
     Public Color_Default_Row As Color = Color.Bisque
     Public Color_Alternating_Row As Color = Color.WhiteSmoke
     Public Color_Selected_Row As Color = Color.Red
+    
 
 
 
@@ -298,5 +302,12 @@
             MsgBox("merci de votre compréhension , Code d'activation ' est correct")
             btTrial.Enabled = False
         End If
+    End Sub
+
+    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        Using c As New InventaireClass
+            c.AddDataList()
+        End Using
+        HeaderColor(bt_Parck.Text)
     End Sub
 End Class

@@ -87,8 +87,9 @@
             cbPorteMonie.Checked = getRegistryinfo("usePortMonie", False)
             cbCump.Checked = getRegistryinfo("useValue_CUMP", False)
             cbImpRef.Checked = getRegistryinfo("printRef", False)
-             
-
+            cbBlGetSold.Checked = getRegistryinfo("isBlGetSold", True)
+            cbFactureGetSold.Checked = getRegistryinfo("isFactureGetSold", False)
+ 
             lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
             lbSelectText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Selected_Text", Color.Yellow.ToArgb.ToString))
             plDefRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Default_Row", Color.Bisque.ToArgb.ToString))
@@ -310,7 +311,8 @@
             setRegistryinfo("usePortMonie", cbPorteMonie.Checked)
             setRegistryinfo("useValue_CUMP", cbCump.Checked)
             setRegistryinfo("printRef", cbImpRef.Checked)
-
+            setRegistryinfo("isBlGetSold", cbBlGetSold.Checked)
+            setRegistryinfo("isFactureGetSold", cbFactureGetSold.Checked)
 
 
             Form1.useValue_CUMP = cbCump.Checked

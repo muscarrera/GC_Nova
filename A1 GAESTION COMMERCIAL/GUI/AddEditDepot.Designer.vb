@@ -35,11 +35,11 @@ Partial Class AddEditDepot
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvctg = New System.Windows.Forms.DataGridView()
-        Me.ALMohassinDBDataSet = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet()
-        Me.DepotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DepotTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DepotTableAdapter()
         Me.DpidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DepotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ALMohassinDBDataSet = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet()
+        Me.DepotTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DepotTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button45 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -48,8 +48,8 @@ Partial Class AddEditDepot
         Me.Panel21.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvctg, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -146,7 +146,7 @@ Partial Class AddEditDepot
         Me.GroupBox1.Size = New System.Drawing.Size(293, 344)
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Depôt"
+        Me.GroupBox1.Text = "Entrepotes"
         '
         'dgvctg
         '
@@ -199,20 +199,6 @@ Partial Class AddEditDepot
         Me.dgvctg.Size = New System.Drawing.Size(287, 325)
         Me.dgvctg.TabIndex = 20
         '
-        'ALMohassinDBDataSet
-        '
-        Me.ALMohassinDBDataSet.DataSetName = "ALMohassinDBDataSet"
-        Me.ALMohassinDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DepotBindingSource
-        '
-        Me.DepotBindingSource.DataMember = "Depot"
-        Me.DepotBindingSource.DataSource = Me.ALMohassinDBDataSet
-        '
-        'DepotTableAdapter
-        '
-        Me.DepotTableAdapter.ClearBeforeFill = True
-        '
         'DpidDataGridViewTextBoxColumn
         '
         Me.DpidDataGridViewTextBoxColumn.DataPropertyName = "dpid"
@@ -229,6 +215,20 @@ Partial Class AddEditDepot
         Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
         Me.NameDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'DepotBindingSource
+        '
+        Me.DepotBindingSource.DataMember = "Depot"
+        Me.DepotBindingSource.DataSource = Me.ALMohassinDBDataSet
+        '
+        'ALMohassinDBDataSet
+        '
+        Me.ALMohassinDBDataSet.DataSetName = "ALMohassinDBDataSet"
+        Me.ALMohassinDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DepotTableAdapter
+        '
+        Me.DepotTableAdapter.ClearBeforeFill = True
+        '
         'Button1
         '
         Me.Button1.AllowDrop = True
@@ -241,9 +241,9 @@ Partial Class AddEditDepot
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button1.Location = New System.Drawing.Point(129, 34)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(86, 65)
+        Me.Button1.Size = New System.Drawing.Size(97, 65)
         Me.Button1.TabIndex = 35
-        Me.Button1.Text = "تعديل "
+        Me.Button1.Text = "Edit"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -256,12 +256,12 @@ Partial Class AddEditDepot
         Me.Button45.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.Button45.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_add_61769
         Me.Button45.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button45.Location = New System.Drawing.Point(32, 34)
+        Me.Button45.Location = New System.Drawing.Point(26, 34)
         Me.Button45.Margin = New System.Windows.Forms.Padding(0)
         Me.Button45.Name = "Button45"
-        Me.Button45.Size = New System.Drawing.Size(89, 65)
+        Me.Button45.Size = New System.Drawing.Size(95, 65)
         Me.Button45.TabIndex = 36
-        Me.Button45.Text = " جديد"
+        Me.Button45.Text = "Nouveau"
         Me.Button45.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button45.UseVisualStyleBackColor = False
         '
@@ -275,11 +275,11 @@ Partial Class AddEditDepot
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.DELETE_20
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button4.Location = New System.Drawing.Point(245, 34)
+        Me.Button4.Location = New System.Drawing.Point(232, 34)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(89, 65)
+        Me.Button4.Size = New System.Drawing.Size(102, 65)
         Me.Button4.TabIndex = 34
-        Me.Button4.Text = "حذف "
+        Me.Button4.Text = "Supprimer"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button4.UseVisualStyleBackColor = False
         '
@@ -306,14 +306,14 @@ Partial Class AddEditDepot
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "AddEditDepot"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Gestion des Depot"
+        Me.Text = "Gestion des Entrepotes"
         Me.Panel58.ResumeLayout(False)
         Me.Panel21.ResumeLayout(False)
         Me.Panel21.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.dgvctg, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DepotBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ALMohassinDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

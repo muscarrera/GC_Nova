@@ -25,8 +25,14 @@ Partial Class RelveClient
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btPrint = New System.Windows.Forms.Button()
         Me.lbClient = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbRest = New System.Windows.Forms.Label()
+        Me.lbrestBon = New System.Windows.Forms.Label()
         Me.lbrestFact = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -35,16 +41,28 @@ Partial Class RelveClient
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
-        Me.btPrint = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lbrestBon = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lbRest = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lb_PorteMonie = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lbAvoir = New System.Windows.Forms.Label()
+        Me.plReserve = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lbTreserve = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lbRestBonFactur = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.plReserve.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -54,8 +72,24 @@ Partial Class RelveClient
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(598, 64)
+        Me.Panel1.Size = New System.Drawing.Size(736, 64)
         Me.Panel1.TabIndex = 0
+        '
+        'btPrint
+        '
+        Me.btPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btPrint.BackColor = System.Drawing.Color.Transparent
+        Me.btPrint.FlatAppearance.BorderSize = 0
+        Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
+        Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btPrint.Location = New System.Drawing.Point(621, 18)
+        Me.btPrint.Name = "btPrint"
+        Me.btPrint.Size = New System.Drawing.Size(103, 32)
+        Me.btPrint.TabIndex = 5
+        Me.btPrint.Text = "Imprimer"
+        Me.btPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btPrint.UseVisualStyleBackColor = False
         '
         'lbClient
         '
@@ -70,24 +104,76 @@ Partial Class RelveClient
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.lbRest)
-        Me.Panel2.Controls.Add(Me.lbrestBon)
-        Me.Panel2.Controls.Add(Me.lbrestFact)
+        Me.Panel2.Controls.Add(Me.Panel8)
+        Me.Panel2.Controls.Add(Me.Panel6)
+        Me.Panel2.Controls.Add(Me.plReserve)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 450)
+        Me.Panel2.Location = New System.Drawing.Point(0, 393)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(598, 81)
+        Me.Panel2.Size = New System.Drawing.Size(736, 202)
         Me.Panel2.TabIndex = 0
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(16, 19)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(33, 12)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Total"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(11, 42)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(102, 12)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Rest Sur les Bons"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(11, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(124, 12)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Rest Sur les Factures"
+        '
+        'lbRest
+        '
+        Me.lbRest.AutoSize = True
+        Me.lbRest.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbRest.ForeColor = System.Drawing.Color.Green
+        Me.lbRest.Location = New System.Drawing.Point(101, 11)
+        Me.lbRest.Name = "lbRest"
+        Me.lbRest.Size = New System.Drawing.Size(22, 24)
+        Me.lbRest.TabIndex = 0
+        Me.lbRest.Text = "0"
+        '
+        'lbrestBon
+        '
+        Me.lbrestBon.AutoSize = True
+        Me.lbrestBon.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbrestBon.ForeColor = System.Drawing.Color.Blue
+        Me.lbrestBon.Location = New System.Drawing.Point(170, 32)
+        Me.lbrestBon.Name = "lbrestBon"
+        Me.lbrestBon.Size = New System.Drawing.Size(22, 24)
+        Me.lbrestBon.TabIndex = 0
+        Me.lbrestBon.Text = "0"
         '
         'lbrestFact
         '
         Me.lbrestFact.AutoSize = True
         Me.lbrestFact.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbrestFact.ForeColor = System.Drawing.Color.Red
-        Me.lbrestFact.Location = New System.Drawing.Point(12, 46)
+        Me.lbrestFact.Location = New System.Drawing.Point(170, 0)
         Me.lbrestFact.Name = "lbrestFact"
         Me.lbrestFact.Size = New System.Drawing.Size(22, 24)
         Me.lbrestFact.TabIndex = 0
@@ -99,7 +185,7 @@ Partial Class RelveClient
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 64)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(598, 386)
+        Me.Panel3.Size = New System.Drawing.Size(736, 329)
         Me.Panel3.TabIndex = 0
         '
         'DataGridView1
@@ -135,7 +221,7 @@ Partial Class RelveClient
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 36
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(598, 386)
+        Me.DataGridView1.Size = New System.Drawing.Size(736, 329)
         Me.DataGridView1.TabIndex = 0
         '
         'Column1
@@ -165,82 +251,159 @@ Partial Class RelveClient
         'PrintDoc
         '
         '
-        'btPrint
+        'lb_PorteMonie
         '
-        Me.btPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btPrint.BackColor = System.Drawing.Color.Transparent
-        Me.btPrint.FlatAppearance.BorderSize = 0
-        Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
-        Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btPrint.Location = New System.Drawing.Point(483, 18)
-        Me.btPrint.Name = "btPrint"
-        Me.btPrint.Size = New System.Drawing.Size(103, 32)
-        Me.btPrint.TabIndex = 5
-        Me.btPrint.Text = "Imprimer"
-        Me.btPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btPrint.UseVisualStyleBackColor = False
+        Me.lb_PorteMonie.AutoSize = True
+        Me.lb_PorteMonie.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_PorteMonie.Location = New System.Drawing.Point(2, 40)
+        Me.lb_PorteMonie.Name = "lb_PorteMonie"
+        Me.lb_PorteMonie.Size = New System.Drawing.Size(22, 24)
+        Me.lb_PorteMonie.TabIndex = 12
+        Me.lb_PorteMonie.Text = "0"
         '
-        'Label1
+        'Label2
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(12, 24)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(124, 12)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Rest Sur les Factures"
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(190, 11)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(41, 15)
+        Me.Label2.TabIndex = 15
+        Me.Label2.Text = "Avoir"
+        Me.Label2.Visible = False
         '
-        'lbrestBon
+        'Label5
         '
-        Me.lbrestBon.AutoSize = True
-        Me.lbrestBon.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbrestBon.ForeColor = System.Drawing.Color.Blue
-        Me.lbrestBon.Location = New System.Drawing.Point(191, 46)
-        Me.lbrestBon.Name = "lbrestBon"
-        Me.lbrestBon.Size = New System.Drawing.Size(22, 24)
-        Me.lbrestBon.TabIndex = 0
-        Me.lbrestBon.Text = "0"
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(3, 11)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(102, 15)
+        Me.Label5.TabIndex = 14
+        Me.Label5.Text = "porte-monnaie"
+        Me.Label5.Visible = False
         '
-        'Label3
+        'lbAvoir
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(191, 24)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(102, 12)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Rest Sur les Bons"
+        Me.lbAvoir.AutoSize = True
+        Me.lbAvoir.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvoir.Location = New System.Drawing.Point(189, 40)
+        Me.lbAvoir.Name = "lbAvoir"
+        Me.lbAvoir.Size = New System.Drawing.Size(22, 24)
+        Me.lbAvoir.TabIndex = 11
+        Me.lbAvoir.Text = "0"
         '
-        'lbRest
+        'plReserve
         '
-        Me.lbRest.AutoSize = True
-        Me.lbRest.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbRest.ForeColor = System.Drawing.Color.Green
-        Me.lbRest.Location = New System.Drawing.Point(422, 46)
-        Me.lbRest.Name = "lbRest"
-        Me.lbRest.Size = New System.Drawing.Size(22, 24)
-        Me.lbRest.TabIndex = 0
-        Me.lbRest.Text = "0"
+        Me.plReserve.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.plReserve.Controls.Add(Me.Panel5)
+        Me.plReserve.Controls.Add(Me.Label5)
+        Me.plReserve.Controls.Add(Me.lbAvoir)
+        Me.plReserve.Controls.Add(Me.Label2)
+        Me.plReserve.Controls.Add(Me.lb_PorteMonie)
+        Me.plReserve.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.plReserve.Location = New System.Drawing.Point(386, 6)
+        Me.plReserve.Name = "plReserve"
+        Me.plReserve.Size = New System.Drawing.Size(317, 129)
+        Me.plReserve.TabIndex = 16
         '
-        'Label4
+        'Panel5
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(422, 24)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(33, 12)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Total"
+        Me.Panel5.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.Panel5.Controls.Add(Me.Label6)
+        Me.Panel5.Controls.Add(Me.lbTreserve)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel5.Location = New System.Drawing.Point(0, 75)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(315, 52)
+        Me.Panel5.TabIndex = 17
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(4, 21)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(33, 12)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "Total"
+        '
+        'lbTreserve
+        '
+        Me.lbTreserve.AutoSize = True
+        Me.lbTreserve.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTreserve.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbTreserve.Location = New System.Drawing.Point(52, 11)
+        Me.lbTreserve.Name = "lbTreserve"
+        Me.lbTreserve.Size = New System.Drawing.Size(22, 24)
+        Me.lbTreserve.TabIndex = 12
+        Me.lbTreserve.Text = "0"
+        '
+        'Panel6
+        '
+        Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel6.Controls.Add(Me.Panel7)
+        Me.Panel6.Controls.Add(Me.Label1)
+        Me.Panel6.Controls.Add(Me.lbrestFact)
+        Me.Panel6.Controls.Add(Me.Label3)
+        Me.Panel6.Controls.Add(Me.lbrestBon)
+        Me.Panel6.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.Panel6.Location = New System.Drawing.Point(26, 5)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(317, 129)
+        Me.Panel6.TabIndex = 16
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.Panel7.Controls.Add(Me.Label8)
+        Me.Panel7.Controls.Add(Me.lbRestBonFactur)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel7.Location = New System.Drawing.Point(0, 75)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(315, 52)
+        Me.Panel7.TabIndex = 17
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
+        Me.Label8.Location = New System.Drawing.Point(4, 21)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(33, 12)
+        Me.Label8.TabIndex = 0
+        Me.Label8.Text = "Total"
+        '
+        'lbRestBonFactur
+        '
+        Me.lbRestBonFactur.AutoSize = True
+        Me.lbRestBonFactur.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbRestBonFactur.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbRestBonFactur.Location = New System.Drawing.Point(52, 11)
+        Me.lbRestBonFactur.Name = "lbRestBonFactur"
+        Me.lbRestBonFactur.Size = New System.Drawing.Size(22, 24)
+        Me.lbRestBonFactur.TabIndex = 12
+        Me.lbRestBonFactur.Text = "0"
+        '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.LightGreen
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.Label4)
+        Me.Panel8.Controls.Add(Me.lbRest)
+        Me.Panel8.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.Panel8.Location = New System.Drawing.Point(27, 141)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(676, 50)
+        Me.Panel8.TabIndex = 16
         '
         'RelveClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(598, 531)
+        Me.ClientSize = New System.Drawing.Size(736, 595)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -251,9 +414,18 @@ Partial Class RelveClient
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.plReserve.ResumeLayout(False)
+        Me.plReserve.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -274,4 +446,17 @@ Partial Class RelveClient
     Friend WithEvents lbrestBon As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents lbRest As System.Windows.Forms.Label
+    Friend WithEvents Panel8 As System.Windows.Forms.Panel
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents Panel7 As System.Windows.Forms.Panel
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lbRestBonFactur As System.Windows.Forms.Label
+    Friend WithEvents plReserve As System.Windows.Forms.Panel
+    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lbTreserve As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lbAvoir As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lb_PorteMonie As System.Windows.Forms.Label
 End Class

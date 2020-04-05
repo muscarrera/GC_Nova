@@ -92,6 +92,7 @@
     <Compile Include="Classes\DataAccess.vb" />
     <Compile Include="Classes\DrawClass.vb" />
     <Compile Include="Classes\FactureClass.vb" />
+    <Compile Include="Classes\InventaireClass.vb" />
     <Compile Include="Classes\NumericStrings.vb" />
     <Compile Include="Classes\ParcClass.vb" />
     <Compile Include="Classes\RegistryModule.vb" />
@@ -143,6 +144,42 @@
       <DependentUpon>FileLine.vb</DependentUpon>
     </Compile>
     <Compile Include="Controles\FileLine.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InventaireList.Designer.vb">
+      <DependentUpon>InventaireList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InventaireList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvHome.Designer.vb">
+      <DependentUpon>InvHome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvHome.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvJustement.Designer.vb">
+      <DependentUpon>InvJustement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvJustement.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvReception.Designer.vb">
+      <DependentUpon>InvReception.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvReception.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvTracability.Designer.vb">
+      <DependentUpon>InvTracability.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvTracability.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvTransfer.Designer.vb">
+      <DependentUpon>InvTransfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\InvTransfer.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\ListLine.Designer.vb">
@@ -442,6 +479,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\FileLine.resx">
       <DependentUpon>FileLine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InventaireList.resx">
+      <DependentUpon>InventaireList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InvHome.resx">
+      <DependentUpon>InvHome.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InvJustement.resx">
+      <DependentUpon>InvJustement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InvReception.resx">
+      <DependentUpon>InvReception.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InvTracability.resx">
+      <DependentUpon>InvTracability.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\InvTransfer.resx">
+      <DependentUpon>InvTransfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\ListLine.resx">
       <DependentUpon>ListLine.vb</DependentUpon>

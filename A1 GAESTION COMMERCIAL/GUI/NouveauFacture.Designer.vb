@@ -23,6 +23,7 @@ Partial Class NouveauFacture
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.plExerces = New System.Windows.Forms.Panel()
@@ -30,12 +31,11 @@ Partial Class NouveauFacture
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.TxtDate = New System.Windows.Forms.TextBox()
         Me.lbDate = New System.Windows.Forms.Label()
         Me.Panel64 = New System.Windows.Forms.Panel()
         Me.Button16 = New System.Windows.Forms.Button()
-        Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.txtDate = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel1.SuspendLayout()
         Me.plExerces.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -54,6 +54,26 @@ Partial Class NouveauFacture
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(368, 40)
         Me.Panel1.TabIndex = 0
+        '
+        'txtName
+        '
+        Me.txtName.BackColor = System.Drawing.Color.White
+        Me.txtName.BorderColor = System.Drawing.Color.Transparent
+        Me.txtName.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtName.IsNumiric = False
+        Me.txtName.Location = New System.Drawing.Point(52, 0)
+        Me.txtName.Name = "txtName"
+        Me.txtName.PlaceHolder = ""
+        Me.txtName.ShowClearIcon = False
+        Me.txtName.ShowSaveIcon = False
+        Me.txtName.Size = New System.Drawing.Size(239, 38)
+        Me.txtName.StartUp = 2
+        Me.txtName.TabIndex = 1
+        Me.txtName.TextSize = 8
+        Me.txtName.TxtBackColor = True
+        Me.txtName.TxtColor = System.Drawing.Color.White
+        Me.txtName.txtReadOnly = False
+        Me.txtName.TxtSelect = New Integer() {1, 0}
         '
         'Button1
         '
@@ -111,8 +131,8 @@ Partial Class NouveauFacture
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.txtDate)
         Me.Panel3.Controls.Add(Me.Button2)
-        Me.Panel3.Controls.Add(Me.TxtDate)
         Me.Panel3.Controls.Add(Me.lbDate)
         Me.Panel3.Location = New System.Drawing.Point(64, 167)
         Me.Panel3.Name = "Panel3"
@@ -130,16 +150,6 @@ Partial Class NouveauFacture
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "..."
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TxtDate
-        '
-        Me.TxtDate.BackColor = System.Drawing.Color.White
-        Me.TxtDate.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtDate.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDate.Location = New System.Drawing.Point(85, 13)
-        Me.TxtDate.Name = "TxtDate"
-        Me.TxtDate.Size = New System.Drawing.Size(248, 16)
-        Me.TxtDate.TabIndex = 2
         '
         'lbDate
         '
@@ -178,26 +188,6 @@ Partial Class NouveauFacture
         Me.Button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button16.UseVisualStyleBackColor = False
         '
-        'txtName
-        '
-        Me.txtName.BackColor = System.Drawing.Color.White
-        Me.txtName.BorderColor = System.Drawing.Color.Transparent
-        Me.txtName.Dock = System.Windows.Forms.DockStyle.Right
-        Me.txtName.IsNumiric = False
-        Me.txtName.Location = New System.Drawing.Point(52, 0)
-        Me.txtName.Name = "txtName"
-        Me.txtName.PlaceHolder = ""
-        Me.txtName.ShowClearIcon = False
-        Me.txtName.ShowSaveIcon = False
-        Me.txtName.Size = New System.Drawing.Size(239, 38)
-        Me.txtName.StartUp = 2
-        Me.txtName.TabIndex = 1
-        Me.txtName.TextSize = 8
-        Me.txtName.TxtBackColor = True
-        Me.txtName.TxtColor = System.Drawing.Color.White
-        Me.txtName.txtReadOnly = False
-        Me.txtName.TxtSelect = New Integer() {1, 0}
-        '
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.vector_cancel_icon_png_302651
@@ -207,6 +197,26 @@ Partial Class NouveauFacture
         Me.PictureBox1.Size = New System.Drawing.Size(29, 29)
         Me.PictureBox1.TabIndex = 6
         Me.PictureBox1.TabStop = False
+        '
+        'txtDate
+        '
+        Me.txtDate.BackColor = System.Drawing.Color.White
+        Me.txtDate.BorderColor = System.Drawing.Color.Transparent
+        Me.txtDate.Dock = System.Windows.Forms.DockStyle.Right
+        Me.txtDate.IsNumiric = False
+        Me.txtDate.Location = New System.Drawing.Point(52, 0)
+        Me.txtDate.Name = "txtDate"
+        Me.txtDate.PlaceHolder = ""
+        Me.txtDate.ShowClearIcon = False
+        Me.txtDate.ShowSaveIcon = False
+        Me.txtDate.Size = New System.Drawing.Size(239, 38)
+        Me.txtDate.StartUp = 2
+        Me.txtDate.TabIndex = 4
+        Me.txtDate.TextSize = 8
+        Me.txtDate.TxtBackColor = True
+        Me.txtDate.TxtColor = System.Drawing.Color.White
+        Me.txtDate.txtReadOnly = False
+        Me.txtDate.TxtSelect = New Integer() {1, 0}
         '
         'NouveauFacture
         '
@@ -244,10 +254,10 @@ Partial Class NouveauFacture
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents TxtDate As System.Windows.Forms.TextBox
     Friend WithEvents lbDate As System.Windows.Forms.Label
     Friend WithEvents txtName As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents Panel64 As System.Windows.Forms.Panel
     Friend WithEvents Button16 As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtDate As A1_GAESTION_COMMERCIAL.TxtBox
 End Class

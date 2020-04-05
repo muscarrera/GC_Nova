@@ -44,37 +44,106 @@
             getDetails()
         End Set
     End Property
+
+    Private Property TotalReserve As Double
+        Get
+            Return CDbl(lbTreserve.Text)
+        End Get
+        Set(ByVal value As Double)
+            lbTreserve.Text = value
+        End Set
+    End Property
+    Private Property TotalCredit As Double
+        Get
+            Return 0
+        End Get
+        Set(ByVal value As Double)
+            lbRest.Text = value.ToString("c")
+        End Set
+    End Property
+
     Private Sub getDetails()
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim params As New Dictionary(Of String, Object)
-            params.Add("cid", CID)
-            params.Add("isPayed", False)
+
+                If Form1.useSoldByAvoir Then
+                    params.Clear()
+
+                    params.Add("cid", CID)
+                    params.Add("isPayed", False)
+
+                    Dim tb As String = "Sell_Avoir"
+                    If ClientTable = "Fournisseur" Then tb = "Buy_Avoir"
+
+
+                    Dim dtt As DataTable = a.SelectDataTable(tb, {"total"}, params)
+                    Dim av As Double = 0
+                    For i As Integer = 0 To dtt.Rows.Count - 1
+                        av += dtt.Rows(i).Item("total")
+                    Next
+
+                lbAvoir.Text = av.ToString("c")
+                TotalReserve += av
+
+                Label2.Visible = True
+                Panel7.Visible = True
+                plReserve.Visible = True
+                End If
+
+                'get port Monie
+                If Form1.usePortMonie Then
+                    params.Clear()
+                    params.Add("Clid", CID)
+                    Dim dtee As DataTable = a.SelectDataTable(ClientTable, {"porte_Monie"}, params)
+
+                    lb_PorteMonie.Text = DblValue(dtee, "porte_Monie", 0).ToString("c")
+                TotalReserve += DblValue(dtee, "porte_Monie", 0)
+
+                Label1.Visible = True
+                Panel8.Visible = True
+                plReserve.Visible = True
+            End If
 
             Dim dte As Date = Now.Date
             Dim RestFact As Double = 0
             Dim RestBon As Double = 0
+            Dim dt As DataTable
 
-            Dim dt = a.SelectDataTable(factureTable, {"*"}, params)
-            If dt.Rows.Count > 0 Then
-                For i As Integer = 0 To dt.Rows.Count - 1
-                    If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
-                    DataGridView1.Rows.Add(DteValue(dt, "date", i), "Facture", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
-                    RestFact += DblValue(dt, "total", i) - DblValue(dt, "avance", i)
-                Next
+            If Form1.isFactureGetSold Then
+                params.Clear()
+                params.Add("cid", CID)
+                params.Add("isPayed", False)
+
+                dt = a.SelectDataTable(factureTable, {"*"}, params)
+                If dt.Rows.Count > 0 Then
+                    For i As Integer = 0 To dt.Rows.Count - 1
+                        If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
+                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Facture", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
+                        RestFact += DblValue(dt, "total", i) - DblValue(dt, "avance", i)
+                    Next
+                End If
+                lbrestFact.Visible = True
+                Label1.Visible = True
             End If
-            params.Clear()
-            params.Add("cid = ", CID)
-            params.Add("isPayed = ", False)
-            params.Add("isAdmin <> ", "Facturé")
 
-            dt = a.SelectDataTableSymbols(bonTable, {"*"}, params)
-            If dt.Rows.Count > 0 Then
-                For i As Integer = 0 To dt.Rows.Count - 1
-                    If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
-                    DataGridView1.Rows.Add(DteValue(dt, "date", i), "Bon", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
-                    RestBon = DblValue(dt, "total", i) - DblValue(dt, "avance", i)
-                Next
+            If Form1.isBlGetSold Then
+
+                params.Clear()
+                params.Add("cid = ", CID)
+                params.Add("isPayed = ", False)
+                params.Add("isAdmin <> ", "Facturé")
+
+                dt = a.SelectDataTableSymbols(bonTable, {"*"}, params)
+                If dt.Rows.Count > 0 Then
+                    For i As Integer = 0 To dt.Rows.Count - 1
+                        If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
+                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Bon", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
+                        RestBon = DblValue(dt, "total", i) - DblValue(dt, "avance", i)
+                    Next
+                End If
+                lbrestBon.Visible = True
+                Label3.Visible = True
             End If
 
             params.Clear()
@@ -96,8 +165,8 @@
             lbrestFact.Text = String.Format("{0:n}", CDec(RestFact)) & " Dhs"
             lbrestBon.Text = String.Format("{0:n}", CDec(RestBon)) & " Dhs"
 
-            lbRest.Text = String.Format("{0:n}", CDec(RestBon + RestFact)) & " Dhs"
-
+            lbRestBonFactur.Text = String.Format("{0:n}", CDec(RestBon + RestFact)) & " Dhs"
+            TotalCredit = RestBon + RestFact - TotalReserve
 
             params.Clear()
             params.Add("Clid", CID)
@@ -111,9 +180,6 @@
                     DataGridView1.Rows(I).DefaultCellStyle.BackColor = Color.Honeydew
                 End If
             Next
-
-
-
         End Using
     End Sub
 

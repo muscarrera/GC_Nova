@@ -28,15 +28,6 @@
         End If
         cName = cName.ToUpper
     End Sub
-
-    Private Sub TextBox2_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtDate.Leave
-        If Not IsDate(TxtDate.Text) Then
-            dte = Now.Date
-            TxtDate.Text = Now.Date.ToString("dd-MM-yyyy")
-        Else
-            dte = CDate(TxtDate.Text)
-        End If
-    End Sub
     Private Sub NouveauFacture_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         TxtExr.Text = Form1.Exercice
         Me.Show()
@@ -54,6 +45,7 @@
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
+
         If cName.Trim = "_" Or cName.Trim = "" Then Exit Sub
         If cid > 0 Then
             Dim Cl As New Client(cid, tb_C)
@@ -104,10 +96,25 @@
         Return x
     End Function
 
-
-
-
     Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
+    End Sub
+
+    Private Sub txtName_KeyDownOk() Handles txtName.KeyDownOk
+        TxtDate.Focus()
+    End Sub
+
+    Private Sub txtDate_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDate.Leave
+        If Not IsDate(txtDate.text) Then
+            dte = Now.Date
+            txtDate.text = Now.Date.ToString("dd-MM-yyyy")
+        Else
+            dte = CDate(txtDate.text)
+        End If
+
+    End Sub
+
+    Private Sub txtDate_KeyDownOk() Handles txtDate.KeyDownOk
+        Button3_Click(Nothing, Nothing)
     End Sub
 End Class

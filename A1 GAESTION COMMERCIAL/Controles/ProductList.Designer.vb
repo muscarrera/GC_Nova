@@ -29,8 +29,6 @@ Partial Class ProductList
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.lbValue = New System.Windows.Forms.Label()
-        Me.lbValueTitle = New System.Windows.Forms.Label()
         Me.lbLnbr = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -42,6 +40,8 @@ Partial Class ProductList
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.PB = New System.Windows.Forms.PictureBox()
+        Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -60,9 +60,9 @@ Partial Class ProductList
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.btFournisseur = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
-        Me.txtSearchCtg = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtSearchName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.lbValueTitle = New System.Windows.Forms.Label()
+        Me.lbValue = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -158,32 +158,6 @@ Partial Class ProductList
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(700, 37)
         Me.Panel4.TabIndex = 13
-        '
-        'lbValue
-        '
-        Me.lbValue.BackColor = System.Drawing.Color.LightGray
-        Me.lbValue.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbValue.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbValue.Location = New System.Drawing.Point(211, 2)
-        Me.lbValue.Name = "lbValue"
-        Me.lbValue.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbValue.Size = New System.Drawing.Size(116, 35)
-        Me.lbValue.TabIndex = 16
-        Me.lbValue.Text = "0"
-        Me.lbValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbValueTitle
-        '
-        Me.lbValueTitle.BackColor = System.Drawing.Color.Gainsboro
-        Me.lbValueTitle.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbValueTitle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbValueTitle.Location = New System.Drawing.Point(134, 2)
-        Me.lbValueTitle.Name = "lbValueTitle"
-        Me.lbValueTitle.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbValueTitle.Size = New System.Drawing.Size(77, 35)
-        Me.lbValueTitle.TabIndex = 13
-        Me.lbValueTitle.Text = "Valeur:"
-        Me.lbValueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lbLnbr
         '
@@ -315,6 +289,44 @@ Partial Class ProductList
         Me.PB.Size = New System.Drawing.Size(72, 45)
         Me.PB.TabIndex = 9
         Me.PB.TabStop = False
+        '
+        'txtSearchCtg
+        '
+        Me.txtSearchCtg.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearchCtg.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtSearchCtg.IsNumiric = False
+        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 17)
+        Me.txtSearchCtg.Name = "txtSearchCtg"
+        Me.txtSearchCtg.PlaceHolder = ""
+        Me.txtSearchCtg.ShowClearIcon = True
+        Me.txtSearchCtg.ShowSaveIcon = False
+        Me.txtSearchCtg.Size = New System.Drawing.Size(101, 26)
+        Me.txtSearchCtg.StartUp = 2
+        Me.txtSearchCtg.TabIndex = 5
+        Me.txtSearchCtg.TextSize = 10
+        Me.txtSearchCtg.TxtBackColor = True
+        Me.txtSearchCtg.TxtColor = System.Drawing.Color.White
+        Me.txtSearchCtg.txtReadOnly = False
+        Me.txtSearchCtg.TxtSelect = New Integer() {1, 0}
+        '
+        'txtSearchName
+        '
+        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearchName.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtSearchName.IsNumiric = False
+        Me.txtSearchName.Location = New System.Drawing.Point(200, 17)
+        Me.txtSearchName.Name = "txtSearchName"
+        Me.txtSearchName.PlaceHolder = ""
+        Me.txtSearchName.ShowClearIcon = True
+        Me.txtSearchName.ShowSaveIcon = False
+        Me.txtSearchName.Size = New System.Drawing.Size(255, 26)
+        Me.txtSearchName.StartUp = 2
+        Me.txtSearchName.TabIndex = 5
+        Me.txtSearchName.TextSize = 10
+        Me.txtSearchName.TxtBackColor = True
+        Me.txtSearchName.TxtColor = System.Drawing.Color.White
+        Me.txtSearchName.txtReadOnly = False
+        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
         '
         'Panel24
         '
@@ -558,46 +570,34 @@ Partial Class ProductList
         Me.btClient.Text = "Client"
         Me.btClient.UseVisualStyleBackColor = True
         '
-        'txtSearchCtg
-        '
-        Me.txtSearchCtg.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearchCtg.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtSearchCtg.IsNumiric = False
-        Me.txtSearchCtg.Location = New System.Drawing.Point(93, 17)
-        Me.txtSearchCtg.Name = "txtSearchCtg"
-        Me.txtSearchCtg.PlaceHolder = ""
-        Me.txtSearchCtg.ShowClearIcon = True
-        Me.txtSearchCtg.ShowSaveIcon = False
-        Me.txtSearchCtg.Size = New System.Drawing.Size(101, 26)
-        Me.txtSearchCtg.StartUp = 2
-        Me.txtSearchCtg.TabIndex = 5
-        Me.txtSearchCtg.TextSize = 10
-        Me.txtSearchCtg.TxtBackColor = True
-        Me.txtSearchCtg.TxtColor = System.Drawing.Color.White
-        Me.txtSearchCtg.txtReadOnly = False
-        Me.txtSearchCtg.TxtSelect = New Integer() {1, 0}
-        '
-        'txtSearchName
-        '
-        Me.txtSearchName.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearchName.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtSearchName.IsNumiric = False
-        Me.txtSearchName.Location = New System.Drawing.Point(200, 17)
-        Me.txtSearchName.Name = "txtSearchName"
-        Me.txtSearchName.PlaceHolder = ""
-        Me.txtSearchName.ShowClearIcon = True
-        Me.txtSearchName.ShowSaveIcon = False
-        Me.txtSearchName.Size = New System.Drawing.Size(255, 26)
-        Me.txtSearchName.StartUp = 2
-        Me.txtSearchName.TabIndex = 5
-        Me.txtSearchName.TextSize = 10
-        Me.txtSearchName.TxtBackColor = True
-        Me.txtSearchName.TxtColor = System.Drawing.Color.White
-        Me.txtSearchName.txtReadOnly = False
-        Me.txtSearchName.TxtSelect = New Integer() {1, 0}
-        '
         'PrintDoc
         '
+        '
+        'lbValueTitle
+        '
+        Me.lbValueTitle.BackColor = System.Drawing.Color.Gainsboro
+        Me.lbValueTitle.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValueTitle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValueTitle.Location = New System.Drawing.Point(134, 2)
+        Me.lbValueTitle.Name = "lbValueTitle"
+        Me.lbValueTitle.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValueTitle.Size = New System.Drawing.Size(77, 35)
+        Me.lbValueTitle.TabIndex = 13
+        Me.lbValueTitle.Text = "Valeur:"
+        Me.lbValueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbValue
+        '
+        Me.lbValue.BackColor = System.Drawing.Color.LightGray
+        Me.lbValue.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValue.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValue.Location = New System.Drawing.Point(211, 2)
+        Me.lbValue.Name = "lbValue"
+        Me.lbValue.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValue.Size = New System.Drawing.Size(116, 35)
+        Me.lbValue.TabIndex = 16
+        Me.lbValue.Text = "0"
+        Me.lbValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ProductList
         '
@@ -659,10 +659,10 @@ Partial Class ProductList
     Friend WithEvents Panel12 As System.Windows.Forms.Panel
     Friend WithEvents btDepot As System.Windows.Forms.Button
     Friend WithEvents link As System.Windows.Forms.LinkLabel
-    Friend WithEvents lbValue As System.Windows.Forms.Label
-    Friend WithEvents lbValueTitle As System.Windows.Forms.Label
     Friend WithEvents lbLnbr As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents lbValue As System.Windows.Forms.Label
+    Friend WithEvents lbValueTitle As System.Windows.Forms.Label
 
 End Class

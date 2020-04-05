@@ -82,6 +82,9 @@
             Form1.useValue_CUMP = getRegistryinfo("useValue_CUMP", False)
             Form1.printRef = getRegistryinfo("printRef", False)
 
+            Form1.isBlGetSold = getRegistryinfo("isBlGetSold", True)
+            Form1.isFactureGetSold = getRegistryinfo("isFactureGetSold", False)
+
             'prefix
             Form1.prf_Params.clear()
             Form1.prf_Params.Add("dv", getRegistryinfo("prf_s_dv", "Av"))

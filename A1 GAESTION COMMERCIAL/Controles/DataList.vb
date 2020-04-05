@@ -157,7 +157,7 @@
                 payementTable = "Company_Payement"
                 FactureTable = "Buy_Facture"
                 DetailsTable = "Details_Buy_Facture"
-                Entete.Type = "Buy_Facture"
+                Entete.Type = "Facture_Achat"
                 'isSell = False
                 Form1.prefix = Form1.prf_Params("fc_b")
             ElseIf value = "Bon_Commande" Then
@@ -430,14 +430,17 @@
             startIndex = 0
             lastIndex = value.Rows.Count
             numberOfItems = Form1.numberOfItems
-            numberOfPage = Math.Truncate(lastIndex / numberOfItems)
-            If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
+            'numberOfPage = Math.Truncate(lastIndex / numberOfItems)
+            'If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
+            numberOfPage = 1
+
+
             currentPage = 1
             btPage.Text = "1/" & numberOfPage
             If numberOfPage = 0 Then btPage.Text = "0"
             lastIndex = 0
-            FillRows()
-
+            'FillRows()
+            FillRowsByGrid()
 
             Try
                 lbLnbr.Text = value.Rows.Count
@@ -607,13 +610,15 @@
     End Sub
 
     Private Sub Pl_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles Pl.ControlAdded, Pl.ControlRemoved
+
+        If Mode = "LIST" Then Exit Sub
+
         If Pl.Controls.Count > 3 Then
             Pl.Height = Pl.Controls(0).Height * Pl.Controls.Count + 15
         Else
             Pl.Height = 111
         End If
 
-        If Mode = "LIST" Then Exit Sub
         If Pl.Controls.Count > 0 Then
             If TypeOf (Pl.Controls(0)) Is ListLine Then Exit Sub
         End If
@@ -774,8 +779,9 @@
     Private Sub Get_FactureInfos(ByVal p1 As Integer)
         RaiseEvent GetFactureInfos(p1)
     End Sub
+
     Private Sub FillRows()
-        pl.Controls.Clear()
+        Pl.Controls.Clear()
         lastIndex += numberOfItems
 
         If _dtList.Rows.Count > 0 Then
@@ -833,6 +839,197 @@
 
 
     End Sub
+    Private Sub FillRowsByGrid()
+        Pl.Controls.Clear()
+        Try
+            If _dtList.Rows.Count > 0 Then
+                If _dtList.Columns.Count = 20 Then _dtList.Columns.Add("isV", GetType(Boolean))
+                _dtList.Columns.Add("Etat", GetType(String))
+                _dtList.Columns.Add("_", GetType(Object))
+
+                Dim dg As New DataGridView
+                dg.DataSource = _dtList
+                StyleDatagrid(dg)
+                Pl.Controls.Add(dg)
+
+                dg.Columns(1).Visible = False
+                dg.Columns(2).Visible = False
+                dg.Columns(5).Visible = False
+                dg.Columns(6).Visible = False
+                dg.Columns(8).Visible = False
+                dg.Columns(9).Visible = False
+                dg.Columns(10).Visible = False
+                dg.Columns(11).Visible = False
+                dg.Columns(13).Visible = False
+                dg.Columns(14).Visible = False
+                dg.Columns(15).Visible = False
+                dg.Columns(16).Visible = False
+                dg.Columns(17).Visible = False
+                dg.Columns(18).Visible = False
+                dg.Columns(19).Visible = False
+                dg.Columns(20).Visible = False
+                dg.Columns(22).Visible = False
+
+                dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+                dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+                dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                dg.Columns(3).FillWeight = 200
+
+                dg.Columns(0).HeaderText = "ID/N°"
+                dg.Columns(1).HeaderText = "Date"
+                dg.Columns(3).HeaderText = "Libellé"
+                dg.Columns(4).HeaderText = "Total"
+                dg.Columns(7).HeaderText = "Avance"
+                dg.Columns(12).HeaderText = "Editeur"
+
+                dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+                dg.Columns(4).DefaultCellStyle.Format = "c"
+                dg.Columns(7).DefaultCellStyle.Format = "c"
+                dg.Columns(21).DefaultCellStyle.Format = "c"
+
+                AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+                AddHandler dg.CellContentClick, AddressOf Dg_CellContentClick
+                AddHandler dg.Sorted, AddressOf Dg_Sorted
+
+                Dg_Sorted(dg, Nothing)
+                Pl.Height = dg.Rows.Count * 33 + 222
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub StyleDatagrid(ByRef dg As DataGridView)
+        dg.AutoGenerateColumns = True
+        dg.BorderStyle = Windows.Forms.BorderStyle.None
+        dg.CellBorderStyle = DataGridViewCellBorderStyle.None
+        dg.RowsDefaultCellStyle.BackColor = Form1.Color_Default_Row
+        dg.AlternatingRowsDefaultCellStyle.BackColor = Form1.Color_Alternating_Row
+
+        dg.DefaultCellStyle.SelectionBackColor = Form1.Color_Selected_Row
+        dg.DefaultCellStyle.SelectionForeColor = Form1.Color_Selected_Text
+
+        dg.BackgroundColor = Color.White
+
+        dg.DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        dg.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dg.MultiSelect = False
+
+        dg.AllowUserToResizeColumns = False
+        dg.AllowUserToAddRows = False
+        dg.AllowUserToDeleteRows = False
+        dg.AllowUserToResizeRows = False
+        dg.EditMode = DataGridViewEditMode.EditProgrammatically
+
+        dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+        dg.RowTemplate.Height = 33
+        dg.ColumnHeadersHeight = 33
+
+        dg.Dock = DockStyle.Fill
+        dg.RowHeadersVisible = False
+    End Sub
+    Private Sub Dg_MouseDoubleClick(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs)
+        Dim dg As DataGridView = sender
+        If dg.SelectedRows.Count = 0 Then Exit Sub
+
+        Dim id As Integer = dg.SelectedRows(0).Cells(0).Value
+        RaiseEvent EditSelectedFacture(id)
+
+        'If TableName = "Client" Then
+        '    GetClientInfos(id)
+        'ElseIf TableName = "Fournisseur" Then
+        '    GetClientInfos(id)
+        'ElseIf TableName = "Article" Then
+        '    GetArticleInfos(id)
+        'Else
+        '    GetInfos(id)
+        'End If
+    End Sub
+    Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
+        Dim dt As DataGridView = sender
+        Dim isP As Double = 0
+
+        For i As Integer = 0 To dt.Rows.Count - 1
+            isP = dt.Rows(i).Cells(10).Value
+
+            If isP Then
+                dt.Rows(i).Cells(21).Value = "Reglé"
+                dt.Rows(i).Cells(21).Style.ForeColor = Color.Green
+
+                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("AVO") Then
+                    dt.Rows(i).Cells(21).Value = "Avoir"
+                    dt.Rows(i).Cells(21).Style.ForeColor = Color.Red
+                End If
+
+                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("ANN") Then
+                    dt.Rows(i).Cells(21).Value = "Supp"
+                    dt.Rows(i).Cells(21).Style.ForeColor = Color.Red
+                End If
+
+                'dt.Rows(i).Cells(21).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            Else
+                Dim rest As Double = dt.Rows(i).Cells(7).Value - dt.Rows(i).Cells(4).Value
+                dt.Rows(i).Cells(21).Value = rest.ToString("c")
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
+            End If
+        Next
+    End Sub
+    Private Sub Dg_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs)
+        'Dim dt As DataGridView = sender
+        'dt.Columns(22).Visible = False
+        'If dt.SelectedRows.Count = 0 Then Exit Sub
+
+        'For i As Integer = 0 To dt.Rows.Count - 1
+        '    Dim pl As Panel
+        '    If Not IsDBNull(dt.Rows(i).Cells(22).Value) Then
+        '        pl = dt.Rows(i).Cells(22).Value
+        '        pl.Controls.Clear()
+        '    End If
+        'Next
+        'If Not IsDBNull(dt.SelectedRows(0).Cells(22).Value) Then
+        '    Dim pl2 As Panel = dt.SelectedRows(0).Cells(22).Value
+        '    Dim bt As New Button
+        '    bt.Text = "text"
+        '    pl2.Controls.Clear()
+        '    pl2.Controls.Add(bt)
+        '    dt.Columns(22).Visible = True
+        'Else
+        '    Dim plz As New Panel
+        '    Dim bt As New Button
+        '    bt.Text = "text"
+        '    plz.Controls.Add(bt)
+        '    plz.BackColor = Color.Green
+        '    dt.SelectedRows(0).Cells(22).Value = plz
+        '    dt.Columns(22).Visible = True
+        'End If
+    End Sub
+
+    'Edit
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+        Dim DG As DataGridView = Pl.Controls(0)
+        If DG.SelectedRows.Count = 0 Then Exit Sub
+
+        Dim id As Integer = DG.SelectedRows(0).Cells(0).Value
+        RaiseEvent EditSelectedFacture(id)
+    End Sub
+    'Add
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        RaiseEvent NewFacture(FactureTable, clientTable, Me)
+    End Sub
+    'Delete
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim DG As DataGridView = Pl.Controls(0)
+        If DG.SelectedRows.Count = 0 Then Exit Sub
+        Dim id As Integer = DG.SelectedRows(0).Cells(0).Value
+
+        RaiseEvent DeleteFacture(id, Me)
+    End Sub
+
+
+
     Private Sub Article_Item_Changed(ByVal listRow As ListRow, ByVal art As Article)
         RaiseEvent ArticleItemChanged(listRow, art)
         Pl_ControlAdded(Nothing, Nothing)

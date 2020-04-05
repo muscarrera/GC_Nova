@@ -26,8 +26,6 @@ Partial Class Form1
         Me.plHead = New System.Windows.Forms.Panel()
         Me.plHeader = New System.Windows.Forms.Panel()
         Me.plHeaderButton = New System.Windows.Forms.Panel()
-        Me.btSetting = New System.Windows.Forms.Button()
-        Me.btTrial = New System.Windows.Forms.Button()
         Me.bt_Parck = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -57,6 +55,9 @@ Partial Class Form1
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
+        Me.btSetting = New System.Windows.Forms.Button()
+        Me.btTrial = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -93,6 +94,7 @@ Partial Class Form1
         'plHeaderButton
         '
         Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
+        Me.plHeaderButton.Controls.Add(Me.Button6)
         Me.plHeaderButton.Controls.Add(Me.btSetting)
         Me.plHeaderButton.Controls.Add(Me.btTrial)
         Me.plHeaderButton.Controls.Add(Me.bt_Parck)
@@ -109,36 +111,6 @@ Partial Class Form1
         Me.plHeaderButton.Name = "plHeaderButton"
         Me.plHeaderButton.Size = New System.Drawing.Size(894, 36)
         Me.plHeaderButton.TabIndex = 9
-        '
-        'btSetting
-        '
-        Me.btSetting.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_System_48_55301
-        Me.btSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btSetting.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btSetting.FlatAppearance.BorderSize = 0
-        Me.btSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSetting.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btSetting.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btSetting.Location = New System.Drawing.Point(728, 0)
-        Me.btSetting.Name = "btSetting"
-        Me.btSetting.Size = New System.Drawing.Size(52, 36)
-        Me.btSetting.TabIndex = 10
-        Me.btSetting.UseVisualStyleBackColor = True
-        '
-        'btTrial
-        '
-        Me.btTrial.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.trial_22
-        Me.btTrial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btTrial.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btTrial.FlatAppearance.BorderSize = 0
-        Me.btTrial.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btTrial.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btTrial.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btTrial.Location = New System.Drawing.Point(780, 0)
-        Me.btTrial.Name = "btTrial"
-        Me.btTrial.Size = New System.Drawing.Size(36, 36)
-        Me.btTrial.TabIndex = 12
-        Me.btTrial.UseVisualStyleBackColor = True
         '
         'bt_Parck
         '
@@ -425,6 +397,49 @@ Partial Class Form1
         'PrintDocList
         '
         '
+        'btSetting
+        '
+        Me.btSetting.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_System_48_55301
+        Me.btSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btSetting.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btSetting.FlatAppearance.BorderSize = 0
+        Me.btSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btSetting.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSetting.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.btSetting.Location = New System.Drawing.Point(728, 0)
+        Me.btSetting.Name = "btSetting"
+        Me.btSetting.Size = New System.Drawing.Size(52, 36)
+        Me.btSetting.TabIndex = 10
+        Me.btSetting.UseVisualStyleBackColor = True
+        '
+        'btTrial
+        '
+        Me.btTrial.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.trial_22
+        Me.btTrial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btTrial.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btTrial.FlatAppearance.BorderSize = 0
+        Me.btTrial.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btTrial.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btTrial.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.btTrial.Location = New System.Drawing.Point(780, 0)
+        Me.btTrial.Name = "btTrial"
+        Me.btTrial.Size = New System.Drawing.Size(36, 36)
+        Me.btTrial.TabIndex = 12
+        Me.btTrial.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.Button6.Location = New System.Drawing.Point(711, 0)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(118, 36)
+        Me.Button6.TabIndex = 13
+        Me.Button6.Text = "Inventaire"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -487,5 +502,6 @@ Partial Class Form1
     Friend WithEvents PrintDocMission As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintDocList As System.Drawing.Printing.PrintDocument
     Friend WithEvents btTrial As System.Windows.Forms.Button
+    Friend WithEvents Button6 As System.Windows.Forms.Button
 
 End Class
