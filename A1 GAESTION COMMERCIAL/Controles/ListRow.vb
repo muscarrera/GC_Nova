@@ -16,6 +16,7 @@
     Private _fntTitle As Font
 
     Private _article As Article
+    Private _TVA As Double
 
     Private _editMode As Boolean = False
     Private _isSelected As Boolean = False
@@ -26,7 +27,6 @@
     Public arid As Integer = 0
     Public cid As Integer
     Public alert As Double
-    Public TVA As Double
 
     Event ChangeArticleDepot(ByVal addRow As ListRow, ByVal p2 As Object)
 
@@ -56,6 +56,15 @@
 
             lbQte.Text = value
             lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
+        End Set
+    End Property
+    Public Property Tva As Double
+        Get
+            Return _TVA
+        End Get
+        Set(ByVal value As Double)
+            _TVA = value
+            lbTva.Text = value & " %"
         End Set
     End Property
     Public Property sprice As Double
@@ -303,7 +312,7 @@
 
         ' Add any initialization after the InitializeComponent() call.
         article = art
-
+        If Form1.isBaseOnOneTva Then plTva.Visible = False
         'plP.Width = Form1.cellWidth
         'plQ.Width = Form1.cellWidth
         'plR.Width = Form1.cellWidth

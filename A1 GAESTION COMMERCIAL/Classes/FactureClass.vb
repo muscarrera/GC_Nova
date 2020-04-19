@@ -23,6 +23,7 @@ Public Class FactureClass
         AddHandler ds.NewFacture, AddressOf NewFacture
         AddHandler ds.IdChanged, AddressOf GetFactureDetails
         AddHandler ds.NewRowAdded, AddressOf NewRowAdded
+        AddHandler ds.AddNewArticleToDb, AddressOf AddNewArticleToDb
         AddHandler ds.SearchByDate, AddressOf SearchByDate
         AddHandler ds.SearchById, AddressOf SearchById
         AddHandler ds.EditModePayement, AddressOf EditModePayement
@@ -1073,12 +1074,23 @@ Public Class FactureClass
             status = opr
         End If
 
-        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-            Dim params As New Dictionary(Of String, Object)
-            params.Add("isAdmin", status)
-            Dim where As New Dictionary(Of String, Object)
-            where.Add("id", id)
 
+        Dim params As New Dictionary(Of String, Object)
+        params.Add("isAdmin", status)
+
+
+        If opr.ToUpper.StartsWith("FACT") Then
+            If Tb_F = "Bon_Livraison" Or Tb_F = "Bon_Achat" Then
+                If Form1.isFactureGetSold Then
+                    params.Add("isPayed", True)
+                End If
+            End If
+        End If
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("id", id)
+
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             c.UpdateRecord(Tb_F, params, where)
 
             params.Clear()
@@ -1643,8 +1655,8 @@ Public Class FactureClass
                 Dim params As New Dictionary(Of String, Object)
                 Dim oldStock = getStockById(R.arid, R.depot, c)
 
+                'Some other options about new element
                 If Form1.useBlLivrable And tb_D = "Details_Bon_Livraison" And R.qte > oldStock Then R.qte = oldStock
-
 
                 params.Add("fctid", id)
                 params.Add("name", R.ArticleName)
@@ -1729,6 +1741,7 @@ Public Class FactureClass
                 params.Add("depot", R.depot)
                 params.Add("ref", R.ref)
                 params.Add("cid", R.cid)
+                params.Add("tva", R.TVA)
 
                 Dim where As New Dictionary(Of String, Object)
                 where.Add("id", lr.id)
@@ -2418,12 +2431,55 @@ Public Class FactureClass
         End Try
     End Sub
 
+    Private Sub AddNewArticleToDb(ByRef art As Article)
+        Try
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("ref", art.ref)
+                params.Add("name", art.name)
+                params.Add("desc", "")
+                params.Add("cid", 0)
+
+                params.Add("bprice", art.sprice)
+                params.Add("sprice", art.sprice)
+                params.Add("tva", art.TVA)
+                params.Add("prixPromo", art.sprice)
+
+                params.Add("remiseMax", 0)
+                params.Add("remiseGr", 0)
+                params.Add("remiseRev", 0)
+                params.Add("remiseCF", 0)
+
+                params.Add("stockType", "CUMP")
+                params.Add("alertStock", Form1.myMinStock)
+                params.Add("isPromo", False)
+                params.Add("isStocked", True)
+                params.Add("periode", "")
+                params.Add("img", "")
+
+                If Form1.useValue_CUMP Then params.Add("CUMP", art.sprice)
+
+                art.arid = a.InsertRecord("Article", params, True)
+            End Using
+        Catch ex As Exception
+            art.arid = 0
+        End Try
+    End Sub
+
     Private Sub valider(ByVal id As Integer, ByVal isV As Boolean, ByRef ds As DataList)
         Try
+
+            If isV = True Then
+                Dim pwdwin As New PWDPicker
+                If pwdwin.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
+                If pwdwin.DGV1.SelectedRows(0).Cells(2).Value <> "admin" Then Exit Sub
+            End If
+
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 Dim params As New Dictionary(Of String, Object)
                 Dim where As New Dictionary(Of String, Object)
-                params.Add("isvalid", Not isV)
+                params.Add("isValid", Not isV)
                 where.Add("id", id)
 
                 c.UpdateRecord(ds.FactureTable, params, where)
@@ -2433,7 +2489,6 @@ Public Class FactureClass
                 ds.DisibleEditing("v", Not isV)
 
                 If ds.FactureTable.Contains("Facture") Then Exit Sub
-
 
                 Dim data = ds.DataSource
                 Dim tb_D = ds.DetailsTable
@@ -2468,7 +2523,7 @@ Public Class FactureClass
                             AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
                                         data.Rows(i).Item("cid"), q, c)
                         Else
-                            If tb_F = "Bon_Achat" And Form1.useValue_CUMP Then
+                            If tb_F = "Bon_Achat" And Form1.useValue_CUMP And q > 0 Then
                                 params.Clear()
                                 params.Add("arid", data.Rows(i).Item("arid"))
                                 Dim cump As Double = c.SelectByScalar("Article", "CUMP", params)
@@ -2478,7 +2533,9 @@ Public Class FactureClass
                                 If cump = 0 Then
                                     cump = c.SelectByScalar("Article", "bprice", params)
                                 End If
-                                cump = ((cump * oldStock) + (data.Rows(i).Item("bprice") * q)) / (oldStock + q)
+                                Dim sb = oldStock
+                                If sb > 0 Then sb = 0
+                                cump = ((cump * sb) + (data.Rows(i).Item("bprice") * q)) / (sb + q)
                                 Dim params2 As New Dictionary(Of String, Object)
 
                                 params2.Add("CUMP", cump)
@@ -2490,7 +2547,6 @@ Public Class FactureClass
                         End If
                     End If
                 Next
-
             End Using
 
             ds.Id = id

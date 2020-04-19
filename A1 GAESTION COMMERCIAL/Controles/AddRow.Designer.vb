@@ -29,19 +29,21 @@ Partial Class AddRow
         Me.btAdd = New System.Windows.Forms.Button()
         Me.plRef = New System.Windows.Forms.Panel()
         Me.plName = New System.Windows.Forms.Panel()
-        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.btInfo = New System.Windows.Forms.Button()
         Me.plQte = New System.Windows.Forms.Panel()
-        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plAlert = New System.Windows.Forms.Panel()
         Me.plPrice = New System.Windows.Forms.Panel()
-        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plRemise = New System.Windows.Forms.Panel()
-        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.plleft = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
+        Me.plTva = New System.Windows.Forms.Panel()
+        Me.txtN = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtRf = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtQ = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtPr = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtRs = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtTva = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtttc = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.PlRight.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -51,6 +53,7 @@ Partial Class AddRow
         Me.plPrice.SuspendLayout()
         Me.plRemise.SuspendLayout()
         Me.plTotal.SuspendLayout()
+        Me.plTva.SuspendLayout()
         Me.SuspendLayout()
         '
         'PlRight
@@ -132,6 +135,7 @@ Partial Class AddRow
         Me.plRef.Controls.Add(Me.plPrice)
         Me.plRef.Controls.Add(Me.plRemise)
         Me.plRef.Controls.Add(Me.plleft)
+        Me.plRef.Controls.Add(Me.plTva)
         Me.plRef.Controls.Add(Me.plTotal)
         Me.plRef.Dock = System.Windows.Forms.DockStyle.Fill
         Me.plRef.Location = New System.Drawing.Point(0, 0)
@@ -147,28 +151,8 @@ Partial Class AddRow
         Me.plName.Location = New System.Drawing.Point(210, 2)
         Me.plName.Name = "plName"
         Me.plName.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.plName.Size = New System.Drawing.Size(170, 32)
+        Me.plName.Size = New System.Drawing.Size(131, 32)
         Me.plName.TabIndex = 12
-        '
-        'txtN
-        '
-        Me.txtN.BackColor = System.Drawing.Color.White
-        Me.txtN.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtN.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtN.IsNumiric = False
-        Me.txtN.Location = New System.Drawing.Point(5, 0)
-        Me.txtN.Name = "txtN"
-        Me.txtN.PlaceHolder = "Designation"
-        Me.txtN.ShowClearIcon = False
-        Me.txtN.ShowSaveIcon = False
-        Me.txtN.Size = New System.Drawing.Size(160, 32)
-        Me.txtN.StartUp = 2
-        Me.txtN.TabIndex = 2
-        Me.txtN.TextSize = 8
-        Me.txtN.TxtBackColor = True
-        Me.txtN.TxtColor = System.Drawing.Color.White
-        Me.txtN.txtReadOnly = False
-        Me.txtN.TxtSelect = New Integer() {1, 0}
         '
         'Panel7
         '
@@ -180,26 +164,6 @@ Partial Class AddRow
         Me.Panel7.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel7.Size = New System.Drawing.Size(182, 32)
         Me.Panel7.TabIndex = 11
-        '
-        'txtRf
-        '
-        Me.txtRf.BackColor = System.Drawing.Color.White
-        Me.txtRf.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRf.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRf.IsNumiric = False
-        Me.txtRf.Location = New System.Drawing.Point(5, 0)
-        Me.txtRf.Name = "txtRf"
-        Me.txtRf.PlaceHolder = "Réf"
-        Me.txtRf.ShowClearIcon = False
-        Me.txtRf.ShowSaveIcon = False
-        Me.txtRf.Size = New System.Drawing.Size(141, 32)
-        Me.txtRf.StartUp = 2
-        Me.txtRf.TabIndex = 1
-        Me.txtRf.TextSize = 8
-        Me.txtRf.TxtBackColor = True
-        Me.txtRf.TxtColor = System.Drawing.Color.White
-        Me.txtRf.txtReadOnly = False
-        Me.txtRf.TxtSelect = New Integer() {1, 0}
         '
         'btInfo
         '
@@ -219,31 +183,11 @@ Partial Class AddRow
         Me.plQte.Controls.Add(Me.txtQ)
         Me.plQte.Controls.Add(Me.plAlert)
         Me.plQte.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plQte.Location = New System.Drawing.Point(380, 2)
+        Me.plQte.Location = New System.Drawing.Point(341, 2)
         Me.plQte.Name = "plQte"
         Me.plQte.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plQte.Size = New System.Drawing.Size(88, 32)
         Me.plQte.TabIndex = 10
-        '
-        'txtQ
-        '
-        Me.txtQ.BackColor = System.Drawing.Color.White
-        Me.txtQ.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtQ.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtQ.IsNumiric = True
-        Me.txtQ.Location = New System.Drawing.Point(10, 0)
-        Me.txtQ.Name = "txtQ"
-        Me.txtQ.PlaceHolder = "Qte"
-        Me.txtQ.ShowClearIcon = False
-        Me.txtQ.ShowSaveIcon = False
-        Me.txtQ.Size = New System.Drawing.Size(73, 29)
-        Me.txtQ.StartUp = 2
-        Me.txtQ.TabIndex = 3
-        Me.txtQ.TextSize = 8
-        Me.txtQ.TxtBackColor = True
-        Me.txtQ.TxtColor = System.Drawing.Color.White
-        Me.txtQ.txtReadOnly = False
-        Me.txtQ.TxtSelect = New Integer() {1, 0}
         '
         'plAlert
         '
@@ -259,61 +203,21 @@ Partial Class AddRow
         '
         Me.plPrice.Controls.Add(Me.txtPr)
         Me.plPrice.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plPrice.Location = New System.Drawing.Point(468, 2)
+        Me.plPrice.Location = New System.Drawing.Point(429, 2)
         Me.plPrice.Name = "plPrice"
         Me.plPrice.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plPrice.Size = New System.Drawing.Size(88, 32)
         Me.plPrice.TabIndex = 9
         '
-        'txtPr
-        '
-        Me.txtPr.BackColor = System.Drawing.Color.White
-        Me.txtPr.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtPr.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtPr.IsNumiric = True
-        Me.txtPr.Location = New System.Drawing.Point(10, 0)
-        Me.txtPr.Name = "txtPr"
-        Me.txtPr.PlaceHolder = "Prix"
-        Me.txtPr.ShowClearIcon = False
-        Me.txtPr.ShowSaveIcon = False
-        Me.txtPr.Size = New System.Drawing.Size(73, 32)
-        Me.txtPr.StartUp = 2
-        Me.txtPr.TabIndex = 4
-        Me.txtPr.TextSize = 8
-        Me.txtPr.TxtBackColor = True
-        Me.txtPr.TxtColor = System.Drawing.Color.White
-        Me.txtPr.txtReadOnly = False
-        Me.txtPr.TxtSelect = New Integer() {1, 0}
-        '
         'plRemise
         '
         Me.plRemise.Controls.Add(Me.txtRs)
         Me.plRemise.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plRemise.Location = New System.Drawing.Point(556, 2)
+        Me.plRemise.Location = New System.Drawing.Point(517, 2)
         Me.plRemise.Name = "plRemise"
         Me.plRemise.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plRemise.Size = New System.Drawing.Size(88, 32)
         Me.plRemise.TabIndex = 7
-        '
-        'txtRs
-        '
-        Me.txtRs.BackColor = System.Drawing.Color.White
-        Me.txtRs.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtRs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtRs.IsNumiric = True
-        Me.txtRs.Location = New System.Drawing.Point(10, 0)
-        Me.txtRs.Name = "txtRs"
-        Me.txtRs.PlaceHolder = "Remise"
-        Me.txtRs.ShowClearIcon = False
-        Me.txtRs.ShowSaveIcon = False
-        Me.txtRs.Size = New System.Drawing.Size(73, 32)
-        Me.txtRs.StartUp = 2
-        Me.txtRs.TabIndex = 5
-        Me.txtRs.TextSize = 8
-        Me.txtRs.TxtBackColor = True
-        Me.txtRs.TxtColor = System.Drawing.Color.White
-        Me.txtRs.txtReadOnly = False
-        Me.txtRs.TxtSelect = New Integer() {1, 0}
         '
         'plleft
         '
@@ -335,6 +239,136 @@ Partial Class AddRow
         Me.plTotal.Padding = New System.Windows.Forms.Padding(10, 0, 5, 0)
         Me.plTotal.Size = New System.Drawing.Size(88, 32)
         Me.plTotal.TabIndex = 13
+        '
+        'plTva
+        '
+        Me.plTva.Controls.Add(Me.txtTva)
+        Me.plTva.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plTva.Location = New System.Drawing.Point(605, 2)
+        Me.plTva.Name = "plTva"
+        Me.plTva.Padding = New System.Windows.Forms.Padding(1)
+        Me.plTva.Size = New System.Drawing.Size(39, 32)
+        Me.plTva.TabIndex = 14
+        '
+        'txtN
+        '
+        Me.txtN.BackColor = System.Drawing.Color.White
+        Me.txtN.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtN.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtN.IsNumiric = False
+        Me.txtN.Location = New System.Drawing.Point(5, 0)
+        Me.txtN.Name = "txtN"
+        Me.txtN.PlaceHolder = "Designation"
+        Me.txtN.ShowClearIcon = False
+        Me.txtN.ShowSaveIcon = False
+        Me.txtN.Size = New System.Drawing.Size(121, 32)
+        Me.txtN.StartUp = 2
+        Me.txtN.TabIndex = 2
+        Me.txtN.TextSize = 8
+        Me.txtN.TxtBackColor = True
+        Me.txtN.TxtColor = System.Drawing.Color.White
+        Me.txtN.txtReadOnly = False
+        Me.txtN.TxtSelect = New Integer() {1, 0}
+        '
+        'txtRf
+        '
+        Me.txtRf.BackColor = System.Drawing.Color.White
+        Me.txtRf.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRf.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRf.IsNumiric = False
+        Me.txtRf.Location = New System.Drawing.Point(5, 0)
+        Me.txtRf.Name = "txtRf"
+        Me.txtRf.PlaceHolder = "Réf"
+        Me.txtRf.ShowClearIcon = False
+        Me.txtRf.ShowSaveIcon = False
+        Me.txtRf.Size = New System.Drawing.Size(141, 32)
+        Me.txtRf.StartUp = 2
+        Me.txtRf.TabIndex = 1
+        Me.txtRf.TextSize = 8
+        Me.txtRf.TxtBackColor = True
+        Me.txtRf.TxtColor = System.Drawing.Color.White
+        Me.txtRf.txtReadOnly = False
+        Me.txtRf.TxtSelect = New Integer() {1, 0}
+        '
+        'txtQ
+        '
+        Me.txtQ.BackColor = System.Drawing.Color.White
+        Me.txtQ.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtQ.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtQ.IsNumiric = True
+        Me.txtQ.Location = New System.Drawing.Point(10, 0)
+        Me.txtQ.Name = "txtQ"
+        Me.txtQ.PlaceHolder = "Qte"
+        Me.txtQ.ShowClearIcon = False
+        Me.txtQ.ShowSaveIcon = False
+        Me.txtQ.Size = New System.Drawing.Size(73, 29)
+        Me.txtQ.StartUp = 2
+        Me.txtQ.TabIndex = 3
+        Me.txtQ.TextSize = 8
+        Me.txtQ.TxtBackColor = True
+        Me.txtQ.TxtColor = System.Drawing.Color.White
+        Me.txtQ.txtReadOnly = False
+        Me.txtQ.TxtSelect = New Integer() {1, 0}
+        '
+        'txtPr
+        '
+        Me.txtPr.BackColor = System.Drawing.Color.White
+        Me.txtPr.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtPr.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtPr.IsNumiric = True
+        Me.txtPr.Location = New System.Drawing.Point(10, 0)
+        Me.txtPr.Name = "txtPr"
+        Me.txtPr.PlaceHolder = "Prix"
+        Me.txtPr.ShowClearIcon = False
+        Me.txtPr.ShowSaveIcon = False
+        Me.txtPr.Size = New System.Drawing.Size(73, 32)
+        Me.txtPr.StartUp = 2
+        Me.txtPr.TabIndex = 4
+        Me.txtPr.TextSize = 8
+        Me.txtPr.TxtBackColor = True
+        Me.txtPr.TxtColor = System.Drawing.Color.White
+        Me.txtPr.txtReadOnly = False
+        Me.txtPr.TxtSelect = New Integer() {1, 0}
+        '
+        'txtRs
+        '
+        Me.txtRs.BackColor = System.Drawing.Color.White
+        Me.txtRs.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtRs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRs.IsNumiric = True
+        Me.txtRs.Location = New System.Drawing.Point(10, 0)
+        Me.txtRs.Name = "txtRs"
+        Me.txtRs.PlaceHolder = "Remise"
+        Me.txtRs.ShowClearIcon = False
+        Me.txtRs.ShowSaveIcon = False
+        Me.txtRs.Size = New System.Drawing.Size(73, 32)
+        Me.txtRs.StartUp = 2
+        Me.txtRs.TabIndex = 5
+        Me.txtRs.TextSize = 8
+        Me.txtRs.TxtBackColor = True
+        Me.txtRs.TxtColor = System.Drawing.Color.White
+        Me.txtRs.txtReadOnly = False
+        Me.txtRs.TxtSelect = New Integer() {1, 0}
+        '
+        'txtTva
+        '
+        Me.txtTva.BackColor = System.Drawing.Color.White
+        Me.txtTva.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtTva.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtTva.IsNumiric = True
+        Me.txtTva.Location = New System.Drawing.Point(1, 1)
+        Me.txtTva.Name = "txtTva"
+        Me.txtTva.PlaceHolder = "Tva"
+        Me.txtTva.ShowClearIcon = False
+        Me.txtTva.ShowSaveIcon = False
+        Me.txtTva.Size = New System.Drawing.Size(37, 30)
+        Me.txtTva.StartUp = 2
+        Me.txtTva.TabIndex = 58
+        Me.txtTva.TextSize = 8
+        Me.txtTva.TxtBackColor = True
+        Me.txtTva.TxtColor = System.Drawing.Color.White
+        Me.txtTva.txtReadOnly = False
+        Me.txtTva.TxtSelect = New Integer() {1, 0}
         '
         'txtttc
         '
@@ -373,6 +407,7 @@ Partial Class AddRow
         Me.plPrice.ResumeLayout(False)
         Me.plRemise.ResumeLayout(False)
         Me.plTotal.ResumeLayout(False)
+        Me.plTva.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -404,5 +439,7 @@ Partial Class AddRow
     Friend WithEvents btCodeBar As System.Windows.Forms.Button
     Friend WithEvents plAlert As System.Windows.Forms.Panel
     Friend WithEvents btDepot As System.Windows.Forms.Button
+    Friend WithEvents plTva As System.Windows.Forms.Panel
+    Friend WithEvents txtTva As A1_GAESTION_COMMERCIAL.TxtBox
 
 End Class

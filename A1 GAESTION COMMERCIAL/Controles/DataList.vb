@@ -11,6 +11,7 @@
     Public Event NewFacture(ByVal tb_F As String, ByVal tb_C As String, ByRef ds As DataList)
     Public Event ModeChanged(ByVal value As String, ByVal ds As DataList)
     Public Event NewRowAdded(ByVal id As Integer, ByVal tb_D As String, ByVal R As ListRow, ByRef d_Id As Integer)
+    Public Event AddNewArticleToDb(ByRef art As Article)
 
     'Entete Events
     Public Event SavePdf(ByVal ds As DataList)
@@ -78,6 +79,8 @@
 
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Public dt_Client_Remise As DataTable
+
+
 
 
 
@@ -539,7 +542,7 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
+        If Form1.isBaseOnOneTva Then plTva.Visible = False
     End Sub
     Public Sub Clear()
         If CInt(Entete.Id) > 0 And Entete.Statut <> "AVOIR" Then RaiseEvent SaveChanges(CInt(Entete.Id), Me)
@@ -560,6 +563,10 @@
             Entete.btValideBl.Tag = Facture
         End If
 
+    End Sub
+
+    Private Sub AddRow1_AddArticleToDb(ByRef art As Article) Handles AddRow1.AddArticleToDb
+        RaiseEvent AddNewArticleToDb(art)
     End Sub
     Private Sub AddRow1_AddNewArticle(ByVal art As Article) Handles AddRow1.AddNewArticle
         If Id = 0 Then Exit Sub
@@ -843,6 +850,7 @@
         Pl.Controls.Clear()
         Try
             If _dtList.Rows.Count > 0 Then
+                If _dtList.Columns.Count = 19 Then _dtList.Columns.Add("isVD", GetType(Boolean))
                 If _dtList.Columns.Count = 20 Then _dtList.Columns.Add("isV", GetType(Boolean))
                 _dtList.Columns.Add("Etat", GetType(String))
                 _dtList.Columns.Add("_", GetType(Object))
@@ -852,7 +860,7 @@
                 StyleDatagrid(dg)
                 Pl.Controls.Add(dg)
 
-                dg.Columns(1).Visible = False
+                'dg.Columns(1).Visible = False
                 dg.Columns(2).Visible = False
                 dg.Columns(5).Visible = False
                 dg.Columns(6).Visible = False
@@ -885,6 +893,8 @@
                 dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+                dg.Columns(1).DefaultCellStyle.Format = "dd MMM,yy"
 
                 dg.Columns(4).DefaultCellStyle.Format = "c"
                 dg.Columns(7).DefaultCellStyle.Format = "c"

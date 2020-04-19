@@ -89,9 +89,6 @@
     Public Color_Selected_Row As Color = Color.Red
     
 
-
-
-
     Public Property prefix As String
         Get
             Return _prefix & Ex_fact & "/" & zeros
@@ -100,7 +97,6 @@
             _prefix = value
         End Set
     End Property
-
     'Props
     Public Property Exercice As String
         Get
@@ -111,12 +107,18 @@
             lbExr.text = value
         End Set
     End Property
-
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         'Regs info
         HandleRegistryinfo()
+
+        Dim gg As New gForm
+        If gg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+            End
+        End If
+
+
+
 
         'check Trial
         If TrialVersion_Master = False Then
@@ -124,7 +126,7 @@
             End
         End If
 
-        bt_Parck.Visible = False
+        'bt_Parck.Visible = False
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -151,8 +153,6 @@
         'Exercice
         Exercice = Now.Date.ToString("yy")
 
-
-
         Me.Show()
 
         If getTrial() = False Then
@@ -164,6 +164,14 @@
             MsgBox(str, MsgBoxStyle.Information, "***NBR***")
 
         End If
+
+
+        Using c As New HomeClass
+            c.AddDataList()
+        End Using
+        HeaderColor(bt_Home.Text)
+
+
     End Sub
 
     'Add DataList to pl Body
@@ -209,6 +217,9 @@
         Next
     End Sub
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Home.Click
+        Using c As New HomeClass
+            c.AddDataList()
+        End Using
         HeaderColor(bt_Home.Text)
     End Sub
     Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSetting.Click

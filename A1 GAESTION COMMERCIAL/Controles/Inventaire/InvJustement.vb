@@ -113,11 +113,11 @@
             plVal.Visible = Not value
 
             If value Then
-                dg_D.Columns(6).HeaderText = "Qté réel"
+                dg_D.Columns(7).HeaderText = "Qté réel"
             Else
-                dg_D.Columns(6).HeaderText = "Prix"
-                dg_D.Columns(6).DefaultCellStyle.Format = "c"
-                dg_D.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                dg_D.Columns(7).HeaderText = "Prix"
+                dg_D.Columns(7).DefaultCellStyle.Format = "c"
+                dg_D.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 Label1.Text = "Valeur"
 
             End If
@@ -145,11 +145,15 @@
 
         RaiseEvent SaveDetails(Me)
     End Sub
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         RaiseEvent PrintDetails(Me)
     End Sub
     Private Sub btPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btPdf.Click
-        RaiseEvent SavePdfDetails(Me)
+        'RaiseEvent SavePdfDetails(Me)
+        Dim str = "Ajustement_de_Stock"
+        If isAjustement = False Then str = "Valorisation_de_Stock"
+
+        SaveDataToHtml(dg_D, str)
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         RaiseEvent PrintList(Me)
@@ -230,7 +234,7 @@
 
         If MsgBox(str, MsgBoxStyle.YesNo, "Validation") = MsgBoxResult.No Then Exit Sub
         Dim pwdwin As New PWDPicker
-        If pwdwin.ShowDialog = Windows.Forms.DialogResult.OK Then Exit Sub
+        If pwdwin.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
         If pwdwin.DGV1.SelectedRows(0).Cells(2).Value <> "admin" Then Exit Sub
 
 
@@ -347,5 +351,11 @@
             End If
         End Using
 
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Dim str = "Liste_des_Ajustements_de_Stock"
+        If isAjustement = False Then str = "Liste_des_Valorisation_de_Stock"
+        SaveDataToHtml(dg_L, str)
     End Sub
 End Class

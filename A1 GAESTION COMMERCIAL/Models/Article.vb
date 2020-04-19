@@ -85,7 +85,7 @@
         bprice = _bprice
 
         TVA = _tva
-        If Form1.isBaseOnOneTva Then TVA = Form1.tva
+        'If Form1.isBaseOnOneTva Then TVA = Form1.tva
 
         ref = _ref
         depot = _depot

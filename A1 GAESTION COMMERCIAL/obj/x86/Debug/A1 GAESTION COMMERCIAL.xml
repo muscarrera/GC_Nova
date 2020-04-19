@@ -504,6 +504,18 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.TracabilityINDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ReceptionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.HomeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -584,6 +596,18 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.TracabilityINRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ReceptionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.HomeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRowChangeEvent">
 	<summary>
 Row event argument class
@@ -661,6 +685,18 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.valueRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.TracabilityINRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ReceptionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.HomeRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -745,6 +781,18 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.valueTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.TracabilityINTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ReceptionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.HomeTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

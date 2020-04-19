@@ -48,6 +48,7 @@ Partial Class InvTransfer
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel24.SuspendLayout()
@@ -167,6 +168,7 @@ Partial Class InvTransfer
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel24.Controls.Add(Me.Button4)
         Me.Panel24.Controls.Add(Me.Button1)
         Me.Panel24.Controls.Add(Me.Button5)
         Me.Panel24.Controls.Add(Me.Panel29)
@@ -374,6 +376,23 @@ Partial Class InvTransfer
         Me.Panel7.Size = New System.Drawing.Size(824, 2)
         Me.Panel7.TabIndex = 1
         '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(685, 2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(129, 36)
+        Me.Button4.TabIndex = 15
+        Me.Button4.Text = "Exporter            "
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button4.UseVisualStyleBackColor = False
+        '
         'InvTransfer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -423,5 +442,6 @@ Partial Class InvTransfer
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class

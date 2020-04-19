@@ -100,8 +100,11 @@
                 CL.ListeOfNumber.Add("Total Max", "TX")
                 CL.ListeOfNumber.Add("N°", "ID")
                 '''''/// Booleans
+                CL.ListeOfBoolean.Add("Referance Article", "RA")
+                If Form1.useButtonValidForStock Then CL.ListeOfBoolean.Add("Validé", "VD")
                 CL.ListeOfBoolean.Add("Reglé", "RG")
                 CL.ListeOfBoolean.Add("Facturé", "FC")
+
                 '''''/// Date
                 CL.ListeOfDates.Add("Date", "DT")
                 CL.ListeOfDates.Add("Date Max", "DX")
@@ -304,14 +307,25 @@
                 End If
                 myKey = "isFactured = "
                 myVal = isf
+            Case "VD"
+                Dim isf As Boolean = True
+                Dim v = txt.text
+                If v.ToUpper = "NO" Or v.ToUpper = "NON" Or v.ToUpper = "N" Then
+                    isf = False
+                End If
+                myKey = "isValid = "
+                myVal = isf
             Case "FC"
                 Dim v = txt.text
                 If v.ToUpper = "NO" Or v.ToUpper = "NON" Or v.ToUpper = "N" Then
-                    myVal = "Fini"
+                    'myVal = "Fini"
+                    myVal = "Facturé"
+                    myKey = "isAdmin <> "
                 Else
                     myVal = "Facturé"
+                    myKey = "isAdmin = "
                 End If
-                myKey = "isAdmin = "
+                'myKey = "isAdmin = "
 
             Case "DT" ''''''''''''''''''''''''''''''
                 Dim dte As Date = CDate(txt.text)

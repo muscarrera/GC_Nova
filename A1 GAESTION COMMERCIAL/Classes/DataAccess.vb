@@ -287,18 +287,18 @@ Public Class DataAccess
             If i > 0 Then q &= ", "
             q &= field(i)
         Next
-        q &= " FROM ( [" & table1 & "] INNER JOIN [" & table2 & "] ON " & onField1 & "=" & onField2 & " )" ' onfield = table.field
+        q &= " FROM ([" & table1 & "] INNER JOIN [" & table2 & "] ON " & onField1 & "=" & onField2 & ")" ' onfield = table.field
 
         Dim p As Integer = 1
         If params IsNot Nothing Then
-            q &= " WHERE ( "
+            q &= " WHERE ("
             For Each kvp As KeyValuePair(Of String, Object) In params
-                If p > 1 Then q &= " AND "
+                If p > 1 Then q &= ") AND ("
                 q &= kvp.Key & p
                 p += 1
             Next
         End If
-        q &= " )"
+        q &= ") "
 
         p = 0
         If orderBy IsNot Nothing Then

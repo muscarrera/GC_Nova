@@ -158,7 +158,6 @@
         Dim ds As InventaireList = Form1.plBody.Controls(0)
         ds.pl.Controls.Clear()
 
-
         Dim rc As New InvReception
         rc.Dock = DockStyle.Top
         rc.dte1.Value = Now.Date.AddMonths(-2)
@@ -166,6 +165,8 @@
         rc.tb_C = "Fournisseur"
         rc.tb_D = "Details_Bon_Achat"
         rc.Mode = "LIST"
+
+        rc.isSell = False
 
         rc.txt.AutoCompleteSource = AutoCompleteByName("Fournisseur")
         AddHandler rc.Search, AddressOf Receprion_Search
@@ -199,6 +200,8 @@
         rc.tb_C = "Client"
         rc.tb_D = "Details_Bon_Livraison"
         rc.Mode = "LIST"
+
+        rc.isSell = True
 
         rc.txt.AutoCompleteSource = AutoCompleteByName("Client")
         AddHandler rc.Search, AddressOf Receprion_Search
@@ -238,7 +241,22 @@
     End Sub
 
     Private Sub Tracabilite()
-        Throw New NotImplementedException
+        Dim ds As InventaireList = Form1.plBody.Controls(0)
+        ds.pl.Controls.Clear()
+
+        Dim rc As New InvTracability
+        rc.Dock = DockStyle.Top
+
+        rc.dte1.Value = Now.Date.AddMonths(-2)
+        rc.txt.AutoCompleteSource = AutoCompleteByName("Article")
+        rc.txtDepot.AutoCompleteSource = AutoCompleteByName("Depot")
+
+        AddHandler rc.Search, AddressOf Trace_Search
+       
+        StyleDatagrid(rc.dg_D)
+
+        rc.dg_D.EditMode = DataGridViewEditMode.EditProgrammatically
+        ds.pl.Controls.Add(rc)
     End Sub
     Private Sub Ajustement()
         Dim ds As InventaireList = Form1.plBody.Controls(0)
@@ -247,7 +265,6 @@
         Dim rc As New InvJustement
         rc.Dock = DockStyle.Top
         rc.isAjustement = True
-        rc.id_Jus = 0
 
         rc.txtCat.AutoCompleteSource = AutoCompleteByName("Category")
         rc.txtDepot.AutoCompleteSource = AutoCompleteByName("Depot")
@@ -263,9 +280,10 @@
 
         StyleDatagrid(rc.dg_D)
         StyleDatagrid(rc.dg_L)
-
-
         rc.dg_D.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2
+
+        rc.id_Jus = 0
+
         ds.pl.Controls.Add(rc)
     End Sub
     Private Sub Valorisation()
@@ -275,7 +293,6 @@
         Dim rc As New InvJustement
         rc.Dock = DockStyle.Top
         rc.isAjustement = False
-        rc.id_Jus = 0
 
         rc.txtCat.AutoCompleteSource = AutoCompleteByName("Category")
         rc.txtDepot.AutoCompleteSource = AutoCompleteByName("Depot")
@@ -291,9 +308,9 @@
 
         StyleDatagrid(rc.dg_D)
         StyleDatagrid(rc.dg_L)
-
-
         rc.dg_D.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2
+
+        rc.id_Jus = 0
         ds.pl.Controls.Add(rc)
     End Sub
 
@@ -304,6 +321,9 @@
             ds.pl.Controls.Clear()
             Dim dg As New DataGridView
 
+            ds.pl.Controls.Add(dg)
+            StyleDatagrid(dg)
+
             Dim dte1 As Date = ds.dte1.Value.AddDays(-1)
             Dim dte2 As Date = ds.dte2.Value.AddDays(1)
 
@@ -313,73 +333,14 @@
 
 
             If ds.cbDetail.Checked Then
-                'params.Add(tb_B & ".[date] > ", dte1.ToString("dd-MM-yyyy"))
-                params.Add(tb_B & ".[date] < ", dte2.ToString("dd-MM-yyyy"))
 
-                If ds.cbDepot.SelectedValue > 0 Then params.Add(tb_D & ".depot = ", ds.cbDepot.SelectedValue)
-                If ds.txt.text.Contains("|") Then params.Add(tb_B & ".cid = ", ds.txt.text.Split("|")(1))
-
-                Dim dt = a.SelectDataLike(tb_D, tb_B,
-                                          tb_D & ".fctid", tb_B & ".id",
-                                          {tb_D & ".*"}, params)
-
-                If IsNothing(dt) Then MsgBox("aucun résultat trouvé", MsgBoxStyle.Information, "Recherche")
-
-                If ds.cbAccum.Checked Then
-                    'details
-                    Dim query = From row In dt
-                                Group row By dateGroup = New With {Key .arid = row.Field(Of Integer)("arid"),
-                                                                   .name = row.Field(Of String)("name"),
-                                                                    .depot = row.Field(Of Integer)("depot")} Into Group
-                                Select New With {Key .Dates = dateGroup,
-                                                  .Designation = Group.Sum(Function(x) x.Field(Of String)("name")),
-                                                  .Ref = Group.Sum(Function(x) x.Field(Of String)("ref")),
-                                                 .depot = Group.Sum(Function(x) x.Field(Of Integer)("depot")),
-                                                 .Qte = Group.Sum(Function(x) x.Field(Of Decimal)("qte"))}
-
-                    dg.DataSource = query.ToList
-                    StyleDatagrid(dg)
-                    ds.pl.Controls.Add(dg)
-                    dg.Columns(0).Visible = False
-
-                    dg.Columns(1).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-                    dg.Columns(1).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-                    dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                    dg.Columns(1).Width = 300
-
-                    ds.Mode = "ACCUM"
+                Dim BTA As New ALMohassinDBDataSetTableAdapters.ReceptionTableAdapter
+                If ds.isSell = False Then
+                    ds.dt_D = BTA.GetDataIn(dte1, dte2)
                 Else
-                    'list
-
-                    dg.DataSource = dt
-                    StyleDatagrid(dg)
-                    ds.pl.Controls.Add(dg)
-
-                    dg.Columns(0).Visible = False
-                    dg.Columns(1).Visible = False
-                    dg.Columns(3).Visible = False
-                    dg.Columns(4).Visible = False
-                    dg.Columns(5).Visible = False
-                    dg.Columns(7).Visible = False
-                    dg.Columns(11).Visible = False
-                    dg.Columns(10).Visible = False
-
-                    dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-                    dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-                    dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                    dg.Columns(2).FillWeight = 300
-                    dg.Columns(2).Width = 300
-
-                    dg.Columns(0).HeaderText = "ID/N°"
-                    dg.Columns(1).HeaderText = "Date"
-                    dg.Columns(2).HeaderText = "Libellé"
-                    dg.Columns(6).HeaderText = "QTE"
-                    dg.Columns(8).HeaderText = "Réf"
-                    dg.Columns(9).HeaderText = "Entrepôte"
-
-                    ds.Mode = "DETAIL"
+                    ds.dt_D = BTA.GetDataOUT(dte1, dte2)
                 End If
-
+                ds.Mode = "DETAILS"
             Else
                 'List
                 params.Add("[date] > ", dte1.ToString("dd/MM/yyyy"))
@@ -392,8 +353,6 @@
                 If IsNothing(dt) Then MsgBox("Aucun résultat trouvé", MsgBoxStyle.Information, "Recherche")
 
                 dg.DataSource = dt
-                StyleDatagrid(dg)
-                ds.pl.Controls.Add(dg)
                 AddHandler dg.CellMouseDoubleClick, AddressOf Reception_Dg_MouseDoubleClick
 
                 '''''''''''''''''''''''''''''''''''''''''''''
@@ -425,11 +384,13 @@
                 dg.Columns(12).HeaderText = "Editeur"
                 '''''''''''''''''''''''''''''''''''''''''''''''
                 ds.Mode = "LIST"
+
+                ds.lbLnbr.Text = dg.Rows.Count & " Lines"
+                ds.Height = (dg.Rows.Count * 40) + 500
             End If
 
 
-            ds.lbLnbr.Text = dg.Rows.Count & " Lines"
-            ds.Height = (dg.Rows.Count * 40) + 500
+
         End Using
     End Sub
     Private Sub Receprion_Apercu(ByRef ds As InvReception)
@@ -569,7 +530,7 @@
     Private Sub Ajust_getList(ByRef ds As InvJustement)
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
             Dim params As New Dictionary(Of String, Object)
-            params.Add("isAjustement", True)
+            params.Add("isAjustement", ds.isAjustement)
             Dim dt = a.SelectDataTable("Ajustement_Stock", {"*"}, params)
             ds.dg_L.DataSource = dt
 
@@ -783,13 +744,13 @@
                     Try
                         Dim dt = a.SelectDataTable("Article", {"*"}, params)
                         If dt.Rows.Count = 0 Then Continue For
-                        name = dt.Rows(0).Item("name").Value
+                        name = dt.Rows(0).Item("name")
                         Try
                             'price
-                            If Form1.useValue_CUMP Then pr = dt.Rows(0).Item(20).Value
-                            If pr = 0 Then pr = dt.Rows(0).Item(5).Value
+                            If Form1.useValue_CUMP Then pr = dt.Rows(0).Item(20)
+                            If pr = 0 Then pr = dt.Rows(0).Item(5)
                         Catch ex As Exception
-                            pr = dt.Rows(0).Item(5).Value
+                            pr = dt.Rows(0).Item(5)
                         End Try
                     Catch ex As Exception
                         Continue For
@@ -827,8 +788,27 @@
 
     End Sub
 
-    
+    'tracability
+    Private Sub Trace_Search(ByRef ds As InvTracability)
 
-    
+        'Dim tb_In = "Bon_Livraison"
+        'Dim tb_In_D = "Details_Bon_Livraison"
+        'Dim tb_Out = "Bon_Livraison"
+        'Dim tb_Out_D = "Details_Bon_Livraison"
 
+        Dim dte1 As Date = ds.dte1.Value.AddDays(-1)
+        Dim dte2 As Date = ds.dte2.Value.AddDays(1)
+
+        'Dim params As New Dictionary(Of String, Object)
+        'params.Add(tb_In & ".[date] > ", CDate(dte1.ToString("dd-MM-yyyy")))
+        'params.Add(tb_In & ".[date] < ", CDate(dte2.ToString("dd-MM-yyyy")))
+
+        'params.Add(tb_In_D & ".arid = ", ds.arid)
+
+
+        Dim BTA As New ALMohassinDBDataSetTableAdapters.TracabilityINTableAdapter
+        ds.dt_in = BTA.GetDataIN(dte1, dte2, ds.arid)
+        ds.dt_Out = BTA.GetDataOUT(dte1, dte2, ds.arid)
+
+    End Sub
 End Class

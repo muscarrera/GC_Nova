@@ -66,7 +66,7 @@
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim params As New Dictionary(Of String, Object)
-
+            'Avoir
                 If Form1.useSoldByAvoir Then
                     params.Clear()
 
@@ -119,7 +119,9 @@
                 If dt.Rows.Count > 0 Then
                     For i As Integer = 0 To dt.Rows.Count - 1
                         If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
-                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Facture", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
+                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Facture",
+                                               String.Format("{0:n}", CDec(DblValue(dt, "total", i))),
+                                               "", IntValue(dt, "id", i))
                         RestFact += DblValue(dt, "total", i) - DblValue(dt, "avance", i)
                     Next
                 End If
@@ -132,14 +134,16 @@
                 params.Clear()
                 params.Add("cid = ", CID)
                 params.Add("isPayed = ", False)
-                params.Add("isAdmin <> ", "Facturé")
+                If Form1.isFactureGetSold Then params.Add("isAdmin <> ", "Facturé")
 
                 dt = a.SelectDataTableSymbols(bonTable, {"*"}, params)
                 If dt.Rows.Count > 0 Then
                     For i As Integer = 0 To dt.Rows.Count - 1
                         If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
-                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Bon", String.Format("{0:n}", CDec(DblValue(dt, "total", i))))
-                        RestBon = DblValue(dt, "total", i) - DblValue(dt, "avance", i)
+                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Bon",
+                                               String.Format("{0:n}", CDec(DblValue(dt, "total", i))),
+                                              "", IntValue(dt, "id", i))
+                        RestBon += DblValue(dt, "total", i) - DblValue(dt, "avance", i)
                     Next
                 End If
                 lbrestBon.Visible = True
@@ -157,7 +161,18 @@
                 If dt.Rows.Count > 0 Then
                     For i As Integer = 0 To dt.Rows.Count - 1
                         If dte > DteValue(dt, "date", i) Then dte = DteValue(dt, "date", i)
-                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Reglement", "", String.Format("{0:n}", CDec(DblValue(dt, "montant", i))))
+                        Dim str = ""
+
+                        If PayementTable = "Client_Payement" Then
+                            If IntValue(dt, "Bon_Livraison", i) > 0 Then str &= "BN N° " & IntValue(dt, "Bon_Livraison", i)
+                            If IntValue(dt, "Sell_Facture", i) > 0 Then str &= "FCT N° " & IntValue(dt, "Sell_Facture", i)
+                        Else
+                            If IntValue(dt, "Bon_Achat", i) > 0 Then str &= "BN N° " & IntValue(dt, "Bon_Achat", i)
+                            If IntValue(dt, "Buy_Facture", i) > 0 Then str &= "FCT N° " & IntValue(dt, "Buy_Facture", i)
+                        End If
+                      
+                        DataGridView1.Rows.Add(DteValue(dt, "date", i), "Reglement", "",
+                                               String.Format("{0:n}", CDec(DblValue(dt, "montant", i))), str)
                     Next
                 End If
             End If

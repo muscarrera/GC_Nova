@@ -601,4 +601,17 @@
     End Sub
      
     
+    Private Sub LinkLabel6_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel6.LinkClicked
+        Dim gch As New gChooseDesign
+        If gch.ShowDialog = DialogResult.OK Then
+            Dim gf As New gForm
+            gf.localname = gch.localName
+            gf.loadxml()
+
+
+            If gf.ShowDialog = DialogResult.OK Then
+
+            End If
+        End If
+    End Sub
 End Class

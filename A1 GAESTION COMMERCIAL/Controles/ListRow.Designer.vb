@@ -41,6 +41,8 @@ Partial Class ListRow
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btClear = New System.Windows.Forms.Button()
         Me.btAdd = New System.Windows.Forms.Button()
+        Me.plTva = New System.Windows.Forms.Panel()
+        Me.lbTva = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.plNm.SuspendLayout()
         Me.plRef.SuspendLayout()
@@ -49,6 +51,7 @@ Partial Class ListRow
         Me.plR.SuspendLayout()
         Me.plT.SuspendLayout()
         Me.plSet.SuspendLayout()
+        Me.plTva.SuspendLayout()
         Me.SuspendLayout()
         '
         'PlButtom
@@ -69,6 +72,7 @@ Partial Class ListRow
         Me.Panel1.Controls.Add(Me.plP)
         Me.Panel1.Controls.Add(Me.plR)
         Me.Panel1.Controls.Add(Me.PlLeft)
+        Me.Panel1.Controls.Add(Me.plTva)
         Me.Panel1.Controls.Add(Me.plT)
         Me.Panel1.Controls.Add(Me.plSet)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -85,7 +89,7 @@ Partial Class ListRow
         Me.plNm.Location = New System.Drawing.Point(151, 3)
         Me.plNm.Name = "plNm"
         Me.plNm.Padding = New System.Windows.Forms.Padding(10, 2, 10, 2)
-        Me.plNm.Size = New System.Drawing.Size(273, 35)
+        Me.plNm.Size = New System.Drawing.Size(233, 35)
         Me.plNm.TabIndex = 8
         '
         'lbName
@@ -95,7 +99,7 @@ Partial Class ListRow
         Me.lbName.Location = New System.Drawing.Point(10, 2)
         Me.lbName.MaximumSize = New System.Drawing.Size(225, 0)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(225, 31)
+        Me.lbName.Size = New System.Drawing.Size(213, 31)
         Me.lbName.TabIndex = 0
         Me.lbName.Text = "designation"
         Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -125,7 +129,7 @@ Partial Class ListRow
         '
         Me.plQ.Controls.Add(Me.lbQte)
         Me.plQ.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plQ.Location = New System.Drawing.Point(424, 3)
+        Me.plQ.Location = New System.Drawing.Point(384, 3)
         Me.plQ.Name = "plQ"
         Me.plQ.Padding = New System.Windows.Forms.Padding(2)
         Me.plQ.Size = New System.Drawing.Size(88, 35)
@@ -146,7 +150,7 @@ Partial Class ListRow
         '
         Me.plP.Controls.Add(Me.lbPrice)
         Me.plP.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plP.Location = New System.Drawing.Point(512, 3)
+        Me.plP.Location = New System.Drawing.Point(472, 3)
         Me.plP.Name = "plP"
         Me.plP.Padding = New System.Windows.Forms.Padding(2)
         Me.plP.Size = New System.Drawing.Size(88, 35)
@@ -167,7 +171,7 @@ Partial Class ListRow
         '
         Me.plR.Controls.Add(Me.lbRemise)
         Me.plR.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plR.Location = New System.Drawing.Point(600, 3)
+        Me.plR.Location = New System.Drawing.Point(560, 3)
         Me.plR.Name = "plR"
         Me.plR.Padding = New System.Windows.Forms.Padding(2)
         Me.plR.Size = New System.Drawing.Size(88, 35)
@@ -265,6 +269,27 @@ Partial Class ListRow
         Me.btAdd.TabIndex = 7
         Me.btAdd.UseVisualStyleBackColor = True
         '
+        'plTva
+        '
+        Me.plTva.Controls.Add(Me.lbTva)
+        Me.plTva.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plTva.Location = New System.Drawing.Point(648, 3)
+        Me.plTva.Name = "plTva"
+        Me.plTva.Padding = New System.Windows.Forms.Padding(2)
+        Me.plTva.Size = New System.Drawing.Size(40, 35)
+        Me.plTva.TabIndex = 12
+        '
+        'lbTva
+        '
+        Me.lbTva.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbTva.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTva.Location = New System.Drawing.Point(2, 2)
+        Me.lbTva.Name = "lbTva"
+        Me.lbTva.Size = New System.Drawing.Size(36, 31)
+        Me.lbTva.TabIndex = 1
+        Me.lbTva.Text = "-"
+        Me.lbTva.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'ListRow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -282,6 +307,7 @@ Partial Class ListRow
         Me.plR.ResumeLayout(False)
         Me.plT.ResumeLayout(False)
         Me.plSet.ResumeLayout(False)
+        Me.plTva.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -304,5 +330,7 @@ Partial Class ListRow
     Friend WithEvents btClear As System.Windows.Forms.Button
     Friend WithEvents btAdd As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents plTva As System.Windows.Forms.Panel
+    Friend WithEvents lbTva As System.Windows.Forms.Label
 
 End Class

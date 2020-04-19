@@ -765,7 +765,6 @@ Partial Class AddEditProduct
         '
         Me.txtAlert.BackColor = System.Drawing.Color.Transparent
         Me.txtAlert.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtAlert.Enabled = False
         Me.txtAlert.IsNumiric = False
         Me.txtAlert.Location = New System.Drawing.Point(20, 123)
         Me.txtAlert.Name = "txtAlert"
@@ -796,6 +795,8 @@ Partial Class AddEditProduct
         'isStocked
         '
         Me.isStocked.AutoSize = True
+        Me.isStocked.Checked = True
+        Me.isStocked.CheckState = System.Windows.Forms.CheckState.Checked
         Me.isStocked.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.isStocked.Location = New System.Drawing.Point(26, 43)
         Me.isStocked.Name = "isStocked"

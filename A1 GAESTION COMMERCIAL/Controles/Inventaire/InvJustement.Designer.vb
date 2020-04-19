@@ -51,7 +51,6 @@ Partial Class InvJustement
         Me.btValideBl = New System.Windows.Forms.Button()
         Me.btPdf = New System.Windows.Forms.Button()
         Me.btSave = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -65,21 +64,22 @@ Partial Class InvJustement
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.plVal = New System.Windows.Forms.Panel()
+        Me.lbValueS = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lbValueT = New System.Windows.Forms.Label()
+        Me.lbValueTitle = New System.Windows.Forms.Label()
         Me.lbLnbr = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.txtArt = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtCat = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtDepot = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtObs = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.plVal = New System.Windows.Forms.Panel()
-        Me.lbValueT = New System.Windows.Forms.Label()
-        Me.lbValueTitle = New System.Windows.Forms.Label()
-        Me.lbValueS = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel10.SuspendLayout()
@@ -378,7 +378,6 @@ Partial Class InvJustement
         Me.Panel24.Controls.Add(Me.btValideBl)
         Me.Panel24.Controls.Add(Me.btPdf)
         Me.Panel24.Controls.Add(Me.btSave)
-        Me.Panel24.Controls.Add(Me.Button5)
         Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Controls.Add(Me.Button2)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -414,11 +413,11 @@ Partial Class InvJustement
         Me.btPdf.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPdf.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
         Me.btPdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btPdf.Location = New System.Drawing.Point(694, 2)
+        Me.btPdf.Location = New System.Drawing.Point(649, 2)
         Me.btPdf.Name = "btPdf"
-        Me.btPdf.Size = New System.Drawing.Size(84, 36)
+        Me.btPdf.Size = New System.Drawing.Size(129, 36)
         Me.btPdf.TabIndex = 13
-        Me.btPdf.Text = "Pdf    "
+        Me.btPdf.Text = "Exporter            "
         Me.btPdf.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btPdf.UseVisualStyleBackColor = False
         '
@@ -438,22 +437,6 @@ Partial Class InvJustement
         Me.btSave.Text = "Enregistrer      "
         Me.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btSave.UseVisualStyleBackColor = False
-        '
-        'Button5
-        '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.Button5.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
-        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(592, 2)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button5.Size = New System.Drawing.Size(93, 34)
-        Me.Button5.TabIndex = 3
-        Me.Button5.Text = "Imprimer"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'Panel29
         '
@@ -509,6 +492,7 @@ Partial Class InvJustement
         'plList
         '
         Me.plList.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.plList.Controls.Add(Me.Button4)
         Me.plList.Controls.Add(Me.LbNewFacture)
         Me.plList.Controls.Add(Me.Button1)
         Me.plList.Controls.Add(Me.Button3)
@@ -539,7 +523,7 @@ Partial Class InvJustement
         Me.Button1.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(678, 3)
+        Me.Button1.Location = New System.Drawing.Point(543, 3)
         Me.Button1.Name = "Button1"
         Me.Button1.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
         Me.Button1.Size = New System.Drawing.Size(93, 34)
@@ -623,6 +607,70 @@ Partial Class InvJustement
         Me.Panel4.Size = New System.Drawing.Size(788, 37)
         Me.Panel4.TabIndex = 14
         '
+        'plVal
+        '
+        Me.plVal.Controls.Add(Me.lbValueS)
+        Me.plVal.Controls.Add(Me.Label5)
+        Me.plVal.Controls.Add(Me.lbValueT)
+        Me.plVal.Controls.Add(Me.lbValueTitle)
+        Me.plVal.Dock = System.Windows.Forms.DockStyle.Left
+        Me.plVal.Location = New System.Drawing.Point(152, 2)
+        Me.plVal.Name = "plVal"
+        Me.plVal.Size = New System.Drawing.Size(595, 35)
+        Me.plVal.TabIndex = 16
+        '
+        'lbValueS
+        '
+        Me.lbValueS.BackColor = System.Drawing.Color.LightGray
+        Me.lbValueS.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValueS.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValueS.Location = New System.Drawing.Point(417, 0)
+        Me.lbValueS.Name = "lbValueS"
+        Me.lbValueS.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValueS.Size = New System.Drawing.Size(152, 35)
+        Me.lbValueS.TabIndex = 20
+        Me.lbValueS.Text = "0"
+        Me.lbValueS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(263, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.Label5.Size = New System.Drawing.Size(154, 35)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "Valeur Selectionee:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbValueT
+        '
+        Me.lbValueT.BackColor = System.Drawing.Color.LightGray
+        Me.lbValueT.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValueT.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValueT.Location = New System.Drawing.Point(114, 0)
+        Me.lbValueT.Name = "lbValueT"
+        Me.lbValueT.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValueT.Size = New System.Drawing.Size(149, 35)
+        Me.lbValueT.TabIndex = 18
+        Me.lbValueT.Text = "0"
+        Me.lbValueT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbValueTitle
+        '
+        Me.lbValueTitle.BackColor = System.Drawing.Color.Gainsboro
+        Me.lbValueTitle.Dock = System.Windows.Forms.DockStyle.Left
+        Me.lbValueTitle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbValueTitle.Location = New System.Drawing.Point(0, 0)
+        Me.lbValueTitle.Name = "lbValueTitle"
+        Me.lbValueTitle.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
+        Me.lbValueTitle.Size = New System.Drawing.Size(114, 35)
+        Me.lbValueTitle.TabIndex = 17
+        Me.lbValueTitle.Text = "Valeur Total:"
+        Me.lbValueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'lbLnbr
         '
         Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
@@ -666,6 +714,9 @@ Partial Class InvJustement
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(788, 2)
         Me.Panel7.TabIndex = 1
+        '
+        'PrintDoc
+        '
         '
         'txtArt
         '
@@ -767,72 +818,22 @@ Partial Class InvJustement
         Me.txtName.txtReadOnly = False
         Me.txtName.TxtSelect = New Integer() {1, 0}
         '
-        'plVal
+        'Button4
         '
-        Me.plVal.Controls.Add(Me.lbValueS)
-        Me.plVal.Controls.Add(Me.Label5)
-        Me.plVal.Controls.Add(Me.lbValueT)
-        Me.plVal.Controls.Add(Me.lbValueTitle)
-        Me.plVal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.plVal.Location = New System.Drawing.Point(152, 2)
-        Me.plVal.Name = "plVal"
-        Me.plVal.Size = New System.Drawing.Size(595, 35)
-        Me.plVal.TabIndex = 16
-        '
-        'lbValueT
-        '
-        Me.lbValueT.BackColor = System.Drawing.Color.LightGray
-        Me.lbValueT.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbValueT.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbValueT.Location = New System.Drawing.Point(114, 0)
-        Me.lbValueT.Name = "lbValueT"
-        Me.lbValueT.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbValueT.Size = New System.Drawing.Size(149, 35)
-        Me.lbValueT.TabIndex = 18
-        Me.lbValueT.Text = "0"
-        Me.lbValueT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbValueTitle
-        '
-        Me.lbValueTitle.BackColor = System.Drawing.Color.Gainsboro
-        Me.lbValueTitle.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbValueTitle.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbValueTitle.Location = New System.Drawing.Point(0, 0)
-        Me.lbValueTitle.Name = "lbValueTitle"
-        Me.lbValueTitle.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbValueTitle.Size = New System.Drawing.Size(114, 35)
-        Me.lbValueTitle.TabIndex = 17
-        Me.lbValueTitle.Text = "Valeur Total:"
-        Me.lbValueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbValueS
-        '
-        Me.lbValueS.BackColor = System.Drawing.Color.LightGray
-        Me.lbValueS.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbValueS.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbValueS.Location = New System.Drawing.Point(417, 0)
-        Me.lbValueS.Name = "lbValueS"
-        Me.lbValueS.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbValueS.Size = New System.Drawing.Size(152, 35)
-        Me.lbValueS.TabIndex = 20
-        Me.lbValueS.Text = "0"
-        Me.lbValueS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label5
-        '
-        Me.Label5.BackColor = System.Drawing.Color.Gainsboro
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(263, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.Label5.Size = New System.Drawing.Size(154, 35)
-        Me.Label5.TabIndex = 19
-        Me.Label5.Text = "Valeur Selectionee:"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'PrintDoc
-        '
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(659, 2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(129, 36)
+        Me.Button4.TabIndex = 14
+        Me.Button4.Text = "Exporter            "
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'InvJustement
         '
@@ -885,7 +886,6 @@ Partial Class InvJustement
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
-    Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Panel29 As System.Windows.Forms.Panel
     Friend WithEvents plList As System.Windows.Forms.Panel
     Friend WithEvents Button1 As System.Windows.Forms.Button
@@ -926,5 +926,6 @@ Partial Class InvJustement
     Friend WithEvents lbValueS As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class

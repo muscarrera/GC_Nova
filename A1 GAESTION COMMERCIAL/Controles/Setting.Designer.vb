@@ -166,6 +166,7 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.LinkLabel6 = New System.Windows.Forms.LinkLabel()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -327,7 +328,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 619)
+        Me.plPref.Location = New System.Drawing.Point(5, 1128)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 402)
@@ -638,10 +639,10 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 460)
+        Me.plImp.Location = New System.Drawing.Point(5, 561)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 159)
+        Me.plImp.Size = New System.Drawing.Size(750, 567)
         Me.plImp.TabIndex = 17
         '
         'GroupBox7
@@ -1198,7 +1199,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 402)
+        Me.plRole.Location = New System.Drawing.Point(5, 503)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 58)
@@ -1245,7 +1246,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 340)
+        Me.plUser.Location = New System.Drawing.Point(5, 441)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1304,10 +1305,10 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 276)
+        Me.plText.Location = New System.Drawing.Point(5, 370)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
-        Me.plText.Size = New System.Drawing.Size(750, 64)
+        Me.plText.Size = New System.Drawing.Size(750, 71)
         Me.plText.TabIndex = 14
         '
         'GroupBox6
@@ -1583,6 +1584,7 @@ Partial Class Setting
         Me.plData.AutoScroll = True
         Me.plData.BackColor = System.Drawing.Color.Transparent
         Me.plData.Controls.Add(Me.GroupBox1)
+        Me.plData.Controls.Add(Me.LinkLabel6)
         Me.plData.Controls.Add(Me.LinkLabel3)
         Me.plData.Controls.Add(Me.LinkLabel5)
         Me.plData.Controls.Add(Me.LinkLabel4)
@@ -1592,7 +1594,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 271)
+        Me.plData.Size = New System.Drawing.Size(750, 365)
         Me.plData.TabIndex = 13
         '
         'GroupBox1
@@ -1750,7 +1752,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(713, 39)
+        Me.Panel6.Size = New System.Drawing.Size(730, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1774,6 +1776,17 @@ Partial Class Setting
         Me.PictureBox3.Size = New System.Drawing.Size(60, 35)
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
+        '
+        'LinkLabel6
+        '
+        Me.LinkLabel6.AutoSize = True
+        Me.LinkLabel6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel6.Location = New System.Drawing.Point(91, 266)
+        Me.LinkLabel6.Name = "LinkLabel6"
+        Me.LinkLabel6.Size = New System.Drawing.Size(152, 16)
+        Me.LinkLabel6.TabIndex = 23
+        Me.LinkLabel6.TabStop = True
+        Me.LinkLabel6.Text = "Models d'Impression"
         '
         'Setting
         '
@@ -1981,5 +1994,6 @@ Partial Class Setting
     Friend WithEvents cbAccessClient As System.Windows.Forms.CheckBox
     Friend WithEvents cbFactureGetSold As System.Windows.Forms.CheckBox
     Friend WithEvents cbBlGetSold As System.Windows.Forms.CheckBox
+    Friend WithEvents LinkLabel6 As System.Windows.Forms.LinkLabel
 
 End Class

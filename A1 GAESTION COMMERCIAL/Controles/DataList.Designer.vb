@@ -26,6 +26,7 @@ Partial Class DataList
         Me.plNewElement = New System.Windows.Forms.Panel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.PlAdd = New System.Windows.Forms.Panel()
+        Me.AddRow1 = New A1_GAESTION_COMMERCIAL.AddRow()
         Me.Pl = New System.Windows.Forms.Panel()
         Me.PlFooter = New System.Windows.Forms.Panel()
         Me.lbLavc = New System.Windows.Forms.Label()
@@ -40,6 +41,7 @@ Partial Class DataList
         Me.plL = New System.Windows.Forms.Panel()
         Me.plR = New System.Windows.Forms.Panel()
         Me.plTotal = New System.Windows.Forms.Panel()
+        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.plHeaderSells = New System.Windows.Forms.Panel()
@@ -61,10 +63,12 @@ Partial Class DataList
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.lbQte = New System.Windows.Forms.Label()
+        Me.plTva = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.plListHeader = New System.Windows.Forms.Panel()
         Me.Panel12 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -83,8 +87,6 @@ Partial Class DataList
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.PlPayement = New System.Windows.Forms.Panel()
-        Me.TB = New A1_GAESTION_COMMERCIAL.TotalBloc()
-        Me.AddRow1 = New A1_GAESTION_COMMERCIAL.AddRow()
         Me.Entete = New A1_GAESTION_COMMERCIAL.EnteteFacture()
         Me.plNewElement.SuspendLayout()
         Me.PlAdd.SuspendLayout()
@@ -98,8 +100,9 @@ Partial Class DataList
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.plTva.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.plListHeader.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
@@ -142,6 +145,22 @@ Partial Class DataList
         Me.PlAdd.Padding = New System.Windows.Forms.Padding(5)
         Me.PlAdd.Size = New System.Drawing.Size(710, 39)
         Me.PlAdd.TabIndex = 6
+        '
+        'AddRow1
+        '
+        Me.AddRow1.AutoCompleteSourceName = Nothing
+        Me.AddRow1.AutoCompleteSourceRef = Nothing
+        Me.AddRow1.BackColor = System.Drawing.Color.Transparent
+        Me.AddRow1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AddRow1.dpid = 0
+        Me.AddRow1.isAlerted = False
+        Me.AddRow1.isSlave = True
+        Me.AddRow1.Location = New System.Drawing.Point(5, 5)
+        Me.AddRow1.myStock = 0.0R
+        Me.AddRow1.Name = "AddRow1"
+        Me.AddRow1.Padding = New System.Windows.Forms.Padding(2)
+        Me.AddRow1.Size = New System.Drawing.Size(700, 29)
+        Me.AddRow1.TabIndex = 0
         '
         'Pl
         '
@@ -322,6 +341,22 @@ Partial Class DataList
         Me.plTotal.Size = New System.Drawing.Size(710, 191)
         Me.plTotal.TabIndex = 7
         '
+        'TB
+        '
+        Me.TB.avance = 0.0R
+        Me.TB.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TB.isDisibleEditing = False
+        Me.TB.Location = New System.Drawing.Point(5, 5)
+        Me.TB.ModePayement = Nothing
+        Me.TB.Name = "TB"
+        Me.TB.pj = 0
+        Me.TB.Remise = 0.0R
+        Me.TB.Size = New System.Drawing.Size(700, 181)
+        Me.TB.TabIndex = 0
+        Me.TB.TotalHt = 0.0R
+        Me.TB.TVA = 0.0R
+        Me.TB.Writer = "-"
+        '
         'Panel9
         '
         Me.Panel9.BackColor = System.Drawing.Color.Transparent
@@ -501,8 +536,9 @@ Partial Class DataList
         Me.plDetailsHeader.Controls.Add(Me.Panel5)
         Me.plDetailsHeader.Controls.Add(Me.Panel4)
         Me.plDetailsHeader.Controls.Add(Me.Panel3)
-        Me.plDetailsHeader.Controls.Add(Me.Panel2)
         Me.plDetailsHeader.Controls.Add(Me.Panel7)
+        Me.plDetailsHeader.Controls.Add(Me.plTva)
+        Me.plDetailsHeader.Controls.Add(Me.Panel2)
         Me.plDetailsHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.plDetailsHeader.Location = New System.Drawing.Point(105, 228)
         Me.plDetailsHeader.Name = "plDetailsHeader"
@@ -518,7 +554,7 @@ Partial Class DataList
         Me.Panel6.Location = New System.Drawing.Point(139, 5)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel6.Size = New System.Drawing.Size(39, 24)
+        Me.Panel6.Size = New System.Drawing.Size(0, 24)
         Me.Panel6.TabIndex = 17
         '
         'Label1
@@ -529,7 +565,7 @@ Partial Class DataList
         Me.Label1.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label1.Location = New System.Drawing.Point(5, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(29, 24)
+        Me.Label1.Size = New System.Drawing.Size(0, 24)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Designation"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -539,7 +575,7 @@ Partial Class DataList
         Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel5.Location = New System.Drawing.Point(178, 5)
+        Me.Panel5.Location = New System.Drawing.Point(136, 5)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel5.Size = New System.Drawing.Size(89, 24)
@@ -563,7 +599,7 @@ Partial Class DataList
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.Controls.Add(Me.Label3)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(267, 5)
+        Me.Panel4.Location = New System.Drawing.Point(225, 5)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel4.Size = New System.Drawing.Size(90, 24)
@@ -587,7 +623,7 @@ Partial Class DataList
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(357, 5)
+        Me.Panel3.Location = New System.Drawing.Point(315, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Panel3.Size = New System.Drawing.Size(84, 24)
@@ -604,30 +640,6 @@ Partial Class DataList
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Remise %"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(441, 5)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Panel2.Size = New System.Drawing.Size(109, 24)
-        Me.Panel2.TabIndex = 13
-        '
-        'Label5
-        '
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.Label5.Location = New System.Drawing.Point(5, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(99, 24)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "Total"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel7
         '
@@ -652,6 +664,52 @@ Partial Class DataList
         Me.lbQte.TabIndex = 1
         Me.lbQte.Text = "Réf"
         Me.lbQte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'plTva
+        '
+        Me.plTva.BackColor = System.Drawing.Color.Transparent
+        Me.plTva.Controls.Add(Me.Label15)
+        Me.plTva.Dock = System.Windows.Forms.DockStyle.Right
+        Me.plTva.Location = New System.Drawing.Point(399, 5)
+        Me.plTva.Name = "plTva"
+        Me.plTva.Size = New System.Drawing.Size(42, 24)
+        Me.plTva.TabIndex = 18
+        '
+        'Label15
+        '
+        Me.Label15.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label15.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.Label15.Location = New System.Drawing.Point(0, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(42, 24)
+        Me.Label15.TabIndex = 2
+        Me.Label15.Text = "Tva %"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel2.Location = New System.Drawing.Point(441, 5)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Panel2.Size = New System.Drawing.Size(109, 24)
+        Me.Panel2.TabIndex = 13
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.Label5.Location = New System.Drawing.Point(5, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(99, 24)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Total"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'plListHeader
         '
@@ -879,38 +937,6 @@ Partial Class DataList
         Me.PlPayement.TabIndex = 19
         Me.PlPayement.Visible = False
         '
-        'TB
-        '
-        Me.TB.avance = 0.0R
-        Me.TB.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TB.isDisibleEditing = False
-        Me.TB.Location = New System.Drawing.Point(5, 5)
-        Me.TB.ModePayement = Nothing
-        Me.TB.Name = "TB"
-        Me.TB.pj = 0
-        Me.TB.Remise = 0.0R
-        Me.TB.Size = New System.Drawing.Size(700, 181)
-        Me.TB.TabIndex = 0
-        Me.TB.TotalHt = 0.0R
-        Me.TB.TVA = 0.0R
-        Me.TB.Writer = "-"
-        '
-        'AddRow1
-        '
-        Me.AddRow1.AutoCompleteSourceName = Nothing
-        Me.AddRow1.AutoCompleteSourceRef = Nothing
-        Me.AddRow1.BackColor = System.Drawing.Color.Transparent
-        Me.AddRow1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AddRow1.dpid = 0
-        Me.AddRow1.isAlerted = False
-        Me.AddRow1.isSlave = True
-        Me.AddRow1.Location = New System.Drawing.Point(5, 5)
-        Me.AddRow1.myStock = 0.0R
-        Me.AddRow1.Name = "AddRow1"
-        Me.AddRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddRow1.Size = New System.Drawing.Size(700, 29)
-        Me.AddRow1.TabIndex = 0
-        '
         'Entete
         '
         Me.Entete.BackColor = System.Drawing.Color.Transparent
@@ -970,8 +996,9 @@ Partial Class DataList
         Me.Panel5.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
+        Me.plTva.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.plListHeader.ResumeLayout(False)
         Me.Panel12.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
@@ -1046,5 +1073,7 @@ Partial Class DataList
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents PlPayement As System.Windows.Forms.Panel
+    Friend WithEvents plTva As System.Windows.Forms.Panel
+    Friend WithEvents Label15 As System.Windows.Forms.Label
 
 End Class

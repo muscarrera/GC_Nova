@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gGlobClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <W_Page>720</W_Page>
+  <h_Page>1160</h_Page>
+  <FooterFieldDic>
+    <gTopField>
+      <designation>sd</designation>
+      <field>//Pied_Total_Chiffre</field>
+      <x>10</x>
+      <y>10</y>
+      <width>100</width>
+      <height>15</height>
+      <fSize>9</fSize>
+      <backColor />
+      <isBold>true</isBold>
+      <hasBloc>false</hasBloc>
+      <isDeleted>false</isDeleted>
+    </gTopField>
+  </FooterFieldDic>
+  <TopFieldDic>
+    <gTopField>
+      <designation>sds</designation>
+      <field>name</field>
+      <x>10</x>
+      <y>10</y>
+      <width>100</width>
+      <height>15</height>
+      <fSize>9</fSize>
+      <backColor />
+      <isBold>true</isBold>
+      <hasBloc>true</hasBloc>
+      <isDeleted>false</isDeleted>
+    </gTopField>
+  </TopFieldDic>
+  <TabProp>
+    <x>40</x>
+    <y>160</y>
+    <TabWidth>500</TabWidth>
+    <TabHeight>800</TabHeight>
+    <details>
+      <gColClass>
+        <index>0</index>
+        <HeaderName>Designation</HeaderName>
+        <Field>name</Field>
+        <ColWidth>80</ColWidth>
+      </gColClass>
+      <gColClass>
+        <index>1</index>
+        <HeaderName>Designation</HeaderName>
+        <Field>name</Field>
+        <ColWidth>80</ColWidth>
+      </gColClass>
+    </details>
+  </TabProp>
+</gGlobClass>

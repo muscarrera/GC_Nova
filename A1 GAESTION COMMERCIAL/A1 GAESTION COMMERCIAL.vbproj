@@ -61,6 +61,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -84,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ALMohassinDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ALMohassinDBDataSet.vb">
+      <DependentUpon>ALMohassinDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Classes\AdminModule.vb" />
     <Compile Include="Classes\AricleClass.vb" />
     <Compile Include="Classes\AutoModule.vb" />
@@ -92,6 +96,7 @@
     <Compile Include="Classes\DataAccess.vb" />
     <Compile Include="Classes\DrawClass.vb" />
     <Compile Include="Classes\FactureClass.vb" />
+    <Compile Include="Classes\HomeClass.vb" />
     <Compile Include="Classes\InventaireClass.vb" />
     <Compile Include="Classes\NumericStrings.vb" />
     <Compile Include="Classes\ParcClass.vb" />
@@ -144,6 +149,18 @@
       <DependentUpon>FileLine.vb</DependentUpon>
     </Compile>
     <Compile Include="Controles\FileLine.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Home\AppChart.Designer.vb">
+      <DependentUpon>AppChart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Home\AppChart.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Home\App_Home.Designer.vb">
+      <DependentUpon>App_Home.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Home\App_Home.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\Inventaire\InventaireList.Designer.vb">
@@ -230,6 +247,41 @@
     <Compile Include="Controles\TotalBloc.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GraphicModel\AddEditTopField.Designer.vb">
+      <DependentUpon>AddEditTopField.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModel\AddEditTopField.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicModel\gChooseDesign.Designer.vb">
+      <DependentUpon>gChooseDesign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModel\gChooseDesign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicModel\gColClass.vb" />
+    <Compile Include="GraphicModel\gColumn.Designer.vb">
+      <DependentUpon>gColumn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModel\gColumn.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GraphicModel\gForm.Designer.vb">
+      <DependentUpon>gForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModel\gForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicModel\gGlobClass.vb" />
+    <Compile Include="GraphicModel\gTabClass.vb" />
+    <Compile Include="GraphicModel\gTable.Designer.vb">
+      <DependentUpon>gTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicModel\gTable.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GraphicModel\gTopField.vb" />
+    <Compile Include="GraphicModel\ToXml.vb" />
     <Compile Include="GUI\AddAdmins.Designer.vb">
       <DependentUpon>AddAdmins.vb</DependentUpon>
     </Compile>
@@ -363,6 +415,12 @@
     <Compile Include="GUI\NouveauFacture.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\OptionAddElement.Designer.vb">
+      <DependentUpon>OptionAddElement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\OptionAddElement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\PayementForm.Designer.vb">
       <DependentUpon>PayementForm.vb</DependentUpon>
     </Compile>
@@ -480,6 +538,12 @@
     <EmbeddedResource Include="Controles\FileLine.resx">
       <DependentUpon>FileLine.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Home\AppChart.resx">
+      <DependentUpon>AppChart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Home\App_Home.resx">
+      <DependentUpon>App_Home.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\Inventaire\InventaireList.resx">
       <DependentUpon>InventaireList.vb</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +585,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\TotalBloc.resx">
       <DependentUpon>TotalBloc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicModel\AddEditTopField.resx">
+      <DependentUpon>AddEditTopField.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicModel\gChooseDesign.resx">
+      <DependentUpon>gChooseDesign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicModel\gColumn.resx">
+      <DependentUpon>gColumn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicModel\gForm.resx">
+      <DependentUpon>gForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicModel\gTable.resx">
+      <DependentUpon>gTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddAdmins.resx">
       <DependentUpon>AddAdmins.vb</DependentUpon>
@@ -587,6 +666,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NouveauFacture.resx">
       <DependentUpon>NouveauFacture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\OptionAddElement.resx">
+      <DependentUpon>OptionAddElement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PayementForm.resx">
       <DependentUpon>PayementForm.vb</DependentUpon>

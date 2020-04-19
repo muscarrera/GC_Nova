@@ -34,7 +34,6 @@ Partial Class InvReception
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -53,6 +52,7 @@ Partial Class InvReception
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dte2 = New System.Windows.Forms.DateTimePicker()
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel6.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -138,10 +138,10 @@ Partial Class InvReception
         Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
         Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
         Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLnbr.Location = New System.Drawing.Point(71, 2)
+        Me.lbLnbr.Location = New System.Drawing.Point(100, 2)
         Me.lbLnbr.Name = "lbLnbr"
         Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.lbLnbr.Size = New System.Drawing.Size(63, 35)
+        Me.lbLnbr.Size = New System.Drawing.Size(108, 35)
         Me.lbLnbr.TabIndex = 14
         Me.lbLnbr.Text = "0"
         Me.lbLnbr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -154,7 +154,7 @@ Partial Class InvReception
         Me.Label14.Location = New System.Drawing.Point(0, 2)
         Me.Label14.Name = "Label14"
         Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
-        Me.Label14.Size = New System.Drawing.Size(71, 35)
+        Me.Label14.Size = New System.Drawing.Size(100, 35)
         Me.Label14.TabIndex = 15
         Me.Label14.Text = "Nbre :"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -196,7 +196,7 @@ Partial Class InvReception
         'Panel24
         '
         Me.Panel24.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel24.Controls.Add(Me.Button5)
+        Me.Panel24.Controls.Add(Me.Button4)
         Me.Panel24.Controls.Add(Me.Button7)
         Me.Panel24.Controls.Add(Me.Panel29)
         Me.Panel24.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -205,28 +205,13 @@ Partial Class InvReception
         Me.Panel24.Size = New System.Drawing.Size(774, 38)
         Me.Panel24.TabIndex = 16
         '
-        'Button5
-        '
-        Me.Button5.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.Button5.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
-        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(10, 2)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.Button5.Size = New System.Drawing.Size(93, 34)
-        Me.Button5.TabIndex = 3
-        Me.Button5.Text = "Imprimer"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button5.UseVisualStyleBackColor = True
-        '
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Button7.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SEARCH_18
         Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(121, 2)
+        Me.Button7.Location = New System.Drawing.Point(6, 3)
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
         Me.Button7.Size = New System.Drawing.Size(101, 33)
@@ -433,6 +418,23 @@ Partial Class InvReception
         Me.dte1.Size = New System.Drawing.Size(243, 20)
         Me.dte1.TabIndex = 0
         '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(645, 2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(129, 36)
+        Me.Button4.TabIndex = 16
+        Me.Button4.Text = "Exporter            "
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button4.UseVisualStyleBackColor = False
+        '
         'InvReception
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -471,7 +473,6 @@ Partial Class InvReception
     Friend WithEvents dte2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dte1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Panel24 As System.Windows.Forms.Panel
-    Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Panel29 As System.Windows.Forms.Panel
     Friend WithEvents Panel10 As System.Windows.Forms.Panel
@@ -488,5 +489,6 @@ Partial Class InvReception
     Friend WithEvents lbLnbr As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class

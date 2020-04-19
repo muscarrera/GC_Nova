@@ -15,6 +15,7 @@
     Public Event getStock(ByVal _arid As Integer, ByVal _dpid As Integer, ByRef stk As Double)
     Public Event ChangeElementDepot(ByVal addRow As AddRow, ByVal dpid As Integer)
     Public Event GetRemiseByClient(ByRef art As A1_GAESTION_COMMERCIAL.Article)
+    Event AddArticleToDb(ByRef art As A1_GAESTION_COMMERCIAL.Article)
 
     Public Property dpid As Integer
         Get
@@ -68,8 +69,10 @@
             article.arid = value
             If value = 0 And txtN.text <> "" Then
                 plleft.BackgroundImage = My.Resources.WARNING_15
+                txtTva.txtReadOnly = False
             Else
                 plleft.BackgroundImage = Nothing
+                txtTva.txtReadOnly = True
             End If
         End Set
     End Property
@@ -149,7 +152,7 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
+        If Form1.isBaseOnOneTva Then plTva.Visible = False
     End Sub
 
     'subs and Functions
@@ -169,13 +172,45 @@
         txtRf.Focus()
     End Sub
     'validation
+    Dim isValidByOptionForm As Integer = 1
     Private Function ValidationForm() As Boolean
 
         If txtN.text = "" Then Return False
         If txtPr.text = "" Then Return False
 
+
+
+
+        If article.arid = 0 Then
+            Dim op As New OptionAddElement
+
+            Dim MPx As Point = MousePosition()
+            Dim y = MPx.Y + 10
+            Dim x = MPx.X - 133
+            op.Location = New Point(x, y)
+
+
+            AddHandler op.FormClosing, AddressOf AdvancedSearch_FormClosing
+            op.ShowDialog()
+
+            If isValidByOptionForm = 0 Then Return False
+            If isValidByOptionForm = 1 Then Return True
+            'add new article
+            If isValidByOptionForm = 2 Then
+                RaiseEvent AddArticleToDb(article)
+                If article.arid = 0 Then Return False
+            End If
+        End If
+
         Return True
     End Function
+
+    Private Sub AdvancedSearch_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs)
+        Dim op As OptionAddElement = sender
+        isValidByOptionForm = op.value
+    End Sub
+
+
     'fill
     Public Sub FillFields(ByVal art As Article)
         Dim sPrice As Double = art.sprice
@@ -187,9 +222,11 @@
 
         txtRf.text = article.ref
         txtN.text = article.name
+        txtTva.text = article.TVA
 
         Dim pr As Double = article.sprice
         If Form1.isBaseOnTTC Then pr = article.spriceTTC
+
 
         txtPr.text = String.Format("{0:n}", CDec(pr))
         txtRs.text = String.Format("{0:n}", CDec(article.remise))
@@ -354,10 +391,11 @@
         End Try
     End Sub
     Private Sub txtName_TxtChanged() Handles txtN.TxtChanged
-        Arid = 0
+        'Arid = 0
         article.name = txtN.text
     End Sub
     Private Sub txtRef_TxtChanged() Handles txtRf.TxtChanged
+        Arid = 0
         article.ref = txtRf.text
     End Sub
     'Leave
@@ -392,6 +430,17 @@
             End If
             dpid = clc.dpid
         End If
+    End Sub
+
+
+    Private Sub txtTva_TxtChanged() Handles txtTva.TxtChanged
+        Try
+            If txtTva.Focus = False Then Exit Sub
+            article.TVA = txtTva.text
+            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+        Catch ex As Exception
+            txtttc.text = 0
+        End Try
     End Sub
 End Class
 

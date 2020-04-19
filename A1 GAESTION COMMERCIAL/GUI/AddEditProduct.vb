@@ -122,7 +122,6 @@ Public Class AddEditProduct
         End Try
     End Sub
 
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim savepic As New OpenFileDialog
         savepic.Filter = "*.jpg|*.jpg"
@@ -283,7 +282,7 @@ Public Class AddEditProduct
         End If
 
         If txtAlert.text = "" Then txtAlert.text = "0"
-        If txtStockType.text = "" Then txtStockType.text = "-"
+        If txtStockType.text = "" Then txtStockType.text = "CUMP"
         If txtPrixPromo.Text = "" Then txtPrixPromo.Text = "0"
         If txtRmax.text = "" Then txtRmax.text = "0"
         If txtRGr.text = "" Then txtRGr.text = "0"
@@ -325,7 +324,7 @@ Public Class AddEditProduct
                 txtRRev.text = DblValue(dt, "remiseRev", 0) 'dt.Rows(0).Item("")
                 txtRCF.text = DblValue(dt, "remiseCF", 0) 'dt.Rows(0).Item("")
 
-                txtStockType.text = StrValue(dt, "stockType", 0) 'dt.Rows(0).Item("")
+                txtStockType.text = "CUMP" 'StrValue(dt, "stockType", 0) 'dt.Rows(0).Item("")
                 txtAlert.text = DblValue(dt, "alertStock", 0) 'dt.Rows(0).Item("")
 
                 isPromo.Checked = BoolValue(dt, "isPromo", 0) 'dt.Rows(0).Item("")
