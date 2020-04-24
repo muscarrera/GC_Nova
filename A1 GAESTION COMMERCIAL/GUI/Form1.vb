@@ -19,6 +19,10 @@
     Public isBlGetSold As Boolean
     Public isFactureGetSold As Boolean
 
+    Public normat_Print_Style As Boolean = True
+    'Tables
+    Public dt_Depot As DataTable
+
     'private members
     Private _Exercice As String = 19
     Private _Mode As String = "Accueil"
@@ -63,6 +67,7 @@
     Public hasEntete_BonTransport As Boolean
     Public printEnteteOnPdf As Boolean
     Public printOnPaper As Boolean
+    Public MP_Localname As String
 
     Public proformat_Id As Integer
     Public printWithDate As Boolean = True
@@ -87,7 +92,8 @@
     Public Color_Default_Row As Color = Color.Bisque
     Public Color_Alternating_Row As Color = Color.WhiteSmoke
     Public Color_Selected_Row As Color = Color.Red
-    
+
+
 
     Public Property prefix As String
         Get
@@ -112,13 +118,11 @@
         'Regs info
         HandleRegistryinfo()
 
-        Dim gg As New gForm
-        If gg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-            End
-        End If
-
-
-
+        'Dim gg As New gForm
+        'gg.LoadXml()
+        'If gg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+        '    End
+        'End If
 
         'check Trial
         If TrialVersion_Master = False Then
@@ -320,5 +324,54 @@
             c.AddDataList()
         End Using
         HeaderColor(bt_Parck.Text)
+    End Sub
+
+    Private Sub PrintDocDesign_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocDesign.PrintPage
+        Try
+            Dim ds As DataList = plBody.Controls(0)
+
+            Dim data As New DataTable
+            ' Create four typed columns in the DataTable.
+            data.Columns.Add("id", GetType(String))
+            data.Columns.Add("date", GetType(String))
+            data.Columns.Add("cid", GetType(String))
+            data.Columns.Add("name", GetType(String))
+            data.Columns.Add("total_ht", GetType(String))
+            data.Columns.Add("total_tva", GetType(String))
+            data.Columns.Add("total_ttc", GetType(String))
+            data.Columns.Add("total_remise", GetType(String))
+            data.Columns.Add("total_avance", GetType(String))
+            data.Columns.Add("total_droitTimbre", GetType(String))
+            data.Columns.Add("MPayement", GetType(String))
+            data.Columns.Add("Editeur", GetType(String))
+
+            data.Rows.Add(1, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
+                          String.Format("{0:0.00}", ds.TB.TotalHt), String.Format("{0:0.00}", ds.TB.TVA),
+                          String.Format("{0:0.00}", ds.TB.TotalTTC), String.Format("{0:0.00}", ds.TB.Remise),
+                          String.Format("{0:0.00}", ds.TB.avance), String.Format("{0:0.00}", ds.TB.DroitTimbre),
+                          ds.ModePayement, adminName)
+
+
+            Dim dt_Client As New DataTable
+            ' Create four typed columns in the DataTable.
+            dt_Client.Columns.Add("Clid", GetType(Integer))
+            dt_Client.Columns.Add("name", GetType(String))
+            dt_Client.Columns.Add("ref", GetType(String))
+            dt_Client.Columns.Add("ville", GetType(String))
+            dt_Client.Columns.Add("adresse", GetType(String))
+            dt_Client.Columns.Add("ice", GetType(String))
+            dt_Client.Columns.Add("tel", GetType(String))
+
+            ' Add  rows with those columns filled in the DataTable.
+            dt_Client.Rows.Add(ds.Entete.Client.cid, ds.Entete.ClientName, ds.Entete.Client.ref, ds.Entete.Client.ville,
+                              ds.Entete.Client.adresse, ds.Entete.Client.ICE, ds.Entete.Client.tel)
+
+
+            Using g As gDrawClass = New gDrawClass(MP_Localname)
+                g.DrawBl(e, data, ds.DataSource, dt_Client, Facture_Title, False, m)
+            End Using
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

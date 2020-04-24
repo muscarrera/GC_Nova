@@ -220,7 +220,7 @@
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
-                btParamsImp.Visible = False
+                btParamsImp.Visible = True
                 btAvoir.Visible = True
                 If Form1.useButtonValidForStock Then btValideBl.Visible = True
 
@@ -238,7 +238,7 @@
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = True
-                btParamsImp.Visible = False
+                btParamsImp.Visible = True
                 btAvoir.Visible = False
                 btPrint.Visible = False
                 If Form1.useButtonValidForStock Then btValideBl.Visible = True
@@ -248,7 +248,7 @@
                 btDelivry.Visible = False
                 btTranformer.Visible = False
                 btSolde.Visible = False
-                btParamsImp.Visible = False
+                btParamsImp.Visible = True
                 If Form1.useButtonValidForStock Then btValideBl.Visible = True
             End If
         End Set

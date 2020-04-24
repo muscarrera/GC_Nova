@@ -59,6 +59,14 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        If CB.Text.StartsWith("//") Then
+            If txt.text <> "total_ht" And txt.text <> "total_ttc" And txt.text <> "Avance" Then
+                txt.ForeColor = Color.Red
+                txt.Focus()
+                Exit Sub
+            End If
+        End If
+
         Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
 

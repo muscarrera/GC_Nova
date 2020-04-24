@@ -834,37 +834,167 @@ Public Class FactureClass
 
     'Entete events
     Private Sub SavePdf(ByVal ds As DataList)
-        Form1.proformat_Id = 0
-        Form1.printWithDate = True
-        Form1.printWithPrice = True
-        Form1.factureToPrint = Nothing
+        If Form1.normat_Print_Style = True Then
+            SavePdf_Normal(ds)
+            Exit Sub
+        End If
+
+        Dim pr As New gChooseDesign
+        If pr.ShowDialog = DialogResult.OK Then
+            Form1.MP_Localname = pr.localName
+
+            Dim g As New gGlobClass
+            g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & pr.localName)
+
+
+            Try
+                Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
+                ps.PaperName = g.p_Kind
+                Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+            Catch ex As Exception
+            End Try
+
+            If ds.Operation = "Devis" Then
+                Form1.Facture_Title = "Devis "
+            ElseIf ds.Operation = "Sell_Facture" Then
+                Form1.Facture_Title = "Facture "
+                ''''//
+            ElseIf ds.Operation = "Bon_Livraison" Then
+                Form1.Facture_Title = "Bon de Livraison "
+            ElseIf ds.Operation = "Bon_Commande" Then
+                Form1.Facture_Title = "Bon de Commande "
+            ElseIf ds.Operation = "Bon_Achat" Then
+                Form1.Facture_Title = "Bon de Achat "
+                ''''//
+            ElseIf ds.Operation = "Commande_Client" Then
+                Form1.Facture_Title = "Commande Client "
+            ElseIf ds.Operation = "Sell_Avoir" Then
+                Form1.Facture_Title = "Facture d'Avoir "
+            End If
+            Form1.printOnPaper = False
+
+            'Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Pdf
+            'Form1.PrintDoc.Print()
+
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Pdf
+            Form1.PrintDocDesign.Print()
+
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+        End If
+    End Sub
+    Private Sub PrintFacture(ByVal ds As DataList)
+
+        If Form1.normat_Print_Style = True Then
+            PrintFacture_Normal(ds)
+            Exit Sub
+        End If
+
+
+        Form1.MP_Localname = "Default.dat"
+        If ds.Operation = "Sell_Facture" Then Form1.MP_Localname = "Facture-Default.dat"
+        Try
+            Dim g As New gGlobClass
+            g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
+
+            Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
+            ps.PaperName = g.p_Kind
+            Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+        Catch ex As Exception
+
+        End Try
+
 
         If ds.Operation = "Devis" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Devis
             Form1.Facture_Title = "Devis "
         ElseIf ds.Operation = "Sell_Facture" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Facture
             Form1.Facture_Title = "Facture "
             ''''//
         ElseIf ds.Operation = "Bon_Livraison" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
             Form1.Facture_Title = "Bon de Livraison "
         ElseIf ds.Operation = "Bon_Commande" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
             Form1.Facture_Title = "Bon de Commande "
         ElseIf ds.Operation = "Bon_Achat" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
             Form1.Facture_Title = "Bon de Achat "
             ''''//
         ElseIf ds.Operation = "Commande_Client" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Commande_Client
             Form1.Facture_Title = "Commande Client "
         ElseIf ds.Operation = "Sell_Avoir" Then
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Avoir
             Form1.Facture_Title = "Facture d'Avoir "
+        Else
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
         End If
-        Form1.printOnPaper = False
-
-        Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Pdf
-        Form1.PrintDoc.Print()
+        Form1.printOnPaper = True
+        Form1.PrintDocDesign.Print()
 
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
 
     End Sub
-    Private Sub PrintFacture(ByVal ds As DataList)
+    Private Sub PrintParamsFacture(ByVal ds As DataList)
+
+
+        If Form1.normat_Print_Style = True Then
+            PrintParamsFacture_Normal(ds)
+            Exit Sub
+        End If
+
+
+        Dim pr As New gChooseDesign
+        If pr.ShowDialog = DialogResult.OK Then
+            Form1.MP_Localname = pr.localName
+
+            Dim g As New gGlobClass
+            g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & pr.localName)
+
+
+            Try
+                Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
+                ps.PaperName = g.p_Kind
+                Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+            Catch ex As Exception
+            End Try
+
+
+            If ds.Operation = "Devis" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Devis
+                Form1.Facture_Title = "Devis "
+            ElseIf ds.Operation = "Sell_Facture" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Facture
+                Form1.Facture_Title = "Facture "
+            ElseIf ds.Operation = "Bon_Livraison" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Livraison "
+            ElseIf ds.Operation = "Bon_Commande" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Commande "
+            ElseIf ds.Operation = "Bon_Achat" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
+                Form1.Facture_Title = "Bon de Achat "
+            ElseIf ds.Operation = "Commande_Client" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+                Form1.Facture_Title = "Commande Client "
+            ElseIf ds.Operation = "Sell_Avoir" Then
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Avoir
+                Form1.Facture_Title = "Facture d'Avoir "
+            Else
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
+            End If
+
+
+            Form1.printOnPaper = True
+            Form1.PrintDocDesign.Print()
+
+            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+        End If
+    End Sub
+    'old print methode
+    Private Sub PrintFacture_Normal(ByVal ds As DataList)
         Form1.proformat_Id = 0
         Form1.printWithDate = True
         Form1.printWithPrice = True
@@ -905,7 +1035,7 @@ Public Class FactureClass
 
         StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
     End Sub
-    Private Sub PrintParamsFacture(ByVal ds As DataList)
+    Private Sub PrintParamsFacture_Normal(ByVal ds As DataList)
         Dim pr As New ImpressionParams
         Form1.proformat_Id = 0
         If ds.Operation = "Bon_Achat" Or ds.Operation = "Bon_Commande" Then
@@ -955,6 +1085,37 @@ Public Class FactureClass
             StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
         End If
     End Sub
+    Private Sub SavePdf_Normal(ByVal ds As DataList)
+        Form1.proformat_Id = 0
+        Form1.printWithDate = True
+        Form1.printWithPrice = True
+        Form1.factureToPrint = Nothing
+
+        If ds.Operation = "Devis" Then
+            Form1.Facture_Title = "Devis "
+        ElseIf ds.Operation = "Sell_Facture" Then
+            Form1.Facture_Title = "Facture "
+            ''''//
+        ElseIf ds.Operation = "Bon_Livraison" Then
+            Form1.Facture_Title = "Bon de Livraison "
+        ElseIf ds.Operation = "Bon_Commande" Then
+            Form1.Facture_Title = "Bon de Commande "
+        ElseIf ds.Operation = "Bon_Achat" Then
+            Form1.Facture_Title = "Bon de Achat "
+            ''''//
+        ElseIf ds.Operation = "Commande_Client" Then
+            Form1.Facture_Title = "Commande Client "
+        ElseIf ds.Operation = "Sell_Avoir" Then
+            Form1.Facture_Title = "Facture d'Avoir "
+        End If
+        Form1.printOnPaper = False
+
+        Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Pdf
+        Form1.PrintDoc.Print()
+
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+    End Sub
+
     Private Sub SaveListofFacturesasPdf(ByVal ds As DataList)
         Form1.proformat_Id = 0
         Form1.printWithDate = True

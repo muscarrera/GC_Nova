@@ -85,6 +85,8 @@
             Form1.isBlGetSold = getRegistryinfo("isBlGetSold", True)
             Form1.isFactureGetSold = getRegistryinfo("isFactureGetSold", False)
 
+            Form1.normat_Print_Style = getRegistryinfo("normat_Print_Style", True)
+
             'prefix
             Form1.prf_Params.clear()
             Form1.prf_Params.Add("dv", getRegistryinfo("prf_s_dv", "Av"))

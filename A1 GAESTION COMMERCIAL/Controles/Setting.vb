@@ -89,7 +89,9 @@
             cbImpRef.Checked = getRegistryinfo("printRef", False)
             cbBlGetSold.Checked = getRegistryinfo("isBlGetSold", True)
             cbFactureGetSold.Checked = getRegistryinfo("isFactureGetSold", False)
- 
+            cbNormalImp.Checked = getRegistryinfo("normat_Print_Style", True)
+
+
             lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
             lbSelectText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Selected_Text", Color.Yellow.ToArgb.ToString))
             plDefRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Default_Row", Color.Bisque.ToArgb.ToString))
@@ -613,5 +615,14 @@
 
             End If
         End If
+    End Sub
+
+    Private Sub cbNormalImp_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbNormalImp.CheckedChanged
+
+        Try
+            setRegistryinfo("normat_Print_Style", cbNormalImp.Checked)
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

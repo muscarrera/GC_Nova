@@ -58,6 +58,7 @@ Partial Class Form1
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDocDesign = New System.Drawing.Printing.PrintDocument()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -440,6 +441,9 @@ Partial Class Form1
         'PrintDocList
         '
         '
+        'PrintDocDesign
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -503,5 +507,6 @@ Partial Class Form1
     Friend WithEvents PrintDocList As System.Drawing.Printing.PrintDocument
     Friend WithEvents btTrial As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents PrintDocDesign As System.Drawing.Printing.PrintDocument
 
 End Class

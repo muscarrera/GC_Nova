@@ -192,8 +192,6 @@ Module AutoModule
 
     '''''''''
     'save datagrid as HTML and prit it
-
-
     Public Sub SaveDataToHtml(ByVal dg As DataGridView, ByVal nm As String)
         'create empty string
 

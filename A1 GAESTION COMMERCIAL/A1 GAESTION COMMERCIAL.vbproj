@@ -266,6 +266,7 @@
     <Compile Include="GraphicModel\gColumn.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GraphicModel\gDrawClass.vb" />
     <Compile Include="GraphicModel\gForm.Designer.vb">
       <DependentUpon>gForm.vb</DependentUpon>
     </Compile>

@@ -159,9 +159,6 @@ Public Class DrawClass
 
                     e.Graphics.DrawLine(pen, CInt(55 * a), l, CInt(775 * a), l)
 
-
-
-
                     e.Graphics.DrawString("[ ..... ]", fnt, Brushes.Black, 605 * a, 870)
                     l = 250
                     e.HasMorePages = True

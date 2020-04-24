@@ -23,13 +23,13 @@ Partial Class gColumn
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtW = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtT = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lbHeader = New System.Windows.Forms.Label()
-        Me.txtW = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtT = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -48,6 +48,27 @@ Partial Class gColumn
         Me.Panel1.Size = New System.Drawing.Size(152, 219)
         Me.Panel1.TabIndex = 1
         '
+        'txtW
+        '
+        Me.txtW.BackColor = System.Drawing.Color.Transparent
+        Me.txtW.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtW.Dock = System.Windows.Forms.DockStyle.Top
+        Me.txtW.IsNumiric = True
+        Me.txtW.Location = New System.Drawing.Point(0, 88)
+        Me.txtW.Margin = New System.Windows.Forms.Padding(11)
+        Me.txtW.Name = "txtW"
+        Me.txtW.PlaceHolder = ""
+        Me.txtW.ShowClearIcon = False
+        Me.txtW.ShowSaveIcon = False
+        Me.txtW.Size = New System.Drawing.Size(152, 23)
+        Me.txtW.StartUp = 2
+        Me.txtW.TabIndex = 1
+        Me.txtW.TextSize = 8
+        Me.txtW.TxtBackColor = True
+        Me.txtW.TxtColor = System.Drawing.Color.White
+        Me.txtW.txtReadOnly = False
+        Me.txtW.TxtSelect = New Integer() {1, 0}
+        '
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
@@ -59,6 +80,27 @@ Partial Class gColumn
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Large"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtT
+        '
+        Me.txtT.BackColor = System.Drawing.Color.Transparent
+        Me.txtT.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtT.Dock = System.Windows.Forms.DockStyle.Top
+        Me.txtT.IsNumiric = False
+        Me.txtT.Location = New System.Drawing.Point(0, 34)
+        Me.txtT.Margin = New System.Windows.Forms.Padding(11)
+        Me.txtT.Name = "txtT"
+        Me.txtT.PlaceHolder = ""
+        Me.txtT.ShowClearIcon = False
+        Me.txtT.ShowSaveIcon = False
+        Me.txtT.Size = New System.Drawing.Size(152, 23)
+        Me.txtT.StartUp = 2
+        Me.txtT.TabIndex = 4
+        Me.txtT.TextSize = 8
+        Me.txtT.TxtBackColor = True
+        Me.txtT.TxtColor = System.Drawing.Color.White
+        Me.txtT.txtReadOnly = False
+        Me.txtT.TxtSelect = New Integer() {1, 0}
         '
         'Label1
         '
@@ -104,48 +146,6 @@ Partial Class gColumn
         Me.lbHeader.TabIndex = 1
         Me.lbHeader.Text = "Header"
         Me.lbHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'txtW
-        '
-        Me.txtW.BackColor = System.Drawing.Color.Transparent
-        Me.txtW.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtW.Dock = System.Windows.Forms.DockStyle.Top
-        Me.txtW.IsNumiric = True
-        Me.txtW.Location = New System.Drawing.Point(0, 88)
-        Me.txtW.Margin = New System.Windows.Forms.Padding(11)
-        Me.txtW.Name = "txtW"
-        Me.txtW.PlaceHolder = ""
-        Me.txtW.ShowClearIcon = False
-        Me.txtW.ShowSaveIcon = False
-        Me.txtW.Size = New System.Drawing.Size(152, 23)
-        Me.txtW.StartUp = 2
-        Me.txtW.TabIndex = 1
-        Me.txtW.TextSize = 8
-        Me.txtW.TxtBackColor = True
-        Me.txtW.TxtColor = System.Drawing.Color.White
-        Me.txtW.txtReadOnly = False
-        Me.txtW.TxtSelect = New Integer() {1, 0}
-        '
-        'txtT
-        '
-        Me.txtT.BackColor = System.Drawing.Color.Transparent
-        Me.txtT.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtT.Dock = System.Windows.Forms.DockStyle.Top
-        Me.txtT.IsNumiric = True
-        Me.txtT.Location = New System.Drawing.Point(0, 34)
-        Me.txtT.Margin = New System.Windows.Forms.Padding(11)
-        Me.txtT.Name = "txtT"
-        Me.txtT.PlaceHolder = ""
-        Me.txtT.ShowClearIcon = False
-        Me.txtT.ShowSaveIcon = False
-        Me.txtT.Size = New System.Drawing.Size(152, 23)
-        Me.txtT.StartUp = 2
-        Me.txtT.TabIndex = 4
-        Me.txtT.TextSize = 8
-        Me.txtT.TxtBackColor = True
-        Me.txtT.TxtColor = System.Drawing.Color.White
-        Me.txtT.txtReadOnly = False
-        Me.txtT.TxtSelect = New Integer() {1, 0}
         '
         'gColumn
         '

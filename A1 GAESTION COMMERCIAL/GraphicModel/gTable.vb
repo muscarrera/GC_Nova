@@ -155,12 +155,15 @@
         PARAMS.Add("Designation", "name")
         PARAMS.Add("Réf", "ref")
         PARAMS.Add("Prix", "price")
+        PARAMS.Add("Prix TTC", "xPriceTTC")
         PARAMS.Add("Remise", "remise")
         PARAMS.Add("Qte", "qte")
-        PARAMS.Add("Total", "xxx")
+        PARAMS.Add("Total", "xTotal")
+        PARAMS.Add("Total TTC", "xTotalTTC")
         PARAMS.Add("Tva", "tva")
-        PARAMS.Add("Dpt", "depot")
-
+        PARAMS.Add("Dpt N°", "depot")
+        PARAMS.Add("Entrepôte", "xdepot")
+        PARAMS.Add("Réf & Designation", "xname")
 
         ComboBox1.ValueMember = "Value"
         ComboBox1.DisplayMember = "Key"

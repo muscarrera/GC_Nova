@@ -31,11 +31,15 @@ Partial Class gForm
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.pb = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.btLand = New System.Windows.Forms.Button()
         Me.gt = New A1_GAESTION_COMMERCIAL.gTable()
+        Me.txt_H = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txt_w = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Pfp.SuspendLayout()
@@ -103,8 +107,12 @@ Partial Class gForm
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.txt_H)
+        Me.Panel2.Controls.Add(Me.txt_w)
         Me.Panel2.Controls.Add(Me.Button3)
         Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Controls.Add(Me.btLand)
+        Me.Panel2.Controls.Add(Me.Button4)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.pb)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -132,6 +140,16 @@ Partial Class gForm
         Me.Button2.Size = New System.Drawing.Size(43, 36)
         Me.Button2.TabIndex = 1
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Folder_Settings_Tools_icon_88583_X_24
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button4.Location = New System.Drawing.Point(273, 4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(44, 36)
+        Me.Button4.TabIndex = 1
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -178,6 +196,19 @@ Partial Class gForm
         Me.SplitContainer1.SplitterDistance = 487
         Me.SplitContainer1.TabIndex = 1
         '
+        'btLand
+        '
+        Me.btLand.BackColor = System.Drawing.Color.Transparent
+        Me.btLand.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
+        Me.btLand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btLand.FlatAppearance.BorderSize = 0
+        Me.btLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btLand.Location = New System.Drawing.Point(238, 5)
+        Me.btLand.Name = "btLand"
+        Me.btLand.Size = New System.Drawing.Size(29, 36)
+        Me.btLand.TabIndex = 1
+        Me.btLand.UseVisualStyleBackColor = False
+        '
         'gt
         '
         Me.gt.BackColor = System.Drawing.Color.White
@@ -188,6 +219,44 @@ Partial Class gForm
         Me.gt.Size = New System.Drawing.Size(485, 248)
         Me.gt.TabIndex = 0
         Me.gt.TabProp = GTabClass1
+        '
+        'txt_H
+        '
+        Me.txt_H.BackColor = System.Drawing.Color.White
+        Me.txt_H.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txt_H.IsNumiric = True
+        Me.txt_H.Location = New System.Drawing.Point(183, 9)
+        Me.txt_H.Name = "txt_H"
+        Me.txt_H.PlaceHolder = "h ..."
+        Me.txt_H.ShowClearIcon = False
+        Me.txt_H.ShowSaveIcon = False
+        Me.txt_H.Size = New System.Drawing.Size(52, 27)
+        Me.txt_H.StartUp = 2
+        Me.txt_H.TabIndex = 2
+        Me.txt_H.TextSize = 11
+        Me.txt_H.TxtBackColor = True
+        Me.txt_H.TxtColor = System.Drawing.Color.White
+        Me.txt_H.txtReadOnly = False
+        Me.txt_H.TxtSelect = New Integer() {1, 0}
+        '
+        'txt_w
+        '
+        Me.txt_w.BackColor = System.Drawing.Color.White
+        Me.txt_w.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txt_w.IsNumiric = True
+        Me.txt_w.Location = New System.Drawing.Point(128, 9)
+        Me.txt_w.Name = "txt_w"
+        Me.txt_w.PlaceHolder = "w ..."
+        Me.txt_w.ShowClearIcon = False
+        Me.txt_w.ShowSaveIcon = False
+        Me.txt_w.Size = New System.Drawing.Size(52, 27)
+        Me.txt_w.StartUp = 2
+        Me.txt_w.TabIndex = 2
+        Me.txt_w.TextSize = 11
+        Me.txt_w.TxtBackColor = True
+        Me.txt_w.TxtColor = System.Drawing.Color.White
+        Me.txt_w.txtReadOnly = False
+        Me.txt_w.TxtSelect = New Integer() {1, 0}
         '
         'gForm
         '
@@ -225,4 +294,8 @@ Partial Class gForm
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
+    Friend WithEvents txt_H As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txt_w As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btLand As System.Windows.Forms.Button
 End Class
