@@ -129,7 +129,15 @@ Public Class DrawClass
             End If
             e.Graphics.DrawRectangle(pen, CInt(55 * a), l, CInt(720 * a), 22)
 
-            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60 * a, l + 5, (460 - a_Rms) * a, 25), sf_C)
+            Dim x_name = 60
+            If Form1.printRef Then
+                e.Graphics.DrawString("Ref", fnt, Brushes.Black, New RectangleF(x_name * a, l + 5, CInt(90 * a), 25), sf_C)
+                x_name = 160
+            End If
+
+
+            e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(x_name * a, l + 5, CInt((520 - x_name - a_Rms) * a), 25), sf_C)
+            'e.Graphics.DrawString("Designation", fnt, Brushes.Black, New RectangleF(60 * a, l + 5, (460 - a_Rms) * a, 25), sf_C)
             e.Graphics.DrawString("Qte", fnt, Brushes.Black, New RectangleF((525 - a_Rms) * a, l + 5, 65 * a, 25), sf_C)
             e.Graphics.DrawString("P.U", fnt, Brushes.Black, New RectangleF((600 - a_Rms) * a, l + 5, 70 * a, 25), sf_C)
 
@@ -164,14 +172,7 @@ Public Class DrawClass
                     e.HasMorePages = True
                     Return
                 End If
-                'e.Graphics.DrawLine(pen, 55, l - 10, 55, l + 22)
-                'e.Graphics.DrawLine(pen, 775, l - 10, 775, l + 22)
-                'If remise > 0 Then e.Graphics.DrawLine(pen, 632, l - 10, 632, l + 22)
-                'e.Graphics.DrawLine(pen, 522 - a, l - 10, 522 - a, l + 22)
-                'e.Graphics.DrawLine(pen, 592 - a, l - 10, 592 - a, l + 22)
-                'e.Graphics.DrawLine(pen, 680 - a, l - 10, 680 - a, l + 22)
-
-
+              
                 Dim Ref As String = data.Rows(m).Item("ref")
                 Dim prdName As String = data.Rows(m).Item("name")
                 Dim qte As String = data.Rows(m).Item("qte").ToString
@@ -179,7 +180,7 @@ Public Class DrawClass
                 Dim total As String = String.Format("{0:n}", CDec((data.Rows(m).Item("price")) * data.Rows(m).Item("qte")))
 
                 ''''''
-                Dim x_name = 60
+                x_name = 60
                 If Form1.printRef Then
                     e.Graphics.DrawString(Ref, fnt, Brushes.Black, New RectangleF(x_name * a, l, CInt(90 * a), fnt.Height), sf_L)
                     x_name = 160

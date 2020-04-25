@@ -5,9 +5,9 @@
     Event AddNewMission(ByVal ds As ParcList)
     Event GetElements(ByRef parcList As ParcList)
     Event GetElementsById(ByVal value As Integer, ByRef parcList As ParcList)
-    Event DeleteSelectedElement(ByVal ds As ParcList, ByVal elm As ClientRow)
-    Event EditSelectedVehicule(ByVal ds As ParcList, ByVal elm As ClientRow)
-    Event EditSelectedDriver(ByVal parcList As ParcList, ByVal elm As ClientRow)
+    Event DeleteSelectedElement(ByVal ds As ParcList, ByVal id As Integer)
+    Event EditSelectedVehicule(ByVal ds As ParcList, ByVal id As Integer)
+    Event EditSelectedDriver(ByVal parcList As ParcList, ByVal id As Integer)
     Event GetElementInfos(ByVal ds As ParcList, ByVal id As Integer)
     Event SearchByDate(ByRef parcList As ParcList)
 
@@ -42,7 +42,7 @@
     Event GetPriceOfDetails(ByVal ds As ParcList, ByVal str As String)
     Event EditMissionDate(ByVal parcList As ParcList)
     Event EditTransportDate(ByVal parcList As ParcList)
-    Event EditSelectedCharge(ByVal parcList As ParcList, ByVal clientRow As ClientRow)
+    Event EditSelectedCharge(ByVal parcList As ParcList, ByVal ID As Integer)
 
 
 
@@ -451,11 +451,26 @@
             'lastIndex = value.Rows.Count
             lastIndex = 0
             numberOfItems = Form1.numberOfItems
-            numberOfPage = Math.Truncate(value.Rows.Count / numberOfItems)
-            If value.Rows.Count Mod numberOfItems > 0 Then numberOfPage += 1
+            numberOfPage = 1 'Math.Truncate(value.Rows.Count / numberOfItems)
+            'If value.Rows.Count Mod numberOfItems > 0 Then numberOfPage += 1
             currentPage = 1
 
-            FillRows()
+            'FillRows()
+
+            If TableName = "Driver" Then
+                FillDriverByGrid()
+            ElseIf TableName = "Vehicule" Then
+                FillVehiculeByGrid()
+            ElseIf TableName = "Mission" Then
+                FillMissionByGrid()
+            ElseIf TableName = "Bon_Transport" Then
+                FillTransportByGrid()
+            ElseIf TableName = "Details_Charge" Then
+                FillChargeByGrid()
+            End If
+
+
+
 
             btPage.Text = "1/" & numberOfPage
 
@@ -695,9 +710,8 @@
                 a.BringToFront()
                 arr(i - startIndex) = a
 
-                AddHandler a.EditSelectedItem, AddressOf EditSelectedClient
-                AddHandler a.DeleteItem, AddressOf DeleteSelectedClient
-                AddHandler a.GetFactureInfos, AddressOf GetClientInfos
+                'AddHandler a.EditSelectedItem, AddressOf EditSelectedClient
+                'AddHandler a.DeleteItem, AddressOf DeleteSelectedClient
 
                 If i = lastIndex Then Exit For
             Next
@@ -705,6 +719,384 @@
             startIndex = i
         End If
     End Sub
+    'Mission
+    Private Sub FillMissionByGrid()
+
+        plList.Controls.Clear()
+        If _dt.Rows.Count = 0 Then Exit Sub
+
+        _dt.Columns.Add("Vehicule", GetType(String))
+        _dt.Columns.Add("Chauffeur", GetType(String))
+
+
+        Dim dg As New DataGridView
+        dg.DataSource = _dt
+        StyleDatagrid(dg)
+        plList.Controls.Add(dg)
+
+        dg.Columns(1).Visible = False
+        dg.Columns(6).Visible = False
+        dg.Columns(7).Visible = False
+        dg.Columns(8).Visible = False
+        dg.Columns(9).Visible = False
+        dg.Columns(10).Visible = False
+        dg.Columns(12).Visible = False
+        dg.Columns(13).Visible = False
+        dg.Columns(14).Visible = False
+        dg.Columns(15).Visible = False
+        dg.Columns(16).Visible = False
+        dg.Columns(17).Visible = False
+        dg.Columns(18).Visible = False
+
+
+        dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+        dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+        dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+        dg.Columns(0).Width = 50%
+        dg.Columns(2).Width = 210%
+
+        dg.Columns(0).HeaderText = "N°"
+        dg.Columns(2).HeaderText = "Libelle"
+        dg.Columns(3).HeaderText = "Date"
+        dg.Columns(4).HeaderText = "Depart"
+        dg.Columns(5).HeaderText = "Arrive"
+        dg.Columns(11).HeaderText = "Total"
+        dg.Columns(19).HeaderText = "Domain"
+        dg.Columns(21).HeaderText = "Vehicule"
+        dg.Columns(22).HeaderText = "Chauffeur"
+
+        'dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+        dg.Columns(3).DefaultCellStyle.Format = "dd MMM,yy"
+        dg.Columns(11).DefaultCellStyle.Format = "c"
+
+
+        For I As Integer = 0 To _dt.Rows.Count - 1
+            Dim v
+            Dim r As DataTable
+
+            Try
+                If dg.Rows(I).Cells(20).Value > 0 Then
+                    dg.Rows(I).DefaultCellStyle.BackColor = Color.LawnGreen
+                End If
+            Catch ex As Exception
+            End Try
+
+
+            Try
+                v = dg.Rows(I).Cells(7).Value
+                If v > 0 Then
+                    Dim query = From d In dt_Vehicule.AsEnumerable()
+                                Where d.Field(Of Integer)(0) = v Select d
+
+                    r = query.CopyToDataTable()
+                    dg.Rows(I).Cells(21).Value = r.Rows(0).Item("ref")
+                End If
+            Catch ex As Exception
+            End Try
+
+            Try
+                v = dg.Rows(I).Cells(8).Value
+                If v > 0 Then
+                    Dim query = From d In dt_Driver.AsEnumerable()
+                                Where d.Field(Of Integer)(0) = v Select d
+
+                    r = query.CopyToDataTable()
+                    dg.Rows(I).Cells(21).Value = r.Rows(0).Item("name")
+                End If
+            Catch ex As Exception
+            End Try
+        Next
+
+
+        AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+        AddHandler dg.Sorted, AddressOf Dg_Sorted_Mission
+
+        Dg_Sorted_Mission(dg, Nothing)
+        plList.Height = dg.Rows.Count * 33 + 222
+    End Sub
+    Private Sub Dg_Sorted_Mission(ByVal sender As Object, ByVal e As EventArgs)
+        Dim dg As DataGridView = sender
+
+        For I As Integer = 0 To _dt.Rows.Count - 1
+            Try
+                If dg.Rows(I).Cells(20).Value > 0 Then
+                    dg.Rows(I).DefaultCellStyle.BackColor = Color.LawnGreen
+                End If
+            Catch ex As Exception
+            End Try
+        Next
+
+
+    End Sub
+    Private Sub Dg_MouseDoubleClick(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs)
+
+        Dim dg As DataGridView = sender
+        If dg.SelectedRows.Count = 0 Then Exit Sub
+        Dim id As Integer = dg.SelectedRows(0).Cells(0).Value
+
+
+        If TableName = "Driver" Then
+            RaiseEvent EditSelectedDriver(Me, id)
+
+        ElseIf TableName = "Vehicule" Then
+            'RaiseEvent EditSelectedVehicule(Me, elm)
+            RaiseEvent GetElementInfos(Me, id)
+        ElseIf TableName = "Details_Charge" Then
+            RaiseEvent EditSelectedCharge(Me, id)
+
+        ElseIf TableName = "Mission" Then
+            id_M = id
+
+        ElseIf TableName = "Bon_Transport" Then
+            id_T = id
+            'RaiseEvent GetElementsById(, Me)
+        End If
+
+    End Sub
+    'Transport
+    Private Sub FillTransportByGrid()
+
+        plList.Controls.Clear()
+        If _dt.Rows.Count = 0 Then Exit Sub
+
+        _dt.Columns.Add("-", GetType(String))
+
+        Dim dg As New DataGridView
+        dg.DataSource = _dt
+        StyleDatagrid(dg)
+        plList.Controls.Add(dg)
+
+        dg.Columns(1).Visible = False
+        dg.Columns(5).Visible = False
+        dg.Columns(8).Visible = False
+        dg.Columns(9).Visible = False
+        dg.Columns(10).Visible = False
+        dg.Columns(11).Visible = False
+
+        dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+        dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+        dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dg.Columns(0).Width = 50%
+        dg.Columns(2).Width = 210%
+
+        dg.Columns(0).HeaderText = "N°"
+        dg.Columns(2).HeaderText = "Libelle"
+        dg.Columns(3).HeaderText = "Date"
+        dg.Columns(4).HeaderText = "-"
+        dg.Columns(6).HeaderText = "Total"
+        dg.Columns(7).HeaderText = "Avance"
+       
+
+        'dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+        dg.Columns(3).DefaultCellStyle.Format = "dd MMM,yy"
+        dg.Columns(6).DefaultCellStyle.Format = "c"
+        dg.Columns(7).DefaultCellStyle.Format = "c"
+
+
+        AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+        AddHandler dg.Sorted, AddressOf Dg_Sorted_Transport
+
+        Dg_Sorted_Transport(dg, Nothing)
+        plList.Height = dg.Rows.Count * 33 + 222
+    End Sub
+    Private Sub Dg_Sorted_Transport(ByVal sender As Object, ByVal e As EventArgs)
+        Dim dg As DataGridView = sender
+
+        For I As Integer = 0 To _dt.Rows.Count - 1
+            Try
+                If CBool(dg.Rows(I).Cells(9).Value) Then
+                    dg.Rows(I).DefaultCellStyle.BackColor = Color.LawnGreen
+                End If
+            Catch ex As Exception
+            End Try
+
+            Try
+                If CBool(dg.Rows(I).Cells(10).Value) Then
+                    dg.Columns(11).Visible = True
+                    dg.Rows(I).Cells(11).Value = "Facturé"
+                    dg.Rows(I).Cells(11).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+                    dg.Rows(I).Cells(11).Style.ForeColor = Color.Blue
+                Else
+                    dg.Rows(I).Cells(11).Value = " "
+                End If
+            Catch ex As Exception
+            End Try
+        Next
+    End Sub
+    'Charge
+    Private Sub FillChargeByGrid()
+
+        plList.Controls.Clear()
+        If _dt.Rows.Count = 0 Then Exit Sub
+
+        _dt.Columns.Add("Vh", GetType(String))
+        _dt.Columns.Add("Ch", GetType(String))
+
+        Dim dg As New DataGridView
+        dg.DataSource = _dt
+        StyleDatagrid(dg)
+        plList.Controls.Add(dg)
+
+        dg.Columns(4).Visible = False
+        dg.Columns(5).Visible = False
+        dg.Columns(6).Visible = False
+        dg.Columns(8).Visible = False
+
+        dg.Columns(1).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+        dg.Columns(1).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+        dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        'dg.Columns(1).Width = 150%
+
+        dg.Columns(0).HeaderText = "N°"
+        dg.Columns(1).HeaderText = "Designation"
+        dg.Columns(2).HeaderText = "Valeur"
+        dg.Columns(3).HeaderText = "Msn"
+        dg.Columns(9).HeaderText = "Vehicule"
+        dg.Columns(10).HeaderText = "Client"
+        dg.Columns(7).HeaderText = "Date"
+
+        'dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+        dg.Columns(7).DefaultCellStyle.Format = "dd MMM,yy"
+        dg.Columns(2).DefaultCellStyle.Format = "c"
+
+
+
+        For I As Integer = 0 To _dt.Rows.Count - 1
+            Dim v
+            Dim r As DataTable
+            Try
+                v = dg.Rows(I).Cells(4).Value
+                If v > 0 Then
+                    Dim query = From d In dt_Vehicule.AsEnumerable()
+                                Where d.Field(Of Integer)(0) = v Select d
+
+                    r = query.CopyToDataTable()
+                    dg.Rows(I).Cells(9).Value = r.Rows(0).Item("ref")
+                End If
+            Catch ex As Exception
+            End Try
+
+            Try
+                v = dg.Rows(I).Cells(5).Value
+                If v > 0 Then
+                    Dim query = From d In dt_Driver.AsEnumerable()
+                                Where d.Field(Of Integer)(0) = v Select d
+
+                    r = query.CopyToDataTable()
+                    dg.Rows(I).Cells(10).Value = r.Rows(0).Item("name")
+                End If
+            Catch ex As Exception
+            End Try
+        Next
+
+        AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+
+        plList.Height = dg.Rows.Count * 33 + 222
+    End Sub
+    'Vehicule
+    Private Sub FillVehiculeByGrid()
+
+        plList.Controls.Clear()
+        If _dt.Rows.Count = 0 Then Exit Sub
+
+        Dim dg As New DataGridView
+        dg.DataSource = _dt
+        StyleDatagrid(dg)
+        plList.Controls.Add(dg)
+
+        dg.Columns(0).Visible = False
+        dg.Columns(4).Visible = False
+        dg.Columns(5).Visible = False
+        dg.Columns(8).Visible = False
+        dg.Columns(9).Visible = False
+
+        dg.Columns(1).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+        dg.Columns(1).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+        dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+
+
+        dg.Columns(1).HeaderText = "Réf"
+        dg.Columns(2).HeaderText = "Designation"
+        dg.Columns(3).HeaderText = "Kms"
+        dg.Columns(6).HeaderText = "Annee"
+        dg.Columns(7).HeaderText = "Carb."
+
+        AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+
+        plList.Height = dg.Rows.Count * 33 + 222
+    End Sub
+    'Chauffeur
+    Private Sub FillDriverByGrid()
+
+        plList.Controls.Clear()
+        If _dt.Rows.Count = 0 Then Exit Sub
+
+        Dim dg As New DataGridView
+        dg.DataSource = _dt
+        StyleDatagrid(dg)
+        plList.Controls.Add(dg)
+
+        dg.Columns(0).Visible = False
+
+        dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+        dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+        dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+
+
+        dg.Columns(1).HeaderText = "Réf"
+        dg.Columns(2).HeaderText = "Nom"
+        dg.Columns(3).HeaderText = "Adrs"
+        dg.Columns(4).HeaderText = "CIN"
+        dg.Columns(5).HeaderText = "Cnss"
+        dg.Columns(6).HeaderText = "D. Emb."
+        dg.Columns(7).HeaderText = "Tél"
+        dg.Columns(8).HeaderText = "-"
+
+        AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
+
+        plList.Height = dg.Rows.Count * 33 + 222
+    End Sub
+
+    Private Sub StyleDatagrid(ByRef dg As DataGridView)
+        dg.AutoGenerateColumns = True
+        dg.BorderStyle = Windows.Forms.BorderStyle.None
+        dg.CellBorderStyle = DataGridViewCellBorderStyle.None
+        dg.RowsDefaultCellStyle.BackColor = Form1.Color_Default_Row
+        dg.AlternatingRowsDefaultCellStyle.BackColor = Form1.Color_Alternating_Row
+
+        dg.DefaultCellStyle.SelectionBackColor = Form1.Color_Selected_Row
+        dg.DefaultCellStyle.SelectionForeColor = Form1.Color_Selected_Text
+
+        dg.BackgroundColor = Color.White
+
+        dg.DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        dg.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dg.MultiSelect = False
+
+        'dg.AllowUserToResizeColumns = False
+        dg.AllowUserToAddRows = False
+        dg.AllowUserToDeleteRows = False
+        dg.AllowUserToResizeRows = False
+        dg.EditMode = DataGridViewEditMode.EditProgrammatically
+
+        dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+        dg.RowTemplate.Height = 33
+        dg.ColumnHeadersHeight = 33
+
+        dg.Dock = DockStyle.Fill
+        dg.RowHeadersVisible = False
+    End Sub
+
     Private Sub HeaderColor(ByVal value As String)
         For Each b As Control In plHeader.Controls
             If b.Text = value Then
@@ -716,8 +1108,18 @@
             End If
         Next
     End Sub
-    Sub RemoveElement(ByVal ls As ClientRow)
-        plList.Controls.Remove(ls)
+    Sub RemoveElement(ByVal id As Integer)
+        Try
+            Dim dtt = DataSource
+            For i As Integer = 0 To dtt.Rows.Count - 1
+                If dtt.Rows(i).Item(0) = id Then
+                    dtt.Rows.Remove(dtt.Rows(i))
+                    DataSource = dtt
+                End If
+            Next
+        Catch ex As Exception
+        End Try
+
     End Sub
 
     'bt Mission
@@ -764,28 +1166,28 @@
         id_T = 0
     End Sub
 
-    'Elements Row
-    Private Sub EditSelectedClient(ByRef elm As ClientRow)
-        If TableName = "Driver" Then
-            RaiseEvent EditSelectedDriver(Me, elm)
+    'Edit Elements Row
+    'Private Sub EditSelectedClient(ByRef elm As ClientRow)
+    '    If TableName = "Driver" Then
+    '        RaiseEvent EditSelectedDriver(Me, elm)
 
-        ElseIf TableName = "Vehicule" Then
-            RaiseEvent EditSelectedVehicule(Me, elm)
+    '    ElseIf TableName = "Vehicule" Then
+    '        RaiseEvent EditSelectedVehicule(Me, elm)
 
-        ElseIf TableName = "Details_Charge" Then
-            RaiseEvent EditSelectedCharge(Me, elm)
+    '    ElseIf TableName = "Details_Charge" Then
+    '        RaiseEvent EditSelectedCharge(Me, elm)
 
-        ElseIf TableName = "Mission" Then
-            id_M = elm.Id
+    '    ElseIf TableName = "Mission" Then
+    '        id_M = elm.Id
 
-        ElseIf TableName = "Bon_Transport" Then
-            id_T = elm.Id
-            'RaiseEvent GetElementsById(, Me)
-        End If
-    End Sub
-    Private Sub DeleteSelectedClient(ByRef elm As ClientRow)
-        RaiseEvent DeleteSelectedElement(Me, elm)
-    End Sub
+    '    ElseIf TableName = "Bon_Transport" Then
+    '        id_T = elm.Id
+    '        RaiseEvent GetElementsById(, Me)
+    '    End If
+    'End Sub
+    'Private Sub DeleteSelectedClient(ByRef elm As ClientRow)
+    '    RaiseEvent DeleteSelectedElement(Me, elm)
+    'End Sub
     Private Sub GetClientInfos(ByVal _id As Integer)
         RaiseEvent GetElementInfos(Me, _id)
     End Sub
@@ -804,20 +1206,25 @@
     End Sub
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btEdit.Click
         Try
+            Dim DG As DataGridView = plList.Controls(0)
+            If DG.SelectedRows.Count = 0 Then Exit Sub
+            Dim id As Integer = DG.SelectedRows(0).Cells(0).Value
+
+
             If TableName = "Driver" Then
-                RaiseEvent EditSelectedDriver(Me, SelectedItem)
+                RaiseEvent EditSelectedDriver(Me, id)
 
             ElseIf TableName = "Vehicule" Then
-                RaiseEvent EditSelectedVehicule(Me, SelectedItem)
+                RaiseEvent EditSelectedVehicule(Me, id)
 
             ElseIf TableName = "Details_Charge" Then
-                RaiseEvent EditSelectedCharge(Me, SelectedItem)
+                RaiseEvent EditSelectedCharge(Me, id)
 
             ElseIf TableName = "Mission" Then
-                id_M = SelectedItem.Id
+                id_M = id
 
             ElseIf TableName = "Bon_Transport" Then
-                id_T = SelectedItem.Id
+                id_T = id
 
             ElseIf TableName = "Details_Charge" Then
                 RaiseEvent EditNewCharge(Me)
@@ -828,10 +1235,16 @@
 
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btDelete.Click
-        If MsgBox(MsgDelete & vbNewLine & TableName & " : " & SelectedItem.Id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
-            RaiseEvent DeleteSelectedElement(Me, SelectedItem)
-        End If
+        Try
+            Dim DG As DataGridView = plList.Controls(0)
+            If DG.SelectedRows.Count = 0 Then Exit Sub
+            Dim id As Integer = DG.SelectedRows(0).Cells(0).Value
+            If MsgBox(MsgDelete & vbNewLine & TableName & " : " & id, MsgBoxStyle.YesNo, "Suppression") = MsgBoxResult.Yes Then
+                RaiseEvent DeleteSelectedElement(Me, id)
+            End If
 
+        Catch ex As Exception
+        End Try
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         If currentPage = numberOfPage Then Exit Sub
@@ -1136,4 +1549,7 @@
     Private Sub lbDateTrans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbDateTrans.Click
         RaiseEvent EditTransportDate(Me)
     End Sub
+
+ 
+
 End Class

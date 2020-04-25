@@ -1120,49 +1120,69 @@ Public Class ParcClass
         End Try
     End Sub
 
-    Private Sub EditSelectedDriver(ByVal parcList As ParcList, ByVal elm As ClientRow)
+    Private Sub EditSelectedDriver(ByVal ds As ParcList, ByVal id As Integer)
         Dim pr As New AddEditDriver
         pr.EditMode = True
-        pr.Id = elm.Id
+        pr.Id = id
         If pr.ShowDialog = DialogResult.OK Then
-            elm.Libele = pr.txtName.text
-            elm.lbType.Text = pr.txtCIN.text
-            elm.Responsable = pr.txtTel.text()
-            elm.Ville = pr.txtAdresse.text
-            elm.Tel = pr.txtDate.text
-            elm.isEdited = True
+            Try
+                Dim dg As DataGridView = ds.plList.Controls(0)
+                If dg.SelectedRows.Count = 0 Then Exit Sub
+
+                dg.SelectedRows(0).Cells(1).Value = pr.txtRef.text
+                dg.SelectedRows(0).Cells(2).Value = pr.txtName.text
+                dg.SelectedRows(0).Cells(3).Value = pr.txtAdresse.text
+                dg.SelectedRows(0).Cells(4).Value = pr.txtCIN.text
+                dg.SelectedRows(0).Cells(5).Value = pr.txtCnss.text
+                dg.SelectedRows(0).Cells(6).Value = pr.txtDate.text
+                dg.SelectedRows(0).Cells(7).Value = pr.txtTel.text
+                dg.SelectedRows(0).Cells(8).Value = pr.txtInfo.text
+
+                dg.SelectedRows(0).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+
+            Catch ex As Exception
+            End Try
         End If
     End Sub
-    Private Sub EditSelectedVehicule(ByVal ds As ParcList, ByVal elm As ClientRow)
+    Private Sub EditSelectedVehicule(ByVal ds As ParcList, ByVal id As Integer)
         Dim pr As New AddEditVehicule
         pr.EditMode = True
-        pr.Id = elm.Id
+        pr.Id = id
         If pr.ShowDialog = DialogResult.OK Then
-            elm.Libele = pr.txtName.text
-            elm.lbType.Text = pr.txtMarque.text
-            elm.Responsable = pr.txtModel.text()
-            elm.Ville = pr.txtKm.text
-            elm.Tel = pr.txtCarb.text
-            elm.isEdited = True
+
+            Try
+                Dim dg As DataGridView = ds.plList.Controls(0)
+                If dg.SelectedRows.Count = 0 Then Exit Sub
+
+                dg.SelectedRows(0).Cells(2).Value = pr.txtName.text
+                dg.SelectedRows(0).Cells(1).Value = pr.txtRef.text
+                dg.SelectedRows(0).Cells(3).Value = pr.txtKm.text
+                dg.SelectedRows(0).Cells(6).Value = pr.txtYear.text
+                dg.SelectedRows(0).Cells(7).Value = pr.txtCarb.text
+
+                dg.SelectedRows(0).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+
+            Catch ex As Exception
+            End Try
         End If
     End Sub
-    Private Sub EditSelectedCharge(ByVal ds As ParcList, ByVal a As ClientRow)
+    Private Sub EditSelectedCharge(ByVal ds As ParcList, ByVal id As Integer)
         Try
-
             Dim NF As New AddEditCharge
-            NF.id = a.Id
+            NF.id = id
 
             If NF.ShowDialog = DialogResult.OK Then
 
-                a.Responsable = NF.txtvehicule.text.Split("|")(0)
-                a.Ville = NF.txtdriver.text.Split("|")(0)
-                a.Tel = NF.txtDValue.text
-                a.lbType.Text = CDate(NF.txtDate.text).ToString("dd MMM, yyyy")
+                Dim dg As DataGridView = ds.plList.Controls(0)
+                If dg.SelectedRows.Count = 0 Then Exit Sub
 
-                a.isEdited = True
+                dg.SelectedRows(0).Cells(9).Value = NF.txtvehicule.text.Split("|")(0)
+                dg.SelectedRows(0).Cells(10).Value = NF.txtdriver.text.Split("|")(0)
+                dg.SelectedRows(0).Cells(2).Value = NF.txtDValue.text
+                dg.SelectedRows(0).Cells(7).Value = CDate(NF.txtDate.text).ToString("dd MMM, yyyy")
+
+                dg.SelectedRows(0).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
             End If
-
-
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -1170,7 +1190,7 @@ Public Class ParcClass
 
     End Sub
 
-    Private Sub DeleteSelectedElement(ByVal ds As ParcList, ByVal elm As ClientRow)
+    Private Sub DeleteSelectedElement(ByVal ds As ParcList, ByVal id As Integer)
         Try
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
@@ -1178,29 +1198,29 @@ Public Class ParcClass
 
             Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
                 If ds.TableName = "Mission" Then
-                    params.Add("Mid", elm.Id)
-                    DeleteMission(elm.Id, ds)
-                    ds.RemoveElement(elm)
+                    params.Add("Mid", id)
+                    DeleteMission(id, ds)
+                    ds.RemoveElement(id)
                     Exit Sub
 
                 ElseIf ds.TableName = "Bon_Transport" Then
-                    DeleteTransport(elm.Id, ds)
-                    ds.RemoveElement(elm)
+                    DeleteTransport(id, ds)
+                    ds.RemoveElement(id)
                     Exit Sub
 
                 ElseIf ds.TableName = "Vehicule" Then
-                    params.Add("Vid", elm.Id)
+                    params.Add("Vid", id)
 
                 ElseIf ds.TableName = "Driver" Then
-                    params.Add("Drid", elm.Id)
+                    params.Add("Drid", id)
 
                 ElseIf ds.TableName = "Details_Charge" Then
-                    params.Add("id", elm.Id)
+                    params.Add("id", id)
 
                 End If
 
                 If a.DeleteRecords(ds.TableName, params) > 0 Then
-                    ds.RemoveElement(elm)
+                    ds.RemoveElement(id)
 
                 End If
             End Using
