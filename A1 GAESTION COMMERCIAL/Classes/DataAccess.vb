@@ -354,6 +354,31 @@ Public Class DataAccess
         End Try
 
     End Function
+    Public Function SelectByScalarSum(ByVal table As String, ByVal field As String, Optional ByVal params As Dictionary(Of String, Object) = Nothing) As Object
+        Dim q As String = "SELECT " & field & " from [" & table & "]"
+
+        Dim p As Integer = 1
+        If params IsNot Nothing Then
+            q &= " WHERE "
+            For Each kvp As KeyValuePair(Of String, Object) In params
+                If p > 1 Then q &= " AND "
+                q &= "[" & kvp.Key & "]" & "=:" & p
+                p += 1
+            Next
+        End If
+
+        Try
+            Using cmd As OleDbCommand = BuildCommand(q, params)
+                Return cmd.ExecuteScalar
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+            _hasError = True
+            Dispose()
+            Return Nothing
+        End Try
+
+    End Function
     ' INSERT DATA
     Public Function InsertRecord(ByVal table As String, ByVal params As Dictionary(Of String, Object)) As Integer
         Dim q As String = "INSERT INTO [" & table & "] (" '& fields & ") VALUES (" & values & ")"

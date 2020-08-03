@@ -2036,8 +2036,8 @@ Public Class DrawClass
                 Dim libelle As String = data.Rows(m).Cells(2).Value.ToString
                 Dim ref As String = data.Rows(m).Cells(4).Value.ToString
                 Dim grp As String = data.Rows(m).Cells(3).Value.ToString
-                Dim pra As String = data.Rows(m).Cells(5).Value.ToString("c")
-                Dim prv As String = data.Rows(m).Cells(6).Value.ToString("c")
+                Dim pra As String = String.Format("{0:0.00}", data.Rows(m).Cells(5).Value)
+                Dim prv As String = String.Format("{0:0.00}", data.Rows(m).Cells(6).Value)
                 Dim stk As String = data.Rows(m).Cells(7).Value.ToString
 
                 Dim size As SizeF = e.Graphics.MeasureString(libelle, fnt, 400)

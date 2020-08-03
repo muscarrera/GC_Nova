@@ -239,7 +239,7 @@
                 btTranformer.Visible = False
                 btSolde.Visible = True
                 btParamsImp.Visible = True
-                btAvoir.Visible = False
+                btAvoir.Visible = True
                 btPrint.Visible = False
                 If Form1.useButtonValidForStock Then btValideBl.Visible = True
 
@@ -280,18 +280,31 @@
             _bL = value
             FlowLayoutPanel1.Controls.Clear()
             plBL.Width = 300
+
+
+            If value.Contains("B.T.") Then
+                Button3.Enabled = False
+            Else
+                Button3.Enabled = True
+            End If
+
+
             If value = "" Then
                 plBL.Width = 75
                 Exit Property
             End If
 
             Dim STR As String() = value.Split("|")
+
             For i As Integer = 0 To STR.Length - 1
                 Dim b As New Label
                 b.Text = STR(i)
                 b.AutoSize = True
                 FlowLayoutPanel1.Controls.Add(b)
             Next
+
+
+
         End Set
     End Property
     Public Property Bc As String
@@ -314,7 +327,7 @@
             btDelete.Visible = True
 
             If value.ToUpper.StartsWith("LIV") Then btDelivry.Visible = False
-            If Type = "Facture" Or Type = "BL" Then btAvoir.Visible = True
+            If Type = "Facture" Or Type = "Facture_Achat" Or Type = "BL" Then btAvoir.Visible = True
 
             If value = "Facturé" Then
                 btSolde.Visible = False

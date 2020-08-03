@@ -878,9 +878,9 @@
 
         dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
         dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-        dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dg.Columns(0).Width = 50%
-        dg.Columns(2).Width = 210%
+        dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        'dg.Columns(0).Width = 50%
+        'dg.Columns(2).Width = 210%
 
         dg.Columns(0).HeaderText = "N°"
         dg.Columns(2).HeaderText = "Libelle"
@@ -1339,6 +1339,8 @@
     End Sub
     Private Sub btFacturer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacturer.Click
         RaiseEvent MissionFactured(Me)
+        btFacturer.Enabled = False
+
     End Sub
     Private Sub btSolde_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btSolde.Click
         'RaiseEvent MissionSolde(Me)
@@ -1522,6 +1524,7 @@
 
     Private Sub btFacture_Trans_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btFacture_Trans.Click
         RaiseEvent TransportFactured(Me)
+        btFacture_Trans.Enabled = False
     End Sub
 
     Private Sub Button30_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button30.Click

@@ -432,15 +432,7 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -460,43 +452,11 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -516,6 +476,10 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Details_Sell_FactureDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -524,15 +488,7 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
@@ -552,43 +508,11 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
@@ -608,6 +532,10 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Details_Sell_FactureRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRowChangeEvent">
 	<summary>
 Row event argument class
@@ -616,15 +544,7 @@ Row event argument class
 	<summary>
 Row event argument class
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.BonRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ChargeRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -644,43 +564,11 @@ Row event argument class
 	<summary>
 Row event argument class
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsBonRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsFactureRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailsStockRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.DetailstockRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.FactureRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Facture_ListeRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.MachineRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.PaymentRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.StockRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Table_des_erreursRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -700,6 +588,10 @@ Row event argument class
 	<summary>
 Row event argument class
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.Details_Sell_FactureRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet">
 	<summary>
 Represents a strongly typed in-memory cache of data.
@@ -712,15 +604,7 @@ Represents the connection and commands used to retrieve and save data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.BonTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CategoryTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ChargeTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -740,43 +624,11 @@ Represents the connection and commands used to retrieve and save data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsBonTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsFactureTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailsStockTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.DetailstockTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.FactureTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Facture_ListeTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.MachineTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.PaymentTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.StockTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Table_des_erreursTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -793,6 +645,10 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.HomeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Details_Sell_FactureTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

@@ -176,7 +176,10 @@ Public Class gForm
         Dim _w = W_Page
         Dim _h = H_Page
 
-
+        If isLandScape Then
+            _w = H_Page
+            _h = W_Page
+        End If
 
         'Create a new bitmap
         Using Bmp As New Bitmap(_w, _h, Imaging.PixelFormat.Format24bppRgb)
@@ -268,6 +271,14 @@ Public Class gForm
 
                 ElseIf tc.Type = "Table_2" Then '//////////////////////////////////////////////
                     G.DrawLine(pen, tc.x, tc.y + tc.TabHeight, tc.x + tc.TabWidth, tc.y + tc.TabHeight)
+
+                    For Each c As gColClass In tc.details
+                        G.DrawString(c.HeaderName, F_T, Brushes.Black, New RectangleF(x, tc.y + 3, c.ColWidth - 3, 15), sf)
+                        G.DrawLine(pen, x, tc.y + 22, x + c.ColWidth - 3, tc.y + 22)
+                        x = x + c.ColWidth
+                    Next
+           
+                ElseIf tc.Type = "Liste_1" Then '//////////////////////////////////////////////
 
                     For Each c As gColClass In tc.details
                         G.DrawString(c.HeaderName, F_T, Brushes.Black, New RectangleF(x, tc.y + 3, c.ColWidth - 3, 15), sf)
@@ -479,6 +490,7 @@ Public Class gForm
                                 G.DrawString(data.Rows(0).Item(a.field), fn, B, New RectangleF(xx + a.width - 10, yy, a.width, a.height), sf)
                             Catch ex As Exception
                             End Try
+                            sf.Alignment = StringAlignment.Near
                         ElseIf a.field.StartsWith("image") Then
                             Try
                                 Dim fullPath As String = Path.Combine("C:\cmcimage", a.designation)
@@ -687,7 +699,7 @@ Public Class gForm
 
             bt.Font = fn
 
-            AddHandler bt.Click, AddressOf btTop_Clicked
+            AddHandler bt.Click, AddressOf btButom_Clicked
             Pf.Controls.Add(bt)
         Next
 

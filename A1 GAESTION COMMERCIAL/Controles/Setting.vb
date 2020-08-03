@@ -90,6 +90,7 @@
             cbBlGetSold.Checked = getRegistryinfo("isBlGetSold", True)
             cbFactureGetSold.Checked = getRegistryinfo("isFactureGetSold", False)
             cbNormalImp.Checked = getRegistryinfo("normat_Print_Style", True)
+            allowAddElement_to.Checked = getRegistryinfo("allowAddElement_to", False)
 
 
             lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
@@ -315,7 +316,7 @@
             setRegistryinfo("printRef", cbImpRef.Checked)
             setRegistryinfo("isBlGetSold", cbBlGetSold.Checked)
             setRegistryinfo("isFactureGetSold", cbFactureGetSold.Checked)
-
+            setRegistryinfo("allowAddElement_to", allowAddElement_to.Checked)
 
             Form1.useValue_CUMP = cbCump.Checked
             Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked

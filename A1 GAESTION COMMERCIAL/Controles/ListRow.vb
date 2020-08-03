@@ -110,10 +110,10 @@
         End Get
         Set(ByVal value As Integer)
             _bl = value
-            If bl > 0 Then
-                btAdd.Visible = False
-                btClear.Visible = False
-            End If
+            'If bl > 0 Then
+            '    btAdd.Visible = False
+            '    btClear.Visible = False
+            'End If
         End Set
     End Property
     Public bprice As Double = 0
@@ -219,7 +219,15 @@
                 addR.Dock = DockStyle.Fill
                 addR.IsSell = isSell
                 addR.EditMode = True
+
                 addR.isSlave = Form1.admin
+
+                '''''''just for essaouira
+                'addR.isSlave = True
+                '''''''''''''''''''''''
+                '''''''''''''''''''''''''
+                ''''''''''''''''''''''''''''''
+
 
                 AddHandler addR.AddNewArticle, AddressOf SaveEditAricle
                 AddHandler addR.Cleared, AddressOf CancelChangement
@@ -337,11 +345,11 @@
         RaiseEvent ChangeArticleDepot(Me, _dpid)
     End Sub
     Private Sub btClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClear.Click
-        If bl > 0 Then Exit Sub
+        ' If bl > 0 Then Exit Sub
         RaiseEvent DeleteItem(Me)
     End Sub
     Private Sub btAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btAdd.Click
-        If bl > 0 Then Exit Sub
+        '  If bl > 0 Then Exit Sub
         EditMode = True
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

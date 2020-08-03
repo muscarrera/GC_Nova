@@ -39,6 +39,7 @@ Partial Class ChooseBL
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.pl2 = New System.Windows.Forms.Panel()
@@ -61,7 +62,7 @@ Partial Class ChooseBL
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.plBody = New System.Windows.Forms.Panel()
-        Me.txtSearch = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Panel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,10 +79,11 @@ Partial Class ChooseBL
         '
         Me.Panel4.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.Button6)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(0, 489)
+        Me.Panel4.Location = New System.Drawing.Point(0, 481)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(820, 37)
+        Me.Panel4.Size = New System.Drawing.Size(820, 65)
         Me.Panel4.TabIndex = 17
         '
         'Panel5
@@ -97,7 +99,7 @@ Partial Class ChooseBL
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Button6)
+        Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Controls.Add(Me.Label22)
         Me.Panel1.Controls.Add(Me.Panel24)
         Me.Panel1.Controls.Add(Me.Panel23)
@@ -123,12 +125,12 @@ Partial Class ChooseBL
         Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(692, 14)
+        Me.Button6.Location = New System.Drawing.Point(631, 17)
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(116, 36)
+        Me.Button6.Size = New System.Drawing.Size(168, 36)
         Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Enregistrer   "
+        Me.Button6.Text = "Enregistrer              "
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = True
         '
@@ -263,6 +265,26 @@ Partial Class ChooseBL
         Me.Panel8.Size = New System.Drawing.Size(149, 30)
         Me.Panel8.TabIndex = 7
         '
+        'txtSearch
+        '
+        Me.txtSearch.BackColor = System.Drawing.Color.White
+        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ControlDark
+        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtSearch.IsNumiric = False
+        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.PlaceHolder = "Id/N°"
+        Me.txtSearch.ShowClearIcon = False
+        Me.txtSearch.ShowSaveIcon = False
+        Me.txtSearch.Size = New System.Drawing.Size(149, 30)
+        Me.txtSearch.StartUp = 2
+        Me.txtSearch.TabIndex = 3
+        Me.txtSearch.TextSize = 8
+        Me.txtSearch.TxtBackColor = True
+        Me.txtSearch.TxtColor = System.Drawing.Color.White
+        Me.txtSearch.txtReadOnly = False
+        Me.txtSearch.TxtSelect = New Integer() {1, 0}
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -299,7 +321,7 @@ Partial Class ChooseBL
         Me.pl2.Location = New System.Drawing.Point(394, 104)
         Me.pl2.Name = "pl2"
         Me.pl2.Padding = New System.Windows.Forms.Padding(10)
-        Me.pl2.Size = New System.Drawing.Size(58, 385)
+        Me.pl2.Size = New System.Drawing.Size(58, 377)
         Me.pl2.TabIndex = 18
         '
         'Button7
@@ -389,7 +411,7 @@ Partial Class ChooseBL
         Me.pl1.Dock = System.Windows.Forms.DockStyle.Left
         Me.pl1.Location = New System.Drawing.Point(0, 104)
         Me.pl1.Name = "pl1"
-        Me.pl1.Size = New System.Drawing.Size(394, 385)
+        Me.pl1.Size = New System.Drawing.Size(394, 377)
         Me.pl1.TabIndex = 18
         '
         'Panel11
@@ -402,7 +424,7 @@ Partial Class ChooseBL
         Me.Panel11.Controls.Add(Me.LbSum)
         Me.Panel11.Controls.Add(Me.ShapeContainer2)
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel11.Location = New System.Drawing.Point(452, 411)
+        Me.Panel11.Location = New System.Drawing.Point(452, 403)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(368, 78)
         Me.Panel11.TabIndex = 19
@@ -493,34 +515,27 @@ Partial Class ChooseBL
         Me.plBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.plBody.Location = New System.Drawing.Point(452, 104)
         Me.plBody.Name = "plBody"
-        Me.plBody.Size = New System.Drawing.Size(368, 307)
+        Me.plBody.Size = New System.Drawing.Size(368, 299)
         Me.plBody.TabIndex = 20
         '
-        'txtSearch
+        'Button5
         '
-        Me.txtSearch.BackColor = System.Drawing.Color.White
-        Me.txtSearch.BorderColor = System.Drawing.SystemColors.ControlDark
-        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtSearch.IsNumiric = False
-        Me.txtSearch.Location = New System.Drawing.Point(0, 0)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PlaceHolder = "Id/N°"
-        Me.txtSearch.ShowClearIcon = False
-        Me.txtSearch.ShowSaveIcon = False
-        Me.txtSearch.Size = New System.Drawing.Size(149, 30)
-        Me.txtSearch.StartUp = 2
-        Me.txtSearch.TabIndex = 3
-        Me.txtSearch.TextSize = 8
-        Me.txtSearch.TxtBackColor = True
-        Me.txtSearch.TxtColor = System.Drawing.Color.White
-        Me.txtSearch.txtReadOnly = False
-        Me.txtSearch.TxtSelect = New Integer() {1, 0}
+        Me.Button5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button5.Location = New System.Drawing.Point(182, 14)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button5.Size = New System.Drawing.Size(76, 36)
+        Me.Button5.TabIndex = 2
+        Me.Button5.Text = "BL"
+        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'ChooseBL
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(820, 526)
+        Me.ClientSize = New System.Drawing.Size(820, 546)
         Me.Controls.Add(Me.plBody)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.pl2)
@@ -586,4 +601,5 @@ Partial Class ChooseBL
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents plBody As System.Windows.Forms.Panel
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button5 As System.Windows.Forms.Button
 End Class

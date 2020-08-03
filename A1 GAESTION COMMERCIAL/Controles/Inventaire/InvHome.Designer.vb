@@ -53,6 +53,14 @@ Partial Class InvHome
         Me.btEntrepote = New System.Windows.Forms.Button()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -61,6 +69,8 @@ Partial Class InvHome
         Me.Panel9.SuspendLayout()
         Me.Panel11.SuspendLayout()
         Me.Panel13.SuspendLayout()
+        Me.Panel15.SuspendLayout()
+        Me.Panel17.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
@@ -73,6 +83,8 @@ Partial Class InvHome
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel9)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel11)
         Me.FlowLayoutPanel1.Controls.Add(Me.Panel13)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel15)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel17)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(11, 11)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -423,6 +435,98 @@ Partial Class InvHome
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Entrepôte"
         '
+        'Panel15
+        '
+        Me.Panel15.BackColor = System.Drawing.Color.White
+        Me.Panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel15.Controls.Add(Me.Button1)
+        Me.Panel15.Controls.Add(Me.Panel16)
+        Me.Panel15.Controls.Add(Me.Label3)
+        Me.Panel15.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Panel15.Location = New System.Drawing.Point(282, 432)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(273, 137)
+        Me.Panel15.TabIndex = 7
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Teal
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(24, 51)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(198, 33)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Aperçu"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Panel16
+        '
+        Me.Panel16.BackColor = System.Drawing.Color.OrangeRed
+        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel16.Location = New System.Drawing.Point(0, 0)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(6, 135)
+        Me.Panel16.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.OrangeRed
+        Me.Label3.Location = New System.Drawing.Point(21, 11)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(130, 17)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Rapports Achats"
+        '
+        'Panel17
+        '
+        Me.Panel17.BackColor = System.Drawing.Color.White
+        Me.Panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel17.Controls.Add(Me.Button2)
+        Me.Panel17.Controls.Add(Me.Panel18)
+        Me.Panel17.Controls.Add(Me.Label11)
+        Me.Panel17.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Panel17.Location = New System.Drawing.Point(3, 575)
+        Me.Panel17.Name = "Panel17"
+        Me.Panel17.Size = New System.Drawing.Size(273, 137)
+        Me.Panel17.TabIndex = 8
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Teal
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(24, 51)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(198, 33)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Aperçu"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Panel18
+        '
+        Me.Panel18.BackColor = System.Drawing.Color.LightGreen
+        Me.Panel18.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel18.Location = New System.Drawing.Point(0, 0)
+        Me.Panel18.Name = "Panel18"
+        Me.Panel18.Size = New System.Drawing.Size(6, 135)
+        Me.Panel18.TabIndex = 1
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Teal
+        Me.Label11.Location = New System.Drawing.Point(21, 11)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(159, 17)
+        Me.Label11.TabIndex = 0
+        Me.Label11.Text = "Rapports des Ventes"
+        '
         'InvHome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -446,6 +550,10 @@ Partial Class InvHome
         Me.Panel11.PerformLayout()
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
+        Me.Panel15.ResumeLayout(False)
+        Me.Panel15.PerformLayout()
+        Me.Panel17.ResumeLayout(False)
+        Me.Panel17.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -480,5 +588,13 @@ Partial Class InvHome
     Friend WithEvents btEntrepote As System.Windows.Forms.Button
     Friend WithEvents Panel14 As System.Windows.Forms.Panel
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Panel15 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Panel16 As System.Windows.Forms.Panel
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Panel17 As System.Windows.Forms.Panel
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Panel18 As System.Windows.Forms.Panel
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class

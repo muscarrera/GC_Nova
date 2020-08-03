@@ -23,14 +23,14 @@ Partial Class gTable
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.txtX = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtW = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtY = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtH = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.pl = New System.Windows.Forms.Panel()
+        Me.txtH = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtType = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtY = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtW = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtX = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -49,86 +49,6 @@ Partial Class gTable
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(570, 40)
         Me.Panel1.TabIndex = 0
-        '
-        'txtX
-        '
-        Me.txtX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtX.BackColor = System.Drawing.Color.White
-        Me.txtX.BorderColor = System.Drawing.Color.White
-        Me.txtX.IsNumiric = False
-        Me.txtX.Location = New System.Drawing.Point(300, 8)
-        Me.txtX.Name = "txtX"
-        Me.txtX.PlaceHolder = "x.."
-        Me.txtX.ShowClearIcon = False
-        Me.txtX.ShowSaveIcon = False
-        Me.txtX.Size = New System.Drawing.Size(44, 23)
-        Me.txtX.StartUp = 2
-        Me.txtX.TabIndex = 2
-        Me.txtX.TextSize = 8
-        Me.txtX.TxtBackColor = True
-        Me.txtX.TxtColor = System.Drawing.Color.White
-        Me.txtX.txtReadOnly = False
-        Me.txtX.TxtSelect = New Integer() {1, 0}
-        '
-        'txtW
-        '
-        Me.txtW.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtW.BackColor = System.Drawing.Color.White
-        Me.txtW.BorderColor = System.Drawing.Color.White
-        Me.txtW.IsNumiric = False
-        Me.txtW.Location = New System.Drawing.Point(399, 8)
-        Me.txtW.Name = "txtW"
-        Me.txtW.PlaceHolder = "L .."
-        Me.txtW.ShowClearIcon = False
-        Me.txtW.ShowSaveIcon = False
-        Me.txtW.Size = New System.Drawing.Size(44, 23)
-        Me.txtW.StartUp = 2
-        Me.txtW.TabIndex = 2
-        Me.txtW.TextSize = 8
-        Me.txtW.TxtBackColor = True
-        Me.txtW.TxtColor = System.Drawing.Color.White
-        Me.txtW.txtReadOnly = False
-        Me.txtW.TxtSelect = New Integer() {1, 0}
-        '
-        'txtY
-        '
-        Me.txtY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtY.BackColor = System.Drawing.Color.White
-        Me.txtY.BorderColor = System.Drawing.Color.White
-        Me.txtY.IsNumiric = False
-        Me.txtY.Location = New System.Drawing.Point(349, 8)
-        Me.txtY.Name = "txtY"
-        Me.txtY.PlaceHolder = "y.."
-        Me.txtY.ShowClearIcon = False
-        Me.txtY.ShowSaveIcon = False
-        Me.txtY.Size = New System.Drawing.Size(44, 23)
-        Me.txtY.StartUp = 2
-        Me.txtY.TabIndex = 2
-        Me.txtY.TextSize = 8
-        Me.txtY.TxtBackColor = True
-        Me.txtY.TxtColor = System.Drawing.Color.White
-        Me.txtY.txtReadOnly = False
-        Me.txtY.TxtSelect = New Integer() {1, 0}
-        '
-        'txtH
-        '
-        Me.txtH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtH.BackColor = System.Drawing.Color.White
-        Me.txtH.BorderColor = System.Drawing.Color.White
-        Me.txtH.IsNumiric = False
-        Me.txtH.Location = New System.Drawing.Point(449, 8)
-        Me.txtH.Name = "txtH"
-        Me.txtH.PlaceHolder = "H .."
-        Me.txtH.ShowClearIcon = False
-        Me.txtH.ShowSaveIcon = False
-        Me.txtH.Size = New System.Drawing.Size(44, 23)
-        Me.txtH.StartUp = 2
-        Me.txtH.TabIndex = 2
-        Me.txtH.TextSize = 8
-        Me.txtH.TxtBackColor = True
-        Me.txtH.TxtColor = System.Drawing.Color.White
-        Me.txtH.txtReadOnly = False
-        Me.txtH.TxtSelect = New Integer() {1, 0}
         '
         'ComboBox1
         '
@@ -158,6 +78,26 @@ Partial Class gTable
         Me.pl.Size = New System.Drawing.Size(570, 287)
         Me.pl.TabIndex = 1
         '
+        'txtH
+        '
+        Me.txtH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtH.BackColor = System.Drawing.Color.White
+        Me.txtH.BorderColor = System.Drawing.Color.White
+        Me.txtH.IsNumiric = False
+        Me.txtH.Location = New System.Drawing.Point(449, 8)
+        Me.txtH.Name = "txtH"
+        Me.txtH.PlaceHolder = "H .."
+        Me.txtH.ShowClearIcon = False
+        Me.txtH.ShowSaveIcon = False
+        Me.txtH.Size = New System.Drawing.Size(44, 23)
+        Me.txtH.StartUp = 2
+        Me.txtH.TabIndex = 2
+        Me.txtH.TextSize = 8
+        Me.txtH.TxtBackColor = True
+        Me.txtH.TxtColor = System.Drawing.Color.White
+        Me.txtH.txtReadOnly = False
+        Me.txtH.TxtSelect = New Integer() {1, 0}
+        '
         'txtType
         '
         Me.txtType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -178,6 +118,66 @@ Partial Class gTable
         Me.txtType.txtReadOnly = False
         Me.txtType.TxtSelect = New Integer() {1, 0}
         '
+        'txtY
+        '
+        Me.txtY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtY.BackColor = System.Drawing.Color.White
+        Me.txtY.BorderColor = System.Drawing.Color.White
+        Me.txtY.IsNumiric = False
+        Me.txtY.Location = New System.Drawing.Point(349, 8)
+        Me.txtY.Name = "txtY"
+        Me.txtY.PlaceHolder = "y.."
+        Me.txtY.ShowClearIcon = False
+        Me.txtY.ShowSaveIcon = False
+        Me.txtY.Size = New System.Drawing.Size(44, 23)
+        Me.txtY.StartUp = 2
+        Me.txtY.TabIndex = 2
+        Me.txtY.TextSize = 8
+        Me.txtY.TxtBackColor = True
+        Me.txtY.TxtColor = System.Drawing.Color.White
+        Me.txtY.txtReadOnly = False
+        Me.txtY.TxtSelect = New Integer() {1, 0}
+        '
+        'txtW
+        '
+        Me.txtW.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtW.BackColor = System.Drawing.Color.White
+        Me.txtW.BorderColor = System.Drawing.Color.White
+        Me.txtW.IsNumiric = False
+        Me.txtW.Location = New System.Drawing.Point(399, 8)
+        Me.txtW.Name = "txtW"
+        Me.txtW.PlaceHolder = "L .."
+        Me.txtW.ShowClearIcon = False
+        Me.txtW.ShowSaveIcon = False
+        Me.txtW.Size = New System.Drawing.Size(44, 23)
+        Me.txtW.StartUp = 2
+        Me.txtW.TabIndex = 2
+        Me.txtW.TextSize = 8
+        Me.txtW.TxtBackColor = True
+        Me.txtW.TxtColor = System.Drawing.Color.White
+        Me.txtW.txtReadOnly = False
+        Me.txtW.TxtSelect = New Integer() {1, 0}
+        '
+        'txtX
+        '
+        Me.txtX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtX.BackColor = System.Drawing.Color.White
+        Me.txtX.BorderColor = System.Drawing.Color.White
+        Me.txtX.IsNumiric = False
+        Me.txtX.Location = New System.Drawing.Point(300, 8)
+        Me.txtX.Name = "txtX"
+        Me.txtX.PlaceHolder = "x.."
+        Me.txtX.ShowClearIcon = False
+        Me.txtX.ShowSaveIcon = False
+        Me.txtX.Size = New System.Drawing.Size(44, 23)
+        Me.txtX.StartUp = 2
+        Me.txtX.TabIndex = 2
+        Me.txtX.TextSize = 8
+        Me.txtX.TxtBackColor = True
+        Me.txtX.TxtColor = System.Drawing.Color.White
+        Me.txtX.txtReadOnly = False
+        Me.txtX.TxtSelect = New Integer() {1, 0}
+        '
         'gTable
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -197,9 +197,9 @@ Partial Class gTable
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents pl As System.Windows.Forms.Panel
     Friend WithEvents txtX As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents txtY As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtW As A1_GAESTION_COMMERCIAL.TxtBox
-    Friend WithEvents txtH As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtY As A1_GAESTION_COMMERCIAL.TxtBox
     Friend WithEvents txtType As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtH As A1_GAESTION_COMMERCIAL.TxtBox
 
 End Class

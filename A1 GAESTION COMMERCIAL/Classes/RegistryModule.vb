@@ -86,6 +86,8 @@
             Form1.isFactureGetSold = getRegistryinfo("isFactureGetSold", False)
 
             Form1.normat_Print_Style = getRegistryinfo("normat_Print_Style", True)
+            Form1.allowAddElement_to = getRegistryinfo("allowAddElement_to", False)
+
 
             'prefix
             Form1.prf_Params.clear()
@@ -113,7 +115,12 @@
 
 
             'way of Stock
-            If Form1.useButtonValidForStock Then Form1.isWorkinOnStock = False
+            If Form1.useButtonValidForStock Then
+                Form1.isWorkinOnStock = False
+            Else
+                Form1.isWorkinOnStock = True
+            End If
+
         Catch ex As Exception
 
         End Try

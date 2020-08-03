@@ -68,7 +68,7 @@
     Private _fntNormal As Font
     Private _fntTitle As Font
     Private _Mode As String
-    Private _isDisibleEditing As Boolean = True
+    Private _isDisibleEditing As Boolean = False
     Private _isSell As Boolean = True
     Private operationType As String = "SELL"
 
@@ -79,10 +79,6 @@
 
     Public startIndex, lastIndex, numberOfPage, numberOfItems, currentPage As Integer
     Public dt_Client_Remise As DataTable
-
-
-
-
 
     Public Property AutoCompleteSourceRef() As AutoCompleteStringCollection
         Get
@@ -261,11 +257,21 @@
                 plListHeader.Visible = True
                 TB.Visible = False
                 PlFooter.Visible = True
+                plTotal.Height = 1
+                Me.AutoScroll = False
+
+                Pl.Dock = DockStyle.Fill
+                Panel8.Height = 1
             Else
                 plNewElement.Height = 27
                 PlAdd.Height = 45
                 Entete.Height = 280
+                plTotal.Height = 210
 
+                Pl.Dock = DockStyle.Top
+                Panel8.Height = 33
+
+                Me.AutoScroll = True
                 plDetailsHeader.Visible = True
                 Entete.lbId.Visible = True
                 Entete.pbListPdf.Visible = False
@@ -350,7 +356,6 @@
 
             If value.Rows.Count > 0 Then
                 Dim arr(value.Rows.Count - 1) As ListRow
-
                 For i As Integer = 0 To value.Rows.Count - 1
                     Dim a As New Article
                     a.arid = value.Rows(i).Item("arid")
@@ -430,13 +435,16 @@
             _dtList = value
             _isEG = False
 
+            lbLnbr.Text = value.Rows.Count
+            lbLtotal.Text = ""
+            lbLavc.Text = ""
+
             startIndex = 0
             lastIndex = value.Rows.Count
             numberOfItems = Form1.numberOfItems
             'numberOfPage = Math.Truncate(lastIndex / numberOfItems)
             'If lastIndex Mod numberOfItems > 0 Then numberOfPage += 1
             numberOfPage = 1
-
 
             currentPage = 1
             btPage.Text = "1/" & numberOfPage
@@ -446,10 +454,6 @@
             FillRowsByGrid()
 
             Try
-                lbLnbr.Text = value.Rows.Count
-                lbLtotal.Text = ""
-                lbLavc.Text = ""
-
                 Dim sum As Double = Convert.ToDouble(_dtList.Compute("SUM(total)", String.Empty))
                 lbLtotal.Text = String.Format("{0:n}", CDec(sum))
                 Dim avc As Double = Convert.ToDouble(_dtList.Compute("SUM(avance)", String.Empty))
@@ -561,6 +565,7 @@
             Entete.btValideBl.Text = "Valider"
             Entete.btValideBl.Image = My.Resources.ICON_22
             Entete.btValideBl.Tag = Facture
+            isDisibleEditing = False
         End If
 
     End Sub
@@ -618,7 +623,11 @@
 
     Private Sub Pl_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles Pl.ControlAdded, Pl.ControlRemoved
 
-        If Mode = "LIST" Then Exit Sub
+        If Mode = "LIST" Then
+            Pl.Height = 400
+            Exit Sub
+        End If
+
 
         If Pl.Controls.Count > 3 Then
             Pl.Height = Pl.Controls(0).Height * Pl.Controls.Count + 15
@@ -630,14 +639,16 @@
             If TypeOf (Pl.Controls(0)) Is ListLine Then Exit Sub
         End If
 
-        Dim T As Double = 0
+        Dim Ht_T As Double = 0
+        Dim Ttc_T As Double = 0
         Dim R As Double = 0
         Dim tva As Double = 0
 
         TB.dg.Rows.Clear()
 
         For Each C As ListRow In Pl.Controls
-            T += C.TotalHt
+            Ht_T += C.TotalHt
+            Ttc_T += C.TotalTTC
             R += C.TotalRemise
             tva += C.TotaltVA
 
@@ -655,9 +666,12 @@
             End If
         Next
 
-        TB.TotalHt = T
+
+        If Form1.isBaseOnTTC Then TB.TotalTTC_base = Ttc_T
+        TB.TotalHt = Ht_T
         TB.Remise = R
         TB.TVA = tva
+
 
     End Sub
     Private Sub PlPm_ControlAdded(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ControlEventArgs)
@@ -880,8 +894,14 @@
 
                 dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
                 dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-                dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                dg.Columns(3).FillWeight = 200
+
+                dg.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                'dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(21).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
                 dg.Columns(0).HeaderText = "ID/N°"
                 dg.Columns(1).HeaderText = "Date"
@@ -889,6 +909,8 @@
                 dg.Columns(4).HeaderText = "Total"
                 dg.Columns(7).HeaderText = "Avance"
                 dg.Columns(12).HeaderText = "Editeur"
+
+
 
                 dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -905,7 +927,8 @@
                 AddHandler dg.Sorted, AddressOf Dg_Sorted
 
                 Dg_Sorted(dg, Nothing)
-                Pl.Height = dg.Rows.Count * 33 + 222
+                ' Pl.Height = dg.Rows.Count * 33 + 222
+
             End If
 
         Catch ex As Exception
@@ -1019,11 +1042,14 @@
 
     'Edit
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        Dim DG As DataGridView = Pl.Controls(0)
-        If DG.SelectedRows.Count = 0 Then Exit Sub
+        Try
+            Dim DG As DataGridView = Pl.Controls(0)
+            If DG.SelectedRows.Count = 0 Then Exit Sub
 
-        Dim id As Integer = DG.SelectedRows(0).Cells(0).Value
-        RaiseEvent EditSelectedFacture(id)
+            Dim id As Integer = DG.SelectedRows(0).Cells(0).Value()
+            RaiseEvent EditSelectedFacture(id)
+        Catch ex As Exception
+        End Try
     End Sub
     'Add
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click

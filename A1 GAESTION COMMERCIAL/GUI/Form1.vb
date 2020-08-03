@@ -92,6 +92,8 @@
     Public Color_Default_Row As Color = Color.Bisque
     Public Color_Alternating_Row As Color = Color.WhiteSmoke
     Public Color_Selected_Row As Color = Color.Red
+    Public allowAddElement_to As Boolean = False
+
 
 
 
@@ -110,9 +112,33 @@
         End Get
         Set(ByVal value As String)
             _Exercice = value
-            lbExr.text = value
+            lbExr.Text = value
         End Set
     End Property
+
+
+    Private _ins_inv As Boolean
+    Public Property InstalInventaireModule As Boolean
+        Get
+            Return _ins_inv
+        End Get
+        Set(ByVal value As Boolean)
+            _ins_inv = value
+            bt_Inv.Visible = value
+        End Set
+    End Property
+
+    Private _ins_Parck As Boolean
+    Public Property InstalParckModule As Boolean
+        Get
+            Return _ins_Parck
+        End Get
+        Set(ByVal value As Boolean)
+            _ins_Parck = value
+            bt_Parck.Visible = value
+        End Set
+    End Property
+
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Regs info
@@ -130,7 +156,13 @@
             End
         End If
 
-        'bt_Parck.Visible = False
+        'Modules
+        InstalParckModule = False
+        InstalInventaireModule = True
+
+
+
+
 
         'check Users
         Dim pwdwin As New PWDPicker
@@ -319,7 +351,7 @@
         End If
     End Sub
 
-    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Inv.Click
         Using c As New InventaireClass
             c.AddDataList()
         End Using
@@ -345,12 +377,11 @@
             data.Columns.Add("MPayement", GetType(String))
             data.Columns.Add("Editeur", GetType(String))
 
-            data.Rows.Add(1, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
+            data.Rows.Add(ds.Entete.lbId.Text, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
                           String.Format("{0:0.00}", ds.TB.TotalHt), String.Format("{0:0.00}", ds.TB.TVA),
                           String.Format("{0:0.00}", ds.TB.TotalTTC), String.Format("{0:0.00}", ds.TB.Remise),
                           String.Format("{0:0.00}", ds.TB.avance), String.Format("{0:0.00}", ds.TB.DroitTimbre),
                           ds.ModePayement, adminName)
-
 
             Dim dt_Client As New DataTable
             ' Create four typed columns in the DataTable.

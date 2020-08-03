@@ -7,6 +7,8 @@
     Event Livraison()
     Event Reception()
 
+    Event Rapports(ByVal p1 As Boolean)
+
 
     Private Sub btRec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click, btRec.Click
         RaiseEvent Reception()
@@ -37,5 +39,13 @@
         If stok.ShowDialog = Windows.Forms.DialogResult.OK Then
         End If
         btEntrepote.Text = stok.dgvctg.Rows.Count & " Entrepôtes"
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        RaiseEvent Rapports(False)
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        RaiseEvent Rapports(True)
     End Sub
 End Class

@@ -899,6 +899,7 @@ Public Class FactureClass
             Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
             ps.PaperName = g.p_Kind
             Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+            Form1.PrintDocDesign.DefaultPageSettings.Landscape = g.is_Landscape
         Catch ex As Exception
 
         End Try
@@ -1587,6 +1588,19 @@ Public Class FactureClass
             params.Add("remise", 0)
             params.Add("cid", 0)
 
+            If ds.isSell Then
+
+                params.Add("devis", "")
+                params.Add("Bon_Livraison", "")
+                params.Add("Commande_Client", "")
+                If tableName = "Bon_Livraison" Then params.Add("Sell_Facture", "")
+            Else
+                params.Add("devis", "")
+                params.Add("Bon_Commande", "")
+                params.Add("Bon_Achat", "")
+                params.Add("Buy_Facture", "")
+            End If
+
             where.Add("id", id)
 
             If c.UpdateRecord(tableName, params, where) Then
@@ -1785,7 +1799,12 @@ Public Class FactureClass
             End If
         End If
 
-        NewFacture_Transforme("Sell_Avoir", "Details_Sell_Avoir", "Client_Payement", Now.Date, "Sell_Avoir", ds, False)
+        If ds.isSell = False Then
+            NewFacture_Transforme("Buy_Avoir", "Details_Buy_Avoir", "Company_Payement", Now.Date, "Buy_Avoir", ds, False)
+        Else
+            NewFacture_Transforme("Sell_Avoir", "Details_Sell_Avoir", "Client_Payement", Now.Date, "Sell_Avoir", ds, False)
+
+        End If
 
 
         'DeleteFacture(p1, ds)
@@ -1844,44 +1863,58 @@ Public Class FactureClass
                         Exit Sub
                     End If
 
+
                     If Form1.isWorkinOnStock = True Then
                         If getStockId(R.arid, R.depot, c) = 0 Then
 
-                            If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
-                                params.Clear()
-                                params.Add("arid", R.arid)
+                            Try
+                                If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
+                                    params.Clear()
+                                    params.Add("arid", R.arid)
 
-                                Dim params2 As New Dictionary(Of String, Object)
-                                params2.Add("CUMP", R.bprice)
+                                    Dim params2 As New Dictionary(Of String, Object)
+                                    params2.Add("CUMP", R.bprice)
 
-                                c.UpdateRecord("Article", params2, params)
-                            End If
-                           
+                                    c.UpdateRecord("Article", params2, params)
+                                End If
+                            Catch ex As Exception
+                            End Try
+
                             oldStock = q
                             AddNewStock(R.arid, R.depot, R.cid, q, c)
                         Else
                             If tb_D = "Details_Bon_Achat" And Form1.useValue_CUMP Then
                                 params.Clear()
                                 params.Add("arid", R.arid)
-                                Dim cump As Double = c.SelectByScalar("Article", "CUMP", params)
-                                If IsDBNull(cump) Then cump = 0
-                                If Not IsNumeric(cump) Then cump = 0
+                                Dim cump As Double = 0
+
+                                Try
+                                    cump = c.SelectByScalar("Article", "CUMP", params)
+                                    If IsDBNull(cump) Then cump = 0
+                                    If Not IsNumeric(cump) Then cump = 0
+                                Catch ex As Exception
+                                    cump = 0
+                                End Try
 
                                 If cump = 0 Then
                                     cump = c.SelectByScalar("Article", "bprice", params)
                                 End If
+
                                 cump = ((cump * oldStock) + (R.sprice * q)) / (oldStock + q)
                                 Dim params2 As New Dictionary(Of String, Object)
 
                                 params2.Add("CUMP", cump)
                                 c.UpdateRecord("Article", params2, params)
                             End If
+
                             oldStock += q
                             updateStock(R.arid, R.depot, oldStock, c)
+
                         End If
+
                         R.Stock = oldStock
                     End If
-                    End If
+                End If
             End Using
         Catch ex As Exception
         End Try
@@ -1924,6 +1957,8 @@ Public Class FactureClass
 
 
                         If b And Form1.isWorkinOnStock Then
+
+                            'If b Then
                             Dim oldStock = getStockById(R.arid, R.depot, c)
                             If getStockId(R.arid, R.depot, c) = 0 Then
                                 'AddNewStock(R.arid, R.arid, R.cid, R.qte, c)
@@ -1964,16 +1999,17 @@ Public Class FactureClass
 
                         If b And Form1.isWorkinOnStock Then
 
+                            'If b Then
                             If getStockId(lr.article.arid, lr.article.depot, c) > 0 Then
                                 Dim oldStock = getStockById(lr.article.arid, lr.article.depot, c)
                                 oldStock += qte
                                 updateStock(lr.article.arid, lr.article.depot, oldStock, c)
                             End If
                         End If
-                        End If
-
-                        ds.Pl.Controls.Remove(lr)
                     End If
+
+                    ds.Pl.Controls.Remove(lr)
+                End If
             End Using
         Catch ex As Exception
         End Try
@@ -2267,8 +2303,9 @@ Public Class FactureClass
         If IsNothing(ds.Entete.Client) Then Exit Sub
         If ds.Entete.Client.cid = 0 Then Exit Sub
 
+
         Dim fl As New RelveClient
-        fl.ClientTable = "Client"
+        fl.ClientTable = ds.clientTable
         fl.Client = ds.Entete.ClientName
         fl.CID = ds.Entete.Client.cid
         If fl.ShowDialog = DialogResult.OK Then
@@ -2292,7 +2329,6 @@ Public Class FactureClass
         If bls.ShowDialog = DialogResult.OK Then
 
             Dim data As DataTable
-
             Dim avance = ds.TB.avance
 
             Try
@@ -2300,7 +2336,12 @@ Public Class FactureClass
                     Dim params As New Dictionary(Of String, Object)
                     Dim where As New Dictionary(Of String, Object)
 
-                    params.Add("Bon_Livraison", bls.List)
+                    If bls.tb_D = "Bon_Transport" Then
+                        params.Add("Bon_Livraison", "B.T. : " & bls.List)
+                    Else
+                        params.Add(bls.tb_D, bls.List)
+                    End If
+
                     params.Add("total", CDbl(bls.LbSum.Text))
                     params.Add("avance", CDbl(bls.Lbavc.Text))
 
@@ -2317,74 +2358,99 @@ Public Class FactureClass
                             Continue For
                         End If
 
-                        params.Add(bls.tb_F, CInt(ds.Id))
-                        params.Add("isAdmin", "Facturé")
-
+                        If bls.tb_D = "Bon_Transport" Then
+                            params.Add("isPayed", True)
+                            params.Add("isFactured", True)
+                        Else
+                            params.Add(bls.tb_F, CInt(ds.Id))
+                            params.Add("isAdmin", "Facturé")
+                        End If
 
                         where.Add("id", bonId)
                         c.UpdateRecord(bls.tb_D, params, where)
                         params.Clear()
                         where.Clear()
 
-
-
+                        'payment
                         params.Add(bls.tb_F, CInt(ds.Id))
                         where.Add(bls.tb_D, bonId)
                         c.UpdateRecord(bls.tb_P, params, where)
                         params.Clear()
                         where.Clear()
 
-                        where.Add("fctid", bonId)
+
+                        If bls.tb_D = "Bon_Transport" Then
+                            where.Add("Bon_Transport", bonId)
+                        Else
+                            where.Add("fctid", bonId)
+                        End If
+
                         data = c.SelectDataTable(bls.tb_D_D, {"*"}, where)
                         where.Clear()
 
                         If data.Rows.Count > 0 Then
                             For i As Integer = 0 To data.Rows.Count - 1
+                                If bls.tb_D = "Bon_Transport" Then
+                                    params.Add("fctid", CInt(ds.Id))
+                                    params.Add("name", StrValue(data, "name", i))
+                                    params.Add("bprice", DblValue(data, "value", i))
+                                    params.Add("price", DblValue(data, "value", i))
+                                    params.Add("remise", 0)
+                                    params.Add("qte", DblValue(data, "qte", i))
+                                    params.Add("tva", Form1.tva)
+                                    params.Add("arid", -111)
+                                    params.Add("depot", 0)
+                                    params.Add("ref", StrValue(data, "ref", i))
+                                    params.Add("cid", 0)
 
-                                params.Add("fctid", CInt(ds.Id))
-                                params.Add("name", StrValue(data, "name", i))
-                                params.Add("bprice", DblValue(data, "bprice", i)) 'data.Rows(i).Item("bprice"))
-                                params.Add("price", DblValue(data, "price", i)) 'data.Rows(i).Item("price"))
-                                params.Add("remise", DblValue(data, "remise", i)) ' data.Rows(i).Item(""))
-                                params.Add("qte", DblValue(data, "qte", i)) 'data.Rows(i).Item(""))
-                                params.Add("tva", DblValue(data, "tva", i)) 'data.Rows(i).Item(""))
-                                params.Add("arid", IntValue(data, "arid", i)) ' data.Rows(i).Item(""))
-                                params.Add("depot", IntValue(data, "depot", i)) 'data.Rows(i).Item(""))
-                                params.Add("ref", StrValue(data, "ref", i)) 'data.Rows(i).Item(""))
-                                params.Add("cid", IntValue(data, "cid", i)) ' data.Rows(i).Item("cid"))
-                                params.Add("bl", bonId) 'IntValue(data, "fctid", i)) 'data.Rows(i).Item(0))
-
+                                Else
+                                    params.Add("fctid", CInt(ds.Id))
+                                    params.Add("name", StrValue(data, "name", i))
+                                    params.Add("bprice", DblValue(data, "bprice", i)) 'data.Rows(i).Item("bprice"))
+                                    params.Add("price", DblValue(data, "price", i)) 'data.Rows(i).Item("price"))
+                                    params.Add("remise", DblValue(data, "remise", i)) ' data.Rows(i).Item(""))
+                                    params.Add("qte", DblValue(data, "qte", i)) 'data.Rows(i).Item(""))
+                                    params.Add("tva", DblValue(data, "tva", i)) 'data.Rows(i).Item(""))
+                                    params.Add("arid", IntValue(data, "arid", i)) ' data.Rows(i).Item(""))
+                                    params.Add("depot", IntValue(data, "depot", i)) 'data.Rows(i).Item(""))
+                                    params.Add("ref", StrValue(data, "ref", i)) 'data.Rows(i).Item(""))
+                                    params.Add("cid", IntValue(data, "cid", i)) ' data.Rows(i).Item("cid"))
+                                    If bls.tb_D = "Bon_Livraison" Then params.Add("bl", bonId) 'IntValue(data, "fctid", i)) 'data.Rows(i).Item(0))
+                                End If
                                 c.InsertRecord(ds.DetailsTable, params)
                                 params.Clear()
                             Next
                         End If
                     Next
 
-                    For Each kv As KeyValuePair(Of Integer, Integer) In bls.oldList
+                    If bls.tb_D <> "Bon_Transport" Then
+                        For Each kv As KeyValuePair(Of Integer, Integer) In bls.oldList
 
-                        params.Clear()
-                        where.Clear()
+                            params.Clear()
+                            where.Clear()
 
-                        If kv.Value = 0 Then Continue For
+                            If kv.Value = 0 Then Continue For
 
-                        params.Add(bls.tb_F, 0)
-                        params.Add("isAdmin", "Traite")
+                            params.Add(bls.tb_F, 0)
+                            params.Add("isAdmin", "Traite")
 
-                        where.Add("id", kv.Key)
-                        c.UpdateRecord(bls.tb_D, params, where)
-                        params.Clear()
-                        where.Clear()
+                            where.Add("id", kv.Key)
+                            c.UpdateRecord(bls.tb_D, params, where)
+                            params.Clear()
+                            where.Clear()
 
-                        params.Add(bls.tb_F, 0)
-                        where.Add(bls.tb_D, kv.Key)
-                        c.UpdateRecord(bls.tb_P, params, where)
-                        params.Clear()
-                        where.Clear()
+                            params.Add(bls.tb_F, 0)
+                            where.Add(bls.tb_D, kv.Key)
+                            c.UpdateRecord(bls.tb_P, params, where)
+                            params.Clear()
+                            where.Clear()
 
-                        where.Add("bl", kv.Key)
-                        c.DeleteRecords(ds.DetailsTable, where)
-                    Next
+                            where.Add("bl", kv.Key)
+                            If bls.tb_D = "Bon_Livraison" Then c.DeleteRecords(ds.DetailsTable, where)
+                        Next
+                    End If
                 End Using
+
 
                 ds.Id = ds.Id
 

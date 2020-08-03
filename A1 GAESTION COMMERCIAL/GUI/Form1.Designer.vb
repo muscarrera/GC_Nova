@@ -26,7 +26,7 @@ Partial Class Form1
         Me.plHead = New System.Windows.Forms.Panel()
         Me.plHeader = New System.Windows.Forms.Panel()
         Me.plHeaderButton = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.bt_Inv = New System.Windows.Forms.Button()
         Me.btSetting = New System.Windows.Forms.Button()
         Me.btTrial = New System.Windows.Forms.Button()
         Me.bt_Parck = New System.Windows.Forms.Button()
@@ -95,7 +95,7 @@ Partial Class Form1
         'plHeaderButton
         '
         Me.plHeaderButton.BackColor = System.Drawing.Color.Transparent
-        Me.plHeaderButton.Controls.Add(Me.Button6)
+        Me.plHeaderButton.Controls.Add(Me.bt_Inv)
         Me.plHeaderButton.Controls.Add(Me.btSetting)
         Me.plHeaderButton.Controls.Add(Me.btTrial)
         Me.plHeaderButton.Controls.Add(Me.bt_Parck)
@@ -113,18 +113,18 @@ Partial Class Form1
         Me.plHeaderButton.Size = New System.Drawing.Size(894, 36)
         Me.plHeaderButton.TabIndex = 9
         '
-        'Button6
+        'bt_Inv
         '
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.Button6.Location = New System.Drawing.Point(711, 0)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(118, 36)
-        Me.Button6.TabIndex = 13
-        Me.Button6.Text = "Inventaire"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.bt_Inv.Dock = System.Windows.Forms.DockStyle.Left
+        Me.bt_Inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.bt_Inv.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bt_Inv.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.bt_Inv.Location = New System.Drawing.Point(711, 0)
+        Me.bt_Inv.Name = "bt_Inv"
+        Me.bt_Inv.Size = New System.Drawing.Size(118, 36)
+        Me.bt_Inv.TabIndex = 13
+        Me.bt_Inv.Text = "Inventaire"
+        Me.bt_Inv.UseVisualStyleBackColor = True
         '
         'btSetting
         '
@@ -506,7 +506,7 @@ Partial Class Form1
     Friend WithEvents PrintDocMission As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintDocList As System.Drawing.Printing.PrintDocument
     Friend WithEvents btTrial As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents bt_Inv As System.Windows.Forms.Button
     Friend WithEvents PrintDocDesign As System.Drawing.Printing.PrintDocument
 
 End Class

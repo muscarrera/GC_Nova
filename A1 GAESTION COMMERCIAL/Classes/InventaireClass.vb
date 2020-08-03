@@ -37,6 +37,8 @@
         AddHandler hm.Valorisation, AddressOf Valorisation
         AddHandler hm.Ajustement, AddressOf Ajustement
         AddHandler hm.Tracabilite, AddressOf Tracabilite
+        AddHandler hm.Rapports, AddressOf Rapport
+
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
             'livraison
@@ -277,6 +279,7 @@
         AddHandler rc.PrintDetails, AddressOf Ajust_PrintDetails
         AddHandler rc.PrintList, AddressOf Ajust_PrintList
         AddHandler rc.ValiderAjustement, AddressOf Ajust_valider
+        AddHandler rc.getRealStockFromBons, AddressOf getRealStockFromBons
 
         StyleDatagrid(rc.dg_D)
         StyleDatagrid(rc.dg_L)
@@ -311,6 +314,26 @@
         rc.dg_D.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2
 
         rc.id_Jus = 0
+        ds.pl.Controls.Add(rc)
+    End Sub
+
+    Private Sub Rapport(ByVal b As Boolean)
+
+        Dim ds As InventaireList = Form1.plBody.Controls(0)
+        ds.pl.Controls.Clear()
+
+        Dim rc As New invRapports
+        rc.Dock = DockStyle.Top
+        rc.isSell = b
+
+        rc.txt.AutoCompleteSource = AutoCompleteByName(rc.tb_c)
+       
+        AddHandler rc.Search, AddressOf Rapport_Search
+     
+
+        StyleDatagrid(rc.dg)
+        rc.dg.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2
+
         ds.pl.Controls.Add(rc)
     End Sub
 
@@ -473,27 +496,27 @@
             Dim dte2 As Date = ds.dte2.Value.AddDays(1)
 
             Dim tb_B = "Details_Transfer"
-           
+
             params.Add("[date] > ", dte1.ToString("dd/MM/yyyy"))
             params.Add("[date] < ", dte2.ToString("dd/MM/yyyy"))
 
             If ds.txt.text.Contains("|") Then params.Add(" arid  = ", ds.txt.text.Split("|")(1))
 
-                Dim dt = a.SelectDataTableSymbols(tb_B, {"*"}, params)
-                'Dim dg As New DataGridView
+            Dim dt = a.SelectDataTableSymbols(tb_B, {"*"}, params)
+            'Dim dg As New DataGridView
             If IsNothing(dt) Then MsgBox("aucun résultat trouvé", MsgBoxStyle.Information, "Transfertes Internes")
 
             dg.DataSource = dt
-                StyleDatagrid(dg)
-                ds.pl.Controls.Add(dg)
-                AddHandler dg.CellMouseDoubleClick, AddressOf Reception_Dg_MouseDoubleClick
+            StyleDatagrid(dg)
+            ds.pl.Controls.Add(dg)
+            AddHandler dg.CellMouseDoubleClick, AddressOf Reception_Dg_MouseDoubleClick
 
-                '''''''''''''''''''''''''''''''''''''''''''''
+            '''''''''''''''''''''''''''''''''''''''''''''
             dg.Columns(0).Visible = False
             dg.Columns(1).Visible = False
             dg.Columns(3).Visible = False
             dg.Columns(4).Visible = False
-              
+
 
             dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
             dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
@@ -583,7 +606,6 @@
 
             a.UpdateRecord("Ajustement_Stock", params, where)
 
-
             For i As Integer = 0 To ds.dg_D.Rows.Count - 1
                 Dim oldQ As Double = ds.dg_D.Rows(i).Cells(5).Value
                 If Not IsNumeric(ds.dg_D.Rows(i).Cells(6).Value) Then Continue For
@@ -672,7 +694,9 @@
                     params.Add("qte_theorique", DblValue(st_dt, "qte", i))
                     params.Add("qte_Real", DblValue(st_dt, "qte", i))
                     params.Add("cid", IntValue(st_dt, "cid", i))
+
                     a.InsertRecord("Details_Ajustement_Stock", params)
+
                 Next
             End If
         End Using
@@ -811,4 +835,61 @@
         ds.dt_Out = BTA.GetDataOUT(dte1, dte2, ds.arid)
 
     End Sub
+
+    Private Sub getRealStockFromBons(ByRef ds As InvJustement)
+
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+            Dim where As New Dictionary(Of String, Object)
+            Dim stk As Double = 0
+
+            For i As Integer = 0 To ds.dg_D.Rows.Count - 1
+                stk = 0
+                where.Add("arid", ds.dg_D.Rows(i).Cells(2).Value)
+                where.Add("depot", ds.dg_D.Rows(i).Cells(4).Value)
+                Try
+                    stk = a.SelectByScalarSum("Details_Bon_Achat", "SUM(qte)", where)
+                    stk -= a.SelectByScalarSum("Details_Bon_Livraison", "SUM(qte)", where)
+
+                    ds.dg_D.Rows(i).Cells(6).Value = stk
+                Catch ex As Exception
+
+                End Try
+
+
+                where.Clear()
+                params.Clear()
+            Next
+        End Using
+
+    End Sub
+
+    Private Sub Rapport_Search(ByVal ds As invRapports)
+        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
+            Dim params As New Dictionary(Of String, Object)
+            Try
+
+                Dim dte1 As Date = ds.dte1.Value.AddDays(-1)
+                Dim dte2 As Date = ds.dte2.Value.AddDays(1)
+
+                'Dim params As New Dictionary(Of String, Object)
+                params.Add("[date] > ", CDate(dte1.ToString("dd-MM-yyyy")))
+                params.Add("[date] < ", CDate(dte2.ToString("dd-MM-yyyy")))
+
+
+                If ds.txt.text.Trim.Contains("|") Then
+                    Dim nm = ds.txt.text.Trim.Split("|")(1)
+
+                    If IsNumeric(nm) Then params.Add("cid = ", CInt(nm))
+                End If
+            Catch ex As Exception
+            End Try
+
+            Dim dt = a.SelectDataTableSymbols(ds.tableName, {"*"}, params)
+            ds.dataSource = dt
+        End Using
+    End Sub
+
+
+
 End Class

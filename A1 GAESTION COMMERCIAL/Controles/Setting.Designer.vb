@@ -35,6 +35,7 @@ Partial Class Setting
         Me.plPref = New System.Windows.Forms.Panel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
+        Me.allowAddElement_to = New System.Windows.Forms.CheckBox()
         Me.cbAccessClient = New System.Windows.Forms.CheckBox()
         Me.cbImpRef = New System.Windows.Forms.CheckBox()
         Me.cbFactureGetSold = New System.Windows.Forms.CheckBox()
@@ -89,6 +90,7 @@ Partial Class Setting
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
+        Me.cbNormalImp = New System.Windows.Forms.CheckBox()
         Me.cbHasEPBonTransport = New System.Windows.Forms.CheckBox()
         Me.cbPdf = New System.Windows.Forms.CheckBox()
         Me.cbImp = New System.Windows.Forms.CheckBox()
@@ -167,7 +169,6 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.cbNormalImp = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -329,7 +330,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 780)
+        Me.plPref.Location = New System.Drawing.Point(5, 1104)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 475)
@@ -338,6 +339,7 @@ Partial Class Setting
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.cbBaseOnTTC)
+        Me.GroupBox3.Controls.Add(Me.allowAddElement_to)
         Me.GroupBox3.Controls.Add(Me.cbAccessClient)
         Me.GroupBox3.Controls.Add(Me.cbImpRef)
         Me.GroupBox3.Controls.Add(Me.cbFactureGetSold)
@@ -365,6 +367,16 @@ Partial Class Setting
         Me.cbBaseOnTTC.TabIndex = 28
         Me.cbBaseOnTTC.Text = " Base sur les prix TTC"
         Me.cbBaseOnTTC.UseVisualStyleBackColor = True
+        '
+        'allowAddElement_to
+        '
+        Me.allowAddElement_to.AutoSize = True
+        Me.allowAddElement_to.Location = New System.Drawing.Point(17, 308)
+        Me.allowAddElement_to.Name = "allowAddElement_to"
+        Me.allowAddElement_to.Size = New System.Drawing.Size(170, 17)
+        Me.allowAddElement_to.TabIndex = 28
+        Me.allowAddElement_to.Text = "activer l'option Article AddAuto"
+        Me.allowAddElement_to.UseVisualStyleBackColor = True
         '
         'cbAccessClient
         '
@@ -641,10 +653,10 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 257)
+        Me.plImp.Location = New System.Drawing.Point(5, 557)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 523)
+        Me.plImp.Size = New System.Drawing.Size(750, 547)
         Me.plImp.TabIndex = 17
         '
         'GroupBox7
@@ -927,6 +939,16 @@ Partial Class Setting
         Me.Label35.TabIndex = 24
         Me.Label35.Text = "Nombre des copies"
         '
+        'cbNormalImp
+        '
+        Me.cbNormalImp.AutoSize = True
+        Me.cbNormalImp.Location = New System.Drawing.Point(129, 385)
+        Me.cbNormalImp.Name = "cbNormalImp"
+        Me.cbNormalImp.Size = New System.Drawing.Size(172, 17)
+        Me.cbNormalImp.TabIndex = 23
+        Me.cbNormalImp.Text = "Design d'impression par default"
+        Me.cbNormalImp.UseVisualStyleBackColor = True
+        '
         'cbHasEPBonTransport
         '
         Me.cbHasEPBonTransport.AutoSize = True
@@ -1201,7 +1223,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 199)
+        Me.plRole.Location = New System.Drawing.Point(5, 499)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 58)
@@ -1248,7 +1270,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 137)
+        Me.plUser.Location = New System.Drawing.Point(5, 437)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1307,7 +1329,7 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 66)
+        Me.plText.Location = New System.Drawing.Point(5, 366)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
         Me.plText.Size = New System.Drawing.Size(750, 71)
@@ -1596,7 +1618,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 61)
+        Me.plData.Size = New System.Drawing.Size(750, 361)
         Me.plData.TabIndex = 13
         '
         'GroupBox1
@@ -1765,7 +1787,7 @@ Partial Class Setting
         Me.Panel6.Location = New System.Drawing.Point(10, 10)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel6.Size = New System.Drawing.Size(713, 39)
+        Me.Panel6.Size = New System.Drawing.Size(730, 39)
         Me.Panel6.TabIndex = 21
         '
         'Label12
@@ -1789,16 +1811,6 @@ Partial Class Setting
         Me.PictureBox3.Size = New System.Drawing.Size(60, 35)
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
-        '
-        'cbNormalImp
-        '
-        Me.cbNormalImp.AutoSize = True
-        Me.cbNormalImp.Location = New System.Drawing.Point(129, 385)
-        Me.cbNormalImp.Name = "cbNormalImp"
-        Me.cbNormalImp.Size = New System.Drawing.Size(172, 17)
-        Me.cbNormalImp.TabIndex = 23
-        Me.cbNormalImp.Text = "Design d'impression par default"
-        Me.cbNormalImp.UseVisualStyleBackColor = True
         '
         'Setting
         '
@@ -2008,5 +2020,6 @@ Partial Class Setting
     Friend WithEvents cbBlGetSold As System.Windows.Forms.CheckBox
     Friend WithEvents LinkLabel6 As System.Windows.Forms.LinkLabel
     Friend WithEvents cbNormalImp As System.Windows.Forms.CheckBox
+    Friend WithEvents allowAddElement_to As System.Windows.Forms.CheckBox
 
 End Class

@@ -1713,7 +1713,7 @@ Public Class ParcClass
                 params.Add("total", ds.TB.TotalTTC)
                 params.Add("avance", ds.Avance_Transport)
                 params.Add("remise", 0)
-                params.Add("tva", ds.TB.TotalTTC)
+                params.Add("tva", ds.TB.TVA)
                 params.Add("date", Format(Now.Date, "dd-MM-yyyy"))
                 params.Add("writer", (Form1.adminName))
                 params.Add("isAdmin", "CREATION")

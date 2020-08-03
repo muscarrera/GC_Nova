@@ -17,7 +17,7 @@
     Event ValiderAjustement(ByRef ds As InvJustement)
     Event ValiderValorisation(ByRef ds As InvJustement)
     Event getList(ByRef ds As InvJustement)
-
+    Event getRealStockFromBons(ByRef ds As InvJustement)
 
     Public Property id_Jus As Integer
         Get
@@ -357,5 +357,29 @@
         Dim str = "Liste_des_Ajustements_de_Stock"
         If isAjustement = False Then str = "Liste_des_Valorisation_de_Stock"
         SaveDataToHtml(dg_L, str)
+    End Sub
+
+    Private Sub Button5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Dim nmdg As New ConfirmeRequest
+        If nmdg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+
+        For i As Integer = 0 To dg_D.Rows.Count - 1
+            Try
+                dg_D.Rows(i).Cells(6).Value = 0
+            Catch ex As Exception
+            End Try
+        Next
+
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        Dim nmdg As New ConfirmeRequest
+        If nmdg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+
+        RaiseEvent getRealStockFromBons(Me)
     End Sub
 End Class

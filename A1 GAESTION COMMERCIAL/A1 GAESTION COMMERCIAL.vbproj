@@ -181,6 +181,12 @@
     <Compile Include="Controles\Inventaire\InvJustement.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controles\Inventaire\invRapports.Designer.vb">
+      <DependentUpon>invRapports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inventaire\invRapports.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\Inventaire\InvReception.Designer.vb">
       <DependentUpon>InvReception.vb</DependentUpon>
     </Compile>
@@ -385,6 +391,12 @@
     <Compile Include="GUI\Client_Remise.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\ConfirmeRequest.Designer.vb">
+      <DependentUpon>ConfirmeRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ConfirmeRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -554,6 +566,9 @@
     <EmbeddedResource Include="Controles\Inventaire\InvJustement.resx">
       <DependentUpon>InvJustement.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Inventaire\invRapports.resx">
+      <DependentUpon>invRapports.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\Inventaire\InvReception.resx">
       <DependentUpon>InvReception.vb</DependentUpon>
     </EmbeddedResource>
@@ -652,6 +667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Client_Remise.resx">
       <DependentUpon>Client_Remise.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ConfirmeRequest.resx">
+      <DependentUpon>ConfirmeRequest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

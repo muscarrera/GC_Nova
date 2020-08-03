@@ -168,7 +168,7 @@
         txtRs.text = ""
         myStock = Nothing
 
-        article = New Article(0, 0, "", "", 1, 0, 0, 0, 0, 0, False, "", False)
+        article = New Article(0, 0, "", "", 1, 0, 0, Form1.tva, 0, 0, False, "", False)
         txtRf.Focus()
     End Sub
     'validation
@@ -181,7 +181,7 @@
 
 
 
-        If article.arid = 0 Then
+        If article.arid = 0 And Form1.allowAddElement_to And EditMode = False Then
             Dim op As New OptionAddElement
 
             Dim MPx As Point = MousePosition()

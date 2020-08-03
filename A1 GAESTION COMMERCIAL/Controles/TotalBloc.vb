@@ -16,6 +16,8 @@
     Private _ht As Double = 0
 
 
+    Public TotalTTC_base As Double = 0
+
     Public Property TotalHt As Double
         Get
             Return _ht
@@ -88,6 +90,8 @@
     Public ReadOnly Property TotalTTC As Double
         Get
             Dim value As Double = TotalHt + TVA + DroitTimbre - Remise
+
+            If Form1.isBaseOnTTC Then value = TotalTTC_base + DroitTimbre
 
             Return value
         End Get

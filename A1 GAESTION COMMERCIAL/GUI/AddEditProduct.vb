@@ -5,6 +5,7 @@ Public Class AddEditProduct
     Public EditMode As Boolean = False
     Private _id As Integer = 0
     Dim _periode As String
+    Dim catid As Integer = 0
 
     Public Property Id As Integer
         Get
@@ -245,6 +246,7 @@ Public Class AddEditProduct
 
 
         If EditMode = False Then txtTva.text = Form1.tva
+        If IsNumeric(cbctg.Tag) Then cbctg.SelectedValue = cbctg.Tag
     End Sub
 
     Private Sub Validation()
@@ -300,7 +302,6 @@ Public Class AddEditProduct
     End Sub
     Private Sub FillForm(ByVal _Pid As Integer)
 
-        Dim cid = 0
         EditMode = True
         Dim params As New Dictionary(Of String, Object)
         params.Add("arid", _Pid)
@@ -312,7 +313,7 @@ Public Class AddEditProduct
                 txtRef.text = StrValue(dt, "ref", 0) ' dt.Rows(0).Item("ref")
                 txtName.text = StrValue(dt, "name", 0) 'dt.Rows(0).Item("")
                 txtDesc.text = StrValue(dt, "desc", 0) 'dt.Rows(0).Item("")
-                cbctg.SelectedValue = IntValue(dt, "cid", 0) 'dt.Rows(0).Item("")
+                cbctg.Tag = IntValue(dt, "cid", 0) 'dt.Rows(0).Item("")
 
                 txtPAch.text = DblValue(dt, "bprice", 0) 'dt.Rows(0).Item("")
                 txtHt.text = DblValue(dt, "sprice", 0) ' dt.Rows(0).Item("")

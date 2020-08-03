@@ -353,6 +353,7 @@ Public Class gDrawClass
                     Catch ex As Exception
                     End Try
 
+                    sf.Alignment = StringAlignment.Near
                 ElseIf a.field.StartsWith("image") Then
                     Try
                         Dim fullPath As String = Path.Combine("C:\cmcimage", a.designation)
