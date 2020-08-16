@@ -100,6 +100,7 @@
     <Compile Include="Classes\InventaireClass.vb" />
     <Compile Include="Classes\NumericStrings.vb" />
     <Compile Include="Classes\ParcClass.vb" />
+    <Compile Include="Classes\PvClass.vb" />
     <Compile Include="Classes\RegistryModule.vb" />
     <Compile Include="Classes\SubClass.vb" />
     <Compile Include="Classes\Trial.vb" />
@@ -227,6 +228,37 @@
       <DependentUpon>ProductList.vb</DependentUpon>
     </Compile>
     <Compile Include="Controles\ProductList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\Cpanel.Designer.vb">
+      <DependentUpon>Cpanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\Cpanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\Items.Designer.vb">
+      <DependentUpon>Items.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\Items.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\PvList.Designer.vb">
+      <DependentUpon>PvList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\PvList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\PvModel.vb" />
+    <Compile Include="Controles\PV\pvNewFacture.Designer.vb">
+      <DependentUpon>pvNewFacture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\pvNewFacture.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\RPanel.Designer.vb">
+      <DependentUpon>RPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\RPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\SearchTags\CompleteListe.Designer.vb">
@@ -590,6 +622,21 @@
     <EmbeddedResource Include="Controles\ProductList.resx">
       <DependentUpon>ProductList.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\Cpanel.resx">
+      <DependentUpon>Cpanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\Items.resx">
+      <DependentUpon>Items.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\PvList.resx">
+      <DependentUpon>PvList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\pvNewFacture.resx">
+      <DependentUpon>pvNewFacture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\RPanel.resx">
+      <DependentUpon>RPanel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\SearchTags\CompleteListe.resx">
       <DependentUpon>CompleteListe.vb</DependentUpon>
     </EmbeddedResource>
@@ -767,6 +814,8 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\close40.png" />
+    <None Include="Resources\234339-200.png" />
     <None Include="Resources\ALLOW 24.png" />
     <None Include="Resources\block 24.png" />
     <None Include="Resources\BGpRD.png" />

@@ -95,7 +95,6 @@
                 cid = IntValue(dt, "cid", 0)
                 compteId = IntValue(dt, "compteId", 0)
 
-
                 bl = StrValue(dt, "Bon_Livraison", 0)
                 'bc = StrValue(dt, "Bon_Commande", 0)
                 devis = StrValue(dt, "Devis", 0)

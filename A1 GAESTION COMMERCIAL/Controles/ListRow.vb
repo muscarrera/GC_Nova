@@ -1,5 +1,6 @@
 ﻿Public Class ListRow
 
+    Dim frt = Form1.DesimalSringFormat
 
     Public Event DeleteItem(ByVal listRow As ListRow)
     Public Event selected(ByVal R As ListRow)
@@ -55,7 +56,7 @@
             End If
 
             lbQte.Text = value
-            lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbTotal.Text = String.Format(frt, CDec(TotalTTC))
         End Set
     End Property
     Public Property Tva As Double
@@ -85,8 +86,8 @@
             If Form1.isBaseOnTTC Then pr += value * TVA / 100
 
 
-            lbPrice.Text = String.Format("{0:n}", CDec(pr))
-            lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbPrice.Text = String.Format(frt, CDec(pr))
+            lbTotal.Text = String.Format(frt, CDec(TotalTTC))
         End Set
     End Property
     Public Property remise As Double
@@ -95,13 +96,13 @@
         End Get
         Set(ByVal value As Double)
             _Remise = value
-            lbRemise.Text = String.Format("{0:n}", CDec(value))
+            lbRemise.Text = String.Format(frt, CDec(value))
             If value = 0 Then
                 lbRemise.Visible = False
             Else
                 lbRemise.Visible = True
             End If
-            lbTotal.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbTotal.Text = String.Format(frt, CDec(TotalTTC))
         End Set
     End Property
     Public Property bl As Integer

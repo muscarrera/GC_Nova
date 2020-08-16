@@ -51,6 +51,8 @@ Partial Class invRapports
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dte2 = New System.Windows.Forms.DateTimePicker()
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.LBTITLE = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.pl.SuspendLayout()
         CType(Me.dg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +65,7 @@ Partial Class invRapports
         Me.GroupBox2.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -303,6 +306,7 @@ Partial Class invRapports
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.Panel9)
         Me.GroupBox2.Controls.Add(Me.Panel10)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -322,7 +326,7 @@ Partial Class invRapports
         Me.Panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel10.Controls.Add(Me.txt)
         Me.Panel10.Controls.Add(Me.btInfo)
-        Me.Panel10.Location = New System.Drawing.Point(16, 29)
+        Me.Panel10.Location = New System.Drawing.Point(9, 74)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(477, 32)
         Me.Panel10.TabIndex = 0
@@ -364,7 +368,7 @@ Partial Class invRapports
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(13, 13)
+        Me.Label3.Location = New System.Drawing.Point(6, 58)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 14)
         Me.Label3.TabIndex = 1
@@ -422,6 +426,30 @@ Partial Class invRapports
         Me.dte1.Size = New System.Drawing.Size(243, 20)
         Me.dte1.TabIndex = 0
         '
+        'Panel9
+        '
+        Me.Panel9.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel9.BackColor = System.Drawing.Color.LightSkyBlue
+        Me.Panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel9.Controls.Add(Me.LBTITLE)
+        Me.Panel9.Location = New System.Drawing.Point(6, 15)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(477, 32)
+        Me.Panel9.TabIndex = 0
+        '
+        'LBTITLE
+        '
+        Me.LBTITLE.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LBTITLE.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBTITLE.ForeColor = System.Drawing.Color.SteelBlue
+        Me.LBTITLE.Location = New System.Drawing.Point(0, 0)
+        Me.LBTITLE.Name = "LBTITLE"
+        Me.LBTITLE.Size = New System.Drawing.Size(475, 30)
+        Me.LBTITLE.TabIndex = 0
+        Me.LBTITLE.Text = "Label4"
+        Me.LBTITLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'invRapports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -443,6 +471,7 @@ Partial Class invRapports
         Me.Panel10.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.Panel9.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -475,5 +504,7 @@ Partial Class invRapports
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents dte2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents dte1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Panel9 As System.Windows.Forms.Panel
+    Friend WithEvents LBTITLE As System.Windows.Forms.Label
 
 End Class

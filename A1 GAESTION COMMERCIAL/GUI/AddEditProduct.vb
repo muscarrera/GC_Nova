@@ -2,6 +2,9 @@
 
 Public Class AddEditProduct
 
+    Dim frt = Form1.DesimalSringFormat
+
+
     Public EditMode As Boolean = False
     Private _id As Integer = 0
     Dim _periode As String
@@ -156,7 +159,7 @@ Public Class AddEditProduct
             _tva = IIf(txtTva.text = "", 0, CDbl(txtTva.text))
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
-            txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
+            txtPAchTtc.text = String.Format(frt, CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
 
         Catch ex As Exception
 
@@ -168,7 +171,7 @@ Public Class AddEditProduct
             If txtMarge.text = "" Then Exit Sub
             If txtMarge.focused = False Then Exit Sub
             If txtPAch.text <> "" Then
-                txtHt.text = String.Format("{0:n}", CDec(((txtPAch.text * txtMarge.text) / 100) + txtPAch.text))
+                txtHt.text = String.Format(frt, CDec(((txtPAch.text * txtMarge.text) / 100) + txtPAch.text))
             End If
         Catch ex As Exception
 
@@ -193,7 +196,7 @@ Public Class AddEditProduct
 
 
             If txtTTC.focused = False Then
-                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * _tva) / 100) + txtHt.text))
+                txtTTC.text = String.Format(frt, CDec(((txtHt.text * _tva) / 100) + txtHt.text))
             End If
         Catch ex As Exception
 
@@ -211,8 +214,8 @@ Public Class AddEditProduct
 
 
             If txtHt.text <> "" Then
-                txtTTC.text = String.Format("{0:n}", CDec(((txtHt.text * _tva) / 100) + txtHt.text))
-                txtPAchTtc.text = String.Format("{0:n}", CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
+                txtTTC.text = String.Format(frt, CDec(((txtHt.text * _tva) / 100) + txtHt.text))
+                txtPAchTtc.text = String.Format(frt, CDec(((txtPAch.text * _tva) / 100) + txtPAch.text))
 
             End If
         Catch ex As Exception
@@ -229,7 +232,7 @@ Public Class AddEditProduct
 
 
             If txtHt.focused = False Then
-                txtHt.text = String.Format("{0:n}", CDec((txtTTC.text * 100) / (100 + _tva)))
+                txtHt.text = String.Format(frt, CDec((txtTTC.text * 100) / (100 + _tva)))
             End If
         Catch ex As Exception
 
@@ -438,7 +441,7 @@ Public Class AddEditProduct
             If Form1.isBaseOnOneTva Then _tva = Form1.tva
 
 
-            txtPAch.text = String.Format("{0:n}", CDec((txtPAchTtc.text * 100) / (100 + _tva)))
+            txtPAch.text = String.Format(frt, CDec((txtPAchTtc.text * 100) / (100 + _tva)))
         Catch ex As Exception
 
         End Try

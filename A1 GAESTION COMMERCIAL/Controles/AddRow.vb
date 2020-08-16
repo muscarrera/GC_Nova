@@ -1,5 +1,6 @@
 ﻿Public Class AddRow
     'Members
+    Dim frt = Form1.DesimalSringFormat
 
     Private isUsingBarcodeScaner As Boolean = False
     Dim _dpid As Integer
@@ -213,6 +214,7 @@
 
     'fill
     Public Sub FillFields(ByVal art As Article)
+
         Dim sPrice As Double = art.sprice
         If IsSell = False And EditMode = False Then sPrice = art.bprice
 
@@ -228,9 +230,9 @@
         If Form1.isBaseOnTTC Then pr = article.spriceTTC
 
 
-        txtPr.text = String.Format("{0:n}", CDec(pr))
-        txtRs.text = String.Format("{0:n}", CDec(article.remise))
-        txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+        txtPr.text = String.Format(frt, CDec(pr))
+        txtRs.text = String.Format(frt, CDec(article.remise))
+        txtttc.text = String.Format(frt, CDec(article.TotalTTC))
         Arid = art.arid
         article.depot = dpid
 
@@ -307,7 +309,7 @@
     Private Sub txtPrice_KeyDownOk() Handles txtPr.KeyDownOk
         Dim PR As Decimal = IIf(Form1.isBaseOnTTC, CDec(article.spriceTTC), CDec(article.sprice))
 
-        txtPr.text = String.Format("{0:n}", PR)
+        txtPr.text = String.Format(FRT, PR)
         txtRs.Focus()
     End Sub
     Private Sub txtRemise_KeyDownOk() Handles txtRs.KeyDownOk
@@ -352,7 +354,7 @@
                 article.sprice = price
             End If
 
-            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format(frt, CDec(article.TotalTTC))
         Catch ex As Exception
             txtttc.text = 0
         End Try
@@ -360,7 +362,7 @@
     Private Sub txtQte_TxtChanged() Handles txtQ.TxtChanged
         Try
             article.qte = qte
-            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format(frt, CDec(article.TotalTTC))
 
             ''''
             Dim STK = myStock - qte
@@ -385,7 +387,7 @@
     Private Sub txtRemise_TxtChanged() Handles txtRs.TxtChanged
         Try
             article.remise = remise
-            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format(frt, CDec(article.TotalTTC))
         Catch ex As Exception
             txtttc.text = 0
         End Try
@@ -437,7 +439,7 @@
         Try
             If txtTva.Focus = False Then Exit Sub
             article.TVA = txtTva.text
-            txtttc.text = String.Format("{0:n}", CDec(article.TotalTTC))
+            txtttc.text = String.Format(frt, CDec(article.TotalTTC))
         Catch ex As Exception
             txtttc.text = 0
         End Try

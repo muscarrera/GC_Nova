@@ -178,17 +178,14 @@
   <data name="iconfinder_Gnome-Emblem-Default222" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Gnome-Emblem-Default222.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TAGIN-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TAGIN-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bgLightForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgLightForm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FACTURE 20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FACTURE 20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="JOINDRE 20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JOINDRE 20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bgLightForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bgLightForm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BARCODE 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BARCODE 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -204,6 +201,9 @@
   </data>
   <data name="stock-icon-png-14" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stock-icon-png-14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ALLOW 24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ALLOW 24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_User_27887" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_User_27887.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,9 +241,6 @@
   <data name="iconfinder_Gnome-Edit-Delete-22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Gnome-Edit-Delete-22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BGpRD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BGpRD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="iconfinder_User_278871" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_User_278871.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -271,14 +268,20 @@
   <data name="gui-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-05.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconfinder_Print_56266 (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_Print_56266 (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BGpRD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGpRD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gui-09" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-09.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FILE 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FILE 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ICON 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICON 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_Print_56266 (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_Print_56266 (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cash_register_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cash_register_22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,6 +307,9 @@
   <data name="gui-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-08.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TAGIN-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TAGIN-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconfinder_document-preview_23216 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_document-preview_23216 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -319,8 +325,8 @@
   <data name="WORD  22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WORD  22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ICON 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ICON 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconfinder_User_27887 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_User_27887 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_pdf_3745 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_pdf_3745 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -370,6 +376,9 @@
   <data name="PDF 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PDF 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="block 24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\block 24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ADD20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ADD20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -381,6 +390,9 @@
   </data>
   <data name="bgForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgForm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="234339-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\234339-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gui-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -406,16 +418,10 @@
   <data name="IMAGE 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGE 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconfinder_User_27887 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_User_27887 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="EDIT 22X22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EDIT 22X22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="block 24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\block 24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ALLOW 24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ALLOW 24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

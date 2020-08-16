@@ -330,49 +330,6 @@ Public Class FactureClass
         Try
             SearchByTag(ds)
 
-            'Dim params As New Dictionary(Of String, Object)
-            'Dim dt As DataTable = Nothing
-
-            'Dim NF As New SearchArchive
-            'NF.txtName.AutoCompleteSource = AutoCompleteByName(ds.clientTable)
-
-            'If NF.ShowDialog = DialogResult.OK Then
-            '    Dim dt1 As Date = Date.Parse(NF.dte2.Text).AddDays(1)
-            '    Dim dt2 As Date = Date.Parse(NF.dte1.Text).AddDays(-1)
-            '    If NF.txtName.text <> "" Then
-            '        If IsNumeric(NF.txtName.text) Then
-            '            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            '                params.Add("fctid Like ", "%" & NF.txtName.text & "%")
-            '                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-            '            End Using
-
-            '        ElseIf NF.txtName.text.Contains("|") Then
-            '            Dim str As String = NF.txtName.text.Trim
-            '            str = str.Split(CChar("|"))(1)
-            '            Dim clid As Integer = CInt(str)
-
-            '            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            '                params.Add("cid = ", clid)
-            '                params.Add("[date] < ", dt1)
-            '                params.Add("[date] > ", dt2)
-            '                dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-            '            End Using
-            '        End If
-            '    Else
-            '        Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
-            '            params.Add("[date] < ", dt1)
-            '            params.Add("[date] > ", dt2)
-
-            '            dt = a.SelectDataTableSymbols(ds.FactureTable, {"*"}, params)
-            '        End Using
-            '    End If
-
-            '    ds.Clear()
-            '    If dt.Rows.Count > 0 Then
-            '        ds.Mode = "LIST"
-            '        ds.DataList = dt
-            '    End If
-            'End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -412,11 +369,7 @@ Public Class FactureClass
                             dt = a.SelectDataTableSymbols(ds.DetailsTable, {"*"}, params, order)
                             arid = ""
                         End If
-                        'Dim order As New Dictionary(Of String, String)
-                        'order.Add("id", "DESC")
-                        'dt = a.SelectDataLike(ds.DetailsTable, ds.FactureTable, ds.DetailsTable & ".[fctid]",
-                        '                     ds.FactureTable & ".[id]", {"fctid", "price", "qte"}, params)
-
+                
                         ds.Clear()
                         If dt.Rows.Count > 0 Then
                             ds.Mode = "LIST"

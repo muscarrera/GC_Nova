@@ -3,6 +3,8 @@
 Public Class gDrawClass
     Implements IDisposable
 
+    Dim frt = Form1.DesimalSringFormat
+
     Dim FooterFieldDic As List(Of gTopField)
     Dim TopFieldDic As List(Of gTopField)
     Dim W_Page As Integer
@@ -229,19 +231,19 @@ Public Class gDrawClass
 
                 If c.Field = "xTotal" Then '////////////////////////////////////////////////
                     _str = details.Rows(m).Item("qte") * details.Rows(m).Item("price")
-                    _str = String.Format("{0:0.00}", CDbl(_str))
+                    _str = String.Format(frt, CDbl(_str))
                     sf.Alignment = StringAlignment.Far
                 ElseIf c.Field = "xPriceTTC" Then '/////////////////////////////////////////
                     _str = details.Rows(m).Item("price")
                     Dim tva As Double = details.Rows(m).Item("tva")
                     _str = _str + ((_str * tva) / 100)
-                    _str = String.Format("{0:0.00}", CDbl(_str))
+                    _str = String.Format(frt, CDbl(_str))
                     sf.Alignment = StringAlignment.Far
                 ElseIf c.Field = "xTotalTTC" Then '/////////////////////////////////////////
                     _str = details.Rows(m).Item("qte") * details.Rows(m).Item("price")
                     Dim tva As Double = details.Rows(m).Item("tva")
                     _str = _str + ((_str * tva) / 100)
-                    _str = String.Format("{0:0.00}", CDbl(_str))
+                    _str = String.Format(frt, CDbl(_str))
                 ElseIf c.Field = "xdepot" Then '////////////////////////////////////////////
                     _str = details.Rows(m).Item("depot")
                     Try
@@ -272,7 +274,7 @@ Public Class gDrawClass
 
                 ElseIf c.Field = "price" Then '///////////////////////////////////////////////
                     _str = details.Rows(m).Item(c.Field)
-                    _str = String.Format("{0:0.00}", CDbl(_str))
+                    _str = String.Format(frt, CDbl(_str))
                     sf.Alignment = StringAlignment.Far
 
                 ElseIf c.Field = "qte" Then '////////////////////////////////////////////////

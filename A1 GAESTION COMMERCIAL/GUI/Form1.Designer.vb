@@ -59,6 +59,7 @@ Partial Class Form1
         Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocDesign = New System.Drawing.Printing.PrintDocument()
+        Me.bt_Pv = New System.Windows.Forms.Button()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -106,11 +107,12 @@ Partial Class Form1
         Me.plHeaderButton.Controls.Add(Me.bt_Contact)
         Me.plHeaderButton.Controls.Add(Me.bt_Achat)
         Me.plHeaderButton.Controls.Add(Me.bt_Vente)
+        Me.plHeaderButton.Controls.Add(Me.bt_Pv)
         Me.plHeaderButton.Controls.Add(Me.bt_Home)
         Me.plHeaderButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.plHeaderButton.Location = New System.Drawing.Point(117, 0)
+        Me.plHeaderButton.Location = New System.Drawing.Point(56, 0)
         Me.plHeaderButton.Name = "plHeaderButton"
-        Me.plHeaderButton.Size = New System.Drawing.Size(894, 36)
+        Me.plHeaderButton.Size = New System.Drawing.Size(955, 36)
         Me.plHeaderButton.TabIndex = 9
         '
         'bt_Inv
@@ -119,7 +121,7 @@ Partial Class Form1
         Me.bt_Inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Inv.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Inv.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Inv.Location = New System.Drawing.Point(711, 0)
+        Me.bt_Inv.Location = New System.Drawing.Point(810, 0)
         Me.bt_Inv.Name = "bt_Inv"
         Me.bt_Inv.Size = New System.Drawing.Size(118, 36)
         Me.bt_Inv.TabIndex = 13
@@ -135,7 +137,7 @@ Partial Class Form1
         Me.btSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btSetting.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSetting.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btSetting.Location = New System.Drawing.Point(728, 0)
+        Me.btSetting.Location = New System.Drawing.Point(789, 0)
         Me.btSetting.Name = "btSetting"
         Me.btSetting.Size = New System.Drawing.Size(52, 36)
         Me.btSetting.TabIndex = 10
@@ -150,7 +152,7 @@ Partial Class Form1
         Me.btTrial.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btTrial.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btTrial.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.btTrial.Location = New System.Drawing.Point(780, 0)
+        Me.btTrial.Location = New System.Drawing.Point(841, 0)
         Me.btTrial.Name = "btTrial"
         Me.btTrial.Size = New System.Drawing.Size(36, 36)
         Me.btTrial.TabIndex = 12
@@ -162,9 +164,9 @@ Partial Class Form1
         Me.bt_Parck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Parck.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Parck.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Parck.Location = New System.Drawing.Point(593, 0)
+        Me.bt_Parck.Location = New System.Drawing.Point(708, 0)
         Me.bt_Parck.Name = "bt_Parck"
-        Me.bt_Parck.Size = New System.Drawing.Size(118, 36)
+        Me.bt_Parck.Size = New System.Drawing.Size(102, 36)
         Me.bt_Parck.TabIndex = 11
         Me.bt_Parck.Text = "Parc"
         Me.bt_Parck.UseVisualStyleBackColor = True
@@ -175,7 +177,7 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(816, 0)
+        Me.Panel1.Location = New System.Drawing.Point(877, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(78, 36)
         Me.Panel1.TabIndex = 9
@@ -213,7 +215,7 @@ Partial Class Form1
         Me.bt_Produit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Produit.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Produit.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Produit.Location = New System.Drawing.Point(475, 0)
+        Me.bt_Produit.Location = New System.Drawing.Point(590, 0)
         Me.bt_Produit.Name = "bt_Produit"
         Me.bt_Produit.Size = New System.Drawing.Size(118, 36)
         Me.bt_Produit.TabIndex = 5
@@ -236,7 +238,7 @@ Partial Class Form1
         Me.bt_Contact.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Contact.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Contact.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Contact.Location = New System.Drawing.Point(357, 0)
+        Me.bt_Contact.Location = New System.Drawing.Point(472, 0)
         Me.bt_Contact.Name = "bt_Contact"
         Me.bt_Contact.Size = New System.Drawing.Size(118, 36)
         Me.bt_Contact.TabIndex = 6
@@ -249,7 +251,7 @@ Partial Class Form1
         Me.bt_Achat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Achat.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Achat.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Achat.Location = New System.Drawing.Point(239, 0)
+        Me.bt_Achat.Location = New System.Drawing.Point(354, 0)
         Me.bt_Achat.Name = "bt_Achat"
         Me.bt_Achat.Size = New System.Drawing.Size(118, 36)
         Me.bt_Achat.TabIndex = 7
@@ -262,7 +264,7 @@ Partial Class Form1
         Me.bt_Vente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Vente.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bt_Vente.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Vente.Location = New System.Drawing.Point(121, 0)
+        Me.bt_Vente.Location = New System.Drawing.Point(236, 0)
         Me.bt_Vente.Name = "bt_Vente"
         Me.bt_Vente.Size = New System.Drawing.Size(118, 36)
         Me.bt_Vente.TabIndex = 4
@@ -310,7 +312,7 @@ Partial Class Form1
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(117, 36)
+        Me.Panel6.Size = New System.Drawing.Size(56, 36)
         Me.Panel6.TabIndex = 3
         '
         'Label4
@@ -444,6 +446,19 @@ Partial Class Form1
         'PrintDocDesign
         '
         '
+        'bt_Pv
+        '
+        Me.bt_Pv.Dock = System.Windows.Forms.DockStyle.Left
+        Me.bt_Pv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.bt_Pv.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bt_Pv.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.bt_Pv.Location = New System.Drawing.Point(121, 0)
+        Me.bt_Pv.Name = "bt_Pv"
+        Me.bt_Pv.Size = New System.Drawing.Size(115, 36)
+        Me.bt_Pv.TabIndex = 14
+        Me.bt_Pv.Text = "Point de Vente"
+        Me.bt_Pv.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -508,5 +523,6 @@ Partial Class Form1
     Friend WithEvents btTrial As System.Windows.Forms.Button
     Friend WithEvents bt_Inv As System.Windows.Forms.Button
     Friend WithEvents PrintDocDesign As System.Drawing.Printing.PrintDocument
+    Friend WithEvents bt_Pv As System.Windows.Forms.Button
 
 End Class

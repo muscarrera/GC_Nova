@@ -94,7 +94,10 @@
     Public Color_Selected_Row As Color = Color.Red
     Public allowAddElement_to As Boolean = False
 
-
+    Public DesimalSringFormat As String = "{0:n3}"
+    Friend Shared SearchBy As String = "ref"
+    Friend Shared pvLongerbt As Integer = 120
+    Friend Shared pvLargebt As Integer = 90
 
 
     Public Property prefix As String
@@ -139,6 +142,18 @@
         End Set
     End Property
 
+    Private _ins_PV As Boolean
+    Public Property InstalPvModule As Boolean
+        Get
+            Return _ins_PV
+        End Get
+        Set(ByVal value As Boolean)
+            _ins_PV = value
+            bt_Pv.Visible = value
+        End Set
+    End Property
+
+
     'Forms
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Regs info
@@ -157,11 +172,9 @@
         End If
 
         'Modules
+        InstalPvModule = True
         InstalParckModule = False
         InstalInventaireModule = True
-
-
-
 
 
         'check Users
@@ -376,12 +389,13 @@
             data.Columns.Add("total_droitTimbre", GetType(String))
             data.Columns.Add("MPayement", GetType(String))
             data.Columns.Add("Editeur", GetType(String))
+            data.Columns.Add("vidal", GetType(String))
 
             data.Rows.Add(ds.Entete.lbId.Text, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
                           String.Format("{0:0.00}", ds.TB.TotalHt), String.Format("{0:0.00}", ds.TB.TVA),
                           String.Format("{0:0.00}", ds.TB.TotalTTC), String.Format("{0:0.00}", ds.TB.Remise),
                           String.Format("{0:0.00}", ds.TB.avance), String.Format("{0:0.00}", ds.TB.DroitTimbre),
-                          ds.ModePayement, adminName)
+                          ds.ModePayement, adminName, ds.DataSource.Rows.Count)
 
             Dim dt_Client As New DataTable
             ' Create four typed columns in the DataTable.
@@ -404,5 +418,12 @@
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub Button6_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Pv.Click
+        Using c As New PvClass
+            c.AddDataList()
+        End Using
+        HeaderColor(bt_Pv.Text)
     End Sub
 End Class

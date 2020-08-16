@@ -15,6 +15,10 @@ A1GAESTIONCOMMERCIAL
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources._234339_200">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Add_32x32">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -88,6 +92,10 @@ A1GAESTIONCOMMERCIAL
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.Cash_register_22">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.close40">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -428,10 +436,6 @@ A1GAESTIONCOMMERCIAL
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.CategoryDataTable">
 	<summary>
 Represents the strongly named DataTable class.
@@ -480,11 +484,11 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRow">
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleDataTable">
 	<summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRow">
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
@@ -536,11 +540,11 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRowChangeEvent">
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRow">
 	<summary>
-Row event argument class
+Represents strongly named DataRow class.
 </summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRowChangeEvent">
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.adminRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -592,15 +596,15 @@ Row event argument class
 	<summary>
 Row event argument class
 </summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet.ArticleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSet">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.adminTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ArticleTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -649,6 +653,10 @@ Represents the connection and commands used to retrieve and save data.
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.Details_Sell_FactureTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.ArticleTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

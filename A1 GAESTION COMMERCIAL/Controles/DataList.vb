@@ -553,6 +553,7 @@
         Pl.Controls.Clear()
         Entete.Clear()
     End Sub
+
     Public Sub DisibleEditing(ByVal str As String, ByVal b As Boolean)
         isDisibleEditing = False
         If str = "Facturé" Or str = "AVOIR" Then isDisibleEditing = True
@@ -567,7 +568,6 @@
             Entete.btValideBl.Tag = Facture
             isDisibleEditing = False
         End If
-
     End Sub
 
     Private Sub AddRow1_AddArticleToDb(ByRef art As Article) Handles AddRow1.AddArticleToDb
@@ -1227,4 +1227,9 @@
     Private Sub Entete_ValiderBl(ByVal id As Integer) Handles Entete.ValiderBl
         RaiseEvent Valider(id, isValid, Me)
     End Sub
+
+    Private Sub DataList_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Leave
+        Clear()
+    End Sub
+
 End Class
