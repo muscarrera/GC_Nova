@@ -25,4 +25,5 @@ Module ToXml
             If reader IsNot Nothing Then reader.Close()
         End Try
     End Function
+
 End Module

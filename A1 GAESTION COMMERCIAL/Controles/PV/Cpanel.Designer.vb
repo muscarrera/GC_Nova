@@ -29,32 +29,31 @@ Partial Class CPanel
         Me.Button19 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BtDpt = New System.Windows.Forms.Button()
-        Me.BtPrix = New System.Windows.Forms.Button()
+        Me.BtDel = New System.Windows.Forms.Button()
         Me.BtQte = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.BtCmd = New System.Windows.Forms.Button()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Button17 = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Button13 = New System.Windows.Forms.Button()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
+        Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.btClient = New System.Windows.Forms.Button()
         Me.BtRemise = New System.Windows.Forms.Button()
-        Me.BtDel = New System.Windows.Forms.Button()
+        Me.BtCmd = New System.Windows.Forms.Button()
         Me.PlTxt.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -118,7 +117,6 @@ Partial Class CPanel
         '
         Me.Panel1.Controls.Add(Me.BtDpt)
         Me.Panel1.Controls.Add(Me.BtDel)
-        Me.Panel1.Controls.Add(Me.BtPrix)
         Me.Panel1.Controls.Add(Me.BtQte)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel1.Location = New System.Drawing.Point(337, 33)
@@ -140,19 +138,20 @@ Partial Class CPanel
         Me.BtDpt.Text = "Dpt"
         Me.BtDpt.UseVisualStyleBackColor = False
         '
-        'BtPrix
+        'BtDel
         '
-        Me.BtPrix.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.BtPrix.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtPrix.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.BtPrix.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtPrix.Location = New System.Drawing.Point(0, 53)
-        Me.BtPrix.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtPrix.Name = "BtPrix"
-        Me.BtPrix.Size = New System.Drawing.Size(46, 53)
-        Me.BtPrix.TabIndex = 0
-        Me.BtPrix.Text = "Prix"
-        Me.BtPrix.UseVisualStyleBackColor = False
+        Me.BtDel.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.BtDel.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.close40
+        Me.BtDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BtDel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtDel.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtDel.Location = New System.Drawing.Point(0, 106)
+        Me.BtDel.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtDel.Name = "BtDel"
+        Me.BtDel.Size = New System.Drawing.Size(46, 53)
+        Me.BtDel.TabIndex = 0
+        Me.BtDel.UseVisualStyleBackColor = False
         '
         'BtQte
         '
@@ -160,12 +159,16 @@ Partial Class CPanel
         Me.BtQte.Dock = System.Windows.Forms.DockStyle.Top
         Me.BtQte.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.BtQte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtQte.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtQte.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
         Me.BtQte.Location = New System.Drawing.Point(0, 0)
         Me.BtQte.Margin = New System.Windows.Forms.Padding(0)
         Me.BtQte.Name = "BtQte"
-        Me.BtQte.Size = New System.Drawing.Size(46, 53)
+        Me.BtQte.Padding = New System.Windows.Forms.Padding(0, 0, 0, 25)
+        Me.BtQte.Size = New System.Drawing.Size(46, 106)
         Me.BtQte.TabIndex = 0
-        Me.BtQte.Text = "Qte"
+        Me.BtQte.Text = "Edit"
+        Me.BtQte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtQte.UseVisualStyleBackColor = False
         '
         'Panel2
@@ -200,83 +203,6 @@ Partial Class CPanel
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(275, 67)
         Me.Panel7.TabIndex = 3
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.Button12)
-        Me.Panel6.Controls.Add(Me.Button11)
-        Me.Panel6.Controls.Add(Me.Button13)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(0, 106)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(275, 53)
-        Me.Panel6.TabIndex = 2
-        '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.Button8)
-        Me.Panel5.Controls.Add(Me.Button7)
-        Me.Panel5.Controls.Add(Me.Button9)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(0, 53)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(275, 53)
-        Me.Panel5.TabIndex = 1
-        '
-        'Panel9
-        '
-        Me.Panel9.Controls.Add(Me.Button3)
-        Me.Panel9.Controls.Add(Me.Button2)
-        Me.Panel9.Controls.Add(Me.Button4)
-        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel9.Location = New System.Drawing.Point(0, 0)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(275, 53)
-        Me.Panel9.TabIndex = 4
-        '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.Button6)
-        Me.Panel4.Controls.Add(Me.btClient)
-        Me.Panel4.Controls.Add(Me.BtRemise)
-        Me.Panel4.Controls.Add(Me.BtCmd)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(62, 226)
-        Me.Panel4.TabIndex = 0
-        '
-        'Button6
-        '
-        Me.Button6.BackColor = System.Drawing.Color.LightCyan
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Button6.Location = New System.Drawing.Point(0, 159)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(62, 67)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = " الدفــع  Paiement"
-        Me.Button6.UseVisualStyleBackColor = False
-        '
-        'BtCmd
-        '
-        Me.BtCmd.BackColor = System.Drawing.Color.MistyRose
-        Me.BtCmd.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtCmd.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.BtCmd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtCmd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtCmd.ForeColor = System.Drawing.Color.Maroon
-        Me.BtCmd.Location = New System.Drawing.Point(0, 0)
-        Me.BtCmd.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtCmd.Name = "BtCmd"
-        Me.BtCmd.Size = New System.Drawing.Size(62, 53)
-        Me.BtCmd.TabIndex = 7
-        Me.BtCmd.Text = "CMD"
-        Me.BtCmd.UseVisualStyleBackColor = False
         '
         'Button16
         '
@@ -329,6 +255,17 @@ Partial Class CPanel
         Me.Button17.Text = "."
         Me.Button17.UseVisualStyleBackColor = True
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.Button12)
+        Me.Panel6.Controls.Add(Me.Button11)
+        Me.Panel6.Controls.Add(Me.Button13)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel6.Location = New System.Drawing.Point(0, 106)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(275, 53)
+        Me.Panel6.TabIndex = 2
+        '
         'Button12
         '
         Me.Button12.BackgroundImage = CType(resources.GetObject("Button12.BackgroundImage"), System.Drawing.Image)
@@ -379,6 +316,17 @@ Partial Class CPanel
         Me.Button13.TabIndex = 1
         Me.Button13.Text = "9"
         Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Button8)
+        Me.Panel5.Controls.Add(Me.Button7)
+        Me.Panel5.Controls.Add(Me.Button9)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(0, 53)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(275, 53)
+        Me.Panel5.TabIndex = 1
         '
         'Button8
         '
@@ -431,6 +379,17 @@ Partial Class CPanel
         Me.Button9.Text = "6"
         Me.Button9.UseVisualStyleBackColor = True
         '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.Button3)
+        Me.Panel9.Controls.Add(Me.Button2)
+        Me.Panel9.Controls.Add(Me.Button4)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel9.Location = New System.Drawing.Point(0, 0)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(275, 53)
+        Me.Panel9.TabIndex = 4
+        '
         'Button3
         '
         Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
@@ -482,6 +441,34 @@ Partial Class CPanel
         Me.Button4.Text = "1"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Button6)
+        Me.Panel4.Controls.Add(Me.btClient)
+        Me.Panel4.Controls.Add(Me.BtRemise)
+        Me.Panel4.Controls.Add(Me.BtCmd)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(62, 226)
+        Me.Panel4.TabIndex = 0
+        '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.LightCyan
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Button6.Location = New System.Drawing.Point(0, 159)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(0)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(62, 67)
+        Me.Button6.TabIndex = 5
+        Me.Button6.Text = " الدفــع  Paiement"
+        Me.Button6.UseVisualStyleBackColor = False
+        '
         'btClient
         '
         Me.btClient.BackgroundImage = CType(resources.GetObject("btClient.BackgroundImage"), System.Drawing.Image)
@@ -512,20 +499,21 @@ Partial Class CPanel
         Me.BtRemise.Text = "Remise"
         Me.BtRemise.UseVisualStyleBackColor = True
         '
-        'BtDel
+        'BtCmd
         '
-        Me.BtDel.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.BtDel.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.close40
-        Me.BtDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.BtDel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BtDel.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.BtDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtDel.Location = New System.Drawing.Point(0, 106)
-        Me.BtDel.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtDel.Name = "BtDel"
-        Me.BtDel.Size = New System.Drawing.Size(46, 53)
-        Me.BtDel.TabIndex = 0
-        Me.BtDel.UseVisualStyleBackColor = False
+        Me.BtCmd.BackColor = System.Drawing.Color.MistyRose
+        Me.BtCmd.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BtCmd.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtCmd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtCmd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtCmd.ForeColor = System.Drawing.Color.Maroon
+        Me.BtCmd.Location = New System.Drawing.Point(0, 0)
+        Me.BtCmd.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtCmd.Name = "BtCmd"
+        Me.BtCmd.Size = New System.Drawing.Size(62, 53)
+        Me.BtCmd.TabIndex = 7
+        Me.BtCmd.Text = "CMD"
+        Me.BtCmd.UseVisualStyleBackColor = False
         '
         'CPanel
         '
@@ -558,7 +546,6 @@ Partial Class CPanel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents BtDpt As System.Windows.Forms.Button
     Friend WithEvents BtDel As System.Windows.Forms.Button
-    Friend WithEvents BtPrix As System.Windows.Forms.Button
     Friend WithEvents BtQte As System.Windows.Forms.Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel

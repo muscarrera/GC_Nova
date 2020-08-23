@@ -169,7 +169,7 @@
         txtRs.text = ""
         myStock = Nothing
 
-        article = New Article(0, 0, "", "", 1, 0, 0, Form1.tva, 0, 0, False, "", False)
+        article = New Article(0, 0, "", "", "", 1, 0, 0, Form1.tva, 0, 0, False, "", False)
         txtRf.Focus()
     End Sub
     'validation
@@ -218,7 +218,7 @@
         Dim sPrice As Double = art.sprice
         If IsSell = False And EditMode = False Then sPrice = art.bprice
 
-        article = New Article(art.arid, art.cid, art.name, art.desc, art.qte,
+        article = New Article(art.arid, art.cid, art.name, art.unite, art.desc, art.qte,
                               sPrice, art.bprice, art.TVA, art.remise, art.depot,
                               art.isStocked, art.ref, art.isPromo)
 

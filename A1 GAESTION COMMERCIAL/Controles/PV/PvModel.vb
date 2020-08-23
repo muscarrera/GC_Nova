@@ -3,8 +3,12 @@
     Public localName As String = "Default.dat"
 
     Public ClientId As Integer = 0
-    Public ClientName As String = "Client"
+    Public ClientName As String = Form1.pv_NormalClient
     Public bonDate As Date = Now.Date.ToString("dd/MM/yyyy hh:mm")
+
+    Public avance As Double = 0
+
+    Public fctId As Integer = 0
 
     Public DataSource As New List(Of Article)
 

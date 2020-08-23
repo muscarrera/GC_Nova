@@ -28,7 +28,8 @@ Partial Class PvList
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape8 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.plClientSide = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lbName = New System.Windows.Forms.Label()
+        Me.plClient = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.lbNbrBon = New System.Windows.Forms.Label()
@@ -41,8 +42,9 @@ Partial Class PvList
         Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.FL = New System.Windows.Forms.FlowLayoutPanel()
-        Me.RPL = New A1_GAESTION_COMMERCIAL.RPanel()
         Me.PL = New System.Windows.Forms.Panel()
+        Me.RPL = New A1_GAESTION_COMMERCIAL.RPanel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel26.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.plClientSide.SuspendLayout()
@@ -71,10 +73,10 @@ Partial Class PvList
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.Controls.Add(Me.Button10)
         Me.Panel4.Controls.Add(Me.ShapeContainer2)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(378, 0)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel4.Location = New System.Drawing.Point(326, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(233, 42)
+        Me.Panel4.Size = New System.Drawing.Size(195, 42)
         Me.Panel4.TabIndex = 9
         '
         'Button10
@@ -86,7 +88,7 @@ Partial Class PvList
         Me.Button10.ForeColor = System.Drawing.Color.White
         Me.Button10.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FILE_22
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button10.Location = New System.Drawing.Point(32, 7)
+        Me.Button10.Location = New System.Drawing.Point(31, 7)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(142, 28)
         Me.Button10.TabIndex = 2
@@ -100,7 +102,7 @@ Partial Class PvList
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape8})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(233, 42)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(195, 42)
         Me.ShapeContainer2.TabIndex = 0
         Me.ShapeContainer2.TabStop = False
         '
@@ -111,7 +113,7 @@ Partial Class PvList
         Me.RectangleShape8.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
         Me.RectangleShape8.BorderColor = System.Drawing.Color.DarkSlateGray
         Me.RectangleShape8.CornerRadius = 14
-        Me.RectangleShape8.Location = New System.Drawing.Point(14, 5)
+        Me.RectangleShape8.Location = New System.Drawing.Point(17, 5)
         Me.RectangleShape8.Name = "RectangleShape1"
         Me.RectangleShape8.Size = New System.Drawing.Size(168, 31)
         '
@@ -119,27 +121,40 @@ Partial Class PvList
         '
         Me.plClientSide.BackColor = System.Drawing.Color.Transparent
         Me.plClientSide.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.gui_16
-        Me.plClientSide.Controls.Add(Me.Label3)
+        Me.plClientSide.Controls.Add(Me.lbName)
+        Me.plClientSide.Controls.Add(Me.Panel6)
+        Me.plClientSide.Controls.Add(Me.plClient)
         Me.plClientSide.Controls.Add(Me.Panel1)
         Me.plClientSide.Controls.Add(Me.Panel5)
         Me.plClientSide.Controls.Add(Me.Panel3)
         Me.plClientSide.Controls.Add(Me.Label10)
         Me.plClientSide.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plClientSide.Location = New System.Drawing.Point(611, 0)
+        Me.plClientSide.Location = New System.Drawing.Point(527, 0)
         Me.plClientSide.Name = "plClientSide"
-        Me.plClientSide.Size = New System.Drawing.Size(188, 42)
+        Me.plClientSide.Size = New System.Drawing.Size(272, 42)
         Me.plClientSide.TabIndex = 3
         '
-        'Label3
+        'lbName
         '
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(59, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 42)
-        Me.Label3.TabIndex = 9
-        Me.Label3.Text = "Label3 "
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lbName.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbName.Location = New System.Drawing.Point(91, 0)
+        Me.lbName.Name = "lbName"
+        Me.lbName.Size = New System.Drawing.Size(81, 42)
+        Me.lbName.TabIndex = 9
+        Me.lbName.Text = "---"
+        Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'plClient
+        '
+        Me.plClient.BackColor = System.Drawing.Color.Transparent
+        Me.plClient.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_User_27887__1_
+        Me.plClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.plClient.Dock = System.Windows.Forms.DockStyle.Left
+        Me.plClient.Location = New System.Drawing.Point(59, 0)
+        Me.plClient.Name = "plClient"
+        Me.plClient.Size = New System.Drawing.Size(32, 42)
+        Me.plClient.TabIndex = 11
         '
         'Panel1
         '
@@ -147,7 +162,7 @@ Partial Class PvList
         Me.Panel1.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_add_61769
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(126, 0)
+        Me.Panel1.Location = New System.Drawing.Point(210, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(62, 42)
         Me.Panel1.TabIndex = 10
@@ -173,7 +188,7 @@ Partial Class PvList
         Me.lbNbrBon.Name = "lbNbrBon"
         Me.lbNbrBon.Size = New System.Drawing.Size(32, 42)
         Me.lbNbrBon.TabIndex = 9
-        Me.lbNbrBon.Text = "22"
+        Me.lbNbrBon.Text = "00"
         Me.lbNbrBon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel3
@@ -272,27 +287,6 @@ Partial Class PvList
         Me.FL.Size = New System.Drawing.Size(799, 833)
         Me.FL.TabIndex = 20
         '
-        'RPL
-        '
-        Me.RPL.Avance = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.RPL.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.RPL.bl = "---"
-        Me.RPL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.RPL.delivredDay = Nothing
-        Me.RPL.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RPL.EditMode = False
-        Me.RPL.hasManyRemise = False
-        Me.RPL.hideClc = False
-        Me.RPL.Location = New System.Drawing.Point(15, 0)
-        Me.RPL.Name = "RPL"
-        Me.RPL.Num = 0
-        Me.RPL.Remise = "0"
-        Me.RPL.ShowClc = False
-        Me.RPL.ShowProfit = False
-        Me.RPL.Size = New System.Drawing.Size(371, 920)
-        Me.RPL.TabIndex = 18
-        Me.RPL.TypePrinter = "&"
-        '
         'PL
         '
         Me.PL.BackColor = System.Drawing.Color.Teal
@@ -304,6 +298,36 @@ Partial Class PvList
         Me.PL.Size = New System.Drawing.Size(799, 45)
         Me.PL.TabIndex = 21
         Me.PL.Visible = False
+        '
+        'RPL
+        '
+        Me.RPL.Avance = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.RPL.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.RPL.bl = "---"
+        Me.RPL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.RPL.delivredDay = Nothing
+        Me.RPL.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RPL.EditMode = False
+        Me.RPL.hasManyRemise = False
+        Me.RPL.Location = New System.Drawing.Point(15, 0)
+        Me.RPL.Name = "RPL"
+        Me.RPL.Num = 0
+        Me.RPL.Remise = "0"
+        Me.RPL.ShowProfit = False
+        Me.RPL.Size = New System.Drawing.Size(371, 920)
+        Me.RPL.TabIndex = 18
+        Me.RPL.TypePrinter = "&"
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel6.Location = New System.Drawing.Point(172, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(38, 42)
+        Me.Panel6.TabIndex = 12
         '
         'PvList
         '
@@ -340,7 +364,7 @@ Partial Class PvList
     Friend WithEvents ShapeContainer3 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents FL As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents lbName As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents lbNbrBon As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
@@ -350,5 +374,7 @@ Partial Class PvList
     Friend WithEvents RectangleShape8 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PL As System.Windows.Forms.Panel
+    Friend WithEvents plClient As System.Windows.Forms.Panel
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
 
 End Class

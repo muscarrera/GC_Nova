@@ -95,7 +95,7 @@
                 'End If
 
                 art = New Article(dt.Rows(0).Item(0), IntValue(dt, "cid", 0),
-                                  StrValue(dt, "name", 0), StrValue(dt, "desc", 0),
+                                  StrValue(dt, "name", 0), StrValue(dt, "stockType", 0), StrValue(dt, "desc", 0),
                                   1, sprice, bprice, tva, 0, IntValue(dt, "depot", 0),
                                   BoolValue(dt, "isStocked", 0), StrValue(dt, "ref", 0), isPromo)
             End If

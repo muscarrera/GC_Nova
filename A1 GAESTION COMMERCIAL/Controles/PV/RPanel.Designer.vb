@@ -38,7 +38,6 @@ Partial Class RPanel
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BtDel = New System.Windows.Forms.Button()
         Me.BtSave = New System.Windows.Forms.Button()
         Me.BtBlPrint = New System.Windows.Forms.Button()
         Me.BtPrint = New System.Windows.Forms.Button()
@@ -203,7 +202,6 @@ Partial Class RPanel
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Controls.Add(Me.BtDel)
         Me.Panel1.Controls.Add(Me.BtSave)
         Me.Panel1.Controls.Add(Me.BtBlPrint)
         Me.Panel1.Controls.Add(Me.BtPrint)
@@ -212,23 +210,6 @@ Partial Class RPanel
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(385, 40)
         Me.Panel1.TabIndex = 5
-        '
-        'BtDel
-        '
-        Me.BtDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtDel.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtDel.ForeColor = System.Drawing.Color.Red
-        Me.BtDel.Image = CType(resources.GetObject("BtDel.Image"), System.Drawing.Image)
-        Me.BtDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtDel.Location = New System.Drawing.Point(298, 3)
-        Me.BtDel.MaximumSize = New System.Drawing.Size(94, 31)
-        Me.BtDel.MinimumSize = New System.Drawing.Size(4, 31)
-        Me.BtDel.Name = "BtDel"
-        Me.BtDel.Size = New System.Drawing.Size(73, 31)
-        Me.BtDel.TabIndex = 0
-        Me.BtDel.Text = "     Suppr"
-        Me.BtDel.UseVisualStyleBackColor = True
         '
         'BtSave
         '
@@ -262,7 +243,7 @@ Partial Class RPanel
         Me.BtBlPrint.MaximumSize = New System.Drawing.Size(0, 31)
         Me.BtBlPrint.MinimumSize = New System.Drawing.Size(3, 31)
         Me.BtBlPrint.Name = "BtBlPrint"
-        Me.BtBlPrint.Size = New System.Drawing.Size(71, 31)
+        Me.BtBlPrint.Size = New System.Drawing.Size(3, 31)
         Me.BtBlPrint.TabIndex = 0
         Me.BtBlPrint.Tag = "1"
         Me.BtBlPrint.Text = "B. Liv"
@@ -293,7 +274,7 @@ Partial Class RPanel
         'CP
         '
         Me.CP.BackColor = System.Drawing.Color.Transparent
-        Me.CP.bl = Nothing
+        Me.CP.bl = "---"
         Me.CP.Depot = 0
         Me.CP.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.CP.EditMode = False
@@ -337,7 +318,6 @@ Partial Class RPanel
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents BtDel As System.Windows.Forms.Button
     Friend WithEvents BtSave As System.Windows.Forms.Button
     Friend WithEvents BtBlPrint As System.Windows.Forms.Button
     Friend WithEvents BtPrint As System.Windows.Forms.Button

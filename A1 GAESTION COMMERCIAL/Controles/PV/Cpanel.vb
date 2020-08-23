@@ -116,9 +116,9 @@
             ftc = Color.Black
         End If
 
-        BtPrix.BackColor = bkc
-        BtPrix.Font = fnt
-        BtPrix.ForeColor = ftc
+        'BtPrix.BackColor = bkc
+        'BtPrix.Font = fnt
+        'BtPrix.ForeColor = ftc
         BtQte.BackColor = bkc
         BtQte.ForeColor = ftc
         BtQte.Font = fnt
@@ -139,7 +139,7 @@
             RaiseEvent ValueChange()
         End If
     End Sub
-    Private Sub BtPrix_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtPrix.Click
+    Private Sub BtPrix_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If isActive Then
             RaiseEvent UpdatePrice()
         Else

@@ -95,9 +95,13 @@
     Public allowAddElement_to As Boolean = False
 
     Public DesimalSringFormat As String = "{0:n3}"
+    'POS
     Friend Shared SearchBy As String = "ref"
     Friend Shared pvLongerbt As Integer = 120
     Friend Shared pvLargebt As Integer = 90
+    Friend Shared pv_useMergeArt As Boolean = True
+    Public pv_NormalClient As String = "Client Comptoir"
+    Friend Shared indexStartArticle As Integer
 
 
     Public Property prefix As String

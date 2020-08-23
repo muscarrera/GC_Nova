@@ -2,18 +2,18 @@
     Public cid As Integer = 0
     Public delai As Integer = 0
 
-    Public name As String
-    Public ref As String
-    Public isCompany As Boolean
-    Public groupe As String
-    Public ICE As String
-    Public adresse As String
-    Public cp As String
-    Public ville As String
-    Public tel As String
-    Public gsm As String
-    Public email As String
-    Public info As String
+    Public name As String = Form1.pv_NormalClient
+    Public ref As String = ""
+    Public isCompany As Boolean = False
+    Public groupe As String = ""
+    Public ICE As String = ""
+    Public adresse As String = ""
+    Public cp As String = ""
+    Public ville As String = ""
+    Public tel As String = ""
+    Public gsm As String = ""
+    Public email As String = ""
+    Public info As String = ""
     Public isBlocked As Boolean = False
 
     Public remise As Double = 0

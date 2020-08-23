@@ -4,6 +4,7 @@
     Public name As String
     Public desc As String
     Public ref As String
+    Public unite As String = "u"
 
     Public _sprice As Double = 0
     Public bprice As Double = 0
@@ -71,7 +72,7 @@
         End Get
     End Property
 
-    Public Sub New(ByVal _arid As Integer, ByVal _cid As Integer, ByVal _name As String, ByVal _desc As String,
+    Public Sub New(ByVal _arid As Integer, ByVal _cid As Integer, ByVal _name As String, ByVal _unite As String, ByVal _desc As String,
                     ByVal _qte As Double, ByVal _sprice As Double, ByVal _bprice As Double, ByVal _tva As Double,
                    ByVal _remise As Double, ByVal _depot As Integer, ByVal _isStk As Integer,
                    ByVal _ref As String, ByVal _isPromo As Boolean)
@@ -83,6 +84,7 @@
         qte = _qte
         sprice = _sprice
         bprice = _bprice
+        unite = _unite
 
         TVA = _tva
         'If Form1.isBaseOnOneTva Then TVA = Form1.tva

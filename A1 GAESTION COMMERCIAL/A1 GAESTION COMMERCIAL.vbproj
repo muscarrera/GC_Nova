@@ -242,6 +242,12 @@
     <Compile Include="Controles\PV\Items.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controles\PV\pvEditItemDetails.Designer.vb">
+      <DependentUpon>pvEditItemDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\pvEditItemDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controles\PV\PvList.Designer.vb">
       <DependentUpon>PvList.vb</DependentUpon>
     </Compile>
@@ -254,6 +260,12 @@
     </Compile>
     <Compile Include="Controles\PV\pvNewFacture.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controles\PV\pvOpenBon_item.Designer.vb">
+      <DependentUpon>pvOpenBon_item.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\pvOpenBon_item.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\PV\RPanel.Designer.vb">
       <DependentUpon>RPanel.vb</DependentUpon>
@@ -628,11 +640,17 @@
     <EmbeddedResource Include="Controles\PV\Items.resx">
       <DependentUpon>Items.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\pvEditItemDetails.resx">
+      <DependentUpon>pvEditItemDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\PV\PvList.resx">
       <DependentUpon>PvList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\PV\pvNewFacture.resx">
       <DependentUpon>pvNewFacture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\pvOpenBon_item.resx">
+      <DependentUpon>pvOpenBon_item.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\PV\RPanel.resx">
       <DependentUpon>RPanel.vb</DependentUpon>
