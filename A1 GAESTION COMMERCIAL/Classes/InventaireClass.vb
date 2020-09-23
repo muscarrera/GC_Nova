@@ -680,23 +680,33 @@
             If id > 0 Then
                 Dim st_dt As DataTable = a.SelectDataTable("Details_Stock", {"*"})
                 For i As Integer = 0 To st_dt.Rows.Count - 1
-                    params.Clear()
-                    Dim arid As Integer = IntValue(st_dt, "arid", i)
-                    params.Add("arid", arid)
-                    Dim name As String = " "
-                    name = a.SelectByScalar("Article", "name", params)
+                    Try
+                        params.Clear()
+                        Dim arid As Integer = IntValue(st_dt, "arid", i)
+                        params.Add("arid", arid)
+                        Dim name As String = " "
 
-                    params.Clear()
-                    params.Add("ajId", id)
-                    params.Add("arid", arid)
-                    params.Add("name", name)
-                    params.Add("dpid", IntValue(st_dt, "dpid", i))
-                    params.Add("qte_theorique", DblValue(st_dt, "qte", i))
-                    params.Add("qte_Real", DblValue(st_dt, "qte", i))
-                    params.Add("cid", IntValue(st_dt, "cid", i))
+                        Try
+                            name = a.SelectByScalar("Article", "name", params)
+                            If name.Length < 3 Then Continue For
+                        Catch ex As Exception
+                            Continue For
+                        End Try
 
-                    a.InsertRecord("Details_Ajustement_Stock", params)
 
+                        params.Clear()
+                        params.Add("ajId", id)
+                        params.Add("arid", arid)
+                        params.Add("name", name)
+                        params.Add("dpid", IntValue(st_dt, "dpid", i))
+                        params.Add("qte_theorique", DblValue(st_dt, "qte", i))
+                        params.Add("qte_Real", DblValue(st_dt, "qte", i))
+                        params.Add("cid", IntValue(st_dt, "cid", i))
+
+                        a.InsertRecord("Details_Ajustement_Stock", params)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
                 Next
             End If
         End Using
@@ -769,7 +779,8 @@
                         Dim dt = a.SelectDataTable("Article", {"*"}, params)
                         If dt.Rows.Count = 0 Then Continue For
                         name = dt.Rows(0).Item("name")
-                        Try
+
+                          Try
                             'price
                             If Form1.useValue_CUMP Then pr = dt.Rows(0).Item(20)
                             If pr = 0 Then pr = dt.Rows(0).Item(5)
@@ -841,21 +852,37 @@
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
             Dim params As New Dictionary(Of String, Object)
             Dim where As New Dictionary(Of String, Object)
-            Dim stk As Double = 0
+            Dim stk_in As Double = 0
+            Dim stk_out As Double = 0
 
             For i As Integer = 0 To ds.dg_D.Rows.Count - 1
-                stk = 0
+                stk_in = 0
+                stk_out = 0
+
                 where.Add("arid", ds.dg_D.Rows(i).Cells(2).Value)
                 where.Add("depot", ds.dg_D.Rows(i).Cells(4).Value)
-                Try
-                    stk = a.SelectByScalarSum("Details_Bon_Achat", "SUM(qte)", where)
-                    stk -= a.SelectByScalarSum("Details_Bon_Livraison", "SUM(qte)", where)
 
-                    ds.dg_D.Rows(i).Cells(6).Value = stk
+                Try '''''''''''''''''
+                    stk_in = a.SelectByScalarSum("Details_Bon_Achat", "SUM(qte)", where)
                 Catch ex As Exception
-
                 End Try
 
+                Try
+                    stk_in += a.SelectByScalarSum("Details_Sell_Avoir", "SUM(qte)", where)
+                Catch ex As Exception
+                End Try
+
+                Try '''''''''''''''''
+                    stk_out = a.SelectByScalarSum("Details_Bon_Livraison", "SUM(qte)", where)
+                Catch ex As Exception
+                End Try
+
+                Try
+                    stk_out += a.SelectByScalarSum("Details_Buy_Avoir", "SUM(qte)", where)
+                Catch ex As Exception
+                End Try
+
+                ds.dg_D.Rows(i).Cells(6).Value = stk_in - stk_out
 
                 where.Clear()
                 params.Clear()
@@ -885,7 +912,17 @@
             Catch ex As Exception
             End Try
 
-            Dim dt = a.SelectDataTableSymbols(ds.tableName, {"*"}, params)
+            Dim dt = a.SelectDataTableSymbols(ds.tableName, {"id", "date", "cid", "name", "total", "tva"}, params)
+            Dim dt2 = a.SelectDataTableSymbols(ds.tableName_avoir, {"id", "date", "cid", "name", "total", "tva"}, params)
+
+            If dt2.Rows.Count > 0 Then
+                For i As Integer = 0 To dt2.Rows.Count - 1
+                    dt2.Rows(i).Item("total") = DblValue(dt2, "total", i) * -1
+                Next
+
+                dt.Merge(dt2)
+            End If
+
             ds.dataSource = dt
         End Using
     End Sub

@@ -56,6 +56,30 @@ Partial Class AddEditProduct
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtPAchTtc = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtPAch = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtPrixPromo = New System.Windows.Forms.TextBox()
+        Me.lbPeriode = New System.Windows.Forms.Label()
+        Me.isPromo = New System.Windows.Forms.CheckBox()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.txtPeriode = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtRGr = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtRRev = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtRmax = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtRCF = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel19 = New System.Windows.Forms.Panel()
         Me.Panel25 = New System.Windows.Forms.Panel()
@@ -73,31 +97,6 @@ Partial Class AddEditProduct
         Me.txtAlert = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.isStocked = New System.Windows.Forms.CheckBox()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.txtStockType = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Panel16 = New System.Windows.Forms.Panel()
-        Me.Panel17 = New System.Windows.Forms.Panel()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.txtPrixPromo = New System.Windows.Forms.TextBox()
-        Me.lbPeriode = New System.Windows.Forms.Label()
-        Me.isPromo = New System.Windows.Forms.CheckBox()
-        Me.Panel18 = New System.Windows.Forms.Panel()
-        Me.txtPeriode = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Panel14 = New System.Windows.Forms.Panel()
-        Me.Panel15 = New System.Windows.Forms.Panel()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtRGr = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.txtRRev = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtRmax = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtRCF = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
@@ -114,11 +113,14 @@ Partial Class AddEditProduct
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtStockType = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtDesc = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtName = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.txtRef = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.CategoryTableAdapter = New A1_GAESTION_COMMERCIAL.ALMohassinDBDataSetTableAdapters.CategoryTableAdapter()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
@@ -131,18 +133,18 @@ Partial Class AddEditProduct
         Me.Panel11.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.Panel19.SuspendLayout()
-        Me.Panel25.SuspendLayout()
-        Me.Panel26.SuspendLayout()
-        Me.Panel27.SuspendLayout()
-        Me.Panel28.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.Panel16.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel18.SuspendLayout()
         Me.Panel14.SuspendLayout()
         Me.Panel15.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        Me.Panel19.SuspendLayout()
+        Me.Panel25.SuspendLayout()
+        Me.Panel26.SuspendLayout()
+        Me.Panel27.SuspendLayout()
+        Me.Panel28.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -298,8 +300,8 @@ Partial Class AddEditProduct
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Top
         Me.TabControl1.ItemSize = New System.Drawing.Size(62, 38)
         Me.TabControl1.Location = New System.Drawing.Point(0, 238)
@@ -582,261 +584,6 @@ Partial Class AddEditProduct
         Me.txtPAch.txtReadOnly = False
         Me.txtPAch.TxtSelect = New Integer() {1, 0}
         '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.Panel19)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 42)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(613, 215)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Stock"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'Panel19
-        '
-        Me.Panel19.Controls.Add(Me.Panel25)
-        Me.Panel19.Controls.Add(Me.Panel27)
-        Me.Panel19.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel19.Location = New System.Drawing.Point(3, 3)
-        Me.Panel19.Name = "Panel19"
-        Me.Panel19.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel19.Size = New System.Drawing.Size(607, 207)
-        Me.Panel19.TabIndex = 3
-        '
-        'Panel25
-        '
-        Me.Panel25.Controls.Add(Me.Panel26)
-        Me.Panel25.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel25.Location = New System.Drawing.Point(294, 5)
-        Me.Panel25.Name = "Panel25"
-        Me.Panel25.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel25.Size = New System.Drawing.Size(289, 197)
-        Me.Panel25.TabIndex = 1
-        '
-        'Panel26
-        '
-        Me.Panel26.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel26.Controls.Add(Me.dtpStock)
-        Me.Panel26.Controls.Add(Me.Label27)
-        Me.Panel26.Controls.Add(Me.txtCUMP)
-        Me.Panel26.Controls.Add(Me.txtStock)
-        Me.Panel26.Controls.Add(Me.Label28)
-        Me.Panel26.Controls.Add(Me.Label29)
-        Me.Panel26.Controls.Add(Me.Label30)
-        Me.Panel26.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel26.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Panel26.Location = New System.Drawing.Point(10, 10)
-        Me.Panel26.Name = "Panel26"
-        Me.Panel26.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel26.Size = New System.Drawing.Size(269, 177)
-        Me.Panel26.TabIndex = 1
-        '
-        'dtpStock
-        '
-        Me.dtpStock.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpStock.Location = New System.Drawing.Point(86, 62)
-        Me.dtpStock.Name = "dtpStock"
-        Me.dtpStock.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dtpStock.Size = New System.Drawing.Size(154, 20)
-        Me.dtpStock.TabIndex = 6
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(13, 10)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(40, 16)
-        Me.Label27.TabIndex = 5
-        Me.Label27.Text = "Stock"
-        '
-        'txtCUMP
-        '
-        Me.txtCUMP.BackColor = System.Drawing.Color.Transparent
-        Me.txtCUMP.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtCUMP.IsNumiric = False
-        Me.txtCUMP.Location = New System.Drawing.Point(119, 122)
-        Me.txtCUMP.Name = "txtCUMP"
-        Me.txtCUMP.PlaceHolder = ""
-        Me.txtCUMP.ShowClearIcon = False
-        Me.txtCUMP.ShowSaveIcon = False
-        Me.txtCUMP.Size = New System.Drawing.Size(121, 26)
-        Me.txtCUMP.StartUp = 2
-        Me.txtCUMP.TabIndex = 14
-        Me.txtCUMP.TextSize = 10
-        Me.txtCUMP.TxtBackColor = True
-        Me.txtCUMP.TxtColor = System.Drawing.Color.White
-        Me.txtCUMP.txtReadOnly = False
-        Me.txtCUMP.TxtSelect = New Integer() {1, 0}
-        '
-        'txtStock
-        '
-        Me.txtStock.BackColor = System.Drawing.Color.Transparent
-        Me.txtStock.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtStock.IsNumiric = False
-        Me.txtStock.Location = New System.Drawing.Point(119, 90)
-        Me.txtStock.Name = "txtStock"
-        Me.txtStock.PlaceHolder = ""
-        Me.txtStock.ShowClearIcon = False
-        Me.txtStock.ShowSaveIcon = False
-        Me.txtStock.Size = New System.Drawing.Size(121, 26)
-        Me.txtStock.StartUp = 2
-        Me.txtStock.TabIndex = 13
-        Me.txtStock.TextSize = 10
-        Me.txtStock.TxtBackColor = True
-        Me.txtStock.TxtColor = System.Drawing.Color.White
-        Me.txtStock.txtReadOnly = False
-        Me.txtStock.TxtSelect = New Integer() {1, 0}
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label28.Location = New System.Drawing.Point(25, 129)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(59, 17)
-        Me.Label28.TabIndex = 5
-        Me.Label28.Text = "CUMP HT"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label29.Location = New System.Drawing.Point(24, 97)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(61, 17)
-        Me.Label29.TabIndex = 5
-        Me.Label29.Text = "Quantité"
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label30.Location = New System.Drawing.Point(25, 41)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(157, 17)
-        Me.Label30.TabIndex = 5
-        Me.Label30.Text = "Date mise a jour du stock"
-        '
-        'Panel27
-        '
-        Me.Panel27.Controls.Add(Me.Panel28)
-        Me.Panel27.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel27.Location = New System.Drawing.Point(5, 5)
-        Me.Panel27.Name = "Panel27"
-        Me.Panel27.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel27.Size = New System.Drawing.Size(289, 197)
-        Me.Panel27.TabIndex = 0
-        '
-        'Panel28
-        '
-        Me.Panel28.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel28.Controls.Add(Me.Label31)
-        Me.Panel28.Controls.Add(Me.txtAlert)
-        Me.Panel28.Controls.Add(Me.Label32)
-        Me.Panel28.Controls.Add(Me.isStocked)
-        Me.Panel28.Controls.Add(Me.Label33)
-        Me.Panel28.Controls.Add(Me.txtStockType)
-        Me.Panel28.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel28.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Panel28.Location = New System.Drawing.Point(10, 10)
-        Me.Panel28.Name = "Panel28"
-        Me.Panel28.Padding = New System.Windows.Forms.Padding(10)
-        Me.Panel28.Size = New System.Drawing.Size(269, 177)
-        Me.Panel28.TabIndex = 1
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(13, 10)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(105, 16)
-        Me.Label31.TabIndex = 5
-        Me.Label31.Text = "Gestion du Stock"
-        '
-        'txtAlert
-        '
-        Me.txtAlert.BackColor = System.Drawing.Color.Transparent
-        Me.txtAlert.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtAlert.IsNumiric = False
-        Me.txtAlert.Location = New System.Drawing.Point(20, 123)
-        Me.txtAlert.Name = "txtAlert"
-        Me.txtAlert.PlaceHolder = ""
-        Me.txtAlert.ShowClearIcon = False
-        Me.txtAlert.ShowSaveIcon = False
-        Me.txtAlert.Size = New System.Drawing.Size(195, 26)
-        Me.txtAlert.StartUp = 2
-        Me.txtAlert.TabIndex = 12
-        Me.txtAlert.TextSize = 10
-        Me.txtAlert.TxtBackColor = True
-        Me.txtAlert.TxtColor = System.Drawing.Color.White
-        Me.txtAlert.txtReadOnly = False
-        Me.txtAlert.TxtSelect = New Integer() {1, 0}
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Enabled = False
-        Me.Label32.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label32.Location = New System.Drawing.Point(23, 105)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(84, 17)
-        Me.Label32.TabIndex = 5
-        Me.Label32.Text = "Stock d'Alert"
-        '
-        'isStocked
-        '
-        Me.isStocked.AutoSize = True
-        Me.isStocked.Checked = True
-        Me.isStocked.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.isStocked.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.isStocked.Location = New System.Drawing.Point(26, 43)
-        Me.isStocked.Name = "isStocked"
-        Me.isStocked.Size = New System.Drawing.Size(131, 17)
-        Me.isStocked.TabIndex = 6
-        Me.isStocked.Text = "Produit Géré en Stock"
-        Me.isStocked.UseVisualStyleBackColor = True
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Enabled = False
-        Me.Label33.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label33.Location = New System.Drawing.Point(23, 75)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(35, 17)
-        Me.Label33.TabIndex = 5
-        Me.Label33.Text = "Type"
-        '
-        'txtStockType
-        '
-        Me.txtStockType.BackColor = System.Drawing.Color.Transparent
-        Me.txtStockType.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.txtStockType.Enabled = False
-        Me.txtStockType.IsNumiric = False
-        Me.txtStockType.Location = New System.Drawing.Point(77, 70)
-        Me.txtStockType.Name = "txtStockType"
-        Me.txtStockType.PlaceHolder = ""
-        Me.txtStockType.ShowClearIcon = False
-        Me.txtStockType.ShowSaveIcon = False
-        Me.txtStockType.Size = New System.Drawing.Size(138, 26)
-        Me.txtStockType.StartUp = 2
-        Me.txtStockType.TabIndex = 12
-        Me.txtStockType.TextSize = 10
-        Me.txtStockType.TxtBackColor = True
-        Me.txtStockType.TxtColor = System.Drawing.Color.White
-        Me.txtStockType.txtReadOnly = False
-        Me.txtStockType.TxtSelect = New Integer() {1, 0}
-        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Panel16)
@@ -1001,6 +748,7 @@ Partial Class AddEditProduct
         '
         Me.Panel15.BackColor = System.Drawing.Color.FloralWhite
         Me.Panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel15.Controls.Add(Me.Label20)
         Me.Panel15.Controls.Add(Me.Label8)
         Me.Panel15.Controls.Add(Me.txtRGr)
         Me.Panel15.Controls.Add(Me.Label17)
@@ -1018,6 +766,16 @@ Partial Class AddEditProduct
         Me.Panel15.Size = New System.Drawing.Size(275, 189)
         Me.Panel15.TabIndex = 1
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(13, 71)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(59, 16)
+        Me.Label20.TabIndex = 12
+        Me.Label20.Text = "Multi Prix"
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -1033,7 +791,7 @@ Partial Class AddEditProduct
         Me.txtRGr.BackColor = System.Drawing.Color.Transparent
         Me.txtRGr.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtRGr.IsNumiric = True
-        Me.txtRGr.Location = New System.Drawing.Point(106, 138)
+        Me.txtRGr.Location = New System.Drawing.Point(106, 123)
         Me.txtRGr.Name = "txtRGr"
         Me.txtRGr.PlaceHolder = ""
         Me.txtRGr.ShowClearIcon = False
@@ -1052,7 +810,7 @@ Partial Class AddEditProduct
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label17.Location = New System.Drawing.Point(10, 143)
+        Me.Label17.Location = New System.Drawing.Point(10, 128)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(61, 17)
         Me.Label17.TabIndex = 5
@@ -1063,7 +821,7 @@ Partial Class AddEditProduct
         Me.txtRRev.BackColor = System.Drawing.Color.Transparent
         Me.txtRRev.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtRRev.IsNumiric = True
-        Me.txtRRev.Location = New System.Drawing.Point(106, 106)
+        Me.txtRRev.Location = New System.Drawing.Point(106, 94)
         Me.txtRRev.Name = "txtRRev"
         Me.txtRRev.PlaceHolder = ""
         Me.txtRRev.ShowClearIcon = False
@@ -1082,7 +840,7 @@ Partial Class AddEditProduct
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label18.Location = New System.Drawing.Point(9, 47)
+        Me.Label18.Location = New System.Drawing.Point(9, 38)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(78, 17)
         Me.Label18.TabIndex = 5
@@ -1093,18 +851,18 @@ Partial Class AddEditProduct
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label10.Location = New System.Drawing.Point(9, 79)
+        Me.Label10.Location = New System.Drawing.Point(9, 157)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(73, 17)
+        Me.Label10.Size = New System.Drawing.Size(45, 17)
         Me.Label10.TabIndex = 5
-        Me.Label10.Text = "Client Final"
+        Me.Label10.Text = "Gros 2"
         '
         'txtRmax
         '
         Me.txtRmax.BackColor = System.Drawing.Color.Transparent
         Me.txtRmax.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtRmax.IsNumiric = True
-        Me.txtRmax.Location = New System.Drawing.Point(106, 42)
+        Me.txtRmax.Location = New System.Drawing.Point(106, 33)
         Me.txtRmax.Name = "txtRmax"
         Me.txtRmax.PlaceHolder = ""
         Me.txtRmax.ShowClearIcon = False
@@ -1123,7 +881,7 @@ Partial Class AddEditProduct
         Me.txtRCF.BackColor = System.Drawing.Color.Transparent
         Me.txtRCF.BorderColor = System.Drawing.SystemColors.AppWorkspace
         Me.txtRCF.IsNumiric = True
-        Me.txtRCF.Location = New System.Drawing.Point(106, 74)
+        Me.txtRCF.Location = New System.Drawing.Point(106, 152)
         Me.txtRCF.Name = "txtRCF"
         Me.txtRCF.PlaceHolder = ""
         Me.txtRCF.ShowClearIcon = False
@@ -1142,11 +900,232 @@ Partial Class AddEditProduct
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label16.Location = New System.Drawing.Point(9, 111)
+        Me.Label16.Location = New System.Drawing.Point(9, 99)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(73, 17)
         Me.Label16.TabIndex = 5
         Me.Label16.Text = "Revendeur"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.Panel19)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 42)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(613, 215)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Stock"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Panel19
+        '
+        Me.Panel19.Controls.Add(Me.Panel25)
+        Me.Panel19.Controls.Add(Me.Panel27)
+        Me.Panel19.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel19.Location = New System.Drawing.Point(3, 3)
+        Me.Panel19.Name = "Panel19"
+        Me.Panel19.Padding = New System.Windows.Forms.Padding(5)
+        Me.Panel19.Size = New System.Drawing.Size(607, 207)
+        Me.Panel19.TabIndex = 3
+        '
+        'Panel25
+        '
+        Me.Panel25.Controls.Add(Me.Panel26)
+        Me.Panel25.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel25.Location = New System.Drawing.Point(294, 5)
+        Me.Panel25.Name = "Panel25"
+        Me.Panel25.Padding = New System.Windows.Forms.Padding(10)
+        Me.Panel25.Size = New System.Drawing.Size(289, 197)
+        Me.Panel25.TabIndex = 1
+        '
+        'Panel26
+        '
+        Me.Panel26.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel26.Controls.Add(Me.dtpStock)
+        Me.Panel26.Controls.Add(Me.Label27)
+        Me.Panel26.Controls.Add(Me.txtCUMP)
+        Me.Panel26.Controls.Add(Me.txtStock)
+        Me.Panel26.Controls.Add(Me.Label28)
+        Me.Panel26.Controls.Add(Me.Label29)
+        Me.Panel26.Controls.Add(Me.Label30)
+        Me.Panel26.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel26.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Panel26.Location = New System.Drawing.Point(10, 10)
+        Me.Panel26.Name = "Panel26"
+        Me.Panel26.Padding = New System.Windows.Forms.Padding(10)
+        Me.Panel26.Size = New System.Drawing.Size(269, 177)
+        Me.Panel26.TabIndex = 1
+        '
+        'dtpStock
+        '
+        Me.dtpStock.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpStock.Location = New System.Drawing.Point(86, 62)
+        Me.dtpStock.Name = "dtpStock"
+        Me.dtpStock.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.dtpStock.Size = New System.Drawing.Size(154, 20)
+        Me.dtpStock.TabIndex = 6
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(13, 10)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(40, 16)
+        Me.Label27.TabIndex = 5
+        Me.Label27.Text = "Stock"
+        '
+        'txtCUMP
+        '
+        Me.txtCUMP.BackColor = System.Drawing.Color.Transparent
+        Me.txtCUMP.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtCUMP.IsNumiric = False
+        Me.txtCUMP.Location = New System.Drawing.Point(119, 122)
+        Me.txtCUMP.Name = "txtCUMP"
+        Me.txtCUMP.PlaceHolder = ""
+        Me.txtCUMP.ShowClearIcon = False
+        Me.txtCUMP.ShowSaveIcon = False
+        Me.txtCUMP.Size = New System.Drawing.Size(121, 26)
+        Me.txtCUMP.StartUp = 2
+        Me.txtCUMP.TabIndex = 14
+        Me.txtCUMP.TextSize = 10
+        Me.txtCUMP.TxtBackColor = True
+        Me.txtCUMP.TxtColor = System.Drawing.Color.White
+        Me.txtCUMP.txtReadOnly = False
+        Me.txtCUMP.TxtSelect = New Integer() {1, 0}
+        '
+        'txtStock
+        '
+        Me.txtStock.BackColor = System.Drawing.Color.Transparent
+        Me.txtStock.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtStock.IsNumiric = False
+        Me.txtStock.Location = New System.Drawing.Point(119, 90)
+        Me.txtStock.Name = "txtStock"
+        Me.txtStock.PlaceHolder = ""
+        Me.txtStock.ShowClearIcon = False
+        Me.txtStock.ShowSaveIcon = False
+        Me.txtStock.Size = New System.Drawing.Size(121, 26)
+        Me.txtStock.StartUp = 2
+        Me.txtStock.TabIndex = 13
+        Me.txtStock.TextSize = 10
+        Me.txtStock.TxtBackColor = True
+        Me.txtStock.TxtColor = System.Drawing.Color.White
+        Me.txtStock.txtReadOnly = False
+        Me.txtStock.TxtSelect = New Integer() {1, 0}
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label28.Location = New System.Drawing.Point(25, 129)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(59, 17)
+        Me.Label28.TabIndex = 5
+        Me.Label28.Text = "CUMP HT"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label29.Location = New System.Drawing.Point(24, 97)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(61, 17)
+        Me.Label29.TabIndex = 5
+        Me.Label29.Text = "Quantité"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label30.Location = New System.Drawing.Point(25, 41)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(157, 17)
+        Me.Label30.TabIndex = 5
+        Me.Label30.Text = "Date mise a jour du stock"
+        '
+        'Panel27
+        '
+        Me.Panel27.Controls.Add(Me.Panel28)
+        Me.Panel27.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel27.Location = New System.Drawing.Point(5, 5)
+        Me.Panel27.Name = "Panel27"
+        Me.Panel27.Padding = New System.Windows.Forms.Padding(10)
+        Me.Panel27.Size = New System.Drawing.Size(289, 197)
+        Me.Panel27.TabIndex = 0
+        '
+        'Panel28
+        '
+        Me.Panel28.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(253, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel28.Controls.Add(Me.Label31)
+        Me.Panel28.Controls.Add(Me.txtAlert)
+        Me.Panel28.Controls.Add(Me.Label32)
+        Me.Panel28.Controls.Add(Me.isStocked)
+        Me.Panel28.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel28.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Panel28.Location = New System.Drawing.Point(10, 10)
+        Me.Panel28.Name = "Panel28"
+        Me.Panel28.Padding = New System.Windows.Forms.Padding(10)
+        Me.Panel28.Size = New System.Drawing.Size(269, 177)
+        Me.Panel28.TabIndex = 1
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(13, 10)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(105, 16)
+        Me.Label31.TabIndex = 5
+        Me.Label31.Text = "Gestion du Stock"
+        '
+        'txtAlert
+        '
+        Me.txtAlert.BackColor = System.Drawing.Color.Transparent
+        Me.txtAlert.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtAlert.IsNumiric = False
+        Me.txtAlert.Location = New System.Drawing.Point(20, 123)
+        Me.txtAlert.Name = "txtAlert"
+        Me.txtAlert.PlaceHolder = ""
+        Me.txtAlert.ShowClearIcon = False
+        Me.txtAlert.ShowSaveIcon = False
+        Me.txtAlert.Size = New System.Drawing.Size(195, 26)
+        Me.txtAlert.StartUp = 2
+        Me.txtAlert.TabIndex = 12
+        Me.txtAlert.TextSize = 10
+        Me.txtAlert.TxtBackColor = True
+        Me.txtAlert.TxtColor = System.Drawing.Color.White
+        Me.txtAlert.txtReadOnly = False
+        Me.txtAlert.TxtSelect = New Integer() {1, 0}
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Enabled = False
+        Me.Label32.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label32.Location = New System.Drawing.Point(23, 105)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(84, 17)
+        Me.Label32.TabIndex = 5
+        Me.Label32.Text = "Stock d'Alert"
+        '
+        'isStocked
+        '
+        Me.isStocked.AutoSize = True
+        Me.isStocked.Checked = True
+        Me.isStocked.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.isStocked.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.isStocked.Location = New System.Drawing.Point(26, 43)
+        Me.isStocked.Name = "isStocked"
+        Me.isStocked.Size = New System.Drawing.Size(131, 17)
+        Me.isStocked.TabIndex = 6
+        Me.isStocked.Text = "Produit Géré en Stock"
+        Me.isStocked.UseVisualStyleBackColor = True
         '
         'Panel9
         '
@@ -1247,11 +1226,14 @@ Partial Class AddEditProduct
         '
         'Panel6
         '
+        Me.Panel6.Controls.Add(Me.Button4)
         Me.Panel6.Controls.Add(Me.cbctg)
         Me.Panel6.Controls.Add(Me.Label23)
         Me.Panel6.Controls.Add(Me.Label2)
         Me.Panel6.Controls.Add(Me.Label1)
+        Me.Panel6.Controls.Add(Me.Label33)
         Me.Panel6.Controls.Add(Me.Label9)
+        Me.Panel6.Controls.Add(Me.txtStockType)
         Me.Panel6.Controls.Add(Me.txtDesc)
         Me.Panel6.Controls.Add(Me.txtName)
         Me.Panel6.Controls.Add(Me.txtRef)
@@ -1298,11 +1280,11 @@ Partial Class AddEditProduct
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 84)
+        Me.Label2.Location = New System.Drawing.Point(13, 87)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(120, 17)
+        Me.Label2.Size = New System.Drawing.Size(41, 17)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Description / Code"
+        Me.Label2.Text = "Code"
         '
         'Label1
         '
@@ -1314,6 +1296,18 @@ Partial Class AddEditProduct
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Désignation :"
         '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Enabled = False
+        Me.Label33.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label33.Location = New System.Drawing.Point(319, 87)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(42, 17)
+        Me.Label33.TabIndex = 5
+        Me.Label33.Text = "Unite:"
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -1323,6 +1317,25 @@ Partial Class AddEditProduct
         Me.Label9.Size = New System.Drawing.Size(33, 17)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Réf :"
+        '
+        'txtStockType
+        '
+        Me.txtStockType.BackColor = System.Drawing.Color.Transparent
+        Me.txtStockType.BorderColor = System.Drawing.SystemColors.AppWorkspace
+        Me.txtStockType.IsNumiric = False
+        Me.txtStockType.Location = New System.Drawing.Point(322, 108)
+        Me.txtStockType.Name = "txtStockType"
+        Me.txtStockType.PlaceHolder = ""
+        Me.txtStockType.ShowClearIcon = False
+        Me.txtStockType.ShowSaveIcon = False
+        Me.txtStockType.Size = New System.Drawing.Size(69, 26)
+        Me.txtStockType.StartUp = 2
+        Me.txtStockType.TabIndex = 12
+        Me.txtStockType.TextSize = 10
+        Me.txtStockType.TxtBackColor = True
+        Me.txtStockType.TxtColor = System.Drawing.Color.White
+        Me.txtStockType.txtReadOnly = False
+        Me.txtStockType.TxtSelect = New Integer() {1, 0}
         '
         'txtDesc
         '
@@ -1334,7 +1347,7 @@ Partial Class AddEditProduct
         Me.txtDesc.PlaceHolder = ""
         Me.txtDesc.ShowClearIcon = False
         Me.txtDesc.ShowSaveIcon = False
-        Me.txtDesc.Size = New System.Drawing.Size(380, 26)
+        Me.txtDesc.Size = New System.Drawing.Size(250, 26)
         Me.txtDesc.StartUp = 2
         Me.txtDesc.TabIndex = 3
         Me.txtDesc.TextSize = 10
@@ -1385,6 +1398,15 @@ Partial Class AddEditProduct
         '
         Me.CategoryTableAdapter.ClearBeforeFill = True
         '
+        'Button4
+        '
+        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.BARCODE_22
+        Me.Button4.Location = New System.Drawing.Point(259, 105)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(47, 31)
+        Me.Button4.TabIndex = 13
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'AddEditProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1413,14 +1435,6 @@ Partial Class AddEditProduct
         Me.Panel12.ResumeLayout(False)
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.Panel19.ResumeLayout(False)
-        Me.Panel25.ResumeLayout(False)
-        Me.Panel26.ResumeLayout(False)
-        Me.Panel26.PerformLayout()
-        Me.Panel27.ResumeLayout(False)
-        Me.Panel28.ResumeLayout(False)
-        Me.Panel28.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.Panel16.ResumeLayout(False)
         Me.Panel17.ResumeLayout(False)
@@ -1429,6 +1443,14 @@ Partial Class AddEditProduct
         Me.Panel14.ResumeLayout(False)
         Me.Panel15.ResumeLayout(False)
         Me.Panel15.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.Panel19.ResumeLayout(False)
+        Me.Panel25.ResumeLayout(False)
+        Me.Panel26.ResumeLayout(False)
+        Me.Panel26.PerformLayout()
+        Me.Panel27.ResumeLayout(False)
+        Me.Panel28.ResumeLayout(False)
+        Me.Panel28.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
@@ -1536,4 +1558,6 @@ Partial Class AddEditProduct
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents txtPAchTtc As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

@@ -169,9 +169,13 @@ Public Class gForm
         sf.Alignment = StringAlignment.Near
         Dim sfc As New StringFormat()
         sfc.Alignment = StringAlignment.Center
+        Dim sfl As New StringFormat()
+        sfl.Alignment = StringAlignment.Far
+
 
         Dim _Bmp As Bitmap
 
+        Dim params_tva As New Dictionary(Of Double, Double)
 
         Dim _w = W_Page
         Dim _h = H_Page
@@ -423,6 +427,15 @@ Public Class gForm
                         G.DrawString(_str, F_D, Brushes.Black, New RectangleF(_x, y, c.ColWidth - 3, plus_h), sf)
                         _x = _x + c.ColWidth
                     Next
+
+                    Try
+                        params_tva.Add(details.Rows(m).Item("tva"), details.Rows(m).Item("totaltva"))
+                    Catch ex As Exception
+                        params_tva(details.Rows(m).Item("tva")) += details.Rows(m).Item("totaltva")
+                    End Try
+
+                    If tc.hasLines And m > 0 Then G.DrawLine(Pens.Black, tc.x, y, tc.x + tc.TabWidth, y)
+
                     y += plus_h + 3
                     m += 1
                 End While
@@ -431,6 +444,7 @@ Public Class gForm
                 Using B As New SolidBrush(Color.Black)
                     For Each a As gTopField In FooterFieldDic
                         'Create a brush
+                        If tc.Type.ToUpper.StartsWith("TAB") = False Then a.y += y
 
                         Dim fn As Font
                         If a.isBold Then
@@ -491,6 +505,40 @@ Public Class gForm
                             Catch ex As Exception
                             End Try
                             sf.Alignment = StringAlignment.Near
+
+                        ElseIf a.field.StartsWith("tableau") Then
+
+                            Dim _x As Integer = a.x
+                            Dim _y As Integer = a.y
+                            Dim _wt As Integer = a.width
+                            Dim _ht As Integer = a.height
+                            Dim _xm As Integer = CInt(a.x + (_wt / 2))
+                            G.DrawLine(Pens.Black, _x, _y, _x + _wt, _y)
+                            G.DrawLine(Pens.Black, _x, _y + 15, _x + _wt, _y + 15)
+
+                            G.DrawLine(Pens.Black, _x, _y, _x, _y + 30)
+                            G.DrawLine(Pens.Black, _xm, _y, _xm, _y + 30)
+                            G.DrawLine(Pens.Black, _x + _wt, _y, _x + _wt, _y + 30)
+                            G.DrawString("Tva", fn, B, New RectangleF(_x + 5, _y, a.width, a.height), sf)
+                            G.DrawString("Montant", fn, B, New RectangleF(_xm + 5, _y, a.width, a.height), sf)
+
+                            _y += 20
+                            For Each kvp As KeyValuePair(Of Double, Double) In params_tva
+                                If kvp.Key = 0 Then Continue For
+
+                                G.DrawLine(Pens.Black, _x, _y, _x, _y + 30)
+                                G.DrawLine(Pens.Black, _xm, _y, _xm, _y + 30)
+                                G.DrawLine(Pens.Black, _x + _wt, _y, _x + _wt, _y + 30)
+
+                                G.DrawString("Taux" & kvp.Key & " %", fn, B, New RectangleF(_x + 5, _y, CInt(_wt / 2) - 7, 15), sf)
+                                G.DrawString(String.Format("{0:0.00}", CDbl(kvp.Value)), fn, B, New RectangleF(_xm, _y, CInt(_wt / 2) - 7, 15), sfl)
+
+                                _y += 15
+                            Next
+
+                            G.DrawLine(Pens.Black, _x, _y + 15, _x + _wt, _y + 15)
+
+
                         ElseIf a.field.StartsWith("image") Then
                             Try
                                 Dim fullPath As String = Path.Combine("C:\cmcimage", a.designation)
@@ -516,6 +564,7 @@ Public Class gForm
     End Function
     Dim m = 0
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
         pb.BackgroundImage = DrawBl(gt.TabProp, Data_imp_Source, Details_imp_Source, Client_imp_Source, False, m)
     End Sub
 

@@ -39,6 +39,7 @@ Partial Class Form1
         Me.bt_Contact = New System.Windows.Forms.Button()
         Me.bt_Achat = New System.Windows.Forms.Button()
         Me.bt_Vente = New System.Windows.Forms.Button()
+        Me.bt_Pv = New System.Windows.Forms.Button()
         Me.bt_Home = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -59,7 +60,6 @@ Partial Class Form1
         Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocDesign = New System.Drawing.Printing.PrintDocument()
-        Me.bt_Pv = New System.Windows.Forms.Button()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -233,7 +233,7 @@ Partial Class Form1
         '
         'bt_Contact
         '
-        Me.bt_Contact.BackColor = System.Drawing.Color.DodgerBlue
+        Me.bt_Contact.BackColor = System.Drawing.Color.Transparent
         Me.bt_Contact.Dock = System.Windows.Forms.DockStyle.Left
         Me.bt_Contact.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Contact.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -260,6 +260,7 @@ Partial Class Form1
         '
         'bt_Vente
         '
+        Me.bt_Vente.BackColor = System.Drawing.Color.Transparent
         Me.bt_Vente.Dock = System.Windows.Forms.DockStyle.Left
         Me.bt_Vente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bt_Vente.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -269,7 +270,21 @@ Partial Class Form1
         Me.bt_Vente.Size = New System.Drawing.Size(118, 36)
         Me.bt_Vente.TabIndex = 4
         Me.bt_Vente.Text = "Ventes"
-        Me.bt_Vente.UseVisualStyleBackColor = True
+        Me.bt_Vente.UseVisualStyleBackColor = False
+        '
+        'bt_Pv
+        '
+        Me.bt_Pv.BackColor = System.Drawing.Color.Transparent
+        Me.bt_Pv.Dock = System.Windows.Forms.DockStyle.Left
+        Me.bt_Pv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.bt_Pv.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bt_Pv.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.bt_Pv.Location = New System.Drawing.Point(121, 0)
+        Me.bt_Pv.Name = "bt_Pv"
+        Me.bt_Pv.Size = New System.Drawing.Size(115, 36)
+        Me.bt_Pv.TabIndex = 14
+        Me.bt_Pv.Text = "Point de Vente"
+        Me.bt_Pv.UseVisualStyleBackColor = False
         '
         'bt_Home
         '
@@ -445,19 +460,6 @@ Partial Class Form1
         '
         'PrintDocDesign
         '
-        '
-        'bt_Pv
-        '
-        Me.bt_Pv.Dock = System.Windows.Forms.DockStyle.Left
-        Me.bt_Pv.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.bt_Pv.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bt_Pv.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.bt_Pv.Location = New System.Drawing.Point(121, 0)
-        Me.bt_Pv.Name = "bt_Pv"
-        Me.bt_Pv.Size = New System.Drawing.Size(115, 36)
-        Me.bt_Pv.TabIndex = 14
-        Me.bt_Pv.Text = "Point de Vente"
-        Me.bt_Pv.UseVisualStyleBackColor = True
         '
         'Form1
         '

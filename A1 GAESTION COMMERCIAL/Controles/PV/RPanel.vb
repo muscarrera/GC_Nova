@@ -10,7 +10,7 @@
     Public Event SetDetailFacture()
     Public Event UpdateClient()
     Public Event SaveFacture(ByVal id As Integer, ByVal total As Double, ByVal avance As Double, ByVal tva As Double, ByVal table As DataTable)
-    Public Event SaveAndPrint(ByVal id As Integer, ByVal total As Double, ByVal avance As Double, ByVal tva As Double, ByVal table As DataTable, ByVal b As Boolean, ByVal isBl As Boolean)
+    Public Event SaveAndPrint()
     Public Event EditFacture(ByVal id As Integer, ByVal Clid As Integer, ByVal ClientName As String, ByVal total As Double, ByVal avance As Double, ByVal table As DataTable)
     Public Event DeleteFacture(ByVal id As Integer, ByVal isSell As Boolean, ByVal EM As Boolean, ByVal table As DataTable)
     Public Event CPValueChange()
@@ -28,7 +28,7 @@
     Public isUniqTva As Boolean
     Private _hasManyRemise As Boolean
     Public myDate As Date
-
+    Public modePayement As String = ""
 
     Private _Num As Integer
     Private _Total As Decimal
@@ -200,13 +200,14 @@
             table.Columns.Add("arid", GetType(Integer))
             table.Columns.Add("name", GetType(String))
             table.Columns.Add("price", GetType(Double))
+            table.Columns.Add("priceHt", GetType(Double))
             table.Columns.Add("bprice", GetType(Double))
             table.Columns.Add("tva", GetType(Double))
             table.Columns.Add("qte", GetType(Double))
             table.Columns.Add("unite", GetType(String))
             table.Columns.Add("total", GetType(Double))
             table.Columns.Add("cid", GetType(Integer))
-            table.Columns.Add("code", GetType(String))
+            table.Columns.Add("ref", GetType(String))
             table.Columns.Add("depot", GetType(Integer))
             table.Columns.Add("poid", GetType(Integer))
             table.Columns.Add("totalHt", GetType(Double))
@@ -216,7 +217,7 @@
             Dim a As Items
             For Each a In Pl.Controls
                 ' Add  rows with those columns filled in the DataTable.
-                table.Rows.Add(a.arid, a.Name, a.Price, a.Bprice, a.Tva,
+                table.Rows.Add(a.arid, a.Name, a.Price, a.Price_Ht, a.Bprice, a.Tva,
                                a.Qte, a.Unite, a.Total_ttc, a.cid, a.code,
                                a.Depot, a.Poid, a.Total_ht, a.Total_tva, a.id, a.Remise)
             Next
@@ -235,26 +236,6 @@
             Next
             Return table
         End Get
-    End Property
-    Public Property EditMode As Boolean
-        Get
-            Return _EditMode
-        End Get
-        Set(ByVal value As Boolean)
-            _EditMode = value
-            CP.EditMode = value
-            If value = True Then
-                'CP.Visible = False
-                'PlButtom.Height = 45
-                BtSave.Text = "   Modifier"
-            Else
-                'If ShowClc Then CP.Visible = True
-                'If ShowClc Then PlButtom.Height = 242
-                BtSave.Text = "   Enreg"
-            End If
-            CP.ActiveQte(False)
-            'ShowClc = True
-        End Set
     End Property
     Public Property hasManyRemise As Boolean
         Get
@@ -309,43 +290,6 @@
             If value <> "0" And value <> "-" Then
                 CP.BtCmd.BackColor = Color.ForestGreen
                 CP.BtCmd.ForeColor = Color.White
-            End If
-        End Set
-    End Property
-
-    Public Property TypePrinter As String
-        Get
-            Return "&"
-        End Get
-        Set(ByVal value As String)
-
-            If value = "Receipt" Then
-
-                BtPrint.Width = 125
-                BtPrint.Visible = True
-                BtBlPrint.Visible = False
-
-                BtPrint.TextAlign = ContentAlignment.MiddleCenter
-
-            ElseIf value = "Normal" Then
-
-                BtBlPrint.Width = 125
-                BtBlPrint.Visible = True
-                BtPrint.Visible = False
-
-                BtBlPrint.TextAlign = ContentAlignment.MiddleCenter
-
-                BtBlPrint.Left = BtPrint.Left
-            Else
-                BtBlPrint.Width = 65
-                BtPrint.Width = 65
-                BtBlPrint.Visible = True
-                BtPrint.Visible = True
-
-                BtPrint.TextAlign = ContentAlignment.MiddleRight
-                BtBlPrint.TextAlign = ContentAlignment.MiddleRight
-
-                BtBlPrint.Left = BtPrint.Left + 75
             End If
         End Set
     End Property
@@ -629,6 +573,14 @@
         'End If
 
         UpdateValue()
+    End Sub
+
+    Private Sub CP_UpdatePayment() Handles CP.UpdatePayment
+        RaiseEvent UpdatePayment()
+    End Sub
+
+    Private Sub CP_PrintTicket() Handles CP.PrintTicket
+        RaiseEvent SaveAndPrint()
     End Sub
 End Class
 

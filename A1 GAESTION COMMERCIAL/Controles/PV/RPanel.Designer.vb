@@ -22,7 +22,6 @@ Partial Class RPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RPanel))
         Me.Pl = New System.Windows.Forms.Panel()
         Me.PlTop = New System.Windows.Forms.Panel()
         Me.PlHeader = New System.Windows.Forms.Panel()
@@ -37,13 +36,9 @@ Partial Class RPanel
         Me.LbSum = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BtSave = New System.Windows.Forms.Button()
-        Me.BtBlPrint = New System.Windows.Forms.Button()
-        Me.BtPrint = New System.Windows.Forms.Button()
         Me.CP = New A1_GAESTION_COMMERCIAL.CPanel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PlHeader.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Pl
@@ -52,7 +47,7 @@ Partial Class RPanel
         Me.Pl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Pl.Location = New System.Drawing.Point(0, 10)
         Me.Pl.Name = "Pl"
-        Me.Pl.Size = New System.Drawing.Size(385, 199)
+        Me.Pl.Size = New System.Drawing.Size(385, 229)
         Me.Pl.TabIndex = 6
         '
         'PlTop
@@ -76,7 +71,7 @@ Partial Class RPanel
         Me.PlHeader.Controls.Add(Me.LbSum)
         Me.PlHeader.Controls.Add(Me.ShapeContainer1)
         Me.PlHeader.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PlHeader.Location = New System.Drawing.Point(0, 209)
+        Me.PlHeader.Location = New System.Drawing.Point(0, 239)
         Me.PlHeader.Name = "PlHeader"
         Me.PlHeader.Size = New System.Drawing.Size(385, 55)
         Me.PlHeader.TabIndex = 3
@@ -198,79 +193,6 @@ Partial Class RPanel
         Me.LineShape1.Y1 = 9
         Me.LineShape1.Y2 = 9
         '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Controls.Add(Me.BtSave)
-        Me.Panel1.Controls.Add(Me.BtBlPrint)
-        Me.Panel1.Controls.Add(Me.BtPrint)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 264)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(385, 40)
-        Me.Panel1.TabIndex = 5
-        '
-        'BtSave
-        '
-        Me.BtSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtSave.FlatAppearance.BorderColor = System.Drawing.Color.Blue
-        Me.BtSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtSave.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.BtSave.Image = CType(resources.GetObject("BtSave.Image"), System.Drawing.Image)
-        Me.BtSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtSave.Location = New System.Drawing.Point(200, 3)
-        Me.BtSave.MaximumSize = New System.Drawing.Size(94, 31)
-        Me.BtSave.MinimumSize = New System.Drawing.Size(4, 31)
-        Me.BtSave.Name = "BtSave"
-        Me.BtSave.Size = New System.Drawing.Size(86, 31)
-        Me.BtSave.TabIndex = 0
-        Me.BtSave.Text = "   Enreg"
-        Me.BtSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtSave.UseVisualStyleBackColor = True
-        '
-        'BtBlPrint
-        '
-        Me.BtBlPrint.BackgroundImage = CType(resources.GetObject("BtBlPrint.BackgroundImage"), System.Drawing.Image)
-        Me.BtBlPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtBlPrint.FlatAppearance.BorderSize = 2
-        Me.BtBlPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtBlPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtBlPrint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtBlPrint.Image = CType(resources.GetObject("BtBlPrint.Image"), System.Drawing.Image)
-        Me.BtBlPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtBlPrint.Location = New System.Drawing.Point(78, 3)
-        Me.BtBlPrint.MaximumSize = New System.Drawing.Size(0, 31)
-        Me.BtBlPrint.MinimumSize = New System.Drawing.Size(3, 31)
-        Me.BtBlPrint.Name = "BtBlPrint"
-        Me.BtBlPrint.Size = New System.Drawing.Size(3, 31)
-        Me.BtBlPrint.TabIndex = 0
-        Me.BtBlPrint.Tag = "1"
-        Me.BtBlPrint.Text = "B. Liv"
-        Me.BtBlPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtBlPrint.UseVisualStyleBackColor = True
-        '
-        'BtPrint
-        '
-        Me.BtPrint.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.BtPrint.BackgroundImage = CType(resources.GetObject("BtPrint.BackgroundImage"), System.Drawing.Image)
-        Me.BtPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtPrint.FlatAppearance.BorderSize = 2
-        Me.BtPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtPrint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtPrint.Image = CType(resources.GetObject("BtPrint.Image"), System.Drawing.Image)
-        Me.BtPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtPrint.Location = New System.Drawing.Point(11, 3)
-        Me.BtPrint.MinimumSize = New System.Drawing.Size(3, 31)
-        Me.BtPrint.Name = "BtPrint"
-        Me.BtPrint.Size = New System.Drawing.Size(61, 31)
-        Me.BtPrint.TabIndex = 0
-        Me.BtPrint.Tag = "0"
-        Me.BtPrint.Text = "طـــبع"
-        Me.BtPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtPrint.UseVisualStyleBackColor = False
-        Me.BtPrint.Visible = False
-        '
         'CP
         '
         Me.CP.BackColor = System.Drawing.Color.Transparent
@@ -284,6 +206,16 @@ Partial Class RPanel
         Me.CP.Size = New System.Drawing.Size(385, 259)
         Me.CP.TabIndex = 7
         Me.CP.Value = 1.0R
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 294)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(385, 10)
+        Me.Panel1.TabIndex = 5
         '
         'RPanel
         '
@@ -299,7 +231,6 @@ Partial Class RPanel
         Me.Size = New System.Drawing.Size(385, 563)
         Me.PlHeader.ResumeLayout(False)
         Me.PlHeader.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -317,10 +248,7 @@ Partial Class RPanel
     Friend WithEvents LbSum As System.Windows.Forms.Label
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents BtSave As System.Windows.Forms.Button
-    Friend WithEvents BtBlPrint As System.Windows.Forms.Button
-    Friend WithEvents BtPrint As System.Windows.Forms.Button
     Friend WithEvents CP As A1_GAESTION_COMMERCIAL.CPanel
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class

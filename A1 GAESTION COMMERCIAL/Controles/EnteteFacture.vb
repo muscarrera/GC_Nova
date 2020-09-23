@@ -380,6 +380,7 @@
         ClientAdresse = ""
         ICE = ""
 
+        'Id = 0
     End Sub
     Private Sub LbNewFacture_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LbNewFacture.LinkClicked
         RaiseEvent NewFacture()

@@ -29,6 +29,7 @@ Partial Class PvList
         Me.RectangleShape8 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.plClientSide = New System.Windows.Forms.Panel()
         Me.lbName = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.plClient = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -43,8 +44,8 @@ Partial Class PvList
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.FL = New System.Windows.Forms.FlowLayoutPanel()
         Me.PL = New System.Windows.Forms.Panel()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
         Me.RPL = New A1_GAESTION_COMMERCIAL.RPanel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel26.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.plClientSide.SuspendLayout()
@@ -74,9 +75,9 @@ Partial Class PvList
         Me.Panel4.Controls.Add(Me.Button10)
         Me.Panel4.Controls.Add(Me.ShapeContainer2)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel4.Location = New System.Drawing.Point(326, 0)
+        Me.Panel4.Location = New System.Drawing.Point(320, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(195, 42)
+        Me.Panel4.Size = New System.Drawing.Size(179, 42)
         Me.Panel4.TabIndex = 9
         '
         'Button10
@@ -88,7 +89,7 @@ Partial Class PvList
         Me.Button10.ForeColor = System.Drawing.Color.White
         Me.Button10.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FILE_22
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button10.Location = New System.Drawing.Point(31, 7)
+        Me.Button10.Location = New System.Drawing.Point(13, 7)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(142, 28)
         Me.Button10.TabIndex = 2
@@ -102,7 +103,7 @@ Partial Class PvList
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape8})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(195, 42)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(179, 42)
         Me.ShapeContainer2.TabIndex = 0
         Me.ShapeContainer2.TabStop = False
         '
@@ -113,7 +114,7 @@ Partial Class PvList
         Me.RectangleShape8.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
         Me.RectangleShape8.BorderColor = System.Drawing.Color.DarkSlateGray
         Me.RectangleShape8.CornerRadius = 14
-        Me.RectangleShape8.Location = New System.Drawing.Point(17, 5)
+        Me.RectangleShape8.Location = New System.Drawing.Point(1, 5)
         Me.RectangleShape8.Name = "RectangleShape1"
         Me.RectangleShape8.Size = New System.Drawing.Size(168, 31)
         '
@@ -144,6 +145,17 @@ Partial Class PvList
         Me.lbName.TabIndex = 9
         Me.lbName.Text = "---"
         Me.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel6.Location = New System.Drawing.Point(172, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(38, 42)
+        Me.Panel6.TabIndex = 12
         '
         'plClient
         '
@@ -219,7 +231,7 @@ Partial Class PvList
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel2.Location = New System.Drawing.Point(306, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(20, 42)
+        Me.Panel2.Size = New System.Drawing.Size(14, 42)
         Me.Panel2.TabIndex = 10
         '
         'txtSearchCode
@@ -227,7 +239,7 @@ Partial Class PvList
         Me.txtSearchCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSearchCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearchCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearchCode.Location = New System.Drawing.Point(-32, 5)
+        Me.txtSearchCode.Location = New System.Drawing.Point(-38, 5)
         Me.txtSearchCode.Name = "txtSearchCode"
         Me.txtSearchCode.Size = New System.Drawing.Size(31, 22)
         Me.txtSearchCode.TabIndex = 5
@@ -299,6 +311,9 @@ Partial Class PvList
         Me.PL.TabIndex = 21
         Me.PL.Visible = False
         '
+        'PrintDoc
+        '
+        '
         'RPL
         '
         Me.RPL.Avance = New Decimal(New Integer() {0, 0, 0, 0})
@@ -307,7 +322,6 @@ Partial Class PvList
         Me.RPL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.RPL.delivredDay = Nothing
         Me.RPL.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RPL.EditMode = False
         Me.RPL.hasManyRemise = False
         Me.RPL.Location = New System.Drawing.Point(15, 0)
         Me.RPL.Name = "RPL"
@@ -316,18 +330,7 @@ Partial Class PvList
         Me.RPL.ShowProfit = False
         Me.RPL.Size = New System.Drawing.Size(371, 920)
         Me.RPL.TabIndex = 18
-        Me.RPL.TypePrinter = "&"
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.MidnightBlue
-        Me.Panel6.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel6.Location = New System.Drawing.Point(172, 0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(38, 42)
-        Me.Panel6.TabIndex = 12
+
         '
         'PvList
         '
@@ -376,5 +379,6 @@ Partial Class PvList
     Friend WithEvents PL As System.Windows.Forms.Panel
     Friend WithEvents plClient As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
 
 End Class

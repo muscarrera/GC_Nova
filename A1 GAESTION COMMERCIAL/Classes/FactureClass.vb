@@ -297,6 +297,8 @@ Public Class FactureClass
             Dim params As New Dictionary(Of String, Object)
             Dim dt As DataTable = Nothing
 
+            If ds.Mode.ToUpper = "DETAILS" Then ds.Id = 0
+
             If IsNumeric(id) Then
                 Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
                     params.Add("id Like ", "%" & id & "%")
@@ -313,12 +315,12 @@ Public Class FactureClass
 
             If dt.Rows.Count = 1 Then
                 ds.Clear()
-                ds.Mode = "DETAILS"
+                If ds.Mode.ToUpper <> "DETAILS" Then ds.Mode = "DETAILS"
                 ds.Id = dt.Rows(0).Item(0)
 
             ElseIf dt.Rows.Count > 1 Then
                 ds.Clear()
-                ds.Mode = "LIST"
+                If ds.Mode.ToUpper <> "LIST" Then ds.Mode = "LIST"
 
                 ds.DataList = dt
             End If

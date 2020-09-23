@@ -25,6 +25,8 @@ Partial Class gForm
         Dim GTabClass1 As A1_GAESTION_COMMERCIAL.gTabClass = New A1_GAESTION_COMMERCIAL.gTabClass()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txt_H = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txt_w = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btLand = New System.Windows.Forms.Button()
@@ -33,13 +35,11 @@ Partial Class gForm
         Me.pb = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.gt = New A1_GAESTION_COMMERCIAL.gTable()
         Me.Pfp = New System.Windows.Forms.Panel()
         Me.Pf = New System.Windows.Forms.FlowLayoutPanel()
         Me.PT = New System.Windows.Forms.FlowLayoutPanel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.txt_H = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txt_w = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.gt = New A1_GAESTION_COMMERCIAL.gTable()
         Me.Panel2.SuspendLayout()
         CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -74,8 +74,46 @@ Partial Class gForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(461, 509)
+        Me.Panel2.Size = New System.Drawing.Size(299, 509)
         Me.Panel2.TabIndex = 0
+        '
+        'txt_H
+        '
+        Me.txt_H.BackColor = System.Drawing.Color.White
+        Me.txt_H.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txt_H.IsNumiric = True
+        Me.txt_H.Location = New System.Drawing.Point(183, 9)
+        Me.txt_H.Name = "txt_H"
+        Me.txt_H.PlaceHolder = "h ..."
+        Me.txt_H.ShowClearIcon = False
+        Me.txt_H.ShowSaveIcon = False
+        Me.txt_H.Size = New System.Drawing.Size(52, 27)
+        Me.txt_H.StartUp = 2
+        Me.txt_H.TabIndex = 2
+        Me.txt_H.TextSize = 11
+        Me.txt_H.TxtBackColor = True
+        Me.txt_H.TxtColor = System.Drawing.Color.White
+        Me.txt_H.txtReadOnly = False
+        Me.txt_H.TxtSelect = New Integer() {1, 0}
+        '
+        'txt_w
+        '
+        Me.txt_w.BackColor = System.Drawing.Color.White
+        Me.txt_w.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txt_w.IsNumiric = True
+        Me.txt_w.Location = New System.Drawing.Point(128, 9)
+        Me.txt_w.Name = "txt_w"
+        Me.txt_w.PlaceHolder = "w ..."
+        Me.txt_w.ShowClearIcon = False
+        Me.txt_w.ShowSaveIcon = False
+        Me.txt_w.Size = New System.Drawing.Size(52, 27)
+        Me.txt_w.StartUp = 2
+        Me.txt_w.TabIndex = 2
+        Me.txt_w.TextSize = 11
+        Me.txt_w.TxtBackColor = True
+        Me.txt_w.TxtColor = System.Drawing.Color.White
+        Me.txt_w.txtReadOnly = False
+        Me.txt_w.TxtSelect = New Integer() {1, 0}
         '
         'Button3
         '
@@ -148,7 +186,7 @@ Partial Class gForm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(487, 509)
+        Me.Panel1.Size = New System.Drawing.Size(649, 509)
         Me.Panel1.TabIndex = 0
         '
         'Panel5
@@ -160,8 +198,19 @@ Partial Class gForm
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 126)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(487, 250)
+        Me.Panel5.Size = New System.Drawing.Size(649, 250)
         Me.Panel5.TabIndex = 3
+        '
+        'gt
+        '
+        Me.gt.BackColor = System.Drawing.Color.White
+        Me.gt.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gt.Location = New System.Drawing.Point(0, 0)
+        Me.gt.Name = "gt"
+        Me.gt.Padding = New System.Windows.Forms.Padding(5)
+        Me.gt.Size = New System.Drawing.Size(647, 248)
+        Me.gt.TabIndex = 0
+        Me.gt.TabProp = GTabClass1
         '
         'Pfp
         '
@@ -171,7 +220,7 @@ Partial Class gForm
         Me.Pfp.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Pfp.Location = New System.Drawing.Point(0, 376)
         Me.Pfp.Name = "Pfp"
-        Me.Pfp.Size = New System.Drawing.Size(487, 133)
+        Me.Pfp.Size = New System.Drawing.Size(649, 133)
         Me.Pfp.TabIndex = 2
         '
         'Pf
@@ -179,7 +228,7 @@ Partial Class gForm
         Me.Pf.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Pf.Location = New System.Drawing.Point(0, 0)
         Me.Pf.Name = "Pf"
-        Me.Pf.Size = New System.Drawing.Size(485, 131)
+        Me.Pf.Size = New System.Drawing.Size(647, 131)
         Me.Pf.TabIndex = 0
         '
         'PT
@@ -189,7 +238,7 @@ Partial Class gForm
         Me.PT.Dock = System.Windows.Forms.DockStyle.Top
         Me.PT.Location = New System.Drawing.Point(0, 0)
         Me.PT.Name = "PT"
-        Me.PT.Size = New System.Drawing.Size(487, 126)
+        Me.PT.Size = New System.Drawing.Size(649, 126)
         Me.PT.TabIndex = 4
         '
         'SplitContainer1
@@ -206,57 +255,8 @@ Partial Class gForm
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel2)
         Me.SplitContainer1.Size = New System.Drawing.Size(952, 509)
-        Me.SplitContainer1.SplitterDistance = 487
+        Me.SplitContainer1.SplitterDistance = 649
         Me.SplitContainer1.TabIndex = 1
-        '
-        'txt_H
-        '
-        Me.txt_H.BackColor = System.Drawing.Color.White
-        Me.txt_H.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txt_H.IsNumiric = True
-        Me.txt_H.Location = New System.Drawing.Point(183, 9)
-        Me.txt_H.Name = "txt_H"
-        Me.txt_H.PlaceHolder = "h ..."
-        Me.txt_H.ShowClearIcon = False
-        Me.txt_H.ShowSaveIcon = False
-        Me.txt_H.Size = New System.Drawing.Size(52, 27)
-        Me.txt_H.StartUp = 2
-        Me.txt_H.TabIndex = 2
-        Me.txt_H.TextSize = 11
-        Me.txt_H.TxtBackColor = True
-        Me.txt_H.TxtColor = System.Drawing.Color.White
-        Me.txt_H.txtReadOnly = False
-        Me.txt_H.TxtSelect = New Integer() {1, 0}
-        '
-        'txt_w
-        '
-        Me.txt_w.BackColor = System.Drawing.Color.White
-        Me.txt_w.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txt_w.IsNumiric = True
-        Me.txt_w.Location = New System.Drawing.Point(128, 9)
-        Me.txt_w.Name = "txt_w"
-        Me.txt_w.PlaceHolder = "w ..."
-        Me.txt_w.ShowClearIcon = False
-        Me.txt_w.ShowSaveIcon = False
-        Me.txt_w.Size = New System.Drawing.Size(52, 27)
-        Me.txt_w.StartUp = 2
-        Me.txt_w.TabIndex = 2
-        Me.txt_w.TextSize = 11
-        Me.txt_w.TxtBackColor = True
-        Me.txt_w.TxtColor = System.Drawing.Color.White
-        Me.txt_w.txtReadOnly = False
-        Me.txt_w.TxtSelect = New Integer() {1, 0}
-        '
-        'gt
-        '
-        Me.gt.BackColor = System.Drawing.Color.White
-        Me.gt.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gt.Location = New System.Drawing.Point(0, 0)
-        Me.gt.Name = "gt"
-        Me.gt.Padding = New System.Windows.Forms.Padding(5)
-        Me.gt.Size = New System.Drawing.Size(485, 248)
-        Me.gt.TabIndex = 0
-        Me.gt.TabProp = GTabClass1
         '
         'gForm
         '

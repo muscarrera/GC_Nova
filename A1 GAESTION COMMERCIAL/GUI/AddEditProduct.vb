@@ -452,4 +452,12 @@ Public Class AddEditProduct
         txtPrixPromo.Enabled = isPromo.Enabled
 
     End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Dim ls As New ListMultiCodes
+        ls.Code = txtDesc.text
+        If ls.ShowDialog = Windows.Forms.DialogResult.OK Then
+            txtDesc.text = ls.Code
+        End If
+    End Sub
 End Class

@@ -18,6 +18,7 @@
             txtX.text = value.x
             txtY.text = value.y
             txtType.text = value.Type
+            cbLine.Checked = value.hasLines
 
             If IsNothing(value.details) Then Exit Property
             pl.Controls.Clear()
@@ -172,4 +173,9 @@
     End Sub
 
 
+    Private Sub cbLine_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbLine.CheckedChanged
+        TabProp.hasLines = cbLine.Checked
+
+        RaiseEvent PropChanged()
+    End Sub
 End Class

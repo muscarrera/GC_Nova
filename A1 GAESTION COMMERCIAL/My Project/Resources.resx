@@ -238,6 +238,9 @@
   <data name="gui-13" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-13.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconfinder_Gnome-Edit-Delete-22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Gnome-Edit-Delete-22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -276,9 +279,6 @@
   </data>
   <data name="FILE 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FILE 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ICON 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ICON 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_Print_56266 (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Print_56266 (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,8 +325,8 @@
   <data name="WORD  22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WORD  22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconfinder_User_27887 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_User_27887 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ICON 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICON 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_pdf_3745 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_pdf_3745 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -336,6 +336,9 @@
   </data>
   <data name="bg Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg Blue.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PAIEMENTFORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PAIEMENTFORM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TAG-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TAG-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -418,10 +421,13 @@
   <data name="IMAGE 22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGE 22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconfinder_User_27887 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_User_27887 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="EDIT 22X22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EDIT 22X22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PAIEMENTFORM1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PAIEMENTFORM1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

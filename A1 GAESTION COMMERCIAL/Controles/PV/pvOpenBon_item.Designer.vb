@@ -32,11 +32,14 @@ Partial Class pvOpenBon_item
         '
         'RC
         '
+        Me.RC.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RC.BackColor = System.Drawing.Color.LightSeaGreen
         Me.RC.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque
         Me.RC.BorderColor = System.Drawing.Color.DarkSlateGray
         Me.RC.CornerRadius = 14
-        Me.RC.Location = New System.Drawing.Point(3, 5)
+        Me.RC.Location = New System.Drawing.Point(0, 5)
         Me.RC.Name = "RC"
         Me.RC.Size = New System.Drawing.Size(191, 31)
         '
@@ -46,7 +49,7 @@ Partial Class pvOpenBon_item
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RC})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(200, 40)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(195, 40)
         Me.ShapeContainer1.TabIndex = 0
         Me.ShapeContainer1.TabStop = False
         '
@@ -58,7 +61,7 @@ Partial Class pvOpenBon_item
         Me.BT.Dock = System.Windows.Forms.DockStyle.Right
         Me.BT.FlatAppearance.BorderSize = 0
         Me.BT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BT.Location = New System.Drawing.Point(159, 0)
+        Me.BT.Location = New System.Drawing.Point(154, 0)
         Me.BT.Name = "BT"
         Me.BT.Size = New System.Drawing.Size(23, 24)
         Me.BT.TabIndex = 1
@@ -71,7 +74,7 @@ Partial Class pvOpenBon_item
         Me.LB.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LB.Location = New System.Drawing.Point(0, 0)
         Me.LB.Name = "LB"
-        Me.LB.Size = New System.Drawing.Size(159, 24)
+        Me.LB.Size = New System.Drawing.Size(154, 24)
         Me.LB.TabIndex = 2
         Me.LB.Text = "Label1"
         Me.LB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -84,7 +87,7 @@ Partial Class pvOpenBon_item
         Me.PL.Controls.Add(Me.BT)
         Me.PL.Location = New System.Drawing.Point(9, 9)
         Me.PL.Name = "PL"
-        Me.PL.Size = New System.Drawing.Size(182, 24)
+        Me.PL.Size = New System.Drawing.Size(177, 24)
         Me.PL.TabIndex = 3
         '
         'pvOpenBon_item
@@ -95,7 +98,7 @@ Partial Class pvOpenBon_item
         Me.Controls.Add(Me.PL)
         Me.Controls.Add(Me.ShapeContainer1)
         Me.Name = "pvOpenBon_item"
-        Me.Size = New System.Drawing.Size(200, 40)
+        Me.Size = New System.Drawing.Size(195, 40)
         Me.PL.ResumeLayout(False)
         Me.ResumeLayout(False)
 

@@ -98,7 +98,7 @@ Partial Class AddEditTopField
         Me.CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB.FormattingEnabled = True
         Me.CB.ItemHeight = 13
-        Me.CB.Items.AddRange(New Object() {"*", "-Titre", "id", "date", "cid", "name", "CLT_ice", "CLT_adresse", "CLT_ref", "total_ht", "total_tva", "total_ttc", "total_remise", "total_droitTimbre", "image", "total_avance", "Editeur", "//En_Chiffre", "MPayement"})
+        Me.CB.Items.AddRange(New Object() {"*", "-Titre", "id", "date", "cid", "name", "CLT_ice", "CLT_adresse", "CLT_ref", "total_ht", "total_tva", "total_ttc", "total_remise", "total_droitTimbre", "image", "total_avance", "Editeur", "//En_Chiffre", "MPayement", "tableau_tva", "DPT_ID", "DPT_Nom"})
         Me.CB.Location = New System.Drawing.Point(74, 116)
         Me.CB.Name = "CB"
         Me.CB.Size = New System.Drawing.Size(327, 21)

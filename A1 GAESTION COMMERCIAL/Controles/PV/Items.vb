@@ -1,4 +1,5 @@
 ﻿Public Class Items
+ 
     Public Event ItemDoubleClick(ByVal sender As Object, ByVal e As EventArgs)
     Public Event Item_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
     Public Event ItemValueChanged(ByVal oldValue As Double, ByVal newValue As Double, ByVal Field As String, ByVal itm As Items)
@@ -130,6 +131,12 @@
 
         End Set
     End Property
+
+    Public ReadOnly Property Price_Ht() As Decimal
+        Get
+            Return _price / ((100 + Tva) / 100)
+        End Get
+    End Property
     Public Property Depot() As Decimal
         Get
             Return _depot
@@ -138,8 +145,6 @@
             '''''''
             _depot = value
 
-            'LbQte.Text = _qte & " " & CStr(Unite) & " x "
-            'LbQte.Text &= String.Format("{0:n}", _price) & " Dhs  -  "
             LbStk.Text = ""
             If Depot > 0 Then LbStk.Text = " [" & Depot & "] Rest : (" & Stock & ")"
 

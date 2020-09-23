@@ -49,6 +49,7 @@
             txtImpPdf.Text = getRegistryinfo("printer_Pdf", "")
             txtEchBon.Text = getRegistryinfo("txtEchBon", "1")
             txtEchFct.Text = getRegistryinfo("txtEchFct", "1")
+            txtImpPos.Text = getRegistryinfo("printer_POS", "")
 
             'TXTFAC.Text = getRegistryinfo("Facture_Title", "")
             'Form1.imgEntetePath.Text = getRegistryinfo("imgEntetePath", "")
@@ -99,6 +100,8 @@
             plAltRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Alternating_Row", Color.WhiteSmoke.ToArgb.ToString))
             plSelRow.BackColor = Color.FromArgb(getRegistryinfo("Color_Selected_Row", Color.Red.ToArgb.ToString))
 
+            cbSearchByCode.Checked = getRegistryinfo("modeSearch_isCode", False)
+            cbSearchBy.Text = getRegistryinfo("SearchBy", "Tous")
 
         Catch ex As Exception
 
@@ -624,6 +627,28 @@
             setRegistryinfo("normat_Print_Style", cbNormalImp.Checked)
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Private Sub Button21_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button21.Click
+        If PrintDlg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+        Try
+            txtImpPos.Text = PrintDlg.PrinterSettings.PrinterName
+            setRegistryinfo("printer_POS", txtImpPos.Text)
+            Form1.printer_POS = txtImpPos.Text
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        End Try
+    End Sub
+
+    Private Sub Button23_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button23.Click
+
+        Try
+            setRegistryinfo("SearchBy", cbSearchBy.Text)
+            setRegistryinfo("modeSearch_isCode", cbSearchByCode.Checked)
+        Catch ex As Exception
         End Try
     End Sub
 End Class

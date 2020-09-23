@@ -109,7 +109,7 @@
 
 
             Entete.Id = value
-            RaiseEvent IdChanged(value, Me)
+            If value > 0 Then RaiseEvent IdChanged(value, Me)
         End Set
     End Property
     Public Property Operation() As String

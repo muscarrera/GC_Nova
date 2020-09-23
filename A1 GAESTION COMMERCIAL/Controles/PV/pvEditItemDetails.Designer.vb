@@ -319,7 +319,9 @@ Partial Class pvEditItemDetails
         Me.txtqte.BackColor = System.Drawing.Color.Transparent
         Me.txtqte.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtqte.IsNumiric = True
-        Me.txtqte.Location = New System.Drawing.Point(52, 309)
+        Me.txtqte.Location = New System.Drawing.Point(52, 311)
+        Me.txtqte.MaximumSize = New System.Drawing.Size(333, 40)
+        Me.txtqte.MinimumSize = New System.Drawing.Size(0, 40)
         Me.txtqte.Name = "txtqte"
         Me.txtqte.PlaceHolder = ""
         Me.txtqte.ShowClearIcon = False
@@ -339,6 +341,8 @@ Partial Class pvEditItemDetails
         Me.txtsp.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtsp.IsNumiric = True
         Me.txtsp.Location = New System.Drawing.Point(50, 231)
+        Me.txtsp.MaximumSize = New System.Drawing.Size(333, 40)
+        Me.txtsp.MinimumSize = New System.Drawing.Size(0, 40)
         Me.txtsp.Name = "txtsp"
         Me.txtsp.PlaceHolder = ""
         Me.txtsp.ShowClearIcon = False
@@ -358,6 +362,8 @@ Partial Class pvEditItemDetails
         Me.txtbp.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtbp.IsNumiric = True
         Me.txtbp.Location = New System.Drawing.Point(52, 144)
+        Me.txtbp.MaximumSize = New System.Drawing.Size(333, 40)
+        Me.txtbp.MinimumSize = New System.Drawing.Size(0, 40)
         Me.txtbp.Name = "txtbp"
         Me.txtbp.PlaceHolder = ""
         Me.txtbp.ShowClearIcon = False
@@ -377,6 +383,8 @@ Partial Class pvEditItemDetails
         Me.txtn.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtn.IsNumiric = False
         Me.txtn.Location = New System.Drawing.Point(52, 63)
+        Me.txtn.MaximumSize = New System.Drawing.Size(333, 40)
+        Me.txtn.MinimumSize = New System.Drawing.Size(0, 40)
         Me.txtn.Name = "txtn"
         Me.txtn.PlaceHolder = ""
         Me.txtn.ShowClearIcon = False

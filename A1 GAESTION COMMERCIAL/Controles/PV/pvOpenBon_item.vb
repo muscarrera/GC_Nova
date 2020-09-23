@@ -8,6 +8,7 @@
     Event DeleteBon(ByVal pvOpenBon_item As pvOpenBon_item)
 
     Public localName As String = ""
+    Public isActive As Boolean = False
 
     Public Property myColor() As Color
         Get
@@ -23,9 +24,11 @@
             If value = Color.White Then
                 LB.ForeColor = Color.Red
                 BT.Visible = True
+                isActive = True
             Else
                 LB.ForeColor = Color.White
                 BT.Visible = False
+                isActive = False
             End If
 
         End Set

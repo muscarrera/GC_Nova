@@ -46,6 +46,7 @@
             Form1.printer_Facture = getRegistryinfo("printer_Facture", "")
             Form1.printer_Avoir = getRegistryinfo("printer_Avoir", "")
             Form1.printer_Pdf = getRegistryinfo("printer_Pdf", "")
+            Form1.printer_POS = getRegistryinfo("printer_POS", "")
 
             Form1.Ech_Bon = getRegistryinfo("txtEchBon", "1")
             Form1.Ech_Facture = getRegistryinfo("txtEchFct", "1")

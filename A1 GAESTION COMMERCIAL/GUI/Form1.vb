@@ -94,7 +94,7 @@
     Public Color_Selected_Row As Color = Color.Red
     Public allowAddElement_to As Boolean = False
 
-    Public DesimalSringFormat As String = "{0:n3}"
+    Public DesimalSringFormat As String = "{0:n2}"
     'POS
     Friend Shared SearchBy As String = "ref"
     Friend Shared pvLongerbt As Integer = 120
@@ -102,6 +102,7 @@
     Friend Shared pv_useMergeArt As Boolean = True
     Public pv_NormalClient As String = "Client Comptoir"
     Friend Shared indexStartArticle As Integer
+    Friend Shared printer_POS As String
 
 
     Public Property prefix As String
@@ -176,7 +177,7 @@
         End If
 
         'Modules
-        InstalPvModule = True
+        InstalPvModule = False
         InstalParckModule = False
         InstalInventaireModule = True
 
@@ -261,12 +262,22 @@
     End Sub
 
     Private Sub HeaderColor(ByVal value As String)
+
+        'plHeaderButton.BackColor = Color.MediumSlateBlue
+        'Panel6.BackColor = Color.MediumSlateBlue
+
         For Each b As Control In plHeaderButton.Controls
             If b.Text = value Then
                 b.BackColor = Color.SlateBlue
             Else
                 b.BackColor = Color.DodgerBlue
             End If
+
+            'If b.Text = value Then
+            '    b.BackColor = Color.Crimson
+            'Else
+            '    b.BackColor = Color.MediumSlateBlue
+            'End If
         Next
     End Sub
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Home.Click
@@ -286,6 +297,8 @@
 
         Dim ds As New Setting
         plBody.Controls.Add(ds)
+
+        HeaderColor(btSetting.Text)
     End Sub
 
 

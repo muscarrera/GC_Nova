@@ -18,6 +18,8 @@
     Private _bl As String
     Private _depot As Integer = 0
 
+    Event PrintTicket()
+
 
 
     'properties
@@ -107,11 +109,13 @@
         Dim fnt As New Font("Microsoft Sans Serif", 9, FontStyle.Bold)
         Dim bkc As Color = Color.Teal
         Dim ftc As Color = Color.White
+        Dim rd As Color = Color.Red
         isActive = True
 
         If a = False Then
             fnt = New Font("Microsoft Sans Serif", 9)
             bkc = Color.WhiteSmoke
+            rd = Color.WhiteSmoke
             isActive = False
             ftc = Color.Black
         End If
@@ -122,10 +126,12 @@
         BtQte.BackColor = bkc
         BtQte.ForeColor = ftc
         BtQte.Font = fnt
+
         BtDpt.BackColor = bkc
         BtDpt.ForeColor = ftc
         BtDpt.Font = fnt
-        BtDel.BackColor = bkc
+
+        BtDel.BackColor = rd ' bkc
         'btClient.BackColor = bkc
         'If EditMode = False Then btClient.Text = "Designation"
         '''''''''''''
@@ -157,12 +163,13 @@
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         RaiseEvent UpdatePayment()
     End Sub
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
+        RaiseEvent UpdatePayment()
+    End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtRemise.Click
         RaiseEvent UpdateRemise()
     End Sub
-    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
-        Value += 1
-    End Sub
+  
     Private Sub Button18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtDpt.Click
         If isActive Then
             RaiseEvent UpdateArticledepot()
@@ -170,7 +177,7 @@
             RaiseEvent ValueChange()
         End If
     End Sub
-    Private Sub Client_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btClient.Click
+    Private Sub Client_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'If isActive Then
         '    RaiseEvent UpdatearicleDetails()
         'Else
@@ -183,6 +190,6 @@
     End Sub
 
     Private Sub BtCmd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtCmd.Click
-        RaiseEvent CommandeDate()
+        RaiseEvent PrintTicket()
     End Sub
 End Class

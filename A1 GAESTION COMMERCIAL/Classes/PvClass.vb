@@ -28,7 +28,7 @@
         'AddHandler ds.LoadOpenBons, AddressOf LoadOpenBons
         AddHandler PvL.SelectBon, AddressOf SelectBon
         AddHandler PvL.FillGroupe, AddressOf FillGroupes
-
+        AddHandler PvL.SaveToDb, AddressOf SaveToDb
         '
         PvL.numberOpenBons = 0
         PvL.modeSearch_isCode = False
@@ -85,10 +85,10 @@
 
             '''''''''''''''''''
 
-            If Form1.SearchBy = "nom" Then
+            If ds.SearchBy.ToUpper = "NOM" Then
                 artdt = artta.GetDataByLikeName("%" & txt & "%")
 
-            ElseIf Form1.SearchBy = "ref" Then
+            ElseIf ds.SearchBy.ToUpper = "REF" Then
                 artdt = artta.GetDataByRef(txt & "%")
 
             Else
@@ -169,7 +169,7 @@
 
             '''''''''''''''''''
 
-            artdt = artta.GetDataByCodeBar(txt & "%")
+            artdt = artta.GetDataByCodeBar("%" & txt & "%")
 
             If artdt.Rows.Count = 1 Then
 
@@ -522,7 +522,7 @@
         Dim bt As Button = sender
         Dim R As ALMohassinDBDataSet.ArticleRow = bt.Tag
         If PvL.localName = "" Then
-
+            PvL.NewComptoirBon()
         Else
             PvL.RPL.AddItem(R)
         End If
@@ -557,6 +557,84 @@
         ds.PL.Visible = False
 
         PvL.KeepTxtFocus()
+    End Sub
+
+    Private Sub SaveToDb(ByVal ds As PvList)
+
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Dim err_msg As String = "init ..."
+            Try
+
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("cid", ds.RPL.myClient.cid)
+                params.Add("name", ds.RPL.myClient.name)
+                params.Add("total", ds.RPL.Total_TTC)
+                params.Add("avance", ds.RPL.Avance)
+                params.Add("remise", 0)
+                params.Add("tva", ds.RPL.Tva)
+                params.Add("date", Format(ds.RPL.myDate, "dd-MM-yyyy"))
+                params.Add("writer", CStr(Form1.adminName))
+                params.Add("isAdmin", "CREATION")
+                params.Add("isPayed", False)
+                params.Add("modePayement", "-")
+                params.Add("droitTimbre", 0)
+                params.Add("pj", 0)
+
+                Dim fid = c.InsertRecord(ds.tb_F, params, True)
+
+                err_msg &= vbNewLine & " commande " & fid & " : .. ok"
+
+                If fid > 0 Then
+                    Dim data = ds.RPL.DataSource
+
+                    For i As Integer = 0 To data.Rows.Count - 1
+                        params.Clear()
+                        params.Add("fctid", fid)
+                        params.Add("name", data.Rows(i).Item("name"))
+                        params.Add("bprice", data.Rows(i).Item("bprice"))
+                        params.Add("price", data.Rows(i).Item("priceHt"))
+                        params.Add("remise", data.Rows(i).Item("remise"))
+                        params.Add("qte", data.Rows(i).Item("qte"))
+                        params.Add("tva", data.Rows(i).Item("tva"))
+                        params.Add("arid", data.Rows(i).Item("arid"))
+                        params.Add("depot", data.Rows(i).Item("depot"))
+                        params.Add("ref", data.Rows(i).Item("ref"))
+                        params.Add("cid", data.Rows(i).Item("cid"))
+
+                        c.InsertRecord(ds.tb_D, params)
+                        params.Clear()
+                    Next
+
+                    err_msg &= vbNewLine & " details " & data.Rows.Count & "Lines : .. ok"
+
+                    If ds.RPL.Avance > 0 Then
+
+                        params.Add("name", ds.RPL.myClient.name)
+                        params.Add("clid", ds.RPL.myClient.cid)
+                        params.Add("montant", ds.RPL.Avance)
+                        params.Add("way", ds.RPL.modePayement)
+                        params.Add("date", ds.RPL.myDate)
+                        params.Add("ech", ds.RPL.myDate)
+                        params.Add("ref", "")
+                        params.Add("desig", "")
+                        params.Add("writer", Form1.adminName)
+                        params.Add(ds.tb_F, fid)
+
+                        c.InsertRecord(ds.tb_P, params, True)
+
+                        err_msg &= vbNewLine & " Avance " & ds.RPL.Avance & "dhs : .. ok"
+                    End If
+                End If
+
+
+                err_msg &= vbNewLine & "Enregistrement : ... ok"
+            Catch ex As Exception
+                err_msg &= vbNewLine & ex.Message
+                MsgBox(err_msg)
+            End Try
+
+
+        End Using
     End Sub
 
 End Class

@@ -1,9 +1,11 @@
 ﻿Imports System.IO
+Imports System.Net.NetworkInformation
+Imports System.Text.RegularExpressions
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc65"
+    Dim strKey = "ALMsbtrFirstRun_gc70"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
-    Dim nbrDays = 15
+    Dim nbrDays = 90
 
     Public ReadOnly Property TrialVersion_Master
         Get
@@ -63,15 +65,46 @@ Module AdminModule
     End Function
     Private Function HandleRegistry2() As Integer
         Dim ALMohasibfirstRunDate As Date
+        Dim LastRunDate As Date
 
         ALMohasibfirstRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", strKey, Nothing)
+
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Nothing)
+
+        Dim sz = (Now - LastRunDate).Days
+
+        'Reglage de date 
+        If LastRunDate = Nothing Then
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+        ElseIf (Now - LastRunDate).Days <= -1 Then
+            MsgBox("Merci de regler la date de votre PC ..", MsgBoxStyle.Information, "Error_Date")
+            End
+        End If
+
+        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+
+
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+
+        'mac adresse
+        Dim mac = getMacAddress()
+        mac = Regex.Replace(mac, "[^0-9]", "")
+
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+
+
         If ALMohasibfirstRunDate = Nothing Then
             ALMohasibfirstRunDate = Now
             My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", strKey, ALMohasibfirstRunDate)
             Try
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
                 Dim dt = ta.GetData("keypsv")
-                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
+                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & ALMohasibfirstRunDate.ToString("yy") & "2H7" & "-" & mac.ToString.Substring(mac.ToString.Length - 4) & "-" & mac.ToString.Substring(0, 4) & ALMohasibfirstRunDate.Month
+                 
                 If dt.Rows.Count > 0 Then
                     ta.UpdateKeyVal(val, "keypsv")
                 Else
@@ -83,6 +116,7 @@ Module AdminModule
                 Else
                     ta.Insert("truefont", "False")
                 End If
+
                 MsgBox(strFirstUse)
 
             Catch ex As Exception
@@ -95,8 +129,8 @@ Module AdminModule
 
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
                 Dim dt = ta.GetData("keypsv")
-                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
-                ''''''
+                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & ALMohasibfirstRunDate.ToString("yy") & "2H7" & "-" & mac.ToString.Substring(mac.ToString.Length - 4) & "-" & mac.ToString.Substring(0, 4) & ALMohasibfirstRunDate.Month
+
                 If dt.Rows.Count > 0 Then
 
                     If dt.Rows(0).Item("val") <> val Then
@@ -137,7 +171,7 @@ Module AdminModule
             Try
                 Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
                 Dim dt = ta.GetData("keypsv")
-                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & "2" & ALMohasibfirstRunDate.Year & "-4053-" & "2011" & ALMohasibfirstRunDate.Month
+                Dim val As String = ALMohasibfirstRunDate.Day & ALMohasibfirstRunDate.Hour & "-" & ALMohasibfirstRunDate.Second & "1d5-" & ALMohasibfirstRunDate.ToString("yy") & "2H7" & "-" & mac.ToString.Substring(mac.ToString.Length - 4) & "-" & mac.ToString.Substring(0, 4) & ALMohasibfirstRunDate.Month
                 ''''''
                 If dt.Rows.Count > 0 Then
 
@@ -172,7 +206,6 @@ Module AdminModule
 
             Catch ex As Exception
                 MsgBox(ex.Message)
-
             End Try
             Return 1
         End If
@@ -187,7 +220,7 @@ Module AdminModule
         End Using
 
         Dim resultkey As Integer = HandleRegistry()
-       
+
         Try
             Dim ta As New ALMohassinDBDataSetTableAdapters.valueTableAdapter
 
@@ -212,8 +245,35 @@ Module AdminModule
     End Function
     Private Function HandleRegistry() As Integer
         Dim ALMohasibfirstRunDate As Date
+        Dim LastRunDate As Date
+
 
         ALMohasibfirstRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", strKey, Nothing)
+
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Nothing)
+
+        Dim sz = (Now - LastRunDate).Days
+
+        'Reglage de date 
+        If LastRunDate = Nothing Then
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+        ElseIf (Now - LastRunDate).Days <= -1 Then
+            MsgBox("Merci de regler la date de votre PC ..", MsgBoxStyle.Information, "Error_Date")
+            End
+        End If
+
+        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+
+
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+        '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
+
+
+
+
+
         If ALMohasibfirstRunDate = Nothing Then
             ALMohasibfirstRunDate = Now
             My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", strKey, ALMohasibfirstRunDate)
@@ -227,7 +287,10 @@ Module AdminModule
 
     End Function
 
-
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = NetworkInterface.GetAllNetworkInterfaces()
+        Return nics(1).GetPhysicalAddress.ToString
+    End Function
 
 End Module
 
