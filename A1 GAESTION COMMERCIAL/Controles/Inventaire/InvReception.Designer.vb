@@ -34,6 +34,7 @@ Partial Class InvReception
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -52,7 +53,6 @@ Partial Class InvReception
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dte2 = New System.Windows.Forms.DateTimePicker()
         Me.dte1 = New System.Windows.Forms.DateTimePicker()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel6.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -204,6 +204,23 @@ Partial Class InvReception
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(774, 38)
         Me.Panel24.TabIndex = 16
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(645, 2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(129, 36)
+        Me.Button4.TabIndex = 16
+        Me.Button4.Text = "Exporter            "
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'Button7
         '
@@ -417,23 +434,6 @@ Partial Class InvReception
         Me.dte1.Name = "dte1"
         Me.dte1.Size = New System.Drawing.Size(243, 20)
         Me.dte1.TabIndex = 0
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.Transparent
-        Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(645, 2)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(129, 36)
-        Me.Button4.TabIndex = 16
-        Me.Button4.Text = "Exporter            "
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button4.UseVisualStyleBackColor = False
         '
         'InvReception
         '

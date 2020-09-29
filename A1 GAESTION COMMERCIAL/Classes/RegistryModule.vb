@@ -70,6 +70,7 @@
             Form1.BoundDbPath = getRegistryinfo("PathBound", "C:\")
             Form1.SvgdPah = getRegistryinfo("PathSvgd", "C:\")
             Form1.ImgPah = getRegistryinfo("ImgPath", "C:\")
+            Form1.Data_Comp_Path = getRegistryinfo("Data_Comp_Path", "C:\")
 
  
 

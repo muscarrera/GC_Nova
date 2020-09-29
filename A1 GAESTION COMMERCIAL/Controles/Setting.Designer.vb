@@ -33,7 +33,7 @@ Partial Class Setting
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.plPos = New System.Windows.Forms.Panel()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.Button23 = New System.Windows.Forms.Button()
         Me.Label39 = New System.Windows.Forms.Label()
@@ -165,13 +165,16 @@ Partial Class Setting
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.plData = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button24 = New System.Windows.Forms.Button()
         Me.Button18 = New System.Windows.Forms.Button()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Button17 = New System.Windows.Forms.Button()
+        Me.Label40 = New System.Windows.Forms.Label()
         Me.txtPathImg = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.txtPathSvgd = New System.Windows.Forms.TextBox()
+        Me.txtDataComp = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.txtPathBound = New System.Windows.Forms.TextBox()
         Me.LinkLabel6 = New System.Windows.Forms.LinkLabel()
@@ -186,7 +189,7 @@ Partial Class Setting
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel10.SuspendLayout()
+        Me.plPos.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.Panel11.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -337,7 +340,7 @@ Partial Class Setting
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.Panel10)
+        Me.Panel2.Controls.Add(Me.plPos)
         Me.Panel2.Controls.Add(Me.plPref)
         Me.Panel2.Controls.Add(Me.plImp)
         Me.Panel2.Controls.Add(Me.plRole)
@@ -351,18 +354,18 @@ Partial Class Setting
         Me.Panel2.Size = New System.Drawing.Size(760, 843)
         Me.Panel2.TabIndex = 14
         '
-        'Panel10
+        'plPos
         '
-        Me.Panel10.Controls.Add(Me.GroupBox8)
-        Me.Panel10.Controls.Add(Me.Panel11)
-        Me.Panel10.Controls.Add(Me.Label37)
-        Me.Panel10.Controls.Add(Me.txtImpPos)
-        Me.Panel10.Controls.Add(Me.Button21)
-        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel10.Location = New System.Drawing.Point(5, 489)
-        Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(750, 271)
-        Me.Panel10.TabIndex = 19
+        Me.plPos.Controls.Add(Me.GroupBox8)
+        Me.plPos.Controls.Add(Me.Panel11)
+        Me.plPos.Controls.Add(Me.Label37)
+        Me.plPos.Controls.Add(Me.txtImpPos)
+        Me.plPos.Controls.Add(Me.Button21)
+        Me.plPos.Dock = System.Windows.Forms.DockStyle.Top
+        Me.plPos.Location = New System.Drawing.Point(5, 748)
+        Me.plPos.Name = "plPos"
+        Me.plPos.Size = New System.Drawing.Size(750, 271)
+        Me.plPos.TabIndex = 19
         '
         'GroupBox8
         '
@@ -487,7 +490,7 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 334)
+        Me.plPref.Location = New System.Drawing.Point(5, 593)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
         Me.plPref.Size = New System.Drawing.Size(750, 155)
@@ -810,7 +813,7 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 258)
+        Me.plImp.Location = New System.Drawing.Point(5, 517)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
         Me.plImp.Size = New System.Drawing.Size(750, 76)
@@ -1380,7 +1383,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 200)
+        Me.plRole.Location = New System.Drawing.Point(5, 459)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 58)
@@ -1427,7 +1430,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 138)
+        Me.plUser.Location = New System.Drawing.Point(5, 397)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1486,7 +1489,7 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 67)
+        Me.plText.Location = New System.Drawing.Point(5, 326)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
         Me.plText.Size = New System.Drawing.Size(750, 71)
@@ -1775,26 +1778,40 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 62)
+        Me.plData.Size = New System.Drawing.Size(750, 321)
         Me.plData.TabIndex = 13
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button24)
         Me.GroupBox1.Controls.Add(Me.Button18)
         Me.GroupBox1.Controls.Add(Me.Button16)
         Me.GroupBox1.Controls.Add(Me.Button17)
+        Me.GroupBox1.Controls.Add(Me.Label40)
         Me.GroupBox1.Controls.Add(Me.txtPathImg)
         Me.GroupBox1.Controls.Add(Me.Label23)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.txtPathSvgd)
+        Me.GroupBox1.Controls.Add(Me.txtDataComp)
         Me.GroupBox1.Controls.Add(Me.Label22)
         Me.GroupBox1.Controls.Add(Me.txtPathBound)
         Me.GroupBox1.Location = New System.Drawing.Point(363, 76)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 206)
+        Me.GroupBox1.Size = New System.Drawing.Size(320, 272)
         Me.GroupBox1.TabIndex = 30
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Liens"
+        '
+        'Button24
+        '
+        Me.Button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button24.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button24.Location = New System.Drawing.Point(220, 212)
+        Me.Button24.Name = "Button24"
+        Me.Button24.Size = New System.Drawing.Size(75, 29)
+        Me.Button24.TabIndex = 20
+        Me.Button24.Text = "UpLoad"
+        Me.Button24.UseVisualStyleBackColor = True
         '
         'Button18
         '
@@ -1829,6 +1846,15 @@ Partial Class Setting
         Me.Button17.Text = "UpLoad"
         Me.Button17.UseVisualStyleBackColor = True
         '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(19, 203)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(71, 13)
+        Me.Label40.TabIndex = 26
+        Me.Label40.Text = "Path MLCOM"
+        '
         'txtPathImg
         '
         Me.txtPathImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -1862,6 +1888,14 @@ Partial Class Setting
         Me.txtPathSvgd.Name = "txtPathSvgd"
         Me.txtPathSvgd.Size = New System.Drawing.Size(195, 20)
         Me.txtPathSvgd.TabIndex = 25
+        '
+        'txtDataComp
+        '
+        Me.txtDataComp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDataComp.Location = New System.Drawing.Point(19, 221)
+        Me.txtDataComp.Name = "txtDataComp"
+        Me.txtDataComp.Size = New System.Drawing.Size(195, 20)
+        Me.txtDataComp.TabIndex = 25
         '
         'Label22
         '
@@ -1984,8 +2018,8 @@ Partial Class Setting
         CType(Me.PB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel10.ResumeLayout(False)
-        Me.Panel10.PerformLayout()
+        Me.plPos.ResumeLayout(False)
+        Me.plPos.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.Panel11.ResumeLayout(False)
@@ -2186,7 +2220,7 @@ Partial Class Setting
     Friend WithEvents cbNormalImp As System.Windows.Forms.CheckBox
     Friend WithEvents allowAddElement_to As System.Windows.Forms.CheckBox
     Friend WithEvents Button22 As System.Windows.Forms.Button
-    Friend WithEvents Panel10 As System.Windows.Forms.Panel
+    Friend WithEvents plPos As System.Windows.Forms.Panel
     Friend WithEvents Panel11 As System.Windows.Forms.Panel
     Friend WithEvents Label38 As System.Windows.Forms.Label
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
@@ -2198,5 +2232,8 @@ Partial Class Setting
     Friend WithEvents Label39 As System.Windows.Forms.Label
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
     Friend WithEvents Button23 As System.Windows.Forms.Button
+    Friend WithEvents Button24 As System.Windows.Forms.Button
+    Friend WithEvents Label40 As System.Windows.Forms.Label
+    Friend WithEvents txtDataComp As System.Windows.Forms.TextBox
 
 End Class

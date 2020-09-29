@@ -13,6 +13,8 @@
         plRole.Height = 60
         plUser.Height = 60
         plImp.Height = 60
+        plPos.Height = 60
+
 
         ' Add any initialization after the InitializeComponent() call.
         txtnn.text = getRegistryinfo("fontName_Normal", "Arial")
@@ -65,6 +67,7 @@
             txtPathBound.Text = getRegistryinfo("PathBound", "C:\")
             txtPathSvgd.Text = getRegistryinfo("PathSvgd", "C:\")
             txtPathImg.Text = getRegistryinfo("ImgPath", "C:\")
+            txtDataComp.Text = getRegistryinfo("Data_Comp_Path", "C:\")
 
 
             'prefix
@@ -223,35 +226,37 @@
         End Try
     End Sub
     'side menu
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click, Panel4.Click
         plData.Height = 1
         plText.Height = 1
         plPref.Height = 1
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 777
+        plPos.Height = 1
     End Sub
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click, Panel5.Click
         plData.Height = 1
         plText.Height = 1
         plPref.Height = 777
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
-
+        plPos.Height = 1
 
 
 
     End Sub
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click, Panel9.Click
         plData.Height = 1
         plText.Height = 1
         plPref.Height = 1
         plRole.Height = 777
         plUser.Height = 1
         plImp.Height = 1
+        plPos.Height = 1
     End Sub
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click, Panel8.Click
         If Form1.admin = False Then Exit Sub
 
 
@@ -261,22 +266,25 @@
         plRole.Height = 1
         plUser.Height = 777
         plImp.Height = 1
+        plPos.Height = 1
     End Sub
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click, Panel7.Click
         plData.Height = 1
         plText.Height = 777
         plPref.Height = 1
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
+        plPos.Height = 1
     End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click, Panel6.Click
         plData.Height = 777
         plText.Height = 1
         plPref.Height = 1
         plRole.Height = 1
         plUser.Height = 1
         plImp.Height = 1
+        plPos.Height = 1
     End Sub
     'width
     Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
@@ -650,5 +658,33 @@
             setRegistryinfo("modeSearch_isCode", cbSearchByCode.Checked)
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub Button24_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button24.Click
+        Try
+            Dim OPF As New OpenFileDialog
+            If OPF.ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim fi As New IO.FileInfo(OPF.FileName)
+                Dim directoryName As String = fi.DirectoryName
+                txtDataComp.Text = directoryName
+            End If
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "Data_Comp_Path", txtDataComp.Text)
+
+            Form1.Data_Comp_Path = txtDataComp.Text
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        End Try
+    End Sub
+
+    Private Sub Button22_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button22.Click, Panel11.Click
+        plData.Height = 1
+        plText.Height = 1
+        plPref.Height = 1
+        plRole.Height = 1
+        plUser.Height = 1
+        plImp.Height = 1
+        plPos.Height = 777
     End Sub
 End Class

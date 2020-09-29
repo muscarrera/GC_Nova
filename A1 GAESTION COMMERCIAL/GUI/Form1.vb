@@ -103,6 +103,7 @@
     Public pv_NormalClient As String = "Client Comptoir"
     Friend Shared indexStartArticle As Integer
     Friend Shared printer_POS As String
+    Friend Shared Data_Comp_Path As String
 
 
     Public Property prefix As String
@@ -180,6 +181,18 @@
         InstalPvModule = False
         InstalParckModule = False
         InstalInventaireModule = True
+
+
+
+        '''''''''
+
+        Dim mlc As New LoadCompanies
+        If mlc.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+            End
+        End If
+
+
+
 
 
         'check Users
@@ -263,21 +276,21 @@
 
     Private Sub HeaderColor(ByVal value As String)
 
-        'plHeaderButton.BackColor = Color.MediumSlateBlue
-        'Panel6.BackColor = Color.MediumSlateBlue
+        plHeaderButton.BackColor = Color.MediumSlateBlue
+        Panel6.BackColor = Color.MediumSlateBlue
 
         For Each b As Control In plHeaderButton.Controls
-            If b.Text = value Then
-                b.BackColor = Color.SlateBlue
-            Else
-                b.BackColor = Color.DodgerBlue
-            End If
-
             'If b.Text = value Then
-            '    b.BackColor = Color.Crimson
+            '    b.BackColor = Color.SlateBlue
             'Else
-            '    b.BackColor = Color.MediumSlateBlue
+            '    b.BackColor = Color.DodgerBlue
             'End If
+
+            If b.Text = value Then
+                b.BackColor = Color.Crimson
+            Else
+                b.BackColor = Color.MediumSlateBlue
+            End If
         Next
     End Sub
     Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_Home.Click

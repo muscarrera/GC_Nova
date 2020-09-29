@@ -479,6 +479,18 @@
     <Compile Include="GUI\ModePayement.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\MultiCompanies\CompanyBloc.Designer.vb">
+      <DependentUpon>CompanyBloc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MultiCompanies\CompanyBloc.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MultiCompanies\LoadCompanies.Designer.vb">
+      <DependentUpon>LoadCompanies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MultiCompanies\LoadCompanies.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\NouveauFacture.Designer.vb">
       <DependentUpon>NouveauFacture.vb</DependentUpon>
     </Compile>
@@ -766,6 +778,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ModePayement.resx">
       <DependentUpon>ModePayement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MultiCompanies\CompanyBloc.resx">
+      <DependentUpon>CompanyBloc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MultiCompanies\LoadCompanies.resx">
+      <DependentUpon>LoadCompanies.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NouveauFacture.resx">
       <DependentUpon>NouveauFacture.vb</DependentUpon>

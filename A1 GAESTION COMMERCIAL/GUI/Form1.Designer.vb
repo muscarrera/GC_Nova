@@ -60,6 +60,7 @@ Partial Class Form1
         Me.PrintDocMission = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocList = New System.Drawing.Printing.PrintDocument()
         Me.PrintDocDesign = New System.Drawing.Printing.PrintDocument()
+        Me.lbNameComp = New System.Windows.Forms.Label()
         Me.plHead.SuspendLayout()
         Me.plHeader.SuspendLayout()
         Me.plHeaderButton.SuspendLayout()
@@ -352,6 +353,7 @@ Partial Class Form1
         '
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.lbNameComp)
         Me.Panel4.Controls.Add(Me.lbExr)
         Me.Panel4.Controls.Add(Me.Label3)
         Me.Panel4.Controls.Add(Me.Label1)
@@ -393,10 +395,11 @@ Partial Class Form1
         '
         'lbExr
         '
+        Me.lbExr.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbExr.AutoSize = True
         Me.lbExr.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbExr.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.lbExr.Location = New System.Drawing.Point(187, 5)
+        Me.lbExr.Location = New System.Drawing.Point(908, 4)
         Me.lbExr.Name = "lbExr"
         Me.lbExr.Size = New System.Drawing.Size(51, 16)
         Me.lbExr.TabIndex = 1
@@ -404,10 +407,11 @@ Partial Class Form1
         '
         'Label3
         '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label3.Location = New System.Drawing.Point(121, 5)
+        Me.Label3.Location = New System.Drawing.Point(842, 4)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(60, 17)
         Me.Label3.TabIndex = 1
@@ -460,6 +464,17 @@ Partial Class Form1
         '
         'PrintDocDesign
         '
+        '
+        'lbNameComp
+        '
+        Me.lbNameComp.AutoSize = True
+        Me.lbNameComp.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNameComp.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.lbNameComp.Location = New System.Drawing.Point(123, 6)
+        Me.lbNameComp.Name = "lbNameComp"
+        Me.lbNameComp.Size = New System.Drawing.Size(38, 16)
+        Me.lbNameComp.TabIndex = 1
+        Me.lbNameComp.Text = "*****"
         '
         'Form1
         '
@@ -526,5 +541,6 @@ Partial Class Form1
     Friend WithEvents bt_Inv As System.Windows.Forms.Button
     Friend WithEvents PrintDocDesign As System.Drawing.Printing.PrintDocument
     Friend WithEvents bt_Pv As System.Windows.Forms.Button
+    Friend WithEvents lbNameComp As System.Windows.Forms.Label
 
 End Class

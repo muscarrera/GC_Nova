@@ -214,10 +214,10 @@ Module AdminModule
     ' for slave
     Private Function checktrialSlave() As Boolean
 
-        Using a As BoundClass = New BoundClass
-            a.LoadDb()
-            'a.LoadDb(btDbDv.Tag)
-        End Using
+        'Using a As BoundClass = New BoundClass
+        '    a.LoadDb()
+        '    'a.LoadDb(btDbDv.Tag)
+        'End Using
 
         Dim resultkey As Integer = HandleRegistry()
 
@@ -399,26 +399,8 @@ Public Class BoundClass
             Return False
         End Try
     End Function
-    Public Function LoadDb(ByRef p As String) As Boolean
-        Try
-            If File.Exists(p) Then
-
-                File.Copy(p, _DbPath, True)
-            End If
-
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
-    Public Sub DeletOldFiles()
-        Try
-            Dim FILE_NAME As String = _PathDocs & "\Docs\Sv_New_Ch.dat"
-            File.Delete(FILE_NAME)
-        Catch ex As Exception
-
-        End Try
-    End Sub
+    
+    
     Public Sub ChangeConnectionString()
         Try
 
