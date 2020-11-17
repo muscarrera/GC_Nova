@@ -55,7 +55,8 @@
                 t += a.Total_ht
             Next
             'If hasManyRemise = False Then t -= (t * Remise) / 100
-            Return t
+            '  Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public ReadOnly Property Tva As Decimal
@@ -81,7 +82,9 @@
                 Next
             End If
 
-            Return tv
+            'Return tv
+
+            Return Math.Round(tv, 3)
         End Get
     End Property
     Public ReadOnly Property Total_TTC As Decimal
@@ -97,17 +100,20 @@
                 Next
             End If
 
-            Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public ReadOnly Property Rest As Decimal
         Get
-            Return Total_TTC - _Avance
+            ' Return Total_TTC - _Avance
+            Return Math.Round(Total_TTC - _Avance, 3)
         End Get
     End Property
     Public Property Avance As Decimal
         Get
-            Return _Avance
+            '   Return _Avance
+
+            Return Math.Round(_Avance, 3)
         End Get
         Set(ByVal value As Decimal)
             _Avance = value
@@ -126,7 +132,10 @@
                     r += a.Total_remise
                 Next
                 Try
-                    Return (r * 100) / Total_Ht
+                    'Return (r * 100) / Total_Ht
+
+                    Return Math.Round((r * 100) / Total_Ht, 3)
+
                 Catch ex As Exception
                     Return 0
                 End Try
@@ -296,16 +305,16 @@
 
 
     'Subs & functions
-    Public Sub AddItem(ByVal R As ALMohassinDBDataSet.ArticleRow)
+    Public Sub AddItem(ByVal R As DataRow) ' (ByVal R As ALMohassinDBDataSet.ArticleRow)
         Try
             'Never add charges items to selling items
             Dim qte As Double = CP.Value
             Dim ap As Items
 
-            If IsExiste(R.arid) And Form1.pv_useMergeArt = True Then
+            If IsExiste(R(0)) And Form1.pv_useMergeArt = True Then
 
                 For Each ap In Pl.Controls
-                    If ap.arid = R.arid Then
+                    If ap.arid = R(0) Then
 
                         ap.Qte += qte
                         Exit For
@@ -316,27 +325,26 @@
                 ap = New Items
                 ap.Dock = DockStyle.Top
                 ap.Index = Pl.Controls.Count
-                ap.Name = R.name
-                ap.Unite = R.stockType ' unite
+                ap.Name = R("name")
+
+                ap.Tva = 20
+                If isUniqTva Then ap.Tva = R("tva")
+
+                ap.Unite = R("stockType") ' unite
                 If isSell Then
-                    ap.Price = R.sprice
-                    ''use many prices 
-                    'If Num > 0 Then
-                    '    ap.Price = R.bprice + (R.bprice * Num / 100)
-                    'End If
+                    ap.Price = R("sprice")
                 Else
-                    ap.Price = R.bprice
+                    ap.Price = R("bprice")
                 End If
                 Dim rnd As New Random
-                ap.Bprice = R.bprice
+                ap.Bprice = R("bprice")
                 ap.BgColor = Color.White
                 ap.SideColor = Color.Moccasin
                 ap.id = rnd.Next
-                ap.arid = R.arid
-                ap.Tva = 20
-                If isUniqTva Then ap.Tva = R.tva
-                ap.cid = R.cid
-                ap.code = R.ref
+                ap.arid = R("arid")
+                
+                ap.cid = R("cid")
+                ap.code = R("ref")
                 ap.Poid = 0
                 'ap.Depot = CP.Depot ' R.depot
                 'If Form1.CbDepotOrigine.Checked Then ap.Depot = R.depot
@@ -344,26 +352,7 @@
                 ap.Remise = 0
 
                 ''''''''
-
-
-                'Using c As SubClass = New SubClass
-
-                '    If Form1.CbQteStk.Checked And isSell Then
-                '        Dim stk = c.getStock(ap.arid, ap.Depot, 0)
-                '        If qte >= stk Then qte = stk
-
-                '        If ClId = -1 Then qte = stk
-
-                '        If qte < 0 Then qte = 0
-                '    End If
-
-                '    ap.ColorStock = c.CheckForMinStock(ap.arid, ap.Depot, qte)
-                '    ap.Stock = c.getStock(ap.arid, ap.Depot, qte)
-                'End Using
-
                 ap.Qte = qte
-
-                'ap.IsArabic = True
 
                 AddHandler ap.Click, AddressOf ClearPanel
                 AddHandler ap.ItemDoubleClick, AddressOf Item_Doubleclick
@@ -509,8 +498,8 @@
         For Each a In Pl.Controls
             If a.id = id Then
                 a.Name = prdname
-                a.Bprice = bprice
-                a.Price = price
+                a.Bprice = bprice / ((100 + a.Tva) / 100)
+                a.Price = price / ((100 + a.Tva) / 100)
                 a.Qte = qte
 
                 UpdateValue()

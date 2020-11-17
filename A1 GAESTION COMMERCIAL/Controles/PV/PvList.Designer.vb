@@ -85,7 +85,7 @@ Partial Class PvList
         Me.Button10.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Button10.FlatAppearance.BorderSize = 0
         Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button10.ForeColor = System.Drawing.Color.White
         Me.Button10.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FILE_22
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -330,7 +330,6 @@ Partial Class PvList
         Me.RPL.ShowProfit = False
         Me.RPL.Size = New System.Drawing.Size(371, 920)
         Me.RPL.TabIndex = 18
-
         '
         'PvList
         '

@@ -481,7 +481,7 @@ Public Class PvList
     Private Sub RPL_UpdateItem(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RPL.UpdateItem
         Try
             Dim i As Items = sender
-            Dim clc As New pvEditItemDetails(i.Name, i.Bprice, i.Price, i.Qte)
+            Dim clc As New pvEditItemDetails(i.Name, i.bPrice_TTC, i.Price_TTC, i.Qte)
             If clc.ShowDialog = DialogResult.OK Then
                   
                     
@@ -610,4 +610,5 @@ Public Class PvList
         SaveChanges()
 
     End Sub
+
 End Class

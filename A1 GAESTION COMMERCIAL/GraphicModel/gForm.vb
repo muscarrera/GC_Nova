@@ -78,16 +78,17 @@ Public Class gForm
             table.Columns.Add("depot", GetType(Integer))
             table.Columns.Add("remise", GetType(Integer))
             table.Columns.Add("bl", GetType(Integer))
+            table.Columns.Add("totaltva", GetType(Double))
 
             ' Add  rows with those columns filled in the DataTable.
             table.Rows.Add(1, "Article1", 1, 3, String.Format("{0:0.00}", 11.5), 11,
-                              20, "REF 123", 1, 0, 2)
+                              20, "REF 123", 1, 0, 2, 3)
             table.Rows.Add(1, "Article2", 1, 12, String.Format("{0:0.00}", 34.4), 11,
-                             20, "REF 123", 1, 0, 2)
+                             20, "REF 123", 1, 0, 2, 5)
             table.Rows.Add(1, "Article3", 1, 1, String.Format("{0:0.00}", 66), 11,
-                             20, "REF 123", 1, 0, 2)
+                             20, "REF 123", 1, 0, 2, 2)
             table.Rows.Add(1, "Article4", 1, 54, String.Format("{0:0.00}", 5), 11,
-                             14, "REF 123", 4, 0, 2)
+                             14, "REF 123", 4, 0, 2, 6)
             Return table
         End Get
     End Property
@@ -107,11 +108,14 @@ Public Class gForm
             table.Columns.Add("total_droitTimbre", GetType(String))
             table.Columns.Add("MPayement", GetType(String))
             table.Columns.Add("Editeur", GetType(String))
+            table.Columns.Add("vidal", GetType(String))
+            table.Columns.Add("ref", GetType(String))
+
 
             ' Add  rows with those columns filled in the DataTable.
             table.Rows.Add(1, Now.Date, 1, "Mohamed", String.Format("{0:0.00}", 222),
                            String.Format("{0:0.00}", 66), String.Format("{0:0.00}", 288), "0",
-                              "0", "0", "CHEQUE", "ADMIN")
+                              "0", "0", "CHEQUE", "ADMIN", 12, "BL-001")
             Return table
         End Get
     End Property

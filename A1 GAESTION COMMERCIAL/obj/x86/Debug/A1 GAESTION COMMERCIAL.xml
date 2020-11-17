@@ -79,6 +79,10 @@ A1GAESTIONCOMMERCIAL
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.BGPVAR_2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:A1_GAESTION_COMMERCIAL.My.Resources.Resources.block_24">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

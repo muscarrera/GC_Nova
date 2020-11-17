@@ -135,10 +135,10 @@
             Return t
         End Get
     End Property
-    Public ReadOnly Property TotaltVA() As Double
+    Public ReadOnly Property TotalTVA() As Double
         Get
             Dim t As Double = TotalHt - TotalRemise
-            t = (t * TVA) / 100
+            t = (t * Tva) / 100
 
             Return t
         End Get
@@ -329,7 +329,7 @@
         'plRef.Width = Form1.cellWidth
     End Sub
     Private Sub lbName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbName.TextChanged
-        Me.Height = lbName.Height + 32
+        'Me.Height = lbName.Height + 32
     End Sub
     Private Sub lbref_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles plT.Click, plSet.Click, plR.Click, plQ.Click, plP.Click, plNm.Click, PlLeft.Click, lbTotal.Click, lbRemise.Click, lbref.Click, lbQte.Click, lbPrice.Click, lbName.Click, Panel1.Click
         isSelected = Not isSelected

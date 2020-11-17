@@ -484,11 +484,11 @@ Partial Class EnteteFacture
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label14.Location = New System.Drawing.Point(233, 30)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(87, 12)
+        Me.Label14.Size = New System.Drawing.Size(79, 13)
         Me.Label14.TabIndex = 2
         Me.Label14.Text = "En compte de :"
         '

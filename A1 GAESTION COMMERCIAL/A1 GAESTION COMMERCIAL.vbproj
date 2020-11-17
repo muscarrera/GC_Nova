@@ -243,6 +243,12 @@
     <Compile Include="Controles\PV\Items.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controles\PV\PvArticle.Designer.vb">
+      <DependentUpon>PvArticle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\PV\PvArticle.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controles\PV\pvEditItemDetails.Designer.vb">
       <DependentUpon>pvEditItemDetails.vb</DependentUpon>
     </Compile>
@@ -665,6 +671,9 @@
     <EmbeddedResource Include="Controles\PV\Items.resx">
       <DependentUpon>Items.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles\PV\PvArticle.resx">
+      <DependentUpon>PvArticle.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles\PV\pvEditItemDetails.resx">
       <DependentUpon>pvEditItemDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -869,6 +878,7 @@
     <Content Include="ALMohassinDB.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\BGPVAR 2.png" />
     <None Include="Resources\close40.png" />
     <None Include="Resources\234339-200.png" />
     <None Include="Resources\ALLOW 24.png" />

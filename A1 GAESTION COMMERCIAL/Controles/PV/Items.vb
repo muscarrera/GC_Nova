@@ -45,21 +45,21 @@
         Get
             Dim t As Decimal = _total / ((100 + Tva) / 100)
             t -= (t * Remise) / 100
-            Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public ReadOnly Property Total_tva() As Decimal
         Get
             Dim t As Decimal = Total_ht
             t = (t * Tva) / 100
-            Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public ReadOnly Property Total_remise() As Decimal
         Get
             Dim t As Decimal = _total / ((100 + Tva) / 100)
             t = (t * Remise) / 100
-            Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public ReadOnly Property Profit_ht() As Decimal
@@ -67,7 +67,7 @@
             Dim t As Decimal = (Qte * Bprice) / ((100 + Tva) / 100)
             't -= (t * Remise) / 100
             t = Total_ht - t
-            Return t
+            Return Math.Round(t, 3)
         End Get
     End Property
 
@@ -107,12 +107,9 @@
             RaiseEvent ItemValueChanged(_qte, value, "qte", Me)
             '''''''
             _qte = value
-            _total = _price * value
+            _total = Price_TTC * value
             LbTotal.Text = String.Format("{0:n}", Total_ttc)
             LbQte.Text = _qte & " " & CStr(Unite) '& " x "
-            'LbQte.Text &= String.Format("{0:n}", _price) & " Dhs  -  " '& "  (" & _addDesc & ")"
-            'If Depot > 0 Then LbQte.Text &= " [Rest : (" & Stock & ")]"
-
         End Set
     End Property
     Public Property Price() As Decimal
@@ -124,17 +121,30 @@
             RaiseEvent ItemValueChanged(_price, value, "price", Me)
             '''''''
             _price = value
-            _total = _qte * value
+            _total = _qte * Price_TTC
             LbTotal.Text = String.Format("{0:n}", Total_ttc)
 
-            LbPrice.Text = String.Format("{0:n}", _price) & " Dhs"
-
+            ' LbPrice.Text = String.Format("{0:n}", _price) & " Dhs"
+            LbPrice.Text = String.Format("{0:n}", _price * ((100 + Tva) / 100)) & " Dhs"
         End Set
     End Property
 
     Public ReadOnly Property Price_Ht() As Decimal
         Get
-            Return _price / ((100 + Tva) / 100)
+            ' Return _price / ((100 + Tva) / 100)
+            Return Math.Round(Price, 3)
+        End Get
+    End Property
+    Public ReadOnly Property Price_TTC() As Decimal
+        Get
+            Dim t = _price * ((100 + Tva) / 100)
+            Return Math.Round(t, 3)
+        End Get
+    End Property
+    Public ReadOnly Property bPrice_TTC() As Decimal
+        Get
+            Dim t = Bprice * ((100 + Tva) / 100)
+            Return Math.Round(t, 3)
         End Get
     End Property
     Public Property Depot() As Decimal

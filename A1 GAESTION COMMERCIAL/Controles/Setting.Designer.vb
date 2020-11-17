@@ -185,6 +185,15 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.txtnpv = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtspv = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.Button25 = New System.Windows.Forms.Button()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.txtWpv = New System.Windows.Forms.TextBox()
+        Me.txtHpv = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -220,6 +229,7 @@ Partial Class Setting
         Me.GroupBox1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -356,15 +366,16 @@ Partial Class Setting
         '
         'plPos
         '
+        Me.plPos.Controls.Add(Me.GroupBox9)
         Me.plPos.Controls.Add(Me.GroupBox8)
         Me.plPos.Controls.Add(Me.Panel11)
         Me.plPos.Controls.Add(Me.Label37)
         Me.plPos.Controls.Add(Me.txtImpPos)
         Me.plPos.Controls.Add(Me.Button21)
         Me.plPos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPos.Location = New System.Drawing.Point(5, 748)
+        Me.plPos.Location = New System.Drawing.Point(5, 357)
         Me.plPos.Name = "plPos"
-        Me.plPos.Size = New System.Drawing.Size(750, 271)
+        Me.plPos.Size = New System.Drawing.Size(750, 324)
         Me.plPos.TabIndex = 19
         '
         'GroupBox8
@@ -434,11 +445,11 @@ Partial Class Setting
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label38.Location = New System.Drawing.Point(87, 12)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(43, 18)
+        Me.Label38.Size = New System.Drawing.Size(42, 20)
         Me.Label38.TabIndex = 12
         Me.Label38.Text = "POS"
         '
@@ -456,7 +467,7 @@ Partial Class Setting
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(427, 78)
+        Me.Label37.Location = New System.Drawing.Point(37, 226)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(83, 13)
         Me.Label37.TabIndex = 24
@@ -465,7 +476,7 @@ Partial Class Setting
         'txtImpPos
         '
         Me.txtImpPos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtImpPos.Location = New System.Drawing.Point(430, 98)
+        Me.txtImpPos.Location = New System.Drawing.Point(40, 246)
         Me.txtImpPos.Name = "txtImpPos"
         Me.txtImpPos.ReadOnly = True
         Me.txtImpPos.Size = New System.Drawing.Size(228, 20)
@@ -474,7 +485,7 @@ Partial Class Setting
         'Button21
         '
         Me.Button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button21.Location = New System.Drawing.Point(583, 124)
+        Me.Button21.Location = New System.Drawing.Point(291, 236)
         Me.Button21.Name = "Button21"
         Me.Button21.Size = New System.Drawing.Size(75, 29)
         Me.Button21.TabIndex = 23
@@ -490,10 +501,10 @@ Partial Class Setting
         Me.plPref.Controls.Add(Me.Button11)
         Me.plPref.Controls.Add(Me.Panel5)
         Me.plPref.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPref.Location = New System.Drawing.Point(5, 593)
+        Me.plPref.Location = New System.Drawing.Point(5, 281)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(750, 155)
+        Me.plPref.Size = New System.Drawing.Size(750, 76)
         Me.plPref.TabIndex = 18
         '
         'GroupBox3
@@ -759,11 +770,11 @@ Partial Class Setting
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label17.Location = New System.Drawing.Point(87, 12)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(98, 18)
+        Me.Label17.Size = New System.Drawing.Size(87, 20)
         Me.Label17.TabIndex = 12
         Me.Label17.Text = "Preference"
         '
@@ -813,10 +824,10 @@ Partial Class Setting
         Me.plImp.Controls.Add(Me.Button71)
         Me.plImp.Controls.Add(Me.Panel4)
         Me.plImp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plImp.Location = New System.Drawing.Point(5, 517)
+        Me.plImp.Location = New System.Drawing.Point(5, 263)
         Me.plImp.Name = "plImp"
         Me.plImp.Padding = New System.Windows.Forms.Padding(10)
-        Me.plImp.Size = New System.Drawing.Size(750, 76)
+        Me.plImp.Size = New System.Drawing.Size(750, 18)
         Me.plImp.TabIndex = 17
         '
         'GroupBox7
@@ -1358,11 +1369,11 @@ Partial Class Setting
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label16.Location = New System.Drawing.Point(89, 10)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(96, 18)
+        Me.Label16.Size = New System.Drawing.Size(87, 20)
         Me.Label16.TabIndex = 12
         Me.Label16.Text = "Impression"
         '
@@ -1383,7 +1394,7 @@ Partial Class Setting
         Me.plRole.BackColor = System.Drawing.Color.Transparent
         Me.plRole.Controls.Add(Me.Panel9)
         Me.plRole.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plRole.Location = New System.Drawing.Point(5, 459)
+        Me.plRole.Location = New System.Drawing.Point(5, 205)
         Me.plRole.Name = "plRole"
         Me.plRole.Padding = New System.Windows.Forms.Padding(10)
         Me.plRole.Size = New System.Drawing.Size(750, 58)
@@ -1404,11 +1415,11 @@ Partial Class Setting
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label15.Location = New System.Drawing.Point(90, 10)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(44, 18)
+        Me.Label15.Size = New System.Drawing.Size(42, 20)
         Me.Label15.TabIndex = 12
         Me.Label15.Text = "Role"
         '
@@ -1430,7 +1441,7 @@ Partial Class Setting
         Me.plUser.Controls.Add(Me.LinkLabel1)
         Me.plUser.Controls.Add(Me.Panel8)
         Me.plUser.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plUser.Location = New System.Drawing.Point(5, 397)
+        Me.plUser.Location = New System.Drawing.Point(5, 143)
         Me.plUser.Name = "plUser"
         Me.plUser.Padding = New System.Windows.Forms.Padding(10)
         Me.plUser.Size = New System.Drawing.Size(750, 62)
@@ -1462,11 +1473,11 @@ Partial Class Setting
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label14.Location = New System.Drawing.Point(90, 10)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(90, 18)
+        Me.Label14.Size = New System.Drawing.Size(80, 20)
         Me.Label14.TabIndex = 12
         Me.Label14.Text = "Utilisateur"
         '
@@ -1489,10 +1500,10 @@ Partial Class Setting
         Me.plText.Controls.Add(Me.GroupBox5)
         Me.plText.Controls.Add(Me.Panel7)
         Me.plText.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plText.Location = New System.Drawing.Point(5, 326)
+        Me.plText.Location = New System.Drawing.Point(5, 81)
         Me.plText.Name = "plText"
         Me.plText.Padding = New System.Windows.Forms.Padding(10)
-        Me.plText.Size = New System.Drawing.Size(750, 71)
+        Me.plText.Size = New System.Drawing.Size(750, 62)
         Me.plText.TabIndex = 14
         '
         'GroupBox6
@@ -1562,6 +1573,9 @@ Partial Class Setting
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Label41)
+        Me.GroupBox5.Controls.Add(Me.txtnpv)
+        Me.GroupBox5.Controls.Add(Me.txtspv)
         Me.GroupBox5.Controls.Add(Me.Label8)
         Me.GroupBox5.Controls.Add(Me.Button14)
         Me.GroupBox5.Controls.Add(Me.Label10)
@@ -1582,7 +1596,7 @@ Partial Class Setting
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(19, 33)
+        Me.Label8.Location = New System.Drawing.Point(21, 23)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(94, 13)
         Me.Label8.TabIndex = 2
@@ -1590,7 +1604,7 @@ Partial Class Setting
         '
         'Button14
         '
-        Me.Button14.Location = New System.Drawing.Point(171, 180)
+        Me.Button14.Location = New System.Drawing.Point(174, 199)
         Me.Button14.Name = "Button14"
         Me.Button14.Size = New System.Drawing.Size(149, 39)
         Me.Button14.TabIndex = 0
@@ -1600,7 +1614,7 @@ Partial Class Setting
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(19, 120)
+        Me.Label10.Location = New System.Drawing.Point(21, 105)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(83, 13)
         Me.Label10.TabIndex = 3
@@ -1611,7 +1625,7 @@ Partial Class Setting
         Me.txtnn.BackColor = System.Drawing.Color.Transparent
         Me.txtnn.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtnn.IsNumiric = False
-        Me.txtnn.Location = New System.Drawing.Point(19, 46)
+        Me.txtnn.Location = New System.Drawing.Point(21, 36)
         Me.txtnn.Name = "txtnn"
         Me.txtnn.PlaceHolder = ""
         Me.txtnn.ShowClearIcon = False
@@ -1628,7 +1642,7 @@ Partial Class Setting
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(19, 79)
+        Me.Label9.Location = New System.Drawing.Point(21, 64)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(91, 13)
         Me.Label9.TabIndex = 2
@@ -1639,7 +1653,7 @@ Partial Class Setting
         Me.txtnt.BackColor = System.Drawing.Color.Transparent
         Me.txtnt.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtnt.IsNumiric = False
-        Me.txtnt.Location = New System.Drawing.Point(19, 94)
+        Me.txtnt.Location = New System.Drawing.Point(21, 79)
         Me.txtnt.Name = "txtnt"
         Me.txtnt.PlaceHolder = ""
         Me.txtnt.ShowClearIcon = False
@@ -1658,7 +1672,7 @@ Partial Class Setting
         Me.txtns.BackColor = System.Drawing.Color.Transparent
         Me.txtns.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtns.IsNumiric = False
-        Me.txtns.Location = New System.Drawing.Point(16, 135)
+        Me.txtns.Location = New System.Drawing.Point(21, 120)
         Me.txtns.Name = "txtns"
         Me.txtns.PlaceHolder = ""
         Me.txtns.ShowClearIcon = False
@@ -1677,7 +1691,7 @@ Partial Class Setting
         Me.txtss.BackColor = System.Drawing.Color.Transparent
         Me.txtss.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtss.IsNumiric = False
-        Me.txtss.Location = New System.Drawing.Point(263, 135)
+        Me.txtss.Location = New System.Drawing.Point(265, 120)
         Me.txtss.Name = "txtss"
         Me.txtss.PlaceHolder = ""
         Me.txtss.ShowClearIcon = False
@@ -1696,7 +1710,7 @@ Partial Class Setting
         Me.txtsn.BackColor = System.Drawing.Color.Transparent
         Me.txtsn.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtsn.IsNumiric = False
-        Me.txtsn.Location = New System.Drawing.Point(266, 46)
+        Me.txtsn.Location = New System.Drawing.Point(265, 36)
         Me.txtsn.Name = "txtsn"
         Me.txtsn.PlaceHolder = ""
         Me.txtsn.ShowClearIcon = False
@@ -1715,7 +1729,7 @@ Partial Class Setting
         Me.txtst.BackColor = System.Drawing.Color.Transparent
         Me.txtst.BorderColor = System.Drawing.SystemColors.ControlText
         Me.txtst.IsNumiric = False
-        Me.txtst.Location = New System.Drawing.Point(266, 94)
+        Me.txtst.Location = New System.Drawing.Point(265, 79)
         Me.txtst.Name = "txtst"
         Me.txtst.PlaceHolder = ""
         Me.txtst.ShowClearIcon = False
@@ -1744,11 +1758,11 @@ Partial Class Setting
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label13.Location = New System.Drawing.Point(87, 11)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(42, 18)
+        Me.Label13.Size = New System.Drawing.Size(39, 20)
         Me.Label13.TabIndex = 12
         Me.Label13.Text = "Text"
         '
@@ -1778,7 +1792,7 @@ Partial Class Setting
         Me.plData.Location = New System.Drawing.Point(5, 5)
         Me.plData.Name = "plData"
         Me.plData.Padding = New System.Windows.Forms.Padding(10)
-        Me.plData.Size = New System.Drawing.Size(750, 321)
+        Me.plData.Size = New System.Drawing.Size(750, 76)
         Me.plData.TabIndex = 13
         '
         'GroupBox1
@@ -1805,7 +1819,7 @@ Partial Class Setting
         'Button24
         '
         Me.Button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button24.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button24.Location = New System.Drawing.Point(220, 212)
         Me.Button24.Name = "Button24"
         Me.Button24.Size = New System.Drawing.Size(75, 29)
@@ -1816,7 +1830,7 @@ Partial Class Setting
         'Button18
         '
         Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button18.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button18.Location = New System.Drawing.Point(220, 160)
         Me.Button18.Name = "Button18"
         Me.Button18.Size = New System.Drawing.Size(75, 29)
@@ -1827,7 +1841,7 @@ Partial Class Setting
         'Button16
         '
         Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button16.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button16.Location = New System.Drawing.Point(220, 46)
         Me.Button16.Name = "Button16"
         Me.Button16.Size = New System.Drawing.Size(75, 29)
@@ -1838,7 +1852,7 @@ Partial Class Setting
         'Button17
         '
         Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button17.Location = New System.Drawing.Point(220, 103)
         Me.Button17.Name = "Button17"
         Me.Button17.Size = New System.Drawing.Size(75, 29)
@@ -1984,11 +1998,11 @@ Partial Class Setting
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label12.Location = New System.Drawing.Point(84, 10)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(46, 18)
+        Me.Label12.Size = New System.Drawing.Size(44, 20)
         Me.Label12.TabIndex = 12
         Me.Label12.Text = "Data"
         '
@@ -2002,6 +2016,111 @@ Partial Class Setting
         Me.PictureBox3.Size = New System.Drawing.Size(60, 35)
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(21, 147)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(62, 13)
+        Me.Label41.TabIndex = 9
+        Me.Label41.Text = "POLICE PV"
+        '
+        'txtnpv
+        '
+        Me.txtnpv.BackColor = System.Drawing.Color.Transparent
+        Me.txtnpv.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnpv.IsNumiric = False
+        Me.txtnpv.Location = New System.Drawing.Point(21, 162)
+        Me.txtnpv.Name = "txtnpv"
+        Me.txtnpv.PlaceHolder = ""
+        Me.txtnpv.ShowClearIcon = False
+        Me.txtnpv.ShowSaveIcon = False
+        Me.txtnpv.Size = New System.Drawing.Size(228, 23)
+        Me.txtnpv.StartUp = 2
+        Me.txtnpv.TabIndex = 8
+        Me.txtnpv.TextSize = 8
+        Me.txtnpv.TxtBackColor = True
+        Me.txtnpv.TxtColor = System.Drawing.Color.White
+        Me.txtnpv.txtReadOnly = False
+        Me.txtnpv.TxtSelect = New Integer() {1, 0}
+        '
+        'txtspv
+        '
+        Me.txtspv.BackColor = System.Drawing.Color.Transparent
+        Me.txtspv.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtspv.IsNumiric = False
+        Me.txtspv.Location = New System.Drawing.Point(265, 162)
+        Me.txtspv.Name = "txtspv"
+        Me.txtspv.PlaceHolder = ""
+        Me.txtspv.ShowClearIcon = False
+        Me.txtspv.ShowSaveIcon = False
+        Me.txtspv.Size = New System.Drawing.Size(57, 23)
+        Me.txtspv.StartUp = 2
+        Me.txtspv.TabIndex = 7
+        Me.txtspv.TextSize = 8
+        Me.txtspv.TxtBackColor = True
+        Me.txtspv.TxtColor = System.Drawing.Color.White
+        Me.txtspv.txtReadOnly = False
+        Me.txtspv.TxtSelect = New Integer() {1, 0}
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.Button25)
+        Me.GroupBox9.Controls.Add(Me.Label42)
+        Me.GroupBox9.Controls.Add(Me.Label43)
+        Me.GroupBox9.Controls.Add(Me.txtWpv)
+        Me.GroupBox9.Controls.Add(Me.txtHpv)
+        Me.GroupBox9.Location = New System.Drawing.Point(406, 77)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(320, 148)
+        Me.GroupBox9.TabIndex = 31
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Valeur"
+        '
+        'Button25
+        '
+        Me.Button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button25.Location = New System.Drawing.Point(226, 99)
+        Me.Button25.Name = "Button25"
+        Me.Button25.Size = New System.Drawing.Size(75, 29)
+        Me.Button25.TabIndex = 32
+        Me.Button25.Text = "Valider"
+        Me.Button25.UseVisualStyleBackColor = True
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(27, 73)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(101, 13)
+        Me.Label42.TabIndex = 26
+        Me.Label42.Text = "Dim Blow (Hauteur) "
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(27, 37)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(99, 13)
+        Me.Label43.TabIndex = 26
+        Me.Label43.Text = "Dim Blow (Largeur) "
+        '
+        'txtWpv
+        '
+        Me.txtWpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtWpv.Location = New System.Drawing.Point(158, 35)
+        Me.txtWpv.Name = "txtWpv"
+        Me.txtWpv.Size = New System.Drawing.Size(74, 20)
+        Me.txtWpv.TabIndex = 25
+        '
+        'txtHpv
+        '
+        Me.txtHpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtHpv.Location = New System.Drawing.Point(158, 70)
+        Me.txtHpv.Name = "txtHpv"
+        Me.txtHpv.Size = New System.Drawing.Size(74, 20)
+        Me.txtHpv.TabIndex = 25
         '
         'Setting
         '
@@ -2069,6 +2188,8 @@ Partial Class Setting
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2235,5 +2356,14 @@ Partial Class Setting
     Friend WithEvents Button24 As System.Windows.Forms.Button
     Friend WithEvents Label40 As System.Windows.Forms.Label
     Friend WithEvents txtDataComp As System.Windows.Forms.TextBox
+    Friend WithEvents Label41 As System.Windows.Forms.Label
+    Friend WithEvents txtnpv As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents txtspv As A1_GAESTION_COMMERCIAL.TxtBox
+    Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button25 As System.Windows.Forms.Button
+    Friend WithEvents Label42 As System.Windows.Forms.Label
+    Friend WithEvents Label43 As System.Windows.Forms.Label
+    Friend WithEvents txtWpv As System.Windows.Forms.TextBox
+    Friend WithEvents txtHpv As System.Windows.Forms.TextBox
 
 End Class

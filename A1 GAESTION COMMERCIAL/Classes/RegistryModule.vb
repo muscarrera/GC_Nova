@@ -34,9 +34,11 @@
             Form1.fontName_Normal = getRegistryinfo("fontName_Normal", "Arial")
             Form1.fontName_Title = getRegistryinfo("fontName_Title", "Arial")
             Form1.fontName_Small = getRegistryinfo("fontName_Small", "Arial")
+            Form1.fontName_PV = getRegistryinfo("fontName_PV", "Arial")
             Form1.fontSize_Normal = getRegistryinfo("fontSize_Normal", 10)
             Form1.fontSize_Title = getRegistryinfo("fontSize_Title", 14)
             Form1.fontSize_Small = getRegistryinfo("fontSize_Small", 8)
+            Form1.fontSize_PV = getRegistryinfo("fontSize_PV", 10)
 
             Form1.mainDepot = getRegistryinfo("mainDepot", 3)
 
@@ -72,11 +74,13 @@
             Form1.ImgPah = getRegistryinfo("ImgPath", "C:\")
             Form1.Data_Comp_Path = getRegistryinfo("Data_Comp_Path", "C:\")
 
- 
+            Form1.pvLongerbt = getRegistryinfo("pvLongerbt", 120)
+            Form1.pvLargebt = getRegistryinfo("pvLargebt", 90)
 
             Form1.useClientRemise_Way = getRegistryinfo("useClientRemise_Way", False)
             Form1.useBlLivrable = getRegistryinfo("useBlLivrable", False)
             Form1.useButtonValidForStock = getRegistryinfo("useButtonValidForStock", False)
+            'Form1.showBtValidForCommand = getRegistryinfo("showBtValidForCommand", False)
 
             Form1.useAccessClient = getRegistryinfo("useAccessClient", False)
             Form1.useSoldByAvoir = getRegistryinfo("useSoldByAvoir", False)

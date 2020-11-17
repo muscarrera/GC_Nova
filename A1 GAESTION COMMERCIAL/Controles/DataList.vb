@@ -339,12 +339,13 @@
             table.Columns.Add("depot", GetType(Integer))
             table.Columns.Add("remise", GetType(Integer))
             table.Columns.Add("bl", GetType(Integer))
+            table.Columns.Add("totaltva", GetType(Integer))
 
             Dim a As ListRow
             For Each a In Pl.Controls
                 ' Add  rows with those columns filled in the DataTable.
                 table.Rows.Add(a.arid, a.ArticleName, a.cid, a.qte, a.sprice, a.bprice,
-                              a.TVA, a.ref, a.depot, a.remise, a.id)
+                              a.Tva, a.ref, a.depot, a.remise, a.id, a.TotaltVA)
             Next
             Return table
         End Get
@@ -866,6 +867,9 @@
             If _dtList.Rows.Count > 0 Then
                 If _dtList.Columns.Count = 19 Then _dtList.Columns.Add("isVD", GetType(Boolean))
                 If _dtList.Columns.Count = 20 Then _dtList.Columns.Add("isV", GetType(Boolean))
+                If _dtList.Columns.Count = 21 Then _dtList.Columns.Add("ComId", GetType(Boolean))
+                If _dtList.Columns.Count = 22 Then _dtList.Columns.Add("Driv", GetType(Boolean))
+
                 _dtList.Columns.Add("Etat", GetType(String))
                 _dtList.Columns.Add("_", GetType(Object))
 
@@ -890,7 +894,9 @@
                 dg.Columns(18).Visible = False
                 dg.Columns(19).Visible = False
                 dg.Columns(20).Visible = False
+                dg.Columns(21).Visible = False
                 dg.Columns(22).Visible = False
+                dg.Columns(24).Visible = False
 
                 dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
                 dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
@@ -901,7 +907,7 @@
                 dg.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
                 dg.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
                 dg.Columns(12).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-                dg.Columns(21).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(23).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
                 dg.Columns(0).HeaderText = "ID/N°"
                 dg.Columns(1).HeaderText = "Date"
@@ -914,13 +920,13 @@
 
                 dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                 dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                dg.Columns(21).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                dg.Columns(23).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
                 dg.Columns(1).DefaultCellStyle.Format = "dd MMM,yy"
 
                 dg.Columns(4).DefaultCellStyle.Format = "c"
                 dg.Columns(7).DefaultCellStyle.Format = "c"
-                dg.Columns(21).DefaultCellStyle.Format = "c"
+                dg.Columns(23).DefaultCellStyle.Format = "c"
 
                 AddHandler dg.CellMouseDoubleClick, AddressOf Dg_MouseDoubleClick
                 AddHandler dg.CellContentClick, AddressOf Dg_CellContentClick
@@ -989,23 +995,23 @@
             isP = dt.Rows(i).Cells(10).Value
 
             If isP Then
-                dt.Rows(i).Cells(21).Value = "Reglé"
-                dt.Rows(i).Cells(21).Style.ForeColor = Color.Green
+                dt.Rows(i).Cells(23).Value = "Reglé"
+                dt.Rows(i).Cells(23).Style.ForeColor = Color.Green
 
                 If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("AVO") Then
-                    dt.Rows(i).Cells(21).Value = "Avoir"
-                    dt.Rows(i).Cells(21).Style.ForeColor = Color.Red
+                    dt.Rows(i).Cells(23).Value = "Avoir"
+                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
                 End If
 
                 If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("ANN") Then
-                    dt.Rows(i).Cells(21).Value = "Supp"
-                    dt.Rows(i).Cells(21).Style.ForeColor = Color.Red
+                    dt.Rows(i).Cells(23).Value = "Supp"
+                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
                 End If
 
                 'dt.Rows(i).Cells(21).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
             Else
                 Dim rest As Double = dt.Rows(i).Cells(7).Value - dt.Rows(i).Cells(4).Value
-                dt.Rows(i).Cells(21).Value = rest.ToString("c")
+                dt.Rows(i).Cells(23).Value = rest.ToString("c")
                 dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
             End If
         Next

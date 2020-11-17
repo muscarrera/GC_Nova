@@ -50,6 +50,8 @@
     Public fontSize_Normal As Integer
     Public fontSize_Title As Integer
     Public fontSize_Small As Integer
+    Public fontSize_PV As Integer
+    Public fontName_PV As String
 
     Public printer_Devis As String
     Public printer_Bon As String
@@ -94,7 +96,7 @@
     Public Color_Selected_Row As Color = Color.Red
     Public allowAddElement_to As Boolean = False
 
-    Public DesimalSringFormat As String = "{0:n2}"
+    Public DesimalSringFormat As String = "{0:n3}"
     'POS
     Friend Shared SearchBy As String = "ref"
     Friend Shared pvLongerbt As Integer = 120
@@ -104,6 +106,7 @@
     Friend Shared indexStartArticle As Integer
     Friend Shared printer_POS As String
     Friend Shared Data_Comp_Path As String
+
 
 
     Public Property prefix As String
@@ -165,11 +168,6 @@
         'Regs info
         HandleRegistryinfo()
 
-        'Dim gg As New gForm
-        'gg.LoadXml()
-        'If gg.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-        '    End
-        'End If
 
         'check Trial
         If TrialVersion_Master = False Then
@@ -178,18 +176,17 @@
         End If
 
         'Modules
-        InstalPvModule = False
+        InstalPvModule = True
         InstalParckModule = False
         InstalInventaireModule = True
 
 
-
         '''''''''
 
-        Dim mlc As New LoadCompanies
-        If mlc.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-            End
-        End If
+        'Dim mlc As New LoadCompanies
+        'If mlc.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+        '    End
+        'End If
 
 
 
@@ -420,12 +417,14 @@
             data.Columns.Add("MPayement", GetType(String))
             data.Columns.Add("Editeur", GetType(String))
             data.Columns.Add("vidal", GetType(String))
+            data.Columns.Add("ref", GetType(String))
+
 
             data.Rows.Add(ds.Entete.lbId.Text, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
                           String.Format("{0:0.00}", ds.TB.TotalHt), String.Format("{0:0.00}", ds.TB.TVA),
                           String.Format("{0:0.00}", ds.TB.TotalTTC), String.Format("{0:0.00}", ds.TB.Remise),
                           String.Format("{0:0.00}", ds.TB.avance), String.Format("{0:0.00}", ds.TB.DroitTimbre),
-                          ds.ModePayement, adminName, ds.DataSource.Rows.Count)
+                          ds.ModePayement, adminName, ds.DataSource.Rows.Count, ds.Entete.Bl)
 
             Dim dt_Client As New DataTable
             ' Create four typed columns in the DataTable.

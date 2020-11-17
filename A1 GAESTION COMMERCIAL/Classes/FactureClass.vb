@@ -794,48 +794,43 @@ Public Class FactureClass
             Exit Sub
         End If
 
-        Dim pr As New gChooseDesign
-        If pr.ShowDialog = DialogResult.OK Then
-            Form1.MP_Localname = pr.localName
 
+        Form1.MP_Localname = "Default.dat"
+        If ds.Operation = "Sell_Facture" Then Form1.MP_Localname = "Facture-Vente.dat"
+        If ds.Operation = "Devis" Then Form1.MP_Localname = "Devis.dat"
+        If ds.Operation = "Commande_Client" Then Form1.MP_Localname = "Commande-Client.dat"
+        If ds.Operation = "Bon_Livraison" Then Form1.MP_Localname = "Bon-Livraison.dat"
+        If ds.Operation = "Buy_Facture" Then Form1.MP_Localname = "Facture-Achat.dat"
+        If ds.Operation = "Bon_Commande" Then Form1.MP_Localname = "Bon-Commande.dat"
+        If ds.Operation = "Bon_Achat" Then Form1.MP_Localname = "Bon-Achat.dat"
+        If ds.Operation = "Sell_Avoir" Then Form1.MP_Localname = "Avoir-Vente.dat"
+        If ds.Operation = "Buy_Avoir" Then Form1.MP_Localname = "Avoir-Achat.dat"
+
+        Try
             Dim g As New gGlobClass
-            g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & pr.localName)
-
-
             Try
-                Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
-                ps.PaperName = g.p_Kind
-                Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+                g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
+
             Catch ex As Exception
+                Form1.MP_Localname = "Default.dat"
+                g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
             End Try
 
-            If ds.Operation = "Devis" Then
-                Form1.Facture_Title = "Devis "
-            ElseIf ds.Operation = "Sell_Facture" Then
-                Form1.Facture_Title = "Facture "
-                ''''//
-            ElseIf ds.Operation = "Bon_Livraison" Then
-                Form1.Facture_Title = "Bon de Livraison "
-            ElseIf ds.Operation = "Bon_Commande" Then
-                Form1.Facture_Title = "Bon de Commande "
-            ElseIf ds.Operation = "Bon_Achat" Then
-                Form1.Facture_Title = "Bon de Achat "
-                ''''//
-            ElseIf ds.Operation = "Commande_Client" Then
-                Form1.Facture_Title = "Commande Client "
-            ElseIf ds.Operation = "Sell_Avoir" Then
-                Form1.Facture_Title = "Facture d'Avoir "
-            End If
-            Form1.printOnPaper = False
+            Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
+            ps.PaperName = g.p_Kind
+            Form1.PrintDocDesign.DefaultPageSettings.PaperSize = ps
+            Form1.PrintDocDesign.DefaultPageSettings.Landscape = g.is_Landscape
+        Catch ex As Exception
 
-            'Form1.PrintDoc.PrinterSettings.PrinterName = Form1.printer_Pdf
-            'Form1.PrintDoc.Print()
+        End Try
 
-            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Pdf
-            Form1.PrintDocDesign.Print()
+        Form1.printOnPaper = False
 
-            StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
-        End If
+        Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Pdf
+        Form1.PrintDocDesign.Print()
+
+        StatusChanged(ds.Entete.Statut, ds.Id, ds.FactureTable, "Imprimé")
+
     End Sub
     Private Sub PrintFacture(ByVal ds As DataList)
 
@@ -846,10 +841,28 @@ Public Class FactureClass
 
 
         Form1.MP_Localname = "Default.dat"
-        If ds.Operation = "Sell_Facture" Then Form1.MP_Localname = "Facture-Default.dat"
+        If ds.Operation = "Sell_Facture" Then Form1.MP_Localname = "Facture-Vente.dat"
+        If ds.Operation = "Devis" Then Form1.MP_Localname = "Devis.dat"
+        If ds.Operation = "Commande_Client" Then Form1.MP_Localname = "Commande-Client.dat"
+        If ds.Operation = "Bon_Livraison" Then Form1.MP_Localname = "Bon-Livraison.dat"
+        If ds.Operation = "Buy_Facture" Then Form1.MP_Localname = "Facture-Achat.dat"
+        If ds.Operation = "Bon_Commande" Then Form1.MP_Localname = "Bon-Commande.dat"
+        If ds.Operation = "Bon_Achat" Then Form1.MP_Localname = "Bon-Achat.dat"
+        If ds.Operation = "Sell_Avoir" Then Form1.MP_Localname = "Avoir-Vente.dat"
+        If ds.Operation = "Buy_Avoir" Then Form1.MP_Localname = "Avoir-Achat.dat"
+
+
         Try
             Dim g As New gGlobClass
-            g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
+            Try
+                g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
+
+            Catch ex As Exception
+                Form1.MP_Localname = "Default.dat"
+                g = ReadFromXmlFile(Of gGlobClass)(Form1.ImgPah & "\Prt_Dsn\" & Form1.MP_Localname)
+            End Try
+
+
 
             Dim ps As New PaperSize(g.P_name, g.W_Page, g.h_Page)
             ps.PaperName = g.p_Kind
@@ -878,7 +891,7 @@ Public Class FactureClass
             Form1.Facture_Title = "Bon de Achat "
             ''''//
         ElseIf ds.Operation = "Commande_Client" Then
-            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
             Form1.Facture_Title = "Commande Client "
         ElseIf ds.Operation = "Sell_Avoir" Then
             Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Avoir
@@ -933,7 +946,7 @@ Public Class FactureClass
                 Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
                 Form1.Facture_Title = "Bon de Achat "
             ElseIf ds.Operation = "Commande_Client" Then
-                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Commande_Client
+                Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Bon
                 Form1.Facture_Title = "Commande Client "
             ElseIf ds.Operation = "Sell_Avoir" Then
                 Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_Avoir

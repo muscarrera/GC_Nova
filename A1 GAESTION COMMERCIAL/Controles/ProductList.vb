@@ -531,7 +531,7 @@
         Dim DG As DataGridView = pl.Controls(0)
         If DG.SelectedRows.Count = 0 Then Exit Sub
 
-        If TableName = "Article" Then
+        If TableName = "Article" Or TableName = "Category" Then
             RaiseEvent DeleteArticle(Me, DG)
         Else
             RaiseEvent DeleteClient(Me, DG)
@@ -672,7 +672,7 @@
 
         Try
             Using a As DrawClass = New DrawClass
-                Dim dte As String = Format(Date.Now, "dd-MM-yyyy [hh:mm]")
+                Dim dte As String = Format(Date.Now, "dd/MM/yyyy [hh:mm]")
                 
                 If TableName = "Client" Then
                     a.DrawListOfClient(e, DG, "Clients", m)

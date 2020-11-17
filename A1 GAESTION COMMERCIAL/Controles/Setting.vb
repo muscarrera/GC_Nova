@@ -346,10 +346,13 @@
             setRegistryinfo("fontSize_Normal", txtsn.text)
             setRegistryinfo("fontSize_Title", txtst.text)
             setRegistryinfo("fontSize_Small", txtss.text)
+
+            setRegistryinfo("fontName_PV", txtnpv.text)
+            setRegistryinfo("fontSize_PV", txtspv.text)
+
         Catch ex As Exception
 
         End Try
-
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbHasEPBonTransport.CheckedChanged
@@ -686,5 +689,14 @@
         plUser.Height = 1
         plImp.Height = 1
         plPos.Height = 777
+    End Sub
+
+    Private Sub Button25_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button25.Click
+        Try
+            setRegistryinfo("pvLongerbt", CInt(txtWpv.Text))
+            setRegistryinfo("pvLargebt", CInt(CInt(txtHpv.Text)))
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

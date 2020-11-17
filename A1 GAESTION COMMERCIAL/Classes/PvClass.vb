@@ -79,23 +79,41 @@
         ds.FL.Controls.Clear()
 
         Try
-            Dim artta As New ALMohassinDBDataSetTableAdapters.ArticleTableAdapter
             Dim artdt2 As DataTable
             Dim artdt As DataTable
 
             '''''''''''''''''''
 
-            If ds.SearchBy.ToUpper = "NOM" Then
-                artdt = artta.GetDataByLikeName("%" & txt & "%")
+            Dim params As New Dictionary(Of String, Object)
 
-            ElseIf ds.SearchBy.ToUpper = "REF" Then
-                artdt = artta.GetDataByRef(txt & "%")
+            ' added some items
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
 
-            Else
-                artdt = artta.GetDataByRef("%" & txt & "%")
-                artdt2 = artta.GetDataByLikeName("%" & txt & "%")
-                artdt.Merge(artdt2, False)
-            End If
+
+
+                If ds.SearchBy.ToUpper = "NOM" Then
+
+                    params.Add("name LIKE ", "%" & txt & "%")
+                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+
+                ElseIf ds.SearchBy.ToUpper = "REF" Then
+                    params.Add("ref LIKE ", "%" & txt & "%")
+                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+
+                Else
+                    params.Add("name LIKE ", "%" & txt & "%")
+                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+
+                    params.Clear()
+
+                    params.Add("ref LIKE ", "%" & txt & "%")
+                    artdt2 = a.SelectDataTableSymbols("article", {"*"}, params)
+
+                    artdt.Merge(artdt2, False)
+                End If
+            End Using
+
+
 
             If artdt.Rows.Count = 0 Then
                 Dim lb As New Label
@@ -107,42 +125,21 @@
             Else
                 For i As Integer = 0 To artdt.Rows.Count - 1
 
-                    Dim bt As New Button
+                    Dim bt As New PvArticle
 
-                    bt.Visible = True
-                    bt.BackColor = Color.LightSeaGreen
-                    bt.Text = artdt.Rows(i).Item("name").ToString
-                    bt.Name = "art" & i
-                    bt.Tag = artdt.Rows(i)
-                    bt.TextAlign = ContentAlignment.BottomCenter
-                    Try
-                        If artdt.Rows(i).Item("img").ToString = "No Image" Or artdt.Rows(i).Item("img").ToString = "" Then
-
-                        Else
-                            Dim str As String = Form1.ImgPah & "\art" & artdt.Rows(i).Item("img").ToString
-
-                            bt.BackgroundImage = Image.FromFile(str)
-                        End If
-                        bt.BackgroundImageLayout = ImageLayout.Stretch
-                        bt.ImageAlign = ContentAlignment.BottomCenter
-                    Catch ex As Exception
-
-                        bt.BackgroundImage = My.Resources.BGpRD
-                    End Try
-
+                    bt.DataSource = artdt.Rows(i)
 
                     bt.Width = Form1.pvLongerbt
                     bt.Height = Form1.pvLargebt
                     ds.FL.Controls.Add(bt)
-                    'AddHandler bt.Click, AddressOf art_click
 
-
-                    AddHandler bt.Click, AddressOf art_click
+                    AddHandler bt.Choosed, AddressOf art_click
                     If i = Form1.numberOfItems Then Exit For
                 Next
 
+
             End If
-           
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -150,7 +147,7 @@
     End Sub
 
     Private Sub txtSearchRef_KeyPress(ByRef ds As PvList, ByVal txt As String)
-        Dim bt As New Button
+        Dim bt As New PvArticle
         Try
             bt = ds.FL.Controls(0)
             '''''
@@ -164,77 +161,58 @@
     End Sub
     Private Sub txtSearchCodebar_KeyPress(ByRef ds As PvList, ByVal txt As String)
         Try
-            Dim artta As New ALMohassinDBDataSetTableAdapters.ArticleTableAdapter
-            Dim artdt As DataTable
-
             '''''''''''''''''''
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                Dim params As New Dictionary(Of String, Object)
+                params.Add("desc LIKE ", "%" & txt & "%")
 
-            artdt = artta.GetDataByCodeBar("%" & txt & "%")
+                Dim artdt = a.SelectDataTableSymbols("article", {"*"}, params)
 
-            If artdt.Rows.Count = 1 Then
-
-                Dim bt As New Button
-                bt.Tag = artdt.Rows(0)
-
-
-                ' sell function
-                art_click(bt, Nothing)
-
-                Try
-                    Dim lb As Label = ds.FL.Controls(0)
-                    ds.FL.Controls.Clear()
-                Catch ex As Exception
-                End Try
-
-            ElseIf artdt.Rows.Count > 1 Then
-                ds.FL.Controls.Clear()
-
-                For i As Integer = 0 To artdt.Rows.Count - 1
+                If artdt.Rows.Count = 1 Then
 
                     Dim bt As New Button
+                    bt.Tag = artdt.Rows(0)
 
-                    bt.Visible = True
-                    bt.BackColor = Color.LightSeaGreen
-                    bt.Text = artdt.Rows(i).Item("name").ToString
-                    bt.Name = "art" & i
-                    bt.Tag = artdt.Rows(i)
-                    bt.TextAlign = ContentAlignment.BottomCenter
+
+                    ' sell function
+                    art_click(bt, Nothing)
+
                     Try
-                        If artdt.Rows(i).Item("img").ToString = "No Image" Or artdt.Rows(i).Item("img").ToString = "" Then
-
-                        Else
-                            Dim str As String = Form1.ImgPah & "\art" & artdt.Rows(i).Item("img").ToString
-
-                            bt.BackgroundImage = Image.FromFile(str)
-                        End If
-                        bt.BackgroundImageLayout = ImageLayout.Stretch
-                        bt.ImageAlign = ContentAlignment.BottomCenter
+                        Dim lb As Label = ds.FL.Controls(0)
+                        ds.FL.Controls.Clear()
                     Catch ex As Exception
-
-                        bt.BackgroundImage = My.Resources.BGpRD
                     End Try
 
+                ElseIf artdt.Rows.Count > 1 Then
+                    ds.FL.Controls.Clear()
 
-                    bt.Width = Form1.pvLongerbt
-                    bt.Height = Form1.pvLargebt
-                    ds.FL.Controls.Add(bt)
-                    'AddHandler bt.Click, AddressOf art_click
+                    For i As Integer = 0 To artdt.Rows.Count - 1
+
+                        Dim bt As New PvArticle
+
+                        bt.DataSource = artdt.Rows(i)
 
 
-                    AddHandler bt.Click, AddressOf art_click
-                    If i = Form1.numberOfItems Then Exit For
-                Next
-            Else
-                ds.FL.Controls.Clear()
-                Dim lb As New Label
+                        bt.Width = Form1.pvLongerbt
+                        bt.Height = Form1.pvLargebt
+                        ds.FL.Controls.Add(bt)
 
-                lb.ForeColor = Color.DarkGray
-                lb.Text = "لا يوجد اي سجل"
-                lb.Font = New Font("Arial", 14, FontStyle.Bold)
-                lb.ForeColor = Color.Red
-                lb.AutoSize = True
-                ds.FL.Controls.Add(lb)
-            End If
+
+                        AddHandler bt.Choosed, AddressOf art_click
+                        If i = Form1.numberOfItems Then Exit For
+                    Next
+                Else
+                    ds.FL.Controls.Clear()
+                    Dim lb As New Label
+
+                    lb.ForeColor = Color.DarkGray
+                    lb.Text = "لا يوجد اي سجل"
+                    lb.Font = New Font("Arial", 14, FontStyle.Bold)
+                    lb.ForeColor = Color.Red
+                    lb.AutoSize = True
+                    ds.FL.Controls.Add(lb)
+                End If
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -287,9 +265,17 @@
         Dim bt2 As Button = sender
         PvL.FL.Controls.Clear()
         Try
-            Dim artta As New ALMohassinDBDataSetTableAdapters.ArticleTableAdapter
-            Dim artdt = artta.GetDataBycid(bt2.Tag)
-          
+            Dim artdt As DataTable
+
+            Dim params As New Dictionary(Of String, Object)
+            params.Add("cid", CInt(bt2.Tag))
+
+            ' added some items
+            Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+                artdt = a.SelectDataTable("Article", {"*"}, params)
+            End Using
+
+
             If artdt.Rows.Count = 0 Then
                 Dim lb As New Label
 
@@ -298,30 +284,12 @@
                 PvL.FL.Controls.Add(lb)
             Else
 
+
                 For i As Integer = 0 To artdt.Rows.Count - 1
 
-                    Dim bt As New Button
+                    Dim bt As New PvArticle
 
-                    bt.Visible = True
-                    bt.FlatStyle = FlatStyle.Flat
-                    bt.BackColor = Color.LightSeaGreen
-                    bt.Text = artdt.Rows(i).Item("name").ToString
-                    bt.Name = "art" & i
-                    bt.Tag = artdt.Rows(i)
-                    bt.TextAlign = ContentAlignment.BottomCenter
-                    Try
-                        If artdt.Rows(i).Item("img").ToString = "No Image" Or artdt.Rows(i).Item("img").ToString = "" Then
-
-                        Else
-                            Dim str As String = Form1.ImgPah & "\art" & artdt.Rows(i).Item("img").ToString
-
-                            bt.BackgroundImage = Image.FromFile(str)
-                        End If
-                        bt.BackgroundImageLayout = ImageLayout.Stretch
-                        bt.ImageAlign = ContentAlignment.BottomCenter
-                    Catch ex As Exception
-                        bt.Text = artdt.Rows(i).Item("name").ToString
-                    End Try
+                    bt.DataSource = artdt.Rows(i)
                     bt.Width = Form1.pvLongerbt
                     bt.Height = Form1.pvLargebt
                     PvL.FL.Controls.Add(bt)
@@ -329,18 +297,18 @@
                     ''''''''''''''''''''''''''''''''''''''''''''''' list suivant
 
                     If i = Form1.numberOfItems Then
-
-                        AddHandler bt.Click, AddressOf ctg_NEXT
-                        bt.BackColor = Color.Green
-                        bt.Text = "[...]"
-                        bt.TextAlign = ContentAlignment.MiddleCenter
-                        bt.BackgroundImage = Nothing
-                        bt.Tag = artdt
+                        Dim btt As New Button
+                        AddHandler btt.Click, AddressOf ctg_NEXT
+                        btt.BackColor = Color.Green
+                        btt.Text = "[...]"
+                        btt.TextAlign = ContentAlignment.MiddleCenter
+                        btt.BackgroundImage = Nothing
+                        btt.Tag = artdt
 
                         Form1.indexStartArticle = Form1.numberOfItems
                         Exit For
                     Else
-                        AddHandler bt.Click, AddressOf art_click
+                        AddHandler bt.Choosed, AddressOf art_click
                     End If
                 Next
 
@@ -383,45 +351,28 @@
                     Exit For
                 End If
 
-                Dim bt As New Button
+                Dim bt As New PvArticle
 
-                bt.Visible = True
-                bt.FlatStyle = FlatStyle.Flat
-                bt.BackColor = Color.LightSeaGreen
-                bt.Text = artdt.Rows(i).Item("name").ToString
-                bt.Name = "art" & i
-                bt.Tag = artdt.Rows(i)
-                bt.TextAlign = ContentAlignment.BottomCenter
-                Try
-                    If artdt.Rows(i).Item("img").ToString = "No Image" Or artdt.Rows(i).Item("img").ToString = "" Then
 
-                    Else
-                        Dim str As String = Form1.ImgPah & "\art" & artdt.Rows(i).Item("img").ToString
-                      
-                        bt.BackgroundImage = Image.FromFile(str)
-                    End If
-                    bt.BackgroundImageLayout = ImageLayout.Stretch
-                    bt.ImageAlign = ContentAlignment.BottomCenter
-                Catch ex As Exception
-                    bt.Text = artdt.Rows(i).Item("name").ToString
-                End Try
+                bt.DataSource = artdt.Rows(i)
+
                 bt.Width = Form1.pvLongerbt
                 bt.Height = Form1.pvLargebt
                 PvL.FL.Controls.Add(bt)
 
                 ''''''''''''''''''''''''''''''' GO FORWORD
                 If i = Form1.indexStartArticle + Form1.numberOfItems Then
-
-                    AddHandler bt.Click, AddressOf ctg_NEXT
-                    bt.BackColor = Color.Green
-                    bt.Text = "[...]"
-                    bt.TextAlign = ContentAlignment.MiddleCenter
-                    bt.BackgroundImage = Nothing
-                    bt.Tag = bt2.Tag
+                    Dim btt As New Button
+                    AddHandler btt.Click, AddressOf ctg_NEXT
+                    btt.BackColor = Color.Green
+                    btt.Text = "[...]"
+                    btt.TextAlign = ContentAlignment.MiddleCenter
+                    btt.BackgroundImage = Nothing
+                    btt.Tag = bt2.Tag
                     Form1.indexStartArticle += Form1.numberOfItems
                     Exit For
                 Else
-                    AddHandler bt.Click, AddressOf art_click
+                    AddHandler bt.Choosed, AddressOf art_click
                 End If
             Next
 
@@ -467,47 +418,29 @@
                     Exit For
                 End If
 
-                Dim bt As New Button
+                Dim bt As New PvArticle
 
-                bt.Visible = True
-                bt.FlatStyle = FlatStyle.Flat
-                bt.BackColor = Color.LightSeaGreen
-                bt.Text = artdt.Rows(i).Item("name").ToString
-                bt.Name = "art" & i
-                bt.Tag = artdt.Rows(i)
-                bt.TextAlign = ContentAlignment.BottomCenter
-                Try
-                    If artdt.Rows(i).Item("img").ToString = "No Image" Or artdt.Rows(i).Item("img").ToString = "" Then
 
-                    Else
-                        Dim str As String = Form1.ImgPah & "\art" & artdt.Rows(i).Item("img").ToString
-                      
+                bt.DataSource = artdt.Rows(i)
 
-                        bt.BackgroundImage = Image.FromFile(str)
-                    End If
-                    bt.BackgroundImageLayout = ImageLayout.Stretch
-                    bt.ImageAlign = ContentAlignment.BottomCenter
-                Catch ex As Exception
-                    bt.Text = artdt.Rows(i).Item("name").ToString
-                End Try
                 bt.Width = Form1.pvLongerbt
                 bt.Height = Form1.pvLargebt
                 PvL.FL.Controls.Add(bt)
 
                 ''''''''''''''''''''''''''''''' GO FORWORD
                 If i = _END Then
-
-                    AddHandler bt.Click, AddressOf ctg_NEXT
-                    bt.BackColor = Color.Green
-                    bt.Text = "[...]"
-                    bt.TextAlign = ContentAlignment.MiddleCenter
-                    bt.BackgroundImage = Nothing
-                    bt.Tag = bt2.Tag
+                    Dim btt As New Button
+                    AddHandler btt.Click, AddressOf ctg_NEXT
+                    btt.BackColor = Color.Green
+                    btt.Text = "[...]"
+                    btt.TextAlign = ContentAlignment.MiddleCenter
+                    btt.BackgroundImage = Nothing
+                    btt.Tag = bt2.Tag
                     Form1.indexStartArticle = _END
 
                     Exit For
                 Else
-                    AddHandler bt.Click, AddressOf art_click
+                    AddHandler bt.Choosed, AddressOf art_click
                 End If
             Next
 
@@ -519,12 +452,13 @@
     End Sub
 
     Private Sub art_click(ByVal sender As Object, ByVal e As EventArgs)
-        Dim bt As Button = sender
-        Dim R As ALMohassinDBDataSet.ArticleRow = bt.Tag
+        Dim bt As PvArticle = sender
+        'Dim R As ALMohassinDBDataSet.ArticleRow =  bt.Tag 
         If PvL.localName = "" Then
             PvL.NewComptoirBon()
+            PvL.RPL.AddItem(bt.DataSource)
         Else
-            PvL.RPL.AddItem(R)
+            PvL.RPL.AddItem(bt.DataSource)
         End If
         PvL.KeepTxtFocus()
     End Sub
@@ -572,7 +506,7 @@
                 params.Add("avance", ds.RPL.Avance)
                 params.Add("remise", 0)
                 params.Add("tva", ds.RPL.Tva)
-                params.Add("date", Format(ds.RPL.myDate, "dd-MM-yyyy"))
+                params.Add("date", Format(ds.RPL.myDate, "dd/MM/yyyy"))
                 params.Add("writer", CStr(Form1.adminName))
                 params.Add("isAdmin", "CREATION")
                 params.Add("isPayed", False)
@@ -625,7 +559,6 @@
                         err_msg &= vbNewLine & " Avance " & ds.RPL.Avance & "dhs : .. ok"
                     End If
                 End If
-
 
                 err_msg &= vbNewLine & "Enregistrement : ... ok"
             Catch ex As Exception

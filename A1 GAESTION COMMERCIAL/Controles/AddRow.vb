@@ -402,6 +402,14 @@
     End Sub
     'Leave
     Private Sub txtName_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtN.Leave
+        PlRight.Width = 139
+        plTotal.Width = 88
+        plRemise.Width = 88
+        plPrice.Width = 88
+        plQte.Width = 88
+        plTva.Width = 39
+
+
         If Arid <> 0 Then Exit Sub
 
         If txtN.text.Length > 0 Then
@@ -443,6 +451,15 @@
         Catch ex As Exception
             txtttc.text = 0
         End Try
+    End Sub
+
+    Private Sub txtN_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtN.Enter
+        PlRight.Width = 1
+        plTotal.Width = 1
+        plRemise.Width = 1
+        plPrice.Width = 1
+        'plQte.Width = 1
+        plTva.Width = 1
     End Sub
 End Class
 

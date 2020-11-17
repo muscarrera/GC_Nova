@@ -3,9 +3,10 @@ Imports System.Net.NetworkInformation
 Imports System.Text.RegularExpressions
 
 Module AdminModule
-    Dim strKey = "ALMsbtrFirstRun_gc70"
+    Dim strKey = "ALMsbtrFirstRun_gc71"
     Dim strFirstUse = "AL Mohasib System de gestion - Premier utilisation .."
     Dim nbrDays = 90
+    Dim _strLastDate As String = "lastDate1"
 
     Public ReadOnly Property TrialVersion_Master
         Get
@@ -71,19 +72,19 @@ Module AdminModule
 
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
-        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Nothing)
+        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Nothing)
 
         Dim sz = (Now - LastRunDate).Days
 
         'Reglage de date 
         If LastRunDate = Nothing Then
-            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Now.Date)
         ElseIf (Now - LastRunDate).Days <= -1 Then
             MsgBox("Merci de regler la date de votre PC ..", MsgBoxStyle.Information, "Error_Date")
             End
         End If
 
-        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Now.Date)
 
 
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
@@ -252,19 +253,19 @@ Module AdminModule
 
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
-        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Nothing)
+        LastRunDate = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Nothing)
 
         Dim sz = (Now - LastRunDate).Days
 
         'Reglage de date 
         If LastRunDate = Nothing Then
-            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Now.Date)
         ElseIf (Now - LastRunDate).Days <= -1 Then
             MsgBox("Merci de regler la date de votre PC ..", MsgBoxStyle.Information, "Error_Date")
             End
         End If
 
-        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", "lastDate", Now.Date)
+        If CDate(Now) > CDate(LastRunDate) Then My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\MUSCRRER", _strLastDate, Now.Date)
 
 
         '''''''''''''''''''''''''''''''''''''''''''''       '''''''''''''''''''''''''''''''''''''''''''''
