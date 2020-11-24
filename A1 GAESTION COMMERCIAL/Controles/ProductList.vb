@@ -269,18 +269,29 @@
                 dg.Columns(18).Visible = False
                 dg.Columns(19).Visible = False
                 If Form1.useValue_CUMP = False Then dg.Columns(20).Visible = False
+                dg.Columns(21).Visible = False
 
                 If Form1.isWorkinOnStock Or Form1.useButtonValidForStock Then
                     dg.Columns(7).Visible = True
                     dg.Columns(7).HeaderText = "Stk"
                     dg.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                    dg.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
                 End If
 
                 dg.Columns(2).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
                 dg.Columns(2).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-                dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                dg.Columns(2).FillWeight = 69
-             
+                'dg.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                'dg.Columns(2).FillWeight = 69
+
+
+                dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+                dg.Columns(20).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+
                 dg.Columns(3).HeaderText = "Grp"
                 dg.Columns(2).HeaderText = "Designation"
                 dg.Columns(4).HeaderText = "Réf"

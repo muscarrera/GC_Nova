@@ -24,6 +24,14 @@
         txtst.text = getRegistryinfo("fontSize_Title", 14)
         txtss.text = getRegistryinfo("fontSize_Small", 8)
 
+        Dim cmPv = getRegistryinfo("pv_tb_F", "Commande_Client")
+
+        If cmPv = "Bon_Livraison" Then
+            txtTbPv.Text = "BL"
+        Else
+            txtTbPv.Text = "Commande"
+        End If
+
 
         txtCellWidth.Text = getRegistryinfo("cellWidth", 8)
         HandleRegistryinfo1()
@@ -695,6 +703,19 @@
         Try
             setRegistryinfo("pvLongerbt", CInt(txtWpv.Text))
             setRegistryinfo("pvLargebt", CInt(CInt(txtHpv.Text)))
+
+
+            Dim cm = "Commande_Client"
+            Dim dt = "Details_Commande"
+
+            If txtTbPv.Text.ToUpper = "BL" Then
+                cm = "Bon_Livraison"
+                dt = "Details_Bon_Livraison"
+            End If
+
+            setRegistryinfo("pv_tb_F", cm)
+            setRegistryinfo("pv_tb_D", dt)
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

@@ -537,6 +537,26 @@
 
                         c.InsertRecord(ds.tb_D, params)
                         params.Clear()
+
+                        If Form1.isWorkinOnStock = False Or ds.tb_F <> "Bon_Livraison" Then Continue For
+                        If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
+                            Dim q As Double = CDbl(data.Rows(i).Item("qte"))
+                            q = q * -1
+                        
+
+                        Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+                        If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+
+                            AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
+                                        data.Rows(i).Item("cid"), q, c)
+                            params.Clear()
+                        Else
+
+
+                            oldStock += q
+                            updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
+                        End If
+                        End If
                     Next
 
                     err_msg &= vbNewLine & " details " & data.Rows.Count & "Lines : .. ok"
@@ -569,5 +589,58 @@
 
         End Using
     End Sub
+    '*Stock function and methodes
+    Private Function getStockById(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Double
+        'If Form1.isWorkinOnStock = False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        Dim qte = c.SelectByScalar("Details_Stock", "qte", where)
+
+        Return qte
+    End Function
+    Private Function getStockId(ByVal arid As Integer, ByVal dpid As Integer, ByVal c As DataAccess) As Integer
+        'If Form1.isWorkinOnStock = False Then Return 0
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        Dim id = c.SelectByScalar("Details_Stock", "id", where)
+        If IsNothing(id) Then id = 0
+        Return id
+    End Function
+    Private Function AddNewStock(ByVal arid As Integer, ByVal dpid As Integer,
+                                     ByVal cid As Integer, ByVal qte As Double,
+                                     ByVal c As DataAccess) As Integer
+        'If Form1.isWorkinOnStock = False And Form1.useButtonValidForStock + False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+        where.Add("cid", cid)
+        where.Add("qte", qte)
+
+        Return c.InsertRecord("Details_Stock", where)
+
+        Return qte
+    End Function
+    Private Function updateStock(ByVal arid As Integer, ByVal dpid As Integer,
+                                    ByVal qte As Double, ByVal c As DataAccess) As Integer
+        'If Form1.isWorkinOnStock = False Then Return Nothing
+
+        Dim where As New Dictionary(Of String, Object)
+        Dim params As New Dictionary(Of String, Object)
+        where.Add("arid", arid)
+        where.Add("dpid", dpid)
+
+        params.Add("qte", qte)
+
+        Return c.UpdateRecord("Details_Stock", params, where)
+
+        Return qte
+    End Function
 
 End Class

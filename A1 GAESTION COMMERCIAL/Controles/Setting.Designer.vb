@@ -34,6 +34,12 @@ Partial Class Setting
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.plPos = New System.Windows.Forms.Panel()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.Button25 = New System.Windows.Forms.Button()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.txtWpv = New System.Windows.Forms.TextBox()
+        Me.txtHpv = New System.Windows.Forms.TextBox()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.Button23 = New System.Windows.Forms.Button()
         Me.Label39 = New System.Windows.Forms.Label()
@@ -150,6 +156,9 @@ Partial Class Setting
         Me.lbDefaultText = New System.Windows.Forms.Label()
         Me.Button19 = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.txtnpv = New A1_GAESTION_COMMERCIAL.TxtBox()
+        Me.txtspv = New A1_GAESTION_COMMERCIAL.TxtBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button14 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -185,20 +194,14 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.txtnpv = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.txtspv = New A1_GAESTION_COMMERCIAL.TxtBox()
-        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
-        Me.Button25 = New System.Windows.Forms.Button()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.txtWpv = New System.Windows.Forms.TextBox()
-        Me.txtHpv = New System.Windows.Forms.TextBox()
+        Me.txtTbPv = New System.Windows.Forms.TextBox()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.plPos.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.Panel11.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,7 +232,6 @@ Partial Class Setting
         Me.GroupBox1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel3
@@ -377,6 +379,66 @@ Partial Class Setting
         Me.plPos.Name = "plPos"
         Me.plPos.Size = New System.Drawing.Size(750, 324)
         Me.plPos.TabIndex = 19
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.Button25)
+        Me.GroupBox9.Controls.Add(Me.Label44)
+        Me.GroupBox9.Controls.Add(Me.Label42)
+        Me.GroupBox9.Controls.Add(Me.Label43)
+        Me.GroupBox9.Controls.Add(Me.txtTbPv)
+        Me.GroupBox9.Controls.Add(Me.txtWpv)
+        Me.GroupBox9.Controls.Add(Me.txtHpv)
+        Me.GroupBox9.Location = New System.Drawing.Point(406, 77)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(320, 219)
+        Me.GroupBox9.TabIndex = 31
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Valeur"
+        '
+        'Button25
+        '
+        Me.Button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button25.Location = New System.Drawing.Point(226, 178)
+        Me.Button25.Name = "Button25"
+        Me.Button25.Size = New System.Drawing.Size(75, 29)
+        Me.Button25.TabIndex = 32
+        Me.Button25.Text = "Valider"
+        Me.Button25.UseVisualStyleBackColor = True
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(27, 73)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(101, 13)
+        Me.Label42.TabIndex = 26
+        Me.Label42.Text = "Dim Blow (Hauteur) "
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(27, 37)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(99, 13)
+        Me.Label43.TabIndex = 26
+        Me.Label43.Text = "Dim Blow (Largeur) "
+        '
+        'txtWpv
+        '
+        Me.txtWpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtWpv.Location = New System.Drawing.Point(158, 35)
+        Me.txtWpv.Name = "txtWpv"
+        Me.txtWpv.Size = New System.Drawing.Size(74, 20)
+        Me.txtWpv.TabIndex = 25
+        '
+        'txtHpv
+        '
+        Me.txtHpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtHpv.Location = New System.Drawing.Point(158, 70)
+        Me.txtHpv.Name = "txtHpv"
+        Me.txtHpv.Size = New System.Drawing.Size(74, 20)
+        Me.txtHpv.TabIndex = 25
         '
         'GroupBox8
         '
@@ -1593,6 +1655,53 @@ Partial Class Setting
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Text"
         '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(21, 147)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(62, 13)
+        Me.Label41.TabIndex = 9
+        Me.Label41.Text = "POLICE PV"
+        '
+        'txtnpv
+        '
+        Me.txtnpv.BackColor = System.Drawing.Color.Transparent
+        Me.txtnpv.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtnpv.IsNumiric = False
+        Me.txtnpv.Location = New System.Drawing.Point(21, 162)
+        Me.txtnpv.Name = "txtnpv"
+        Me.txtnpv.PlaceHolder = ""
+        Me.txtnpv.ShowClearIcon = False
+        Me.txtnpv.ShowSaveIcon = False
+        Me.txtnpv.Size = New System.Drawing.Size(228, 23)
+        Me.txtnpv.StartUp = 2
+        Me.txtnpv.TabIndex = 8
+        Me.txtnpv.TextSize = 8
+        Me.txtnpv.TxtBackColor = True
+        Me.txtnpv.TxtColor = System.Drawing.Color.White
+        Me.txtnpv.txtReadOnly = False
+        Me.txtnpv.TxtSelect = New Integer() {1, 0}
+        '
+        'txtspv
+        '
+        Me.txtspv.BackColor = System.Drawing.Color.Transparent
+        Me.txtspv.BorderColor = System.Drawing.SystemColors.ControlText
+        Me.txtspv.IsNumiric = False
+        Me.txtspv.Location = New System.Drawing.Point(265, 162)
+        Me.txtspv.Name = "txtspv"
+        Me.txtspv.PlaceHolder = ""
+        Me.txtspv.ShowClearIcon = False
+        Me.txtspv.ShowSaveIcon = False
+        Me.txtspv.Size = New System.Drawing.Size(57, 23)
+        Me.txtspv.StartUp = 2
+        Me.txtspv.TabIndex = 7
+        Me.txtspv.TextSize = 8
+        Me.txtspv.TxtBackColor = True
+        Me.txtspv.TxtColor = System.Drawing.Color.White
+        Me.txtspv.txtReadOnly = False
+        Me.txtspv.TxtSelect = New Integer() {1, 0}
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -2017,110 +2126,22 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'Label41
+        'txtTbPv
         '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(21, 147)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(62, 13)
-        Me.Label41.TabIndex = 9
-        Me.Label41.Text = "POLICE PV"
+        Me.txtTbPv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTbPv.Location = New System.Drawing.Point(158, 120)
+        Me.txtTbPv.Name = "txtTbPv"
+        Me.txtTbPv.Size = New System.Drawing.Size(74, 20)
+        Me.txtTbPv.TabIndex = 25
         '
-        'txtnpv
+        'Label44
         '
-        Me.txtnpv.BackColor = System.Drawing.Color.Transparent
-        Me.txtnpv.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtnpv.IsNumiric = False
-        Me.txtnpv.Location = New System.Drawing.Point(21, 162)
-        Me.txtnpv.Name = "txtnpv"
-        Me.txtnpv.PlaceHolder = ""
-        Me.txtnpv.ShowClearIcon = False
-        Me.txtnpv.ShowSaveIcon = False
-        Me.txtnpv.Size = New System.Drawing.Size(228, 23)
-        Me.txtnpv.StartUp = 2
-        Me.txtnpv.TabIndex = 8
-        Me.txtnpv.TextSize = 8
-        Me.txtnpv.TxtBackColor = True
-        Me.txtnpv.TxtColor = System.Drawing.Color.White
-        Me.txtnpv.txtReadOnly = False
-        Me.txtnpv.TxtSelect = New Integer() {1, 0}
-        '
-        'txtspv
-        '
-        Me.txtspv.BackColor = System.Drawing.Color.Transparent
-        Me.txtspv.BorderColor = System.Drawing.SystemColors.ControlText
-        Me.txtspv.IsNumiric = False
-        Me.txtspv.Location = New System.Drawing.Point(265, 162)
-        Me.txtspv.Name = "txtspv"
-        Me.txtspv.PlaceHolder = ""
-        Me.txtspv.ShowClearIcon = False
-        Me.txtspv.ShowSaveIcon = False
-        Me.txtspv.Size = New System.Drawing.Size(57, 23)
-        Me.txtspv.StartUp = 2
-        Me.txtspv.TabIndex = 7
-        Me.txtspv.TextSize = 8
-        Me.txtspv.TxtBackColor = True
-        Me.txtspv.TxtColor = System.Drawing.Color.White
-        Me.txtspv.txtReadOnly = False
-        Me.txtspv.TxtSelect = New Integer() {1, 0}
-        '
-        'GroupBox9
-        '
-        Me.GroupBox9.Controls.Add(Me.Button25)
-        Me.GroupBox9.Controls.Add(Me.Label42)
-        Me.GroupBox9.Controls.Add(Me.Label43)
-        Me.GroupBox9.Controls.Add(Me.txtWpv)
-        Me.GroupBox9.Controls.Add(Me.txtHpv)
-        Me.GroupBox9.Location = New System.Drawing.Point(406, 77)
-        Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(320, 148)
-        Me.GroupBox9.TabIndex = 31
-        Me.GroupBox9.TabStop = False
-        Me.GroupBox9.Text = "Valeur"
-        '
-        'Button25
-        '
-        Me.Button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button25.Location = New System.Drawing.Point(226, 99)
-        Me.Button25.Name = "Button25"
-        Me.Button25.Size = New System.Drawing.Size(75, 29)
-        Me.Button25.TabIndex = 32
-        Me.Button25.Text = "Valider"
-        Me.Button25.UseVisualStyleBackColor = True
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(27, 73)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(101, 13)
-        Me.Label42.TabIndex = 26
-        Me.Label42.Text = "Dim Blow (Hauteur) "
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(27, 37)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(99, 13)
-        Me.Label43.TabIndex = 26
-        Me.Label43.Text = "Dim Blow (Largeur) "
-        '
-        'txtWpv
-        '
-        Me.txtWpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtWpv.Location = New System.Drawing.Point(158, 35)
-        Me.txtWpv.Name = "txtWpv"
-        Me.txtWpv.Size = New System.Drawing.Size(74, 20)
-        Me.txtWpv.TabIndex = 25
-        '
-        'txtHpv
-        '
-        Me.txtHpv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtHpv.Location = New System.Drawing.Point(158, 70)
-        Me.txtHpv.Name = "txtHpv"
-        Me.txtHpv.Size = New System.Drawing.Size(74, 20)
-        Me.txtHpv.TabIndex = 25
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(27, 123)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(115, 13)
+        Me.Label44.TabIndex = 26
+        Me.Label44.Text = "Table d'Enregistrement"
         '
         'Setting
         '
@@ -2139,6 +2160,8 @@ Partial Class Setting
         Me.Panel2.ResumeLayout(False)
         Me.plPos.ResumeLayout(False)
         Me.plPos.PerformLayout()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.Panel11.ResumeLayout(False)
@@ -2188,8 +2211,6 @@ Partial Class Setting
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox9.ResumeLayout(False)
-        Me.GroupBox9.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2365,5 +2386,7 @@ Partial Class Setting
     Friend WithEvents Label43 As System.Windows.Forms.Label
     Friend WithEvents txtWpv As System.Windows.Forms.TextBox
     Friend WithEvents txtHpv As System.Windows.Forms.TextBox
+    Friend WithEvents Label44 As System.Windows.Forms.Label
+    Friend WithEvents txtTbPv As System.Windows.Forms.TextBox
 
 End Class

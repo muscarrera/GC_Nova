@@ -698,6 +698,7 @@ Public Class FactureClass
          
         Return qte
     End Function
+
     Private Sub GetArticleStock(ByRef pl As Panel, ByVal isS As Boolean)
 
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
