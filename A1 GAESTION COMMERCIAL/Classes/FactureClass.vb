@@ -4,7 +4,7 @@ Public Class FactureClass
     Implements IDisposable
     Public Sub AddDataList(ByVal op As String)
 
-        If Form1.plBody.Controls.Count > 0 Then
+        If Form1.plBody.Controls.Count > 0 And False Then
             If TypeOf Form1.plBody.Controls(0) Is DataList Then
 
                 Dim dls As DataList = Form1.plBody.Controls(0)
@@ -1321,7 +1321,7 @@ Public Class FactureClass
 
                 If IsNothing(data) Then Exit Sub
 
-
+                params.Clear()
                 params.Add("name", ds.Entete.ClientName)
                 params.Add("total", tt)
                 params.Add("avance", avance)
@@ -2201,6 +2201,8 @@ Public Class FactureClass
     Private Sub NewBlRef(ByVal ds As DataList)
         Dim rf As New ReferenceFacture
         rf.Title = "Bon de Livraison"
+
+        If ds.isSell = False Then rf.Title = "Référence : "
         If rf.ShowDialog = DialogResult.OK Then
 
             Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
@@ -2214,6 +2216,12 @@ Public Class FactureClass
                 'Facture
                 params.Clear()
                 params.Add("Bon_Livraison", rf.Value)
+
+                If ds.isSell = False Then
+                    params.Clear()
+                    params.Add("Bon_Achat", rf.Value)
+                End If
+
                 Dim where As New Dictionary(Of String, Object)
                 where.Add("id", CInt(ds.Id))
 
@@ -2275,8 +2283,9 @@ Public Class FactureClass
 
         Dim fl As New RelveClient
         fl.ClientTable = ds.clientTable
-        fl.Client = ds.Entete.ClientName
+
         fl.CID = ds.Entete.Client.cid
+        fl.Client = ds.Entete.ClientName
         If fl.ShowDialog = DialogResult.OK Then
 
         End If

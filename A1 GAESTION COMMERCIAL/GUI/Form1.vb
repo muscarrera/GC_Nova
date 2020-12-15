@@ -15,6 +15,8 @@
     Public printRef As Boolean
     Public isBaseOnTTC As Boolean = False
     Public isBaseOnOneTva As Boolean = False
+    Public isBaseOnTTC_ListArticle As Boolean = True
+
 
     Public isBlGetSold As Boolean
     Public isFactureGetSold As Boolean
@@ -106,6 +108,7 @@
     Friend Shared indexStartArticle As Integer
     Friend Shared printer_POS As String
     Friend Shared Data_Comp_Path As String
+
 
 
 

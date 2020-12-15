@@ -77,8 +77,7 @@
             txtPathImg.Text = getRegistryinfo("ImgPath", "C:\")
             txtDataComp.Text = getRegistryinfo("Data_Comp_Path", "C:\")
 
-
-            'prefix
+             'prefix
             txtdv.Text = getRegistryinfo("prf_s_dv", "Av")
             txtcm.Text = getRegistryinfo("prf_s_cm", "Cm")
             txtbl.Text = getRegistryinfo("prf_s_bl", "Bl")
@@ -103,6 +102,7 @@
             cbFactureGetSold.Checked = getRegistryinfo("isFactureGetSold", False)
             cbNormalImp.Checked = getRegistryinfo("normat_Print_Style", True)
             allowAddElement_to.Checked = getRegistryinfo("allowAddElement_to", False)
+            cbTtcArticles.Checked = getRegistryinfo("isBaseOnTTC_ListArticle", True)
 
 
             lbDefaultText.ForeColor = Color.FromArgb(getRegistryinfo("Color_Default_Text", Color.Blue.ToArgb.ToString))
@@ -336,6 +336,7 @@
             setRegistryinfo("isBlGetSold", cbBlGetSold.Checked)
             setRegistryinfo("isFactureGetSold", cbFactureGetSold.Checked)
             setRegistryinfo("allowAddElement_to", allowAddElement_to.Checked)
+            setRegistryinfo("isBaseOnTTC_ListArticle", cbTtcArticles.Checked)
 
             Form1.useValue_CUMP = cbCump.Checked
             Form1.isBaseOnOneTva = cbBaseOnOneTva.Checked

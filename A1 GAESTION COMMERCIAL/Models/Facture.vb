@@ -95,8 +95,13 @@
                 cid = IntValue(dt, "cid", 0)
                 compteId = IntValue(dt, "compteId", 0)
 
-                bl = StrValue(dt, "Bon_Livraison", 0)
-                'bc = StrValue(dt, "Bon_Commande", 0)
+                If tb_C = "Client" Then
+                    bl = StrValue(dt, "Bon_Livraison", 0)
+                Else
+                    bl = StrValue(dt, "Bon_Achat", 0)
+                End If
+
+                bc = StrValue(dt, "Bon_Commande", 0)
                 devis = StrValue(dt, "Devis", 0)
 
                 writer = StrValue(dt, "writer", 0)

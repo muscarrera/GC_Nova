@@ -36,8 +36,10 @@ Partial Class Setting
         Me.plPos = New System.Windows.Forms.Panel()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
         Me.Button25 = New System.Windows.Forms.Button()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
+        Me.txtTbPv = New System.Windows.Forms.TextBox()
         Me.txtWpv = New System.Windows.Forms.TextBox()
         Me.txtHpv = New System.Windows.Forms.TextBox()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
@@ -194,8 +196,7 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.txtTbPv = New System.Windows.Forms.TextBox()
-        Me.Label44 = New System.Windows.Forms.Label()
+        Me.cbTtcArticles = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -375,7 +376,7 @@ Partial Class Setting
         Me.plPos.Controls.Add(Me.txtImpPos)
         Me.plPos.Controls.Add(Me.Button21)
         Me.plPos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPos.Location = New System.Drawing.Point(5, 357)
+        Me.plPos.Location = New System.Drawing.Point(5, 749)
         Me.plPos.Name = "plPos"
         Me.plPos.Size = New System.Drawing.Size(750, 324)
         Me.plPos.TabIndex = 19
@@ -406,6 +407,15 @@ Partial Class Setting
         Me.Button25.Text = "Valider"
         Me.Button25.UseVisualStyleBackColor = True
         '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(27, 123)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(115, 13)
+        Me.Label44.TabIndex = 26
+        Me.Label44.Text = "Table d'Enregistrement"
+        '
         'Label42
         '
         Me.Label42.AutoSize = True
@@ -423,6 +433,14 @@ Partial Class Setting
         Me.Label43.Size = New System.Drawing.Size(99, 13)
         Me.Label43.TabIndex = 26
         Me.Label43.Text = "Dim Blow (Largeur) "
+        '
+        'txtTbPv
+        '
+        Me.txtTbPv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTbPv.Location = New System.Drawing.Point(158, 120)
+        Me.txtTbPv.Name = "txtTbPv"
+        Me.txtTbPv.Size = New System.Drawing.Size(74, 20)
+        Me.txtTbPv.TabIndex = 25
         '
         'txtWpv
         '
@@ -566,11 +584,12 @@ Partial Class Setting
         Me.plPref.Location = New System.Drawing.Point(5, 281)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(750, 76)
+        Me.plPref.Size = New System.Drawing.Size(750, 468)
         Me.plPref.TabIndex = 18
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.cbTtcArticles)
         Me.GroupBox3.Controls.Add(Me.cbBaseOnTTC)
         Me.GroupBox3.Controls.Add(Me.allowAddElement_to)
         Me.GroupBox3.Controls.Add(Me.cbAccessClient)
@@ -826,7 +845,7 @@ Partial Class Setting
         Me.Panel5.Location = New System.Drawing.Point(10, 10)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel5.Size = New System.Drawing.Size(713, 39)
+        Me.Panel5.Size = New System.Drawing.Size(730, 39)
         Me.Panel5.TabIndex = 20
         '
         'Label17
@@ -2126,22 +2145,15 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'txtTbPv
+        'cbTtcArticles
         '
-        Me.txtTbPv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTbPv.Location = New System.Drawing.Point(158, 120)
-        Me.txtTbPv.Name = "txtTbPv"
-        Me.txtTbPv.Size = New System.Drawing.Size(74, 20)
-        Me.txtTbPv.TabIndex = 25
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(27, 123)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(115, 13)
-        Me.Label44.TabIndex = 26
-        Me.Label44.Text = "Table d'Enregistrement"
+        Me.cbTtcArticles.AutoSize = True
+        Me.cbTtcArticles.Location = New System.Drawing.Point(173, 22)
+        Me.cbTtcArticles.Name = "cbTtcArticles"
+        Me.cbTtcArticles.Size = New System.Drawing.Size(134, 17)
+        Me.cbTtcArticles.TabIndex = 28
+        Me.cbTtcArticles.Text = "TTC Listes des Articles"
+        Me.cbTtcArticles.UseVisualStyleBackColor = True
         '
         'Setting
         '
@@ -2388,5 +2400,6 @@ Partial Class Setting
     Friend WithEvents txtHpv As System.Windows.Forms.TextBox
     Friend WithEvents Label44 As System.Windows.Forms.Label
     Friend WithEvents txtTbPv As System.Windows.Forms.TextBox
+    Friend WithEvents cbTtcArticles As System.Windows.Forms.CheckBox
 
 End Class

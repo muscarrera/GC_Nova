@@ -414,11 +414,11 @@ Partial Class ParcList
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Arial Rounded MT Bold", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label22.Location = New System.Drawing.Point(92, 50)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(752, 10)
+        Me.Label22.Size = New System.Drawing.Size(686, 9)
         Me.Label22.TabIndex = 11
         Me.Label22.Text = resources.GetString("Label22.Text")
         '
@@ -451,7 +451,7 @@ Partial Class ParcList
         '
         Me.Button5.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkGray
         Me.Button5.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -468,7 +468,7 @@ Partial Class ParcList
         '
         Me.Button15.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button15.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button15.ForeColor = System.Drawing.Color.DarkGray
         Me.Button15.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -494,7 +494,7 @@ Partial Class ParcList
         '
         Me.btFournisseur.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFournisseur.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btFournisseur.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFournisseur.ForeColor = System.Drawing.Color.DarkGray
         Me.btFournisseur.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.btFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -512,7 +512,7 @@ Partial Class ParcList
         '
         Me.Button11.BackColor = System.Drawing.Color.PaleGreen
         Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button11.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button11.ForeColor = System.Drawing.Color.Green
         Me.Button11.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -529,7 +529,7 @@ Partial Class ParcList
         '
         Me.btClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btClient.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btClient.ForeColor = System.Drawing.SystemColors.AppWorkspace
         Me.btClient.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.btClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -559,7 +559,7 @@ Partial Class ParcList
         'btImpList
         '
         Me.btImpList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btImpList.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btImpList.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btImpList.ForeColor = System.Drawing.SystemColors.GrayText
         Me.btImpList.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_agt_print_3826__1_
         Me.btImpList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -600,7 +600,7 @@ Partial Class ParcList
         '
         'btAdd
         '
-        Me.btAdd.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btAdd.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_add_61769
         Me.btAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btAdd.Location = New System.Drawing.Point(13, 3)
@@ -727,42 +727,42 @@ Partial Class ParcList
         'lbwriterTrans
         '
         Me.lbwriterTrans.AutoSize = True
-        Me.lbwriterTrans.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbwriterTrans.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbwriterTrans.Location = New System.Drawing.Point(511, 233)
         Me.lbwriterTrans.Name = "lbwriterTrans"
-        Me.lbwriterTrans.Size = New System.Drawing.Size(12, 17)
+        Me.lbwriterTrans.Size = New System.Drawing.Size(11, 15)
         Me.lbwriterTrans.TabIndex = 24
         Me.lbwriterTrans.Text = "-"
         '
         'lbDateTrans
         '
         Me.lbDateTrans.AutoSize = True
-        Me.lbDateTrans.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateTrans.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDateTrans.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lbDateTrans.Location = New System.Drawing.Point(444, 208)
         Me.lbDateTrans.Name = "lbDateTrans"
-        Me.lbDateTrans.Size = New System.Drawing.Size(46, 16)
+        Me.lbDateTrans.Size = New System.Drawing.Size(49, 16)
         Me.lbDateTrans.TabIndex = 23
         Me.lbDateTrans.Text = "Date :"
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.Location = New System.Drawing.Point(443, 230)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(63, 17)
+        Me.Label31.Size = New System.Drawing.Size(57, 15)
         Me.Label31.TabIndex = 22
         Me.Label31.Text = "Crée par:"
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label28.Location = New System.Drawing.Point(23, 115)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(47, 14)
+        Me.Label28.Size = New System.Drawing.Size(44, 15)
         Me.Label28.TabIndex = 21
         Me.Label28.Text = "Client :"
         '
@@ -813,7 +813,7 @@ Partial Class ParcList
         Me.lbTransportClientInfos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbTransportClientInfos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTransportClientInfos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTransportClientInfos.Location = New System.Drawing.Point(14, 37)
         Me.lbTransportClientInfos.Name = "lbTransportClientInfos"
         Me.lbTransportClientInfos.Size = New System.Drawing.Size(365, 81)
@@ -823,10 +823,10 @@ Partial Class ParcList
         'lbTransportClienName
         '
         Me.lbTransportClienName.AutoSize = True
-        Me.lbTransportClienName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTransportClienName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTransportClienName.Location = New System.Drawing.Point(11, 9)
         Me.lbTransportClienName.Name = "lbTransportClienName"
-        Me.lbTransportClienName.Size = New System.Drawing.Size(16, 19)
+        Me.lbTransportClienName.Size = New System.Drawing.Size(15, 20)
         Me.lbTransportClienName.TabIndex = 2
         Me.lbTransportClienName.Text = "-"
         '
@@ -883,7 +883,7 @@ Partial Class ParcList
         Me.Button28.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button28.BackColor = System.Drawing.Color.Transparent
         Me.Button28.FlatAppearance.BorderSize = 0
-        Me.Button28.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button28.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
         Me.Button28.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button28.Location = New System.Drawing.Point(103, 1)
@@ -900,7 +900,7 @@ Partial Class ParcList
         Me.Button29.Dock = System.Windows.Forms.DockStyle.Left
         Me.Button29.FlatAppearance.BorderSize = 0
         Me.Button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button29.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button29.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
         Me.Button29.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button29.Location = New System.Drawing.Point(0, 0)
@@ -914,10 +914,10 @@ Partial Class ParcList
         'Label59
         '
         Me.Label59.AutoSize = True
-        Me.Label59.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label59.Location = New System.Drawing.Point(21, 62)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(63, 17)
+        Me.Label59.Size = New System.Drawing.Size(58, 15)
         Me.Label59.TabIndex = 2
         Me.Label59.Text = "Fature à :"
         '
@@ -927,7 +927,7 @@ Partial Class ParcList
         Me.Button30.Dock = System.Windows.Forms.DockStyle.Left
         Me.Button30.FlatAppearance.BorderSize = 0
         Me.Button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button30.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button30.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.DELETE_20
         Me.Button30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button30.Location = New System.Drawing.Point(312, 0)
@@ -953,7 +953,7 @@ Partial Class ParcList
         Me.btSolde_Trans.Dock = System.Windows.Forms.DockStyle.Left
         Me.btSolde_Trans.FlatAppearance.BorderSize = 0
         Me.btSolde_Trans.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSolde_Trans.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSolde_Trans.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSolde_Trans.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_221
         Me.btSolde_Trans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSolde_Trans.Location = New System.Drawing.Point(198, 0)
@@ -970,7 +970,7 @@ Partial Class ParcList
         Me.btFacture_Trans.Dock = System.Windows.Forms.DockStyle.Left
         Me.btFacture_Trans.FlatAppearance.BorderSize = 0
         Me.btFacture_Trans.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFacture_Trans.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btFacture_Trans.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFacture_Trans.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
         Me.btFacture_Trans.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btFacture_Trans.Location = New System.Drawing.Point(114, 0)
@@ -987,7 +987,7 @@ Partial Class ParcList
         Me.Button34.Dock = System.Windows.Forms.DockStyle.Left
         Me.Button34.FlatAppearance.BorderSize = 0
         Me.Button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button34.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button34.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button34.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button34.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button34.Location = New System.Drawing.Point(19, 0)
@@ -1038,7 +1038,7 @@ Partial Class ParcList
         '
         Me.LinkLabel13.Dock = System.Windows.Forms.DockStyle.Left
         Me.LinkLabel13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel13.Location = New System.Drawing.Point(276, 5)
+        Me.LinkLabel13.Location = New System.Drawing.Point(292, 5)
         Me.LinkLabel13.Name = "LinkLabel13"
         Me.LinkLabel13.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
         Me.LinkLabel13.Size = New System.Drawing.Size(152, 21)
@@ -1052,7 +1052,7 @@ Partial Class ParcList
         Me.Panel115.BackColor = System.Drawing.Color.Transparent
         Me.Panel115.Controls.Add(Me.Label60)
         Me.Panel115.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel115.Location = New System.Drawing.Point(230, 5)
+        Me.Panel115.Location = New System.Drawing.Point(246, 5)
         Me.Panel115.Name = "Panel115"
         Me.Panel115.Size = New System.Drawing.Size(46, 21)
         Me.Panel115.TabIndex = 7
@@ -1060,10 +1060,10 @@ Partial Class ParcList
         'Label60
         '
         Me.Label60.AutoSize = True
-        Me.Label60.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.Location = New System.Drawing.Point(21, 62)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(63, 17)
+        Me.Label60.Size = New System.Drawing.Size(58, 15)
         Me.Label60.TabIndex = 2
         Me.Label60.Text = "Fature à :"
         '
@@ -1072,7 +1072,7 @@ Partial Class ParcList
         Me.pbJoindre_Transp_Trans.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
         Me.pbJoindre_Transp_Trans.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbJoindre_Transp_Trans.Dock = System.Windows.Forms.DockStyle.Left
-        Me.pbJoindre_Transp_Trans.Location = New System.Drawing.Point(192, 5)
+        Me.pbJoindre_Transp_Trans.Location = New System.Drawing.Point(208, 5)
         Me.pbJoindre_Transp_Trans.Name = "pbJoindre_Transp_Trans"
         Me.pbJoindre_Transp_Trans.Size = New System.Drawing.Size(38, 21)
         Me.pbJoindre_Transp_Trans.TabIndex = 6
@@ -1083,11 +1083,11 @@ Partial Class ParcList
         '
         Me.lbTransId.AutoSize = True
         Me.lbTransId.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbTransId.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbTransId.Location = New System.Drawing.Point(136, 5)
+        Me.lbTransId.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTransId.Location = New System.Drawing.Point(148, 5)
         Me.lbTransId.Name = "lbTransId"
         Me.lbTransId.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
-        Me.lbTransId.Size = New System.Drawing.Size(56, 19)
+        Me.lbTransId.Size = New System.Drawing.Size(60, 20)
         Me.lbTransId.TabIndex = 2
         Me.lbTransId.Text = "0001"
         Me.lbTransId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1097,10 +1097,10 @@ Partial Class ParcList
         Me.Label62.AutoSize = True
         Me.Label62.BackColor = System.Drawing.Color.Transparent
         Me.Label62.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label62.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label62.Location = New System.Drawing.Point(0, 5)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(136, 19)
+        Me.Label62.Size = New System.Drawing.Size(148, 20)
         Me.Label62.TabIndex = 2
         Me.Label62.Text = "Bon de Transport"
         Me.Label62.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1168,7 +1168,7 @@ Partial Class ParcList
         '
         Me.Label32.BackColor = System.Drawing.Color.Transparent
         Me.Label32.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label32.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label32.Location = New System.Drawing.Point(5, 0)
         Me.Label32.Name = "Label32"
@@ -1192,7 +1192,7 @@ Partial Class ParcList
         '
         Me.Label33.BackColor = System.Drawing.Color.Transparent
         Me.Label33.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label33.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label33.Location = New System.Drawing.Point(5, 0)
         Me.Label33.Name = "Label33"
@@ -1216,7 +1216,7 @@ Partial Class ParcList
         '
         Me.Label34.BackColor = System.Drawing.Color.Transparent
         Me.Label34.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label34.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label34.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label34.Location = New System.Drawing.Point(5, 0)
         Me.Label34.Name = "Label34"
@@ -1239,7 +1239,7 @@ Partial Class ParcList
         'Label35
         '
         Me.Label35.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label35.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label35.Location = New System.Drawing.Point(5, 0)
         Me.Label35.Name = "Label35"
@@ -1263,7 +1263,7 @@ Partial Class ParcList
         '
         Me.Label36.BackColor = System.Drawing.Color.Transparent
         Me.Label36.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label36.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label36.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label36.Location = New System.Drawing.Point(5, 0)
         Me.Label36.Name = "Label36"
@@ -1287,7 +1287,7 @@ Partial Class ParcList
         '
         Me.Label37.BackColor = System.Drawing.Color.Transparent
         Me.Label37.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label37.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label37.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Label37.Location = New System.Drawing.Point(5, 0)
         Me.Label37.Name = "Label37"
@@ -1365,7 +1365,7 @@ Partial Class ParcList
         Me.Button16.BackColor = System.Drawing.Color.LimeGreen
         Me.Button16.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button16.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button16.ForeColor = System.Drawing.Color.Ivory
         Me.Button16.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
         Me.Button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1414,11 +1414,11 @@ Partial Class ParcList
         '
         Me.Label26.AutoSize = True
         Me.Label26.BackColor = System.Drawing.Color.Transparent
-        Me.Label26.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label26.Location = New System.Drawing.Point(3, 1)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(46, 16)
+        Me.Label26.Size = New System.Drawing.Size(48, 15)
         Me.Label26.TabIndex = 4
         Me.Label26.Text = "Valeur"
         '
@@ -1437,11 +1437,11 @@ Partial Class ParcList
         '
         Me.Label25.AutoSize = True
         Me.Label25.BackColor = System.Drawing.Color.Transparent
-        Me.Label25.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label25.Location = New System.Drawing.Point(3, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(76, 16)
+        Me.Label25.Size = New System.Drawing.Size(84, 15)
         Me.Label25.TabIndex = 4
         Me.Label25.Text = "Designation"
         '
@@ -1638,7 +1638,7 @@ Partial Class ParcList
         Me.Button8.BackColor = System.Drawing.Color.LimeGreen
         Me.Button8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button8.ForeColor = System.Drawing.Color.Ivory
         Me.Button8.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Gnome_Emblem_Default222
         Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1687,11 +1687,11 @@ Partial Class ParcList
         '
         Me.Label24.AutoSize = True
         Me.Label24.BackColor = System.Drawing.Color.Transparent
-        Me.Label24.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label24.Location = New System.Drawing.Point(3, 1)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(29, 16)
+        Me.Label24.Size = New System.Drawing.Size(29, 15)
         Me.Label24.TabIndex = 4
         Me.Label24.Text = "Qté"
         '
@@ -1731,11 +1731,11 @@ Partial Class ParcList
         '
         Me.Label21.AutoSize = True
         Me.Label21.BackColor = System.Drawing.Color.Transparent
-        Me.Label21.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label21.Location = New System.Drawing.Point(3, 1)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(29, 16)
+        Me.Label21.Size = New System.Drawing.Size(32, 15)
         Me.Label21.TabIndex = 4
         Me.Label21.Text = "Prix"
         '
@@ -1754,11 +1754,11 @@ Partial Class ParcList
         '
         Me.Label17.AutoSize = True
         Me.Label17.BackColor = System.Drawing.Color.Transparent
-        Me.Label17.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label17.Location = New System.Drawing.Point(3, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(76, 16)
+        Me.Label17.Size = New System.Drawing.Size(84, 15)
         Me.Label17.TabIndex = 4
         Me.Label17.Text = "Designation"
         '
@@ -2026,20 +2026,20 @@ Partial Class ParcList
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(21, 62)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
+        Me.Label6.Size = New System.Drawing.Size(58, 15)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Fature à :"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(3, 6)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(65, 17)
+        Me.Label18.Size = New System.Drawing.Size(59, 15)
         Me.Label18.TabIndex = 2
         Me.Label18.Text = "Km Arrive"
         '
@@ -2078,20 +2078,20 @@ Partial Class ParcList
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.Location = New System.Drawing.Point(21, 62)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(63, 17)
+        Me.Label15.Size = New System.Drawing.Size(58, 15)
         Me.Label15.TabIndex = 2
         Me.Label15.Text = "Fature à :"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(4, 7)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(51, 17)
+        Me.Label14.Size = New System.Drawing.Size(47, 15)
         Me.Label14.TabIndex = 2
         Me.Label14.Text = "Status :"
         '
@@ -2132,20 +2132,20 @@ Partial Class ParcList
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(21, 62)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(63, 17)
+        Me.Label2.Size = New System.Drawing.Size(58, 15)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Fature à :"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(3, 6)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 17)
+        Me.Label4.Size = New System.Drawing.Size(66, 15)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Km Depart"
         '
@@ -2164,11 +2164,11 @@ Partial Class ParcList
         '
         Me.Label27.AutoSize = True
         Me.Label27.BackColor = System.Drawing.Color.Transparent
-        Me.Label27.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label27.Location = New System.Drawing.Point(3, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(53, 16)
+        Me.Label27.Size = New System.Drawing.Size(57, 15)
         Me.Label27.TabIndex = 4
         Me.Label27.Text = "Domain"
         '
@@ -2229,20 +2229,20 @@ Partial Class ParcList
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(21, 62)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(63, 17)
+        Me.Label12.Size = New System.Drawing.Size(58, 15)
         Me.Label12.TabIndex = 2
         Me.Label12.Text = "Fature à :"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(3, 6)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(76, 17)
+        Me.Label16.Size = New System.Drawing.Size(69, 15)
         Me.Label16.TabIndex = 2
         Me.Label16.Text = "Destination"
         '
@@ -2250,11 +2250,11 @@ Partial Class ParcList
         '
         Me.Label23.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label23.Location = New System.Drawing.Point(649, 74)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(56, 14)
+        Me.Label23.Size = New System.Drawing.Size(54, 15)
         Me.Label23.TabIndex = 2
         Me.Label23.Text = "Vehicule"
         '
@@ -2286,7 +2286,7 @@ Partial Class ParcList
         '
         Me.lbpj.BackColor = System.Drawing.Color.Transparent
         Me.lbpj.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbpj.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbpj.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbpj.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.lbpj.Location = New System.Drawing.Point(0, 0)
         Me.lbpj.Name = "lbpj"
@@ -2316,11 +2316,11 @@ Partial Class ParcList
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label8.Location = New System.Drawing.Point(28, 74)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(47, 14)
+        Me.Label8.Size = New System.Drawing.Size(44, 15)
         Me.Label8.TabIndex = 2
         Me.Label8.Text = "Client :"
         '
@@ -2329,11 +2329,11 @@ Partial Class ParcList
         Me.Label20.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label20.Location = New System.Drawing.Point(330, 74)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(64, 14)
+        Me.Label20.Size = New System.Drawing.Size(60, 15)
         Me.Label20.TabIndex = 2
         Me.Label20.Text = "Chauffeur"
         '
@@ -2373,20 +2373,20 @@ Partial Class ParcList
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(21, 62)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(63, 17)
+        Me.Label7.Size = New System.Drawing.Size(58, 15)
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "Fature à :"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(3, 6)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(50, 17)
+        Me.Label9.Size = New System.Drawing.Size(44, 15)
         Me.Label9.TabIndex = 2
         Me.Label9.Text = "Depart"
         '
@@ -2408,7 +2408,7 @@ Partial Class ParcList
         '
         Me.lbBc.BackColor = System.Drawing.Color.Transparent
         Me.lbBc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbBc.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbBc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbBc.Location = New System.Drawing.Point(52, 3)
         Me.lbBc.Name = "lbBc"
         Me.lbBc.Size = New System.Drawing.Size(76, 33)
@@ -2442,7 +2442,7 @@ Partial Class ParcList
         '
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label13.Location = New System.Drawing.Point(3, 3)
         Me.Label13.Name = "Label13"
@@ -2500,10 +2500,10 @@ Partial Class ParcList
         'lbVehiculeName
         '
         Me.lbVehiculeName.AutoSize = True
-        Me.lbVehiculeName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbVehiculeName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbVehiculeName.Location = New System.Drawing.Point(10, 13)
         Me.lbVehiculeName.Name = "lbVehiculeName"
-        Me.lbVehiculeName.Size = New System.Drawing.Size(16, 19)
+        Me.lbVehiculeName.Size = New System.Drawing.Size(15, 20)
         Me.lbVehiculeName.TabIndex = 2
         Me.lbVehiculeName.Text = "-"
         '
@@ -2527,7 +2527,7 @@ Partial Class ParcList
         Me.lbVehiculeInfo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbVehiculeInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbVehiculeInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbVehiculeInfo.Location = New System.Drawing.Point(12, 34)
         Me.lbVehiculeInfo.Name = "lbVehiculeInfo"
         Me.lbVehiculeInfo.Size = New System.Drawing.Size(264, 48)
@@ -2583,7 +2583,7 @@ Partial Class ParcList
         Me.lbDriverInfo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbDriverInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDriverInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDriverInfo.Location = New System.Drawing.Point(7, 32)
         Me.lbDriverInfo.Name = "lbDriverInfo"
         Me.lbDriverInfo.Size = New System.Drawing.Size(295, 48)
@@ -2593,10 +2593,10 @@ Partial Class ParcList
         'lbDriverName
         '
         Me.lbDriverName.AutoSize = True
-        Me.lbDriverName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDriverName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDriverName.Location = New System.Drawing.Point(9, 13)
         Me.lbDriverName.Name = "lbDriverName"
-        Me.lbDriverName.Size = New System.Drawing.Size(16, 19)
+        Me.lbDriverName.Size = New System.Drawing.Size(15, 20)
         Me.lbDriverName.TabIndex = 2
         Me.lbDriverName.Text = "-"
         '
@@ -2647,7 +2647,7 @@ Partial Class ParcList
         Me.lbInfo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbInfo.Location = New System.Drawing.Point(14, 37)
         Me.lbInfo.Name = "lbInfo"
         Me.lbInfo.Size = New System.Drawing.Size(248, 38)
@@ -2657,51 +2657,51 @@ Partial Class ParcList
         'lbName
         '
         Me.lbName.AutoSize = True
-        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbName.Location = New System.Drawing.Point(11, 9)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(16, 19)
+        Me.lbName.Size = New System.Drawing.Size(15, 20)
         Me.lbName.TabIndex = 2
         Me.lbName.Text = "-"
         '
         'lbwriterMission
         '
         Me.lbwriterMission.AutoSize = True
-        Me.lbwriterMission.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbwriterMission.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbwriterMission.Location = New System.Drawing.Point(806, 202)
         Me.lbwriterMission.Name = "lbwriterMission"
-        Me.lbwriterMission.Size = New System.Drawing.Size(12, 17)
+        Me.lbwriterMission.Size = New System.Drawing.Size(11, 15)
         Me.lbwriterMission.TabIndex = 2
         Me.lbwriterMission.Text = "-"
         '
         'lbDateMission
         '
         Me.lbDateMission.AutoSize = True
-        Me.lbDateMission.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDateMission.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDateMission.ForeColor = System.Drawing.Color.DarkBlue
         Me.lbDateMission.Location = New System.Drawing.Point(737, 186)
         Me.lbDateMission.Name = "lbDateMission"
-        Me.lbDateMission.Size = New System.Drawing.Size(41, 16)
+        Me.lbDateMission.Size = New System.Drawing.Size(45, 15)
         Me.lbDateMission.TabIndex = 2
         Me.lbDateMission.Text = "Date :"
         '
         'lbMissionBon
         '
         Me.lbMissionBon.AutoSize = True
-        Me.lbMissionBon.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbMissionBon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbMissionBon.Location = New System.Drawing.Point(737, 220)
         Me.lbMissionBon.Name = "lbMissionBon"
-        Me.lbMissionBon.Size = New System.Drawing.Size(16, 17)
+        Me.lbMissionBon.Size = New System.Drawing.Size(15, 15)
         Me.lbMissionBon.TabIndex = 2
         Me.lbMissionBon.Text = "--"
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.Location = New System.Drawing.Point(737, 202)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(63, 17)
+        Me.Label19.Size = New System.Drawing.Size(57, 15)
         Me.Label19.TabIndex = 2
         Me.Label19.Text = "Crée par:"
         '
@@ -2752,7 +2752,7 @@ Partial Class ParcList
         Me.btParamsImp.Dock = System.Windows.Forms.DockStyle.Left
         Me.btParamsImp.FlatAppearance.BorderSize = 0
         Me.btParamsImp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btParamsImp.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btParamsImp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btParamsImp.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Print_56266__1_1
         Me.btParamsImp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btParamsImp.Location = New System.Drawing.Point(61, 0)
@@ -2768,7 +2768,7 @@ Partial Class ParcList
         Me.btPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btPrint.BackColor = System.Drawing.Color.Transparent
         Me.btPrint.FlatAppearance.BorderSize = 0
-        Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
         Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btPrint.Location = New System.Drawing.Point(158, 1)
@@ -2785,7 +2785,7 @@ Partial Class ParcList
         Me.btPdf.Dock = System.Windows.Forms.DockStyle.Left
         Me.btPdf.FlatAppearance.BorderSize = 0
         Me.btPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btPdf.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPdf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPdf.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
         Me.btPdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btPdf.Location = New System.Drawing.Point(0, 0)
@@ -2799,10 +2799,10 @@ Partial Class ParcList
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(21, 62)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 17)
+        Me.Label10.Size = New System.Drawing.Size(58, 15)
         Me.Label10.TabIndex = 2
         Me.Label10.Text = "Fature à :"
         '
@@ -2812,7 +2812,7 @@ Partial Class ParcList
         Me.Button3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Button3.FlatAppearance.BorderSize = 0
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.DELETE_20
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.Location = New System.Drawing.Point(408, 0)
@@ -2838,7 +2838,7 @@ Partial Class ParcList
         Me.btDuplicate.Dock = System.Windows.Forms.DockStyle.Left
         Me.btDuplicate.FlatAppearance.BorderSize = 0
         Me.btDuplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btDuplicate.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDuplicate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDuplicate.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_new_23212__1_1
         Me.btDuplicate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDuplicate.Location = New System.Drawing.Point(282, 0)
@@ -2855,7 +2855,7 @@ Partial Class ParcList
         Me.btSolde.Dock = System.Windows.Forms.DockStyle.Left
         Me.btSolde.FlatAppearance.BorderSize = 0
         Me.btSolde.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSolde.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSolde.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSolde.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_221
         Me.btSolde.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSolde.Location = New System.Drawing.Point(198, 0)
@@ -2873,7 +2873,7 @@ Partial Class ParcList
         Me.btFacturer.Dock = System.Windows.Forms.DockStyle.Left
         Me.btFacturer.FlatAppearance.BorderSize = 0
         Me.btFacturer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFacturer.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btFacturer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFacturer.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
         Me.btFacturer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btFacturer.Location = New System.Drawing.Point(114, 0)
@@ -2891,7 +2891,7 @@ Partial Class ParcList
         Me.btSave.Dock = System.Windows.Forms.DockStyle.Left
         Me.btSave.FlatAppearance.BorderSize = 0
         Me.btSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSave.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSave.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.btSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSave.Location = New System.Drawing.Point(19, 0)
@@ -2943,7 +2943,7 @@ Partial Class ParcList
         '
         Me.LbNewFacture.Dock = System.Windows.Forms.DockStyle.Left
         Me.LbNewFacture.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbNewFacture.Location = New System.Drawing.Point(215, 5)
+        Me.LbNewFacture.Location = New System.Drawing.Point(228, 5)
         Me.LbNewFacture.Name = "LbNewFacture"
         Me.LbNewFacture.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
         Me.LbNewFacture.Size = New System.Drawing.Size(152, 21)
@@ -2957,7 +2957,7 @@ Partial Class ParcList
         Me.Panel27.BackColor = System.Drawing.Color.Transparent
         Me.Panel27.Controls.Add(Me.Label11)
         Me.Panel27.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel27.Location = New System.Drawing.Point(169, 5)
+        Me.Panel27.Location = New System.Drawing.Point(182, 5)
         Me.Panel27.Name = "Panel27"
         Me.Panel27.Size = New System.Drawing.Size(46, 21)
         Me.Panel27.TabIndex = 7
@@ -2965,10 +2965,10 @@ Partial Class ParcList
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(21, 62)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 17)
+        Me.Label11.Size = New System.Drawing.Size(58, 15)
         Me.Label11.TabIndex = 2
         Me.Label11.Text = "Fature à :"
         '
@@ -2977,7 +2977,7 @@ Partial Class ParcList
         Me.pbJoindre_Mission.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
         Me.pbJoindre_Mission.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbJoindre_Mission.Dock = System.Windows.Forms.DockStyle.Left
-        Me.pbJoindre_Mission.Location = New System.Drawing.Point(131, 5)
+        Me.pbJoindre_Mission.Location = New System.Drawing.Point(144, 5)
         Me.pbJoindre_Mission.Name = "pbJoindre_Mission"
         Me.pbJoindre_Mission.Size = New System.Drawing.Size(38, 21)
         Me.pbJoindre_Mission.TabIndex = 6
@@ -2988,11 +2988,11 @@ Partial Class ParcList
         '
         Me.lbId.AutoSize = True
         Me.lbId.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbId.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbId.Location = New System.Drawing.Point(75, 5)
+        Me.lbId.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbId.Location = New System.Drawing.Point(84, 5)
         Me.lbId.Name = "lbId"
         Me.lbId.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
-        Me.lbId.Size = New System.Drawing.Size(56, 19)
+        Me.lbId.Size = New System.Drawing.Size(60, 20)
         Me.lbId.TabIndex = 2
         Me.lbId.Text = "0001"
         Me.lbId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -3002,10 +3002,10 @@ Partial Class ParcList
         Me.lbType.AutoSize = True
         Me.lbType.BackColor = System.Drawing.Color.Transparent
         Me.lbType.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbType.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbType.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbType.Location = New System.Drawing.Point(0, 5)
         Me.lbType.Name = "lbType"
-        Me.lbType.Size = New System.Drawing.Size(75, 19)
+        Me.lbType.Size = New System.Drawing.Size(84, 20)
         Me.lbType.TabIndex = 2
         Me.lbType.Text = "Mission  :"
         Me.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -3074,7 +3074,7 @@ Partial Class ParcList
         '
         Me.lbLavc.BackColor = System.Drawing.Color.LightGray
         Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLavc.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLavc.Location = New System.Drawing.Point(574, 2)
         Me.lbLavc.Name = "lbLavc"
         Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3087,7 +3087,7 @@ Partial Class ParcList
         '
         Me.Label5.BackColor = System.Drawing.Color.Gainsboro
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(462, 2)
         Me.Label5.Name = "Label5"
         Me.Label5.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3100,7 +3100,7 @@ Partial Class ParcList
         '
         Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
         Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLtotal.Location = New System.Drawing.Point(328, 2)
         Me.lbLtotal.Name = "lbLtotal"
         Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3113,7 +3113,7 @@ Partial Class ParcList
         '
         Me.Label3.BackColor = System.Drawing.Color.Gainsboro
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(231, 2)
         Me.Label3.Name = "Label3"
         Me.Label3.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3126,7 +3126,7 @@ Partial Class ParcList
         '
         Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
         Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLnbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLnbr.Location = New System.Drawing.Point(97, 2)
         Me.lbLnbr.Name = "lbLnbr"
         Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3139,7 +3139,7 @@ Partial Class ParcList
         '
         Me.Label1.BackColor = System.Drawing.Color.Gainsboro
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(0, 2)
         Me.Label1.Name = "Label1"
         Me.Label1.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -3151,7 +3151,7 @@ Partial Class ParcList
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button2.Location = New System.Drawing.Point(907, 4)
         Me.Button2.Name = "Button2"
@@ -3164,7 +3164,7 @@ Partial Class ParcList
         'Button4
         '
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button4.Location = New System.Drawing.Point(775, 4)
         Me.Button4.Name = "Button4"
@@ -3178,7 +3178,7 @@ Partial Class ParcList
         '
         Me.btPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btPage.Enabled = False
-        Me.btPage.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPage.ForeColor = System.Drawing.SystemColors.GrayText
         Me.btPage.Location = New System.Drawing.Point(841, 4)
         Me.btPage.Name = "btPage"

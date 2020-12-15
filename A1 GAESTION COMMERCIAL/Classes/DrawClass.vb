@@ -1023,6 +1023,7 @@ Public Class DrawClass
                     Dim sss As Integer = CInt(id_Cleared)
                     id_Cleared = sss.ToString
                     ID = Form1.prefix & id_Cleared
+
                 End If
                 '//////////////////////////////////////////////
 
@@ -1030,8 +1031,12 @@ Public Class DrawClass
                 Dim dte As String = DteValue(data, "date", m).ToString("dd MMM, yyyy")
                 Dim total As String = String.Format("{0:n}", DblValue(data, "total", m))
                 Dim avance As String = String.Format("{0:n}", DblValue(data, "avance", m))
-                Dim etat As String = "Non"
+
+
+                Dim etat As String = String.Format("{0:n}", DblValue(data, "avance", m) - DblValue(data, "total", m))
                 If BoolValue(data, "isPayed", m) Then etat = "Regle"
+
+
                 ''''''
                 Dim size As SizeF = e.Graphics.MeasureString(libelle, fnt, 400)
 

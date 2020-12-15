@@ -243,7 +243,7 @@
                     Dim sp = pr.txtHt.text
                     Dim bp = pr.txtPAch.text
 
-                    If Form1.isBaseOnTTC Then
+                    If Form1.isBaseOnTTC_ListArticle Then
                         Dim tv = pr.txtTva.text
                         If Form1.isBaseOnOneTva Then tv = Form1.tva
 

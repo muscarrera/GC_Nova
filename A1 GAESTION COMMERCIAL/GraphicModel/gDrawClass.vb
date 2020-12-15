@@ -231,7 +231,7 @@ Public Class gDrawClass
 
             Dim plus_h As Integer = F_D.Height
             For Each c As gColClass In tc.details
-                plus_h = F_D.Height
+
                 Dim _str As String = ""
 
                 If c.Field = "xTotal" Then '////////////////////////////////////////////////

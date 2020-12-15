@@ -777,7 +777,7 @@ Partial Class DataList
         '
         'Button6
         '
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_folder_add_61769
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button6.Location = New System.Drawing.Point(8, 3)
@@ -804,7 +804,7 @@ Partial Class DataList
         'Button2
         '
         Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button2.Location = New System.Drawing.Point(809, 0)
         Me.Button2.Name = "Button2"
@@ -818,7 +818,7 @@ Partial Class DataList
         '
         Me.btPage.Dock = System.Windows.Forms.DockStyle.Right
         Me.btPage.Enabled = False
-        Me.btPage.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPage.ForeColor = System.Drawing.SystemColors.GrayText
         Me.btPage.Location = New System.Drawing.Point(749, 0)
         Me.btPage.Name = "btPage"
@@ -831,7 +831,7 @@ Partial Class DataList
         'Button4
         '
         Me.Button4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.ForeColor = System.Drawing.SystemColors.GrayText
         Me.Button4.Location = New System.Drawing.Point(689, 0)
         Me.Button4.Name = "Button4"
@@ -845,7 +845,7 @@ Partial Class DataList
         '
         Me.Label14.BackColor = System.Drawing.Color.Gainsboro
         Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label14.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(0, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -858,7 +858,7 @@ Partial Class DataList
         '
         Me.lbLnbr.BackColor = System.Drawing.Color.LightGray
         Me.lbLnbr.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLnbr.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLnbr.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLnbr.Location = New System.Drawing.Point(71, 0)
         Me.lbLnbr.Name = "lbLnbr"
         Me.lbLnbr.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -871,7 +871,7 @@ Partial Class DataList
         '
         Me.Label13.BackColor = System.Drawing.Color.Gainsboro
         Me.Label13.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(134, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -884,7 +884,7 @@ Partial Class DataList
         '
         Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
         Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLtotal.Location = New System.Drawing.Point(211, 0)
         Me.lbLtotal.Name = "lbLtotal"
         Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -897,7 +897,7 @@ Partial Class DataList
         '
         Me.Label12.BackColor = System.Drawing.Color.Gainsboro
         Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(307, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -910,7 +910,7 @@ Partial Class DataList
         '
         Me.lbLavc.BackColor = System.Drawing.Color.LightGray
         Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLavc.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLavc.Location = New System.Drawing.Point(392, 0)
         Me.lbLavc.Name = "lbLavc"
         Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)

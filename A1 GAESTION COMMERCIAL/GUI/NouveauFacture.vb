@@ -90,7 +90,7 @@
 
         Dim x As Integer = 0
         Using a As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString, True)
-            x = a.InsertRecord(tb_C, params)
+            x = a.InsertRecord(tb_C, params, True)
         End Using
 
         Return x

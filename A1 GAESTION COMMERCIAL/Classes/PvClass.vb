@@ -499,6 +499,10 @@
             Dim err_msg As String = "init ..."
             Try
 
+                Dim isP As Boolean = False
+                If CInt(ds.RPL.Avance) >= CInt(ds.RPL.Total_TTC) Then isP = True
+
+
                 Dim params As New Dictionary(Of String, Object)
                 params.Add("cid", ds.RPL.myClient.cid)
                 params.Add("name", ds.RPL.myClient.name)
@@ -509,7 +513,7 @@
                 params.Add("date", Format(ds.RPL.myDate, "dd/MM/yyyy"))
                 params.Add("writer", CStr(Form1.adminName))
                 params.Add("isAdmin", "CREATION")
-                params.Add("isPayed", False)
+                params.Add("isPayed", isP)
                 params.Add("modePayement", "-")
                 params.Add("droitTimbre", 0)
                 params.Add("pj", 0)
@@ -520,6 +524,8 @@
 
                 If fid > 0 Then
                     Dim data = ds.RPL.DataSource
+
+                    ds.RPL.fctid = fid
 
                     For i As Integer = 0 To data.Rows.Count - 1
                         params.Clear()
@@ -542,20 +548,20 @@
                         If data.Rows(i).Item("depot") > 0 And data.Rows(i).Item("arid") > 0 Then
                             Dim q As Double = CDbl(data.Rows(i).Item("qte"))
                             q = q * -1
-                        
-
-                        Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
-                        If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
-
-                            AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
-                                        data.Rows(i).Item("cid"), q, c)
-                            params.Clear()
-                        Else
 
 
-                            oldStock += q
-                            updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
-                        End If
+                            Dim oldStock = getStockById(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c)
+                            If getStockId(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), c) = 0 Then
+
+                                AddNewStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"),
+                                            data.Rows(i).Item("cid"), q, c)
+                                params.Clear()
+                            Else
+
+
+                                oldStock += q
+                                updateStock(data.Rows(i).Item("arid"), data.Rows(i).Item("depot"), oldStock, c)
+                            End If
                         End If
                     Next
 

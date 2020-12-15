@@ -22,16 +22,17 @@ Partial Class PayementForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim Payement2 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
+        Dim Payement1 As A1_GAESTION_COMMERCIAL.Payement = New A1_GAESTION_COMMERCIAL.Payement()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.lb_PorteMonie = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btAddPorteMonie = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.lbAvoir = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.lb_PorteMonie = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lbRef = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -50,10 +51,9 @@ Partial Class PayementForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.btAddPorteMonie = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
-        Me.Panel8.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel24.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -81,13 +81,66 @@ Partial Class PayementForm
         Me.Panel1.Size = New System.Drawing.Size(884, 127)
         Me.Panel1.TabIndex = 6
         '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel7.Controls.Add(Me.lb_PorteMonie)
+        Me.Panel7.Controls.Add(Me.Button1)
+        Me.Panel7.Location = New System.Drawing.Point(434, 41)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(216, 32)
+        Me.Panel7.TabIndex = 9
+        Me.Panel7.Visible = False
+        '
+        'lb_PorteMonie
+        '
+        Me.lb_PorteMonie.AutoSize = True
+        Me.lb_PorteMonie.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_PorteMonie.Location = New System.Drawing.Point(13, 9)
+        Me.lb_PorteMonie.Name = "lb_PorteMonie"
+        Me.lb_PorteMonie.Size = New System.Drawing.Size(15, 16)
+        Me.lb_PorteMonie.TabIndex = 12
+        Me.lb_PorteMonie.Text = "0"
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(174, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(42, 32)
+        Me.Button1.TabIndex = 3
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btAddPorteMonie
+        '
+        Me.btAddPorteMonie.BackColor = System.Drawing.Color.Transparent
+        Me.btAddPorteMonie.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ADD14
+        Me.btAddPorteMonie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btAddPorteMonie.FlatAppearance.BorderSize = 0
+        Me.btAddPorteMonie.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btAddPorteMonie.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAddPorteMonie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btAddPorteMonie.Location = New System.Drawing.Point(538, 11)
+        Me.btAddPorteMonie.Name = "btAddPorteMonie"
+        Me.btAddPorteMonie.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
+        Me.btAddPorteMonie.Size = New System.Drawing.Size(24, 32)
+        Me.btAddPorteMonie.TabIndex = 11
+        Me.btAddPorteMonie.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btAddPorteMonie.UseVisualStyleBackColor = False
+        Me.btAddPorteMonie.Visible = False
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(656, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 15)
+        Me.Label1.Size = New System.Drawing.Size(39, 16)
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Avoir"
         Me.Label1.Visible = False
@@ -95,10 +148,10 @@ Partial Class PayementForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(431, 23)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(102, 15)
+        Me.Label2.Size = New System.Drawing.Size(95, 16)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "porte-monnaie"
         Me.Label2.Visible = False
@@ -117,17 +170,17 @@ Partial Class PayementForm
         'lbAvoir
         '
         Me.lbAvoir.AutoSize = True
-        Me.lbAvoir.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvoir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbAvoir.Location = New System.Drawing.Point(16, 9)
         Me.lbAvoir.Name = "lbAvoir"
-        Me.lbAvoir.Size = New System.Drawing.Size(15, 15)
+        Me.lbAvoir.Size = New System.Drawing.Size(15, 16)
         Me.lbAvoir.TabIndex = 11
         Me.lbAvoir.Text = "0"
         '
         'Button3
         '
         Me.Button3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.Location = New System.Drawing.Point(174, 0)
@@ -137,41 +190,6 @@ Partial Class PayementForm
         Me.Button3.TabIndex = 3
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.DarkGray
-        Me.Panel7.Controls.Add(Me.lb_PorteMonie)
-        Me.Panel7.Controls.Add(Me.Button1)
-        Me.Panel7.Location = New System.Drawing.Point(434, 41)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(216, 32)
-        Me.Panel7.TabIndex = 9
-        Me.Panel7.Visible = False
-        '
-        'lb_PorteMonie
-        '
-        Me.lb_PorteMonie.AutoSize = True
-        Me.lb_PorteMonie.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_PorteMonie.Location = New System.Drawing.Point(13, 9)
-        Me.lb_PorteMonie.Name = "lb_PorteMonie"
-        Me.lb_PorteMonie.Size = New System.Drawing.Size(15, 15)
-        Me.lb_PorteMonie.TabIndex = 12
-        Me.lb_PorteMonie.Text = "0"
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(174, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(42, 32)
-        Me.Button1.TabIndex = 3
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -186,9 +204,9 @@ Partial Class PayementForm
         'lbRef
         '
         Me.lbRef.AutoSize = True
-        Me.lbRef.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbRef.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbRef.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lbRef.Location = New System.Drawing.Point(150, 29)
+        Me.lbRef.Location = New System.Drawing.Point(62, 52)
         Me.lbRef.Name = "lbRef"
         Me.lbRef.Size = New System.Drawing.Size(18, 18)
         Me.lbRef.TabIndex = 5
@@ -197,7 +215,7 @@ Partial Class PayementForm
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.Location = New System.Drawing.Point(62, 29)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(82, 18)
@@ -226,7 +244,7 @@ Partial Class PayementForm
         Me.AddPayementRow1.Location = New System.Drawing.Point(0, 2)
         Me.AddPayementRow1.Name = "AddPayementRow1"
         Me.AddPayementRow1.Padding = New System.Windows.Forms.Padding(2)
-        Me.AddPayementRow1.Payement = Payement2
+        Me.AddPayementRow1.Payement = Payement1
         Me.AddPayementRow1.Size = New System.Drawing.Size(874, 34)
         Me.AddPayementRow1.TabIndex = 9
         '
@@ -307,7 +325,7 @@ Partial Class PayementForm
         '
         Me.lbLavc.BackColor = System.Drawing.Color.LightGray
         Me.lbLavc.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLavc.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLavc.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLavc.Location = New System.Drawing.Point(354, 2)
         Me.lbLavc.Name = "lbLavc"
         Me.lbLavc.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -320,7 +338,7 @@ Partial Class PayementForm
         '
         Me.Label5.BackColor = System.Drawing.Color.Gainsboro
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(242, 2)
         Me.Label5.Name = "Label5"
         Me.Label5.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -333,7 +351,7 @@ Partial Class PayementForm
         '
         Me.lbLtotal.BackColor = System.Drawing.Color.LightGray
         Me.lbLtotal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbLtotal.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbLtotal.Location = New System.Drawing.Point(108, 2)
         Me.lbLtotal.Name = "lbLtotal"
         Me.lbLtotal.Padding = New System.Windows.Forms.Padding(11, 0, 11, 0)
@@ -346,7 +364,7 @@ Partial Class PayementForm
         '
         Me.Label3.BackColor = System.Drawing.Color.Gainsboro
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 2)
         Me.Label3.Name = "Label3"
         Me.Label3.Padding = New System.Windows.Forms.Padding(33, 0, 11, 0)
@@ -357,7 +375,7 @@ Partial Class PayementForm
         '
         'Button2
         '
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button2.Location = New System.Drawing.Point(756, 5)
@@ -378,24 +396,6 @@ Partial Class PayementForm
         Me.Panel6.Size = New System.Drawing.Size(884, 2)
         Me.Panel6.TabIndex = 1
         '
-        'btAddPorteMonie
-        '
-        Me.btAddPorteMonie.BackColor = System.Drawing.Color.Transparent
-        Me.btAddPorteMonie.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ADD14
-        Me.btAddPorteMonie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btAddPorteMonie.FlatAppearance.BorderSize = 0
-        Me.btAddPorteMonie.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btAddPorteMonie.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btAddPorteMonie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btAddPorteMonie.Location = New System.Drawing.Point(538, 11)
-        Me.btAddPorteMonie.Name = "btAddPorteMonie"
-        Me.btAddPorteMonie.Padding = New System.Windows.Forms.Padding(6, 0, 0, 0)
-        Me.btAddPorteMonie.Size = New System.Drawing.Size(24, 32)
-        Me.btAddPorteMonie.TabIndex = 11
-        Me.btAddPorteMonie.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btAddPorteMonie.UseVisualStyleBackColor = False
-        Me.btAddPorteMonie.Visible = False
-        '
         'PayementForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -411,10 +411,10 @@ Partial Class PayementForm
         Me.Text = "Payement"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel24.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)

@@ -212,7 +212,7 @@
                     End If
 
                     Dim isPayed As Boolean = False
-                    If avc >= Total Then isPayed = True
+                    If CInt(avc) >= CInt(Total) Then isPayed = True
 
                     params.Add("avance", avc)
                     params.Add("isPayed", isPayed)
@@ -264,7 +264,8 @@
                     avc -= pm._PM_Edit.montant
 
                     Dim isPayed As Boolean = False
-                    If avc >= Total Then isPayed = True
+                    'If avc >= Total Then isPayed = True
+                     If CInt(avc) >= CInt(Total) Then isPayed = True
 
                     params.Add("avance", avc)
                     params.Add("isPayed", isPayed)
@@ -341,7 +342,8 @@
                     End If
 
                     Dim isPayed As Boolean = False
-                    If avc >= Total Then isPayed = True
+                    '   If avc >= Total Then isPayed = True
+                    If CInt(avc) >= CInt(Total) Then isPayed = True
 
                     params.Add("avance", avc)
                     params.Add("isPayed", isPayed)
@@ -425,7 +427,8 @@
                             End If
 
                             Dim isPayed As Boolean = False
-                            If avc >= Total Then isPayed = True
+                            'If avc >= Total Then isPayed = True
+                            If CInt(avc) >= CInt(Total) Then isPayed = True
 
                             params.Add("avance", avc)
                             params.Add("isPayed", isPayed)
@@ -517,7 +520,10 @@
                             End If
 
                             Dim isPayed As Boolean = False
-                            If avc >= Total Then isPayed = True
+                            '   If avc >= Total Then isPayed = True
+                            If CInt(avc) >= CInt(Total) Then isPayed = True
+
+
 
                             params.Add("avance", avc)
                             params.Add("isPayed", isPayed)

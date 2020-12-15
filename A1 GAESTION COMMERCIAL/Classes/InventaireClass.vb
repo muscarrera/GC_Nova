@@ -900,8 +900,8 @@
                 Dim dte2 As Date = ds.dte2.Value.AddDays(1)
 
                 'Dim params As New Dictionary(Of String, Object)
-                params.Add("[date] > ", CDate(dte1.ToString("dd-MM-yyyy")))
-                params.Add("[date] < ", CDate(dte2.ToString("dd-MM-yyyy")))
+                params.Add("[date] > ", dte1)
+                params.Add("[date] < ", dte2)
 
 
                 If ds.txt.text.Trim.Contains("|") Then
@@ -912,16 +912,26 @@
             Catch ex As Exception
             End Try
 
-            Dim dt = a.SelectDataTableSymbols(ds.tableName, {"id", "date", "cid", "name", "total", "tva"}, params)
-            Dim dt2 = a.SelectDataTableSymbols(ds.tableName_avoir, {"id", "date", "cid", "name", "total", "tva"}, params)
+            Dim str() As String = {"id", "date", "cid", "name", "total", "tva"}
+            If ds.tableName = "Buy_Facture" Then str = {"id", "Bon_Achat", "date", "cid", "name", "total", "tva"}
 
-            If dt2.Rows.Count > 0 Then
-                For i As Integer = 0 To dt2.Rows.Count - 1
-                    dt2.Rows(i).Item("total") = DblValue(dt2, "total", i) * -1
-                Next
 
-                dt.Merge(dt2)
-            End If
+            Dim dt = a.SelectDataTableSymbols(ds.tableName, str, params)
+
+            Dim dt2 = a.SelectDataTableSymbols(ds.tableName_avoir, str, params)
+
+
+            Try
+                If dt2.Rows.Count > 0 Then
+                    For i As Integer = 0 To dt2.Rows.Count - 1
+                        dt2.Rows(i).Item("total") = DblValue(dt2, "total", i) * -1
+                    Next
+
+                    dt.Merge(dt2)
+                End If
+            Catch ex As Exception
+            End Try
+
 
             ds.dataSource = dt
         End Using

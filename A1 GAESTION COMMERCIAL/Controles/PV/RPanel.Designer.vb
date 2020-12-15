@@ -36,9 +36,11 @@ Partial Class RPanel
         Me.LbSum = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.CP = New A1_GAESTION_COMMERCIAL.CPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.CP = New A1_GAESTION_COMMERCIAL.CPanel()
         Me.PlHeader.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Pl
@@ -47,7 +49,7 @@ Partial Class RPanel
         Me.Pl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Pl.Location = New System.Drawing.Point(0, 10)
         Me.Pl.Name = "Pl"
-        Me.Pl.Size = New System.Drawing.Size(385, 229)
+        Me.Pl.Size = New System.Drawing.Size(385, 228)
         Me.Pl.TabIndex = 6
         '
         'PlTop
@@ -71,7 +73,7 @@ Partial Class RPanel
         Me.PlHeader.Controls.Add(Me.LbSum)
         Me.PlHeader.Controls.Add(Me.ShapeContainer1)
         Me.PlHeader.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PlHeader.Location = New System.Drawing.Point(0, 239)
+        Me.PlHeader.Location = New System.Drawing.Point(0, 238)
         Me.PlHeader.Name = "PlHeader"
         Me.PlHeader.Size = New System.Drawing.Size(385, 55)
         Me.PlHeader.TabIndex = 3
@@ -187,11 +189,34 @@ Partial Class RPanel
         '
         'LineShape1
         '
+        Me.LineShape1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LineShape1.Name = "LineShape1"
         Me.LineShape1.X1 = 211
         Me.LineShape1.X2 = 386
         Me.LineShape1.Y1 = 9
         Me.LineShape1.Y2 = 9
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Controls.Add(Me.Panel2)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 293)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(385, 11)
+        Me.Panel1.TabIndex = 5
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Navy
+        Me.Panel2.Cursor = System.Windows.Forms.Cursors.HSplit
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 6)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(385, 5)
+        Me.Panel2.TabIndex = 0
         '
         'CP
         '
@@ -207,16 +232,6 @@ Partial Class RPanel
         Me.CP.TabIndex = 7
         Me.CP.Value = 1.0R
         '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 294)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(385, 10)
-        Me.Panel1.TabIndex = 5
-        '
         'RPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -231,6 +246,7 @@ Partial Class RPanel
         Me.Size = New System.Drawing.Size(385, 563)
         Me.PlHeader.ResumeLayout(False)
         Me.PlHeader.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -250,5 +266,6 @@ Partial Class RPanel
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents CP As A1_GAESTION_COMMERCIAL.CPanel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
 
 End Class

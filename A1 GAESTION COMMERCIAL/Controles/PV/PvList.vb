@@ -56,6 +56,22 @@ Public Class PvList
         End Get
     End Property
 
+    Private _RplWidth As Integer
+    Public Property RplWidth() As Integer
+        Get
+            Return _RplWidth
+        End Get
+        Set(ByVal value As Integer)
+            _RplWidth = value
+            RPL.Width = value
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "RplWidth", value)
+
+        End Set
+    End Property
+
+
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -71,6 +87,10 @@ Public Class PvList
         tb_F = getRegistryinfo("pv_tb_F", "Commande_Client")
         tb_D = getRegistryinfo("pv_tb_D", "Details_Commande")
         tb_P = getRegistryinfo("pv_tb_P", "Client_Payement")
+
+
+        RplWidth = getRegistryinfo("RplWidth", 404)
+        RPL.RplHeight = getRegistryinfo("RplHeight", 248)
 
     End Sub
 
@@ -577,7 +597,7 @@ Public Class PvList
             data.Columns.Add("Editeur", GetType(String))
             data.Columns.Add("vidal", GetType(String))
 
-            data.Rows.Add(0, RPL.myDate.ToString("dd/MM/yyyy"), RPL.myClient.cid, RPL.myClient.name,
+            data.Rows.Add(RPL.fctid, RPL.myDate.ToString("dd/MM/yyyy"), RPL.myClient.cid, RPL.myClient.name,
                           String.Format("{0:0.00}", RPL.Total_Ht), String.Format("{0:0.00}", RPL.Tva),
                           String.Format("{0:0.00}", RPL.Total_TTC), String.Format("{0:0.00}", RPL.Remise),
                           String.Format("{0:0.00}", RPL.Avance), String.Format("{0:0.00}", 0),
@@ -609,5 +629,19 @@ Public Class PvList
     Private Sub PvList_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Leave
         SaveChanges()
 
+    End Sub
+
+    Private Sub Panel7_MouseUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Panel7.MouseUp
+        'RplWidth = e.X
+
+        'If hh = 0 Then Exit Sub
+
+        RplWidth = RplWidth + (e.X - hh)
+        hh = 0
+
+    End Sub
+    Dim hh As Integer = 0
+    Private Sub Panel7_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Panel7.MouseDown
+        hh = e.X
     End Sub
 End Class

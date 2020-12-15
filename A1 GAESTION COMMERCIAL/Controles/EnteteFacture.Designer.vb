@@ -185,31 +185,31 @@ Partial Class EnteteFacture
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(21, 62)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(63, 17)
+        Me.Label7.Size = New System.Drawing.Size(58, 15)
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "Fature à :"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(4, 7)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(51, 17)
+        Me.Label9.Size = New System.Drawing.Size(47, 15)
         Me.Label9.TabIndex = 2
         Me.Label9.Text = "Status :"
         '
         'lbDate
         '
         Me.lbDate.AutoSize = True
-        Me.lbDate.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDate.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lbDate.Location = New System.Drawing.Point(95, 43)
         Me.lbDate.Name = "lbDate"
-        Me.lbDate.Size = New System.Drawing.Size(46, 16)
+        Me.lbDate.Size = New System.Drawing.Size(49, 16)
         Me.lbDate.TabIndex = 2
         Me.lbDate.Text = "Date :"
         '
@@ -262,7 +262,7 @@ Partial Class EnteteFacture
         '
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label10.Location = New System.Drawing.Point(0, 0)
         Me.Label10.Name = "Label10"
@@ -307,7 +307,7 @@ Partial Class EnteteFacture
         '
         Me.lbBc.BackColor = System.Drawing.Color.Transparent
         Me.lbBc.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbBc.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbBc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbBc.Location = New System.Drawing.Point(52, 3)
         Me.lbBc.Name = "lbBc"
         Me.lbBc.Size = New System.Drawing.Size(224, 33)
@@ -341,7 +341,7 @@ Partial Class EnteteFacture
         '
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label8.Location = New System.Drawing.Point(3, 3)
         Me.Label8.Name = "Label8"
@@ -386,7 +386,7 @@ Partial Class EnteteFacture
         '
         Me.lbdv.BackColor = System.Drawing.Color.Transparent
         Me.lbdv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbdv.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbdv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbdv.Location = New System.Drawing.Point(52, 3)
         Me.lbdv.Name = "lbdv"
         Me.lbdv.Size = New System.Drawing.Size(224, 33)
@@ -420,7 +420,7 @@ Partial Class EnteteFacture
         '
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Label5.Location = New System.Drawing.Point(3, 3)
         Me.Label5.Name = "Label5"
@@ -450,10 +450,10 @@ Partial Class EnteteFacture
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(26, 43)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 17)
+        Me.Label2.Size = New System.Drawing.Size(39, 15)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Date :"
         '
@@ -560,10 +560,10 @@ Partial Class EnteteFacture
         'lbName
         '
         Me.lbName.AutoSize = True
-        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbName.Location = New System.Drawing.Point(9, 10)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(80, 19)
+        Me.lbName.Size = New System.Drawing.Size(87, 20)
         Me.lbName.TabIndex = 2
         Me.lbName.Text = "Fature à :"
         '
@@ -572,7 +572,7 @@ Partial Class EnteteFacture
         Me.lbInfo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbInfo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbInfo.Location = New System.Drawing.Point(10, 39)
         Me.lbInfo.Name = "lbInfo"
         Me.lbInfo.Size = New System.Drawing.Size(179, 82)
@@ -592,7 +592,7 @@ Partial Class EnteteFacture
         'lbEnCompte
         '
         Me.lbEnCompte.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbEnCompte.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbEnCompte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbEnCompte.Location = New System.Drawing.Point(11, 11)
         Me.lbEnCompte.Name = "lbEnCompte"
         Me.lbEnCompte.Size = New System.Drawing.Size(123, 110)
@@ -621,11 +621,11 @@ Partial Class EnteteFacture
         '
         Me.lbId.AutoSize = True
         Me.lbId.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbId.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbId.Location = New System.Drawing.Point(69, 5)
+        Me.lbId.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbId.Location = New System.Drawing.Point(77, 5)
         Me.lbId.Name = "lbId"
         Me.lbId.Padding = New System.Windows.Forms.Padding(11, 0, 0, 0)
-        Me.lbId.Size = New System.Drawing.Size(56, 19)
+        Me.lbId.Size = New System.Drawing.Size(60, 20)
         Me.lbId.TabIndex = 2
         Me.lbId.Text = "0001"
         Me.lbId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -669,7 +669,7 @@ Partial Class EnteteFacture
         '
         Me.LbNewFacture.Dock = System.Windows.Forms.DockStyle.Left
         Me.LbNewFacture.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbNewFacture.Location = New System.Drawing.Point(209, 5)
+        Me.LbNewFacture.Location = New System.Drawing.Point(221, 5)
         Me.LbNewFacture.Name = "LbNewFacture"
         Me.LbNewFacture.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
         Me.LbNewFacture.Size = New System.Drawing.Size(152, 21)
@@ -683,7 +683,7 @@ Partial Class EnteteFacture
         Me.Panel27.BackColor = System.Drawing.Color.Transparent
         Me.Panel27.Controls.Add(Me.Label11)
         Me.Panel27.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel27.Location = New System.Drawing.Point(163, 5)
+        Me.Panel27.Location = New System.Drawing.Point(175, 5)
         Me.Panel27.Name = "Panel27"
         Me.Panel27.Size = New System.Drawing.Size(46, 21)
         Me.Panel27.TabIndex = 7
@@ -691,10 +691,10 @@ Partial Class EnteteFacture
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(21, 62)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 17)
+        Me.Label11.Size = New System.Drawing.Size(58, 15)
         Me.Label11.TabIndex = 2
         Me.Label11.Text = "Fature à :"
         '
@@ -703,7 +703,7 @@ Partial Class EnteteFacture
         Me.pbJoindre.BackgroundImage = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.téléchargement__1_
         Me.pbJoindre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pbJoindre.Dock = System.Windows.Forms.DockStyle.Left
-        Me.pbJoindre.Location = New System.Drawing.Point(125, 5)
+        Me.pbJoindre.Location = New System.Drawing.Point(137, 5)
         Me.pbJoindre.Name = "pbJoindre"
         Me.pbJoindre.Size = New System.Drawing.Size(38, 21)
         Me.pbJoindre.TabIndex = 6
@@ -715,10 +715,10 @@ Partial Class EnteteFacture
         Me.lbType.AutoSize = True
         Me.lbType.BackColor = System.Drawing.Color.Transparent
         Me.lbType.Dock = System.Windows.Forms.DockStyle.Left
-        Me.lbType.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbType.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbType.Location = New System.Drawing.Point(0, 5)
         Me.lbType.Name = "lbType"
-        Me.lbType.Size = New System.Drawing.Size(69, 19)
+        Me.lbType.Size = New System.Drawing.Size(77, 20)
         Me.lbType.TabIndex = 2
         Me.lbType.Text = "Fature  :"
         Me.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -758,10 +758,10 @@ Partial Class EnteteFacture
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(21, 62)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
+        Me.Label6.Size = New System.Drawing.Size(58, 15)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Fature à :"
         '
@@ -789,10 +789,10 @@ Partial Class EnteteFacture
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(21, 62)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(63, 17)
+        Me.Label3.Size = New System.Drawing.Size(58, 15)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Fature à :"
         '
@@ -831,10 +831,10 @@ Partial Class EnteteFacture
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(21, 62)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(63, 17)
+        Me.Label12.Size = New System.Drawing.Size(58, 15)
         Me.Label12.TabIndex = 2
         Me.Label12.Text = "Fature à :"
         '
@@ -862,10 +862,10 @@ Partial Class EnteteFacture
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(21, 62)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(63, 17)
+        Me.Label13.Size = New System.Drawing.Size(58, 15)
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Fature à :"
         '
@@ -949,7 +949,7 @@ Partial Class EnteteFacture
         Me.btParamsImp.Dock = System.Windows.Forms.DockStyle.Left
         Me.btParamsImp.FlatAppearance.BorderSize = 0
         Me.btParamsImp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btParamsImp.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btParamsImp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btParamsImp.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Print_56266__1_1
         Me.btParamsImp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btParamsImp.Location = New System.Drawing.Point(61, 0)
@@ -965,7 +965,7 @@ Partial Class EnteteFacture
         Me.btPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btPrint.BackColor = System.Drawing.Color.Transparent
         Me.btPrint.FlatAppearance.BorderSize = 0
-        Me.btPrint.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPrint.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.PRINT_18
         Me.btPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btPrint.Location = New System.Drawing.Point(168, 1)
@@ -982,7 +982,7 @@ Partial Class EnteteFacture
         Me.btPdf.Dock = System.Windows.Forms.DockStyle.Left
         Me.btPdf.FlatAppearance.BorderSize = 0
         Me.btPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btPdf.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btPdf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btPdf.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_pdf_3745__1_
         Me.btPdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btPdf.Location = New System.Drawing.Point(0, 0)
@@ -996,10 +996,10 @@ Partial Class EnteteFacture
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(21, 62)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 17)
+        Me.Label4.Size = New System.Drawing.Size(58, 15)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Fature à :"
         '
@@ -1009,7 +1009,7 @@ Partial Class EnteteFacture
         Me.btAvoir.Dock = System.Windows.Forms.DockStyle.Left
         Me.btAvoir.FlatAppearance.BorderSize = 0
         Me.btAvoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btAvoir.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAvoir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btAvoir.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.AVOIR_22
         Me.btAvoir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btAvoir.Location = New System.Drawing.Point(764, 0)
@@ -1026,7 +1026,7 @@ Partial Class EnteteFacture
         Me.btDelete.Dock = System.Windows.Forms.DockStyle.Left
         Me.btDelete.FlatAppearance.BorderSize = 0
         Me.btDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btDelete.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDelete.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.DELETE_20
         Me.btDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDelete.Location = New System.Drawing.Point(664, 0)
@@ -1052,7 +1052,7 @@ Partial Class EnteteFacture
         Me.btDuplicate.Dock = System.Windows.Forms.DockStyle.Left
         Me.btDuplicate.FlatAppearance.BorderSize = 0
         Me.btDuplicate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btDuplicate.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDuplicate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDuplicate.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_new_23212__1_1
         Me.btDuplicate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDuplicate.Location = New System.Drawing.Point(536, 0)
@@ -1069,7 +1069,7 @@ Partial Class EnteteFacture
         Me.btSolde.Dock = System.Windows.Forms.DockStyle.Left
         Me.btSolde.FlatAppearance.BorderSize = 0
         Me.btSolde.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSolde.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSolde.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSolde.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Money_221
         Me.btSolde.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSolde.Location = New System.Drawing.Point(452, 0)
@@ -1086,7 +1086,7 @@ Partial Class EnteteFacture
         Me.btTranformer.Dock = System.Windows.Forms.DockStyle.Left
         Me.btTranformer.FlatAppearance.BorderSize = 0
         Me.btTranformer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btTranformer.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btTranformer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btTranformer.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_document_export_23210__1_
         Me.btTranformer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btTranformer.Location = New System.Drawing.Point(348, 0)
@@ -1103,7 +1103,7 @@ Partial Class EnteteFacture
         Me.btFacturer.Dock = System.Windows.Forms.DockStyle.Left
         Me.btFacturer.FlatAppearance.BorderSize = 0
         Me.btFacturer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btFacturer.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btFacturer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btFacturer.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.FACTURE_20
         Me.btFacturer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btFacturer.Location = New System.Drawing.Point(264, 0)
@@ -1121,7 +1121,7 @@ Partial Class EnteteFacture
         Me.btDelivry.Dock = System.Windows.Forms.DockStyle.Left
         Me.btDelivry.FlatAppearance.BorderSize = 0
         Me.btDelivry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btDelivry.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btDelivry.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btDelivry.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.iconfinder_Delivery_3387313
         Me.btDelivry.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btDelivry.Location = New System.Drawing.Point(194, 0)
@@ -1139,7 +1139,7 @@ Partial Class EnteteFacture
         Me.btValideBl.Dock = System.Windows.Forms.DockStyle.Left
         Me.btValideBl.FlatAppearance.BorderSize = 0
         Me.btValideBl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btValideBl.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btValideBl.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btValideBl.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.ICON_22
         Me.btValideBl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btValideBl.Location = New System.Drawing.Point(114, 0)
@@ -1157,7 +1157,7 @@ Partial Class EnteteFacture
         Me.btSave.Dock = System.Windows.Forms.DockStyle.Left
         Me.btSave.FlatAppearance.BorderSize = 0
         Me.btSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btSave.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btSave.Image = Global.A1_GAESTION_COMMERCIAL.My.Resources.Resources.SAVE_20
         Me.btSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btSave.Location = New System.Drawing.Point(19, 0)

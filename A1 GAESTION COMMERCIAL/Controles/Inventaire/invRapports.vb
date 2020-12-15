@@ -56,8 +56,9 @@
             Try
                 If isSell Then
                     FillRows_Sell()
+                    '    FillRows_Sell_______aitMelloul()
                 Else
-
+                    '   FillRows_Buy_________AitMelloul()
                     FillRows_Buy()
                 End If
             Catch ex As Exception
@@ -86,8 +87,7 @@
         End If
     End Sub
 
-
-    Private Sub FillRows_Buy()
+    Private Sub FillRows_Buy_________AitMelloul()
         'Pl.Controls.Clear()
         Try
             '_dataSource.Columns.Add("20", GetType(String))
@@ -95,7 +95,7 @@
             _dataSource.Columns.Add("ICE", GetType(String))
 
             _dataSource.Columns.Add("Total TTC", GetType(String)) '8
-            _dataSource.Columns.Add("Tva", GetType(String)) '9
+            _dataSource.Columns.Add("Tva 20%", GetType(String)) '9
 
             _dataSource.Columns.Add("Plastic  ttc", GetType(String))
             _dataSource.Columns.Add("Alum ttc", GetType(String))
@@ -113,8 +113,6 @@
             Dim tal As Double = 0
             Dim tin As Double = 0
             Dim tdv As Double = 0
-         
-
 
             For i As Integer = 0 To _dataSource.Rows.Count - 1
                 Try
@@ -123,18 +121,17 @@
 
                         Dim f As Facture
                         Dim TBL = tableName
-                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
+                        If _dataSource.Rows(i).Item(5) < 0 Then TBL = tableName_avoir
                         f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
 
                         _dataSource.Rows(i).Item("ICE") = f.client.ICE
                         _dataSource.Rows(i).Item("IF") = f.client.info
 
-                        _dataSource.Rows(i).Item(8) = String.Format("{0:n}", _dataSource.Rows(i).Item(4))
                         _dataSource.Rows(i).Item(9) = String.Format("{0:n}", _dataSource.Rows(i).Item(5))
+                        _dataSource.Rows(i).Item(10) = String.Format("{0:n}", _dataSource.Rows(i).Item(6))
 
-                        tt += CDbl(_dataSource.Rows(i).Item(4))
-                        tv += CDbl(_dataSource.Rows(i).Item(5))
-
+                        tt += CDbl(_dataSource.Rows(i).Item(5))
+                        tv += CDbl(_dataSource.Rows(i).Item(6))
 
                         dt = f.DataSource
 
@@ -142,17 +139,18 @@
                         Try  ''''''''''''''''''''''''''''''''''''''''''''
                             Dim result = From myRow As DataRow In dt.Rows
                                                                               Where myRow("ref").ToString.ToUpper.EndsWith("PL") Select myRow
-
                             Dim r As DataTable = result.CopyToDataTable()
 
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _tv = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _tv
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _tv = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _tv
+                                pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item(10) = String.Format("{0:n}", pl)
+                            If pl > 0 Then _dataSource.Rows(i).Item(11) = String.Format("{0:n}", pl)
                             tpl += pl
                         Catch ex As Exception
                         End Try
@@ -164,14 +162,14 @@
                             Dim r As DataTable = result.CopyToDataTable()
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _tv = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _tv
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _tv = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _tv
+                                pl += pl2
                             Next
 
-                            'Dim pl As Double = Convert.ToDouble(result.CopyToDataTable.Compute("SUM(qte * price)", String.Empty))
-
-                            If pl > 0 Then _dataSource.Rows(i).Item(11) = String.Format("{0:n}", pl)
+                            If pl > 0 Then _dataSource.Rows(i).Item(12) = String.Format("{0:n}", pl)
                             tal += pl
                         Catch ex As Exception
                         End Try
@@ -182,9 +180,11 @@
                             Dim r As DataTable = result.CopyToDataTable()
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _tv = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _tv
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _tv = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _tv
+                                pl += pl2
                             Next
 
                             If pl > 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
@@ -192,17 +192,17 @@
                         Catch ex As Exception
                         End Try
 
-
-
                         Try '''''''''''''''''''''''''''''''''''''''''''''
                             Dim result = From myRow As DataRow In dt.Rows
                                                                               Where myRow("ref").ToString.ToUpper.EndsWith("DI") Select myRow
                             Dim r As DataTable = result.CopyToDataTable()
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _tv = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _tv
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _tv = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _tv
+                                pl += pl2
                             Next
 
                             If pl > 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
@@ -210,17 +210,16 @@
                         Catch ex As Exception
                         End Try
 
-                        If _dataSource.Rows(i).Item(4) >= 0 Then
+                        If _dataSource.Rows(i).Item(5) >= 0 Then
                             Try '''''''''''''''''''''''''''''''''''''''''''''
                                 Dim pm = f.PaymenetDataSource.Rows(0).Item("way") & " - " & f.PaymenetDataSource.Rows(0).Item("ref")
-                                _dataSource.Rows(i).Item(14) = pm
+                                _dataSource.Rows(i).Item(15) = pm
                             Catch ex As Exception
                             End Try
 
                         Else
-                            _dataSource.Rows(i).Item(14) = "Avoir"
+                            _dataSource.Rows(i).Item(15) = "Avoir"
                         End If
-
 
                     End If
                 Catch ex As Exception
@@ -229,17 +228,18 @@
 
             If _dataSource.Rows.Count Then
                 _dataSource.Rows.Add(0)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(3) = "Total"
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(4) = String.Format("{0:n}", tt)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(5) = String.Format("{0:n}", tv)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(6) = "-----"
+
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(4) = "Total"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(5) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(6) = String.Format("{0:n}", tv)
                 _dataSource.Rows(_dataSource.Rows.Count - 1).Item(7) = "-----"
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(8) = String.Format("{0:n}", tt)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(9) = String.Format("{0:n}", tv)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(10) = String.Format("{0:n}", tpl)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(11) = String.Format("{0:n}", tal)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(12) = String.Format("{0:n}", tin)
-                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(13) = String.Format("{0:n}", tdv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(8) = "-----"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(9) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(10) = String.Format("{0:n}", tv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(11) = String.Format("{0:n}", tpl)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(12) = String.Format("{0:n}", tal)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(13) = String.Format("{0:n}", tin)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(14) = String.Format("{0:n}", tdv)
             End If
 
 
@@ -248,84 +248,48 @@
             StyleDatagrid(dg)
             'pl.Controls.Add(dg)
 
-            dg.Columns(2).Visible = False
-            dg.Columns(4).Visible = False
+            dg.Columns(3).Visible = False
             dg.Columns(5).Visible = False
-            'dg.Columns(6).Visible = False
-            'dg.Columns(7).Visible = False
-            'dg.Columns(8).Visible = False
-            'dg.Columns(9).Visible = False
-            'dg.Columns(10).Visible = False
-            'dg.Columns(11).Visible = False
-            'dg.Columns(12).Visible = False
-            'dg.Columns(13).Visible = False
-            'dg.Columns(14).Visible = False
-            'dg.Columns(15).Visible = False
-            'dg.Columns(16).Visible = False
-            'dg.Columns(17).Visible = False
-            'dg.Columns(18).Visible = False
-            'dg.Columns(19).Visible = False
-            'dg.Columns(20).Visible = False
+            dg.Columns(6).Visible = False
 
+            dg.Columns(4).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(4).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
 
-            dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-            dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
-
-            dg.Columns(8).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-            dg.Columns(8).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+            dg.Columns(9).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(9).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
 
             dg.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            'dg.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            'dg.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-
+            dg.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+    
             dg.Columns(0).HeaderText = "ID/N°"
-            dg.Columns(1).HeaderText = "Date"
-            dg.Columns(3).HeaderText = "Fornisseur"
-            'dg.Columns(4).HeaderText = "Total TTC"
-            'dg.Columns(6).HeaderText = "Tva"
+            dg.Columns(1).HeaderText = "REF"
+            dg.Columns(2).HeaderText = "Date"
+            dg.Columns(4).HeaderText = "Fornisseur"
 
-            'dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            'dg.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            dg.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             dg.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            'dg.Columns(25).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            'dg.Columns(26).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            'dg.Columns(27).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            'dg.Columns(28).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+       
+            dg.Columns(2).DefaultCellStyle.Format = "dd/MM/yy"
 
-            dg.Columns(1).DefaultCellStyle.Format = "dd/MM/yy"
-
-            dg.Columns(4).DefaultCellStyle.Format = "c"
             dg.Columns(5).DefaultCellStyle.Format = "c"
-            dg.Columns(8).DefaultCellStyle.Format = "c"
+            dg.Columns(6).DefaultCellStyle.Format = "c"
             dg.Columns(9).DefaultCellStyle.Format = "c"
-            'dg.Columns(25).DefaultCellStyle.Format = "c"
-            'dg.Columns(26).DefaultCellStyle.Format = "c"
-            'dg.Columns(27).DefaultCellStyle.Format = "c"
-            'dg.Columns(28).DefaultCellStyle.Format = "c"
-
-            'dg.Columns(21).DisplayIndex = 4
-            'dg.Columns(22).DisplayIndex = 5
-            'dg.Columns(8).DisplayIndex = 26
-            ''Dg_Sorted(dg, Nothing)
-            ' Pl.Height = dg.Rows.Count * 33 + 222
+            dg.Columns(10).DefaultCellStyle.Format = "c"
 
             dg.Rows(dg.Rows.Count - 1).DefaultCellStyle.BackColor = Color.LightSkyBlue
-
 
         Catch ex As Exception
         End Try
     End Sub
-    Private Sub FillRows_Sell()
+    Private Sub FillRows_Sell_______aitMelloul()
         'Pl.Controls.Clear()
         Try
             _dataSource.Columns.Add("IF", GetType(String)) '6
             _dataSource.Columns.Add("ICE", GetType(String)) '7
 
             _dataSource.Columns.Add("Total TTC", GetType(String)) '8
-            _dataSource.Columns.Add("Tva", GetType(String)) '9
+            _dataSource.Columns.Add("Tva 20%", GetType(String)) '9
 
             _dataSource.Columns.Add("Plastic ttc", GetType(String)) '10
             _dataSource.Columns.Add("Alum ttc", GetType(String)) '11
@@ -346,7 +310,6 @@
             Dim tdv As Double = 0
             Dim tcs As Double = 0
             Dim tba As Double = 0
-
 
             For i As Integer = 0 To _dataSource.Rows.Count - 1
                 Try
@@ -377,9 +340,11 @@
 
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _TV = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _TV
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _TV = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _TV
+                                pl += pl2
                             Next
                             If pl > 0 Then _dataSource.Rows(i).Item("Plastic ttc") = String.Format("{0:n}", pl)
                             tpl += pl
@@ -394,9 +359,11 @@
                             Dim pl As Double = 0
                             _TV = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _TV = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _TV
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _TV = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _TV
+                                pl += pl2
                             Next
 
                             If pl > 0 Then _dataSource.Rows(i).Item("Alum ttc") = String.Format("{0:n}", pl)
@@ -411,9 +378,11 @@
 
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _TV = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _TV
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _TV = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _TV
+                                pl += pl2
                             Next
 
                             If pl > 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
@@ -428,9 +397,11 @@
 
                             Dim pl As Double = 0
                             For ii As Integer = 0 To r.Rows.Count - 1
-                                pl += r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
-                                _TV = (r.Rows(ii).Item("qte") * r.Rows(ii).Item("price") * r.Rows(ii).Item("tva")) / 100
-                                pl += _TV
+                                Dim pl2 As Double = r.Rows(ii).Item("qte") * r.Rows(ii).Item("price")
+                                pl2 -= (pl2 * r.Rows(ii).Item("remise")) / 100
+                                _TV = (pl2 * r.Rows(ii).Item("tva")) / 100
+                                pl2 += _TV
+                                pl += pl2
                             Next
 
                             If pl > 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
@@ -495,9 +466,133 @@
                 _dataSource.Rows(_dataSource.Rows.Count - 1).Item(14) = String.Format("{0:n}", tcs)
                 _dataSource.Rows(_dataSource.Rows.Count - 1).Item(15) = String.Format("{0:n}", tba)
             End If
+            dg.DataSource = _dataSource
+            StyleDatagrid(dg)
+       
+            dg.Columns(2).Visible = False
+            dg.Columns(4).Visible = False
+            dg.Columns(5).Visible = False
+  
+
+            dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+
+            dg.Columns(8).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(8).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
 
 
-          
+            dg.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            dg.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        
+            dg.Columns(0).HeaderText = "ID/N°"
+            dg.Columns(1).HeaderText = "Date"
+            dg.Columns(3).HeaderText = "Client"
+       
+            dg.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+            dg.Columns(1).DefaultCellStyle.Format = "dd/MM/yy"
+
+            dg.Columns(4).DefaultCellStyle.Format = "c"
+            dg.Columns(5).DefaultCellStyle.Format = "c"
+            dg.Columns(8).DefaultCellStyle.Format = "c"
+            dg.Columns(9).DefaultCellStyle.Format = "c"
+            dg.Columns(10).DefaultCellStyle.Format = "c"
+            dg.Columns(11).DefaultCellStyle.Format = "c"
+            dg.Columns(12).DefaultCellStyle.Format = "c"
+            dg.Columns(13).DefaultCellStyle.Format = "c"
+
+            dg.Rows(dg.Rows.Count - 1).DefaultCellStyle.BackColor = Color.LightSkyBlue
+
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub FillRows_Buy()
+        'Pl.Controls.Clear()
+        Try
+            '_dataSource.Columns.Add("20", GetType(String))
+            _dataSource.Columns.Add("IF", GetType(String))
+            _dataSource.Columns.Add("ICE", GetType(String))
+
+            _dataSource.Columns.Add("Total TTC", GetType(String)) '8
+            _dataSource.Columns.Add("Tva", GetType(String)) '9
+
+            _dataSource.Columns.Add("M. Paiement", GetType(String)) '10
+
+            Dim cid As Integer = 0
+            Dim fctid As Integer = 0
+            Dim dt As DataTable = Nothing
+
+            Dim tt As Double = 0
+            Dim tv As Double = 0
+            Dim tpl As Double = 0
+            Dim tal As Double = 0
+            Dim tin As Double = 0
+            Dim tdv As Double = 0
+
+
+
+            For i As Integer = 0 To _dataSource.Rows.Count - 1
+                Try
+                    fctid = _dataSource.Rows(i).Item(0)
+                    If fctid > 0 Then
+
+                        Dim f As Facture
+                        Dim TBL = tableName
+                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
+                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+
+                        _dataSource.Rows(i).Item("ICE") = f.client.ICE
+                        _dataSource.Rows(i).Item("IF") = f.client.info
+
+                        _dataSource.Rows(i).Item(8) = String.Format("{0:n}", _dataSource.Rows(i).Item(4))
+                        _dataSource.Rows(i).Item(9) = String.Format("{0:n}", _dataSource.Rows(i).Item(5))
+
+                        tt += CDbl(_dataSource.Rows(i).Item(4))
+                        tv += CDbl(_dataSource.Rows(i).Item(5))
+
+
+                        dt = f.DataSource
+
+
+                        If _dataSource.Rows(i).Item(4) >= 0 Then
+                            Try '''''''''''''''''''''''''''''''''''''''''''''
+                                Dim pm = f.PaymenetDataSource.Rows(0).Item("way") & " - " & f.PaymenetDataSource.Rows(0).Item("ref")
+                                _dataSource.Rows(i).Item(14) = pm
+                            Catch ex As Exception
+                            End Try
+
+                        Else
+                            _dataSource.Rows(i).Item(14) = "Avoir"
+                        End If
+
+
+                    End If
+                Catch ex As Exception
+                End Try
+            Next
+
+            If _dataSource.Rows.Count Then
+                _dataSource.Rows.Add(0)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(3) = "Total"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(4) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(5) = String.Format("{0:n}", tv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(6) = "-----"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(7) = "-----"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(8) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(9) = String.Format("{0:n}", tv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(10) = String.Format("{0:n}", tdv)
+            End If
+
 
             'Dim dg As New DataGridView
             dg.DataSource = _dataSource
@@ -507,22 +602,151 @@
             dg.Columns(2).Visible = False
             dg.Columns(4).Visible = False
             dg.Columns(5).Visible = False
-            'dg.Columns(6).Visible = False
-            'dg.Columns(7).Visible = False
-            'dg.Columns(8).Visible = False
-            'dg.Columns(9).Visible = False
-            'dg.Columns(10).Visible = False
-            'dg.Columns(11).Visible = False
-            'dg.Columns(12).Visible = False
-            'dg.Columns(13).Visible = False
-            'dg.Columns(14).Visible = False
-            'dg.Columns(15).Visible = False
-            'dg.Columns(16).Visible = False
-            'dg.Columns(17).Visible = False
-            'dg.Columns(18).Visible = False
-            'dg.Columns(19).Visible = False
-            'dg.Columns(20).Visible = False
-            'dg.Columns(21).Visible = False
+
+            dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+
+            dg.Columns(8).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+            dg.Columns(8).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
+
+            dg.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            dg.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            dg.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+            dg.Columns(0).HeaderText = "ID/N°"
+            dg.Columns(1).HeaderText = "Date"
+            dg.Columns(3).HeaderText = "Fornisseur"
+
+            dg.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dg.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+            dg.Columns(1).DefaultCellStyle.Format = "dd/MM/yy"
+
+            dg.Columns(4).DefaultCellStyle.Format = "c"
+            dg.Columns(5).DefaultCellStyle.Format = "c"
+            dg.Columns(8).DefaultCellStyle.Format = "c"
+            dg.Columns(9).DefaultCellStyle.Format = "c"
+
+            dg.Rows(dg.Rows.Count - 1).DefaultCellStyle.BackColor = Color.LightSkyBlue
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub FillRows_Sell()
+        'Pl.Controls.Clear()
+        Try
+            _dataSource.Columns.Add("IF", GetType(String)) '6
+            _dataSource.Columns.Add("ICE", GetType(String)) '7
+
+            _dataSource.Columns.Add("Total TTC", GetType(String)) '8
+            _dataSource.Columns.Add("Tva", GetType(String)) '9
+
+          
+            _dataSource.Columns.Add("Caisse", GetType(String)) '10
+            _dataSource.Columns.Add("Banque", GetType(String)) '11
+
+            Dim cid As Integer = 0
+            Dim fctid As Integer = 0
+            Dim dt As DataTable = Nothing
+
+            Dim tt As Double = 0
+            Dim tv As Double = 0
+            Dim tpl As Double = 0
+            Dim tal As Double = 0
+            Dim tin As Double = 0
+            Dim tdv As Double = 0
+            Dim tcs As Double = 0
+            Dim tba As Double = 0
+
+
+            For i As Integer = 0 To _dataSource.Rows.Count - 1
+                Try
+                    fctid = _dataSource.Rows(i).Item(0)
+                    If fctid > 0 Then
+                        Dim f As Facture
+
+                        Dim TBL = tableName
+                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
+                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+
+                        _dataSource.Rows(i).Item("ICE") = f.client.ICE
+                        _dataSource.Rows(i).Item("IF") = f.client.info
+
+                        _dataSource.Rows(i).Item(8) = String.Format("{0:n}", _dataSource.Rows(i).Item(4))
+                        _dataSource.Rows(i).Item(9) = String.Format("{0:n}", _dataSource.Rows(i).Item(5))
+
+                        tt += CDbl(_dataSource.Rows(i).Item(4))
+                        tv += CDbl(_dataSource.Rows(i).Item(5))
+
+                        dt = f.DataSource
+                        Dim _TV As Double = 0
+
+
+
+                        If _dataSource.Rows(i).Item(4) >= 0 Then
+                            Dim pm = f.PaymenetDataSource
+                            Try '''''''''''''''''''''''''''''''''''''''''''''
+
+                                Dim result = From myRow As DataRow In pm.Rows
+                                                                                  Where myRow("way").ToString.ToUpper.StartsWith("CA") Select myRow
+                                Dim pl As Double = Convert.ToDouble(result.CopyToDataTable.Compute("SUM(montant)", String.Empty))
+
+                                If pl > 0 Then _dataSource.Rows(i).Item("Caisse") = String.Format("{0:n}", pl)
+                                tcs += pl
+                            Catch ex As Exception
+                            End Try
+
+                            Try '''''''''''''''''''''''''''''''''''''''''''''
+
+                                Dim result = From myRow As DataRow In pm.Rows
+                                                                                  Where myRow("way").ToString.ToUpper.StartsWith("CA") = False Select myRow
+                                Dim pl As Double = Convert.ToDouble(result.CopyToDataTable.Compute("SUM(montant)", String.Empty))
+
+                                If pl > 0 Then _dataSource.Rows(i).Item("Banque") = String.Format("{0:n}", pl)
+                                tba += pl
+                            Catch ex As Exception
+                            End Try
+                        Else
+
+                            Try '''''''''''''''''''''''''''''''''''''''''''''
+
+                                _dataSource.Rows(i).Item("Caisse") = "Avoir"
+                                _dataSource.Rows(i).Item("Banque") = "Avoir"
+
+                            Catch ex As Exception
+                            End Try
+                        End If
+
+
+                    End If
+                Catch ex As Exception
+                End Try
+            Next
+
+            If _dataSource.Rows.Count Then
+                _dataSource.Rows.Add(0)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(3) = "Total"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(4) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(5) = String.Format("{0:n}", tv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(6) = "-----"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(7) = "-----"
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(8) = String.Format("{0:n}", tt)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(9) = String.Format("{0:n}", tv)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(10) = String.Format("{0:n}", tcs)
+                _dataSource.Rows(_dataSource.Rows.Count - 1).Item(11) = String.Format("{0:n}", tba)
+            End If
+
+
+
+
+            'Dim dg As New DataGridView
+            dg.DataSource = _dataSource
+            StyleDatagrid(dg)
+            'pl.Controls.Add(dg)
+
+            dg.Columns(2).Visible = False
+            dg.Columns(4).Visible = False
+            dg.Columns(5).Visible = False
 
             dg.Columns(3).DefaultCellStyle.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
             dg.Columns(3).DefaultCellStyle.ForeColor = Form1.Color_Default_Text
@@ -558,10 +782,7 @@
             dg.Columns(5).DefaultCellStyle.Format = "c"
             dg.Columns(8).DefaultCellStyle.Format = "c"
             dg.Columns(9).DefaultCellStyle.Format = "c"
-            dg.Columns(10).DefaultCellStyle.Format = "c"
-            dg.Columns(11).DefaultCellStyle.Format = "c"
-            dg.Columns(12).DefaultCellStyle.Format = "c"
-            dg.Columns(13).DefaultCellStyle.Format = "c"
+          
 
             'dg.Columns(21).DisplayIndex = 4
             'dg.Columns(22).DisplayIndex = 5

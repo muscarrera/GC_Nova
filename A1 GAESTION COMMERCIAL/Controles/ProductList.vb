@@ -230,13 +230,12 @@
                             Dim r As DataTable = query.CopyToDataTable()
 
                             _dt.Rows(i).Item(3) = r.Rows(0).Item("name")
-                            _dt.Rows(i).Item(7) = 0
                         End If
                     Catch ex As Exception
 
                     End Try
 
-                    If Form1.isBaseOnTTC Then
+                    If Form1.isBaseOnTTC_ListArticle Then
                         Dim tva As Double = DblValue(_dt, "tva", i)
                         If Form1.isBaseOnOneTva Then tva = Form1.tva
 
@@ -672,9 +671,20 @@
         If DG.SelectedRows.Count = 0 Then Exit Sub
 
 
-        PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
-        PrintDoc.Print()
+        'PrintDoc.PrinterSettings.PrinterName = Form1.printer_Facture
+        'PrintDoc.Print()
 
+
+        Dim str = "Liste des Articles"
+       
+        If TableName = "Article" Then
+            str = "Liste des Articles"
+        ElseIf TableName = "Category" Then
+            str = "Liste des Groupes"
+        Else
+            str = "Liste des Contactes"
+        End If
+        SaveDataToHtml(DG, str)
     End Sub
     Dim m = 0
     Private Sub PrintDoc_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage

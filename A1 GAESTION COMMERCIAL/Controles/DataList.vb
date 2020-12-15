@@ -321,7 +321,7 @@
     End Property
     Public ReadOnly Property isPayed As Boolean
         Get
-            Return TB.TotalTTC <= TB.avance
+            Return CInt(TB.TotalTTC) <= CInt(TB.avance)
         End Get
     End Property
     Public Property DataSource As DataTable
@@ -1008,6 +1008,11 @@
                     dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
                 End If
 
+                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("FAC") Then
+                    dt.Rows(i).Cells(23).Value = "Facturé"
+                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Blue
+                End If
+
                 'dt.Rows(i).Cells(21).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
             Else
                 Dim rest As Double = dt.Rows(i).Cells(7).Value - dt.Rows(i).Cells(4).Value
@@ -1178,7 +1183,14 @@
         RaiseEvent GetClientDetails(Me)
     End Sub
     Private Sub Entete_AddListofBl() Handles Entete.AddListofBl
-        RaiseEvent AddListofBl(Me)
+
+        If isSell Then
+            RaiseEvent AddListofBl(Me)
+        Else
+            RaiseEvent NewBlRef(Me)
+        End If
+
+        '''''''''''''''''''''''''''
     End Sub
     Private Sub Entete_PrintList() Handles Entete.PrintList
         If isEtatGeneral Then
@@ -1217,7 +1229,7 @@
             Dim ar = dt_Client_Remise.Rows(i).Item("arid")
             Dim ct = dt_Client_Remise.Rows(i).Item("cid")
 
-            If ar = _art.arid And ct = _art.cid Then
+            If ar = _art.arid Then
                 R_All = CDbl(dt_Client_Remise.Rows(i).Item("remise"))
                 Exit For
             End If

@@ -93,6 +93,8 @@
 
             Form1.normat_Print_Style = getRegistryinfo("normat_Print_Style", True)
             Form1.allowAddElement_to = getRegistryinfo("allowAddElement_to", False)
+            Form1.isBaseOnTTC_ListArticle = getRegistryinfo("isBaseOnTTC_ListArticle", True)
+
 
 
             'prefix

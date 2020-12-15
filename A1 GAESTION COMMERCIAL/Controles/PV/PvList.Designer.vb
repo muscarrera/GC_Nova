@@ -45,6 +45,7 @@ Partial Class PvList
         Me.FL = New System.Windows.Forms.FlowLayoutPanel()
         Me.PL = New System.Windows.Forms.Panel()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.Panel7 = New System.Windows.Forms.Panel()
         Me.RPL = New A1_GAESTION_COMMERCIAL.RPanel()
         Me.Panel26.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -64,9 +65,9 @@ Partial Class PvList
         Me.Panel26.Controls.Add(Me.Panel2)
         Me.Panel26.Controls.Add(Me.Panel8)
         Me.Panel26.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel26.Location = New System.Drawing.Point(386, 0)
+        Me.Panel26.Location = New System.Drawing.Point(419, 0)
         Me.Panel26.Name = "Panel26"
-        Me.Panel26.Size = New System.Drawing.Size(799, 42)
+        Me.Panel26.Size = New System.Drawing.Size(766, 42)
         Me.Panel26.TabIndex = 17
         '
         'Panel4
@@ -130,7 +131,7 @@ Partial Class PvList
         Me.plClientSide.Controls.Add(Me.Panel3)
         Me.plClientSide.Controls.Add(Me.Label10)
         Me.plClientSide.Dock = System.Windows.Forms.DockStyle.Right
-        Me.plClientSide.Location = New System.Drawing.Point(527, 0)
+        Me.plClientSide.Location = New System.Drawing.Point(494, 0)
         Me.plClientSide.Name = "plClientSide"
         Me.plClientSide.Size = New System.Drawing.Size(272, 42)
         Me.plClientSide.TabIndex = 3
@@ -138,7 +139,7 @@ Partial Class PvList
         'lbName
         '
         Me.lbName.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbName.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lbName.Location = New System.Drawing.Point(91, 0)
         Me.lbName.Name = "lbName"
         Me.lbName.Size = New System.Drawing.Size(81, 42)
@@ -194,7 +195,7 @@ Partial Class PvList
         'lbNbrBon
         '
         Me.lbNbrBon.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbNbrBon.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbNbrBon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lbNbrBon.ForeColor = System.Drawing.Color.Red
         Me.lbNbrBon.Location = New System.Drawing.Point(0, 0)
         Me.lbNbrBon.Name = "lbNbrBon"
@@ -217,10 +218,10 @@ Partial Class PvList
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(21, 62)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 17)
+        Me.Label10.Size = New System.Drawing.Size(58, 15)
         Me.Label10.TabIndex = 2
         Me.Label10.Text = "Fature à :"
         '
@@ -294,9 +295,9 @@ Partial Class PvList
         Me.FL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.FL.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FL.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.FL.Location = New System.Drawing.Point(386, 87)
+        Me.FL.Location = New System.Drawing.Point(419, 87)
         Me.FL.Name = "FL"
-        Me.FL.Size = New System.Drawing.Size(799, 833)
+        Me.FL.Size = New System.Drawing.Size(766, 833)
         Me.FL.TabIndex = 20
         '
         'PL
@@ -304,15 +305,25 @@ Partial Class PvList
         Me.PL.BackColor = System.Drawing.Color.Teal
         Me.PL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PL.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PL.Location = New System.Drawing.Point(386, 42)
+        Me.PL.Location = New System.Drawing.Point(419, 42)
         Me.PL.Name = "PL"
         Me.PL.Padding = New System.Windows.Forms.Padding(5)
-        Me.PL.Size = New System.Drawing.Size(799, 45)
+        Me.PL.Size = New System.Drawing.Size(766, 45)
         Me.PL.TabIndex = 21
         Me.PL.Visible = False
         '
         'PrintDoc
         '
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel7.Cursor = System.Windows.Forms.Cursors.VSplit
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel7.Location = New System.Drawing.Point(417, 0)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(2, 920)
+        Me.Panel7.TabIndex = 22
         '
         'RPL
         '
@@ -327,8 +338,9 @@ Partial Class PvList
         Me.RPL.Name = "RPL"
         Me.RPL.Num = 0
         Me.RPL.Remise = "0"
+        Me.RPL.RplHeight = 0
         Me.RPL.ShowProfit = False
-        Me.RPL.Size = New System.Drawing.Size(371, 920)
+        Me.RPL.Size = New System.Drawing.Size(402, 920)
         Me.RPL.TabIndex = 18
         '
         'PvList
@@ -339,6 +351,7 @@ Partial Class PvList
         Me.Controls.Add(Me.FL)
         Me.Controls.Add(Me.PL)
         Me.Controls.Add(Me.Panel26)
+        Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.RPL)
         Me.Name = "PvList"
         Me.Padding = New System.Windows.Forms.Padding(15, 0, 15, 0)
@@ -379,5 +392,6 @@ Partial Class PvList
     Friend WithEvents plClient As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents Panel7 As System.Windows.Forms.Panel
 
 End Class

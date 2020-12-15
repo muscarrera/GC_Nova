@@ -1,4 +1,7 @@
 ﻿Public Class RPanel
+
+    Public fctid As Integer = 0
+
     'Events
     Public Event UpdateItem(ByVal sender As Object, ByVal e As EventArgs)
     Public Event UpdateQte(ByVal sender As Object, ByVal e As EventArgs)
@@ -571,5 +574,33 @@
     Private Sub CP_PrintTicket() Handles CP.PrintTicket
         RaiseEvent SaveAndPrint()
     End Sub
+
+    Dim hh As Integer = 0
+    Private Sub Panel2_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Panel2.MouseDown
+        hh = e.Y
+    End Sub
+
+    Private Sub Panel2_MouseUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Panel2.MouseUp
+        If hh = 0 Then Exit Sub
+
+        RplHeight = CP.Height + (hh - e.Y)
+        hh = 0
+    End Sub
+
+
+    Private _RplHeight As Integer
+    Public Property RplHeight() As Integer
+        Get
+            Return _RplHeight
+        End Get
+        Set(ByVal value As Integer)
+            _RplHeight = value
+            CP.Height = value
+
+            My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SOFTWARE\AlMohassib", "RplHeight", value)
+
+        End Set
+    End Property
+
 End Class
 
