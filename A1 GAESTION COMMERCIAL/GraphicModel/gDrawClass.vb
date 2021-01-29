@@ -34,6 +34,7 @@ Public Class gDrawClass
                            ByVal data As DataTable,
                               ByVal details As DataTable,
                               ByVal dt_Client As DataTable,
+                              ByVal dt_Tva As DataTable,
                               ByVal title As String,
                               ByVal HD As Boolean,
                               ByRef m As Integer)
@@ -293,11 +294,11 @@ Public Class gDrawClass
                 _x = _x + c.ColWidth
             Next
 
-            Try
-                params_tva.Add(details.Rows(m).Item("tva"), details.Rows(m).Item("totaltva"))
-            Catch ex As Exception
-                params_tva(details.Rows(m).Item("tva")) += details.Rows(m).Item("totaltva")
-            End Try
+            'Try
+            '    params_tva.Add(details.Rows(m).Item("tva"), details.Rows(m).Item("totaltva"))
+            'Catch ex As Exception
+            '    params_tva(details.Rows(m).Item("tva")) += details.Rows(m).Item("totaltva")
+            'End Try
 
             If tc.hasLines And m > 0 Then g.DrawLine(Pens.Black, tc.x, y, tc.x + tc.TabWidth, y)
 
@@ -368,13 +369,23 @@ Public Class gDrawClass
                     g.DrawString(CStr(a.designation), fn, B, New RectangleF(xx, yy, a.width, a.height), sf)
                     sf.Alignment = StringAlignment.Far
                     Try
-                        g.DrawString(data.Rows(0).Item(a.field), fn, B, New RectangleF(xx + a.width - 10, yy, a.width, a.height), sf)
+                        Dim tt_str = data.Rows(0).Item(a.field)
+                        g.DrawString(tt_str, fn, B, New RectangleF(xx + a.width - 10, yy, a.width, a.height), sf)
                     Catch ex As Exception
                     End Try
 
                     sf.Alignment = StringAlignment.Near
 
                 ElseIf a.field.StartsWith("tableau") Then
+                    params_tva.Clear()
+
+                    Try
+                        For ii As Integer = 0 To dt_Tva.Rows.Count - 1
+                            params_tva.Add(dt_Tva.Rows(ii).Item(0), dt_Tva.Rows(ii).Item(1))
+                        Next
+                    Catch ex As Exception
+                    End Try
+
 
                     Dim _x As Integer = a.x
                     Dim _y As Integer = a.y
@@ -399,7 +410,7 @@ Public Class gDrawClass
                         g.DrawLine(Pens.Black, _x + _wt, _y, _x + _wt, _y + 30)
 
                         g.DrawString("Tva  " & kvp.Key & " %", fn, B, New RectangleF(_x + 5, _y, CInt(_wt / 2) - 7, 15), sf)
-                        g.DrawString(String.Format("{0:0.00}", CDbl(kvp.Value)), fn, B, New RectangleF(_xm, _y, CInt(_wt / 2) - 7, 15), sfl)
+                        g.DrawString(String.Format(Form1.DesimalSringFormat_Total, kvp.Value), fn, B, New RectangleF(_xm, _y, CInt(_wt / 2) - 7, 15), sfl)
 
                         _y += 15
                     Next

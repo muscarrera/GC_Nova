@@ -5,6 +5,7 @@
     Public tableName_avoir As String
     Public tb_C As String
     Public tb_D As String
+    Public tb_D_Av As String
     Public tb_P As String
 
     Private _dataSource As DataTable
@@ -22,6 +23,7 @@
                 tableName_avoir = "Sell_Avoir"
                 tb_C = "Client"
                 tb_D = "Details_Sell_Facture"
+                tb_D_Av = "Details_Sell_Avoir"
                 tb_P = "Client_Payement"
                 LBTITLE.Text = "Ventes"
             Else
@@ -29,6 +31,7 @@
                 tableName_avoir = "Buy_Avoir"
                 tb_C = "Fournisseur"
                 tb_D = "Details_Buy_Facture"
+                tb_D_Av = "Details_Buy_Avoir"
                 tb_P = "Company_Payement"
                 LBTITLE.Text = "Achats"
             End If
@@ -44,7 +47,12 @@
             _dataSource = value
             ' dg_D.DataSource = value
 
-            lbLnbr.Text = value.Rows.Count
+            Try
+                lbLnbr.Text = value.Rows.Count
+            Catch ex As Exception
+                lbLnbr.Text = "-"
+            End Try
+
             Try
                 Dim sum As Double = Convert.ToDouble(value.Compute("SUM(total)", String.Empty))
                 lbTotal.Text = String.Format("{0:n}", CDec(sum))
@@ -56,9 +64,9 @@
             Try
                 If isSell Then
                     FillRows_Sell()
-                    '    FillRows_Sell_______aitMelloul()
+                    '   FillRows_Sell_______aitMelloul()
                 Else
-                    '   FillRows_Buy_________AitMelloul()
+                    '    FillRows_Buy_________AitMelloul()
                     FillRows_Buy()
                 End If
             Catch ex As Exception
@@ -121,8 +129,13 @@
 
                         Dim f As Facture
                         Dim TBL = tableName
-                        If _dataSource.Rows(i).Item(5) < 0 Then TBL = tableName_avoir
-                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+                        Dim TBd = tb_D
+                        If _dataSource.Rows(i).Item(5) < 0 Then
+                            TBL = tableName_avoir
+                            TBd = tb_D_Av
+                        End If
+
+                        f = New Facture(fctid, TBL, tb_C, TBd, tb_P)
 
                         _dataSource.Rows(i).Item("ICE") = f.client.ICE
                         _dataSource.Rows(i).Item("IF") = f.client.info
@@ -149,8 +162,9 @@
                                 pl2 += _tv
                                 pl += pl2
                             Next
+                            If _dataSource.Rows(i).Item(5) < 0 Then pl *= -1
 
-                            If pl > 0 Then _dataSource.Rows(i).Item(11) = String.Format("{0:n}", pl)
+                            If pl <> 0 Then _dataSource.Rows(i).Item(11) = String.Format("{0:n}", pl)
                             tpl += pl
                         Catch ex As Exception
                         End Try
@@ -169,7 +183,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item(12) = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(5) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item(12) = String.Format("{0:n}", pl)
                             tal += pl
                         Catch ex As Exception
                         End Try
@@ -187,7 +203,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(5) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
                             tin += pl
                         Catch ex As Exception
                         End Try
@@ -205,7 +223,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(5) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
                             tdv += pl
                         Catch ex As Exception
                         End Try
@@ -318,8 +338,15 @@
                         Dim f As Facture
 
                         Dim TBL = tableName
-                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
-                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+                        Dim TBd = tb_D
+
+                        If _dataSource.Rows(i).Item(4) < 0 Then
+                            TBL = tableName_avoir
+                            TBd = tb_D_Av
+                        End If
+
+
+                        f = New Facture(fctid, TBL, tb_C, TBd, tb_P)
 
                         _dataSource.Rows(i).Item("ICE") = f.client.ICE
                         _dataSource.Rows(i).Item("IF") = f.client.info
@@ -346,7 +373,9 @@
                                 pl2 += _TV
                                 pl += pl2
                             Next
-                            If pl > 0 Then _dataSource.Rows(i).Item("Plastic ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(4) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Plastic ttc") = String.Format("{0:n}", pl)
                             tpl += pl
                         Catch ex As Exception
                         End Try
@@ -366,7 +395,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item("Alum ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(4) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Alum ttc") = String.Format("{0:n}", pl)
                             tal += pl
                         Catch ex As Exception
                         End Try
@@ -385,7 +416,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(4) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Inox ttc") = String.Format("{0:n}", pl)
                             tin += pl
                         Catch ex As Exception
                         End Try
@@ -404,7 +437,9 @@
                                 pl += pl2
                             Next
 
-                            If pl > 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
+                            If _dataSource.Rows(i).Item(4) < 0 Then pl *= -1
+
+                            If pl <> 0 Then _dataSource.Rows(i).Item("Divers ttc") = String.Format("{0:n}", pl)
                             tdv += pl
                         Catch ex As Exception
                         End Try
@@ -547,9 +582,17 @@
                     If fctid > 0 Then
 
                         Dim f As Facture
+
                         Dim TBL = tableName
-                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
-                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+                        Dim TBd = tb_D
+
+                        If _dataSource.Rows(i).Item(5) < 0 Then
+                            TBL = tableName_avoir
+                            TBd = tb_D_Av
+                        End If
+
+
+                        f = New Facture(fctid, TBL, tb_C, TBd, tb_P)
 
                         _dataSource.Rows(i).Item("ICE") = f.client.ICE
                         _dataSource.Rows(i).Item("IF") = f.client.info
@@ -666,8 +709,14 @@
                         Dim f As Facture
 
                         Dim TBL = tableName
-                        If _dataSource.Rows(i).Item(4) < 0 Then TBL = tableName_avoir
-                        f = New Facture(fctid, TBL, tb_C, tb_D, tb_P)
+                        Dim TBd = tb_D
+
+                        If _dataSource.Rows(i).Item(4) < 0 Then
+                            TBL = tableName_avoir
+                            TBd = tb_D_Av
+                        End If
+
+                        f = New Facture(fctid, TBL, tb_C, TBd, tb_P)
 
                         _dataSource.Rows(i).Item("ICE") = f.client.ICE
                         _dataSource.Rows(i).Item("IF") = f.client.info

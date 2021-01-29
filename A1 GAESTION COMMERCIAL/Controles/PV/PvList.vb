@@ -6,6 +6,8 @@ Public Class PvList
     Public tb_F As String = "Commande_Client"
     Public tb_D As String = "Details_Commande"
     Public tb_P As String = "Client_Payement"
+    Public showPrintDialog As Boolean = False
+
     Dim m As Object
 
     Event txtSearchRef_Changed(ByRef ds As PvList, ByVal txt As String)
@@ -79,18 +81,6 @@ Public Class PvList
 
         ' Add any initialization after the InitializeComponent() call.
 
-        modeSearch_isCode = getRegistryinfo("modeSearch_isCode", True)
-        SearchBy = getRegistryinfo("SearchBy", "all")
-
-
-        tb_C = getRegistryinfo("pv_tb_C", "Client")
-        tb_F = getRegistryinfo("pv_tb_F", "Commande_Client")
-        tb_D = getRegistryinfo("pv_tb_D", "Details_Commande")
-        tb_P = getRegistryinfo("pv_tb_P", "Client_Payement")
-
-
-        RplWidth = getRegistryinfo("RplWidth", 404)
-        RPL.RplHeight = getRegistryinfo("RplHeight", 248)
 
     End Sub
 
@@ -523,6 +513,7 @@ Public Class PvList
     Private Sub UpdateItemQte(ByRef item As Items, ByVal qte As Double)
         Try
             item.Qte = qte
+            RPL.UpdateValue()
         Catch ex As Exception
 
         End Try
@@ -562,17 +553,36 @@ Public Class PvList
     End Sub
     Private Sub RPL_SaveAndPrint() Handles RPL.SaveAndPrint
         Try
+            Dim nbr As Integer = 1
+            Dim nm As String = Form1.printer_POS
+
+            If showPrintDialog Then
+
+                Dim dl As New PrintDialog
+                If dl.ShowDialog = DialogResult.OK Then
+                    nm = dl.PrinterSettings.PrinterName
+                    nbr = dl.PrinterSettings.Copies
+                Else
+                    Exit Sub
+                End If
+            End If
+
             RaiseEvent SaveToDb(Me)
-            Form1.PrintDocDesign.PrinterSettings.PrinterName = Form1.printer_POS
-            PrintDoc.Print()
 
-            Dim strpath As String = Form1.ImgPah & "\Prt_Pv"
-            Dim fullPath As String = Path.Combine(strpath, localName)
-            File.Delete(fullPath)
-            clearDetails()
-            LoadOpenBons()
+            PrintDoc.PrinterSettings.PrinterName = nm
 
-            KeepTxtFocus()
+            For i As Integer = 0 To nbr - 1
+                PrintDoc.Print()
+            Next
+
+
+        Dim strpath As String = Form1.ImgPah & "\Prt_Pv"
+        Dim fullPath As String = Path.Combine(strpath, localName)
+        File.Delete(fullPath)
+        clearDetails()
+        LoadOpenBons()
+
+        KeepTxtFocus()
 
         Catch ex As Exception
         End Try
@@ -617,9 +627,14 @@ Public Class PvList
             dt_Client.Rows.Add(RPL.myClient.cid, RPL.myClient.name, "", RPL.myClient.ville,
                               RPL.myClient.adresse, RPL.myClient.ICE, RPL.myClient.tel)
 
+            Dim dt_tva As New DataTable
+            dt_tva.Columns.Add("taux", GetType(String))
+            dt_tva.Columns.Add("val", GetType(Double))
+
+            dt_tva.Rows.Add("20 %", RPL.Tva)
 
             Using g As gDrawClass = New gDrawClass("Ticket.dat")
-                g.DrawBl(e, data, RPL.DataSource, dt_Client, "Ticket", False, m)
+                g.DrawBl(e, data, RPL.DataSource, dt_Client, dt_tva, "Ticket", False, m)
             End Using
         Catch ex As Exception
 

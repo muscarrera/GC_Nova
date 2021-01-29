@@ -46,6 +46,7 @@ Partial Class Setting
         Me.Button23 = New System.Windows.Forms.Button()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.cbSearchBy = New System.Windows.Forms.ComboBox()
+        Me.cbShowDialogPrinter = New System.Windows.Forms.CheckBox()
         Me.cbSearchByCode = New System.Windows.Forms.CheckBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Label38 = New System.Windows.Forms.Label()
@@ -55,6 +56,7 @@ Partial Class Setting
         Me.Button21 = New System.Windows.Forms.Button()
         Me.plPref = New System.Windows.Forms.Panel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbTtcArticles = New System.Windows.Forms.CheckBox()
         Me.cbBaseOnTTC = New System.Windows.Forms.CheckBox()
         Me.allowAddElement_to = New System.Windows.Forms.CheckBox()
         Me.cbAccessClient = New System.Windows.Forms.CheckBox()
@@ -196,7 +198,6 @@ Partial Class Setting
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.cbTtcArticles = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -376,7 +377,7 @@ Partial Class Setting
         Me.plPos.Controls.Add(Me.txtImpPos)
         Me.plPos.Controls.Add(Me.Button21)
         Me.plPos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.plPos.Location = New System.Drawing.Point(5, 749)
+        Me.plPos.Location = New System.Drawing.Point(5, 476)
         Me.plPos.Name = "plPos"
         Me.plPos.Size = New System.Drawing.Size(750, 324)
         Me.plPos.TabIndex = 19
@@ -463,13 +464,14 @@ Partial Class Setting
         Me.GroupBox8.Controls.Add(Me.Button23)
         Me.GroupBox8.Controls.Add(Me.Label39)
         Me.GroupBox8.Controls.Add(Me.cbSearchBy)
+        Me.GroupBox8.Controls.Add(Me.cbShowDialogPrinter)
         Me.GroupBox8.Controls.Add(Me.cbSearchByCode)
         Me.GroupBox8.Location = New System.Drawing.Point(36, 71)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(330, 147)
         Me.GroupBox8.TabIndex = 29
         Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "TTC"
+        Me.GroupBox8.Text = "Mode"
         '
         'Button23
         '
@@ -499,6 +501,16 @@ Partial Class Setting
         Me.cbSearchBy.Name = "cbSearchBy"
         Me.cbSearchBy.Size = New System.Drawing.Size(178, 21)
         Me.cbSearchBy.TabIndex = 30
+        '
+        'cbShowDialogPrinter
+        '
+        Me.cbShowDialogPrinter.AutoSize = True
+        Me.cbShowDialogPrinter.Location = New System.Drawing.Point(22, 84)
+        Me.cbShowDialogPrinter.Name = "cbShowDialogPrinter"
+        Me.cbShowDialogPrinter.Size = New System.Drawing.Size(150, 17)
+        Me.cbShowDialogPrinter.TabIndex = 29
+        Me.cbShowDialogPrinter.Text = "Affiche forme d'Imprimante"
+        Me.cbShowDialogPrinter.UseVisualStyleBackColor = True
         '
         'cbSearchByCode
         '
@@ -584,7 +596,7 @@ Partial Class Setting
         Me.plPref.Location = New System.Drawing.Point(5, 281)
         Me.plPref.Name = "plPref"
         Me.plPref.Padding = New System.Windows.Forms.Padding(10)
-        Me.plPref.Size = New System.Drawing.Size(750, 468)
+        Me.plPref.Size = New System.Drawing.Size(750, 195)
         Me.plPref.TabIndex = 18
         '
         'GroupBox3
@@ -609,6 +621,16 @@ Partial Class Setting
         Me.GroupBox3.TabIndex = 29
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "TTC"
+        '
+        'cbTtcArticles
+        '
+        Me.cbTtcArticles.AutoSize = True
+        Me.cbTtcArticles.Location = New System.Drawing.Point(173, 22)
+        Me.cbTtcArticles.Name = "cbTtcArticles"
+        Me.cbTtcArticles.Size = New System.Drawing.Size(134, 17)
+        Me.cbTtcArticles.TabIndex = 28
+        Me.cbTtcArticles.Text = "TTC Listes des Articles"
+        Me.cbTtcArticles.UseVisualStyleBackColor = True
         '
         'cbBaseOnTTC
         '
@@ -845,7 +867,7 @@ Partial Class Setting
         Me.Panel5.Location = New System.Drawing.Point(10, 10)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(2)
-        Me.Panel5.Size = New System.Drawing.Size(730, 39)
+        Me.Panel5.Size = New System.Drawing.Size(713, 39)
         Me.Panel5.TabIndex = 20
         '
         'Label17
@@ -2145,16 +2167,6 @@ Partial Class Setting
         Me.PictureBox3.TabIndex = 11
         Me.PictureBox3.TabStop = False
         '
-        'cbTtcArticles
-        '
-        Me.cbTtcArticles.AutoSize = True
-        Me.cbTtcArticles.Location = New System.Drawing.Point(173, 22)
-        Me.cbTtcArticles.Name = "cbTtcArticles"
-        Me.cbTtcArticles.Size = New System.Drawing.Size(134, 17)
-        Me.cbTtcArticles.TabIndex = 28
-        Me.cbTtcArticles.Text = "TTC Listes des Articles"
-        Me.cbTtcArticles.UseVisualStyleBackColor = True
-        '
         'Setting
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2401,5 +2413,6 @@ Partial Class Setting
     Friend WithEvents Label44 As System.Windows.Forms.Label
     Friend WithEvents txtTbPv As System.Windows.Forms.TextBox
     Friend WithEvents cbTtcArticles As System.Windows.Forms.CheckBox
+    Friend WithEvents cbShowDialogPrinter As System.Windows.Forms.CheckBox
 
 End Class

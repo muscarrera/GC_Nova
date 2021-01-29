@@ -72,6 +72,9 @@
             cbBaseOnOneTva.Checked = getRegistryinfo("isBaseOnOneTva", False)
             cbBaseOnTTC.Checked = getRegistryinfo("isBaseOnTTC", False)
 
+
+
+
             txtPathBound.Text = getRegistryinfo("PathBound", "C:\")
             txtPathSvgd.Text = getRegistryinfo("PathSvgd", "C:\")
             txtPathImg.Text = getRegistryinfo("ImgPath", "C:\")
@@ -113,7 +116,8 @@
 
             cbSearchByCode.Checked = getRegistryinfo("modeSearch_isCode", False)
             cbSearchBy.Text = getRegistryinfo("SearchBy", "Tous")
-
+            cbShowDialogPrinter.Checked = getRegistryinfo("pv_showPrintDialog", False)
+             
         Catch ex As Exception
 
         End Try
@@ -668,6 +672,7 @@
         Try
             setRegistryinfo("SearchBy", cbSearchBy.Text)
             setRegistryinfo("modeSearch_isCode", cbSearchByCode.Checked)
+            setRegistryinfo("pv_showPrintDialog", cbShowDialogPrinter.Checked)
         Catch ex As Exception
         End Try
     End Sub

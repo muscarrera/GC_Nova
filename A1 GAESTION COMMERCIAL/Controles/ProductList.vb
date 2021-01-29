@@ -319,30 +319,6 @@
         Try
             If _dt.Rows.Count > 0 Then
 
-                'Dim arr(_dt.Rows.Count - 1) As ListLine
-                'Dim i As Integer = 0
-                'For i = 0 To _dt.Rows.Count - 1
-
-                '    Dim a As New ListLine
-                '    a.Id = _dt.Rows(i).Item(0)
-                '    a.Libele = _dt.Rows(i).Item("name")
-
-                '    Dim rm = DblValue(_dt, "remise", i)
-
-                '    a.Total = rm
-                '    If rm > 0 Then a.PlLeft.BackgroundImage = My.Resources.fav_16
-
-                '    a.Index = i
-                '    a.Dock = DockStyle.Top
-                '    a.SendToBack()
-
-                '    AddHandler a.EditSelectedItem, AddressOf EditSelectedItem
-                '    AddHandler a.DeleteItem, AddressOf DeleteItem
-                '    AddHandler a.GetFactureInfos, AddressOf GetInfos
-
-                '    arr(i) = a
-                'Next
-                'pl.Controls.AddRange(arr)
 
                 Dim dg As New DataGridView
                 dg.DataSource = _dt
@@ -378,41 +354,6 @@
         pl.Controls.Clear()
         Try
             If _dt.Rows.Count > 0 Then
-
-                'lastIndex += numberOfItems
-
-                'If _dt.Rows.Count - lastIndex < numberOfItems Then
-                '    'n = _dtList.Rows.Count - lastIndex
-                '    lastIndex = _dt.Rows.Count - 1
-                'End If
-
-                'Dim arr(numberOfItems) As ClientRow
-
-                'Dim i As Integer = 0
-                'For i = startIndex To _dt.Rows.Count - 1
-
-                '    Dim a As New ClientRow
-                '    a.Id = _dt.Rows(i).Item(0)
-                '    a.Libele = _dt.Rows(i).Item("name")
-                '    a.Responsable = StrValue(_dt, "responsable", i)
-                '    a.Ville = StrValue(_dt, "ville", i)
-                '    a.Tel = StrValue(_dt, "tel", i)
-                '    a.isCompany = BoolValue(_dt, "isCompany", i)
-
-                '    a.Index = i
-                '    a.Dock = DockStyle.Top
-                '    a.BringToFront()
-                '    arr(i - startIndex) = a
-
-                '    AddHandler a.EditSelectedItem, AddressOf EditSelectedClient
-                '    AddHandler a.DeleteItem, AddressOf DeleteSelectedClient
-                '    AddHandler a.GetFactureInfos, AddressOf GetClientInfos
-
-                '    If i = lastIndex Then Exit For
-                'Next
-                'pl.Controls.AddRange(arr)
-                'startIndex = i
-
 
                 Dim dg As New DataGridView
                 dg.DataSource = _dt
@@ -508,14 +449,24 @@
     Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
         Dim dt As DataGridView = sender
         Dim qte As Double = 0
+        Dim mnStk As Double = 0
         For i As Integer = 0 To dt.Rows.Count - 1
             qte = dt.Rows(i).Cells(7).Value
 
-            If qte > Form1.myMinStock Then
+            Try
+                mnStk = dt.Rows(i).Cells(14).Value
+            Catch ex As Exception
+                mnStk = Form1.myMinStock
+            End Try
+
+
+            If qte > mnStk Then
                 dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
                 dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-            ElseIf qte <= Form1.myMinStock And qte >= 0 Then
-                dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
+            ElseIf qte <= mnStk And qte > 0 Then
+                dt.Rows(i).Cells(7).Style.ForeColor = Color.Blue
+                dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
+
             Else
                 dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
             End If
@@ -679,12 +630,15 @@
        
         If TableName = "Article" Then
             str = "Liste des Articles"
+            DG.Columns(5).Visible = False
+
         ElseIf TableName = "Category" Then
             str = "Liste des Groupes"
         Else
             str = "Liste des Contactes"
         End If
         SaveDataToHtml(DG, str)
+
     End Sub
     Dim m = 0
     Private Sub PrintDoc_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage

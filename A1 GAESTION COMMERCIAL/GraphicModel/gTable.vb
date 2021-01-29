@@ -163,6 +163,7 @@
         PARAMS.Add("Total TTC", "xTotalTTC")
         PARAMS.Add("Tva", "tva")
         PARAMS.Add("Dpt N°", "depot")
+        PARAMS.Add("bl Ref", "bl")
         PARAMS.Add("Entrepôte", "xdepot")
         PARAMS.Add("Réf & Designation", "xname")
 

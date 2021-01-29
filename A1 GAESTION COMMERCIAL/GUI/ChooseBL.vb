@@ -166,6 +166,9 @@
                     a.Dock = DockStyle.Top
                     a.BringToFront()
 
+
+
+
                     arr(i) = a
 
                     a.plR.Width = 1

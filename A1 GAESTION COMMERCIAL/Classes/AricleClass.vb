@@ -336,27 +336,9 @@
             If Form1.isWorkinOnStock = False And Form1.useBlLivrable = False Then Exit Sub
             Dim where As New Dictionary(Of String, Object)
 
-            'For Each l As ListLine In ds.pl.Controls
-            '    'For i As Integer=0 to 
-            '    where.Clear()
-            '    where.Add("arid", l.Id)
-            '    where.Add("dpid", ds.dpid)
-            '    Dim qte = a.SelectByScalar("Details_Stock", "qte", where)
-
-            '    If IsNothing(qte) Then qte = 0
-
-            '    l.remise = qte
-
-            '    If qte > Form1.myMinStock Then
-            '        l.plR.BackColor = Color.Honeydew
-            '    ElseIf qte <= Form1.myMinStock And qte > 0 Then
-            '        l.plR.BackColor = Color.SeaShell
-            '    Else
-            '        l.plR.BackColor = Color.Crimson
-            '    End If
-            'Next
             Dim dt As DataGridView = ds.pl.Controls(0)
             Dim Stock_Value As Double = 0
+            Dim mnStk As Double = 0
 
             For i As Integer = 0 To dt.Rows.Count - 1
                 'For i As Integer=0 to 
@@ -382,11 +364,18 @@
                 'valeur
                 Stock_Value += qte * pr
 
-                If qte > Form1.myMinStock Then
+                Try
+                    mnStk = dt.Rows(i).Cells(14).Value
+                Catch ex As Exception
+                    mnStk = Form1.myMinStock
+                End Try
+               
+                If qte > mnStk Then
                     dt.Rows(i).Cells(7).Style.ForeColor = Color.Green
                     dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-                ElseIf qte <= Form1.myMinStock And qte >= 0 Then
-                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Orange
+                ElseIf qte <= mnStk And qte > 0 Then
+                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Blue
+                    dt.Rows(i).Cells(7).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
 
                 Else
                     dt.Rows(i).Cells(7).Style.ForeColor = Color.Red

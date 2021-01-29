@@ -195,7 +195,7 @@ Public Class FactureClass
                         params.Add("depot", data.Rows(i).Item("depot"))
                         params.Add("ref", data.Rows(i).Item("ref"))
                         params.Add("cid", data.Rows(i).Item("cid"))
-                        If tb_D = "Details_Sell_Facture" Then params.Add("bl", data.Rows(i).Item("bl"))
+                        If tb_D = "Details_Sell_Facture" Then params.Add("bl", ds.Id)
 
                         c.InsertRecord(tb_D, params)
                         params.Clear()
@@ -1435,7 +1435,7 @@ Public Class FactureClass
     End Sub
 
     Private Sub Facturer(ByVal id As Integer, ByRef ds As DataList)
-        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+        Dim dte As String = Now.Date
 
         Dim tb_D = "Details_Sell_Facture"
         Dim tb_F = "Sell_Facture"
@@ -1480,7 +1480,7 @@ Public Class FactureClass
         'fill rows
     End Sub
     Private Sub DuplicateFacture(ByVal id As Integer, ByRef ds As DataList)
-        Dim dte As String = Now.Date.ToString("dd-MM-yyyy")
+        Dim dte As String = Now.Date
 
         Dim tb_D = ds.DetailsTable
         Dim tb_F = ds.FactureTable
@@ -2325,8 +2325,10 @@ Public Class FactureClass
 
                     where.Add("id", CInt(ds.Id))
                     c.UpdateRecord(ds.FactureTable, params, where)
+
                     params.Clear()
                     where.Clear()
+
 
                     For Each a As ListLine In bls.plBody.Controls
                         Dim bonId As Integer = CInt(a.Id)
@@ -2427,6 +2429,18 @@ Public Class FactureClass
                             If bls.tb_D = "Bon_Livraison" Then c.DeleteRecords(ds.DetailsTable, where)
                         Next
                     End If
+
+                    'GET TOTAL AVANCES
+                    Dim avc As Double = 0
+                    Try
+                        where.Clear()
+                        where.Add(ds.FactureTable, CInt(ds.Id))
+                        avc = c.SelectByScalarSum(bls.tb_P, "SUM(montant)", where)
+                    Catch ex As Exception
+                        avc = 0
+                    End Try
+
+                    ds.TB.avance = avc
                 End Using
 
 

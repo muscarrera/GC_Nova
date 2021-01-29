@@ -900,8 +900,8 @@
                 Dim dte2 As Date = ds.dte2.Value.AddDays(1)
 
                 'Dim params As New Dictionary(Of String, Object)
-                params.Add("[date] > ", dte1)
-                params.Add("[date] < ", dte2)
+                params.Add("[date] > ", dte1.ToString("dd/MM/yyyy"))
+                params.Add("[date] < ", dte2.ToString("dd/MM/yyyy"))
 
 
                 If ds.txt.text.Trim.Contains("|") Then
@@ -925,6 +925,7 @@
                 If dt2.Rows.Count > 0 Then
                     For i As Integer = 0 To dt2.Rows.Count - 1
                         dt2.Rows(i).Item("total") = DblValue(dt2, "total", i) * -1
+                        dt2.Rows(i).Item("tva") = DblValue(dt2, "tva", i) * -1
                     Next
 
                     dt.Merge(dt2)

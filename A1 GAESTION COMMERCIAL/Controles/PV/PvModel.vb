@@ -4,7 +4,7 @@
 
     Public ClientId As Integer = 0
     Public ClientName As String = Form1.pv_NormalClient
-    Public bonDate As Date = Now.Date.ToString("dd/MM/yyyy hh:mm")
+    Public bonDate As Date = Now.Date
 
     Public avance As Double = 0
 

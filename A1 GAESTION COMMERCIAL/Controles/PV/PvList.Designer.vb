@@ -333,7 +333,7 @@ Partial Class PvList
         Me.RPL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.RPL.delivredDay = Nothing
         Me.RPL.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RPL.hasManyRemise = False
+        Me.RPL.hasManyRemise = True
         Me.RPL.Location = New System.Drawing.Point(15, 0)
         Me.RPL.Name = "RPL"
         Me.RPL.Num = 0

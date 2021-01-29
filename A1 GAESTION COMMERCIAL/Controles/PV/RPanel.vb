@@ -28,8 +28,8 @@
    
     Public isSell As Boolean = True
     Public _bl As String
-    Public isUniqTva As Boolean
-    Private _hasManyRemise As Boolean
+    Public isUniqTva As Boolean = False
+    Private _hasManyRemise As Boolean = True
     Public myDate As Date
     Public modePayement As String = ""
 
@@ -330,7 +330,7 @@
                 ap.Index = Pl.Controls.Count
                 ap.Name = R("name")
 
-                ap.Tva = 20
+                ap.Tva = R("tva")
                 If isUniqTva Then ap.Tva = R("tva")
 
                 ap.Unite = R("stockType") ' unite
@@ -399,14 +399,16 @@
                     Dim ap As New Items
                     ap.Dock = DockStyle.Top
                     ap.Index = Pl.Controls.Count
+
+
                     ap.Name = art.name
                     ap.Unite = art.unite
-                    ap.Price = art.spriceTTC
+                    ap.Tva = art.TVA
+                    ap.Price = art.sprice
                     ap.Qte = art.qte
                     ap.Bprice = art.bprice
                     ap.id = rnd.Next  '' random
                     ap.arid = art.arid
-                    ap.Tva = art.TVA
                     ap.cid = art.cid
                     ap.Depot = art.depot
                     ap.code = art.ref
@@ -443,7 +445,7 @@
 
 
     '''''
-    Private Sub UpdateValue()
+    Public Sub UpdateValue()
         LbSum.Text = String.Format("{0:n}", Total_TTC)
         LbVidal.Text = Pl.Controls.Count & " - Vidals"
 

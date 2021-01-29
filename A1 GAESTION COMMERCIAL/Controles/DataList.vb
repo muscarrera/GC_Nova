@@ -345,7 +345,7 @@
             For Each a In Pl.Controls
                 ' Add  rows with those columns filled in the DataTable.
                 table.Rows.Add(a.arid, a.ArticleName, a.cid, a.qte, a.sprice, a.bprice,
-                              a.Tva, a.ref, a.depot, a.remise, a.id, a.TotaltVA)
+                              a.Tva, a.ref, a.depot, a.remise, a.bl, a.TotalTVA)
             Next
             Return table
         End Get
@@ -990,36 +990,66 @@
     Private Sub Dg_Sorted(ByVal sender As Object, ByVal e As EventArgs)
         Dim dt As DataGridView = sender
         Dim isP As Double = 0
+        Using c As DataAccess = New DataAccess(My.Settings.ALMohassinDBConnectionString)
+            Dim params As New Dictionary(Of String, Object)
 
-        For i As Integer = 0 To dt.Rows.Count - 1
-            isP = dt.Rows(i).Cells(10).Value
+            For i As Integer = 0 To dt.Rows.Count - 1
+                isP = dt.Rows(i).Cells(10).Value
 
-            If isP Then
-                dt.Rows(i).Cells(23).Value = "Reglé"
-                dt.Rows(i).Cells(23).Style.ForeColor = Color.Green
+                If isP Then
+                    dt.Rows(i).Cells(23).Value = "Reglé"
+                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Green
 
-                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("AVO") Then
-                    dt.Rows(i).Cells(23).Value = "Avoir"
-                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
+                    If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("FAC") Then
+                        dt.Rows(i).Cells(23).Value = "Facturé"
+
+                        Try
+                            If dt.Rows(i).Cells(7).Value < dt.Rows(i).Cells(4).Value Then
+                                params.Clear()
+                                params.Add("id", dt.Rows(i).Cells(18).Value)
+
+                                If c.SelectByScalar("Sell_Facture", "isPayed", params) Then
+                                    dt.Rows(i).Cells(7).Value = dt.Rows(i).Cells(4).Value
+                                    dt.Rows(i).Cells(7).Style.ForeColor = Color.Blue
+                                End If
+                            End If
+                        Catch ex As Exception
+                        End Try
+
+                    End If
+                Else
+
+                    If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("AVO") Then
+                        dt.Rows(i).Cells(23).Value = "Avoir"
+                        dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
+
+                    ElseIf dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("ANN") Then
+                        dt.Rows(i).Cells(23).Value = "Supp"
+                        dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
+                    ElseIf dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("FAC") Then
+                        dt.Rows(i).Cells(23).Value = "Facturé"
+                        dt.Rows(i).Cells(23).Style.ForeColor = Color.Blue
+
+                        Try
+                            params.Clear()
+                            params.Add("id", dt.Rows(i).Cells(18).Value)
+
+                            If c.SelectByScalar("Sell_Facture", "isPayed", params) Then
+                                dt.Rows(i).Cells(7).Value = dt.Rows(i).Cells(4).Value
+                                dt.Rows(i).Cells(7).Style.ForeColor = Color.Blue
+                            End If
+                        Catch ex As Exception
+                        End Try
+
+                    Else
+                        Dim rest As Double = dt.Rows(i).Cells(7).Value - dt.Rows(i).Cells(4).Value
+                        dt.Rows(i).Cells(23).Value = rest.ToString("c")
+                        dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
+                    End If
+
                 End If
-
-                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("ANN") Then
-                    dt.Rows(i).Cells(23).Value = "Supp"
-                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Red
-                End If
-
-                If dt.Rows(i).Cells(9).Value.ToString.ToUpper.StartsWith("FAC") Then
-                    dt.Rows(i).Cells(23).Value = "Facturé"
-                    dt.Rows(i).Cells(23).Style.ForeColor = Color.Blue
-                End If
-
-                'dt.Rows(i).Cells(21).Style.Font = New Font(Form1.fontName_Normal, Form1.fontSize_Normal, FontStyle.Bold)
-            Else
-                Dim rest As Double = dt.Rows(i).Cells(7).Value - dt.Rows(i).Cells(4).Value
-                dt.Rows(i).Cells(23).Value = rest.ToString("c")
-                dt.Rows(i).Cells(7).Style.ForeColor = Color.Red
-            End If
-        Next
+            Next
+        End Using
     End Sub
     Private Sub Dg_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs)
         'Dim dt As DataGridView = sender

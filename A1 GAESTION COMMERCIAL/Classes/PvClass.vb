@@ -33,6 +33,22 @@
         PvL.numberOpenBons = 0
         PvL.modeSearch_isCode = False
 
+        '''''''''
+
+        PvL.modeSearch_isCode = getRegistryinfo("modeSearch_isCode", True)
+        PvL.SearchBy = getRegistryinfo("SearchBy", "all")
+
+        PvL.tb_C = getRegistryinfo("pv_tb_C", "Client")
+        PvL.tb_F = getRegistryinfo("pv_tb_F", "Commande_Client")
+        PvL.tb_D = getRegistryinfo("pv_tb_D", "Details_Commande")
+        PvL.tb_P = getRegistryinfo("pv_tb_P", "Client_Payement")
+
+        PvL.RplWidth = getRegistryinfo("RplWidth", 404)
+        PvL.RPL.RplHeight = getRegistryinfo("RplHeight", 248)
+        PvL.showPrintDialog = getRegistryinfo("pv_showPrintDialog", False)
+
+        ''''''''''''
+
         Form1.plBody.Controls.Add(PvL)
 
         FillGroupes()
@@ -94,20 +110,20 @@
                 If ds.SearchBy.ToUpper = "NOM" Then
 
                     params.Add("name LIKE ", "%" & txt & "%")
-                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+                    artdt = a.SelectDataTableSymbols("article", {"TOP " & Form1.numberOfItems & " *"}, params)
 
                 ElseIf ds.SearchBy.ToUpper = "REF" Then
                     params.Add("ref LIKE ", "%" & txt & "%")
-                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+                    artdt = a.SelectDataTableSymbols("article", {"TOP " & Form1.numberOfItems & " *"}, params)
 
                 Else
                     params.Add("name LIKE ", "%" & txt & "%")
-                    artdt = a.SelectDataTableSymbols("article", {"*"}, params)
+                    artdt = a.SelectDataTableSymbols("article", {"TOP " & Form1.numberOfItems & " *"}, params)
 
                     params.Clear()
 
                     params.Add("ref LIKE ", "%" & txt & "%")
-                    artdt2 = a.SelectDataTableSymbols("article", {"*"}, params)
+                    artdt2 = a.SelectDataTableSymbols("article", {"TOP " & Form1.numberOfItems & " *"}, params)
 
                     artdt.Merge(artdt2, False)
                 End If

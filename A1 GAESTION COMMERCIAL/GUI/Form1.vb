@@ -98,7 +98,10 @@
     Public Color_Selected_Row As Color = Color.Red
     Public allowAddElement_to As Boolean = False
 
+    'String Formating
     Public DesimalSringFormat As String = "{0:n3}"
+    Public DesimalSringFormat_Total As String = "{0:n3}"
+
     'POS
     Friend Shared SearchBy As String = "ref"
     Friend Shared pvLongerbt As Integer = 120
@@ -190,9 +193,6 @@
         'If mlc.ShowDialog = Windows.Forms.DialogResult.Cancel Then
         '    End
         'End If
-
-
-
 
 
         'check Users
@@ -422,11 +422,11 @@
             data.Columns.Add("vidal", GetType(String))
             data.Columns.Add("ref", GetType(String))
 
-
+            ' String.Format(frt, CDec(TotalTTC))
             data.Rows.Add(ds.Entete.lbId.Text, ds.Entete.FactureDate.ToString("dd/MM/yyyy"), ds.Entete.Client.cid, ds.Entete.ClientName,
-                          String.Format("{0:0.00}", ds.TB.TotalHt), String.Format("{0:0.00}", ds.TB.TVA),
-                          String.Format("{0:0.00}", ds.TB.TotalTTC), String.Format("{0:0.00}", ds.TB.Remise),
-                          String.Format("{0:0.00}", ds.TB.avance), String.Format("{0:0.00}", ds.TB.DroitTimbre),
+                          String.Format(DesimalSringFormat_Total, ds.TB.TotalHt), String.Format(DesimalSringFormat_Total, ds.TB.TVA),
+                          String.Format(DesimalSringFormat_Total, ds.TB.TotalTTC), String.Format(DesimalSringFormat_Total, ds.TB.Remise),
+                          String.Format(DesimalSringFormat_Total, ds.TB.avance), String.Format(DesimalSringFormat_Total, ds.TB.DroitTimbre),
                           ds.ModePayement, adminName, ds.DataSource.Rows.Count, ds.Entete.Bl)
 
             Dim dt_Client As New DataTable
@@ -443,9 +443,20 @@
             dt_Client.Rows.Add(ds.Entete.Client.cid, ds.Entete.ClientName, ds.Entete.Client.ref, ds.Entete.Client.ville,
                               ds.Entete.Client.adresse, ds.Entete.Client.ICE, ds.Entete.Client.tel)
 
+            Dim dt_tva As New DataTable
+            dt_tva.Columns.Add("taux", GetType(String))
+            dt_tva.Columns.Add("val", GetType(Double))
+
+            Try
+                For i As Integer = 0 To ds.TB.dg.Rows.Count - 1
+                    dt_tva.Rows.Add(ds.TB.dg.Rows(i).Cells(0).Value, ds.TB.dg.Rows(i).Cells(1).Value)
+                Next
+            Catch ex As Exception
+            End Try
+
 
             Using g As gDrawClass = New gDrawClass(MP_Localname)
-                g.DrawBl(e, data, ds.DataSource, dt_Client, Facture_Title, False, m)
+                g.DrawBl(e, data, ds.DataSource, dt_Client, dt_tva, Facture_Title, False, m)
             End Using
         Catch ex As Exception
 

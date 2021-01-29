@@ -1,5 +1,7 @@
 ﻿Public Class TotalBloc
 
+    Dim frt = Form1.DesimalSringFormat
+
     Dim _pj As Integer
     Dim _isDisibleEditing As Boolean
 
@@ -24,8 +26,8 @@
         End Get
         Set(ByVal value As Double)
             _ht = value
-            lbHt.Text = String.Format("{0:n}", CDec(value))
-            lbTTc.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbHt.Text = String.Format(frt, CDec(value))
+            lbTTc.Text = String.Format(frt, CDec(TotalTTC))
             RaiseEvent ValueChanged()
         End Set
     End Property
@@ -35,13 +37,13 @@
         End Get
         Set(ByVal value As Double)
             _rs = value
-            lbRs.Text = String.Format("{0:n}", CDec(value))
+            lbRs.Text = String.Format(frt, CDec(value))
             If value = 0 Then
                 plRs.Visible = False
             Else
                 plRs.Visible = True
             End If
-            lbTTc.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbTTc.Text = String.Format(frt, CDec(TotalTTC))
             RaiseEvent ValueChanged()
         End Set
     End Property
@@ -51,8 +53,8 @@
         End Get
         Set(ByVal value As Double)
             _tva = value
-            lbTva.Text = String.Format("{0:n}", CDec(value))
-            lbTTc.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbTva.Text = String.Format(frt, CDec(value))
+            lbTTc.Text = String.Format(frt, CDec(TotalTTC))
             RaiseEvent ValueChanged()
         End Set
     End Property
@@ -77,7 +79,7 @@
             T = TotalHt - Remise
             T *= _dt
 
-            lbTimbre.Text = String.Format("{0:n}", CDec(T))
+            lbTimbre.Text = String.Format(frt, CDec(T))
 
             If _dt = 0 Then
                 plTimbre.Visible = False
@@ -102,7 +104,7 @@
         End Get
         Set(ByVal value As Double)
             _avc = value
-            lbAvc.Text = String.Format("{0:n}", CDec(value))
+            lbAvc.Text = String.Format(frt, CDec(value))
             If value = 0 Then
                 plAvc.Visible = False
             Else
@@ -119,7 +121,7 @@
             _ModePayement = value
             _dt = 0
             If value = "Cache" Then _dt = 25 / 10000
-            lbTTc.Text = String.Format("{0:n}", CDec(TotalTTC))
+            lbTTc.Text = String.Format(frt, CDec(TotalTTC))
             If Not IsNothing(value) Then lbModePayement.Text = value
         End Set
     End Property

@@ -281,7 +281,11 @@
                 End If
                 myKey = "isPayed = "
                 myVal = isPayed
+
+                If Form1.isFactureGetSold And isPayed = False Then myKey = "// isPayed ="
+
             Case "EG"
+
                 Dim isPayed As Boolean = False
                 EtatGénéral = True
                 ReferenceArticle = False
@@ -370,6 +374,12 @@
                     Dim dte As Date = CDate(c.myVal)
                     params.Add("[date] > ", dte.AddDays(-1))
                     params.Add("[date] < ", dte.AddDays(1))
+
+
+                ElseIf c.myKey.StartsWith("//") Then
+                    params.Add("isPayed = ", c.myVal)
+                    params.Add("isAdmin <> ", "Facturé")
+
                 Else
                     params.Add(c.myKey, c.myVal)
                 End If

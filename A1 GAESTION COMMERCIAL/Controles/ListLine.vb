@@ -153,6 +153,7 @@
     End Sub
     Private Sub ResizePanels()
 
+        Exit Sub
 
         If sizeAuto = False Then
             Dim w As Integer = Me.Width
